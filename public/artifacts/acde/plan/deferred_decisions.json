@@ -1,0 +1,103 @@
+{
+  "series": "ACDE",
+  "generated": "2026-07-06",
+  "lookback_calls": [
+    "ACDE #236",
+    "ACDE #237",
+    "ACDE #238",
+    "ACDE #239",
+    "ACDE #240"
+  ],
+  "deferred": [
+    {
+      "topic": "SIP-8080 (CL side) DFI discussion",
+      "deferred_in": "ACDE #236",
+      "deferred_date": "2026-05-07",
+      "expected_revisit": "next ACDC",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "Full SELFDESTRUCT removal",
+      "deferred_in": "ACDE #236",
+      "deferred_date": "2026-05-07",
+      "expected_revisit": "Hegota fork",
+      "revisited": true,
+      "revisited_in": "ACDE #237",
+      "outcome": "SIP-4758 (Deactivate SELFDESTRUCT) proposed for Hegota in ACDE #237"
+    },
+    {
+      "topic": "7702 delegation BAL change inclusion",
+      "deferred_in": "ACDE #237",
+      "deferred_date": "2026-05-21",
+      "expected_revisit": "pending BAL Discord decision",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-7904 formal DFI status change",
+      "deferred_in": "ACDE #237",
+      "deferred_date": "2026-05-21",
+      "expected_revisit": "pending Geth benchmarks confirmation (end of May)",
+      "revisited": true,
+      "revisited_in": "ACDE #239",
+      "outcome": "SIP-7904 converted to informational SIP; no repricings needed for Glamsterdam"
+    },
+    {
+      "topic": "Monday ACDT cancellation confirmation",
+      "deferred_in": "ACDE #237",
+      "deferred_date": "2026-05-21",
+      "expected_revisit": "pending AllCoreDevs Discord confirmation",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-7610 inclusion in glamsterdam-devnet-6",
+      "deferred_in": "ACDE #238",
+      "deferred_date": "2026-06-04",
+      "expected_revisit": null,
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-2488 (deprecate CALLCODE) presentation",
+      "deferred_in": "ACDE #239",
+      "deferred_date": "2026-06-18",
+      "expected_revisit": "next call",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-7928 BAL state access ordering final decision",
+      "deferred_in": "ACDE #239",
+      "deferred_date": "2026-06-18",
+      "expected_revisit": "by end of week (async)",
+      "revisited": true,
+      "revisited_in": "ACDE #240",
+      "outcome": "Pre-access check added before slot DB read (SIP-8038); spec change in PR #11854"
+    },
+    {
+      "topic": "Final repricing numbers confirmation (SIP-8038, SIP-2780)",
+      "deferred_in": "ACDE #240",
+      "deferred_date": "2026-07-02",
+      "expected_revisit": "next ACDE (pending full benchmark suite)",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "ePBS deadlines confirmation (3s/6s/9s)",
+      "deferred_in": "ACDE #240",
+      "deferred_date": "2026-07-02",
+      "expected_revisit": "ACDT Monday (July 6, 2026)",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": 8272,
+  "title": "SIP-8272: Recent Roots for Frame Transactions",
+  "status": "Draft",
+  "description": "Frame transactions can declare verified recent roots",
+  "author": "Thomas Thiery (@soispoke), Vitalik Buterin (@vbuterin), Toni Wahrstätter (@nerolation)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-05-15",
+  "discussionLink": "https://sila-magicians.org/t/sip-8272-recent-roots-for-frame-transactions/28621",
+  "requires": [
+    7843,
+    8141
+  ],
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/240",
+          "date": "2026-07-02"
+        }
+      ],
+      "champions": [
+        {
+          "name": "soispoke",
+          "discord": "soispoke"
+        }
+      ]
+    }
+  ],
+  "tradeoffs": null
+}

@@ -1,0 +1,513 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Configure dark mode to use class instead of media query */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Scanlines overlay — matching Protocol Support */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+.dark .scanlines {
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+  opacity: 1;
+}
+
+/* SilaForkcast logo */
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 14px rgba(0, 212, 255, 0.5)) drop-shadow(0 0 28px rgba(168, 85, 247, 0.15)); }
+}
+
+.sila-forkcast-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  text-decoration: none;
+}
+
+.sila-forkcast-logo .fork-symbol {
+  font-weight: 700;
+  background: linear-gradient(135deg, #00D4FF 0%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.sila-forkcast-logo:hover .fork-symbol {
+  background: linear-gradient(135deg, #A855F7 0%, #00D4FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: none;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.4));
+}
+
+.sila-forkcast-wordmark {
+  filter: brightness(0);
+}
+
+.dark .sila-forkcast-wordmark {
+  filter: brightness(0) invert(1);
+}
+
+.sila-forkcast-logo:hover img {
+  opacity: 0.85;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-slide-up-fast {
+  animation: slideUp 0.15s ease-out;
+}
+
+.animate-fade-scale {
+  animation: fadeScale 0.2s ease-out;
+}
+
+/* Dark mode configuration */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  html {
+    color-scheme: light;
+    scrollbar-gutter: stable;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  body {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 240 100% 0.8%;
+    --foreground: 210 40% 98%;
+
+    /* Override Tailwind slate palette to match Protocol Support void theme */
+    /* Backgrounds — all solid, no transparency */
+    --color-slate-900: #000004;
+    --color-slate-800: #111119;
+    --color-slate-700: #232940;
+    --color-slate-600: #2a3050;
+    --color-slate-500: #363d58;
+    /* Text — neutral greys, WCAG AA compliant on #000004 and #111119 */
+    --color-slate-400: #A0A0B0;
+    --color-slate-300: #C0C0CC;
+    --color-slate-200: #B8B8C8;
+    --color-slate-100: #F0F6FF;
+    --color-slate-50: #04040A;
+  }
+}
+
+/* Hide scrollbar utility */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom dark mode styles for the application */
+@layer components {
+  .dark .bg-slate-50 {
+    background-color: #000004;
+  }
+
+  .dark .bg-white {
+    background-color: #111119;
+  }
+
+  .dark .border-slate-200 {
+    border-color: #2a3050;
+  }
+
+  .dark .border-slate-700 {
+    border-color: #232940;
+  }
+
+  .dark .border-slate-300 {
+    border-color: #2a3050;
+  }
+
+  .dark .text-slate-900 {
+    color: #F0F6FF;
+  }
+
+  .dark .text-slate-700 {
+    color: #A8A8B8;
+  }
+
+  .dark .text-slate-600 {
+    color: #A8A8B8;
+  }
+
+  .dark .text-slate-500 {
+    color: #9898A8;
+  }
+
+  .dark .text-slate-400 {
+    color: #A0A0B0;
+  }
+
+  .dark .bg-slate-100 {
+    background-color: #12121A;
+  }
+
+  /* Ensure bg-slate-700 stays as elevated surface, not border blue */
+  .dark .bg-slate-700 {
+    background-color: #12121A;
+  }
+
+  .dark .hover\:text-slate-900:hover {
+    color: #F0F6FF;
+  }
+
+  .dark .hover\:text-slate-700:hover {
+    color: #C0C0CC;
+  }
+
+  .dark .hover\:shadow-md:hover {
+    --tw-shadow-color: rgba(0, 0, 4, 0.3);
+  }
+
+  .dark .bg-red-100 {
+    @apply bg-red-900/20;
+  }
+
+  .dark .bg-amber-100 {
+    @apply bg-amber-900/20;
+  }
+
+  .dark .bg-yellow-50 {
+    @apply bg-yellow-900/20;
+  }
+
+  .dark .bg-green-100 {
+    @apply bg-green-900/20;
+  }
+
+  .dark .bg-sky-100 {
+    @apply bg-sky-900/20;
+  }
+
+  .dark .bg-blue-100 {
+    @apply bg-blue-900/20;
+  }
+
+  .dark .bg-orange-100 {
+    @apply bg-orange-900/20;
+  }
+  .dark .text-orange-800 {
+    @apply text-orange-300;
+  }
+  .dark .text-red-800 {
+    @apply text-red-300;
+  }
+
+  /* Custom green overrides (consider removing if not broadly used) */
+  .dark .bg-green-100 {
+    @apply bg-green-900/20;
+  }
+  .dark .text-green-700 {
+    @apply text-green-300;
+  }
+
+  /* Custom purple overrides */
+  .dark .bg-purple-100 {
+    @apply bg-purple-900/20;
+  }
+}
+
+/* SIP specification table styles */
+.prose .sip-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.prose tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.prose tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.dark .prose th,
+.dark .prose td {
+  border-color: #2a3050;
+}
+
+.dark .prose th {
+  background-color: rgba(35, 41, 64, 0.7);
+}
+
+.dark .prose tbody tr:nth-child(even) {
+  background-color: rgba(18, 18, 26, 0.5);
+}
+
+.dark .prose tbody tr:hover {
+  background-color: rgba(35, 41, 64, 0.4);
+}
+
+.prose td code,
+.prose th code {
+  white-space: nowrap;
+  font-size: 0.8125rem;
+}
+
+/* Heading anchor links */
+.prose h2[id],
+.prose h3[id],
+.prose h4[id] {
+  scroll-margin-top: 5rem;
+}
+
+.sip-heading-anchor {
+  opacity: 0;
+  font-weight: 400;
+  color: #a78bfa;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  margin-left: 0.35em;
+}
+
+.group:hover > .sip-heading-anchor,
+.sip-heading-anchor:focus {
+  opacity: 1;
+}
+
+/* Code block copy button */
+.sip-code-block {
+  position: relative;
+}
+
+.sip-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 1;
+}
+
+.sip-code-block:hover .sip-copy-btn {
+  opacity: 1;
+}
+
+.sip-copy-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.dark .sip-copy-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #2a3050;
+  color: #94a3b8;
+}
+
+.dark .sip-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Blockquote styling */
+.prose blockquote {
+  border-left: 3px solid #a78bfa;
+  background: #f8fafc;
+  padding: 0.75rem 1rem;
+  margin: 1em 0;
+  border-radius: 0 0.375rem 0.375rem 0;
+  font-style: normal;
+}
+
+.prose blockquote p {
+  margin: 0;
+}
+
+.dark .prose blockquote {
+  background: rgba(35, 41, 64, 0.4);
+  border-left-color: #7c3aed;
+}
+
+/* Table of contents */
+.sip-toc {
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.sip-toc summary {
+  cursor: pointer;
+  padding: 0.625rem 1rem;
+  font-weight: 600;
+  color: #475569;
+  user-select: none;
+}
+
+.sip-toc nav {
+  padding: 0 1rem 0.75rem;
+}
+
+.sip-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sip-toc-number {
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.5em;
+  min-width: 2em;
+  display: inline-block;
+}
+
+.sip-toc li > a {
+  color: #6366f1;
+  text-decoration: none;
+}
+
+.sip-toc li > a:hover {
+  text-decoration: underline;
+}
+
+.sip-toc-2 {
+  font-weight: 600;
+  padding: 0.15rem 0;
+}
+
+.sip-toc-subs {
+  display: block;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  padding-left: 2.5em;
+}
+
+.sip-toc-sub {
+  color: #818cf8;
+  text-decoration: none;
+}
+
+.sip-toc-sub::before {
+  content: "·";
+  color: #cbd5e1;
+  margin: 0 0.4em;
+}
+
+.sip-toc-sub:first-child::before {
+  content: none;
+}
+
+.sip-toc-sub:hover {
+  text-decoration: underline;
+}
+
+.dark .sip-toc {
+  border-color: #2a3050;
+}
+
+.dark .sip-toc summary {
+  color: #94a3b8;
+}
+
+.dark .sip-toc li > a {
+  color: #a78bfa;
+}
+
+.dark .sip-toc-number {
+  color: #64748b;
+}
+
+.dark .sip-toc-sub {
+  color: #8b8bf5;
+}
+
+.dark .sip-toc-sub::before {
+  color: #475569;
+}

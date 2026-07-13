@@ -1,0 +1,19 @@
+{
+  "id": 7568,
+  "title": "SIP-7568: Hardfork Meta Backfill - Berlin to Shapella",
+  "status": "Final",
+  "description": "Pointers to specifications used for the network upgrades from Berlin to Shapella.",
+  "author": "Tim Beiko (@timbeiko)",
+  "type": "Meta",
+  "createdDate": "2023-12-01",
+  "discussionLink": "https://sila-magicians.org/t/hardfork-meta-backfill/16923",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2070,
+    2387,
+    2982,
+    6122,
+    6953
+  ]
+}

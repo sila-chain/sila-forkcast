@@ -1,0 +1,45 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+.env
+node_modules
+dist
+dist-ssr
+*.local
+
+# Astro generated types
+.astro
+*.tsbuildinfo
+
+# Compiled SIPs (generated from src/data/sips/*.json)
+src/data/sips.json
+
+# Compiled search corpus (generated from public/artifacts/*)
+public/search-corpus.json
+public/search-corpus.meta.json
+
+# Compiled SIP spec search index (generated from public/sips/*.md)
+public/sip-spec-index.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.zed
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# AI
+.claude/*
+!.claude/skills
+.codex

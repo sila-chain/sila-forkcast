@@ -1,0 +1,21 @@
+{
+  "id": 8279,
+  "title": "SIP-8279: Block Access List Byte Floor",
+  "status": "Draft",
+  "description": "Meter SIP-7928 Block Access List bytes at runtime and fold them into the SIP-7623 transaction floor.",
+  "author": "Toni Wahrstätter (@nerolation)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-05-23",
+  "discussionLink": "https://sila-magicians.org/t/sip-8279-block-access-list-byte-floor/28662",
+  "requires": [
+    7623,
+    7702,
+    7928,
+    7976,
+    7981,
+    8131
+  ],
+  "forkRelationships": [],
+  "tradeoffs": null
+}

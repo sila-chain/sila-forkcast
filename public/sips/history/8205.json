@@ -1,0 +1,14 @@
+{
+  "eipId": 8205,
+  "commits": [
+    {
+      "sha": "dcf80d9dd8b85a8c1bf1869f3a50e7cb4d10787d",
+      "date": "2026-04-15T08:14:37Z",
+      "message": "Add SIP: Withdrawal credentials preregistration",
+      "author": "avsetsin",
+      "prNumber": null,
+      "additions": 557,
+      "deletions": 0
+    }
+  ]
+}

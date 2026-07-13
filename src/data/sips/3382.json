@@ -1,0 +1,13 @@
+{
+  "id": 3382,
+  "title": "SIP-3382: Hardcoded Block Gas Limit",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "Philippe Castonguay (@PhABC)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-03-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-3382-hardcoded-gas-limit",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

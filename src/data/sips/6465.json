@@ -1,0 +1,20 @@
+{
+  "id": 6465,
+  "title": "SIP-6465: SSZ withdrawals root",
+  "status": "Draft",
+  "description": "Migration of withdrawals MPT commitment to SSZ",
+  "author": "Etan Kissling (@etan-status), Mikhail Kalinin (@mkalinin)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2023-02-08",
+  "discussionLink": "https://sila-magicians.org/t/sip-6465-ssz-withdrawals-root/12883",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2718,
+    4895,
+    6404,
+    7495,
+    7916
+  ]
+}

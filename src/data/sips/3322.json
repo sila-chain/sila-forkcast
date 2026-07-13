@@ -1,0 +1,13 @@
+{
+  "id": 3322,
+  "title": "SIP-3322: Account gas storage opcodes",
+  "status": "Stagnant",
+  "description": "",
+  "author": "William Morriss (@wjmelements)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2020-03-04",
+  "discussionLink": "https://sila-magicians.org/t/sip-3322-efficient-gas-storage/5470",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

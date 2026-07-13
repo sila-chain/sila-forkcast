@@ -1,0 +1,44 @@
+{
+  "id": "epbs-devnet-2",
+  "title": "epbs-devnet-2",
+  "sourceUrl": "https://notes.sila.org/@ethpandaops/epbs-devnet-2",
+  "scrapedAt": "2026-07-13T07:30:55.341Z",
+  "announcements": [
+    "epbs-devnet-2 will no longer happen. For latest info please head over to https://notes.sila.org/@ethpandaops/glamsterdam-devnet-0",
+    "Everything below is outdated!!"
+  ],
+  "sips": [],
+  "elClientSupport": {
+    "clients": [],
+    "matrix": []
+  },
+  "clClientSupport": {
+    "clients": [
+      "Lodestar",
+      "Lighthouse",
+      "Prysm",
+      "Teku",
+      "Grandine",
+      "Nimbus"
+    ],
+    "matrix": [
+      {
+        "eipNumber": 7732,
+        "label": "SIP-7732",
+        "support": {
+          "Lodestar": "unknown",
+          "Lighthouse": "unknown",
+          "Prysm": "unknown",
+          "Teku": "unknown",
+          "Grandine": "unknown",
+          "Nimbus": "unknown"
+        }
+      }
+    ]
+  },
+  "specReferences": {
+    "consensusSpecs": null,
+    "executionSpecs": null
+  },
+  "canceled": true
+}

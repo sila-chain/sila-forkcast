@@ -1,0 +1,80 @@
+import generatedCalls from './protocol-calls.generated.json';
+import { getTodayDateString } from '../utils/localDate';
+
+export type CallType = 'acdc' | 'acde' | 'acdt' | 'epbs' | 'bal' | 'focil' | 'price' | 'tli' | 'pqts' | 'rpc' | 'zkevm' | 'etm' | 'awd' | 'pqi' | 'fcr' | 'aa' | 'p2p' | 'ssz';
+
+export interface Call {
+  type: string;
+  date: string;
+  number: string;
+  path: string;
+  name?: string;
+  issue?: number;
+}
+
+// Full names for call types (used in tooltips)
+export const callTypeNames: Record<CallType, string> = {
+  acdc: 'AllCoreDevs - Consensus',
+  acde: 'AllCoreDevs - Execution',
+  acdt: 'AllCoreDevs - Testing',
+  epbs: 'ePBS Breakout',
+  bal: 'BAL Breakout',
+  focil: 'FOCIL Breakout',
+  price: 'Glamsterdam Repricings',
+  tli: 'Trustless Log Index',
+  pqts: 'Post Quantum Transaction Signatures',
+  rpc: 'RPC Standards',
+  zkevm: 'L1-zkEVM Breakout',
+  etm: 'Encrypt The Mempool',
+  awd: 'AllWalletDevs',
+  pqi: 'PQ Interop',
+  fcr: 'Fast Confirmation Rule',
+  aa: 'Native Account Abstraction',
+  p2p: 'P2P Networking',
+  ssz: 'SSZ Engine API',
+};
+
+export const protocolCalls: Call[] = generatedCalls as Call[];
+
+export const isOneOffCall = (type: string): boolean => type.startsWith('one-off-');
+
+/** Display name for a call type, falling back to the raw type slug. */
+export const getCallTypeName = (type: string): string =>
+  callTypeNames[type as CallType] || type;
+
+export const getCallDisplayName = (call: Call): string =>
+  call.name || getCallTypeName(call.type);
+
+// Helper to get recent calls
+export const getRecentCalls = (limit: number = 5): Call[] => {
+  return [...protocolCalls]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, limit);
+};
+
+// SIP <-> call type associations
+export const eipCallTypes: Record<number, CallType> = {
+  7732: 'epbs',
+  7928: 'bal',
+  7805: 'focil',
+};
+
+// Get previous and next calls for a given type
+export const getCallNavigation = (
+  type: string,
+  now: Date = new Date(),
+  timeZone?: string
+): { previous: Call | null; next: Call | null } => {
+  const today = getTodayDateString(now, timeZone);
+  const calls = protocolCalls
+    .filter(c => c.type === type)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  const pastCalls = calls.filter(c => c.date <= today);
+  const futureCalls = calls.filter(c => c.date > today);
+
+  return {
+    previous: pastCalls.length > 0 ? pastCalls[pastCalls.length - 1] : null,
+    next: futureCalls.length > 0 ? futureCalls[0] : null,
+  };
+};

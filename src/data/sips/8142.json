@@ -1,0 +1,20 @@
+{
+  "id": 8142,
+  "title": "SIP-8142: Block-in-Blobs (BiB)",
+  "status": "Draft",
+  "description": "Ensures execution payload data availability via blobs",
+  "author": "Kevaundray Wedderburn (@kevaundray), Ignacio Hagopian (@jsign), Jihoon Song <jihoon.song@sila.org>, Francesco Risitano (@frisitano), Thomas Thiery (@soispoke) <thomas.thiery@sila.org>, Toni Wahrstätter (@nerolation), Péter Garamvölgyi (@thegaram)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-01-29",
+  "discussionLink": "https://sila-magicians.org/t/sip-8142-block-in-blobs-bib/27621",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    4844,
+    7594,
+    7732,
+    7892,
+    7928
+  ]
+}

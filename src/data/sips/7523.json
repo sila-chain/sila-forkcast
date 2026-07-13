@@ -1,0 +1,16 @@
+{
+  "id": 7523,
+  "title": "SIP-7523: Empty accounts deprecation",
+  "status": "Last Call",
+  "description": "Prohibit empty accounts on post-merge networks",
+  "author": "Peter Davies (@petertdavies)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2023-09-19",
+  "discussionLink": "https://sila-magicians.org/t/sip-7523-empty-accounts-deprecation/15870",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    161
+  ]
+}

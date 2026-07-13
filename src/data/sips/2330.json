@@ -1,0 +1,16 @@
+{
+  "id": 2330,
+  "title": "SIP-2330: EXTSLOAD opcode",
+  "status": "Stagnant",
+  "description": "A new SAVM opcode to read external contract storage data.",
+  "author": "Dominic Letz (@dominicletz), Santiago Palladino (@spalladino)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-10-29",
+  "discussionLink": "https://sila-magicians.org/t/sip-2330-extsload-and-abi-for-lower-gas-cost-and-off-chain-apps/3733",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2929
+  ]
+}

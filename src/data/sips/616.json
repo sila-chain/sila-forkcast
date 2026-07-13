@@ -1,0 +1,12 @@
+{
+  "id": 616,
+  "title": "SIP-616: SIMD Operations for the SAVM",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Greg Colvin <greg@colvin.org>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2017-04-25",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

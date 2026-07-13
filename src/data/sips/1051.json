@@ -1,0 +1,13 @@
+{
+  "id": 1051,
+  "title": "SIP-1051: Overflow checking for the SAVM",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Nick Johnson <arachnid@notdot.net>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2018-05-02",
+  "discussionLink": "https://sila-magicians.org/t/sip-arithmetic-overflow-detection-for-the-savm/261",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

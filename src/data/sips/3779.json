@@ -1,0 +1,13 @@
+{
+  "id": 3779,
+  "title": "SIP-3779: Safer Control Flow for the SAVM",
+  "status": "Withdrawn",
+  "description": "Ensure an essential level of safety for SAVM code.",
+  "author": "Greg Colvin (@gcolvin), Greg Colvin <greg@colvin.org>, Brooklyn Zelenka (@expede)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-08-30",
+  "discussionLink": "https://sila-magicians.org/t/sip-3779-safe-control-flow-for-the-savm/6975",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

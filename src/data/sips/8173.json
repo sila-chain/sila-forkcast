@@ -1,0 +1,12 @@
+{
+  "id": 8173,
+  "title": "SIP-8173: Foundations of SAVM Control Flow",
+  "status": "Draft",
+  "description": "Understanding SAVM control flow and its relation to Sila's scaling roadmap",
+  "author": "Greg Colvin (@gcolvin)",
+  "type": "Informational",
+  "createdDate": "2026-02-16",
+  "discussionLink": "https://sila-magicians.org/t/sip-8173-foundations-of-savm-control-flow/27855",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

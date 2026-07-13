@@ -1,0 +1,21 @@
+{
+  "id": 8131,
+  "title": "SIP-8131: Unified Transaction Content Floor",
+  "status": "Draft",
+  "description": "Flat 64 gas per content byte at the floor, covering calldata, access-list entries, authorizations, and blob versioned hashes.",
+  "author": "Toni Wahrstätter (@nerolation)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-01-21",
+  "discussionLink": "https://sila-magicians.org/t/sip-9999-add-auth-data-to-sip-7623-floor/12345",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2028,
+    4844,
+    7623,
+    7702,
+    7976,
+    7981
+  ]
+}

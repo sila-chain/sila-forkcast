@@ -1,0 +1,16 @@
+{
+  "id": 2488,
+  "title": "SIP-2488: Deprecate the CALLCODE opcode",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Alex Beregszaszi (@axic)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-12-20",
+  "discussionLink": "https://sila-magicians.org/t/sip-2488-deprecate-the-callcode-opcode/3957",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "meeting": "ACDE #238 - June 4, 2026",
+  "highlights": {
+    "fork_status_and_schedule": [
+      {
+        "timestamp": "00:10:00",
+        "highlight": "glamsterdam-devnet-5 genesis ~1hr ago; fork in ~2hrs; 2 ELs + 4 CLs; Teku onboarding post-fork"
+      },
+      {
+        "timestamp": "00:12:45",
+        "highlight": "bal-devnet-7 is the last BAL-specific devnet; all future EL work merged into Glamsterdam track"
+      },
+      {
+        "timestamp": "00:27:05",
+        "highlight": "glamsterdam-devnet-6 scope: SIP-8246, SIP-7997 (features) + SIP-8038, SIP-2780 (repricing, pending numbers); target ~2 weeks"
+      }
+    ],
+    "eip_proposals_hegota": [
+      {
+        "timestamp": "00:32:08",
+        "highlight": "SIP-8131 + SIP-8279 (data repricing): price 7702 auths, blob version hashes, BAL entries at data floor; 40% worst-case block size reduction"
+      },
+      {
+        "timestamp": "00:43:39",
+        "highlight": "SIP-7979 update: validation algorithm moved on-chain; clients can call it directly without reimplementing; breakout call planned"
+      },
+      {
+        "timestamp": "00:55:52",
+        "highlight": "SIP-8222 (lean staking / privacy pool): two-phase deposit + new withdrawal credential; requires LeanVM; not ready for Hegota"
+      },
+      {
+        "timestamp": "01:13:09",
+        "highlight": "SIP-7851 (permanent EOA delegation via EF02) + SIP-8151 (EC Recover deactivation): full EOA-to-smart-account migration path; positive reception for Hegota"
+      }
+    ],
+    "testing_progress": [
+      {
+        "timestamp": "00:11:24",
+        "highlight": "Other EL clients asked to review engine API changes (execution-apis PR #796) for glamsterdam-devnet-5 onboarding"
+      },
+      {
+        "timestamp": "01:28:40",
+        "highlight": "Next week ACDC call shifted to 11:00 UTC; one-off change, may become regular if Australians attend"
+      }
+    ]
+  },
+  "action_items": [
+    {
+      "timestamp": "00:10:57",
+      "action": "EL clients review engine API changes (execution-apis PRs #796, #786) for glamsterdam-devnet-5 onboarding",
+      "owner": "EL client teams"
+    },
+    {
+      "timestamp": "00:51:28",
+      "action": "Schedule SIP-7979 breakout call once draft is merged; coordinate timing with Protocol Support (Josh Davis)",
+      "owner": "Greg Colvin + Protocol Support"
+    }
+  ],
+  "decisions": [
+    {
+      "timestamp": "00:14:08",
+      "decision": "bal-devnet-7 is the final BAL-specific devnet; no bal-devnet-8; all future work on Glamsterdam devnets"
+    },
+    {
+      "timestamp": "00:28:56",
+      "decision": "glamsterdam-devnet-6 includes SIP-8246 (self-destruct burn removal), SIP-7997 (deterministic deployer), SIP-8038 + SIP-2780 (repricing with preliminary values); SIP-7610 deferred"
+    },
+    {
+      "timestamp": "01:27:58",
+      "decision": "PFI for Hegota: SIP-8131 + SIP-8279 (data repricing / block size), SIP-7979 + SIP-8173 (SAVM object format / validation), SIP-7851 (permanent EOA delegation), SIP-8151 (EC Recover deactivation); SIP-8222 (lean staking) not targeting Hegota"
+    }
+  ],
+  "targets": [
+    {
+      "timestamp": "00:10:18",
+      "target": "glamsterdam-devnet-5 fork \u2014 June 4, 2026 (~2hrs after genesis)"
+    },
+    {
+      "timestamp": "00:16:13",
+      "target": "glamsterdam-devnet-6 launch \u2014 ~2 weeks from June 4, 2026"
+    }
+  ]
+}

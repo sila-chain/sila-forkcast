@@ -1,0 +1,12 @@
+{
+  "id": 1470,
+  "title": "SIP-1470: Smart Contract Weakness Classification (SWC)",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Gerhard Wagner (@thec00n)",
+  "type": "Informational",
+  "createdDate": "2018-09-18",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/1469",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

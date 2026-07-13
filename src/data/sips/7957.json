@@ -1,0 +1,19 @@
+{
+  "id": 7957,
+  "title": "SIP-7957: EVM64 - EOF support",
+  "status": "Stagnant",
+  "description": "SAVM Object Format support for EVM64",
+  "author": "Wei Tang (@sorpaas)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-05-26",
+  "discussionLink": "https://sila-magicians.org/t/sip-7937-64-bit-mode-savm-opcodes-evm64/23794",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    3540,
+    3670,
+    4200,
+    7937
+  ]
+}

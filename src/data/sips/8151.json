@@ -1,0 +1,16 @@
+{
+  "id": 8151,
+  "title": "SIP-8151: ECDSA Authority Deactivation Aware ecRecover",
+  "status": "Draft",
+  "description": "Modify ecRecover precompile to return 32 zero bytes for ECDSA authorities deactivated per SIP-7851",
+  "author": "Liyi Guo (@colinlyguo), Nicolas Consigny (@nconsigny)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-02-09",
+  "discussionLink": "https://sila-magicians.org/t/sip-8151-ecdsa-authority-deactivation-aware-ecrecover/27690",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7851
+  ]
+}

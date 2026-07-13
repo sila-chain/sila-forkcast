@@ -1,0 +1,13 @@
+{
+  "id": 2028,
+  "title": "SIP-2028: Transaction data gas cost reduction",
+  "status": "Final",
+  "description": "",
+  "author": "Alexey Akhunov (@AlexeyAkhunov), Eli Ben Sasson <eli@starkware.co>, Tom Brand <tom@starkware.co>, Louis Guthmann <louis@starkware.co>, Avihu Levy <avihu@starkware.co>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-05-03",
+  "discussionLink": "https://sila-magicians.org/t/sip-2028-calldata-gas-cost-reduction/3280",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

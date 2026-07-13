@@ -1,0 +1,16 @@
+{
+  "id": 8237,
+  "title": "SIP-8237: Independent CL/EL Sync",
+  "status": "Draft",
+  "description": "Enables independent consensus and execution layer synchronization by replacing execution_requests_root with an accumulator hash.",
+  "author": "M. Kalinin <noblesse.knight@gmail.com>, Potuz (@potuz), Toni Wahrstätter (@nerolation)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-04-22",
+  "discussionLink": "https://sila-magicians.org/t/sip-8237-independent-cl-el-sync/28331",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7732
+  ]
+}

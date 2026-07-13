@@ -1,0 +1,16 @@
+{
+  "id": 1227,
+  "title": "SIP-1227: Defuse Difficulty Bomb and Reset Block Reward",
+  "status": "Stagnant",
+  "description": "",
+  "author": "SmeargleUsedFly (@SmeargleUsedFly)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2018-07-18",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/1227",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    649
+  ]
+}

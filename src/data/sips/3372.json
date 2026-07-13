@@ -1,0 +1,13 @@
+{
+  "id": 3372,
+  "title": "SIP-3372: 5 FNV primes for ethash",
+  "status": "Stagnant",
+  "description": "",
+  "author": "mineruniter969 (@mineruniter969), mineruniter969 <mineruniter969@tutanota.com>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-03-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-3372-apply-minor-modifications-to-the-ethash-algorithm-to-break-current-asic-implementations-sip-969-resubmission/5655",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

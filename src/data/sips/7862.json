@@ -1,0 +1,30 @@
+{
+  "id": 7862,
+  "title": "SIP-7862: Delayed State Root",
+  "status": "Draft",
+  "description": "Separate state root computation from block validation",
+  "author": "Charlie Noyes <charlie@paradigm.xyz>, Dan Robinson <dan@paradigm.xyz>, Justin Drake <justin@sila.org>, Toni Wahrstätter (@nerolation)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2024-12-23",
+  "discussionLink": "https://sila-magicians.org/t/sip-7862-delayed-execution-layer-state-root/22559",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/240",
+          "date": "2026-07-02"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Toni Wahrstätter",
+          "discord": "nero_eth"
+        }
+      ]
+    }
+  ],
+  "tradeoffs": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": 7927,
+  "title": "SIP-7927: History Expiry Meta",
+  "status": "Stagnant",
+  "description": "Meta SIP for History Expiry changes happening in conjunction with Pectra",
+  "author": "Piper Merriam (@pipermerriam)",
+  "type": "Meta",
+  "createdDate": "2025-03-28",
+  "discussionLink": "https://sila-magicians.org/t/history-expiry-meta-sip/23359",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    4444
+  ]
+}

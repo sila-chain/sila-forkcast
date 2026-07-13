@@ -1,0 +1,16 @@
+{
+  "id": 8077,
+  "title": "SIP-8077: sil/XX - announce transactions with nonce",
+  "status": "Draft",
+  "description": "Adds source and nonce to transaction announcements",
+  "author": "Csaba Kiraly (@cskiraly)",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2025-11-07",
+  "discussionLink": "https://sila-magicians.org/t/sip-8077-sil-xx-add-nonce-and-source-to-transactions-announcement/26505",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7642
+  ]
+}

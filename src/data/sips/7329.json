@@ -1,0 +1,15 @@
+{
+  "id": 7329,
+  "title": "SIP-7329: SRC/SIP Repository split",
+  "status": "Final",
+  "description": "Split the SRC specifications out of the SIP repository into a new repository, so that only core protocol SIPs remain",
+  "author": "Lightclient (@lightclient), Danno Ferrin (@shemnon)",
+  "type": "Meta",
+  "createdDate": "2023-07-13",
+  "discussionLink": "https://sila-magicians.org/t/proposal-forking-ercs-from-sips-repository/12804",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1
+  ]
+}

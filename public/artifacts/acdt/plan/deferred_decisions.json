@@ -1,0 +1,49 @@
+{
+  "series": "ACDT",
+  "generated": "2026-07-09",
+  "lookback_calls": [
+    "ACDT #82",
+    "ACDT #83",
+    "ACDT #84",
+    "ACDT #85",
+    "ACDT #86"
+  ],
+  "deferred": [
+    {
+      "topic": "SIP-7688 (stable containers) inclusion in Glamsterdam",
+      "deferred_in": "ACDT #82",
+      "deferred_date": "2026-06-08",
+      "expected_revisit": "after EPBS devnet stable for at least a weekend; targeting devnet-8",
+      "revisited": true,
+      "revisited_in": "ACDT #84 and ACDT #85",
+      "outcome": "Decision made in ACDT #85 to include SIP-7688 in glamsterdam-devnet-7; CL teams (Lodestar, Lighthouse, Nimbus) ready, Teku needs ~2 weeks"
+    },
+    {
+      "topic": "SIP-7688 inclusion decision for devnet-7",
+      "deferred_in": "ACDT #84",
+      "deferred_date": "2026-06-22",
+      "expected_revisit": "ACDC after seeing devnet-6 stability and CL-breakout feedback",
+      "revisited": true,
+      "revisited_in": "ACDT #85",
+      "outcome": "Approved for glamsterdam-devnet-7 with EL scope limited to refinements of existing SIPs"
+    },
+    {
+      "topic": "glamsterdam-devnet-7 EL scope finalization",
+      "deferred_in": "ACDT #85",
+      "deferred_date": "2026-06-29",
+      "expected_revisit": "ACDE this week",
+      "revisited": true,
+      "revisited_in": "ACDT #86",
+      "outcome": "EL spec changes (SIP-2780, SIP-8037, SIP-8282) finalized; devnet-7 targeted for Wednesday July 9 as final devnet"
+    },
+    {
+      "topic": "glamsterdam-devnet-7 CL scope finalization",
+      "deferred_in": "ACDT #85",
+      "deferred_date": "2026-06-29",
+      "expected_revisit": "ACDC next week",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    }
+  ]
+}

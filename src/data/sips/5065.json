@@ -1,0 +1,16 @@
+{
+  "id": 5065,
+  "title": "SIP-5065: Instruction for transferring sila",
+  "status": "Stagnant",
+  "description": "Instruction for just transferring sila without transferring the flow of execution",
+  "author": "Mudit Gupta (@maxsam4)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2022-04-30",
+  "discussionLink": "https://sila-magicians.org/t/sip-5065-instruction-for-transferring-sila/9107",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2929
+  ]
+}

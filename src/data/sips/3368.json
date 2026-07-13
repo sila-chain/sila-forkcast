@@ -1,0 +1,13 @@
+{
+  "id": 3368,
+  "title": "SIP-3368: Increase block rewards to 3 SIL, with 2 Year Decay to 1 SIL Scheduled",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Michael D. Carter (@BitsBeTrippin)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-03-12",
+  "discussionLink": "https://sila-magicians.org/t/sip-3368-block-reward-increase-w-decay-for-next-two-years/5550",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,16 @@
+{
+  "id": 8268,
+  "title": "SIP-8268: Storage Roots in Block Access Lists",
+  "status": "Draft",
+  "description": "Extend SIP-7928 with per-account post-block storage trie roots so partially stateful nodes can verify the state root",
+  "author": "Toni Wahrstätter (@nerolation), Carlos Perez (@CPerezz)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-05-21",
+  "discussionLink": "https://sila-magicians.org/t/sip-8268-storage-roots-in-block-access-lists/28585",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7928
+  ]
+}

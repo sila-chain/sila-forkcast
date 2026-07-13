@@ -1,0 +1,13 @@
+{
+  "id": 7543,
+  "title": "SIP-7543: SAVM arbitrary precision decimal math",
+  "status": "Stagnant",
+  "description": "This SIP adds OPCODEs to allow arbitrary precision decimal float calculation of all elementary functions with precise gas enumeration.",
+  "author": "1m1 (@1m1-github)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2023-10-22",
+  "discussionLink": "https://sila-magicians.org/t/decimal-math-on-savm/16194",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

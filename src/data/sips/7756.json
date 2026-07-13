@@ -1,0 +1,17 @@
+{
+  "id": 7756,
+  "title": "SIP-7756: EOF/SAVM Trace Specification",
+  "status": "Stagnant",
+  "description": "Updates SIP-3155 tracing to add EOF support",
+  "author": "Martin Holst Swende (@holiman), Marius van der Wijden (@MariusVanDerWijden), Danno Ferrin (@shemnon)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2024-08-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-7756-eof-savm-trace-specification/20806",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    3155,
+    4750
+  ]
+}

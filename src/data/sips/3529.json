@@ -1,0 +1,18 @@
+{
+  "id": 3529,
+  "title": "SIP-3529: Reduction in refunds",
+  "status": "Final",
+  "description": "",
+  "author": "Vitalik Buterin (@vbuterin), Martin Swende (@holiman)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-04-22",
+  "discussionLink": "https://sila-magicians.org/t/sip-3529-reduction-in-refunds-alternative-to-sip-3298-and-3403-that-better-preserves-existing-clearing-incentives/6097",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2200,
+    2929,
+    2930
+  ]
+}

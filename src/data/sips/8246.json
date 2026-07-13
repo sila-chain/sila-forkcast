@@ -1,0 +1,36 @@
+{
+  "id": 8246,
+  "title": "SIP-8246: Remove SELFDESTRUCT Burn",
+  "status": "Review",
+  "description": "Eliminate the remaining cases where SELFDESTRUCT burns SIL.",
+  "author": "Paweł Bylica (@chfast)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-05-01",
+  "discussionLink": "https://sila-magicians.org/t/sip-8246-remove-selfdestruct-burn/28416",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Glamsterdam",
+      "statusHistory": [
+        {
+          "status": "Considered",
+          "call": "acde/236",
+          "date": "2026-05-07",
+          "timestamp": 4319
+        }
+      ],
+      "champions": [
+        {
+          "name": "Paweł Bylica",
+          "discord": "chfast"
+        }
+      ]
+    }
+  ],
+  "tradeoffs": null,
+  "requires": [
+    161,
+    6780
+  ]
+}
