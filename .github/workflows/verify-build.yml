@@ -55,6 +55,32 @@ jobs:
           literals=[('https://'+eips+'.'+u+'.org','https://sips.sila.org'),(eips+'.'+u+'.org','sips.sila.org'),('https://github.com/'+u,'https://github.com/sila-chain'),('github.com/'+u,'github.com/sila-chain'),('https://'+u+'.org','https://sila.org'),(u+'.org','sila.org'),(U+' Foundation','Sila Foundation'),(Eth+'erscan','SilaScan'),('W'+ETH,'WSIL'),('IW'+ETH,'IWSIL'),('I'+ERC,'ISRC'),('A'+ERC,'ASRC'),('I'+EIP,'ISIP')]
           rx=re.compile(r'\b(?:'+'|'.join(sorted(map(re.escape,token_map),key=len,reverse=True))+r')\b')
           prx=re.compile(r'(?<![A-Za-z0-9])(?:'+'|'.join(sorted(map(re.escape,token_map),key=len,reverse=True))+r')(?![A-Za-z0-9])')
+          source_exts={'.ts','.tsx','.js','.jsx','.mjs','.cjs'}
+          sentinel='__SILA_MAINNET_IDENTIFIER__'
+          def protect_code_mainnet(s):
+              out=[]; i=0; state='code'
+              while i<len(s):
+                  if state=='code':
+                      if s.startswith('//',i): out.append('//'); i+=2; state='line'; continue
+                      if s.startswith('/*',i): out.append('/*'); i+=2; state='block'; continue
+                      c=s[i]
+                      if c=="'": out.append(c); i+=1; state='single'; continue
+                      if c=='"': out.append(c); i+=1; state='double'; continue
+                      if c=='`': out.append(c); i+=1; state='template'; continue
+                      if s.startswith('mainnet',i):
+                          before=s[i-1] if i else ''
+                          after=s[i+7] if i+7<len(s) else ''
+                          if (not before or not (before.isalnum() or before in '_$')) and (not after or not (after.isalnum() or after in '_$')):
+                              out.append(sentinel); i+=7; continue
+                      out.append(c); i+=1; continue
+                  c=s[i]; out.append(c); i+=1
+                  if c=='\\' and state in {'single','double','template'} and i<len(s): out.append(s[i]); i+=1; continue
+                  if state=='single' and c=="'": state='code'
+                  elif state=='double' and c=='"': state='code'
+                  elif state=='template' and c=='`': state='code'
+                  elif state=='line' and c=='\n': state='code'
+                  elif state=='block' and c=='*' and i<len(s) and s[i]=='/': out.append('/'); i+=1; state='code'
+              return ''.join(out)
           def binary(p):
               b=p.read_bytes()[:8192]
               if b'\x00' in b:return True
@@ -63,8 +89,10 @@ jobs:
           for p in root.rglob('*'):
               if not p.is_file() or '.git' in p.parts or binary(p): continue
               s=p.read_text('utf-8')
+              if p.suffix.lower() in source_exts:s=protect_code_mainnet(s)
               for a,b in literals:s=s.replace(a,b)
               s=rx.sub(lambda m:token_map[m.group(0)],s)
+              s=s.replace(sentinel,'silaMainnet')
               p.write_text(s,'utf-8')
           for p in sorted([x for x in root.rglob('*') if '.git' not in x.parts],key=lambda x:len(x.parts),reverse=True):
               if not p.exists():continue
