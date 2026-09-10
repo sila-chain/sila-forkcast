@@ -6,6 +6,8 @@ on:
 
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   sync:
@@ -31,6 +33,8 @@ jobs:
           cache: npm
       - name: Mirror exact authority, convert identity, and verify
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -118,8 +122,26 @@ jobs:
           if residual:
               print('\n'.join(residual[:200]));raise SystemExit(1)
           PY
-          npm ci
-          npm run build
+          set +e
+          npm ci > /tmp/sila-sync-build.log 2>&1
+          rc=$?
+          if [ "$rc" -eq 0 ]; then
+            npm run build >> /tmp/sila-sync-build.log 2>&1
+            rc=$?
+          fi
+          set -e
+          cat /tmp/sila-sync-build.log
+          if [ "$rc" -ne 0 ]; then
+            {
+              echo '### Temporary exact build diagnostic'
+              echo
+              echo '```text'
+              tail -n 100 /tmp/sila-sync-build.log
+              echo '```'
+            } > /tmp/sila-sync-comment.md
+            gh api "repos/${GITHUB_REPOSITORY}/issues/${{ github.event.pull_request.number }}/comments" -f body="$(cat /tmp/sila-sync-comment.md)"
+            exit "$rc"
+          fi
           git config user.name 'SILA Network'
           git config user.email 'sila-chain@users.noreply.github.com'
           git add -A
