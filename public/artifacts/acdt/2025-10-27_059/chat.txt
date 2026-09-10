@@ -1,0 +1,163 @@
+00:02:24	Louis:	GM
+00:06:13	jochem-brouwer:	gm
+00:07:20	Justin Traglia:	Gm
+00:07:32	Yassine Ferhane:	gm!
+00:10:47	Kamil Chodoła:	Falling below finalization like right now
+00:11:00	Barnabas:	Reacted to "Falling below finali..." with 💯
+00:11:04	Kamil Chodoła:	Or very on the edge
+00:11:50	Barnabas:	devnets
+00:11:55	Mario Vega:	Reacted to "devnets" with 👍🏼
+00:12:02	nixo:	can they use ephemery?
+00:12:49	nixo:	+ they’re harder to coordinate if something goes wrong
+00:15:18	Barnabas:	hoodi should be set to 60m please confirm
+00:15:35	Kamil Chodoła:	In Neth long time ago afaik
+00:15:44	nixo:	are all client defaults 60m already?
+00:16:02	Barnabas:	we see some blocks that are pulling it down still
+00:18:51	draganrakita:	Do we have list of SIPs that can help us to bump block gas limit even more?
+00:19:27	Toni Wahrstätter:	Replying to "Do we have list of E..." 
+
+ Theres the repricing meta sip with many of those
+00:19:35	draganrakita:	Reacted to "Theres the repricing..." with 👍
+00:20:28	Barnabas:	very hard to hear you marius
+00:20:32	Jen:	Reacted to "very hard to hear yo..." with 👍
+00:21:12	Pooja Ranjan:	Replying to "Do we have list of E..."
+
+https://sips.sila.org/EIPS/sip-8007
+00:21:16	draganrakita:	https://sips.sila.org/EIPS/sip-8007 
+Waren’t there some precompile changes needed for next bump?
+00:26:25	jochem-brouwer:	Antwoord verzenden naar "Do we have list of..."
+
+You might mean this one: https://sips.sila.org/EIPS/sip-7667
+ 
+I thought we decided to remove this last ACDE but maybe my memories might not be correct there (because this is a price increase which was once proposed pre-Fusaka and carried over from the pre-Fusaka fork)
+00:30:21	Mario Vega:	I think this is a great idea, we could link this markdown directly in the SIP so people who have an idea of a test scenario can quickly find the link from the SIP
+00:30:31	felipe:	Reacted to "I think this is a ..." with 💯
+00:30:34	draganrakita:	Reacted to "I think this is a gr..." with 💯
+00:30:35	Bharath:	Reacted to "I think this is a gr..." with 💯
+00:30:38	Pooja Ranjan:	Reacted to "I think this is a gr..." with 💯
+00:30:53	spencer-tb:	Reacted to "I think this is a gr..." with 💯
+00:30:55	Toni Wahrstätter:	Link to the doc:
+https://github.com/sila-chain/execution-spec-tests/blob/main/tests/amsterdam/eip7928_block_level_access_lists/test_cases.md
+00:31:16	jochem-brouwer:	Antwoord verzenden naar "I think this is a ..."
+
+If this is an external URL I don't know if that works
+00:32:19	jochem-brouwer:	I think this is a good idea, but the fact that a doc is in the Testing phase of the SIP does not mean that this part is complete. (So should not give a false sense of safety that it is completely covered by tests)
+00:32:40	Christine Kim:	Replying to "Do we have list of E..."
+
+7667 was removed, but mainly because of its relation to verkle, https://christinedkim.substack.com/p/acde-223
+00:33:02	Pooja Ranjan:	Test Cases (optional) - Test cases for an implementation are mandatory for SIPs that are affecting consensus changes. Tests should either be inlined in the SIP as data (such as input/expected output pairs) or included in ../assets/sip-###/<filename>. This section may be omitted for non-Core proposals.
+
+^ from SIP-1
+00:34:02	Barnabas:	“I can’t find my hand” - hope its nothing serious 😂
+00:34:09	jochem-brouwer:	Heeft gereageerd op "“I can’t find my..." met 👀
+00:34:12	Jen:	Reacted to "“I can’t find my han..." with 😂
+00:34:13	felipe:	Reacted to "“I can’t find my..." with 😂
+00:34:15	felix (eest):	Reacted to "“I can’t find my..." with 😂
+00:34:15	Marc:	Reacted to "“I can’t find my han…" with 😂
+00:34:18	keri:	Reacted to "“I can’t find my han..." with 😂
+00:34:27	Justin Traglia:	Reacted to "“I can’t find my han..." with 😂
+00:34:34	raxhvl:	Reacted to "“I can’t find my han..." with 😂
+00:34:34	felix (eest):	Replying to "“I can’t find my..."
+
+so this is what happens when you click the devops link..
+00:34:42	Justin Traglia:	Reacted to "so this is what happ..." with 😅
+00:34:44	raxhvl:	Reacted to "so this is what happ..." with 😅
+00:35:39	Justin Traglia:	We want to do something similar in the CL specs too. Defining a list of test cases 🙂
+00:35:44	Pooja Ranjan:	Reacted to "“I can’t find my han..." with 😂
+00:35:54	Pooja Ranjan:	Reacted to "We want to do someth..." with 👍
+00:35:56	Barnabas:	Reacted to "We want to do someth..." with 👍
+00:36:29	raxhvl:	Reacted to "We want to do someth..." with 👍
+00:36:56	felipe:	Reacted to "We want to do some..." with 👍
+00:37:11	Barnabas:	SilaHolesky has stopped finalizing now officially.
+00:37:27	Kamil Chodoła:	RiP
+00:37:31	draganrakita:	Reacted to "SilaHolesky has stopped ..." with 🪦
+00:37:39	raxhvl:	Reacted to "SilaHolesky has stopped ..." with 🪦
+00:37:48	Minhyuk Kim:	Reacted to "SilaHolesky has stopped ..." with 🪦
+00:37:50	Yassine Ferhane:	Reacted to "SilaHolesky has stopped ..." with 🪦
+00:38:19	spencer-tb:	Reacted to "SilaHolesky has stopped ..." with 🪦
+00:38:33	Justin Traglia:	Reacted to "SilaHolesky has stopped ..." with 🪦
+00:39:08	Justin Traglia:	https://github.com/sila-chain/pm/issues/1783
+00:39:12	Justin Traglia:	It’s on Nov 7th.
+00:40:11	Mario Vega:	Reacted to "It’s on Nov 7th." with 👍🏼
+00:43:10	Mario Vega:	https://sips.sila.org/EIPS/sip-7610
+00:43:52	jochem-brouwer:	It is an addition on https://sips.sila.org/EIPS/sip-684
+00:44:41	nixo:	lol
+00:44:53	Barnabas:	Marius, get back to your car 😂
+00:45:04	Toni Wahrstätter:	Wasn't there an sip by martin to delete those storage slots from those accounts?
+00:45:10	raxhvl:	Looks like big tech doesnt want marius talking about this
+00:45:15	nixo:	Reacted to "Looks like big tech ..." with ☠️
+00:45:15	felix (eest):	Reacted to "Looks like big tec..." with 😂
+00:45:17	Mario Vega:	Reacted to "Looks like big tech ..." with ☠️
+00:45:18	Mario Vega:	Reacted to "Looks like big tech ..." with 😂
+00:45:28	felipe:	Reacted to "Looks like big tec..." with ☠️
+00:45:31	Barnabas:	Reacted to "Looks like big tech ..." with ☠️
+00:45:32	Barnabas:	Reacted to "Looks like big tech ..." with 😂
+00:45:35	felipe:	Reacted to "Looks like big tec..." with 😂
+00:45:41	draganrakita:	Reacted to "Looks like big tech ..." with 😂
+00:45:42	Mercy Boma Naps-Nkari:	This is on the error code side https://github.com/simsonraj/sil-err-tests  smimz  created a testing framework
+00:45:49	jochem-brouwer:	Extra lookup? We have already the collission check right
+00:46:30	jochem-brouwer:	I think the part which should be changed got dropped here?
+00:47:52	Mario Vega:	Just for clarification, how is this different from a 7702 account that sets the storage and then resets to non-delegation?
+00:47:55	jochem-brouwer:	Wanted to bring up that for 7702 it is thus possible to change delegated code but keep storage
+00:47:59	jochem-brouwer:	Heeft gereageerd op "Just for clarifica..." met 👍
+00:48:16	Alexey:	how much processing time would it save if you will not check the storage?
+00:48:54	felipe:	Reacted to "Just for clarifica..." with 👍
+00:55:24	danceratopz:	Context for the EELS/EEST Weld:
+https://steel.sila.foundation/blog/blog_posts/2025-09-11_weld-announcement/ 
+
+External Contributors:
+- SilaOsaka test and benchmarking contributors can now start PRing to the default execution-specs branch: "forks/osaka".
+- But all benchmarkers should be aware of a large renaming underway in "./tests/benchmarks/" 
+    - https://github.com/sila-chain/execution-specs/pull/1681 
+- SilaAmsterdam contributors (balers and gas repricers) should hold off until "forks/amsterdam" has been rebased on top of "forks/osaka"
+
+Clients:
+- Fixture releases are still WIP, should be completed this week.
+- Hiveview unaffected,
+
+Docs:
+- WIP, for testing docs now https://eest.sila.org/main/
+00:55:28	Gary Rong:	Wasn't there an sip by martin to delete those storage slots from those accounts?
+
+Probably no?
+00:55:45	Trent:	Lots of resonant frequency in your mic
+00:55:52	Trent:	If you’re in an echoing room
+00:56:00	nixo:	no it’s fine
+00:56:04	Marius van der Wijden:	Reacted to no it’s fine with "👍"
+00:56:06	Trent:	Lol ok
+00:56:16	Mario Vega:	Reacted to "no it’s fine" with 👍
+00:56:32	Gary Rong:	how much processing time would it save if you will not check the storage?
+Depends on the number of contract creations within the block. 1 additional read for a contract deployment
+00:56:50	jochem-brouwer:	Antwoord verzenden naar "Wasn't there an ei..."
+
+I did not completely get what the changes were supposed to be, but just wanted to note: 7610 is PFId for Glamsterdam. Will await the discussion thread on this topic
+00:57:19	jochem-brouwer:	Antwoord verzenden naar "how much processin..."
+
+But we already need to do the collission check? So it is not an extra read?
+00:57:47	Gary Rong:	Wanted to bring up that for 7702 it is thus possible to change delegated code but keep storage
+The nonce will be non-zero in this case.
+
+The contract deployment is only allowed for 0 nonce and empty code. With EIP7610, we added the additional requirement for empty storage
+00:57:58	jochem-brouwer:	Antwoord verzenden naar "how much processin..."
+
+(already need to open account RLP to check if it has no code by SIP-684)
+00:58:30	Marius van der Wijden:	Replying to "how much processing ..." 
+
+ Depends on how you store the account
+00:58:44	jochem-brouwer:	Antwoord verzenden naar "how much processin..."
+
+ahh gotcha, i see where the problem is
+00:58:45	Gary Rong:	(already need to open account RLP to check if it has no code by SIP-684)
+Reth and Erigon don't store the storage root with other account metadata I guess.
+
+For geth, there is no extra read
+00:58:58	jochem-brouwer:	Antwoord verzenden naar "how much processin..."
+
+I assumed every directly stores account RLP
+00:59:05	jochem-brouwer:	Heeft gereageerd op "(already need to o..." met 👍
+00:59:14	keri:	RPC Call next!
+00:59:27	Pooja Ranjan:	Reacted to "RPC Call next!" with 👍
+00:59:28	felix (eest):	Replying to "RPC Call next!"
+
+clashes with protocol meet?
+00:59:29	Marius van der Wijden:	Congrats to the welders

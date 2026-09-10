@@ -1,0 +1,21 @@
+{
+  "meeting": "ACDC #167 - October 16, 2025",
+  "key_decisions": [
+    {
+      "original_text": "Trustless payments remain in ePBS SIP-7732; no separation into standalone SIP",
+      "timestamp": "00:48:21",
+      "type": "other",
+      "sips": [
+        7732
+      ],
+      "context": "no separation into standalone SIP"
+    },
+    {
+      "original_text": "Target Fusaka sila-mainnet releases by Nov 3rd for Dec 3rd fork (pending final confirmation)",
+      "timestamp": "00:28:18",
+      "type": "other",
+      "sips": [],
+      "fork": "Fusaka"
+    }
+  ]
+}

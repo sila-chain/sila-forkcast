@@ -1,0 +1,17 @@
+{
+  "id": 868,
+  "title": "SIP-868: Node Discovery v4 ENR Extension",
+  "status": "Final",
+  "description": "",
+  "author": "Felix Lange <fjl@sila.org>",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2018-02-02",
+  "discussionLink": "https://github.com/sila-chain/devp2p/issues/44",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    8,
+    778
+  ]
+}

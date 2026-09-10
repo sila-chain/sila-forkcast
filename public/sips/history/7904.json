@@ -1,0 +1,77 @@
+{
+  "eipId": 7904,
+  "commits": [
+    {
+      "sha": "80662f8293d85fa1594d7dc0b63c9bcd59f22383",
+      "date": "2026-07-08T19:30:12Z",
+      "message": "Update SIP-7904: Move to Review",
+      "author": "poojaranjan",
+      "prNumber": null,
+      "patch": "@@ -4,7 +4,7 @@ title: Compute Gas Cost Analysis\n description: Empirical analysis of EVM compute operation runtimes concluding that no compute gas cost needs repricing at the target throughput\n author: Jacek Glen (@JacekGlen), Lukasz Glen (@lukasz-glen), Maria Silva (@misilva73)\n discussions-to: https://sila-magicians.org/t/gas-cost-repricing-to-reflect-computational-complexity/23067\n-status: Draft\n+status: Review\n type: Informational\n created: 2025-02-05\n ---\n@@ -50,7 +50,7 @@ The analysis examined the 18 gas parameters listed below — the opcodes and pre\n \n Sixteen of the eighteen parameters measure cheaper than the current schedule, and one (`PRECOMPILE_BLAKE2F_PER_ROUND`) is unchanged. The only parameter that measures higher than the current schedule is the `BLAKE2F` base cost, which is currently unpriced (0 gas); the measured value of 94 gas is negligible relative to typical block gas usage and does not constitute a throughput bottleneck. On this basis, no operation is underpriced to a degree that warrants a gas-cost increase.\n \n-The [full proposal report](../assets/sip-7904/analysis/2026-06-10/new_gas_proposal.md), including per-client breakdowns and worst-case provenance, accompanies this SIP. A live, regenerated version of the analysis, together with the benchmark and estimation pipeline that produced it, is maintained in a public repository linked from the discussions-to thread.\n+The [full proposal report](../assets/sip-7904/analysis/2026-06-10/new_gas_proposal.md), including per-client breakdowns and worst-case provenance, accompanies this SIP.\n \n ## Rationale\n \n@@ -68,11 +68,11 @@ Concretely, to benchmark a single operation, different blocks are created by var\n \n Then, the Benchmarkoor tool is used to collect the needed metrics. This tool returns the total execution time of the block and the number of times each operation was executed. Each test block is run multiple times on each client to account for variability in execution time. The clients measured in the latest run are Besu, Erigon, ethrex, Geth, Nethermind, and Reth.\n \n-**What about dynamic costs?**\n+##### What about dynamic costs?\n \n Some operations have a dynamic component to their costs. For example, the `KECCAK256` opcode has a gas cost that grows with the size of the input. In these cases, the test benchmarks the operation with a range of inputs to assess how the resource costs vary with different inputs.\n \n-**What about differences between client implementations?**\n+##### What about differences between client implementations?\n \n Ultimately, we require a single cost model that is independent of the client's implementation. Although the decision may be different in a specific situation, the general rule is to take the worst client result that cannot be optimized. This means that the worst-performing client on a given operation and resource combination defines the cost of that operation for the entire network. This is the safer and most conservative choice, and it is the value reported in the table above.\n ",
+      "additions": 4,
+      "deletions": 4
+    },
+    {
+      "sha": "cb113ac7eef3478af01e5825254a162221eed64f",
+      "date": "2026-06-12T14:47:28Z",
+      "message": "Update SIP-7904: Convert to Informational (no compute repricing needed)",
+      "author": "misilva73",
+      "prNumber": null,
+      "additions": 64,
+      "deletions": 83
+    },
+    {
+      "sha": "88ea82a69e4fa2c545267a055d173542ed0bdc39",
+      "date": "2026-02-09T15:03:24Z",
+      "message": "Update SIP-7904: Update 7904 - new methodology + preliminary numbers",
+      "author": "misilva73",
+      "prNumber": null,
+      "additions": 90,
+      "deletions": 254
+    },
+    {
+      "sha": "67be9657ce4a25e0b20906691a956031d9230804",
+      "date": "2026-01-21T08:17:28Z",
+      "message": "Update SIP-7904: correct opcode table order and reference implementat…",
+      "author": "clarenew",
+      "prNumber": null,
+      "patch": "@@ -121,9 +121,9 @@ The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"S\n | 0x58        | PC             |                                                                     2 |                                                                   BASE_OPCODE_COST |\n | 0x59        | MSIZE          |                                                                     2 |                                                                   BASE_OPCODE_COST |\n | 0x5A        | GAS            |                                                                     2 |                                                                   BASE_OPCODE_COST |\n+| 0x5B        | JUMPDEST       |                                                                     1 |                                                                   BASE_OPCODE_COST |\n | 0x5C        | TLOAD          |                                                                   100 |                                                             WARM_STORAGE_READ_COST |\n | 0x5D        | TSTORE         |                                                                   100 |                                                             WARM_STORAGE_READ_COST |\n-| 0x5B        | JUMPDEST       |                                                                     1 |                                                                   BASE_OPCODE_COST |\n | 0x5E        | MCOPY          |                       3 + 3 \\* data_word_size + memory_expansion_cost |    BASE_OPCODE_COST + COPY_PER_WORD_COST \\* data_word_size + memory_expansion_cost |\n | 0x5F        | PUSH0          |                                                                     2 |                                                                   BASE_OPCODE_COST |\n | 0x60 - 0x7F | PUSHx          |                                                                     3 |                                                                   BASE_OPCODE_COST |\n@@ -289,7 +289,7 @@ func newRepricedInstructionSet() JumpTable {\n   instructionSet[TSTORE].constantGas = WarmStorageReadCost\n \n   validateAndFillMaxStack(&instructionSet)\n- return instructionSet\n+  return instructionSet\n }\n \n func memoryGasCost(mem *Memory, newMemSize uint64) (uint64, error) {"
+    },
+    {
+      "sha": "3d88e02a87466efcdcfe5c1bdc0188d48f9cc713",
+      "date": "2025-11-26T08:48:08Z",
+      "message": "Update SIP-7904: Align WarmStorageReadCost with spec (5 gas)",
+      "author": "phrwlk",
+      "prNumber": null,
+      "patch": "@@ -266,7 +266,7 @@ const (\n   RepricedGasMidStep          uint64 = 3\n \n   //overrides\n-  WarmStorageReadCost uint64 = 100 // WARM_STORAGE_READ_COST\n+  WarmStorageReadCost uint64 = 5 // WARM_STORAGE_READ_COST\n   ExpGas              uint64 = 2  // Once per EXP instruction\n   ExpByteGas          uint64 = 4  // One per byte of the EXP exponent\n   CopyGas             uint64 = 1  // One per word of the copied code"
+    },
+    {
+      "sha": "4e92b6c3e0e055cb88891343b1fd6c2b1e14b2ae",
+      "date": "2025-09-11T10:40:14Z",
+      "message": "Update SIP-7904: simplify the proposal",
+      "author": "JacekGlen",
+      "prNumber": null,
+      "additions": 24,
+      "deletions": 90
+    },
+    {
+      "sha": "3a4a08689d5eda893147f39d9e79c8a496dfe013",
+      "date": "2025-05-15T17:17:24Z",
+      "message": "Add SIP: General Repricing",
+      "author": "JacekGlen",
+      "prNumber": null,
+      "additions": 391,
+      "deletions": 0
+    }
+  ],
+  "openPrs": [
+    {
+      "number": 10095,
+      "title": "Update SIP-7904: fix typos",
+      "author": "tinyfoxy",
+      "updatedAt": "2025-09-28T19:58:36Z",
+      "additions": 1,
+      "deletions": 1
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": 8298,
+  "title": "SIP-8298: SETCODEFROM Code Reuse Instruction",
+  "status": "Draft",
+  "description": "Adds an instruction that sets an account's code hash from an existing deployed contract.",
+  "author": "Liyi Guo (@colinlyguo), Ben Adams (@benaadams), Carlos Perez (@CPerezz), Nicolas Consigny (@nconsigny)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-06-11",
+  "discussionLink": "https://sila-magicians.org/t/sip-8298-setcodefrom-code-reuse-instruction/28779",
+  "requires": [
+    3529,
+    3607,
+    6780,
+    7702,
+    8037,
+    8038
+  ],
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/240",
+          "date": "2026-07-02"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Ben Adams",
+          "discord": "ben_a_adams"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Deploying many contracts that share identical code means paying to store those same bytes over and over. This proposal adds an instruction letting an account set up its own storage and then adopt the code already deployed at another address. It also gives an account a way to permanently retire its original key.",
+  "benefits": [
+    "Factories deploy many instances without paying code deposit gas for identical code",
+    "Offers a migration path that permanently disables an account's ECDSA transaction authority",
+    "Copies from a live account, so the adopted code is confirmed by current consensus state"
+  ],
+  "tradeoffs": [
+    "Code exposing the instruction can permanently change account behavior if left unguarded",
+    "Delegated code may rewrite the calling account's code, unlike the stricter SIP-6913",
+    "ecRecover still recovers a migrated account, so permit-style approvals need SIP-8151"
+  ]
+}

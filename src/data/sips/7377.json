@@ -1,0 +1,19 @@
+{
+  "id": 7377,
+  "title": "SIP-7377: Migration Transaction",
+  "status": "Stagnant",
+  "description": "Allow EOAs to send a one-time transaction which deploys code at their account.",
+  "author": "lightclient (@lightclient), Sam Wilson (@samwilsn), Ansgar Dietrichs (@adietrichs)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2023-07-21",
+  "discussionLink": "https://sila-magicians.org/t/sip-xxxx-migration-transaction/15144",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    170,
+    1559,
+    2200,
+    2718
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": 2294,
+  "title": "SIP-2294: Explicit bound to Chain ID size",
+  "status": "Stagnant",
+  "description": "Adds a maximum value to the Chain ID parameter to avoid potential encoding issues that may occur when using large values of the parameter.",
+  "author": "Zainan Victor Zhou (@xinbenlv), Alex Beregszaszi (@axic), Bryant Eisenbach (@fubuloubu)",
+  "type": "Informational",
+  "createdDate": "2019-09-19",
+  "discussionLink": "https://sila-magicians.org/t/sip-2294-explicit-bound-to-chain-id/11090",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    155
+  ]
+}

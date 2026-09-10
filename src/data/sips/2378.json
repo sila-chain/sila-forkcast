@@ -1,0 +1,12 @@
+{
+  "id": 2378,
+  "title": "SIP-2378: SIPs Eligible for Inclusion",
+  "status": "Stagnant",
+  "description": "",
+  "author": "James Hancock (@MadeofTin)",
+  "type": "Meta",
+  "createdDate": "2019-11-13",
+  "discussionLink": "https://gitter.im/sila/SIPs",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

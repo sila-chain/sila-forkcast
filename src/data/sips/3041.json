@@ -1,0 +1,17 @@
+{
+  "id": 3041,
+  "title": "SIP-3041: Adds `baseFee` to `eth_getBlockByHash`",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Abdelhamid Bakhta (@abdelhamidbakhta)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2020-10-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-3041-add-basefee-in-sil-getblockbyhash-response/4825",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1474,
+    1559
+  ]
+}

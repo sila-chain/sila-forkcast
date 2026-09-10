@@ -1,0 +1,20 @@
+{
+  "id": 8197,
+  "title": "SIP-8197: Cryptographically Agile Transactions",
+  "status": "Draft",
+  "description": "Cryptographically Agile Transaction format separating signature from transaction body",
+  "author": "Danno Ferrin (@shemnon) <danno@tectonic.xyz>, Ron Kahat <ron@tectonic.xyz>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-03-04",
+  "discussionLink": "https://sila-magicians.org/t/sip-8197-cryptographically-agile-transactions-catx/28003",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1559,
+    2718,
+    2930,
+    4844,
+    7702
+  ]
+}

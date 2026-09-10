@@ -1,0 +1,18 @@
+{
+  "id": 6046,
+  "title": "SIP-6046: Replace SELFDESTRUCT with DEACTIVATE",
+  "status": "Stagnant",
+  "description": "Change SELFDESTRUCT to not delete storage keys and use a special value in the account nonce to signal deactivation",
+  "author": "Alex Beregszaszi (@axic)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2022-11-25",
+  "discussionLink": "https://sila-magicians.org/t/almost-self-destructing-selfdestruct-deactivate/11886",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2681,
+    2929,
+    3529
+  ]
+}

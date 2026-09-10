@@ -1,0 +1,13 @@
+{
+  "id": 1901,
+  "title": "SIP-1901: Add OpenRPC Service Discovery To JSON-RPC Services",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Shane Jonas (@shanejonas), Zachary Belford (@belfordz)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2019-02-25",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/1902",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

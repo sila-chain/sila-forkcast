@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { EipPage } from '../../components/sip';
+import { eipsData } from '../../data/sips';
+import { getLaymanTitle, getProposalPrefix } from '../../utils/sip';
+import { getStageChanges } from '../../domain/sips/stageChanges';
+import { breadcrumbList, eipArticle } from '../../domain/seo/structuredData';
+
+export function getStaticPaths() {
+  const lastChangeById = new Map(
+    getStageChanges(eipsData).map((change) => [change.id, change.lastStageChange]),
+  );
+
+  return eipsData
+    .map((sip) => {
+      const prefix = getProposalPrefix(sip);
+      const laymanTitle = getLaymanTitle(sip);
+      const label = `${prefix}-${sip.id}`;
+      return {
+        params: { id: String(sip.id) },
+        props: {
+          title: `${label}: ${laymanTitle} - Forkcast`,
+          description: `Description, timeline, and status of ${label}: ${laymanTitle}`,
+          jsonLd: [
+            eipArticle({
+              id: sip.id,
+              prefix,
+              title: laymanTitle,
+              // The layman rewrite is what the page leads with; the spec's own
+              // one-liner is the fallback for SIPs that have no rewrite yet.
+              description: sip.laymanDescription || sip.description,
+              author: sip.author,
+              dateModified: lastChangeById.get(sip.id),
+            }),
+            breadcrumbList([
+              { name: 'Forkcast', url: 'https://forkcast.org/' },
+              { name: 'SIPs', url: 'https://forkcast.org/sips/' },
+              { name: label },
+            ]),
+          ],
+        },
+      };
+    });
+}
+
+const id = Astro.params.id!;
+const { title, description, jsonLd } = Astro.props;
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <EipPage client:only="react" id={id} />
+</Layout>

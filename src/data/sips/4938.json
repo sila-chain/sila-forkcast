@@ -1,0 +1,17 @@
+{
+  "id": 4938,
+  "title": "SIP-4938: \"sil/67 - Removal of GetNodeData\"",
+  "status": "Final",
+  "description": "\"Remove GetNodeData and NodeData messages from the wire protocol\"",
+  "author": "Marius van der Wijden (@MariusVanDerWijden), Felix Lange <fjl@sila.org>, Gary Rong <garyrong@sila.org>",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2022-03-23",
+  "discussionLink": "https://sila-magicians.org/t/sip-4938-removal-of-getnodedata/8893",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2464,
+    2481
+  ]
+}

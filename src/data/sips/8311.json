@@ -1,0 +1,18 @@
+{
+  "id": 8311,
+  "title": "SIP-8311: Increase Calldata Floor Cost to 96",
+  "status": "Draft",
+  "description": "Increase the calldata floor cost to 96/96 gas per byte to align it with the SIL-transfer byte-density anchor",
+  "author": "Maria Silva (@misilva73), Toni Wahrstätter (@nerolation)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-06-20",
+  "discussionLink": "https://sila-magicians.org/t/sip-8311-increase-calldata-floor-cost-to-96/28860",
+  "requires": [
+    3860,
+    7623,
+    7976
+  ],
+  "forkRelationships": [],
+  "tradeoffs": null
+}

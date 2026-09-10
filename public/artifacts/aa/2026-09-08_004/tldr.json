@@ -1,0 +1,78 @@
+{
+  "meeting": "Frame Transaction Breakout #4 - Sep 8, 2026",
+  "highlights": {
+    "testing_progress": [
+      {
+        "timestamp": "00:08:07",
+        "highlight": "Test release v0.3.0 published; covers deep EVM code paths + frame-specific tests; sufficient for frames-devnet-0 readiness assessment"
+      }
+    ],
+    "client_updates": [
+      {
+        "timestamp": "00:10:46",
+        "highlight": "Geth, ethrex, and Nethermind all passing test suite and ready for frames-devnet-0; Nethermind joined ethrex public testnet as validator"
+      },
+      {
+        "timestamp": "00:45:12",
+        "highlight": "Besu not yet ready for the devnet, no status to report; Justin Florentine is the point person and will look into joining the ethrex testnet"
+      }
+    ],
+    "fork_status_and_schedule": [
+      {
+        "timestamp": "00:44:18",
+        "highlight": "frames-devnet-0 blocked on EthPandaOps availability; Barnabas (out on vacation) is likely the facilitator; teams can use ethrex public testnet in the interim"
+      },
+      {
+        "timestamp": "00:52:09",
+        "highlight": "Frames as Hegota headliner SIP expected to be ratified at Thursday's ACDE call"
+      }
+    ],
+    "eip_proposals_hegota": [
+      {
+        "timestamp": "00:46:13",
+        "highlight": "SIP-7906 (Transaction Assertions via post-transaction frame + state-diff opcodes): Toni supports inclusion in Hegota to avoid re-touching Frame Transactions later; recommendation to not commingle with BAL state diffs"
+      },
+      {
+        "timestamp": "00:50:41",
+        "highlight": "SRC-1979 (key lifecycle standard for SIP-8141/SIP-8130): proposes common add/rotate/revoke key management with two tiers \u2014 recent-root (no state read, delayed revoke) vs. account state slot (instant revoke, one state read); cross-chain extension included"
+      },
+      {
+        "timestamp": "00:41:01",
+        "highlight": "SIP-12301 (maxVerifyGas as mempool floor): proposes redefining maxVerifyGas from a hard cap to a protocol-guaranteed floor, letting individual nodes accept heavier verify transactions above that floor"
+      }
+    ],
+    "frame_expiry_discussion": [
+      {
+        "timestamp": "00:15:36",
+        "highlight": "raxhvl proposed replacing the expiry VERIFY frame with a native transaction-level 'features' field (key-value pairs, canonical ordering); saves ~32 bytes vs. empty frame encoding"
+      },
+      {
+        "timestamp": "00:24:42",
+        "highlight": "lightclient and Toni skeptical: expiry is already implementable via VERIFY frame without state dependency; no evidence enough other features exist to justify generalizing; design discussion deferred to Sila Magicians"
+      }
+    ]
+  },
+  "action_items": [
+    {
+      "timestamp": "00:29:05",
+      "action": "raxhvl to post frame expiry / transaction features discussion to Frame Transaction Sila Magicians thread for async feedback",
+      "owner": "raxhvl"
+    },
+    {
+      "timestamp": "00:52:17",
+      "action": "Client teams to submit Hegota non-headliner SIP preferences to Nixo and Ansgar \u226524 hours before Thursday's ACDE",
+      "owner": "All client teams"
+    }
+  ],
+  "decisions": [],
+  "targets": [
+    {
+      "timestamp": "00:06:17",
+      "target": "frames-devnet-0 \u2014 targeting launch this week, pending EthPandaOps availability"
+    },
+    {
+      "timestamp": "00:52:09",
+      "target": "Frames Hegota headliner ratification \u2014 Thursday ACDE call"
+    }
+  ]
+}

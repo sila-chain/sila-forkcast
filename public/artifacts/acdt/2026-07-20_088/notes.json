@@ -1,0 +1,41 @@
+{
+  "meeting": "ACDT #088 - 2026-07-20",
+  "sections": [
+    {
+      "heading": "Glamsterdam Devnet 7 Status",
+      "summary": "Devnet 7 is stable; Erigon onboarding is the last client, Death Star and malicious Prysm node adding chaos testing.",
+      "timestamp": "00:05:38",
+      "body": "- Dust has settled on Glamsterdam Devnet 7; network performing well.\n- Erigon is in the process of onboarding as the last client; Grandine was added before the weekend.\n  - Erigon and Grandine will have fewer validators until more deposits come in, so they may propose less.\n- Death Star (a modified version of Lodestar that acts maliciously) has been added to Devnet 7 for more chaos.\n- Prysm/Erigon combo missing slots on Dora; likely still syncing and not fully caught up yet.\n- Malicious Prysm node updated by PandaOps; pending review from Aussie team before activation.\n  - Will introduce more degrees of freedom than Death Star this week.\n- Stefan plans to incrementally add more testing and chaos scenarios to Devnet 7, but will avoid crashing it since it was made available to a broader audience."
+    },
+    {
+      "heading": "Devnet 8 Planning",
+      "summary": "Devnet 8 targeted for next week or the week after; Devnet 9 envisioned as a non-finality-focused network within the month.",
+      "timestamp": "00:08:02",
+      "body": "- Target for Devnet 8 is next week or the week after; no rush given holidays, pending repricing SIP changes, and benchmarking still needing time.\n- Goal: smooth fork transition with all clients on Devnet 8.\n- Devnet 9 envisioned as a non-finality-focused network, ideally within the next month.\n- At least one more fork transition test desired on Devnet 8 before moving to testnets.\n- Discv5 only for EL on Devnet 8: Csaba raised the proposal; no objections.\n  - Csaba will do a small code test on the testnet before the DevNet to confirm.\n  - Dustin confirmed Nimbus EL supports discv5 and would prefer discv5-only.\n- QUIC confirmed enabled on Devnet 7; will carry forward."
+    },
+    {
+      "heading": "Fork Transition Bugs and Performance",
+      "summary": "CL clients hit SSZ stable container issues at fork transition due to large validator set; 10-20% performance regression confirmed across clients.",
+      "timestamp": "00:11:34",
+      "body": "- Main EL issues: gas accounting inconsistencies; nothing out of the ordinary.\n- CL surprise: SSZ stable containers at fork transition were problematic due to the large validator set size (many exiting validators).\n- Lodestar bug: spread operator blowing the stack on large Merkle trees (hundreds of thousands of nodes).\n  - Not caught in small-tree testing; only surfaced at devnet scale.\n- Stable containers performance impact: 10-20% slower across clients.\n  - Grandine confirmed significant slowdown in some places; optimization needed.\n  - Teku confirmed slower implementation compared to non-progressive version; still manageable but optimization round needed, especially for larger data structures.\n  - Further benchmarking on bigger data structures still required before sila-mainnet."
+    },
+    {
+      "heading": "SIP Staging and SFI Status",
+      "summary": "All Devnet 7 SIPs appear to satisfy SFI criteria per SIP-7723; official ratification deferred to the ACD call on Thursday.",
+      "timestamp": "00:18:08",
+      "body": "- All Devnet 7 SIPs appear to satisfy the four SFI criteria defined in [SIP-7723](https://sips.sila.org/EIPS/sip-7723).\n- PandaOps team comfortable with SFI move; similar sentiment from EL teams.\n- Decision: official SFI ratification can only happen at ACD-E/C; proposed for the next ACD call on Thursday.\n- SIP-7773 (Meta SIP for Glamsterdam upgrade): proposed move to Review status; no objections raised.\n  - Authors asked to add PRs to SIP editing office hours tomorrow for merge before Thursday's ACD call."
+    },
+    {
+      "heading": "BAL JSON RPC Alignment",
+      "summary": "BAL-specific JSON RPC responses diverge across clients; clients asked to review HackMD summary and align by Devnet 8.",
+      "timestamp": "00:22:23",
+      "body": "- JSON RPC responses for Block Access List (BAL) methods differ across clients (error codes, empty lists vs. omission, access list format).\n- Toni summarized all divergence points in a HackMD document; clients asked to review.\n  - PR raised against execution-APIs to clarify all points of divergence.\n  - Link shared in [BAL Discord channel](https://discord.com/channels/595666850260713488/1364000387195076608/1527979143881429153).\n- Chase is working on a JSON RPC test suite; Stefan suggested coordinating to add BAL-specific access list tests there.\n- Target: alignment across clients by Devnet 8.\n- Sub-call traces: Dragan (Reth) raised whether gas reservoir and spilled gas fields should be added to trace methods.\n  - Acknowledged as separate from BAL-specific JSON RPC; to be discussed async.\n  - Spencer suggested PR-ing to the tracing SIP and aligning on that PR."
+    },
+    {
+      "heading": "SIP-7997 Contracts Factory in EELS",
+      "summary": "Consensus that no irregular state transition specification is needed for SIP-7997 since the factory is already deployed; EELS PR to be closed.",
+      "timestamp": "00:26:01",
+      "body": "- Toni opened an [EELS PR](https://github.com/sila-chain/execution-specs/pull/3198) to add the SIP-7997 contracts factory via an irregular state transition.\n- Context: checking contract existence adds to the execution witness, causing client divergence at fork boundary.\n  - Toni discovered divergence between Erigon and Geth when comparing JSON RPC responses: one had the factory deployed at fork boundary and the other did not.\n- Mario Vega provided context: an [SIP PR](https://github.com/sila-chain/SIPs/pull/11952/changes) (already merged) removed the mention of irregular state transition from the SIP itself.\n  - The SIP now says if the contract is not there, a theoretical other SIP would describe the irregular state transition, but that SIP doesn't exist because it's unnecessary.\n- Marius (Geth) confirmed the team discussed this internally and concluded it's not important to specify since it will never happen on sila-mainnet.\n- Consensus: no need to specify the irregular state transition; the factory is already deployed on all relevant chains.\n- Toni will close the EELS PR; confirmed nothing critical."
+    }
+  ]
+}

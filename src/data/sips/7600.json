@@ -1,0 +1,25 @@
+{
+  "id": 7600,
+  "title": "SIP-7600: Hardfork Meta - Pectra",
+  "status": "Final",
+  "description": "SIPs included in the SilaPrague/Electra Sila network upgrade.",
+  "author": "Tim Beiko (@timbeiko)",
+  "type": "Meta",
+  "createdDate": "2024-01-18",
+  "discussionLink": "https://sila-magicians.org/t/sip-7600-hardfork-meta-prague-electra/18205",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2537,
+    2935,
+    6110,
+    7002,
+    7251,
+    7549,
+    7569,
+    7623,
+    7685,
+    7691,
+    7702
+  ]
+}

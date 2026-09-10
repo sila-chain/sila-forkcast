@@ -1,0 +1,49 @@
+{
+  "id": 3298,
+  "title": "SIP-3298: Remove storage-clear refund and refund cap",
+  "status": "Draft",
+  "description": "Removes the SSTORE storage-clearing refund and the transaction refund cap, leaving only net-metered same-transaction write reversals",
+  "author": "Vitalik Buterin (@vbuterin), Martin Swende (@holiman), Jochem Brouwer (@jochem-brouwer)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-02-26",
+  "discussionLink": "https://sila-magicians.org/t/sip-3298-removal-of-refunds/5430",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/243",
+          "date": "2026-08-13"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Jochem Brouwer",
+          "discord": "jochembrouwer"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Clearing a storage slot or destroying a contract earns gas back, a discount meant to encourage tidying up after yourself. It never worked, and it is instead used to stockpile cheap gas for later. This proposal removes the discount entirely.",
+  "benefits": [
+    "Kills GasToken, which fills state with junk slots purely to bank cheap gas",
+    "A block can no longer consume nearly twice its stated gas limit",
+    "Removes the refund counter from storage accounting rather than partly retaining it"
+  ],
+  "tradeoffs": [
+    "Clearing storage becomes strictly a cost, removing any incentive to tidy up state",
+    "Arbitrage bots relying on gas storage schemes must be rewritten to stay economical",
+    "State growth is left entirely to a future statelessness or state expiry solution"
+  ],
+  "requires": [
+    2780,
+    3529,
+    7778,
+    8037,
+    8038
+  ]
+}

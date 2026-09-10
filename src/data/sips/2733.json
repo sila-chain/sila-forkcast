@@ -1,0 +1,16 @@
+{
+  "id": 2733,
+  "title": "SIP-2733: Transaction Package",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "Matt Garnett (@lightclient)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2020-06-16",
+  "discussionLink": "https://sila-magicians.org/t/sip-transaction-package/4365",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2718
+  ]
+}

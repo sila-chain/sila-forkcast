@@ -1,0 +1,19 @@
+{
+  "id": 7675,
+  "title": "SIP-7675: Retroactively Included SIPs",
+  "status": "Withdrawn",
+  "description": "Core SIPs activated independently of an Sila hard fork.",
+  "author": "Tim Beiko (@timbeiko)",
+  "type": "Meta",
+  "createdDate": "2024-04-04",
+  "discussionLink": "https://sila-magicians.org/t/sip-7675-retroactively-included-sips/19541",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2681,
+    3607,
+    4803,
+    7523,
+    7610
+  ]
+}

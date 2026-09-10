@@ -1,0 +1,4081 @@
+{
+  "fork": "hegota",
+  "lastUpdated": "2026-09-10",
+  "teams": [
+    {
+      "name": "Besu",
+      "type": "EL",
+      "initials": "Be"
+    },
+    {
+      "name": "Erigon",
+      "type": "EL",
+      "initials": "Er"
+    },
+    {
+      "name": "Ethrex",
+      "type": "EL",
+      "initials": "Ex"
+    },
+    {
+      "name": "Geth",
+      "type": "EL",
+      "initials": "Ge"
+    },
+    {
+      "name": "Nethermind",
+      "type": "EL",
+      "initials": "Ne"
+    },
+    {
+      "name": "Reth",
+      "type": "EL",
+      "initials": "Re"
+    },
+    {
+      "name": "Grandine",
+      "type": "CL",
+      "initials": "Gr"
+    },
+    {
+      "name": "Lighthouse",
+      "type": "CL",
+      "initials": "LH"
+    },
+    {
+      "name": "Lodestar",
+      "type": "CL",
+      "initials": "Lo"
+    },
+    {
+      "name": "Nimbus",
+      "type": "CL",
+      "initials": "Ni"
+    },
+    {
+      "name": "Prysm",
+      "type": "CL",
+      "initials": "Pr"
+    },
+    {
+      "name": "Teku",
+      "type": "CL",
+      "initials": "Te"
+    },
+    {
+      "name": "EF Architecture Team",
+      "type": "OTHER",
+      "initials": "EFa"
+    },
+    {
+      "name": "EF Protocol",
+      "type": "OTHER",
+      "initials": "EFp"
+    },
+    {
+      "name": "Ethlabs",
+      "type": "OTHER",
+      "initials": "EL"
+    },
+    {
+      "name": "L2Beat",
+      "type": "OTHER",
+      "initials": "L2B"
+    }
+  ],
+  "sips": [
+    {
+      "eipId": 2488,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 3298,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 4758,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 5920,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7645,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7666,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7668,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7686,
+      "stances": [
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "eipId": 7709,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7716,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 7805,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "eipId": 7807,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7819,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7851,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7862,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7906,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7923,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 7979,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8015,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8025,
+      "stances": [
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8058,
+      "stances": [
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8077,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8094,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8115,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8116,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8131,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8141,
+      "stances": [
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "eipId": 8142,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8146,
+      "stances": [
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8148,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8151,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8163,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8173,
+      "stances": [
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8182,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8188,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8198,
+      "stances": [
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8200,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8205,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8219,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8237,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8243,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8250,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8253,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8268,
+      "stances": [
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8272,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8279,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Architecture Team",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/7",
+          "lastUpdated": "2026-08-17"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8298,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8304,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8321,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8333,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8334,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8341,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8355,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8358,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8359,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8363,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        }
+      ]
+    },
+    {
+      "eipId": 8365,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8367,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8368,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "TBD",
+          "normalizedScore": null,
+          "comment": "Deliberately unranked pending sila-mainnet data",
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8369,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8371,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "L2Beat",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8372,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "TBD",
+          "normalizedScore": null,
+          "comment": "Deliberately unranked pending sila-mainnet data",
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8374,
+      "stances": [
+        {
+          "clientName": "Besu",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://github.com/besu-sil/besu/wiki/hegota-sip-selection-explainer",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Erigon",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Reth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8375,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "eipId": 8379,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Geth",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lodestar",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
+          "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Nethermind",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
+          "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Teku",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "lastUpdated": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "eipId": 8383,
+      "stances": [
+        {
+          "clientName": "EF Protocol",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
+          "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethlabs",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
+          "lastUpdated": "2026-09-09"
+        }
+      ]
+    }
+  ]
+}

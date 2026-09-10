@@ -1,0 +1,16 @@
+{
+  "id": 7713,
+  "title": "SIP-7713: Box type for SIP-712 messages",
+  "status": "Stagnant",
+  "description": "A mechanism for SIP-712 messages to contain parameters of arbitrary type",
+  "author": "Francisco Giordano (@frangio)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2024-05-23",
+  "discussionLink": "https://sila-magicians.org/t/sip-7713-box-types-for-sip-712-messages/20092",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    712
+  ]
+}

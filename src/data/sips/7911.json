@@ -1,0 +1,13 @@
+{
+  "id": 7911,
+  "title": "SIP-7911: Scaling Sila with a Perceptron Tree ZKP",
+  "status": "Draft",
+  "description": "Improving Sila scalability and privacy using Perceptron Trees to compress transaction data via ZKP.",
+  "author": "Ryo Ha (@sopia19910) <sopia19910@gmail.com>, Khajiev Nizomjon (@khajievN) <nizom7812@gmail.com>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-03-19",
+  "discussionLink": "https://sila-magicians.org/t/improving-blockchain-scalability-using-a-perceptron-tree-based-zero-knowledge-proof-model/23196",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

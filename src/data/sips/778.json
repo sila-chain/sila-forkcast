@@ -1,0 +1,13 @@
+{
+  "id": 778,
+  "title": "SIP-778: Sila Node Records (ENR)",
+  "status": "Final",
+  "description": "",
+  "author": "Felix Lange <fjl@sila.org>",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2017-11-23",
+  "discussionLink": "https://github.com/sila-chain/devp2p/issues/43",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

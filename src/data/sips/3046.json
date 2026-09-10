@@ -1,0 +1,17 @@
+{
+  "id": 3046,
+  "title": "SIP-3046: Adds `baseFee` to `eth_getUncleByBlockNumberAndIndex`",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Abdelhamid Bakhta (@abdelhamidbakhta)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2020-10-14",
+  "discussionLink": "https://sila-magicians.org/t/add-basefee-to-sil-getunclebyblocknumberandindex/4830",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1474,
+    1559
+  ]
+}

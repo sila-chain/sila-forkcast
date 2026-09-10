@@ -1,0 +1,16 @@
+{
+  "id": 2025,
+  "title": "SIP-2025: Block Rewards Proposal for funding Eth1.x",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "James Hancock (@madeoftin)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-04-20",
+  "discussionLink": "https://github.com/MadeofTin/SIPs/issues",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1890
+  ]
+}

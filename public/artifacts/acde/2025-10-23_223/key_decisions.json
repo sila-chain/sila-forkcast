@@ -1,0 +1,37 @@
+{
+  "meeting": "ACDE #223 - October 23, 2025",
+  "key_decisions": [
+    {
+      "original_text": "Pre-committed to Fusaka timeline (Dec 3/9/Jan 7) conditional on SilaHolesky success",
+      "timestamp": "00:10:50",
+      "type": "other",
+      "sips": []
+    },
+    {
+      "original_text": "Non-headliner SIP proposals due Oct 30th (PR to SIP repo sufficient)",
+      "timestamp": "00:21:03",
+      "type": "other",
+      "sips": []
+    },
+    {
+      "original_text": "Client opinion documents due Nov 6th, finalize Glamsterdam scope by end of November",
+      "timestamp": "00:27:13",
+      "type": "other",
+      "sips": [],
+      "fork": "Glamsterdam"
+    },
+    {
+      "original_text": "Removed SIP-7667 and SIP-6873 from Glamsterdam PFI list",
+      "timestamp": "01:12:21",
+      "type": "stage_change",
+      "sips": [
+        7667,
+        6873
+      ],
+      "stage_change": {
+        "to": "Declined"
+      },
+      "fork": "Glamsterdam"
+    }
+  ]
+}

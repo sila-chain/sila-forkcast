@@ -1,0 +1,44 @@
+{
+  "id": 8094,
+  "title": "SIP-8094: sil/vhash - Blob-Aware Mempool",
+  "status": "Draft",
+  "description": "Make mempool messaging vhash aware",
+  "author": "Csaba Kiraly (@cskiraly)",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2025-11-29",
+  "discussionLink": "https://sila-magicians.org/t/sip-8094-sil-vhash-blob-aware-mempool/26834",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/243",
+          "date": "2026-08-13"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Csaba Kiraly"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Raising the fee on a pending blob transaction currently means resending its entire data payload across the network, even though that data has not changed. This proposal separates the two: blob transactions travel without their data, and a node fetches the data by content only when it does not already have it.",
+  "benefits": [
+    "A fee bump no longer resends blob data that peers already hold",
+    "Saves bandwidth exactly during fee volatility, when the network is already congested",
+    "Blob transactions can be broadcast directly again, since they no longer carry the payload"
+  ],
+  "tradeoffs": [
+    "Fetching data separately adds a round trip per hop to blob propagation",
+    "Peers may return only some requested blobs, so a fetch can come back incomplete",
+    "How this combines with the sparse blobpool proposal is left unresolved"
+  ],
+  "requires": [
+    7642
+  ]
+}

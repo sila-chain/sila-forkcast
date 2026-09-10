@@ -1,0 +1,405 @@
+#!/usr/bin/env node
+/**
+ * Extract structured key decisions from tldr.json files.
+ *
+ * Calls the Anthropic API to classify decisions from meeting TLDRs
+ * as stage_change, devnet_inclusion, headliner_selected, or other.
+ *
+ * Usage:
+ *   node scripts/extract-key-decisions.mjs --only acde/2026-02-12_230
+ *   node scripts/extract-key-decisions.mjs --all
+ *   node scripts/extract-key-decisions.mjs --all --dry-run
+ *   node scripts/extract-key-decisions.mjs --only acde/2026-02-12_230 --force
+ *
+ * Requires: ANTHROPIC_API_KEY environment variable
+ */
+
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { parseArgs } from 'node:util';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(__dirname, '..');
+const ARTIFACTS_DIR = join(ROOT, 'public', 'artifacts');
+const EIPS_JSON = join(ROOT, 'src', 'data', 'sips.json');
+
+const ACD_CALL_TYPES = new Set(['acdc', 'acde', 'acdt']);
+const DEFAULT_MODEL = 'claude-opus-4-6';
+
+const MODEL_PRICING = {
+  'claude-opus-4-6': [15.0, 75.0],
+  'claude-opus-4-5-20251101': [15.0, 75.0],
+  'claude-sonnet-4-5-20250929': [3.0, 15.0],
+  'claude-sonnet-4-20250514': [3.0, 15.0],
+  'claude-haiku-4-5-20251001': [0.8, 4.0],
+};
+
+const EXTRACTION_PROMPT = `Classify decisions from Sila governance meeting summaries into structured JSON.
+
+You receive the full TLDR (highlights, action items, decisions, targets). Your primary source is the "decisions" array, but you MUST also scan ALL highlights for stage-change signals (PFI, CFI, SFI, DFI, Included, Withdrawn) that the decisions array may have missed. SIP proposal highlights (e.g., categories like "eip_proposals_*") frequently contain PFI/CFI decisions that were not captured in the decisions array. If a highlight mentions an SIP being "PFI'd", "CFI'd", "SFI'd", etc., include it as a key decision even if it does not appear in the decisions array.
+
+## Types
+
+- **stage_change**: SIP moves to a new inclusion stage. Set \`stage_change.to\` to one of: "Proposed" (PFI), "Considered" (CFI), "Scheduled" (SFI), "Declined" (DFI), "Included", "Withdrawn".
+- **devnet_inclusion**: A specific SIP being added to or scoped into a devnet for the first time, where that fact alone is the headline. The decision must name the SIP(s) being included. Do NOT use this type when the SIP is the defining proposal of that devnet's workstream (e.g., SIP-7732 in epbs-devnet-0) — that is tautological. Do NOT use this type when the SIP is already scheduled / in the fork / in prior devnets and this decision is an incremental step (folding it into a spec release, adding one sub-component such as specific Engine API endpoints, a pure rename with no behavior change) — "included in devnet-N" carries no new signal there. Do NOT use this type when the decision's significance depends on a qualifier that would be lost at render time (client-readiness confirmations, "already merged", "no behavior change", part of the work deferred). In all of those cases use \`other\` so the full \`original_text\` is preserved. Devnet timeline, launch date, spec version targeting, spec freeze, or general status updates → \`other\`. Set \`devnet\` to the full lowercase identifier with workstream prefix (e.g., "bal-devnet-3", "epbs-devnet-0"). Infer the prefix from highlight categories, meeting context, or surrounding discussion. Never output bare "devnet-N".
+- **headliner_selected**: SIP selected as fork headliner. Set \`fork\` to the fork name.
+- **other**: Everything else.
+
+## Rules
+
+- IMPORTANT — structured types are lossy at render time: for \`stage_change\`, \`devnet_inclusion\`, and \`headliner_selected\`, the UI does NOT display \`original_text\`. It renders a templated sentence built only from \`sips\`, the stage/devnet/fork tag, and \`context\`. Any detail not captured in those fields is discarded. Only classify as a structured type when the templated sentence fully conveys the decision; if the significance depends on qualifiers that won't fit a short \`context\` phrase, use \`other\` (which renders \`original_text\` verbatim).
+- Multiple SIPs with the SAME action → one entry, all SIP numbers in \`sips\` array.
+- DIFFERENT actions in one decision string → separate entries per action.
+- Extract SIP numbers as integers from "SIP-1234", "EIP1234", or contextual references. Resolve well-known proposal names to their SIP numbers (e.g., BAL = 7928, FOCIL = 7805, ePBS = 7732, SilaPeerDAS = 7594). Resolve SIL/XX aliases using the "Known Aliases" section if provided.
+- \`timestamp\` must be copied verbatim from input.
+- \`original_text\`: if the entry maps 1:1 to a single input decision, copy it verbatim. If you split one input decision into multiple entries, write a concise summary for each entry covering only that entry's action (e.g., "SIP-7610 deferred from glamsterdam-devnet-6" rather than repeating the full original string).
+- If no SIP numbers can be identified, set \`sips\` to \`[]\`.
+- Rejecting a technical change *to* an SIP (not the SIP itself) → \`other\`.
+- If the original text includes a brief reason or qualifier beyond the core action (e.g., "DFI'd but clients standardize independently"), extract it into \`context\` as a short phrase (e.g., "clients to standardize independently"). \`context\` must not duplicate information already captured in other fields — no fork names (use \`fork\`), no SIP numbers (use \`sips\`), no stage names (use \`stage_change\`). Omit \`context\` when there's nothing beyond the base action.
+- \`original_text\`, \`timestamp\`, \`type\`, and \`sips\` are always required. Omit other fields when not applicable. Do not set fields to null.
+
+## Output
+
+Return ONLY valid JSON (no markdown fences):
+
+{
+  "meeting": "<from input>",
+  "key_decisions": [
+    {
+      "original_text": "...",
+      "timestamp": "...",
+      "type": "stage_change|devnet_inclusion|headliner_selected|other",
+      "sips": [],
+      "stage_change": { "to": "..." },
+      "devnet": "...",
+      "fork": "...",
+      "context": "..."
+    }
+  ]
+}
+
+Only include \`stage_change\` when type is "stage_change". Only include \`devnet\` when type is "devnet_inclusion". Only include \`fork\` when a fork name is mentioned. Only include \`context\` when meaningful additional context exists.`;
+
+function calculateCost(model, usage) {
+  const [inputPrice, outputPrice] = MODEL_PRICING[model] || [0.8, 4.0];
+  return (
+    (usage.input_tokens / 1_000_000) * inputPrice +
+    (usage.output_tokens / 1_000_000) * outputPrice
+  );
+}
+
+function loadKnownEipIds() {
+  if (!existsSync(EIPS_JSON)) return new Set();
+  try {
+    const data = JSON.parse(readFileSync(EIPS_JSON, 'utf-8'));
+    return new Set(data.filter((e) => e.id).map((e) => e.id));
+  } catch {
+    return new Set();
+  }
+}
+
+function loadEthAliases() {
+  if (!existsSync(EIPS_JSON)) return {};
+  try {
+    const data = JSON.parse(readFileSync(EIPS_JSON, 'utf-8'));
+    const aliases = {};
+    for (const sip of data) {
+      const title = sip.title || '';
+      for (const match of title.matchAll(/sil\/(\d+)/gi)) {
+        aliases[`SIL/${match[1]}`] = sip.id;
+      }
+    }
+    return aliases;
+  } catch {
+    return {};
+  }
+}
+
+const VALID_TYPES = new Set([
+  'stage_change',
+  'devnet_inclusion',
+  'headliner_selected',
+  'other',
+]);
+const VALID_STAGES = new Set([
+  'Proposed',
+  'Considered',
+  'Scheduled',
+  'Included',
+  'Declined',
+  'Withdrawn',
+]);
+
+function validateSchema(data) {
+  const errors = [];
+
+  if (!data.meeting) errors.push("Missing 'meeting' field");
+  if (!data.key_decisions) {
+    errors.push("Missing 'key_decisions' field");
+    return errors;
+  }
+  if (!Array.isArray(data.key_decisions)) {
+    errors.push("'key_decisions' must be an array");
+    return errors;
+  }
+
+  for (let i = 0; i < data.key_decisions.length; i++) {
+    const d = data.key_decisions[i];
+    const prefix = `key_decisions[${i}]`;
+
+    for (const field of ['original_text', 'timestamp', 'type']) {
+      if (!(field in d)) errors.push(`${prefix}: missing required field '${field}'`);
+    }
+
+    if (!('sips' in d)) {
+      errors.push(`${prefix}: missing 'sips' field`);
+    } else if (!Array.isArray(d.sips)) {
+      errors.push(`${prefix}: 'sips' must be an array`);
+    }
+
+    if (d.type && !VALID_TYPES.has(d.type)) {
+      errors.push(`${prefix}: invalid type '${d.type}'`);
+    }
+
+    if (d.type === 'stage_change') {
+      if (!d.stage_change?.to) {
+        errors.push(`${prefix}: stage_change type requires 'stage_change.to' field`);
+      } else if (!VALID_STAGES.has(d.stage_change.to)) {
+        errors.push(`${prefix}: invalid stage '${d.stage_change.to}'`);
+      }
+    }
+
+    if (d.type === 'devnet_inclusion' && !d.devnet) {
+      errors.push(`${prefix}: devnet_inclusion type should have 'devnet' field`);
+    }
+  }
+
+  return errors;
+}
+
+async function callAnthropic(model, systemPrompt, userMessage) {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    throw new Error('ANTHROPIC_API_KEY environment variable is not set');
+  }
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      max_tokens: 4096,
+      system: systemPrompt,
+      messages: [{ role: 'user', content: userMessage }],
+    }),
+  });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`Anthropic API error ${response.status}: ${body}`);
+  }
+
+  return response.json();
+}
+
+function findTldrFiles(meetingDir) {
+  const files = [];
+  if (existsSync(join(meetingDir, 'tldr.json'))) {
+    files.push({ path: join(meetingDir, 'tldr.json'), suffix: '' });
+  }
+  for (const name of readdirSync(meetingDir)) {
+    if (name.startsWith('tldr_') && name.endsWith('.json')) {
+      const suffix = name.slice('tldr'.length, -'.json'.length); // e.g. "_cl"
+      files.push({ path: join(meetingDir, name), suffix });
+    }
+  }
+  return files;
+}
+
+async function extractKeyDecisionsForFile(meetingDir, tldrFile, model, force) {
+  const { path: tldrPath, suffix } = tldrFile;
+  const outputPath = join(meetingDir, `key_decisions${suffix}.json`);
+  const tldrName = tldrPath.split('/').pop();
+
+  if (existsSync(outputPath) && !force) {
+    console.log(`  key_decisions${suffix}.json already exists (use --force to regenerate)`);
+    return 'skipped';
+  }
+
+  const tldrData = JSON.parse(readFileSync(tldrPath, 'utf-8'));
+  const decisions = tldrData.decisions || [];
+  const meeting = tldrData.meeting || 'Unknown meeting';
+
+  if (decisions.length === 0) {
+    console.log('  No decisions in tldr.json');
+    return 'failed';
+  }
+
+  // Build alias context
+  const ethAliases = loadEthAliases();
+  let aliasSection = '';
+  if (Object.keys(ethAliases).length > 0) {
+    const lines = Object.entries(ethAliases)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([alias, eipId]) => `- ${alias} = SIP-${eipId}`);
+    aliasSection = `\n## Known Aliases\n\n${lines.join('\n')}\n`;
+  }
+
+  const userMessage = `## Meeting\n\n${meeting}\n${aliasSection}\n## TLDR\n\n${JSON.stringify(tldrData, null, 2)}`;
+
+  console.log(`  ${tldrName}: calling Claude API (${model}) with ${decisions.length} decision(s)...`);
+
+  try {
+    const response = await callAnthropic(model, EXTRACTION_PROMPT, userMessage);
+
+    const usage = {
+      input_tokens: response.usage.input_tokens,
+      output_tokens: response.usage.output_tokens,
+    };
+
+    let jsonStr = response.content[0].text.trim();
+
+    // Strip markdown code fences if present
+    if (jsonStr.startsWith('```')) {
+      const lines = jsonStr.split('\n');
+      const start = lines[0].startsWith('```') ? 1 : 0;
+      const end = lines[lines.length - 1].trim() === '```' ? lines.length - 1 : lines.length;
+      jsonStr = lines.slice(start, end).join('\n');
+    }
+
+    const result = JSON.parse(jsonStr);
+
+    // Validate schema
+    const errors = validateSchema(result);
+    if (errors.length > 0) {
+      console.log('  Schema validation errors:');
+      for (const err of errors) console.log(`    - ${err}`);
+      return 'failed';
+    }
+
+    // Cross-reference SIP numbers
+    const knownEips = loadKnownEipIds();
+    if (knownEips.size > 0) {
+      for (const d of result.key_decisions || []) {
+        for (const eipId of d.sips || []) {
+          if (!knownEips.has(eipId)) {
+            console.log(`  WARNING: SIP-${eipId} not found in sips.json`);
+          }
+        }
+      }
+    }
+
+    writeFileSync(outputPath, JSON.stringify(result, null, 2));
+
+    const cost = calculateCost(model, usage);
+    console.log(
+      `  Tokens: ${usage.input_tokens.toLocaleString()} in, ${usage.output_tokens.toLocaleString()} out | Cost: $${cost.toFixed(4)}`,
+    );
+    console.log(`  Saved ${outputPath.replace(ROOT + '/', '')}`);
+    return 'succeeded';
+  } catch (e) {
+    console.log(`  Error: ${e.message}`);
+    return 'failed';
+  }
+}
+
+function findAllTldrDirs() {
+  const entries = [];
+  for (const callType of readdirSync(ARTIFACTS_DIR)) {
+    if (!ACD_CALL_TYPES.has(callType)) continue;
+    const typeDir = join(ARTIFACTS_DIR, callType);
+    for (const callId of readdirSync(typeDir)) {
+      if (findTldrFiles(join(typeDir, callId)).length > 0) {
+        entries.push(`${callType}/${callId}`);
+      }
+    }
+  }
+  return entries.sort();
+}
+
+async function main() {
+  const { values } = parseArgs({
+    options: {
+      only: { type: 'string' },
+      all: { type: 'boolean', default: false },
+      model: { type: 'string', short: 'm', default: DEFAULT_MODEL },
+      force: { type: 'boolean', short: 'f', default: false },
+      'dry-run': { type: 'boolean', default: false },
+    },
+  });
+
+  if (!values.only && !values.all) {
+    console.log('Specify --only <path> or --all');
+    process.exit(1);
+  }
+
+  const entries = values.only ? [values.only] : findAllTldrDirs();
+
+  if (entries.length === 0) {
+    console.log('No entries to process.');
+    process.exit(0);
+  }
+
+  console.log(`Processing ${entries.length} meeting(s) with ${values.model}\n`);
+
+  let succeeded = 0;
+  let failed = 0;
+  let skipped = 0;
+
+  for (let i = 0; i < entries.length; i++) {
+    const entry = entries[i];
+    const meetingDir = join(ARTIFACTS_DIR, entry);
+
+    console.log(`[${i + 1}/${entries.length}] ${entry}`);
+
+    if (!existsSync(meetingDir)) {
+      console.log(`  Directory not found: ${meetingDir}`);
+      failed++;
+      continue;
+    }
+
+    const tldrFiles = findTldrFiles(meetingDir);
+    if (tldrFiles.length === 0) {
+      console.log('  No tldr files found');
+      failed++;
+      continue;
+    }
+
+    if (values['dry-run']) {
+      let decisionsCount = 0;
+      const kdStatus = [];
+      for (const { path: fp, suffix } of tldrFiles) {
+        try {
+          const data = JSON.parse(readFileSync(fp, 'utf-8'));
+          decisionsCount += (data.decisions || []).length;
+        } catch {
+          // ignore
+        }
+        const kdPath = join(meetingDir, `key_decisions${suffix}.json`);
+        kdStatus.push(`key_decisions${suffix}: ${existsSync(kdPath) ? 'exists' : 'missing'}`);
+      }
+      const tldrNames = tldrFiles.map(f => f.path.split('/').pop()).join(', ');
+      console.log(`  tldr: ${tldrNames}, ${kdStatus.join(', ')}, decisions: ${decisionsCount}`);
+      continue;
+    }
+
+    for (const tldrFile of tldrFiles) {
+      const result = await extractKeyDecisionsForFile(meetingDir, tldrFile, values.model, values.force);
+      if (result === 'succeeded') succeeded++;
+      else if (result === 'skipped') skipped++;
+      else failed++;
+    }
+  }
+
+  console.log(`\nDone: ${succeeded} generated, ${skipped} skipped, ${failed} failed`);
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

@@ -1,0 +1,140 @@
+{
+  "eipId": 8272,
+  "commits": [
+    {
+      "sha": "824cbc0b0e459ea6b105d8b96420a5d46abf0806",
+      "date": "2026-09-07T13:43:39Z",
+      "message": "Update SIP-8272: count recent root verification gas",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 5,
+      "deletions": 19
+    },
+    {
+      "sha": "fe87e741f2ebf1d73a808fe5f245481740a77736",
+      "date": "2026-09-04T11:40:52Z",
+      "message": "Update SIP-8272: Add lightclient as a co-author",
+      "author": "soispoke",
+      "prNumber": null,
+      "patch": "@@ -1,8 +1,8 @@\n ---\n sip: 8272\n title: Recent Roots for Frame Transactions\n-description: Frame transactions can verify recent roots through a canonical frame\n-author: Thomas Thiery (@soispoke), Vitalik Buterin (@vbuterin), Toni Wahrstätter (@nerolation)\n+description: Frame transactions can declare verified recent roots\n+author: Thomas Thiery (@soispoke), Vitalik Buterin (@vbuterin), Toni Wahrstätter (@nerolation), lightclient (@lightclient)\n discussions-to: https://sila-magicians.org/t/sip-8272-recent-roots-for-frame-transactions/28621\n status: Draft\n type: Standards Track",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "20fb52b9b2c370b6964c59e4f998f63a14803122",
+      "date": "2026-09-04T07:24:10Z",
+      "message": "Update SIP-8272: verify recent roots with a canonical frame",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 203,
+      "deletions": 162
+    },
+    {
+      "sha": "0231fb05f52c94ad9f104927567e6e67c7e53ea7",
+      "date": "2026-08-31T08:11:38Z",
+      "message": "Update SIP-8272: move RECENTROOTREFLOAD off 0xB5",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -49,8 +49,8 @@ This specification is a delta against [SIP-8141](./sip-8141.md). Terms not defin\n | `RECENT_ROOT_STORAGE_DOMAIN`          |                                                `keccak256(\"RECENT_ROOT_STORAGE\")` |\n | `RECENT_ROOT_REFERENCE_ADDRESS_GAS`   |                                                       `ACCESS_LIST_ADDRESS_COST` |\n | `RECENT_ROOT_REFERENCE_GAS`           | `ACCESS_LIST_STORAGE_KEY_COST + 2 * KECCAK256_BASE_GAS + 7 * KECCAK256_WORD_GAS` |\n-| `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` |                                                                           `0x0F` |\n-| `RECENTROOTREFLOAD`                   |                                                                           `0xB5` |\n+| `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` |                                                                           `0x11` |\n+| `RECENTROOTREFLOAD`                   |                                                                           `0xB6` |\n | `RECENTROOTREFLOAD_GAS`               |                                                                              `3` |\n \n All concatenations below use fixed-length encodings. Domains are 32 bytes. Addresses are 20 bytes. Slots and indices are unsigned 64-bit big-endian integers. Roots, salts, source identifiers, entry hashes, and storage keys are 32 bytes.\n@@ -269,11 +269,11 @@ The [SIP-8141](./sip-8141.md) definitions of `max_gas`, `gas_used`, and fee sett\n \n One new `TXPARAM` index and one new opcode are added:\n \n-[SIP-8141](./sip-8141.md) assigns opcode `0xB4` to `SIGPARAM`. `RECENTROOTREFLOAD` uses `0xB5` to avoid that collision.\n+[SIP-8141](./sip-8141.md) assigns opcodes `0xB4` to `SIGPARAM` and `0xB5` to `SIGDATACOPY`. `RECENTROOTREFLOAD` uses `0xB6` to avoid those collisions.\n \n | Name                                 |  Value | Return value                 |\n | ------------------------------------ | -----: | ---------------------------- |\n-| `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` | `0x0F` | `len(recent_root_references)` |\n+| `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` | `0x11` | `len(recent_root_references)` |\n \n `TXPARAM(TXPARAM_RECENT_ROOT_REFERENCE_COUNT)` costs the standard `TXPARAM` gas.\n ",
+      "additions": 4,
+      "deletions": 4
+    },
+    {
+      "sha": "a96bfaebd23ab7b9d00c63108bc65a2129c42952",
+      "date": "2026-08-08T07:57:35Z",
+      "message": "Update SIP-8272: Highlight privacy benefit upfront",
+      "author": "nerolation",
+      "prNumber": null,
+      "patch": "@@ -13,7 +13,7 @@ requires: 7623, 7843, 8141\n \n ## Abstract\n \n-[SIP-8141](./sip-8141.md) frame transactions can reference recent roots without reading mutable storage during validation. A root source writes roots to a system contract, with each root keyed by `(source_id, slot)`, where `source_id` derives from the writer address and a salt. A frame transaction may declare recent root references of the form:\n+[SIP-8141](./sip-8141.md) frame transactions can reference recent roots without reading mutable storage during validation. This helps privacy applications validate spends using proofs against recent commitment tree roots named in the signed transaction envelope. A root source writes roots to a system contract, with each root keyed by `(source_id, slot)`, where `source_id` derives from the writer address and a salt. A frame transaction may declare recent root references of the form:\n \n ```text\n (source_id, slot, root)",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "d8636a330deb59a8a8f88d39dcbccb2c7d77db28",
+      "date": "2026-08-03T11:53:27Z",
+      "message": "Update SIP-8272: pin RECENT_ROOT_ADDRESS to 0x...8272",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "additions": 15,
+      "deletions": 15
+    },
+    {
+      "sha": "37a542d24e51ba3751572dfe5c0ab65824aae39a",
+      "date": "2026-07-29T12:31:56Z",
+      "message": "Update SIP-8272: make recent root changes additive",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 18,
+      "deletions": 42
+    },
+    {
+      "sha": "2c140450b07beb6076e4fb825579ecb14cc9acc0",
+      "date": "2026-07-20T10:09:17Z",
+      "message": "Update SIP-8272: resolve RECENTROOTREFLOAD opcode collision",
+      "author": "soispoke",
+      "prNumber": null,
+      "patch": "@@ -50,7 +50,7 @@ This specification is a delta against SIP-8141. Terms not defined here, includin\n | `RECENT_ROOT_REFERENCE_ADDRESS_GAS`   |                                                       `ACCESS_LIST_ADDRESS_COST` |\n | `RECENT_ROOT_REFERENCE_GAS`           | `ACCESS_LIST_STORAGE_KEY_COST + 2 * KECCAK256_BASE_GAS + 7 * KECCAK256_WORD_GAS` |\n | `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` |                                                                           `0x0F` |\n-| `RECENTROOTREFLOAD`                   |                                                                           `0xB4` |\n+| `RECENTROOTREFLOAD`                   |                                                                           `0xB5` |\n | `RECENTROOTREFLOAD_GAS`               |                                                                              `3` |\n \n All concatenations below use fixed-length encodings. Domains are 32 bytes. Addresses are 20 bytes. Slots and indices are unsigned 64-bit big-endian integers. Roots, salts, source identifiers, entry hashes, and storage keys are 32 bytes.\n@@ -293,6 +293,8 @@ The SIP-7623 calldata cost MUST be computed over `recent_root_calldata` as one b\n \n One new `TXPARAM` index and one new opcode are added:\n \n+SIP-8141 assigns opcode `0xB4` to `SIGPARAM`. `RECENTROOTREFLOAD` uses `0xB5` to avoid that collision.\n+\n | Name                                 |  Value | Return value                 |\n | ------------------------------------ | -----: | ---------------------------- |\n | `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` | `0x0F` | `len(recent_root_references)` |",
+      "additions": 3,
+      "deletions": 1
+    },
+    {
+      "sha": "7f502d371b03e7981ac6f7a8e9d06cc22625798f",
+      "date": "2026-07-18T08:50:31Z",
+      "message": "Update SIP-8272: strengthen public-mempool handling of recent root references",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -324,7 +324,11 @@ Recent root storage is not exposed to validation code through EVM execution. Dur\n \n Nodes SHOULD admit a transaction to the public mempool only if all declared recent root references are valid against the node's current head.\n \n-Nodes SHOULD NOT admit a transaction while any reference has `slot >= current_slot`. Nodes MAY evict a transaction with any reference where `current_slot - slot >= RECENT_ROOT_LENGTH`.\n+Nodes SHOULD NOT admit a transaction while any reference has `slot >= current_slot`. Nodes SHOULD evict a transaction with any reference where `current_slot - slot >= RECENT_ROOT_LENGTH`, so that expired transactions do not accumulate.\n+\n+To avoid admitting a transaction that expires almost immediately, nodes SHOULD NOT admit a transaction whose oldest reference is within a small margin of expiry, i.e. where `current_slot - slot >= RECENT_ROOT_LENGTH - m` for a node-chosen margin `m` of a few slots.\n+\n+To keep expiry and reorg eviction bounded without restricting application concurrency, public mempool nodes SHOULD index pending transactions by declared reference and by expiry slot, so that the transactions affected by a slot advance or a reorg can be found and evicted efficiently.\n \n Nodes SHOULD recheck pending transactions with recent root references when the head changes, when the node's current slot advances, or after any reorg that may affect referenced entries.\n ",
+      "additions": 5,
+      "deletions": 1
+    },
+    {
+      "sha": "ae80ed96698c325ee2716cab99ec8034f17fc46f",
+      "date": "2026-07-18T08:50:07Z",
+      "message": "Update SIP-8272: restore signatures field in payload and elide signature bytes in compute_sig_hash",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -162,18 +162,18 @@ Each `(source_id, S)` has at most one referenceable root on the canonical chain.\n \n ### Transaction payload\n \n-The pre-fork SIP-8141 frame-transaction payload has eight fields:\n+The pre-fork SIP-8141 frame-transaction payload has nine fields:\n \n ```text\n-[chain_id, nonce, sender, frames,\n+[chain_id, nonce, sender, frames, signatures,\n  max_priority_fee_per_gas, max_fee_per_gas,\n  max_fee_per_blob_gas, blob_versioned_hashes]\n ```\n \n The post-fork frame-transaction payload becomes:\n \n ```text\n-[chain_id, nonce, sender, frames,\n+[chain_id, nonce, sender, frames, signatures,\n  max_priority_fee_per_gas, max_fee_per_gas,\n  max_fee_per_blob_gas, blob_versioned_hashes,\n  recent_root_references]\n@@ -191,17 +191,17 @@ The `slot` field is a slot number, not a timestamp or block number.\n \n The frame layout and frame execution rules are otherwise unchanged. `recent_root_references` is a top-level transaction field and is included in `compute_sig_hash(tx)`.\n \n-The post-fork signature hash follows SIP-8141 over the nine-field payload:\n+The post-fork signature hash follows SIP-8141 over the ten-field payload, eliding the raw `signature` bytes of any signature with empty `msg`:\n \n ```python\n def compute_sig_hash(tx: FrameTx) -> Hash:\n-    for i, frame in enumerate(tx.frames):\n-        if frame.mode == VERIFY and frame.target != EXPIRY_VERIFIER:\n-            tx.frames[i].data = Bytes()\n+    for i, sig in enumerate(tx.signatures):\n+        if len(sig.msg) == 0:\n+            tx.signatures[i].signature = Bytes()\n     return keccak(bytes([FRAME_TX_TYPE]) + rlp(tx))\n ```\n \n-where `rlp(tx)` is the post-fork nine-field payload. `recent_root_references` is not elided by the VERIFY-frame data elision rule.\n+where `rlp(tx)` is the post-fork ten-field payload.\n \n Frame data, including VERIFY frame data, MUST NOT add, remove, or modify the transaction's recent root reference set.\n ",
+      "additions": 8,
+      "deletions": 8
+    },
+    {
+      "sha": "91777ef8d25c0238b6b75c5d3b05e727ead20450",
+      "date": "2026-07-18T06:13:14Z",
+      "message": "Update SIP-8272: restore SIP-8141 signature costs in tx_gas_limit",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -261,6 +261,7 @@ tx_gas_limit =\n     FRAME_TX_INTRINSIC_COST\n     + len(tx.frames) * FRAME_TX_PER_FRAME_COST\n     + calldata_cost(recent_root_calldata)\n+    + signature_verification_cost\n     + recent_root_reference_intrinsic_gas\n     + sum(frame.gas_limit for all frames)\n ```\n@@ -279,11 +280,13 @@ recent_root_reference_intrinsic_gas =\n and:\n \n ```text\n-recent_root_calldata = rlp(tx.frames) || rlp(recent_root_references)\n+recent_root_calldata = rlp(tx.signatures) || rlp(tx.frames) || rlp(recent_root_references)\n ```\n \n The SIP-7623 calldata cost MUST be computed over `recent_root_calldata` as one byte string.\n \n+`signature_verification_cost` is defined by [SIP-8141](./sip-8141.md) and is unchanged by this SIP.\n+\n `RECENT_ROOT_REFERENCE_GAS` covers one declared storage key and the two Keccak computations used to derive `storage_key` and `entry_hash`.\n \n ### TXPARAM and RECENTROOTREFLOAD",
+      "additions": 4,
+      "deletions": 1
+    },
+    {
+      "sha": "b1d7691c725a5d4ef861110018126671c0ad9978",
+      "date": "2026-07-18T06:12:37Z",
+      "message": "Update SIP-8272: fix TXPARAM_RECENT_ROOT_REFERENCE_COUNT value inconsistency",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -292,7 +292,7 @@ One new `TXPARAM` index and one new opcode are added:\n \n | Name                                 |  Value | Return value                 |\n | ------------------------------------ | -----: | ---------------------------- |\n-| `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` | `0x0D` | `len(recent_root_references)` |\n+| `TXPARAM_RECENT_ROOT_REFERENCE_COUNT` | `0x0F` | `len(recent_root_references)` |\n \n `TXPARAM(TXPARAM_RECENT_ROOT_REFERENCE_COUNT)` costs the standard `TXPARAM` gas.\n ",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "3ba28fc245d0667a14bd2f580f15e689ff48d0c2",
+      "date": "2026-06-05T23:30:42Z",
+      "message": "Add SIP: Recent Roots for Frame Transactions",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 394,
+      "deletions": 0
+    }
+  ],
+  "openPrs": [
+    {
+      "number": 12198,
+      "title": "Update SIP-8141: make the expiry frame a new mode",
+      "author": "nerolation",
+      "updatedAt": "2026-08-21T19:21:26Z",
+      "additions": 1,
+      "deletions": 1
+    }
+  ]
+}
