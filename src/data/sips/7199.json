@@ -1,0 +1,12 @@
+{
+  "id": 7199,
+  "title": "SIP-7199: Linter Scope",
+  "status": "Withdrawn",
+  "description": "Relax the policy for updating SIP.",
+  "author": "Zainan Victor Zhou (@xinbenlv)",
+  "type": "Meta",
+  "createdDate": "2023-06-20",
+  "discussionLink": "https://sila-magicians.org/t/proposal-eipw-should-only-complain-about-changing-lines/14762",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

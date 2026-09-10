@@ -1,0 +1,13 @@
+{
+  "id": 225,
+  "title": "SIP-225: Clique proof-of-authority consensus protocol",
+  "status": "Final",
+  "description": "",
+  "author": "Péter Szilágyi <peterke@gmail.com>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2017-03-06",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/225",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,62 @@
+{
+  "eipId": 8151,
+  "commits": [
+    {
+      "sha": "1dd4443b7ba56300b58e7850a4b551d8e15a379d",
+      "date": "2026-08-28T16:09:16Z",
+      "message": "Update SIP-8151: clarify code lifecycle and gas pricing",
+      "author": "colinlyguo",
+      "prNumber": null,
+      "patch": "@@ -17,7 +17,7 @@ This SIP modifies the `ecRecover` precompile at address `0x000000000000000000000\n \n ## Motivation\n \n-EOAs can use [SIP-7702](./sip-7702.md) as a bridge to post-quantum authorization. After migration, the account's non-empty code no longer matches the SIP-7702 delegation format `0xef0100 || delegate_address`, so [SIP-3607](./sip-3607.md) disables its ECDSA transaction authority at the protocol level. However, `ecRecover` ignores account state. A quantum-capable attacker deriving the old ECDSA private key could still authorize token transfers through immutable contracts, including SRC-20 `permit` implementations ([SRC-2612](./sip-2612.md)). This SIP applies the same rule to `ecRecover`: recovery returns zero when the account has non-empty raw code that is not a valid SIP-7702 delegation indicator. This prevents the old ECDSA private key from remaining usable through immutable contracts after the account has migrated to post-quantum authorization.\n+EOAs can use [SIP-7702](./sip-7702.md) as a bridge to post-quantum authorization. After migration, the account's non-empty code no longer matches the SIP-7702 delegation format `0xef0100 || delegate_address`, so [SIP-3607](./sip-3607.md) disables its ECDSA transaction authority at the protocol level. However, `ecRecover` ignores account state. A quantum-capable attacker deriving the old ECDSA private key could still authorize token transfers through contracts, including [SRC-20](./sip-20.md) `permit` implementations ([SRC-2612](./sip-2612.md)). This SIP applies the same rule to `ecRecover`: recovery returns zero when the account has non-empty raw code that is not a valid SIP-7702 delegation indicator. As a result, after the account has migrated to post-quantum authorization, the old ECDSA private key can no longer be used for contract authorization that relies on `ecRecover`.\n \n ## Specification\n \n@@ -55,7 +55,7 @@ When ECDSA recovery succeeds, the precompile must access the account of `recover\n \n ### Protocol-Level Modification\n \n-Modifying `ecRecover` at the protocol level is chosen because many deployed contracts that rely on `ecRecover` for signature-based authorization (e.g., SRC-20 `permit` implementations) are immutable and cannot be updated to check the recovered account's code. A protocol-level change ensures these existing contracts automatically apply the same restriction without requiring redeployment.\n+Modifying `ecRecover` at the protocol level is chosen because many deployed contracts that rely on `ecRecover` for signature-based authorization (e.g., [SRC-20](./sip-20.md) `permit` implementations) are immutable and cannot be updated to check the recovered account's code. A protocol-level change ensures these existing contracts automatically apply the same restriction without requiring redeployment.\n \n ### Returning 32 Zero Bytes\n ",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "bf7a4067f263bf7ce01c1511de48473e281d885d",
+      "date": "2026-07-27T09:58:26Z",
+      "message": "Update SIP-8151: restrict `ecRecover` by account code",
+      "author": "colinlyguo",
+      "prNumber": null,
+      "additions": 37,
+      "deletions": 42
+    },
+    {
+      "sha": "43953c6d76475b9815e2c2103fc1119ef2c8c1a9",
+      "date": "2026-05-14T09:51:04Z",
+      "message": "Update SIP-7851: use code-controlled delegation",
+      "author": "colinlyguo",
+      "prNumber": null,
+      "patch": "@@ -21,8 +21,6 @@ This SIP modifies the `ecRecover` precompile at address `0x000000000000000000000\n \n ## Specification\n \n-The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"NOT RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) and [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174).\n-\n | Constant                   | Value                                        |\n |----------------------------|----------------------------------------------|\n | `ECRECOVER_ADDRESS`        | `0x0000000000000000000000000000000000000001` |\n@@ -31,7 +29,7 @@ The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"S\n \n ### Modified `ecRecover` Behavior\n \n-Starting at the activation of this SIP, the `ecRecover` precompile at address `ECRECOVER_ADDRESS` MUST perform the following steps:\n+Starting at the activation of this SIP, the `ecRecover` precompile at address `ECRECOVER_ADDRESS` must perform the following steps:\n \n 1. Perform ECDSA public key recovery from the input `(hash, v, r, s)` as currently specified, yielding a `recovered_address`.\n 2. If recovery fails, return 32 zero bytes and consume `3000` gas.\n@@ -41,7 +39,7 @@ Starting at the activation of this SIP, the `ecRecover` precompile at address `E\n \n ### Deactivation Check\n \n-An address is considered to have deactivated ECDSA authority if and only if its account code is exactly `0xef0101 || delegate_address`, consistent with the permanent delegation prefix defined in [SIP-7851](./sip-7851.md):\n+An address is considered to have deactivated ECDSA authority if and only if its account code is exactly `0xef0101 || delegate_address`, consistent with the ECDSA-disabled delegation prefix defined in [SIP-7851](./sip-7851.md):\n \n ```python\n code = state.get_code(recovered_address)\n@@ -53,12 +51,12 @@ is_deactivated = len(code) == 23 and code[:3] == bytes.fromhex(\"ef0101\")\n When ECDSA recovery fails, no state access is performed and the gas cost\n remains `3000`.\n \n-When ECDSA recovery succeeds, the precompile MUST access the account of\n-`recovered_address` to read its code. This access MUST follow the\n+When ECDSA recovery succeeds, the precompile must access the account of\n+`recovered_address` to read its code. This access must follow the\n [SIP-2929](./sip-2929.md) warm/cold rules:\n \n - If `recovered_address` is already in the transaction's `accessed_addresses` set, the additional cost is `WARM_ACCOUNT_ACCESS_COST` (100).\n-- Otherwise, the additional cost is `COLD_ACCOUNT_ACCESS_COST` (2600), and `recovered_address` MUST be added to the `accessed_addresses` set, making it warm for subsequent operations within the same transaction.\n+- Otherwise, the additional cost is `COLD_ACCOUNT_ACCESS_COST` (2600), and `recovered_address` must be added to the `accessed_addresses` set, making it warm for subsequent operations within the same transaction.\n \n ## Rationale\n \n@@ -80,7 +78,7 @@ Since the precompile now reads account state, the additional gas cost follows th\n \n For addresses whose ECDSA authority has been deactivated under [SIP-7851](./sip-7851.md), `ecRecover` now returns 32 zero bytes where it previously returned the recovered address.\n \n-On every successful ECDSA recovery, the precompile now performs an additional account access, adding either `WARM_ACCOUNT_ACCESS_COST` (100) or `COLD_ACCOUNT_ACCESS_COST` (2600) to the base cost of `3000`. Transactions that invoke `ecRecover` near their gas limit MAY fail with an out-of-gas error after activation.\n+On every successful ECDSA recovery, the precompile now performs an additional account access, adding either `WARM_ACCOUNT_ACCESS_COST` (100) or `COLD_ACCOUNT_ACCESS_COST` (2600) to the base cost of `3000`. Transactions that invoke `ecRecover` near their gas limit may fail with an out-of-gas error after activation.\n \n ## Reference Implementation\n ",
+      "additions": 6,
+      "deletions": 8
+    },
+    {
+      "sha": "3010b58ba1d15abb754a499aa87a52e580765031",
+      "date": "2026-05-13T15:27:27Z",
+      "message": "Update SIP-7851: Few tweaks to 7851 and 8151",
+      "author": "lightclient",
+      "prNumber": null,
+      "patch": "@@ -41,7 +41,7 @@ Starting at the activation of this SIP, the `ecRecover` precompile at address `E\n \n ### Deactivation Check\n \n-An address is considered to have deactivated ECDSA authority if and only if its account code is exactly `0xef0101 || delegate_address`, consistent with the deactivated delegation prefix defined in [SIP-7851](./sip-7851.md):\n+An address is considered to have deactivated ECDSA authority if and only if its account code is exactly `0xef0101 || delegate_address`, consistent with the permanent delegation prefix defined in [SIP-7851](./sip-7851.md):\n \n ```python\n code = state.get_code(recovered_address)",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "3f561dfb7e27299479ff8aac3359819547965b72",
+      "date": "2026-05-12T20:39:56Z",
+      "message": "Update SIP-8151: align ecRecover with SIP-7851",
+      "author": "colinlyguo",
+      "prNumber": null,
+      "additions": 17,
+      "deletions": 25
+    },
+    {
+      "sha": "d84e3da0749d5f2e7548e194577a90ce3b10b830",
+      "date": "2026-02-28T09:37:47Z",
+      "message": "Add SIP: Private Key Deactivation Aware ecRecover",
+      "author": "colinlyguo",
+      "prNumber": null,
+      "additions": 145,
+      "deletions": 0
+    }
+  ]
+}

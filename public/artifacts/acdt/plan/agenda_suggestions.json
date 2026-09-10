@@ -1,0 +1,56 @@
+{
+  "series": "ACDT",
+  "generated": "2026-09-10",
+  "for_call": "ACDT #96",
+  "suggestions": [
+    {
+      "topic": "SIP-8253 Glamsterdam vs Hegota final decision",
+      "priority": "high",
+      "rationale": "Deferred from ACDT #95 to tomorrow's ACDE (Sept 11). ACDT rough consensus was Hegota, but formal decision needed. If ACDE reverses to Glamsterdam inclusion, would require immediate client implementation.",
+      "related_eips": [],
+      "source": "deferred_decision"
+    },
+    {
+      "topic": "glamsterdam-devnet-11 launch status and L2 coordination readiness",
+      "priority": "high",
+      "rationale": "Devnet-11 blocked on Prysm alpha.14 merge as of ACDT #95. This is the final happy-path fork transition devnet before testnet launches; critical for L2 teams to coordinate. Confirm readiness and timeline.",
+      "related_eips": [],
+      "source": "devnet_update"
+    },
+    {
+      "topic": "Besu JUMPDEST-spam vulnerability mitigation",
+      "priority": "high",
+      "rationale": "ACDT #95 showed Jochem's 64KB JUMPDEST-spam knocked out 12/13 Besu nodes (65% missed proposals vs 0.1% Geth). This is a critical pre-testnet blocker. Confirm fix status and whether EEST can express this attack for ongoing testing.",
+      "related_eips": [],
+      "source": "devnet_update"
+    },
+    {
+      "topic": "Nimbus PTC voting-too-early bug from worst-case blob payload",
+      "priority": "medium",
+      "rationale": "Surfaced by Toni's attack testing on devnet-8; still under investigation per ACDT #95. Could impact testnet stability if unresolved.",
+      "related_eips": [],
+      "source": "devnet_update"
+    },
+    {
+      "topic": "SilaSepolia shadow fork timeline",
+      "priority": "medium",
+      "rationale": "ACDT #93 targeted mid-to-end September for SilaSepolia shadow fork. We're now in that window. Confirm readiness of client releases, devnet-11 completion status, and whether Snap2 testing is ready to begin.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "glamsterdam-devnet-9 Prysm trunk offline incident post-mortem",
+      "priority": "medium",
+      "rationale": "~30% of devnet-9 (Prysm trunk) went offline at Gloas fork; Lighthouse had OOM issues with 4M validator keys. Network was not kept running. Understanding root cause is important before scaling to testnet.",
+      "related_eips": [],
+      "source": "devnet_update"
+    },
+    {
+      "topic": "Payload-flooding attack retest status on devnet-8",
+      "priority": "low",
+      "rationale": "Deferred from ACDT #91 to devnet-8. ACDT #93 and #95 show Toni conducted various attack tests, but no explicit confirmation that the duplicate envelope fix was retested. Low priority since other attack vectors have been tested and devnet-8 is running well.",
+      "related_eips": [],
+      "source": "deferred_decision"
+    }
+  ]
+}

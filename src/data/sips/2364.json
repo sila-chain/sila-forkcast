@@ -1,0 +1,16 @@
+{
+  "id": 2364,
+  "title": "SIP-2364: \"sil/64: forkid-extended protocol handshake\"",
+  "status": "Final",
+  "description": "Introduces validation of the `forkid` when handshaking with peers.",
+  "author": "Péter Szilágyi <peterke@gmail.com>, Péter Szilágyi (@karalabe), Tim Beiko (@timbeiko)",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2019-11-08",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/2365",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2124
+  ]
+}

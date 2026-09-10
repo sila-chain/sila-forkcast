@@ -1,0 +1,18 @@
+{
+  "id": 5283,
+  "title": "SIP-5283: Semaphore for Reentrancy Protection",
+  "status": "Stagnant",
+  "description": "A Precompile-based parallelizable reentrancy protection using the call stack",
+  "author": "Sergio D. Lerner (@SergioDemianLerner)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2022-07-17",
+  "discussionLink": "https://sila-magicians.org/t/sip-5283-a-semaphore-for-parallelizable-reentrancy-protection/10236",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    20,
+    1283,
+    1352
+  ]
+}

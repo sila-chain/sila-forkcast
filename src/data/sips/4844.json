@@ -1,0 +1,32 @@
+{
+  "id": 4844,
+  "title": "SIP-4844: Shard Blob Transactions",
+  "status": "Final",
+  "description": "Shard Blob Transactions scale data-availability of Sila in a simple, forwards-compatible manner.",
+  "author": "Vitalik Buterin (@vbuterin), Dankrad Feist (@dankrad), Diederik Loerakker (@protolambda), George Kadianakis (@asn-d6), Matt Garnett (@lightclient), Mofi Taiwo (@Inphi), Ansgar Dietrichs (@adietrichs)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2022-02-25",
+  "discussionLink": "https://sila-magicians.org/t/sip-4844-shard-blob-transactions/8430",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Dencun",
+      "statusHistory": [
+        {
+          "status": "Included",
+          "call": null,
+          "date": null
+        }
+      ]
+    }
+  ],
+  "tradeoffs": null,
+  "requires": [
+    1559,
+    2718,
+    2930,
+    4895
+  ]
+}

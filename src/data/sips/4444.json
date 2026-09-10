@@ -1,0 +1,13 @@
+{
+  "id": 4444,
+  "title": "SIP-4444: Bound Historical Data in Execution Clients",
+  "status": "Draft",
+  "description": "Prune history older than the consensus-layer block retention window",
+  "author": "George Kadianakis (@asn-d6), lightclient (@lightclient), Alex Stokes (@ralexstokes)",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2021-11-02",
+  "discussionLink": "https://sila-magicians.org/t/sip-4444-bound-historical-data-in-execution-clients/7450",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

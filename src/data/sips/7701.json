@@ -1,0 +1,13 @@
+{
+  "id": 7701,
+  "title": "SIP-7701: Native Account Abstraction",
+  "status": "Withdrawn",
+  "description": "Native Account Abstraction protocol, relying on a new transaction type and a family of opcodes",
+  "author": "Vitalik Buterin (@vbuterin), Yoav Weiss (@yoavw), Alex Forshtat (@forshtat), Dror Tirosh (@drortirosh), Shahaf Nacson (@shahafn)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2024-05-01",
+  "discussionLink": "https://sila-magicians.org/t/sip-7701-native-account-abstraction/19893",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

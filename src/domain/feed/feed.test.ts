@@ -1,0 +1,275 @@
+import { describe, expect, it } from 'vitest';
+import type { TimelineEvent } from '../../data/events';
+import type { FeedConfig } from '../../data/feed';
+import type { EipStageChange } from '../sips/stageChanges';
+import {
+  buildFeedItems,
+  buildRssXml,
+  callPublishedToFeedItem,
+  escapeXml,
+  stageChangeToFeedItem,
+  timelineEventToFeedItem,
+  toRssDate,
+  type CallPublished,
+} from './feed';
+
+const makeStageChange = (overrides: Partial<EipStageChange> = {}): EipStageChange => ({
+  id: 7732,
+  title: 'Enshrined Proposer-Builder Separation',
+  prefix: 'SIP',
+  status: 'Draft',
+  description: 'A friendly rewrite that must never reach the feed.',
+  specDescription: 'Separates block proposal from block building.',
+  lastStageChange: '2026-01-08',
+  lastStageChangeFork: 'Glamsterdam',
+  currentStage: 'Scheduled for Inclusion',
+  url: '/sips/7732',
+  ...overrides,
+});
+
+const makeEvent = (overrides: Partial<TimelineEvent> = {}): TimelineEvent => ({
+  type: 'event',
+  date: '2025-12-03',
+  title: 'Fusaka Live on SilaMainnet',
+  category: 'sila-mainnet',
+  ...overrides,
+});
+
+const makeCallPublished = (overrides: Partial<CallPublished> = {}): CallPublished => ({
+  path: 'acdc/184',
+  seriesName: 'AllCoreDevs - Consensus',
+  number: '184',
+  date: '2026-08-06',
+  ...overrides,
+});
+
+const config = (overrides: Partial<FeedConfig> = {}): FeedConfig => ({
+  eipStageChanges: { enabled: true },
+  networkActivations: { enabled: true },
+  callsPublished: { enabled: true },
+  ...overrides,
+});
+
+describe('stageChangeToFeedItem', () => {
+  it('builds a deterministic guid from sip, stage, and date', () => {
+    const item = stageChangeToFeedItem(makeStageChange(), 'https://forkcast.org');
+    // Same data must always produce the same guid, so the multiple daily
+    // bot-triggered rebuilds never re-date existing items.
+    expect(item.guid).toBe('sip-7732-scheduled-for-inclusion-2026-01-08');
+    expect(item.link).toBe('https://forkcast.org/sips/7732/');
+    expect(item.title).toBe(
+      'SIP-7732 (Enshrined Proposer-Builder Separation) is now Scheduled for Inclusion for Glamsterdam',
+    );
+  });
+
+  it('titles Networking and Informational as forms of scheduling, without changing the guid', () => {
+    const item = stageChangeToFeedItem(
+      makeStageChange({ id: 8261, title: 'Gas Limit Schedule', currentStage: 'Informational' }),
+      'https://forkcast.org',
+    );
+    expect(item.title).toBe(
+      'SIP-8261 (Gas Limit Schedule) is now Scheduled (Informational) for Glamsterdam',
+    );
+    expect(item.guid).toBe('sip-8261-informational-2026-01-08');
+  });
+
+  it("carries the SIP's spec one-liner, never the hand-authored rewrite", () => {
+    // The rewrite is revised after publication; a feed item can't be recalled.
+    const item = stageChangeToFeedItem(makeStageChange(), 'https://forkcast.org');
+    expect(item.description).toBe('Separates block proposal from block building.');
+  });
+
+  it('omits the description for an SIP whose spec carries none', () => {
+    const item = stageChangeToFeedItem(
+      makeStageChange({ specDescription: '' }),
+      'https://forkcast.org',
+    );
+    expect(item.description).toBeUndefined();
+  });
+
+  it('falls back to the SIP status when no current stage exists', () => {
+    const item = stageChangeToFeedItem(
+      makeStageChange({ currentStage: null, lastStageChangeFork: null }),
+      'https://forkcast.org',
+    );
+    expect(item.title).toBe('SIP-7732 (Enshrined Proposer-Builder Separation) is now Draft');
+    expect(item.guid).toBe('sip-7732-draft-2026-01-08');
+  });
+});
+
+describe('timelineEventToFeedItem', () => {
+  it('publishes the event title verbatim, linked to the network it happened on', () => {
+    const item = timelineEventToFeedItem(makeEvent({ networkId: 'sila-mainnet' }), 'https://forkcast.org');
+    expect(item.title).toBe('Fusaka Live on SilaMainnet');
+    expect(item.link).toBe('https://forkcast.org/networks/sila-mainnet/');
+    expect(item.guid).toBe('event-fusaka-live-on-sila-mainnet-2025-12-03');
+    expect(item.description).toBeUndefined();
+  });
+
+  it('falls back to the network index for a network with no page', () => {
+    // Holešky and the Fusaka devnets are gone from the route set.
+    const item = timelineEventToFeedItem(
+      makeEvent({ title: 'Fusaka Live on Holešky Testnet', networkId: undefined }),
+      'https://forkcast.org',
+    );
+    expect(item.link).toBe('https://forkcast.org/networks/');
+  });
+
+  it('slugifies a guid out of titles carrying punctuation and emoji', () => {
+    const item = timelineEventToFeedItem(
+      makeEvent({ title: 'Sila Turns 10! 🎉', date: '2025-07-30', category: 'milestone' }),
+      'https://forkcast.org',
+    );
+    expect(item.guid).toBe('event-sila-turns-10-2025-07-30');
+  });
+});
+
+describe('callPublishedToFeedItem', () => {
+  it('carries only the call name, date, and page link, never synced text', () => {
+    const item = callPublishedToFeedItem(makeCallPublished(), 'https://forkcast.org');
+    expect(item.title).toBe('AllCoreDevs - Consensus #184 call published');
+    expect(item.link).toBe('https://forkcast.org/calls/acdc/184/');
+    expect(item.guid).toBe('call-acdc-184-2026-08-06');
+    expect(item.description).toBeUndefined();
+  });
+
+  it('keeps the number exactly as displayed, leading zeros included', () => {
+    const item = callPublishedToFeedItem(
+      makeCallPublished({
+        path: 'aa/002',
+        seriesName: 'Frame Transaction Breakout',
+        number: '002',
+        date: '2026-08-25',
+      }),
+      'https://forkcast.org',
+    );
+    expect(item.title).toBe('Frame Transaction Breakout #002 call published');
+    expect(item.guid).toBe('call-aa-002-2026-08-25');
+  });
+
+  it('drops the series number for a one-off, which names and numbers itself', () => {
+    const item = callPublishedToFeedItem(
+      makeCallPublished({
+        path: 'one-off-1971/001',
+        seriesName: 'one-off-1971',
+        name: 'SRC-8004 Launch Day, #1',
+        number: '001',
+        date: '2026-03-17',
+      }),
+      'https://forkcast.org',
+    );
+    expect(item.title).toBe('SRC-8004 Launch Day, #1 call published');
+    expect(item.guid).toBe('call-one-off-1971-001-2026-03-17');
+  });
+});
+
+describe('buildFeedItems', () => {
+  const sources = {
+    stageChanges: [makeStageChange()],
+    events: [makeEvent()],
+    callsPublished: [makeCallPublished()],
+  };
+
+  it('emits nothing for a type whose switch is off', () => {
+    const items = buildFeedItems(
+      config({
+        eipStageChanges: { enabled: false },
+        networkActivations: { enabled: false },
+        callsPublished: { enabled: false },
+      }),
+      sources,
+      'https://forkcast.org',
+    );
+    expect(items).toEqual([]);
+  });
+
+  it('emits only stage changes when the other switches are off', () => {
+    const items = buildFeedItems(
+      config({ networkActivations: { enabled: false }, callsPublished: { enabled: false } }),
+      sources,
+      'https://forkcast.org',
+    );
+    expect(items.map((item) => item.guid)).toEqual([
+      'sip-7732-scheduled-for-inclusion-2026-01-08',
+    ]);
+  });
+
+  it('skips milestones and announcements, which are not about a network', () => {
+    const items = buildFeedItems(
+      config(),
+      {
+        stageChanges: [],
+        events: [
+          makeEvent(),
+          makeEvent({ title: 'Sila Turns 10! 🎉', date: '2025-07-30', category: 'milestone' }),
+          makeEvent({ title: 'Something was announced', date: '2025-07-31', category: 'announcement' }),
+        ],
+        callsPublished: [],
+      },
+      'https://forkcast.org',
+    );
+    expect(items.map((item) => item.title)).toEqual(['Fusaka Live on SilaMainnet']);
+  });
+
+  it('interleaves all types newest first', () => {
+    const items = buildFeedItems(
+      config(),
+      {
+        stageChanges: [makeStageChange(), makeStageChange({ id: 7702, lastStageChange: '2025-11-01' })],
+        events: [makeEvent(), makeEvent({ title: 'Fusaka Live on Hoodi Testnet', date: '2026-03-01' })],
+        callsPublished: [makeCallPublished()],
+      },
+      'https://forkcast.org',
+    );
+    expect(items.map((item) => item.date)).toEqual([
+      '2026-08-06',
+      '2026-03-01',
+      '2026-01-08',
+      '2025-12-03',
+      '2025-11-01',
+    ]);
+  });
+});
+
+describe('buildRssXml', () => {
+  const channel = { title: 'Forkcast', link: 'https://forkcast.org', description: 'Updates & news' };
+
+  it('escapes reserved characters in titles and descriptions', () => {
+    const xml = buildRssXml(channel, [
+      {
+        title: 'SIP-1 <Draft> & more',
+        link: 'https://forkcast.org/sips/1',
+        guid: 'sip-1-draft-2026-01-01',
+        date: '2026-01-01',
+        description: 'a < b & c',
+      },
+    ]);
+    expect(xml).toContain('<title>SIP-1 &lt;Draft&gt; &amp; more</title>');
+    expect(xml).toContain('<description>a &lt; b &amp; c</description>');
+    expect(xml).toContain('<description>Updates &amp; news</description>');
+  });
+
+  it('marks guids as non-permalink and formats pubDate as RFC 822', () => {
+    const xml = buildRssXml(channel, [
+      { title: 't', link: 'https://forkcast.org/x', guid: 'g-1', date: '2026-01-08' },
+    ]);
+    expect(xml).toContain('<guid isPermaLink="false">g-1</guid>');
+    expect(xml).toContain(`<pubDate>${toRssDate('2026-01-08')}</pubDate>`);
+    expect(toRssDate('2026-01-08')).toBe('Thu, 08 Jan 2026 12:00:00 GMT');
+    // No description element for an item without one.
+    expect(xml.match(/<description>/g)).toHaveLength(1);
+  });
+
+  it('starts with the XML declaration and closes every open element', () => {
+    const xml = buildRssXml(channel, []);
+    expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
+    expect(xml).toContain('</channel>');
+    expect(xml.trimEnd().endsWith('</rss>')).toBe(true);
+  });
+});
+
+describe('escapeXml', () => {
+  it('escapes all five reserved characters', () => {
+    expect(escapeXml(`<a href="x">&'</a>`)).toBe('&lt;a href=&quot;x&quot;&gt;&amp;&apos;&lt;/a&gt;');
+  });
+});

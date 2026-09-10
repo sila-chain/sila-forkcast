@@ -1,0 +1,62 @@
+{
+  "eipId": 8282,
+  "commits": [
+    {
+      "sha": "2d3c5e59e47103df15e51aafc815ba0b234e3388",
+      "date": "2026-08-10T15:23:39Z",
+      "message": "Update SIP-8282: Cleanup and Tweaks",
+      "author": "wemeetagain",
+      "prNumber": null,
+      "additions": 93,
+      "deletions": 72
+    },
+    {
+      "sha": "ba60c6474f603d93abbb4b0520f203dc8cb8c930",
+      "date": "2026-08-05T15:36:19Z",
+      "message": "Update SIP-8282: Move to Review",
+      "author": "poojaranjan",
+      "prNumber": null,
+      "patch": "@@ -4,7 +4,7 @@ title: Builder Execution Requests\n description: Predeploy builder deposit and exit request contracts for SIP-7732 builders on the SIP-7685 request bus\n author: Cayman (@wemeetagain), Nico Flaig <nflaig@protonmail.com>, Justin Traglia <jtraglia@sila.org>\n discussions-to: https://sila-magicians.org/t/sip-8282-builder-execution-requests/28699\n-status: Draft\n+status: Review\n type: Standards Track\n category: Core\n created: 2026-05-22\n@@ -38,7 +38,7 @@ The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"S\n \n ### Constants\n \n-The `0x03`/`0x04` request types MUST be unique across **all** active [SIP-7685](./sip-7685.md) request types, including in-flight proposals ([SIP-7804](./sip-7804.md), a Draft, also claims `0x03`); final allocation is coordinated in consensus-specs.\n+The `0x03`/`0x04` request types MUST be unique across **all** active [SIP-7685](./sip-7685.md) request types; final allocation is coordinated in consensus-specs.\n \n | Name | Value | Comment |\n | --- | --- | --- |\n@@ -167,7 +167,7 @@ At the consensus layer it modifies SIP-7732 (see [Changes to SIP-7732](#changes-\n \n ## Reference Implementation\n \n-<!-- TODO: Add test cases and reference implementation -->\n+\n \n ## Security Considerations\n ",
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "554d3325e31c3f74078402d961355218ece16bee",
+      "date": "2026-07-08T12:46:18Z",
+      "message": "Update SIP-8282: set predeploy addresses from current reference bytecode",
+      "author": "barnabasbusa",
+      "prNumber": null,
+      "patch": "@@ -42,8 +42,8 @@ The `0x03`/`0x04` request types MUST be unique across **all** active [SIP-7685](\n \n | Name | Value | Comment |\n | --- | --- | --- |\n-| `BUILDER_DEPOSIT_CONTRACT_ADDRESS` | `0x0000000000000000000000000000000001008282` <!-- placeholder --> | Predeploy address of the builder deposit contract |\n-| `BUILDER_EXIT_CONTRACT_ADDRESS` | `0x0000000000000000000000000000000002008282` <!-- placeholder --> | Predeploy address of the builder exit contract |\n+| `BUILDER_DEPOSIT_CONTRACT_ADDRESS` | `0x0000bFF46984e3725691FA540a8C7589300D8282` | Predeploy address of the builder deposit contract |\n+| `BUILDER_EXIT_CONTRACT_ADDRESS` | `0x000064D678505ad48F8cCb093BC65613800E8282` | Predeploy address of the builder exit contract |\n | `BUILDER_DEPOSIT_REQUEST_TYPE` | `0x03` | [SIP-7685](./sip-7685.md) request-type byte for builder deposits |\n | `BUILDER_EXIT_REQUEST_TYPE` | `0x04` | [SIP-7685](./sip-7685.md) request-type byte for builder exits  |\n | `SYSTEM_ADDRESS` | `0xfffffffffffffffffffffffffffffffffffffffe` | Address that invokes the end-of-block system call (as in [SIP-7002](./sip-7002.md)) |\n@@ -60,7 +60,7 @@ The `0x03`/`0x04` request types MUST be unique across **all** active [SIP-7685](\n \n ### Deployment\n \n-Each predeploy is deployed exactly as the [SIP-7002](./sip-7002.md) and [SIP-7251](./sip-7251.md) request contracts are: by a one-time presigned transaction from a single-use deployer account (the Nick's-method scheme), so that `BUILDER_DEPOSIT_CONTRACT_ADDRESS` and `BUILDER_EXIT_CONTRACT_ADDRESS` are the addresses cryptographically derived from those transactions. Each contract's init code sets its `excess` slot to `EXCESS_INHIBITOR`, so no request can be enqueued until the inhibitor is cleared (see [Request fee](#request-fee)). The concrete transactions — and therefore the final addresses — will be fixed once the runtime bytecode is audited and frozen (see [Reference Implementation](#reference-implementation)).\n+Each predeploy is deployed exactly as the [SIP-7002](./sip-7002.md) and [SIP-7251](./sip-7251.md) request contracts are: by a one-time presigned transaction from a single-use deployer account (the Nick's-method scheme), so that `BUILDER_DEPOSIT_CONTRACT_ADDRESS` and `BUILDER_EXIT_CONTRACT_ADDRESS` are the addresses cryptographically derived from those transactions. Each contract's init code sets its `excess` slot to `EXCESS_INHIBITOR`, so no request can be enqueued until the inhibitor is cleared (see [Request fee](#request-fee)). The addresses above are derived from the presigned deployment transactions for the current reference bytecode; they will change if the runtime bytecode changes before it is audited and frozen (see [Reference Implementation](#reference-implementation)).\n \n The deployment transactions MUST be included before the fork that activates this SIP. If there is no code at either predeploy address once the SIP is active, every block from activation onward MUST be invalid — the same handling [SIP-7002](./sip-7002.md) and [SIP-7251](./sip-7251.md) specify for their predeploys.\n ",
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "20e77b2b621041e8a82a8d0cec3beb889e589fab",
+      "date": "2026-07-06T17:03:24Z",
+      "message": "Update SIP-8282: Sync with gloas spec",
+      "author": "nflaig",
+      "prNumber": null,
+      "additions": 16,
+      "deletions": 16
+    },
+    {
+      "sha": "de4c6f02c7bec4686762c55f8ab6abcf97a77d7d",
+      "date": "2026-07-03T00:35:52Z",
+      "message": "Add SIP: Builder Execution Requests",
+      "author": "wemeetagain",
+      "prNumber": null,
+      "additions": 187,
+      "deletions": 0
+    }
+  ],
+  "openPrs": [
+    {
+      "number": 12120,
+      "title": "Update SIP-8282: Sync specification with sys-asm@83f9801",
+      "author": "Th0rgal",
+      "updatedAt": "2026-08-20T12:56:25Z",
+      "additions": 38,
+      "deletions": 10
+    }
+  ]
+}

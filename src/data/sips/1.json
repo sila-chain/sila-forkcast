@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "title": "SIP-1: SIP Purpose and Guidelines",
+  "status": "Living",
+  "description": "",
+  "author": "Martin Becze <mb@sila.org>, Hudson Jameson <hudson@sila.org>, et al.",
+  "type": "Meta",
+  "createdDate": "2015-10-27",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

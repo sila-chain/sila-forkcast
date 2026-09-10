@@ -1,0 +1,22 @@
+{
+  "id": 8256,
+  "title": "SIP-8256: Blob Streaming",
+  "status": "Draft",
+  "description": "Introduces ahead-of-time blob propagation via ticket-based capacity reservation.",
+  "author": "Marios (@mariosioannou-create), Bharath (@bharath-123), Francesco D'Amato (@fradamt), Julian Ma (@ma-julian), Raúl Kripalani (@raulk), Bosul Mun (@healthykim), Csaba Kiraly (@cskiraly), Anders Elowsson (@anderselowsson)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-05-06",
+  "discussionLink": "https://sila-magicians.org/t/sip-8256-blob-streaming/28586",
+  "requires": [
+    2935,
+    4788,
+    4844,
+    7002,
+    7594,
+    7732,
+    7918
+  ],
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,33 @@
+{
+  "meeting": "ACDE #228 - January 16, 2025",
+  "key_decisions": [
+    {
+      "original_text": "DFI: SIP-5920, SIP-7793, SIP-8051, SIP-7971, SIP-8032, SIP-7907, SIP-7903",
+      "timestamp": "00:56:57",
+      "type": "stage_change",
+      "sips": [
+        5920,
+        7793,
+        8051,
+        7971,
+        8032,
+        7907,
+        7903
+      ],
+      "stage_change": {
+        "to": "Declined"
+      }
+    },
+    {
+      "original_text": "CFI: SIP-7954 (contract size 24KB→32KB)",
+      "timestamp": "01:34:06",
+      "type": "stage_change",
+      "sips": [
+        7954
+      ],
+      "stage_change": {
+        "to": "Considered"
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "meeting": "ACDE #238 - June 4, 2026",
+  "key_decisions": [
+    {
+      "original_text": "bal-devnet-7 is the final BAL-specific devnet; no bal-devnet-8; all future work on Glamsterdam devnets",
+      "timestamp": "00:14:08",
+      "type": "other",
+      "sips": [],
+      "context": "workstream consolidation into Glamsterdam track"
+    },
+    {
+      "original_text": "SIP-8246, SIP-7997, SIP-8038, SIP-2780 included in glamsterdam-devnet-6",
+      "timestamp": "00:28:56",
+      "type": "devnet_inclusion",
+      "sips": [
+        8246,
+        7997,
+        8038,
+        2780
+      ],
+      "devnet": "glamsterdam-devnet-6"
+    },
+    {
+      "original_text": "SIP-7610 deferred from glamsterdam-devnet-6",
+      "timestamp": "00:28:56",
+      "type": "other",
+      "sips": [
+        7610
+      ],
+      "context": "deferred from glamsterdam-devnet-6"
+    },
+    {
+      "original_text": "SIP-8131, SIP-8279, SIP-7979, SIP-8173, SIP-7851, SIP-8151 proposed for inclusion in Hegota",
+      "timestamp": "01:27:58",
+      "type": "stage_change",
+      "sips": [
+        8131,
+        8279,
+        7979,
+        8173,
+        7851,
+        8151
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota"
+    },
+    {
+      "original_text": "SIP-8222 not targeting Hegota",
+      "timestamp": "01:27:58",
+      "type": "other",
+      "sips": [
+        8222
+      ],
+      "context": "not targeting Hegota"
+    }
+  ]
+}

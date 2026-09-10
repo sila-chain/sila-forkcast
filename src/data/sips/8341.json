@@ -1,0 +1,49 @@
+{
+  "id": 8341,
+  "title": "SIP-8341: Partial Execution Payload Commitments",
+  "status": "Draft",
+  "description": "Replace the block hash commitment in ePBS builder bids with a partial payload commitment that excludes the state root",
+  "author": "Toni Wahrstätter (@nerolation), Francesco Risitano (@frisitano)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-07-14",
+  "discussionLink": "https://sila-magicians.org/t/sip-8341-partial-execution-payload-commitments/29030",
+  "requires": [
+    7732
+  ],
+  "pendingPullRequest": {
+    "number": 11936,
+    "url": "https://github.com/sila-chain/SIPs/pull/11936"
+  },
+  "reviewer": "bot",
+  "layer": "CL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acdc/183",
+          "date": "2026-07-23"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Toni Wahrstätter",
+          "discord": "nero_eth"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Under ePBS a builder's bid commits to the block hash, which contains the state root, so the builder must commit every state change to the trie for each bid it updates. This proposal leaves the state root out of the bid, so one computation per slot suffices.",
+  "benefits": [
+    "Builders compute one state root per slot instead of one per discarded candidate bid",
+    "The bid still fixes transactions, withdrawals, gas used, and every other payload field",
+    "The bid container keeps its shape, so light client paths and the execution layer are untouched"
+  ],
+  "tradeoffs": [
+    "A builder can sign several envelopes differing only in state root, delaying the valid one",
+    "A fabricated parent hash now passes the state transition and is caught only in fork choice",
+    "Builders take on a deadline: one state root before the reveal, or the slot counts as withheld"
+  ]
+}

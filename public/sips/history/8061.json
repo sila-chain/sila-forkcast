@@ -1,0 +1,76 @@
+{
+  "eipId": 8061,
+  "commits": [
+    {
+      "sha": "b282adbbc56828f6b07fe70555c0cd4783b28272",
+      "date": "2026-07-30T15:31:25Z",
+      "message": "Update SIP-8061: Move to Review",
+      "author": "poojaranjan",
+      "prNumber": null,
+      "patch": "@@ -4,11 +4,11 @@ title: Increase exit and consolidation churn\n description: Increase the exit and consolidation churn and create a separate consolidation churn limit parameter.\n author: Francesco D'Amato (@fradamt), Anders Elowsson (@anderselowsson)\n discussions-to: https://sila-magicians.org/t/sip-8061-increase-churn-limits/25991\n-status: Draft\n+status: Review\n type: Standards Track\n category: Core\n created: 2025-10-17\n-requires: 7521\n+requires: 7251\n ---\n \n ## Abstract\n@@ -204,10 +204,6 @@ def compute_exit_epoch_and_update_churn(state: BeaconState, exit_balance: Gwei)\n \n This SIP introduces a backwards-incompatible change to the consensus rules and MUST be activated as part of a scheduled network upgrade.\n \n-## Test Cases \n-\n-TODO\n-\n ## Security Considerations\n \n ### Weak subjectivity period",
+      "additions": 2,
+      "deletions": 6
+    },
+    {
+      "sha": "01f15c37c64114c478cb1136e0a6966084e4db14",
+      "date": "2025-12-01T23:44:59Z",
+      "message": "Update SIP-8061: remove the overlap with SIP-8080",
+      "author": "fradamt",
+      "prNumber": null,
+      "additions": 9,
+      "deletions": 17
+    },
+    {
+      "sha": "98ac01edc3fbcd16e9856b172f0c6b4f9a2c29c2",
+      "date": "2025-11-10T14:10:24Z",
+      "message": "Update SIP-8061: bring back deposit cap and let exits use the consolidation queue",
+      "author": "fradamt",
+      "prNumber": null,
+      "additions": 181,
+      "deletions": 60
+    },
+    {
+      "sha": "5f6918c73ae7526eed55083889124a1c4063d5b6",
+      "date": "2025-10-29T02:01:56Z",
+      "message": "Add SIP: Increase churn limits",
+      "author": "fradamt",
+      "prNumber": null,
+      "additions": 144,
+      "deletions": 0
+    }
+  ],
+  "openPrs": [
+    {
+      "number": 10988,
+      "title": "Update SIP-8061: fix function docstring and typo",
+      "author": "skinnypete65",
+      "updatedAt": "2026-01-05T05:23:25Z",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "number": 10980,
+      "title": "Update SIP-8061: remove fork name from constant",
+      "author": "skinnypete65",
+      "updatedAt": "2026-01-05T05:24:32Z",
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "number": 11147,
+      "title": "Update SIP-8061: correct get_exit_churn_limit docstring",
+      "author": "GarmashAlex",
+      "updatedAt": "2026-01-21T22:51:48Z",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "number": 11033,
+      "title": "Update SIP-8052: Fix grammar and spelling errors in SIP-8052, 8061, 8068, 8077",
+      "author": "mk0walsk",
+      "updatedAt": "2026-01-07T09:12:48Z",
+      "additions": 1,
+      "deletions": 1
+    }
+  ]
+}

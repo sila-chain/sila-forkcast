@@ -1,0 +1,107 @@
+{
+  "meeting": "ACDC #184 - August 6, 2026",
+  "highlights": {
+    "fork_status_and_schedule": [
+      {
+        "timestamp": "00:10:23",
+        "highlight": "devnet-7: Prysm on parallel fork; all other clients at head"
+      },
+      {
+        "timestamp": "00:14:57",
+        "highlight": "devnet-8 target: early next week (~Tuesday); named public testnet, optional client releases requested"
+      },
+      {
+        "timestamp": "00:16:48",
+        "highlight": "devnet-8 spec live Monday/Tuesday at launch; Gloas fork ~1 week after genesis; deposits via Dora"
+      }
+    ],
+    "eip_proposals_hegota": [
+      {
+        "timestamp": "00:18:51",
+        "highlight": "SIP-8359 (Beacon Block Reporting Field): 32-byte non-consensus field for CL/EL client + validator setup reporting; PFI'd"
+      },
+      {
+        "timestamp": "00:23:41",
+        "highlight": "SIP-8198 (Quick Slots): reduce slot time 12s\u219210s anchor target; removes hardcoded 12s assumption; Lido and Arbitrum have upgrade paths; PFI'd"
+      },
+      {
+        "timestamp": "00:40:49",
+        "highlight": "SIP-8369 (VOPS Profiles for FOCIL Eligibility): informational SIP defining which transaction types get FOCIL inclusion guarantees; PFI'd"
+      },
+      {
+        "timestamp": "00:43:14",
+        "highlight": "SIP-8142 (Blob Columns Propagation): puts execution payloads into blobs, leverages SilaPeerDAS + cell-level deltas; open concerns from potuz re ePBS/PTC deadline conflicts; PFI'd"
+      },
+      {
+        "timestamp": "00:52:22",
+        "highlight": "SIP-8371 (RowDAS / Distributed Blob Reconstruction): distributes SilaPeerDAS reconstruction load via row topics + bitmaps; no full DAS change; PFI'd"
+      },
+      {
+        "timestamp": "00:57:47",
+        "highlight": "SIP-8363 (Tapered Issuance Burn): burns fraction of validator rewards to cap staking ratio at 50%; intense community opposition; Greg (Lido) requested voluntary withdrawal from Hegota PFI; Jerome declined; Ansgar noted community consensus prerequisite for any CFI; PFI'd"
+      },
+      {
+        "timestamp": "01:29:43",
+        "highlight": "SIP-7716 (Anti-Correlation Attestation Penalties): updated curve now ~2\u201322x higher than original draft; focuses on source/target only, drops head vote; PFI'd"
+      },
+      {
+        "timestamp": "01:35:55",
+        "highlight": "SIP-8365 / SIP-8367 (BLS Withdrawal Credential Retirement + Balance Sunset): force-exit 0x00 validators, slowly drain balances to zero before PQ transition; potuz skeptical of complexity; Barnabas suggested simpler: stop new 0x00 deposits in H*, force-exit in I*; PFI'd"
+      }
+    ],
+    "glamsterdam_updates": [
+      {
+        "timestamp": "00:11:48",
+        "highlight": "SIP-8070 sparse blob pool Engine API V4 changes: no CL objections on call; cutoff for counter-proposal is Monday ACDT"
+      }
+    ]
+  },
+  "action_items": [
+    {
+      "timestamp": "00:13:44",
+      "action": "CL teams: signal implementation status of SIP-8070 Engine API changes in interop channel before Monday ACDT",
+      "owner": "CL client teams"
+    },
+    {
+      "timestamp": "01:23:07",
+      "action": "Discuss SIP-8363 further on SIL R&D issuance channel and SIL Magicians thread; no CFI decision on call",
+      "owner": "Community / Jerome de Tychey"
+    }
+  ],
+  "decisions": [
+    {
+      "timestamp": "00:13:44",
+      "decision": "SIP-8070 sparse blob pool Engine API changes included in devnet-8 unless objection raised by Monday ACDT"
+    },
+    {
+      "timestamp": "00:25:55",
+      "decision": "SIP-8198 (Quick Slots): gas limit and blob count per block scale down with slot time; throughput per second held constant; other parameter changes (issuance, blob count) require separate SIPs"
+    },
+    {
+      "timestamp": "01:23:07",
+      "decision": "SIP-8363 PFI is valid per process (permissionless); no CFI or SFI decision made; community consensus explicitly stated as prerequisite for future acceptance"
+    },
+    {
+      "timestamp": "01:43:23",
+      "decision": "PFI for Hegota: SIP-8359 (Beacon Block Reporting), SIP-8198 (Quick Slots), SIP-8369 (VOPS FOCIL Profiles), SIP-8142 (Blob Columns Propagation), SIP-8371 (RowDAS), SIP-8363 (Tapered Issuance Burn), SIP-7716 (Anti-Correlation Penalties), SIP-8365/8367 (BLS Withdrawal Retirement + Balance Sunset)"
+    },
+    {
+      "timestamp": "01:48:10",
+      "decision": "SIP-8333 (Align Checkpoint with Epoch Boundary Block) and Engine API sync status SIP deferred to next ACDC"
+    },
+    {
+      "timestamp": "01:48:33",
+      "decision": "Polar bear selected as Hegota mascot"
+    }
+  ],
+  "targets": [
+    {
+      "timestamp": "00:14:57",
+      "target": "devnet-8 (Plataberget) launch \u2014 ~Tuesday, August 12, 2026"
+    },
+    {
+      "timestamp": "00:22:32",
+      "target": "Gloas fork on devnet-8 \u2014 ~1 week after genesis"
+    }
+  ]
+}
