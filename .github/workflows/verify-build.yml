@@ -1,15 +1,15 @@
 name: Forkcast Authority Sync
 
 on:
-  issues:
-    types: [opened]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
 
 jobs:
   sync:
-    if: github.event.issue.title == 'SILA FORKCAST SYNC 0c357e07'
+    if: github.event.pull_request.title == 'Sync latest Forkcast authority as pure Sila'
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Sila target
