@@ -1,0 +1,40 @@
+name: Final Root Reset
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  reset:
+    if: github.event.pull_request.title == 'Finalize Sila Forkcast root-only history b53e0b294'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout merged main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Create parentless commit with identical tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          HEAD_NOW="$(git rev-parse HEAD)"
+          TREE_NOW="$(git rev-parse 'HEAD^{tree}')"
+          echo "MERGED_HEAD=$HEAD_NOW"
+          echo "MERGED_TREE=$TREE_NOW"
+          test "$HEAD_NOW" = '4af5432380f4bdd0f677b42b06acf0267836ea4d'
+          test "$TREE_NOW" = 'e801e58099934aa96490e58fba0e97b98990bd7f'
+          git config user.name 'SILA Network'
+          git config user.email 'sila-chain@users.noreply.github.com'
+          ROOT="$(printf '%s\n' 'Sync latest Forkcast authority b53e0b294 as pure Sila' | git commit-tree "$TREE_NOW")"
+          ROOT_TREE="$(git show -s --format=%T "$ROOT")"
+          ROOT_PARENT_COUNT="$(git cat-file -p "$ROOT" | grep -c '^parent ' || true)"
+          echo "ROOT_COMMIT=$ROOT"
+          echo "ROOT_TREE=$ROOT_TREE"
+          echo "ROOT_PARENT_COUNT=$ROOT_PARENT_COUNT"
+          test "$ROOT_TREE" = "$TREE_NOW"
+          test "$ROOT_PARENT_COUNT" = '0'
+          git push --force origin "$ROOT":main
