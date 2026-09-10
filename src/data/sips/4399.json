@@ -2,7 +2,7 @@
   "id": 4399,
   "title": "SIP-4399: Supplant DIFFICULTY opcode with PREVRANDAO",
   "status": "Final",
-  "description": "Expose beacon chain randomness in the SAVM by supplanting DIFFICULTY opcode semantics",
+  "description": "Expose beacon chain randomness in the EVM by supplanting DIFFICULTY opcode semantics",
   "author": "Mikhail Kalinin (@mkalinin), Danny Ryan (@djrtwo)",
   "type": "Standards Track",
   "category": "Core",

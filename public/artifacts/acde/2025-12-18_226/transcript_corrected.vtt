@@ -750,7 +750,7 @@ Marius van der Wijden: to think about what could be done, maybe, in a certain fu
 
 188
 00:29:20.620 --> 00:29:37.430
-Marius van der Wijden: what can be done now, and what will bring the biggest benefit. And the biggest benefit right now is to, is to reprice the… these worst cases that we have in the SAVM, and, and then, be able to, to increase
+Marius van der Wijden: what can be done now, and what will bring the biggest benefit. And the biggest benefit right now is to, is to reprice the… these worst cases that we have in the EVM, and, and then, be able to, to increase
 
 189
 00:29:37.540 --> 00:29:45.190
@@ -1726,7 +1726,7 @@ Ansgar Dietrichs: Yeah, I think one of them had account obstruction concerns, an
 
 432
 01:00:14.380 --> 01:00:34.200
-Ansgar Dietrichs: given that we need to actually make decisions here, anything that doesn't have a strong yes is basically going to be a default no, so, like, that's… this is why I put both of them as DFI candidates, so do we by now have strong support for either of those two approaches? Otherwise, I think a reform of the memory logic of the SAVM would probably be delayed until H star.
+Ansgar Dietrichs: given that we need to actually make decisions here, anything that doesn't have a strong yes is basically going to be a default no, so, like, that's… this is why I put both of them as DFI candidates, so do we by now have strong support for either of those two approaches? Otherwise, I think a reform of the memory logic of the EVM would probably be delayed until H star.
 
 433
 01:00:43.210 --> 01:00:45.519
@@ -2562,7 +2562,7 @@ Ansgar Dietrichs: So…
 
 641
 01:31:59.200 --> 01:32:17.070
-Ansgar Dietrichs: Yeah, just… because again, like, this is not… I don't personally have strong opinion. I actually really, in some way, really would want larger contracts in the SAVM sooner rather than later. I think that's actually a quite desirable feature, but I don't really have super strong opinions myself on this. I'm really just trying to synthesize client positions here. I just think…
+Ansgar Dietrichs: Yeah, just… because again, like, this is not… I don't personally have strong opinion. I actually really, in some way, really would want larger contracts in the EVM sooner rather than later. I think that's actually a quite desirable feature, but I don't really have super strong opinions myself on this. I'm really just trying to synthesize client positions here. I just think…
 
 642
 01:32:17.500 --> 01:32:27.569

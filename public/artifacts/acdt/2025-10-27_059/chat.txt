@@ -22,12 +22,12 @@
 00:20:32	Jen:	Reacted to "very hard to hear yo..." with 👍
 00:21:12	Pooja Ranjan:	Replying to "Do we have list of E..."
 
-https://sips.sila.org/SIPS/sip-8007
-00:21:16	draganrakita:	https://sips.sila.org/SIPS/sip-8007 
+https://sips.sila.org/EIPS/sip-8007
+00:21:16	draganrakita:	https://sips.sila.org/EIPS/sip-8007 
 Waren’t there some precompile changes needed for next bump?
 00:26:25	jochem-brouwer:	Antwoord verzenden naar "Do we have list of..."
 
-You might mean this one: https://sips.sila.org/SIPS/sip-7667
+You might mean this one: https://sips.sila.org/EIPS/sip-7667
  
 I thought we decided to remove this last ACDE but maybe my memories might not be correct there (because this is a price increase which was once proposed pre-Fusaka and carried over from the pre-Fusaka fork)
 00:30:21	Mario Vega:	I think this is a great idea, we could link this markdown directly in the SIP so people who have an idea of a test scenario can quickly find the link from the SIP
@@ -79,8 +79,8 @@ so this is what happens when you click the devops link..
 00:39:08	Justin Traglia:	https://github.com/sila-chain/pm/issues/1783
 00:39:12	Justin Traglia:	It’s on Nov 7th.
 00:40:11	Mario Vega:	Reacted to "It’s on Nov 7th." with 👍🏼
-00:43:10	Mario Vega:	https://sips.sila.org/SIPS/sip-7610
-00:43:52	jochem-brouwer:	It is an addition on https://sips.sila.org/SIPS/sip-684
+00:43:10	Mario Vega:	https://sips.sila.org/EIPS/sip-7610
+00:43:52	jochem-brouwer:	It is an addition on https://sips.sila.org/EIPS/sip-684
 00:44:41	nixo:	lol
 00:44:53	Barnabas:	Marius, get back to your car 😂
 00:45:04	Toni Wahrstätter:	Wasn't there an sip by martin to delete those storage slots from those accounts?

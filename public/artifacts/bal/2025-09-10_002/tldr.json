@@ -43,7 +43,7 @@
   "action_items": [
     {
       "timestamp": "00:33:05",
-      "action": "Gather ZK-SAVM team feedback on read indices for BAL optimization",
+      "action": "Gather ZK-EVM team feedback on read indices for BAL optimization",
       "owner": "Sophia/Som"
     },
     {

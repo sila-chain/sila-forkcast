@@ -64,7 +64,7 @@ ok, but that's at the earliest an H* point
  Maybe not. Not sure anymore if 10mib is actually a problem ot not
 00:31:06	Ben Adams:	Replying to "It should be tested,..."
 
-sil/70 is the missing part on going high (as mentioned receipts) https://sips.sila.org/SIPS/sip-7975
+sil/70 is the missing part on going high (as mentioned receipts) https://sips.sila.org/EIPS/sip-7975
 00:31:15	Francesco:	Replying to "I would agree, it’s ..."
 
 Sure, just saying I think that is the right way to do it eventually
@@ -179,8 +179,8 @@ Benchmark Documentation: https://github.com/sila-chain/execution-specs/blob/fork
 00:52:50	Marius van der Wijden:	Replying to "Btw do you guys want..." 
 
  We split only when a packet would exceed the size
-00:53:55	Maria Silva:	https://github.com/misilva73/savm-gas-repricings/blob/main/reports/gas_repricings_todo.md
-00:54:21	wolovim:	https://sila-forkcast.org/calls/price/001
+00:53:55	Maria Silva:	https://github.com/misilva73/evm-gas-repricings/blob/main/reports/gas_repricings_todo.md
+00:54:21	wolovim:	https://forkcast.org/calls/price/001
 00:54:36	Louis:	Replying to "https://github.com/m..."
 
 I will complete the sip-2780 benchmark today. wip
@@ -197,7 +197,7 @@ I like this too
  Its the most complex one, so we should get it out of the way early
 01:02:11	Stefan Starflinger:	Replying to "+1 on 8037 on devnet..."
 
-me too we should discuss what we want to see in devnet-3 https://sila-forkcast.org/devnets/
+me too we should discuss what we want to see in devnet-3 https://forkcast.org/devnets/
 01:02:16	Mario Vega:	Reacted to "+1 on 8037 on devnet..." with 👀
 01:02:22	spencer-tb:	Replying to "+1 on 8037 on devnet..."
 

@@ -52,7 +52,7 @@ was working on friday, now it's much harder
 00:21:11	Potuz:	The problem is valid ones
 00:21:14	Mikhail Kalinin:	If all CL devs are fine with potentially thousands sig verifications per slot then I am fine to have no cap
 00:22:33	Justin Traglia:	We should just lower the gas limit 😅(jk)
-00:23:03	Barnabas:	is there a way to have the savm execute the builder deposits sig verification without a new deposit contract?
+00:23:03	Barnabas:	is there a way to have the evm execute the builder deposits sig verification without a new deposit contract?
 00:24:55	Dustin:	Get a flash loan
 00:25:00	Potuz:	Reacted to "Get a flash loan" with 🤣
 00:25:02	Justin Traglia:	Reacted to "Get a flash loan" with 🤣

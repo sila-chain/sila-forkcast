@@ -36,7 +36,7 @@ Or what is this 2300?
 00:50:47	Maria Silva:	Replying to "https://github.com/e..."
 
 This is also the PR for the subcell reservoir mechanics
-00:51:59	Toni Wahrstätter:	https://Sila Research/t/worst-case-block-size-and-calldata-repricing-for-glamsterdam/23895
+00:51:59	Toni Wahrstätter:	https://ethresear.ch/t/worst-case-block-size-and-calldata-repricing-for-glamsterdam/23895
 00:56:51	jochem-brouwer:	So these parties effected will economically want to bundle their calldata txs with compute txs I think?
 00:59:44	Toni Wahrstätter:	Replying to "So these parties eff..." 
 

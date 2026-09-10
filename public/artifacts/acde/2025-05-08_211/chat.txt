@@ -65,7 +65,7 @@ there are no breaks on the sil train
 or brakes
 00:13:07	nixo:	Reacted to "Normalize Being Huma..." with 💙
 00:13:12	Gary Schulte:	Reacted to "Normalize Being Huma..." with 💙
-00:13:15	Tim Beiko:	https://sips.sila.org/SIPS/sip-7935
+00:13:15	Tim Beiko:	https://sips.sila.org/EIPS/sip-7935
 00:13:15	Micah Zoltu:	Reacted to "or brakes" with 😂
 00:13:21	MariusVanDerWijden:	Replying to "or like idk, maybe..."
 
@@ -348,7 +348,7 @@ individual worst case scenarios for different bottlenecks
 00:35:14	Ansgar Dietrichs:	Replying to "And then we'll see t..."
 
 that’s why we obv should only ever actually raise the limit after validating it’s safe
-00:35:24	Tim Beiko:	http://sips.sila.org/SIPS/sip-7938
+00:35:24	Tim Beiko:	http://sips.sila.org/EIPS/sip-7938
 00:35:32	Tim Beiko:	Replying to "http://sips.sila..."
 
 Dankrad’s proposal ^
@@ -670,7 +670,7 @@ corporate needs you to find the differences between these two things.
 00:58:52	Ansgar Dietrichs:	Replying to "should the monday te..."
 
 yes it’s probably a bad proposal, I am not a frequent monday call participant
-00:59:01	Tim Beiko:	https://sips.sila.org/SIPS/sip-7934
+00:59:01	Tim Beiko:	https://sips.sila.org/EIPS/sip-7934
 00:59:01	Vasiliy Shapovalov:	Reacted to "corporate needs you ..." with 😂
 00:59:02	sacha:	Reacted to "I don’t have a good ..." with ❤️
 00:59:06	Łukasz Rozmej:	Replying to "I don’t have a good ..."
@@ -816,7 +816,8 @@ nah, i prefer a new acronym
 01:14:05	spencer-tb:	Reacted to "i think we should so..." with ➕
 01:14:30	felix (eest):	Reacted to "i think we should ..." with ➕
 01:14:39	Justin Florentine (Besu):	ok, so SFI'd but can't get on devnet till tests exists and pass?
-01:14:43	Ben Adams:	modexp is highest priority for higher gasblock size would be next priority for higher gas
+01:14:43	Ben Adams:	modexp is highest priority for higher gas
+block size would be next priority for higher gas
 01:14:55	Justin Florentine (Besu):	besu is pending
 01:15:07	Luis Pinto | Besu:	Replying to "ok, so SFI'd but can..."
 
@@ -844,7 +845,7 @@ not sure nethermind agree
 01:17:45	nixo:	Reacted to "ACDT?" with 👍
 01:18:08	Som - Erigon:	Monday
 01:18:16	Sophia Gold:	7212 is the one users constantly ask for
-01:18:48	Ben Adams:	SIP-7934 is size https://sips.sila.org/SIPS/sip-7934
+01:18:48	Ben Adams:	SIP-7934 is size https://sips.sila.org/EIPS/sip-7934
 01:19:05	Ben Adams:	7938 is expontial gas increase :)
 01:19:10	Mario Vega:	We can share a cost of testing doc maybe tomorrow, it could help clients decide
 01:19:22	Justin Florentine (Besu):	we're generally open to everything CFId
@@ -888,7 +889,7 @@ so now we are only talking about ordering of when to bring them over into the ma
 01:25:34	Francis Li:	Reacted to "I think everything w…" with ➕
 01:25:37	Ahmad Bitar | Nethermind:	We will get an ordered list on Monday
 01:25:56	Justin Florentine (Besu):	love it
-01:26:51	Justin Florentine (Besu):	CFI'd list from this https://sips.sila.org/SIPS/sip-7607  plus SIP-7934
+01:26:51	Justin Florentine (Besu):	CFI'd list from this https://sips.sila.org/EIPS/sip-7607  plus SIP-7934
 01:27:38	Sophia Gold:	Jumps are actually much cheaper than they're currently priced (proposed to reprice to 1 in glamsterdam) so I'm not sure this is necessary at all
 01:27:39	Tim Beiko:	Reacted to "CFI'd list from this..." with ❤️
 01:27:51	spencer-tb:	Reacted to "CFI'd list from this..." with ❤️
@@ -898,16 +899,16 @@ so now we are only talking about ordering of when to bring them over into the ma
 01:28:38	lightclient:	it’s not broken, people use sila all the time 🙂
 01:28:47	Sophia Gold:	Reacted to "fyi there’s inter..." with 👍
 01:28:48	Carl Beekhuizen:	Reacted to "it’s not broken, peo..." with 👍
-01:28:51	Justin Florentine (Besu):	need an SAVM roadmap working group
+01:28:51	Justin Florentine (Besu):	need an EVM roadmap working group
 01:28:54	Sophia Gold:	Reacted to "it’s not broken, ..." with 👍
 01:29:08	Storm Slivkoff:	Reacted to "it’s not broken, peo..." with 👍
-01:29:15	spencer-tb:	Reacted to "need an SAVM roadmap ..." with ➕
-01:29:16	Luis Pinto | Besu:	Reacted to "need an SAVM roadmap ..." with ➕
+01:29:15	spencer-tb:	Reacted to "need an EVM roadmap ..." with ➕
+01:29:16	Luis Pinto | Besu:	Reacted to "need an EVM roadmap ..." with ➕
 01:29:27	Sophia Gold:	Much more worthwhile to add all the SWAPs and DUPs imo
 01:29:40	lightclient:	Reacted to "Much more worthwhile..." with 👍
 01:29:45	SanLeo:	Reacted to "Much more worthwhile..." with 👍
-01:29:46	Łukasz Rozmej:	we need proper agreenment if there will be SAVM in the future (or replaced by something else)
-01:29:51	Isidoros Passadis:	Reacted to "need an SAVM roadmap ..." with ➕
+01:29:46	Łukasz Rozmej:	we need proper agreenment if there will be EVM in the future (or replaced by something else)
+01:29:51	Isidoros Passadis:	Reacted to "need an EVM roadmap ..." with ➕
 01:29:56	Justin Florentine (Besu):	Reacted to "we need proper agree..." with ➕
 01:29:58	spencer-tb:	Reacted to "we need proper agree..." with ➕
 01:29:58	lightclient:	Reacted to "we need proper agree..." with ➕
@@ -916,14 +917,14 @@ so now we are only talking about ordering of when to bring them over into the ma
 01:30:21	Ahmad Bitar | Nethermind:	Replying to "we need proper agree..."
 
 that will take a long time, we should not base short term decisions on the potential of a replacement
-01:30:21	Ansgar Dietrichs:	Replying to "need an SAVM roadmap ..."
+01:30:21	Ansgar Dietrichs:	Replying to "need an EVM roadmap ..."
 
 I am optimistic that will happen as a consequence of EOF.
 
 but not for Fusaka, but for a coherent plan for 2026 and beyond
 01:30:24	Łukasz Rozmej:	Replying to "we need proper agree..."
 
-I'm leaning pro-SAVM, but I think I might be missing some perspective
+I'm leaning pro-EVM, but I think I might be missing some perspective
 01:30:27	Luis Pinto | Besu:	But I agree with Greg that it’s hurting adoption
 01:30:41	Sophia Gold:	Replying to "we need proper agr..."
 
@@ -932,13 +933,13 @@ I think it's too early to know but we will discuss a little in Berlin
 
 hurting what adoption?
 01:30:51	Łukasz Rozmej:	Reacted to "I think it's too ear..." with 👍
-01:30:54	Ansgar Dietrichs:	Replying to "need an SAVM roadmap ..."
+01:30:54	Ansgar Dietrichs:	Replying to "need an EVM roadmap ..."
 
 just need to figure out whether the best format is EF-led or acd-led
 01:31:11	Luis Pinto | Besu:	Replying to "But I agree with Gre..."
 
 Limits what you can do in sila and language evolution
-01:31:24	Justin Florentine (Besu):	Replying to "need an SAVM roadmap ..."
+01:31:24	Justin Florentine (Besu):	Replying to "need an EVM roadmap ..."
 
 i appreciate that being said out loud, thank you!
 01:31:26	lightclient:	Replying to "But I agree with Gre..."
@@ -948,7 +949,7 @@ how? languages don’t need to use dynamic jumps
 
 you can replicate static jumps by ensuring push op before every jump
 01:31:51	Ansgar Dietrichs:	Reacted to "i appreciate that be..." with 👍
-01:31:52	Łukasz Rozmej:	Replying to "need an SAVM roadmap ..."
+01:31:52	Łukasz Rozmej:	Replying to "need an EVM roadmap ..."
 
 EOF makes transpiling/compiling lot easier, that is my main benefit from it.
 01:32:15	Łukasz Rozmej:	Reacted to "But I agree with Gre..." with 👍
@@ -980,7 +981,7 @@ or ofc both large state and continued large growth
 01:36:56	Ansgar Dietrichs:	2nd research call is next wednesday, sila-o-clock
 
 topic will be the short-term EL scaling features, with focus on Glamsterdam
-01:37:00	Tim Beiko:	https://sips.sila.org/SIPS/sip-7636
+01:37:00	Tim Beiko:	https://sips.sila.org/EIPS/sip-7636
 01:37:07	Will Corcoran:	Reacted to "2nd research call is..." with 🚀
 01:37:22	Roman:	Reacted to "2nd research call is..." with 🚀
 01:37:25	Tim Beiko:	Anything else 😄 ?

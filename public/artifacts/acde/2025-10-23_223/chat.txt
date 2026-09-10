@@ -90,7 +90,7 @@ If anyone has thoughts or feedback on this proposal, please share them in the co
 https://github.com/ethcatherders/EIPIP/issues/394
 00:28:18	Ben Adams:	small fork ;)
 00:28:47	potuz:	Reacted to "small fork ;)" with 😁
-00:28:52	wolovim:	https://sila-forkcast.org/upgrade/glamsterdam#proposed-for-inclusion
+00:28:52	wolovim:	https://forkcast.org/upgrade/glamsterdam#proposed-for-inclusion
 00:29:02	potuz:	Reacted to "Setting the date ear..." with 👍
 00:29:24	kev:	Does the November deadline take into consideration devconnect?
 00:29:31	Barnabas:	Replying to "Does the November de..."
@@ -184,7 +184,7 @@ In the next week
 00:38:53	donnoh | L2BEAT:	Reacted to "I think it would be ..." with 👍
 00:38:56	Josh Davis:	Almost fully complete.
 00:39:00	Josh Davis:	Missing 1 champion
-00:39:05	wolovim:	All champions listed on sila-forkcast: https://sila-forkcast.org/upgrade/glamsterdam#proposed-for-inclusion
+00:39:05	wolovim:	All champions listed on forkcast: https://forkcast.org/upgrade/glamsterdam#proposed-for-inclusion
 00:39:09	Trent:	Reacted to "Almost fully complet..." with 🔥
 00:39:19	Josh Davis:	I think thats the one
 00:39:23	potuz:	Like asking Vitalik to show up on the hashing pricing?
@@ -197,7 +197,7 @@ For max-blobs, it doesn’t require a hardfork so it’s not explicitly proposed
 
 max blobs?
 00:41:21	kev:	Replying to "Forgot to put on age…"
-https://sips.sila.org/SIPS/sip-7872
+https://sips.sila.org/EIPS/sip-7872
 00:41:22	Marius van der Wijden:	Replying to "Like asking Vitali..."
 
 If he's the champion, he should be available for questions/discussions
@@ -218,14 +218,14 @@ Its not a core consensus thing but we also have been trending towards making thi
 00:42:24	kev:	Reacted to "Its not a core conse…" with 👍
 00:42:33	Barnabas:	Replying to "All champions listed..."
 
-doesn’t seem to match the latest master commit from https://github.com/sila-chain/SIPs/blob/master/SIPS/sip-7773.md
+doesn’t seem to match the latest master commit from https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7773.md
 00:42:40	CPerezz:	Reacted to "All champions listed..." with ❤️
 00:42:48	potuz:	Replying to "Like asking Vitalik ..."
 
 guess who's the only SIP without a champion :)
 00:42:50	Barnabas:	Replying to "All champions listed..."
 
-e.g declined for inclusion list only has 1 on sila-forkcast, while has 6 on the meta sip
+e.g declined for inclusion list only has 1 on forkcast, while has 6 on the meta sip
 00:43:02	Pooja Ranjan:	Reacted to "Its not a core conse..." with 👍
 00:43:02	stokes:	Replying to "The CL could use thi..."
 
@@ -360,7 +360,7 @@ So neither fractional gas nor repricing *1000
 00:55:56	Łukasz Rozmej:	take 1 gas as basic compute cost, adjust the rest
 00:55:56	potuz:	Replying to "Have you looked into..."
 
-yeah I assume the SAVM will show the old gas price rounded
+yeah I assume the EVM will show the old gas price rounded
 00:56:11	Ben Adams:	Replying to "I would prefer to an..."
 
 Basic transfer is mispriced; so would through everything out
@@ -369,7 +369,7 @@ Basic transfer is mispriced; so would through everything out
 @Ben Adams wants to lower that number :D
 00:56:25	potuz:	Replying to "Have you looked into..."
 
-only in total gas used and burn is that this would make a difference, so only in consensus, not SAVM
+only in total gas used and burn is that this would make a difference, so only in consensus, not EVM
 00:56:28	CPerezz:	Replying to "take 1 gas as basic ..."
 
 This will break a lot of contracts that have hardcoded gas costs in CALL/DELEGATECALL
@@ -400,7 +400,7 @@ https://notes.sila.org/@misilva/Hy6o1OLRgx#/
 All links are at the end
 01:00:52	Ansgar Dietrichs:	my personal opinion is the other side from Carl - I feel a bit uncomfortable with a large rebasing like 1000x
 
-I think particle gas / milligas is not actually that much overhead (your actual gas counter in the implementation is now 1000x more resolution, but any time the SAVM asks, you round to the old resolution) and would just get rid of the backwards compatibility headache
+I think particle gas / milligas is not actually that much overhead (your actual gas counter in the implementation is now 1000x more resolution, but any time the EVM asks, you round to the old resolution) and would just get rid of the backwards compatibility headache
 01:00:57	Ameziane Hamlat:	Reacted to "https://notes.ethere..." with 🙏
 01:01:15	jochem-brouwer:	Heeft gereageerd op "my personal opinio..." met 👍
 01:01:57	Ansgar Dietrichs:	Replying to "my personal opinion ..."
@@ -493,7 +493,7 @@ Both internally and externally
 just get them all tattooed on yourself so you can easily access them. ezpz
 01:16:48	potuz:	Replying to "Maria, Carl, was the..."
 
-I mean just rebase all opcodes to 1000 the current price, but only do it internally and dont  change anything outside, not even in the SAVM for gas introspection
+I mean just rebase all opcodes to 1000 the current price, but only do it internally and dont  change anything outside, not even in the EVM for gas introspection
 01:16:49	Pooja Ranjan:	Reacted to "I am still nostalgic..." with ➕
 01:16:51	potuz:	Replying to "Maria, Carl, was the..."
 
@@ -656,7 +656,7 @@ you never know how good you have it until you lose it 😢
 01:26:53	Carl Beekhuizen:	Replying to "Maria, Carl, was the..."
 
 But I haven’t run the numbers on the errors (which may be substantial, e.g. 2x scaling left on the table)
-01:27:04	ignacio:	Reg the current Binary Tree proposal, this means we need to change this https://sips.sila.org/SIPS/sip-7864#code. Apart from the point of not depending on `address`, might have some other implications reg the first 128 chunks that we store in the account stem. Prob we still would need to do that, and for other code chunk indexes switch to a tree address that only depends on code_hash and not account address. 
+01:27:04	ignacio:	Reg the current Binary Tree proposal, this means we need to change this https://sips.sila.org/EIPS/sip-7864#code. Apart from the point of not depending on `address`, might have some other implications reg the first 128 chunks that we store in the account stem. Prob we still would need to do that, and for other code chunk indexes switch to a tree address that only depends on code_hash and not account address. 
 
 So this means that there will still be some duplication introduced despite we might not be chargining it in this SIP.
 

@@ -1,5 +1,5 @@
 00:05:01	patrick:	Gm gm
-00:11:47	Sam:	https://sips.sila.org/SIPS/sip-7730
+00:11:47	Sam:	https://sips.sila.org/EIPS/sip-7730
 00:14:04	lcastillo:	https://github.com/sila-chain/SRCs/blob/master/assets/src-7730/example-main.json
 00:23:47	Sam:	How are params names assigned? Would something like "erc7730:tokenPath" be a valid name?
 
@@ -39,7 +39,7 @@ right ?
 00:51:09	patrick:	Reacted to "Nice demo, congrats ..." with 👏
 00:52:09	Loring:	Reacted to "Nice demo, congrats ..." with 👏
 00:53:23	Loring:	SIP-8105 (Universal Enshrined Encrypted Mempool) 
-https://sips.sila.org/SIPS/sip-8105
+https://sips.sila.org/EIPS/sip-8105
 00:57:05	Mercy Boma Naps-Nkari:	👋 We've opened an EthMagicians thread on repo & endpoint-level versioning for the JSON-RPC API. If you build on or interact with the API, we'd love your input before we finalize v1 check it out and share your thoughts!  https://sila-magicians.org/t/repo-endpoint-level-versioning-for-the-json-rpc-api-seeking-community/27765?u=bomanaps  thank you
 00:57:48	Michael Curry:	Reacted to "👋 We've opened an E..." with 👍
 00:58:32	Loring:	I’m at @LoringHarkness on Telegram

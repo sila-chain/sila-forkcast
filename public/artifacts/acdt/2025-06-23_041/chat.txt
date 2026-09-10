@@ -14,7 +14,8 @@ Yeh! Just waiting for it to finish running
 00:14:51	Barnabas:	Replying to "everyone seems to ha..."
 
 I’m guessing its fork digest related issue?
-00:15:02	Łukasz Rozmej:	Does it makes sense to include 7907 in devnet 2 without it final spec?We have to now do 7907 just to modify it afterwards. Also benchmarks ect. are not representantive of final form.
+00:15:02	Łukasz Rozmej:	Does it makes sense to include 7907 in devnet 2 without it final spec?
+We have to now do 7907 just to modify it afterwards. Also benchmarks ect. are not representantive of final form.
 00:15:28	Gabriel Trintinalia | Besu:	Reacted to "Yeh! Just waiting fo..." with 👍
 00:15:40	Enrico Del Fante (tbenr):	Replying to "everyone seems to ha..."
 
@@ -46,7 +47,8 @@ but i agree with your concern @Łukasz Rozmej in general and i do think there wi
 00:18:58	Gabriel Trintinalia | Besu:	Reacted to "I want to present so..." with 👍
 00:19:00	Łukasz Rozmej:	Replying to "Does it makes sense ..."
 
-all sounds like:https://i.pinimg.com/1200x/95/4e/0d/954e0db28bbc0a2d8cf6ce15212a26a6.jpg
+all sounds like:
+https://i.pinimg.com/1200x/95/4e/0d/954e0db28bbc0a2d8cf6ce15212a26a6.jpg
 00:19:18	Roman:	Reacted to "all sounds like:
 htt..." with 😂
 00:19:37	Barnabas:	Please use  fusaka-devnet-2  branch name

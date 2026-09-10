@@ -36,7 +36,7 @@ Same for lighthouse
 00:19:08	Parithosh Jayanthi:	Were all the bugs in devnet-2 fixed or did we patch it over with validator messing around?
 00:19:19	Manu:	+1 about devnet-2 stability
 00:19:22	MatthewKeil:	Very much agreed
-00:20:21	Justin Florentine (Besu):	https://sips.sila.org/SIPS/sip-7910
+00:20:21	Justin Florentine (Besu):	https://sips.sila.org/EIPS/sip-7910
 00:20:27	Gabriel Trintinalia | Besu:	Reacted to "https://sips.ethereu..." with ➕
 00:20:30	Mario Vega:	Reacted to "https://sips.ethereu..." with ➕
 00:20:38	Barnabas:	Reacted to "https://sips.ethereu..." with ➕

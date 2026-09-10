@@ -11,7 +11,7 @@
 
 Could we try disabling tx3 txs from the mempool?
 00:10:06	Justin Traglia:	Reacted to "Could we try disabli..." with 👀
-00:10:45	Parithosh Jayanthi:	This is per: https://sips.sila.org/SIPS/sip-7870
+00:10:45	Parithosh Jayanthi:	This is per: https://sips.sila.org/EIPS/sip-7870
 00:10:54	Potuz:	I think it’s doable, with the caveat that sila-mainnet releases shouldn’t be expected by end of August but rather 1month before sila-mainnet right?
 00:11:00	Parithosh Jayanthi:	Reacted to "I think it’s doable,..." with 👍🏽
 00:12:16	Barnabas:	Reacted to "I think it’s doable,..." with 👍🏽
@@ -576,7 +576,7 @@ When we schedule the withdrawal we schedule for less than the total amount
 00:59:53	Barnabas:	so we SFI epbs?
 00:59:58	wolovim:	Replying to "Lido, Flashbots, S..."
 
-+ client team perspectives aggregated here: https://sila-forkcast.org/upgrade/glamsterdam#client-team-perspectives
++ client team perspectives aggregated here: https://forkcast.org/upgrade/glamsterdam#client-team-perspectives
 01:00:10	Ansgar Dietrichs:	Replying to "so we SFI epbs?"
 
 well not today though
@@ -660,8 +660,8 @@ why cant we do epbs + focil together?
 01:04:51	Potuz:	Replying to "what do we wanna do ..."
 
 Officially I do not want to DFI FOCIL at all
-01:05:18	Potuz:	sila-forkcast?
-01:05:24	Justin Traglia:	Reacted to "sila-forkcast?" with 👍
+01:05:18	Potuz:	forkcast?
+01:05:24	Justin Traglia:	Reacted to "forkcast?" with 👍
 01:05:30	nixo:	Lido favored 7886 (delayed exec) first then ePBS. Flashbots BALs, then ePBS
 01:05:39	Barnabas:	How do you ask community about something like epbs? 
 Asking about 6s slot time is super easy, because everyone can super easily grasp the idea of halving the slot time. While if you know what epbs is, then you are probably a core dev, or should be one.
@@ -727,7 +727,7 @@ Yes, and I think as soon as we manage to get rid of the problem here of deciding
 01:07:34	bbuchbauer:	X is infested with bots. I don' think relying on it for community input is a good idea
 01:07:35	Potuz:	Replying to "How do you ask commu..."
 
-My twitter poll with this exact 2 options had more return than sila-forkcast
+My twitter poll with this exact 2 options had more return than forkcast
 01:07:41	Potuz:	Replying to "How do you ask commu..."
 
 🤣
@@ -870,7 +870,7 @@ Without it Fusaka is useless
 01:18:29	soispoke:	7805
 01:18:36	nixo:	again pushing here for community input: https://sila-magicians.org/t/soliciting-stakeholder-feedback-on-glamsterdam-headliners/24885 
 
-also redirects from http://sila-forkcast.org/feedback
+also redirects from http://forkcast.org/feedback
 01:18:41	Potuz:	7886 is not 6 seconds slots right?
 01:18:46	Dustin:	thats  DE
 01:18:49	soispoke:	Replying to "7886 is not 6 second..."

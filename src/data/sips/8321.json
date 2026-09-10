@@ -1,0 +1,45 @@
+{
+  "id": 8321,
+  "title": "SIP-8321: Hash-Chain RANDAO",
+  "status": "Draft",
+  "description": "Replace the BLS-signature RANDAO reveal with a post-quantum hash-chain commit-reveal scheme",
+  "author": "Kevaundray Wedderburn (@kevaundray), Benedikt Wagner (@benedikt-wagner), Tom Wambsgans (@TomWambsgans), Justin Drake (@JustinDrake), Thomas Coratger (@tcoratger)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-07-05",
+  "discussionLink": "https://sila-magicians.org/t/sip-8321-hash-chain-randao/28942",
+  "requires": [
+    7916
+  ],
+  "reviewer": "bot",
+  "layer": "CL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acdc/183",
+          "date": "2026-07-23"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Kevaundray Wedderburn",
+          "discord": "kevaundray"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Sila's randomness depends on each proposer's signature being the only one it could possibly have produced. A quantum computer could recover a validator's key and predict every future contribution, and the planned post-quantum signature lacks that uniqueness. This proposal replaces the signature with a chain of hashes.",
+  "benefits": [
+    "Rests on hash properties believed to hold against quantum attack, not on BLS uniqueness",
+    "Costs one 32-byte commitment per validator and one hash check per proposal",
+    "Unregistered validators keep using the old path, so no cutover deadline is needed"
+  ],
+  "tradeoffs": [
+    "A commitment can never be updated, so a lost or mistyped chain forces exit and re-entry",
+    "Introduces a chain secret needing the same custody as a signing key",
+    "Block signatures and the registration itself stay BLS, so the transition is incomplete"
+  ]
+}

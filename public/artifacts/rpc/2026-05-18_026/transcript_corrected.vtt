@@ -2330,7 +2330,7 @@ sina: The issue is that Each client does… the…
 
 583
 01:10:53.270 --> 01:10:59.949
-sina: validation, like the SAVM validations, in a different order, and this causes them to fail at
+sina: validation, like the EVM validations, in a different order, and this causes them to fail at
 
 584
 01:11:00.210 --> 01:11:05.810

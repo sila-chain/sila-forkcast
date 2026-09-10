@@ -2,7 +2,7 @@
   "id": 8120,
   "title": "SIP-8120: MLOAD8 and CALLDATALOAD8 Opcodes",
   "status": "Draft",
-  "description": "Adds SAVM opcodes for efficient single-byte memory and calldata loads.",
+  "description": "Adds EVM opcodes for efficient single-byte memory and calldata loads.",
   "author": "Helkomine (@Helkomine)",
   "type": "Standards Track",
   "category": "Core",

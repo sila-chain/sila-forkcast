@@ -78,7 +78,7 @@ Kevaundray Wedderburn: Welcome to the L1 ZKVM breakout call number 3.
 
 20
 00:07:01.060 --> 00:07:10.909
-Kevaundray Wedderburn: Today… We have 3 items on the agenda. The first one is an update on SAVM ASM.
+Kevaundray Wedderburn: Today… We have 3 items on the agenda. The first one is an update on EVM ASM.
 
 21
 00:07:10.990 --> 00:07:26.580
@@ -86,7 +86,7 @@ Kevaundray Wedderburn: The second, which can be rolled into the project updates,
 
 22
 00:07:26.830 --> 00:07:35.099
-Kevaundray Wedderburn: unmute to give us maybe an update on SAVM ASM, and maybe a small introduction to what it is, in case folks don't know.
+Kevaundray Wedderburn: unmute to give us maybe an update on EVM ASM, and maybe a small introduction to what it is, in case folks don't know.
 
 23
 00:07:35.410 --> 00:07:40.699
@@ -130,7 +130,7 @@ Derek Sorensen: I don't know. There are probably some details that UHE will know
 
 33
 00:08:39.919 --> 00:08:57.349
-Derek Sorensen: Evmasm is an attempt to write a guest program for, L1 ZK SAVM… ZKVMs, the SAVM in… directly in RISC-V assembly. And so there are some good reasons for doing this.
+Derek Sorensen: Evmasm is an attempt to write a guest program for, L1 ZK EVM… ZKVMs, the EVM in… directly in RISC-V assembly. And so there are some good reasons for doing this.
 
 34
 00:09:00.310 --> 00:09:16.520
@@ -142,15 +142,15 @@ Derek Sorensen: if it's constrained within the context of a, like, a proof syste
 
 36
 00:09:34.200 --> 00:09:51.330
-Derek Sorensen: So, we have a formal specification of RISC-V through SAIL, and we have a formal specification of the SAVM, that was done by NetherMind that was extensively tested, and there's kind of a whole story there. So, the idea here is to, write
+Derek Sorensen: So, we have a formal specification of RISC-V through SAIL, and we have a formal specification of the EVM, that was done by NetherMind that was extensively tested, and there's kind of a whole story there. So, the idea here is to, write
 
 37
 00:09:51.650 --> 00:09:54.909
-Derek Sorensen: the SAVM in assembly for RISC-V,
+Derek Sorensen: the EVM in assembly for RISC-V,
 
 38
 00:09:55.120 --> 00:10:13.190
-Derek Sorensen: Prove the RISC-V bit of it correct with regards to sale, prove the SAVM bit of it correct with regards to our SAVM spec, and have it as optimal as possible, and importantly, have it maintainable and kind of generatable through AI.
+Derek Sorensen: Prove the RISC-V bit of it correct with regards to sale, prove the EVM bit of it correct with regards to our EVM spec, and have it as optimal as possible, and importantly, have it maintainable and kind of generatable through AI.
 
 39
 00:10:15.180 --> 00:10:30.599
@@ -162,7 +162,7 @@ Derek Sorensen: a quick overview, so in EVMASM, there are two key components. Th
 
 41
 00:10:40.450 --> 00:10:51.550
-Derek Sorensen: of RISC-V, and within that is the SAVM implemented with RISC-V semantics. So, I'll start really quickly with the… looking at RISC-V.
+Derek Sorensen: of RISC-V, and within that is the EVM implemented with RISC-V semantics. So, I'll start really quickly with the… looking at RISC-V.
 
 42
 00:10:52.340 --> 00:10:54.310
@@ -174,7 +174,7 @@ Derek Sorensen: Yeah, if we… if we just go to this basic file, RISC-V has… w
 
 44
 00:11:09.540 --> 00:11:15.999
-Derek Sorensen: Which is a subset of the full RISC-V, as I understand it, but kind of the ones used by the SAVM.
+Derek Sorensen: Which is a subset of the full RISC-V, as I understand it, but kind of the ones used by the EVM.
 
 45
 00:11:16.920 --> 00:11:23.159
@@ -198,7 +198,7 @@ Derek Sorensen: And there's, kind of the program counter, things like that, and 
 
 50
 00:12:02.520 --> 00:12:12.130
-Derek Sorensen: And then, on the SAVM side, we have, as I understand it, so I guess here are the opcodes we have implemented.
+Derek Sorensen: And then, on the EVM side, we have, as I understand it, so I guess here are the opcodes we have implemented.
 
 51
 00:12:12.290 --> 00:12:21.600
@@ -234,7 +234,7 @@ Derek Sorensen: From a high level, I guess…
 
 59
 00:13:16.210 --> 00:13:21.290
-Derek Sorensen: So, from the SAVM, this is, this is,
+Derek Sorensen: So, from the EVM, this is, this is,
 
 60
 00:13:21.770 --> 00:13:28.580
@@ -250,11 +250,11 @@ Derek Sorensen: And we're working on formally verifying those.
 
 63
 00:13:41.400 --> 00:13:59.180
-Derek Sorensen: And we've done kind of the more basic ones, and there are some more advanced ones, to… to do next. From the SAVM side, as far as I know, so the kind of 54, these, like, primary opcodes, they're all done. They're all at least, implemented, and they have a spec.
+Derek Sorensen: And we've done kind of the more basic ones, and there are some more advanced ones, to… to do next. From the EVM side, as far as I know, so the kind of 54, these, like, primary opcodes, they're all done. They're all at least, implemented, and they have a spec.
 
 64
 00:13:59.230 --> 00:14:08.950
-Derek Sorensen: We haven't yet formally verified anything against the SAVM spec done by NetherMind, which is a little bit of a higher level of abstraction, so that's kind of… that's a to-do.
+Derek Sorensen: We haven't yet formally verified anything against the EVM spec done by NetherMind, which is a little bit of a higher level of abstraction, so that's kind of… that's a to-do.
 
 65
 00:14:10.090 --> 00:14:23.549
@@ -262,7 +262,7 @@ Derek Sorensen: But… and then, there's stuff, relating to, like, memory, state
 
 66
 00:14:23.550 --> 00:14:31.739
-Derek Sorensen: And, you know, so there's a lot to do on that side, from the implementation perspective of the SAVM, as well as from the verification. But…
+Derek Sorensen: And, you know, so there's a lot to do on that side, from the implementation perspective of the EVM, as well as from the verification. But…
 
 67
 00:14:31.870 --> 00:14:40.900
@@ -294,7 +294,7 @@ Kevaundray Wedderburn: Thanks, Derek. There's a question in the chat by…
 
 74
 00:15:36.140 --> 00:15:46.569
-Kevaundray Wedderburn: Alexandra, it seems that the overall size of the SAVM implementation is very small. Is that around 1,000-ish RISC-V instructions for the SAVM?
+Kevaundray Wedderburn: Alexandra, it seems that the overall size of the EVM implementation is very small. Is that around 1,000-ish RISC-V instructions for the EVM?
 
 75
 00:15:48.310 --> 00:15:50.119
@@ -322,7 +322,7 @@ Alexandre Belling: Yeah, so just to clarify, it's because I saw that, the implem
 
 81
 00:16:17.160 --> 00:16:34.279
-Alexandre Belling: If my count is right. So yeah, that's why I was, basically eyeballing, 1,000, research instruction, but I remember seeing a complete health program for the SAVM, and it was, like, more in the 100 thousands.
+Alexandre Belling: If my count is right. So yeah, that's why I was, basically eyeballing, 1,000, research instruction, but I remember seeing a complete health program for the EVM, and it was, like, more in the 100 thousands.
 
 82
 00:16:34.830 --> 00:16:35.949
@@ -354,7 +354,7 @@ Alexandre Belling: Yeah, that makes sense.
 
 89
 00:17:17.440 --> 00:17:34.450
-Alexandre Belling: Because the compiler would intuitively try to minimize the number of instruction code per SAVM execution, while here it's, basically minimizing the program complexity, because it would just be too complicated, to do one function for Gaza counting or stuff like that.
+Alexandre Belling: Because the compiler would intuitively try to minimize the number of instruction code per EVM execution, while here it's, basically minimizing the program complexity, because it would just be too complicated, to do one function for Gaza counting or stuff like that.
 
 90
 00:17:36.800 --> 00:17:40.760
@@ -406,7 +406,7 @@ Mamy: opcodes. Right now, it's very inefficient due to, all the carries.
 
 102
 00:19:08.640 --> 00:19:19.869
-Mamy: I would even implement it differently in RISC-V using unsaturated arithmetic, but we could bypass that by having, similar to SAVM ASM, some kind of SAVM error.
+Mamy: I would even implement it differently in RISC-V using unsaturated arithmetic, but we could bypass that by having, similar to EVM ASM, some kind of EVM error.
 
 103
 00:19:20.060 --> 00:19:32.519
@@ -446,7 +446,7 @@ Kevaundray Wedderburn: Goals as to when you think we could possibly prove
 
 112
 00:20:38.430 --> 00:20:41.639
-Kevaundray Wedderburn: The SDF, or even just the SAVM part.
+Kevaundray Wedderburn: The SDF, or even just the EVM part.
 
 113
 00:20:44.570 --> 00:20:47.980
@@ -950,7 +950,7 @@ Marcin Bugaj: Enabling zero, copy support for data transfer.
 
 238
 00:35:43.900 --> 00:35:55.869
-Marcin Bugaj: Third is Cryptographic Accelerator C interface, which is basically a C header exposing SAVM precompiled equivalent operations through a common C API.
+Marcin Bugaj: Third is Cryptographic Accelerator C interface, which is basically a C header exposing EVM precompiled equivalent operations through a common C API.
 
 239
 00:35:56.710 --> 00:36:01.609

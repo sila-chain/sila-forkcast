@@ -25,6 +25,18 @@ export function normalizeRating(
         default: return null;
       }
 
+    // D is a rejection request rather than a priority, so only four tiers describe
+    // priority and the scale tops out at 4 with no gap above the 0 reserved for reject.
+    case 'tier-abcds-reject':
+      switch (rating) {
+        case 's': return 4;
+        case 'a': return 3;
+        case 'b': return 2;
+        case 'c': return 1;
+        case 'd': return 0;
+        default: return null;
+      }
+
     case 'support-oppose':
       switch (rating) {
         case 'strongly-support': return 5;
@@ -55,6 +67,63 @@ export function normalizeRating(
   }
 }
 
+export interface ScoreLevel {
+  score: number;
+  label: string;
+}
+
+/**
+ * What each normalized score means, per fork. Client teams have redefined their tiers
+ * between upgrades — most notably Hegotá's bottom tier, which asks for rejection rather
+ * than describing a low priority — so each fork declares its own scale rather than
+ * sharing one. This is the single source of truth for the legend, the badge colors and
+ * the support/oppose thresholds.
+ */
+const FORK_SCORE_SCALE: Record<string, ScoreLevel[]> = {
+  glamsterdam: [
+    { score: 5, label: 'Strong Support' },
+    { score: 4, label: 'Support' },
+    { score: 3, label: 'Neutral' },
+    { score: 2, label: 'Low Priority' },
+    { score: 1, label: 'Oppose' },
+  ],
+  hegota: [
+    { score: 4, label: 'Strong Support' },
+    { score: 3, label: 'Support' },
+    { score: 2, label: 'Stretch Goal' },
+    { score: 1, label: 'Low Priority' },
+    { score: 0, label: 'DFI' },
+  ],
+};
+
+const DEFAULT_MAX_SCORE = 5;
+const DEFAULT_MIN_SCORE = 1;
+
+export function getScoreScale(fork: string): ScoreLevel[] {
+  return FORK_SCORE_SCALE[fork.toLowerCase()] ?? [];
+}
+
+/** The top of a fork's scale, which anchors both the badge colors and "high support". */
+export function getMaxScore(fork: string): number {
+  const scale = getScoreScale(fork);
+  return scale.length > 0 ? Math.max(...scale.map((level) => level.score)) : DEFAULT_MAX_SCORE;
+}
+
+/** The bottom of a fork's scale — the "drop this" rung, which anchors "opposition". */
+export function getMinScore(fork: string): number {
+  const scale = getScoreScale(fork);
+  return scale.length > 0 ? Math.min(...scale.map((level) => level.score)) : DEFAULT_MIN_SCORE;
+}
+
+/**
+ * Whether a rating is an explicit request to reject the SIP, as opposed to merely
+ * ranking it low. Only the newer tier system draws that distinction; Glamsterdam's
+ * `tier-abcds`/`custom` ratings keep their original low-priority scoring.
+ */
+export function isRejection(ratingSystem: RatingSystem, rawRating: string | null): boolean {
+  return ratingSystem === 'tier-abcds-reject' && rawRating?.toLowerCase() === 'd';
+}
+
 /**
  * Get a human-readable label for a raw rating
  */
@@ -75,6 +144,16 @@ export function getRatingLabel(
         case 'c': return 'C-Tier';
         case 'd': return 'D-Tier';
         case 'dfi': return 'DFI';
+        default: return rawRating;
+      }
+
+    case 'tier-abcds-reject':
+      switch (rating) {
+        case 's': return 'S-Tier';
+        case 'a': return 'A-Tier';
+        case 'b': return 'B-Tier';
+        case 'c': return 'C-Tier';
+        case 'd': return 'DFI';
         default: return rawRating;
       }
 
@@ -110,10 +189,15 @@ export function getRatingLabel(
 
 /**
  * Get Tailwind color classes for a normalized score badge
- * @param score - The normalized score (1-5), null for neutral/uncertain, or undefined for no stance
+ * @param score - The normalized score (0-5), null for neutral/uncertain, or undefined for no stance
  * @param hasStance - Whether the client has any stance recorded (to differentiate neutral vs not mentioned)
+ * @param maxScore - Top of the fork's scale, so its best tier reads green on a shorter scale too
  */
-export function getScoreColor(score: number | null, hasStance: boolean = true): string {
+export function getScoreColor(
+  score: number | null,
+  hasStance: boolean = true,
+  maxScore: number = DEFAULT_MAX_SCORE
+): string {
   if (score === null) {
     if (hasStance) {
       // Neutral/uncertain - client considered it but has no strong opinion (darker gray)
@@ -124,7 +208,12 @@ export function getScoreColor(score: number | null, hasStance: boolean = true): 
     }
   }
 
-  switch (score) {
+  // 0 is only ever a rejection request, so it stays the deepest red on any scale.
+  if (score === 0) {
+    return 'bg-red-200 text-red-800 dark:bg-red-900/50 dark:text-red-200';
+  }
+
+  switch (score + (DEFAULT_MAX_SCORE - maxScore)) {
     case 5:
       return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300';
     case 4:
@@ -152,6 +241,7 @@ export function getScoreLabel(score: number | null): string {
     case 3: return 'Neutral';
     case 2: return 'Low';
     case 1: return 'Oppose';
+    case 0: return 'Reject';
     default: return '?';
   }
 }
@@ -167,6 +257,9 @@ function calculateAverage(stances: ClientStance[]): number | null {
   return Math.round((sum / scoredStances.length) * 10) / 10;
 }
 
+/** Shared so callers that opt nobody in keep one reference across renders. */
+export const NO_COUNTED_TEAMS: ReadonlySet<string> = new Set();
+
 /**
  * Calculate aggregate statistics for an SIP based on client stances
  */
@@ -174,30 +267,59 @@ export function calculateEipAggregate(
   eipId: number,
   stances: ClientStance[],
   eipData: SIP | undefined,
-  forkName: string
+  forkName: string,
+  /** Non-client teams the reader has opted into the scores. */
+  countedOtherTeams: ReadonlySet<string> = NO_COUNTED_TEAMS,
+  /**
+   * When non-empty, the only teams in scope at all — the focused view's "show only these
+   * teams", where every score has to cover exactly the columns the reader can see.
+   */
+  focusTeams: ReadonlySet<string> = NO_COUNTED_TEAMS
 ): EipAggregateStance {
-  const elStances = stances.filter(s => s.clientType === 'EL');
-  const clStances = stances.filter(s => s.clientType === 'CL');
+  const inScope = (s: ClientStance) => focusTeams.size === 0 || focusTeams.has(s.clientName);
 
-  const scoredStances = stances.filter(s => s.normalizedScore !== null);
+  const elStances = stances.filter(s => s.clientType === 'EL' && inScope(s));
+  const clStances = stances.filter(s => s.clientType === 'CL' && inScope(s));
+
+  // Client teams always count; a non-client team counts only where the reader opted it in,
+  // and focusing on one is itself an opt-in.
+  const countedStances = [
+    ...elStances,
+    ...clStances,
+    ...stances.filter(
+      s =>
+        s.clientType === 'OTHER' &&
+        inScope(s) &&
+        (focusTeams.size > 0 || countedOtherTeams.has(s.clientName))
+    ),
+  ];
+  const scoredStances = countedStances.filter(s => s.normalizedScore !== null);
+
+  // Both thresholds are read off the fork's own legend, so one sentence describes them on
+  // every fork: support is the two tiers labelled Support, opposition is the bottom rung
+  // ("Oppose" on a 1-5 scale, "DFI" on a 0-4 one). Anything between is neither.
+  const supportFloor = getMaxScore(forkName) - 1;
+  const opposeCeiling = getMinScore(forkName);
 
   return {
     eipId,
     eipTitle: eipData ? getLaymanTitle(eipData) : `SIP-${eipId}`,
     layer: determineEipLayer(eipData),
     inclusionStage: eipData ? getInclusionStage(eipData, forkName) : 'Unknown',
-    averageScore: calculateAverage(stances),
+    averageScore: calculateAverage(countedStances),
+    // Per-layer columns stay layer-pure: a non-client team belongs to neither.
     elAverageScore: calculateAverage(elStances),
     clAverageScore: calculateAverage(clStances),
     stanceCount: scoredStances.length,
     elStanceCount: elStances.filter(s => s.normalizedScore !== null).length,
     clStanceCount: clStances.filter(s => s.normalizedScore !== null).length,
-    supportCount: scoredStances.filter(s => (s.normalizedScore ?? 0) >= 4).length,
+    supportCount: scoredStances.filter(s => (s.normalizedScore ?? 0) >= supportFloor).length,
     neutralCount: scoredStances.filter(s => {
       const score = s.normalizedScore ?? 0;
-      return score >= 2 && score <= 3;
+      return score > opposeCeiling && score < supportFloor;
     }).length,
-    opposeCount: scoredStances.filter(s => s.normalizedScore === 1).length,
+    opposeCount: scoredStances.filter(s => (s.normalizedScore ?? 0) <= opposeCeiling).length,
+    rejectCount: countedStances.filter(s => isRejection(s.ratingSystem, s.rawRating)).length,
     stances,
   };
 }
@@ -219,26 +341,6 @@ function determineEipLayer(sip: SIP | undefined): 'EL' | 'CL' | null {
   }
 
   return null;
-}
-
-/**
- * Get client initials for compact display
- */
-export function getClientInitials(clientName: string): string {
-  switch (clientName.toLowerCase()) {
-    case 'besu': return 'Be';
-    case 'erigon': return 'Er';
-    case 'geth': return 'Ge';
-    case 'nethermind': return 'Ne';
-    case 'reth': return 'Re';
-    case 'grandine': return 'Gr';
-    case 'lighthouse': return 'LH';
-    case 'lodestar': return 'Lo';
-    case 'nimbus': return 'Ni';
-    case 'prysm': return 'Pr';
-    case 'teku': return 'Te';
-    default: return clientName.substring(0, 2);
-  }
 }
 
 export type SortField = 'sip' | 'average' | 'elAverage' | 'clAverage' | 'stanceCount' | 'stage';

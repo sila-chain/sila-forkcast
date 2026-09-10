@@ -2,7 +2,7 @@
   "id": 3085,
   "title": "SIP-3085: wallet_addEthereumChain RPC Method",
   "status": "Stagnant",
-  "description": "Adds an RPC method to add SAVM-compatible chains",
+  "description": "Adds an RPC method to add EVM-compatible chains",
   "author": "Erik Marks (@rekmarks), Pedro Gomes (@pedrouid), Pandapip1 (@Pandapip1)",
   "type": "Standards Track",
   "category": "Interface",

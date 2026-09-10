@@ -88,7 +88,7 @@ great thanks!
 same as before, 4th march
 00:32:03	Parithosh Jayanthi:	Reacted to "same as before, 4th ..." with 👍🏽
 00:33:05	Jen:	Reacted to "same as before, 4th ..." with 👍🏽
-00:33:06	Mario Vega:	https://sips.sila.org/SIPS/sip-7954
+00:33:06	Mario Vega:	https://sips.sila.org/EIPS/sip-7954
 00:33:43	Mario Vega:	https://github.com/sila-chain/execution-apis/pull/747
 00:33:54	Vukasin:	Reacted to "https://notes.ethe..." with 👍
 00:35:49	Barnabas:	I think first we should merge if the spec is good

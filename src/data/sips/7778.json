@@ -39,7 +39,7 @@
       ]
     }
   ],
-  "laymanDescription": "Closes a loophole where gas refunds let blocks pack extra work. Refunds still reduce user costs, but don't shrink the block's counted gas. Aligns block size with real SAVM work and reduces worst-case block-size variance.",
+  "laymanDescription": "Closes a loophole where gas refunds let blocks pack extra work. Refunds still reduce user costs, but don't shrink the block's counted gas. Aligns block size with real EVM work and reduces worst-case block-size variance.",
   "northStarAlignment": {
     "scaleL1": {
       "description": "Reduces worst-case block size and variance, improving throughput predictability; does not increase average capacity or lower fees network-wide."
@@ -72,7 +72,7 @@
     }
   },
   "benefits": [
-    "Aligns block gas with actual SAVM work.",
+    "Aligns block gas with actual EVM work.",
     "Prevents refund-based circumvention of block limits.",
     "Reduces worst-case block size variance.",
     "Improves node execution predictability and safety."

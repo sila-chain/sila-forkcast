@@ -26,7 +26,7 @@ Jihoon: Luca from L2Beat will gonna give us a talk about fossil and native roll-
 
 7
 00:09:19.220 --> 00:09:34.719
-Jihoon: A native roll-up is an SAVM-based roll-up using the execute precompile, so you can minimize the risk of bug, governance, and so on and so forth. For anyone interested, please take a look into this article.
+Jihoon: A native roll-up is an EVM-based roll-up using the execute precompile, so you can minimize the risk of bug, governance, and so on and so forth. For anyone interested, please take a look into this article.
 
 8
 00:09:35.600 --> 00:09:37.560
@@ -1010,7 +1010,7 @@ donnoh | L2BEAT: And by the way, sorry, the thing that I… that I forgot to men
 
 253
 00:39:06.580 --> 00:39:13.840
-donnoh | L2BEAT: So, all major SAVM rollups, like Optimism, Base, you know, Arbitrum, Scroll.
+donnoh | L2BEAT: So, all major EVM rollups, like Optimism, Base, you know, Arbitrum, Scroll.
 
 254
 00:39:14.260 --> 00:39:19.129
@@ -1034,7 +1034,7 @@ Jihoon: Is it okay to understand that if we implement fossil in L1, that's gonna
 
 259
 00:39:47.110 --> 00:40:02.310
-donnoh | L2BEAT: I think it is possible, because again, all the SAVM rollups, what they do is that they just fork what is on L1. So if they fork L1 and POSIL is there, they have this mechanism that they can potentially use for personal transactions.
+donnoh | L2BEAT: I think it is possible, because again, all the EVM rollups, what they do is that they just fork what is on L1. So if they fork L1 and POSIL is there, they have this mechanism that they can potentially use for personal transactions.
 
 260
 00:40:02.730 --> 00:40:08.979

@@ -1,12 +1,12 @@
 {
   "repo": "sila/execution-specs",
-  "fetchedAt": "2026-07-13T07:24:52.042705+00:00",
+  "fetchedAt": "2026-09-10T06:38:05.836865+00:00",
   "sips": {
     "2780": {
-      "testFiles": 4,
-      "testFunctions": 10,
-      "testCases": 174,
-      "branch": "sips/amsterdam/sip-2780",
+      "testFiles": 10,
+      "testFunctions": 62,
+      "testCases": 281,
+      "branch": "forks/amsterdam",
       "directoryName": "eip2780_reduce_intrinsic_tx_gas"
     },
     "7708": {
@@ -17,23 +17,23 @@
       "directoryName": "eip7708_eth_transfer_logs"
     },
     "7778": {
-      "testFiles": 1,
-      "testFunctions": 5,
-      "testCases": 101,
+      "testFiles": 3,
+      "testFunctions": 11,
+      "testCases": 248,
       "branch": "forks/amsterdam",
       "directoryName": "eip7778_block_gas_accounting_without_refunds"
     },
     "7843": {
       "testFiles": 3,
-      "testFunctions": 5,
-      "testCases": 12,
+      "testFunctions": 13,
+      "testCases": 30,
       "branch": "forks/amsterdam",
       "directoryName": "eip7843_slotnum"
     },
     "7928": {
-      "testFiles": 11,
-      "testFunctions": 166,
-      "testCases": 2002,
+      "testFiles": 13,
+      "testFunctions": 189,
+      "testCases": 2086,
       "branch": "forks/amsterdam",
       "directoryName": "eip7928_block_level_access_lists"
     },
@@ -45,37 +45,37 @@
       "directoryName": "eip7954_increase_max_contract_size"
     },
     "7976": {
-      "testFiles": 6,
-      "testFunctions": 8,
-      "testCases": 529,
+      "testFiles": 7,
+      "testFunctions": 10,
+      "testCases": 546,
       "branch": "forks/amsterdam",
       "directoryName": "eip7976_increase_calldata_floor_cost"
     },
     "7981": {
-      "testFiles": 4,
-      "testFunctions": 12,
-      "testCases": 113,
+      "testFiles": 5,
+      "testFunctions": 17,
+      "testCases": 129,
       "branch": "forks/amsterdam",
       "directoryName": "eip7981_increase_access_list_cost"
     },
     "7997": {
       "testFiles": 3,
-      "testFunctions": 15,
-      "testCases": 22,
-      "branch": "sips/amsterdam/sip-7997",
+      "testFunctions": 16,
+      "testCases": 24,
+      "branch": "forks/amsterdam",
       "directoryName": "eip7997_deterministic_factory_predeploy"
     },
     "8024": {
-      "testFiles": 6,
-      "testFunctions": 53,
-      "testCases": 248,
+      "testFiles": 9,
+      "testFunctions": 68,
+      "testCases": 284,
       "branch": "forks/amsterdam",
       "directoryName": "eip8024_dupn_swapn_exchange"
     },
     "8037": {
-      "testFiles": 14,
-      "testFunctions": 227,
-      "testCases": 875,
+      "testFiles": 15,
+      "testFunctions": 267,
+      "testCases": 1076,
       "branch": "forks/amsterdam",
       "directoryName": "eip8037_state_creation_gas_cost_increase"
     },
@@ -86,10 +86,24 @@
       "branch": "forks/amsterdam",
       "directoryName": "eip8038_state_access_gas_cost_increase"
     },
+    "8070": {
+      "testFiles": 2,
+      "testFunctions": 7,
+      "testCases": 145,
+      "branch": "forks/amsterdam",
+      "directoryName": "eip8070_sparse_blobpool"
+    },
+    "8141": {
+      "testFiles": 12,
+      "testFunctions": 82,
+      "testCases": 1380,
+      "branch": "sips/amsterdam/sip-8141",
+      "directoryName": "eip8141_frame_transactions"
+    },
     "8246": {
-      "testFiles": 1,
-      "testFunctions": 2,
-      "testCases": 1298,
+      "testFiles": 3,
+      "testFunctions": 7,
+      "testCases": 1308,
       "branch": "forks/amsterdam",
       "directoryName": "eip8246_selfdestruct_no_burn"
     },

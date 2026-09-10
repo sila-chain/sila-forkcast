@@ -96,7 +96,7 @@ Yes
 https://t.me/ERC8004
 00:39:01	Marco De Rossi:	Replying to "@Marco De Rossi What..."
 
-That’s a good one. In our current thinking, facilitators can censor registrations and feedback (because they act as relayers) but can’t fake registrations and feedback signals, that need to be signed by servers and clients (and signature are checked by the SAVM). Wdyt?
+That’s a good one. In our current thinking, facilitators can censor registrations and feedback (because they act as relayers) but can’t fake registrations and feedback signals, that need to be signed by servers and clients (and signature are checked by the EVM). Wdyt?
 00:39:31	Zoombo:	Reacted to "Thanks for your pi..." with 👍
 00:40:04	Sarthi:	Replying to "Would be great if so…"
 Thanks

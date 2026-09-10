@@ -38,7 +38,7 @@ I am surprised the 4788 route is that expensive given how cheap gas is getting (
 00:13:43	Łukasz Rozmej:	will this break any receipt users?
 00:14:12	Marius van der Wijden:	Sorry again in writing:
 We want the receipt to contain the used gas not including the refunds?
-00:14:17	frangio:	https://sila-magicians.org/t/savm-immediates/25605#p-62704-option-22-no-changes-to-jumpdest-analysis-5
+00:14:17	frangio:	https://sila-magicians.org/t/evm-immediates/25605#p-62704-option-22-no-changes-to-jumpdest-analysis-5
 00:14:54	Ansgar Dietrichs:	Replying to "Sorry again in writi..."
 
 should we come back to this or can we clarify in chat / async?
@@ -121,7 +121,7 @@ no because there is no JUMPDEST that allows that jump
 00:25:50	spencer-tb:	Reacted to "Maybe we can discuss..." with 👍
 00:26:28	frangio:	Replying to "why not introduce ..."
 
-it's explained here: https://sila-magicians.org/t/savm-immediates/25605
+it's explained here: https://sila-magicians.org/t/evm-immediates/25605
 00:26:29	vitalik:	Replying to "postfix push means..."
 
 aaaah right, I was thinking about generic pushdata
@@ -202,7 +202,7 @@ Both not great outcomes
 00:34:50	marek:	Replying to "if we don’t put this..."
 
 of course, we should increase gas limit :)
-00:34:54	vitalik:	the main challenge with multidim in the savm is that you have to have a way to snake it through child calls
+00:34:54	vitalik:	the main challenge with multidim in the evm is that you have to have a way to snake it through child calls
 00:35:07	Marius van der Wijden:	Replying to "the main challenge..."
 
 Its actually not that bad
@@ -275,7 +275,7 @@ And this seems the simplest solution that we can always “revert” or “updat
 No change is an existential risk to upping the gas limit further.
 00:42:39	Carl Beekhuizen:	Reacted to "the main worry about..." with 👍
 00:42:39	Sanggu:	Reacted to "We need some handle ..." with 👍
-00:42:46	Anders Elowsson:	This is an alternative that exists: https://sips.sila.org/SIPS/sip-8075
+00:42:46	Anders Elowsson:	This is an alternative that exists: https://sips.sila.org/EIPS/sip-8075
 
 I like it but it adds 2 header variables etc
 00:42:47	Luis Pinto | Besu:	Reacted to "We need some handle ..." with 👍
@@ -360,11 +360,11 @@ Can we timebox this?
 00:56:21	felipe:	Reacted to "oh of course NOW m..." with 🤣
 00:56:36	felipe:	Reacted to "I don't think we s..." with ➕
 00:56:59	spencer-tb:	Reacted to "oh of course NOW mar..." with 🤣
-00:57:00	Marius van der Wijden:	While I like the idea, I think Glamsterdam already has a lot of more impactful SAVM improvements
+00:57:00	Marius van der Wijden:	While I like the idea, I think Glamsterdam already has a lot of more impactful EVM improvements
 00:57:23	Luis Pinto | Besu:	Besu has this implemented but would be ok to DFI since there’s no one shouting for it
 00:57:31	Renaud-ZKNOX:	PQ Signatures for Sila
 ML-DSA (Dilithium): NIST standard, ZK-friendly, ~2.4 KB sigs, HW wallet impl done. Con: 40x larger than ECDSA.
-FALCON: Smallest (~666 B), L2/SAVM friendly (separable hash-to-domain). Needs ORAM for RAM limits, harder on constrained HW (working on it).
+FALCON: Smallest (~666 B), L2/EVM friendly (separable hash-to-domain). Needs ORAM for RAM limits, harder on constrained HW (working on it).
 SPHINCS+: Hash-based only, huge sigs (8-49 KB). Justin Drake's team working on reduced stateful version. Cons: stateful, not web2 compatible.
 TL;DR: ML-DSA = pragmatic choice for AA + HW wallets (~13M gas). FALCON = more complexity but cheaper (~6M gas). SPHINCS+ = large but worth separate precompile for Consensus Layer.
 00:58:01	Anders Elowsson:	This is a document on options that exist for SIP-8037: 
@@ -374,13 +374,13 @@ https://notes.sila.org/@anderselowsson/3-paradigms-for-state-creation-repricing
 As was mentioned already on the call, an important thing to remember is that the actual tracking of state creation is something that we will always have use for going forward.
 00:58:21	CPerezz:	Reacted to "This is a document o..." with ❤️
 00:58:53	Justin Florentine (Besu):	Reacted to "This is a document o..." with ❤️
-00:59:06	vitalik:	we really need to get better at treating all SAVM feature additions as having a cost (on all future SAVM impl developers ever) and not treat them as free :P
+00:59:06	vitalik:	we really need to get better at treating all EVM feature additions as having a cost (on all future EVM impl developers ever) and not treat them as free :P
 00:59:25	vitalik:	Replying to "we really need to ..."
 
 speaking generally
 00:59:57	frangio:	Replying to "we really need to ..."
 
-we hardly treat them as free, there are a lot of savm features that were rejected for this fork
+we hardly treat them as free, there are a lot of evm features that were rejected for this fork
 00:59:58	donnoh | L2BEAT:	Reacted to "we really need to ge..." with 👍
 01:00:17	Justin Florentine (Besu):	Replying to "we really need to ge..."
 
@@ -405,7 +405,7 @@ There is no way on earth we support just one.  We need to make many avaialble
 01:01:32	Sanggu:	Reacted to "There is no way on e..." with ➕
 01:01:40	Ansgar Dietrichs:	Replying to "I personally think i..."
 
-I agree though, I personally would rather see a coordinated fork with multiple integrated pq features, instead of having them trickle into the SAVM one-by-one
+I agree though, I personally would rather see a coordinated fork with multiple integrated pq features, instead of having them trickle into the EVM one-by-one
 01:01:43	FLCL:	Reacted to "PQ Signatures for Et..." with 👍
 01:01:54	Benedikt Wagner:	Reacted to "I agree though, I pe..." with 👍
 01:01:56	Antonio Sanso:	Reacted to "I agree though, I pe..." with 👍
@@ -424,7 +424,10 @@ Also note: NIST is delaying standardizing Falcon
 01:03:35	Justin Florentine (Besu):	a precompile feels like a pretty mild committment to me
 01:03:48	Łukasz Rozmej:	Replying to "So one thing to cons..."
 
-ok my stance:Keep state growth pricing as isDo modest gas increases, where state growth increase is acceptableFocus on repricing compute down where possible
+ok my stance:
+Keep state growth pricing as is
+Do modest gas increases, where state growth increase is acceptable
+Focus on repricing compute down where possible
 01:04:16	Łukasz Rozmej:	Replying to "So one thing to cons..."
 
 you basically get same results without the complexity (and marketing number)
@@ -480,7 +483,7 @@ Another approach is to increase tx cap - make it configurable parameter - BPO li
 
 Do we have any numbers on perf/gas costs for these if implemented in solidity?? 
 
-Maybe this gives light already on whether SIMD is a must or no (as SIMD would be really tricky to support in SAVM considering all the variety of hosts that run it). 
+Maybe this gives light already on whether SIMD is a must or no (as SIMD would be really tricky to support in EVM considering all the variety of hosts that run it). 
 
 Also ZKEVM proving SIMD is a thing?
 01:10:01	Benedikt Wagner:	Agree with Antonio!
@@ -504,7 +507,7 @@ Floats are used for the signature generation and key generation.  Verifying a si
 01:11:13	Fab:	Indeed I've never been a fan of KZG, lol
 01:11:16	vitalik:	Replying to "Don’t the gas lim..."
 
-the point of simd is not just to use literal simd features of cpus, it's do reduce the ratio of savm interpreter overhead to computation, so you get large speedups even from "naive" impls
+the point of simd is not just to use literal simd features of cpus, it's do reduce the ratio of evm interpreter overhead to computation, so you get large speedups even from "naive" impls
 01:11:19	Benedikt Wagner:	Replying to "Well, we are relying..."
 
 Valid point
@@ -566,8 +569,8 @@ My preference is to (1) do nothing (2) go with 7907
 (3) do code chunking
 (4) do the simple bump
 01:21:32	Ansgar Dietrichs:	the two relevant SIPs:
-https://sips.sila.org/SIPS/sip-7907 
-https://sips.sila.org/SIPS/sip-7954
+https://sips.sila.org/EIPS/sip-7907 
+https://sips.sila.org/EIPS/sip-7954
 01:21:58	Guillaume:	Replying to "I think a simple bum..."
 
 bump it's not dangerous as per Carlos data, also happy to do nothing
@@ -677,7 +680,7 @@ Why does this hurt scalability at all? This is a simple change backed by data vs
 We can always reprice in the future this simple bump. But it’s much harder to come back from the complex metering
 01:35:21	Marius van der Wijden:	Not a hill I want to die on
 01:35:22	Carl Beekhuizen:	Reacted to "Yes we are trading o..." with 💯
-01:35:30	nixo:	https://sips.sila.org/SIPS/sip-7954
+01:35:30	nixo:	https://sips.sila.org/EIPS/sip-7954
 01:36:16	Carl Beekhuizen:	I (Carl) think this a big mistake to be CFIing it
 01:36:42	Maria Silva:	Replying to "Without 7907, we wou..."
 

@@ -54,7 +54,7 @@
       "description": "Explorers and data indexers must parse and surface the new log; moderate engineering to integrate, test, and backfill if desired."
     },
     "layer2s": {
-      "description": "Rollups mirroring L1 SAVM semantics may add the same log for consistency; others have no direct requirements."
+      "description": "Rollups mirroring L1 EVM semantics may add the same log for consistency; others have no direct requirements."
     },
     "stakersNodes": {
       "description": "More log entries per block; execution node receipts grow slightly, increasing storage and bandwidth requirements for some RPC setups."
@@ -63,7 +63,7 @@
       "description": "No consensus-layer changes anticipated; minimal or no code modifications beyond recognizing updated receipt sizes from execution payloads."
     },
     "elClients": {
-      "description": "Implement emitting a log on value-transferring CALLs, transactions, and SELFDESTRUCT; update SAVM and receipt construction; add tests."
+      "description": "Implement emitting a log on value-transferring CALLs, transactions, and SELFDESTRUCT; update EVM and receipt construction; add tests."
     }
   },
   "benefits": [

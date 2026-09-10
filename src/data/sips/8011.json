@@ -2,7 +2,7 @@
   "id": 8011,
   "title": "SIP-8011: Multidimensional Gas Metering",
   "status": "Draft",
-  "description": "Gas accounting by SAVM resource, increasing throughput and improving resource usage controls, with minimal changes to the protocol and UX",
+  "description": "Gas accounting by EVM resource, increasing throughput and improving resource usage controls, with minimal changes to the protocol and UX",
   "author": "Maria Silva (@misilva73), Davide Crapis (@dcrapis), Anders Elowsson (@anderselowsson), Toni Wahrstätter (@nerolation)",
   "type": "Standards Track",
   "category": "Core",
@@ -53,7 +53,7 @@
       "description": "Existing tools may need updates to accurately account for multidimensional gas metrics; mainly impacts monitoring tools."
     },
     "layer2s": {
-      "description": "SAVM-compatible L2s will need to adopt these changes, with routine updates and testing expected for gas accounting consistency."
+      "description": "EVM-compatible L2s will need to adopt these changes, with routine updates and testing expected for gas accounting consistency."
     },
     "stakersNodes": {
       "description": "Node operators upgrade clients at the fork; normal operational behavior remains consistent with revised gas metrics."

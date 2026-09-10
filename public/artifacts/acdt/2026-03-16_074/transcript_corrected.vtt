@@ -246,7 +246,7 @@ Stefan Starflinger: Yeah, maybe I can give a quick overview. I've been doing som
 
 62
 00:15:14.790 --> 00:15:28.530
-Stefan Starflinger: In a single testnet, most of the clients are doing pretty well with just normal transactions, but as soon as I start with SAVM fuzzing scenario, it breaks apart pretty quickly, maybe…
+Stefan Starflinger: In a single testnet, most of the clients are doing pretty well with just normal transactions, but as soon as I start with EVM fuzzing scenario, it breaks apart pretty quickly, maybe…
 
 63
 00:15:29.450 --> 00:15:32.749

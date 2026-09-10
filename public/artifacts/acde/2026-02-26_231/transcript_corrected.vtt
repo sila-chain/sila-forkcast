@@ -1570,7 +1570,7 @@ Dragan Rakita: And some generic field that depends on that signature type.
 
 393
 00:56:25.650 --> 00:56:32.159
-Dragan Rakita: So this is, like, a lot simpler solution than introducing the frame that's going to ask SAVM what's going on.
+Dragan Rakita: So this is, like, a lot simpler solution than introducing the frame that's going to ask EVM what's going on.
 
 394
 00:56:32.330 --> 00:56:36.480
@@ -1754,7 +1754,7 @@ Felix (Geth): We have still this comment about the dev tooling that we should ad
 
 439
 01:04:32.720 --> 01:04:51.230
-Luis Pinto | Besu: Yeah, yeah, it's still… it's about the general, the architecture of the frame transaction in general. I'm not convinced, but it's just playing as a devil's advocate, on this, apart from introducing more SAVM complexity around, like, the message frames and stuff.
+Luis Pinto | Besu: Yeah, yeah, it's still… it's about the general, the architecture of the frame transaction in general. I'm not convinced, but it's just playing as a devil's advocate, on this, apart from introducing more EVM complexity around, like, the message frames and stuff.
 
 440
 01:04:51.420 --> 01:05:00.049
@@ -1826,7 +1826,7 @@ Felix (Geth): It is something where… I feel very strongly that precompiles are
 
 457
 01:07:40.180 --> 01:07:59.329
-Felix (Geth): unlike some other people who see it as more like everything should be implemented in SAVM opcodes, and the SAVM should be fast enough to do this, both views, I think, are valid, but in terms of the safety, for example, of the cryptographic implementations, obviously, if you have a very simple contract that just forwards the call data in the verify frame directly into a precompile.
+Felix (Geth): unlike some other people who see it as more like everything should be implemented in EVM opcodes, and the EVM should be fast enough to do this, both views, I think, are valid, but in terms of the safety, for example, of the cryptographic implementations, obviously, if you have a very simple contract that just forwards the call data in the verify frame directly into a precompile.
 
 458
 01:07:59.330 --> 01:08:06.209
@@ -1998,7 +1998,7 @@ Felix (Geth): a proposal from Vitalik for the future to, introduce an
 
 500
 01:13:26.900 --> 01:13:31.920
-Felix (Geth): operation in the SAVM that basically gives you…
+Felix (Geth): operation in the EVM that basically gives you…
 
 501
 01:13:33.140 --> 01:13:39.949

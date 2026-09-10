@@ -265,7 +265,7 @@ But code chunking would be good for zk context
 00:47:07	Barnabas:	Reacted to "Tim 🐐" with 💯
 00:47:09	CPerezz:	Replying to "Sorry, what kimd of ..."
 
-https://sips.sila.org/SIPS/sip-2926 😄
+https://sips.sila.org/EIPS/sip-2926 😄
 00:47:09	EF Berlin:	Reacted to "Tim 🐐" with 💯
 00:47:20	Roman:	stokes is not an EL dev
 00:47:21	Guillaume:	Replying to "Sorry, what kimd o..."
@@ -325,7 +325,7 @@ It saves gas
 00:51:10	Giulio:	Replying to "We are not looking f..."
 
 Makes bitmaps easy
-00:51:13	nixo:	https://sips.sila.org/SIPS/sip-7939
+00:51:13	nixo:	https://sips.sila.org/EIPS/sip-7939
 00:51:14	jochem-brouwer:	Antwoord verzenden naar "We are not looking..."
 
 gas golfing
@@ -506,7 +506,7 @@ This is only for Fusaka, isn’t it? you still can change for the bpos
 01:18:47	Barnabas:	Replying to "As the blob target a..."
 
 couldn’t L2s just send blob txs in multiple multiple txs?
-01:18:58	nixo:	https://sips.sila.org/SIPS/sip-7745
+01:18:58	nixo:	https://sips.sila.org/EIPS/sip-7745
 01:18:59	Barnabas:	Reacted to "raise your hand 🙂" with ➕
 01:19:03	stokes:	Replying to "As the blob target a..."
 

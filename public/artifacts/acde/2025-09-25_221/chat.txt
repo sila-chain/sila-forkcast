@@ -13,7 +13,7 @@
 00:05:22	nixo:	Reacted to "iam am feeling very ..." with 🔥
 00:05:37	Justin Florentine (Besu):	Replying to "justin is becoming A..."
 
-sila-forkcast.org is sick btw, great stuff!
+forkcast.org is sick btw, great stuff!
 00:05:49	Barnabas:	Reacted to "iam am feeling very ..." with ❤️
 00:05:50	Barnabas:	Reacted to "iam am feeling very ..." with 🔥
 00:05:51	Barnabas:	Reacted to "iam am feeling very ..." with 😂
@@ -23,14 +23,14 @@ Fusaka’d sounds like an expletive 😇
 00:06:21	Justin Florentine (Besu):	Replying to "iam am feeling very ..."
 
 would you like to hit the bars tonight? maybe get totally fusaka'd ?
-00:06:22	donnoh | L2BEAT:	Reacted to "sila-forkcast.org is sick..." with 💯
+00:06:22	donnoh | L2BEAT:	Reacted to "forkcast.org is sick..." with 💯
 00:06:34	Josh Davis:	Reacted to "would you like to hi..." with 🥂
 00:06:53	Gabriel Trintinalia | Besu:	Reacted to "Happy Thursday all" with 🙌
-00:07:10	nixo:	Reacted to "sila-forkcast.org is sick..." with 💙
+00:07:10	nixo:	Reacted to "forkcast.org is sick..." with 💙
 00:07:25	Parithosh Jayanthi:	Reacted to "iam am feeling very ..." with ❤️
 00:07:52	donnoh | L2BEAT:	Reacted to "Happy Thursday all" with 🙌
 00:08:49	Justin Traglia:	Reacted to "iam am feeling very ..." with ❤️
-00:08:57	Tim Beiko:	https://sips.sila.org/SIPS/sip-7607
+00:08:57	Tim Beiko:	https://sips.sila.org/EIPS/sip-7607
 00:10:01	kingy_sigp:	Lighthouse release will be ready Monday
 00:10:08	Barnabas:	we are still waiting on releases from:
 
@@ -87,7 +87,7 @@ It's better defined in the PR adding the requirement https://github.com/sila-cha
 Authors are already listed anyway. Usually champ is one of them
 00:31:19	Danno Ferrin:	When it’s semi-ephemeral it becomes difficult to figure out who to poke to get things moving, like BLS when we need new test cases
 00:32:18	Danno Ferrin:	+1, herding the cats is as important as writing the spec
-00:33:42	nixo:	my vote is just sila-forkcast for now
+00:33:42	nixo:	my vote is just forkcast for now
 00:33:46	Tim Beiko:	Reacted to "my vote is just fork..." with 👍
 00:33:48	Pooja Ranjan:	Reacted to "my vote is just fork..." with 👍
 00:33:49	Luis Pinto | Besu:	Why not having a field in the SIP itself?
@@ -105,7 +105,7 @@ Much harder change :-D
 
 From SIP-1 
 “In short, your role as the champion is to write the SIP using the style and format described below, shepherd the discussions in the appropriate forums, and build community consensus around the idea.”
-00:37:43	frangio:	Hadrien's SIP: https://sips.sila.org/SIPS/sip-7819
+00:37:43	frangio:	Hadrien's SIP: https://sips.sila.org/EIPS/sip-7819
 00:38:25	Tim Beiko:	Reacted to "Hadrien's SIP: https..." with 🙏
 00:38:35	wolovim:	Reacted to "Hadrien's SIP: https..." with 🙏
 00:42:16	Guillaume:	https://sila-magicians.org/t/not-all-state-is-equal/25508  what Hadrien is referring to

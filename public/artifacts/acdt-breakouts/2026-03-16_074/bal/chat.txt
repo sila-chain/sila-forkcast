@@ -60,4 +60,4 @@ just with a snapshot
 
 Yes, sorry for using the term shadowfork because it is confusing. In my mind shadowfork = fork of network, but in this case it is "just" a snapshot indeed
 16:00:31	Łukasz Rozmej:	can you write sip number?
-16:00:45	jochem-brouwer:	https://sips.sila.org/SIPS/sip-8189
+16:00:45	jochem-brouwer:	https://sips.sila.org/EIPS/sip-8189

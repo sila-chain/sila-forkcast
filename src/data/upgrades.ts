@@ -15,6 +15,13 @@ export interface NetworkUpgrade {
   tagline: string;
   status: 'Live' | 'Upcoming' | 'Planning' | 'Research';
   activationDate?: string;
+  /**
+   * Working estimate of sila-mainnet activation, as 'YYYY-MM-DD'. A planning
+   * assumption, never an announced date — `/schedule` seeds its sandbox from it
+   * and `/cadence` plots it, so it lives here rather than in either page to stop
+   * the two drifting apart.
+   */
+  projectedActivation?: string;
   disabled: boolean;
   metaEipLink?: string;
   clientTeamPerspectives?: ClientTeamPerspective[];
@@ -58,7 +65,7 @@ export const networkUpgrades: NetworkUpgrade[] = [
     activationDate: 'Apr 12, 2023',
     disabled: true,
     highlights: 'Staking withdrawals (SIP-4895)',
-    externalLink: 'https://sips.sila.org/SIPS/sip-7568'
+    externalLink: 'https://sips.sila.org/EIPS/sip-7568'
   },
   {
     id: 'dencun',
@@ -70,7 +77,7 @@ export const networkUpgrades: NetworkUpgrade[] = [
     activationDate: 'Mar 13, 2024',
     disabled: true,
     highlights: 'Proto-danksharding / blobs (SIP-4844)',
-    externalLink: 'https://sips.sila.org/SIPS/sip-7569'
+    externalLink: 'https://sips.sila.org/EIPS/sip-7569'
   },
   {
     id: 'pectra',
@@ -110,9 +117,10 @@ export const networkUpgrades: NetworkUpgrade[] = [
     path: '/upgrade/glamsterdam',
     name: 'Glamsterdam Upgrade',
     description: 'Major network upgrade featuring Block-level Access Lists and ePBS. Named after the combination of "SilaAmsterdam" (execution layer upgrade, named after the previous Devconnect location) and "Gloas" (consensus layer upgrade, named after a star).',
-    tagline: 'Scoping complete, implemented SIPs are being tested on devnets',
+    tagline: 'Devnet series complete, now testing on public testnets',
     status: 'Upcoming',
     activationDate: '2026',
+    projectedActivation: '2026-12-02',
     disabled: false,
     metaEipLink: 'https://sila-magicians.org/t/sip-7773-glamsterdam-network-upgrade-meta-thread/21195',
     clientTeamPerspectives: [
@@ -192,6 +200,7 @@ export const networkUpgrades: NetworkUpgrade[] = [
     tagline: 'Headliner selection concluded: FOCIL SFI\'d, Frame Tx CFI\'d',
     status: 'Planning',
     activationDate: '2027',
+    projectedActivation: '2027-06-16',
     disabled: false,
     macroPhaseOverride: 'scoping',
     metaEipLink: 'https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876'
@@ -207,8 +216,40 @@ export const getUpgradeById = (id: string): NetworkUpgrade | undefined => {
 // than linking to a route the static build doesn't emit (which would 404).
 const FORKS_WITH_PUBLIC_PAGE = new Set(['pectra', 'fusaka', 'hegota', 'glamsterdam']);
 
+// Client-facing data (cartographoor fork schedules, client release notes) names
+// forks per layer. Forkcast talks in combined upgrade names, so each layer fork
+// maps to the upgrade it belongs to.
+const FORK_NAME_ALIASES: Record<string, string> = {
+  bellatrix: 'the-merge',
+  paris: 'the-merge',
+  capella: 'shapella',
+  shanghai: 'shapella',
+  deneb: 'dencun',
+  cancun: 'dencun',
+  electra: 'pectra',
+  prague: 'pectra',
+  fulu: 'fusaka',
+  osaka: 'fusaka',
+  gloas: 'glamsterdam',
+  amsterdam: 'glamsterdam',
+  heze: 'hegota',
+  bogota: 'hegota',
+};
+
+const COMBINED_UPGRADE_IDS = new Set(Object.values(FORK_NAME_ALIASES));
+
+/**
+ * The combined upgrade a layer fork belongs to ("fulu" -> "fusaka"), or null when
+ * the fork predates combined naming ("altair", "london").
+ */
+export const getCombinedUpgradeName = (forkName: string): string | null => {
+  const id = forkName.toLowerCase();
+  if (COMBINED_UPGRADE_IDS.has(id)) return id;
+  return FORK_NAME_ALIASES[id] ?? null;
+};
+
 /** Returns the `/upgrade/{id}` path for a fork, or null when it has no public page. */
 export const getUpgradePagePath = (forkName: string): string | null => {
-  const id = forkName.toLowerCase();
+  const id = getCombinedUpgradeName(forkName) ?? forkName.toLowerCase();
   return FORKS_WITH_PUBLIC_PAGE.has(id) ? `/upgrade/${id}` : null;
 };

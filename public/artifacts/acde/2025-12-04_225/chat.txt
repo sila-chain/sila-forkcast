@@ -224,7 +224,7 @@ Still not even close in terms of traffic compared to https://sips.sila.org/  or 
 And if the process enforces deadlines for ACD discussion it should definitely be referenced in SIP-1
 00:32:50	Justin Florentine (Besu):	how many sips are we planning to CFI?
 00:32:51	Barnabas:	can we maybe highlight on the screen what we are talking about ?
-00:33:02	Trent:	https://sips.sila.org/SIPS/sip-7971
+00:33:02	Trent:	https://sips.sila.org/EIPS/sip-7971
 00:33:36	Renaud-ZKNOX:	Répondre à "To address the PQ ..."
 
 It does with 4337, but we need 7851 to enable PQ 7702
@@ -554,7 +554,7 @@ Lukasz wrong thread?
 01:06:58	Zsolt Felföldi:	Reacted to "0xEF has entered the..." with 😂
 01:07:02	lightclient:	Replying to "But we still have th..."
 
-We’re not going to fragment contract calling the SAVM
+We’re not going to fragment contract calling the EVM
 01:07:14	Tamaghna Choudhuri:	Reacted to "0xEF has entered the..." with 😂
 01:07:24	Łukasz Rozmej:	Replying to "7745 is headliner si..."
 
@@ -562,7 +562,10 @@ sorry
 01:07:32	Luis Pinto | Besu:	Reacted to "0xEF has entered the..." with 😂
 01:07:52	Łukasz Rozmej:	Replying to "But we still have th..."
 
-But we still have the legacy without the call and returns? So we can’t transpile itjust price it out with timeyou can transpile that too, we did that, the result is just quite messy and unoptimised
+But we still have the legacy without the call and returns? So we can’t transpile it
+
+just price it out with time
+you can transpile that too, we did that, the result is just quite messy and unoptimised
 01:08:11	Mario Vega:	Reacted to "0xEF has entered the..." with 😂
 01:08:18	Marc:	why are people against this SIP?
 01:08:20	Łukasz Rozmej:	no compiler wants to optimise several tens of thousands instruction function
@@ -596,13 +599,15 @@ I assume there are arguments for, beyond "industry standard"?
 01:11:15	Łukasz Rozmej:	I'm for breakout room!
 01:11:22	Chris Berry:	Reacted to "@Greg Colvin we (my ..." with ❤️
 01:11:32	Luis Pinto | Besu:	Reacted to "I'm for breakout roo..." with ➕
-01:11:43	frangio:	what is the point about optimizations? why does the transpiled code need to be optimized? we don't optimize SAVM code once deployed
+01:11:43	frangio:	what is the point about optimizations? why does the transpiled code need to be optimized? we don't optimize EVM code once deployed
 01:11:47	Mario Vega:	Replying to "why are people again..."
 
-This section looks tricky to get correctly tested: https://sips.sila.org/SIPS/sip-7979#constraints-on-valid-code
+This section looks tricky to get correctly tested: https://sips.sila.org/EIPS/sip-7979#constraints-on-valid-code
 01:11:52	Łukasz Rozmej:	Replying to "why are people again..."
 
-because it's a rehash of EOFEOF the most important parts
+because it's a rehash of EOF
+
+EOF the most important parts
 01:12:19	Daniel Lehrner (Besu):	Replying to "why are people again..."
 
 It would be helpful if Solidity or Vyper would share their opinion on it. I am also missing who wants to include it

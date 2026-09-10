@@ -17,7 +17,7 @@ I agree. By default I am against changing this right now. But the idea is intere
 10:56:13	 From Justin Traglia : Reacted to "Potuz should have be..." with 👍
 10:56:52	 From Barnabas : New deposit contract would need to be audited
 10:57:37	 From Parithosh Jayanthi : +1 for massive change and really late
-10:57:57	 From pk910 : If we open up the floor for a new operator deposit contract, we could check BLS sigs in the SAVM as well.   But yea, I agree it's too late :/
+10:57:57	 From pk910 : If we open up the floor for a new operator deposit contract, we could check BLS sigs in the EVM as well.   But yea, I agree it's too late :/
 10:58:07	 From NC : Next fork perhaps?
 10:58:13	 From Potuz : Replying to "Potuz should have be..."
 

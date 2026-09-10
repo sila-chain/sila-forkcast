@@ -155,7 +155,7 @@ if that's happened I really want to know it may be a general bug in clients. I'l
 00:34:12	Toni Wahrstätter:	Replying to "Its a config variabl..."
 
 Can we test this:
-https://sips.sila.org/SIPS/sip-8252
+https://sips.sila.org/EIPS/sip-8252
 00:34:21	Stefan Bratanov:	We set them on the deadline and if blobs have arrived by then, we set the flag
 00:34:39	Toni Wahrstätter:	Replying to "Its a config variabl..."
 
@@ -167,8 +167,8 @@ or test, many days being reorged, e.g.?
 Yeah no reason we can’t 😄 can we also modify the values to make the test faster to avoid super long networks?
 00:37:02	Parithosh Jayanthi:	https://forky.glamsterdam-devnet-4.ethpandaops.io/
 00:37:53	Iván | ethrex:	Is there any CL client that already implements 793?
-00:38:03	Parithosh Jayanthi:	https://sips.sila.org/SIPS/sip-7684
-00:38:33	Parithosh Jayanthi:	https://sips.sila.org/SIPS/sip-8148
+00:38:03	Parithosh Jayanthi:	https://sips.sila.org/EIPS/sip-7684
+00:38:33	Parithosh Jayanthi:	https://sips.sila.org/EIPS/sip-8148
 00:41:39	Nico Flaig:	Replying to "lh has a bug that pr..."
 
 @Potuz lodestar should vote correctly here, we also have `PAYLOAD_DUE_BPS` implemented for separate deadlines (configurable via config)
@@ -178,7 +178,7 @@ ah nice! now I need just one more
 00:42:29	Potuz:	Replying to ""
 
 ok so it may be Prysm that is voting incorrectly, will check that endpoint, it'd be nice to confirm your parent block had this situation
-00:45:27	Jihoon:	Replying to "https://sips.sila.org/SIPS/sip-8148"
+00:45:27	Jihoon:	Replying to "https://sips.sila.org/EIPS/sip-8148"
 
 https://github.com/sila-chain/consensus-specs/pull/4901
 00:47:24	Parithosh Jayanthi:	Is there an argument against just using 0x02 with todays ceiling and executing withdrawals manually? That’s sort of hacking in custom ceiling
@@ -255,7 +255,7 @@ Suggested decisions could be:
 01:07:56	Potuz:	I'm just skeptical on the usage and whether this can be handled out of the protocol
 01:08:14	Toni Wahrstätter:	I get it now, this is mirroring 7002. 
 Feel like a lot of touched surface (EL, CL, Requests). Would be great to have a % how much of the stake would adopt this.
-01:08:37	Parithosh Jayanthi:	https://sips.sila.org/SIPS/sip-8080
+01:08:37	Parithosh Jayanthi:	https://sips.sila.org/EIPS/sip-8080
 01:09:25	Barnabas:	We kind of ‘pre-dfi-ed’ this in Svalbard.
 01:10:28	nixo:	no auto CFIs
 01:10:32	Toni Wahrstätter:	those are two things. You can propose it for hegota
@@ -271,7 +271,7 @@ blog post made it sound pretty final
 01:12:41	Potuz:	ahh we've already implemented and tested all of this
 01:12:47	Potuz:	taking it out is a mess
 01:12:49	nixo:	Reacted to "ahh we've already implemented and tested all of this" with 👍
-01:13:16	Parithosh Jayanthi:	https://sips.sila.org/SIPS/sip-8045
+01:13:16	Parithosh Jayanthi:	https://sips.sila.org/EIPS/sip-8045
 01:14:23	marc | wolovim:	Replying to "https://sips.ethereu..."
 
 From tim’s blog post: “SIP-8045 (slashed-validator duty removal) was scoped down to proposer duties within the look-ahead window only”
@@ -279,7 +279,7 @@ From tim’s blog post: “SIP-8045 (slashed-validator duty removal) was scoped
 01:15:09	Mehdi Aouadi:	Replying to "https://sips.ethereu..."
 
 We have worked on it in Teku and we have a stale implementation
-01:15:15	Parithosh Jayanthi:	https://sips.sila.org/SIPS/sip-7688
+01:15:15	Parithosh Jayanthi:	https://sips.sila.org/EIPS/sip-7688
 01:15:45	Justin Traglia:	Reacted to "https://sips.ethereu..." with 👍
 01:15:52	Barnabas:	I think we should keep it in Gloas!
 01:15:59	Greg K | Lido:	Reacted to "I think we should ..." with 👍

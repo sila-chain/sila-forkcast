@@ -67,7 +67,7 @@ All of them I believe!
 00:39:37	Barnabas:	Even SIPs besu/erigon/reth
 Odd SIPs geth/nethermind/nimbusel
 00:39:43	Ansgar Dietrichs:	we might have a first batch of decisions this week on acde as well, with some first DFIs
-00:39:47	wolovim:	SilaForkcast rank page is back up, in case helpful for client team scoping preferences: https://sila-forkcast.org/rank
+00:39:47	wolovim:	Forkcast rank page is back up, in case helpful for client team scoping preferences: https://forkcast.org/rank
 00:39:51	spencer-tb:	Reacted to "Even SIPs besu/erigo..." with 🙌
 00:40:51	Barnabas:	@lightclient sounds like a skill issue 😂
 00:41:53	Lumi | Offchain Labs:	+1 to @lightclient, we are overwhelmed from OCL side on what to prioritize for review

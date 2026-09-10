@@ -33,7 +33,7 @@ I think the problem is that in interop we use gas-benchmarks repo for benchmarki
 00:31:39	pawan:	Looks good to me
 00:31:44	jochem-brouwer:	Antwoord verzenden naar "Can we get client ..."
 
-devp2p receipts over 10 MiB is a problem at some point post 60M due to the logs > 10 MB. So would then need the devp2p partial messages https://sips.sila.org/SIPS/sip-7975 or log repricing to ensure Receipts response does not exceed the 10 MB
+devp2p receipts over 10 MiB is a problem at some point post 60M due to the logs > 10 MB. So would then need the devp2p partial messages https://sips.sila.org/EIPS/sip-7975 or log repricing to ensure Receipts response does not exceed the 10 MB
 00:32:19	Barnabas:	Reacted to "Looks good to me" with 🔥
 00:32:22	Marius van der Wijden:	Reacted to "devp2p receipts ov..." with 👍
 00:32:39	Minhyuk Kim:	https://www.notion.so/testinprod/Sunnyside-Devnet-Updates-08-13-24e8fc57f54680088514eccdca62c560?source=copy_link

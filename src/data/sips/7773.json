@@ -1,7 +1,7 @@
 {
   "id": 7773,
   "title": "SIP-7773: Hardfork Meta - Glamsterdam",
-  "status": "Draft",
+  "status": "Review",
   "description": "SIPs included in the Glamsterdam Sila network upgrade.",
   "author": "Tim Beiko (@timbeiko), Alex Stokes (@ralexstokes), Ansgar Dietrichs (@adietrichs), Nixo (@nixorokish), Parithosh Jayanthi (@parithosh)",
   "type": "Meta",

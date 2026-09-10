@@ -814,7 +814,7 @@ Derek Chiang: About the breakout from my perspective was that, I think we are al
 
 204
 00:36:44.810 --> 00:36:56.360
-Derek Chiang: primary concern that has been expressed by, the high-performance L2s, such as space, as well as, like, some other high-performance SAVM chains, which is that,
+Derek Chiang: primary concern that has been expressed by, the high-performance L2s, such as space, as well as, like, some other high-performance EVM chains, which is that,
 
 205
 00:36:56.410 --> 00:37:06.239
@@ -822,7 +822,7 @@ Derek Chiang: the cost of validating transactions, with firms is now obviously g
 
 206
 00:37:06.400 --> 00:37:12.120
-Derek Chiang: to running SAVM code, right? So we are actually, trying to,
+Derek Chiang: to running EVM code, right? So we are actually, trying to,
 
 207
 00:37:12.450 --> 00:37:17.109
@@ -850,7 +850,7 @@ Derek Chiang: As far as, you know, using pre-compires for valid… as far as usi
 
 213
 00:38:23.610 --> 00:38:29.189
-Derek Chiang: will work well not just for L1s, but also for other high-performance SAVM chains.
+Derek Chiang: will work well not just for L1s, but also for other high-performance EVM chains.
 
 214
 00:38:34.660 --> 00:38:40.159
@@ -1258,11 +1258,11 @@ Felix (Geth): the transaction origin signature, but also more generally, the fra
 
 315
 00:53:27.160 --> 00:53:36.619
-Felix (Geth): state-modifying operations. And by enabling this decomposition of the SAVM computation, the verification parts
+Felix (Geth): state-modifying operations. And by enabling this decomposition of the EVM computation, the verification parts
 
 316
 00:53:37.750 --> 00:53:46.150
-Felix (Geth): when they are broken out of the regular SAVM flow, can then be aggregated using CK proofs on-chain.
+Felix (Geth): when they are broken out of the regular EVM flow, can then be aggregated using CK proofs on-chain.
 
 317
 00:53:46.150 --> 00:54:00.770
@@ -1562,7 +1562,7 @@ Derek Chiang: Oh, yeah, you know, I think I just wanted to, I guess, emphasize, 
 
 391
 01:06:05.320 --> 01:06:20.520
-Derek Chiang: I think, like, most of the debates that, I guess, between firms and, like, some alternative, you know, and most other alternative proposals, essentially just comes down to whether people believe that verification should be done through SAVM code.
+Derek Chiang: I think, like, most of the debates that, I guess, between firms and, like, some alternative, you know, and most other alternative proposals, essentially just comes down to whether people believe that verification should be done through EVM code.
 
 392
 01:06:20.610 --> 01:06:33.529
@@ -1570,7 +1570,7 @@ Derek Chiang: all should be essentially enshrined into the protocol, for example
 
 393
 01:06:33.700 --> 01:06:49.499
-Derek Chiang: the, I think it's, like, 8164, like, the passkey, transactions. You know, they, they, you know, so, you know, they, they, they, they all believe that, it's, I guess, like, dangerous, or, like, you know, it would complicate the manpool to do the verification with, SAVM code, right?
+Derek Chiang: the, I think it's, like, 8164, like, the passkey, transactions. You know, they, they, you know, so, you know, they, they, they, they all believe that, it's, I guess, like, dangerous, or, like, you know, it would complicate the manpool to do the verification with, EVM code, right?
 
 394
 01:06:49.500 --> 01:06:59.880
@@ -1578,7 +1578,7 @@ Derek Chiang: You know, so, you know, which is why they opt to do the validation
 
 395
 01:06:59.880 --> 01:07:10.389
-Derek Chiang: as I mentioned in the beginning of the call, it's the only proposal that gives you the options, right? You know, so, you have the full option to fall back to SAVM code validation if you choose to.
+Derek Chiang: as I mentioned in the beginning of the call, it's the only proposal that gives you the options, right? You know, so, you have the full option to fall back to EVM code validation if you choose to.
 
 396
 01:07:10.500 --> 01:07:24.689

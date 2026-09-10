@@ -56,7 +56,7 @@
       "description": "No direct impact on layer 2s unless this SIP is adopted by that L2."
     },
     "stakersNodes": {
-      "description": "May reduce resource consumption due to non-SAVM verification of alternate algorithms."
+      "description": "May reduce resource consumption due to non-EVM verification of alternate algorithms."
     },
     "clClients": {
       "description": "No direct impact on CL."

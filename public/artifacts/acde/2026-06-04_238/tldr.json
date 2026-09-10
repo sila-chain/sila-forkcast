@@ -67,7 +67,7 @@
     },
     {
       "timestamp": "01:27:58",
-      "decision": "PFI for Hegota: SIP-8131 + SIP-8279 (data repricing / block size), SIP-7979 + SIP-8173 (SAVM object format / validation), SIP-7851 (permanent EOA delegation), SIP-8151 (EC Recover deactivation); SIP-8222 (lean staking) not targeting Hegota"
+      "decision": "PFI for Hegota: SIP-8131 + SIP-8279 (data repricing / block size), SIP-7979 + SIP-8173 (EVM object format / validation), SIP-7851 (permanent EOA delegation), SIP-8151 (EC Recover deactivation); SIP-8222 (lean staking) not targeting Hegota"
     }
   ],
   "targets": [

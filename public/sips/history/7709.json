@@ -2,9 +2,18 @@
   "eipId": 7709,
   "commits": [
     {
+      "sha": "6a3b988b70552644b4c801dc55aa7be5edef20c2",
+      "date": "2026-08-11T18:03:36Z",
+      "message": "Update SIP-7709: Move to Draft",
+      "author": "jsign",
+      "prNumber": null,
+      "additions": 30,
+      "deletions": 21
+    },
+    {
       "sha": "31f9db7303df31edc67d47b6b3de72a4367cd2fb",
       "date": "2025-10-26T00:25:04Z",
-      "message": "(bot 1272989785) moving SIPS/sip-7709.md to stagnant (#10519)",
+      "message": "(bot 1272989785) moving EIPS/sip-7709.md to stagnant (#10519)",
       "author": "sil-bot",
       "prNumber": 10519,
       "patch": "@@ -4,7 +4,7 @@ title: Read BLOCKHASH from storage and update cost\n description: Read the `BLOCKHASH (0x40)` opcode from the SIP-2935 system contract storage and adjust its gas cost to reflect storage access.\n author: Vitalik Buterin (@vbuterin), Tomasz Stanczak (@tkstanczak), Guillaume Ballet (@gballet), Gajinder Singh (@g11tech), Tanishq Jasoria (@tanishqjasoria), Ignacio Hagopian (@jsign), Jochem Brouwer (@jochem-brouwer), Gabriel Rocheleau (@gabrocheleau)\n discussions-to: https://sila-magicians.org/t/sip-7709-read-blockhash-opcode-from-storage-and-adjust-gas-cost/20052\n-status: Draft\n+status: Stagnant\n type: Standards Track\n category: Core\n created: 2024-05-18"
@@ -25,16 +34,6 @@
       "prNumber": null,
       "additions": 101,
       "deletions": 0
-    }
-  ],
-  "openPrs": [
-    {
-      "number": 11587,
-      "title": "Update SIP-7709: Move to Draft",
-      "author": "jsign",
-      "updatedAt": "2026-06-30T12:09:47Z",
-      "additions": 24,
-      "deletions": 17
     }
   ]
 }

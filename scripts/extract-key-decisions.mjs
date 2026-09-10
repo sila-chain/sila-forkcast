@@ -25,7 +25,7 @@ const ARTIFACTS_DIR = join(ROOT, 'public', 'artifacts');
 const EIPS_JSON = join(ROOT, 'src', 'data', 'sips.json');
 
 const ACD_CALL_TYPES = new Set(['acdc', 'acde', 'acdt']);
-const DEFAULT_MODEL = 'claude-sonnet-4-5-20250929';
+const DEFAULT_MODEL = 'claude-opus-4-6';
 
 const MODEL_PRICING = {
   'claude-opus-4-6': [15.0, 75.0],
@@ -37,17 +37,18 @@ const MODEL_PRICING = {
 
 const EXTRACTION_PROMPT = `Classify decisions from Sila governance meeting summaries into structured JSON.
 
-You receive the full TLDR (highlights, action items, decisions, targets). Classify only the items in the "decisions" array, but use the highlights and other context to inform your classification (e.g., to identify which workstream a devnet belongs to).
+You receive the full TLDR (highlights, action items, decisions, targets). Your primary source is the "decisions" array, but you MUST also scan ALL highlights for stage-change signals (PFI, CFI, SFI, DFI, Included, Withdrawn) that the decisions array may have missed. SIP proposal highlights (e.g., categories like "eip_proposals_*") frequently contain PFI/CFI decisions that were not captured in the decisions array. If a highlight mentions an SIP being "PFI'd", "CFI'd", "SFI'd", etc., include it as a key decision even if it does not appear in the decisions array.
 
 ## Types
 
 - **stage_change**: SIP moves to a new inclusion stage. Set \`stage_change.to\` to one of: "Proposed" (PFI), "Considered" (CFI), "Scheduled" (SFI), "Declined" (DFI), "Included", "Withdrawn".
-- **devnet_inclusion**: A specific SIP being added to or scoped into a devnet for the first time. The decision must name the SIP(s) being included. Do NOT use this type when the SIP is the defining proposal of that devnet's workstream (e.g., SIP-7732 in epbs-devnet-0) — that is tautological. Devnet timeline, launch date, spec version targeting, spec freeze, or general status updates → \`other\`. Set \`devnet\` to the full lowercase identifier with workstream prefix (e.g., "bal-devnet-3", "epbs-devnet-0"). Infer the prefix from highlight categories, meeting context, or surrounding discussion. Never output bare "devnet-N".
+- **devnet_inclusion**: A specific SIP being added to or scoped into a devnet for the first time, where that fact alone is the headline. The decision must name the SIP(s) being included. Do NOT use this type when the SIP is the defining proposal of that devnet's workstream (e.g., SIP-7732 in epbs-devnet-0) — that is tautological. Do NOT use this type when the SIP is already scheduled / in the fork / in prior devnets and this decision is an incremental step (folding it into a spec release, adding one sub-component such as specific Engine API endpoints, a pure rename with no behavior change) — "included in devnet-N" carries no new signal there. Do NOT use this type when the decision's significance depends on a qualifier that would be lost at render time (client-readiness confirmations, "already merged", "no behavior change", part of the work deferred). In all of those cases use \`other\` so the full \`original_text\` is preserved. Devnet timeline, launch date, spec version targeting, spec freeze, or general status updates → \`other\`. Set \`devnet\` to the full lowercase identifier with workstream prefix (e.g., "bal-devnet-3", "epbs-devnet-0"). Infer the prefix from highlight categories, meeting context, or surrounding discussion. Never output bare "devnet-N".
 - **headliner_selected**: SIP selected as fork headliner. Set \`fork\` to the fork name.
 - **other**: Everything else.
 
 ## Rules
 
+- IMPORTANT — structured types are lossy at render time: for \`stage_change\`, \`devnet_inclusion\`, and \`headliner_selected\`, the UI does NOT display \`original_text\`. It renders a templated sentence built only from \`sips\`, the stage/devnet/fork tag, and \`context\`. Any detail not captured in those fields is discarded. Only classify as a structured type when the templated sentence fully conveys the decision; if the significance depends on qualifiers that won't fit a short \`context\` phrase, use \`other\` (which renders \`original_text\` verbatim).
 - Multiple SIPs with the SAME action → one entry, all SIP numbers in \`sips\` array.
 - DIFFERENT actions in one decision string → separate entries per action.
 - Extract SIP numbers as integers from "SIP-1234", "EIP1234", or contextual references. Resolve well-known proposal names to their SIP numbers (e.g., BAL = 7928, FOCIL = 7805, ePBS = 7732, SilaPeerDAS = 7594). Resolve SIL/XX aliases using the "Known Aliases" section if provided.
@@ -206,18 +207,28 @@ async function callAnthropic(model, systemPrompt, userMessage) {
   return response.json();
 }
 
-async function extractKeyDecisions(meetingDir, model, force) {
-  const tldrPath = join(meetingDir, 'tldr.json');
-  const outputPath = join(meetingDir, 'key_decisions.json');
+function findTldrFiles(meetingDir) {
+  const files = [];
+  if (existsSync(join(meetingDir, 'tldr.json'))) {
+    files.push({ path: join(meetingDir, 'tldr.json'), suffix: '' });
+  }
+  for (const name of readdirSync(meetingDir)) {
+    if (name.startsWith('tldr_') && name.endsWith('.json')) {
+      const suffix = name.slice('tldr'.length, -'.json'.length); // e.g. "_cl"
+      files.push({ path: join(meetingDir, name), suffix });
+    }
+  }
+  return files;
+}
+
+async function extractKeyDecisionsForFile(meetingDir, tldrFile, model, force) {
+  const { path: tldrPath, suffix } = tldrFile;
+  const outputPath = join(meetingDir, `key_decisions${suffix}.json`);
+  const tldrName = tldrPath.split('/').pop();
 
   if (existsSync(outputPath) && !force) {
-    console.log('  key_decisions.json already exists (use --force to regenerate)');
+    console.log(`  key_decisions${suffix}.json already exists (use --force to regenerate)`);
     return 'skipped';
-  }
-
-  if (!existsSync(tldrPath)) {
-    console.log('  tldr.json not found');
-    return 'failed';
   }
 
   const tldrData = JSON.parse(readFileSync(tldrPath, 'utf-8'));
@@ -241,7 +252,7 @@ async function extractKeyDecisions(meetingDir, model, force) {
 
   const userMessage = `## Meeting\n\n${meeting}\n${aliasSection}\n## TLDR\n\n${JSON.stringify(tldrData, null, 2)}`;
 
-  console.log(`  Calling Claude API (${model}) with ${decisions.length} decision(s)...`);
+  console.log(`  ${tldrName}: calling Claude API (${model}) with ${decisions.length} decision(s)...`);
 
   try {
     const response = await callAnthropic(model, EXTRACTION_PROMPT, userMessage);
@@ -303,7 +314,7 @@ function findAllTldrDirs() {
     if (!ACD_CALL_TYPES.has(callType)) continue;
     const typeDir = join(ARTIFACTS_DIR, callType);
     for (const callId of readdirSync(typeDir)) {
-      if (existsSync(join(typeDir, callId, 'tldr.json'))) {
+      if (findTldrFiles(join(typeDir, callId)).length > 0) {
         entries.push(`${callType}/${callId}`);
       }
     }
@@ -352,28 +363,37 @@ async function main() {
       continue;
     }
 
-    if (values['dry-run']) {
-      const hasTldr = existsSync(join(meetingDir, 'tldr.json'));
-      const hasKd = existsSync(join(meetingDir, 'key_decisions.json'));
-      let decisionsCount = 0;
-      if (hasTldr) {
-        try {
-          const data = JSON.parse(readFileSync(join(meetingDir, 'tldr.json'), 'utf-8'));
-          decisionsCount = (data.decisions || []).length;
-        } catch {
-          // ignore
-        }
-      }
-      console.log(
-        `  tldr: ${hasTldr ? 'yes' : 'NO'}, key_decisions: ${hasKd ? 'exists' : 'missing'}, decisions: ${decisionsCount}`,
-      );
+    const tldrFiles = findTldrFiles(meetingDir);
+    if (tldrFiles.length === 0) {
+      console.log('  No tldr files found');
+      failed++;
       continue;
     }
 
-    const result = await extractKeyDecisions(meetingDir, values.model, values.force);
-    if (result === 'succeeded') succeeded++;
-    else if (result === 'skipped') skipped++;
-    else failed++;
+    if (values['dry-run']) {
+      let decisionsCount = 0;
+      const kdStatus = [];
+      for (const { path: fp, suffix } of tldrFiles) {
+        try {
+          const data = JSON.parse(readFileSync(fp, 'utf-8'));
+          decisionsCount += (data.decisions || []).length;
+        } catch {
+          // ignore
+        }
+        const kdPath = join(meetingDir, `key_decisions${suffix}.json`);
+        kdStatus.push(`key_decisions${suffix}: ${existsSync(kdPath) ? 'exists' : 'missing'}`);
+      }
+      const tldrNames = tldrFiles.map(f => f.path.split('/').pop()).join(', ');
+      console.log(`  tldr: ${tldrNames}, ${kdStatus.join(', ')}, decisions: ${decisionsCount}`);
+      continue;
+    }
+
+    for (const tldrFile of tldrFiles) {
+      const result = await extractKeyDecisionsForFile(meetingDir, tldrFile, values.model, values.force);
+      if (result === 'succeeded') succeeded++;
+      else if (result === 'skipped') skipped++;
+      else failed++;
+    }
   }
 
   console.log(`\nDone: ${succeeded} generated, ${skipped} skipped, ${failed} failed`);

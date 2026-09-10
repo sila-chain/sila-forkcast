@@ -1,9 +1,9 @@
 {
   "id": 8282,
   "title": "SIP-8282: Builder Execution Requests",
-  "status": "Draft",
+  "status": "Review",
   "description": "Predeploy builder deposit and exit request contracts for SIP-7732 builders on the SIP-7685 request bus",
-  "author": "Cayman (@wemeetagain), Nico Flaig <nflaig@protonmail.com>, Justin Traglia <jtraglia@sila.org>",
+  "author": "Cayman (@wemeetagain), Nico Flaig <nflaig@protonmail.com>, Felix Lange <fjl@sila.org>, Justin Traglia <jtraglia@sila.org>",
   "type": "Standards Track",
   "category": "Core",
   "createdDate": "2026-05-22",
@@ -23,6 +23,11 @@
           "status": "Considered",
           "call": "acde/239",
           "date": "2026-06-18"
+        },
+        {
+          "status": "Scheduled",
+          "call": null,
+          "date": "2026-08-04"
         }
       ],
       "isHeadliner": false,

@@ -178,7 +178,7 @@ Stefan Starflinger: Then yeah, it's… we have a breakout call, on Wednesday, I 
 
 45
 00:09:07.300 --> 00:09:23.899
-Stefan Starflinger: But otherwise, I think we're making good progress. I'd also like to remind people that it would be great to run kiosis tests with the SAVM files, and just to make sure, leave it running for a while, just to make sure that the clients are working well in interop.
+Stefan Starflinger: But otherwise, I think we're making good progress. I'd also like to remind people that it would be great to run kiosis tests with the EVM files, and just to make sure, leave it running for a while, just to make sure that the clients are working well in interop.
 
 46
 00:09:24.180 --> 00:09:31.209

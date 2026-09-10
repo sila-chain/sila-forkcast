@@ -303,7 +303,7 @@ I don't have a comprehensive list in writing on me atm, sorry. We will get summa
 01:04:38	DanielVF:	I think SIP-8037 is fundamentally flawed - it's both far more complexity than the benifits that it actually brings, and is also the wrong path long term for dealing with charging for state growth.
 01:04:53	Anders Elowsson:	Here is the research post: 
 
-https://Sila Research/t/failure-modes-in-sip-8037-and-state-gas-scaling/23975 
+https://ethresear.ch/t/failure-modes-in-sip-8037-and-state-gas-scaling/23975 
 
 It discusses state-gas parameter only (SGPO) hard forks. There are various levels of complexity that it could be implemented at.
 01:04:56	felix (eest):	Reacted to "I think SIP-8037 i..." with 👍
@@ -345,10 +345,10 @@ ibuprofen for mascot
 01:10:24	Parithosh Jayanthi:	Reacted to "ibuprofen for mascot" with 💊
 01:10:25	Parithosh Jayanthi:	Reacted to "ibuprofen" with 😂
 01:11:16	Anders Elowsson:	Note that SGPOs would allow more accurate pricing than the current SIP, and therefore quite possibly more scaling, because devs can adapt things to actually observed demand.
-01:11:21	Piotr:	SIP-8163 - https://sips.sila.org/SIPS/sip-8163
+01:11:21	Piotr:	SIP-8163 - https://sips.sila.org/EIPS/sip-8163
 https://sila-magicians.org/t/sip-8163-reserve-extension-0xae-opcode/27756
-* Reserve `EXTENSION (0xae)` for non-Sila L1 SAVM use
-* Equivalent to `INVALID (0xfe)` on Sila L1 SAVM
+* Reserve `EXTENSION (0xae)` for non-Sila L1 EVM use
+* Equivalent to `INVALID (0xfe)` on Sila L1 EVM
 * No implementation effort needed :tada:
 01:11:35	Dragan Rakita:	Replying to "dynamic gas pricing ..."
 
@@ -357,7 +357,7 @@ Yeah I know, I needed to propagate this variable everywhere so it is a new mecha
 01:12:05	Dragan Rakita:	Reacted to "ibuprofen" with 😂
 01:12:08	lightclient:	the problem is that we need L2s to agree on how they will use the opcodes that are blocked off
 01:12:34	DanielVF:	Yes 0xae
-01:12:44	jochem-brouwer:	https://sips.sila.org/SIPS/sip-8163
+01:12:44	jochem-brouwer:	https://sips.sila.org/EIPS/sip-8163
 01:13:33	Danno Ferrin:	F range is oversubscribed, more proposed opcodes than space left.
 01:13:56	Danno Ferrin:	0xef may be better
 01:14:22	jochem-brouwer:	Antwoord verzenden naar "0xef may be better"
@@ -366,14 +366,14 @@ l2 contract cannot start with this byte if it implements the blockoff of 0xef at
 01:14:52	Piotr:	Reacted to "0xef may be better" with 🙃
 01:14:54	jochem-brouwer:	Antwoord verzenden naar "0xef may be better"
 
-https://sips.sila.org/SIPS/sip-3541
+https://sips.sila.org/EIPS/sip-3541
 01:14:58	Danno Ferrin:	Replying to "0xef may be better" 
 
  Right, so start with jumpdest/ef-extansuon
 01:15:06	jochem-brouwer:	Antwoord verzenden naar "0xef may be better"
 
 ah right yes that works
-01:16:38	Ben Adams:	https://sips.sila.org/SIPS/sip-7979
+01:16:38	Ben Adams:	https://sips.sila.org/EIPS/sip-7979
 01:19:38	Piotr:	Replying to "the problem is tha..."
 
 The SIP-8163 sets some minimal constraints (mainly not breaking JUMPDEST analysis), and punts coordination on the actual extensions to be outside of SIP-8163 scope (suggests coordinating via EthMag to start with).
@@ -412,8 +412,8 @@ I’m pretty sure we support discv5 now, but I’ll ping you afterwards to see i
 01:27:28	Tomás Arjovsky | Lambda | Ethrex:	Replying to "Not in agenda, but a..."
 
 We already support discv5 by default and pass the hive tests
-01:28:41	marc | wolovim:	#savm channel in R&D is where it has been referenced already
-01:28:48	Josh Davis:	Reacted to "#savm channel in R&D ..." with ➕
+01:28:41	marc | wolovim:	#evm channel in R&D is where it has been referenced already
+01:28:48	Josh Davis:	Reacted to "#evm channel in R&D ..." with ➕
 01:29:55	Csaba:	Replying to "Not in agenda, but a..."
 
 Yeah, that was my impression.Thanks

@@ -83,43 +83,69 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
 
       {/* Headliner selection notice for Hegota */}
       {forkName.toLowerCase() === 'hegota' && (
-        <div className="p-4 mb-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded">
+        <div className="p-4 mb-6 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 rounded">
           <div className="flex items-start gap-3">
-            <svg className="w-5 h-5 text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg className="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
             </svg>
             <div>
-              <h4 className="font-medium text-blue-900 dark:text-blue-100 text-sm mb-1">Headliner Selection Complete</h4>
-              <p className="text-blue-800 dark:text-blue-200 text-xs leading-relaxed">
+              <h4 className="font-medium text-purple-900 dark:text-purple-100 text-sm mb-1">CFI Decisions Underway</h4>
+              <p className="text-purple-800 dark:text-purple-200 text-xs leading-relaxed">
                 Headliner selection has concluded with{' '}
-                <a href="#sip-7805" className="text-blue-600 dark:text-blue-300 underline decoration-1 underline-offset-2 hover:text-blue-800 dark:hover:text-blue-100">FOCIL (SIP-7805)</a>
+                <a href="#sip-7805" className="text-purple-600 dark:text-purple-300 underline decoration-1 underline-offset-2 hover:text-purple-800 dark:hover:text-purple-100">FOCIL (SIP-7805)</a>
                 {' '}SFI'd and{' '}
-                <a href="#sip-8141" className="text-blue-600 dark:text-blue-300 underline decoration-1 underline-offset-2 hover:text-blue-800 dark:hover:text-blue-100">Frame Transaction (SIP-8141)</a>
-                {' '}CFI'd. The non-headliner SIP proposal window is now open (deadline TBD). Follow updates on the{' '}
+                <a href="#sip-8141" className="text-purple-600 dark:text-purple-300 underline decoration-1 underline-offset-2 hover:text-purple-800 dark:hover:text-purple-100">Frame Transaction (SIP-8141)</a>
+                {' '}CFI'd. The non-headliner SIP proposal window closed August 6th, and ACDC and ACDE calls are now deciding which proposals advance to Considered for Inclusion. Follow updates on the{' '}
                 <a
                   href="https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 dark:text-blue-300 underline decoration-1 underline-offset-2 hover:text-blue-800 dark:hover:text-blue-100"
+                  className="text-purple-600 dark:text-purple-300 underline decoration-1 underline-offset-2 hover:text-purple-800 dark:hover:text-purple-100"
                 >
                   Sila Magicians meta thread
                 </a>
-                .
+.
               </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* Scoping notice for Glamsterdam */}
+      {/* SIP Rankings CTA for Hegota */}
+      {forkName.toLowerCase() === 'hegota' && (
+        <Link
+          to="/rank"
+          className="flex items-center gap-3 p-4 mb-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors group"
+        >
+          <svg className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
+          </svg>
+          <div className="flex-1">
+            <span className="text-sm font-medium text-amber-900 dark:text-amber-100">Rank SIP Proposals</span>
+            <p className="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">Compare and prioritize SIPs for Hegotá using the interactive ranking tool.</p>
+          </div>
+          <svg className="w-5 h-5 text-amber-400 dark:text-amber-500 group-hover:text-amber-600 dark:group-hover:text-amber-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+      )}
+
+      {/* Testnet notice for Glamsterdam */}
       {forkName.toLowerCase() === 'glamsterdam' && (
-        <div className="p-4 mb-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded">
+        <div className="p-4 mb-6 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 rounded">
           <div className="flex items-start gap-3">
-            <svg className="w-5 h-5 text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg className="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
             </svg>
-            <p className="text-blue-800 dark:text-blue-200 text-xs leading-relaxed">
-              Candidate SIPs are being fine-tuned, implemented, and tested on closed devnets. This process will determine which SIPs get Scheduled for Inclusion.
+            <p className="text-purple-800 dark:text-purple-200 text-xs leading-relaxed">
+              The first public testnet,{' '}
+              <Link
+                to="/networks/glamsterdam-devnet-8"
+                className="font-semibold underline decoration-1 underline-offset-2 hover:text-purple-900 dark:hover:text-purple-100"
+              >
+                Platåberget
+              </Link>
+              , went live on August 13, 2026.
             </p>
           </div>
         </div>

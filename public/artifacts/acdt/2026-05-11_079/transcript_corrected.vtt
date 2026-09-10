@@ -670,7 +670,7 @@ Potuz: Yeah, so the problem is that if we had a different contract, the problem 
 
 168
 00:27:23.980 --> 00:27:42.720
-Potuz: If we had a different contract and a different request that is sent for builders, then we could do the signature verification on the SAVM itself, and then, effectively, we'd be capping the number of deposits by gas limit, which is what we should have probably done.
+Potuz: If we had a different contract and a different request that is sent for builders, then we could do the signature verification on the EVM itself, and then, effectively, we'd be capping the number of deposits by gas limit, which is what we should have probably done.
 
 169
 00:27:43.120 --> 00:27:53.120

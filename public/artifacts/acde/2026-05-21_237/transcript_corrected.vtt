@@ -750,7 +750,7 @@ Andrew Ashikhmin: Yeah, I think it's, it's a move in the right direction, it jus
 
 188
 00:33:21.310 --> 00:33:35.849
-Andrew Ashikhmin: aligns with, you know, with Alex's thoughts on three-prong scaling of Sila. So, we are scaling SAVM execution with ZK, SAVM, we are scaling blobs, and we are scale… and we need to scale
+Andrew Ashikhmin: aligns with, you know, with Alex's thoughts on three-prong scaling of Sila. So, we are scaling EVM execution with ZK, EVM, we are scaling blobs, and we are scale… and we need to scale
 
 189
 00:33:36.280 --> 00:33:43.799
@@ -974,7 +974,7 @@ Tom Lehman | SIP-8182: This is, something that's gonna work on mobile, but it's 
 
 244
 00:43:22.870 --> 00:43:42.260
-Tom Lehman | SIP-8182: You get the synchronous L1 composability that you want, which is the ability to shield, swap, and reshield automatically to make decisions, and decide whether to shield based on SAVM execution, and so forth. So this flexibility, you've probably seen this in something like a Railgun, you get this. And then you get a minimal core, which is basically as little as possible is enshrined
+Tom Lehman | SIP-8182: You get the synchronous L1 composability that you want, which is the ability to shield, swap, and reshield automatically to make decisions, and decide whether to shield based on EVM execution, and so forth. So this flexibility, you've probably seen this in something like a Railgun, you get this. And then you get a minimal core, which is basically as little as possible is enshrined
 
 245
 00:43:42.260 --> 00:43:43.639
@@ -998,7 +998,7 @@ Tom Lehman | SIP-8182: The pain. On-state growth, of course, this is, standard s
 
 250
 00:44:56.660 --> 00:45:13.480
-Tom Lehman | SIP-8182: in the SAVM as the place where, you know, value transfers happen. You get compatibility with, you know, existing tools and mental models of people, but you also get this nice synchronous composability functionality. It's not clear exactly what you would use from taking it… what you would lose from taking it
+Tom Lehman | SIP-8182: in the EVM as the place where, you know, value transfers happen. You get compatibility with, you know, existing tools and mental models of people, but you also get this nice synchronous composability functionality. It's not clear exactly what you would use from taking it… what you would lose from taking it
 
 251
 00:45:13.480 --> 00:45:31.360

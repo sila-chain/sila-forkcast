@@ -2,7 +2,7 @@
   "id": "bal-devnet-7",
   "title": "bal-devnet-7",
   "sourceUrl": "https://notes.sila.org/@ethpandaops/bal-devnet-7",
-  "scrapedAt": "2026-07-13T07:30:52.643Z",
+  "scrapedAt": "2026-09-10T06:43:42.844Z",
   "announcements": [
     "bal-devnet-7 target launch: **Monday 18.05** (subject to ACDT today).",
     "**Last `bal-` prefixed devnet.** Consolidates the bal-devnet-3 optimisations with the SIP-8037 spec changes finalised since bal-devnet-6 — confirmed in [`tests-bal@v7.0.0`](https://github.com/sila-chain/execution-specs/releases/tag/tests-bal@v7.0.0). Future devnet releases will be prefixed `glamsterdam-`.",
@@ -15,67 +15,67 @@
       "number": 7708,
       "title": "SIL transfers emit a log (incl. CREATE/CREATE2)",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-7708"
+      "url": "https://sips.sila.org/EIPS/sip-7708"
     },
     {
       "number": 7778,
       "title": "Block Gas Accounting without Refunds",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-7778"
+      "url": "https://sips.sila.org/EIPS/sip-7778"
     },
     {
       "number": 7843,
       "title": "SLOTNUM opcode",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-7843"
+      "url": "https://sips.sila.org/EIPS/sip-7843"
     },
     {
       "number": 7928,
       "title": "Block-Level Access Lists",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-7928"
+      "url": "https://sips.sila.org/EIPS/sip-7928"
     },
     {
       "number": 7954,
       "title": "Increase Maximum Contract Size",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-7954"
+      "url": "https://sips.sila.org/EIPS/sip-7954"
     },
     {
       "number": 7975,
       "title": "sil/70 – partial block receipt lists",
       "status": "required",
-      "url": "https://sips.sila.org/SIPS/sip-7975"
+      "url": "https://sips.sila.org/EIPS/sip-7975"
     },
     {
       "number": 7976,
       "title": "Increase Calldata Floor Cost (64/64)",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-7976"
+      "url": "https://sips.sila.org/EIPS/sip-7976"
     },
     {
       "number": 7981,
       "title": "Increase Access List Cost",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-7981"
+      "url": "https://sips.sila.org/EIPS/sip-7981"
     },
     {
       "number": 8024,
       "title": "Backward compatible SWAPN, DUPN, EXCHANGE",
       "status": null,
-      "url": "https://sips.sila.org/SIPS/sip-8024"
+      "url": "https://sips.sila.org/EIPS/sip-8024"
     },
     {
       "number": 8037,
       "title": "State Creation Gas — CPSB=1530, system-call gas bump, halt/revert + SELFDESTRUCT refunds",
       "status": "updated",
-      "url": "https://sips.sila.org/SIPS/sip-8037"
+      "url": "https://sips.sila.org/EIPS/sip-8037"
     },
     {
       "number": 8159,
       "title": "sil/71 – Block Access List Exchange",
       "status": "required",
-      "url": "https://sips.sila.org/SIPS/sip-8159"
+      "url": "https://sips.sila.org/EIPS/sip-8159"
     }
   ],
   "elClientSupport": {

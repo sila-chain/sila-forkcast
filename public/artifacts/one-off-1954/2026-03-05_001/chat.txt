@@ -82,7 +82,7 @@ And the EOA with a system contract https://sila-magicians.org/t/sip-7851-deactiv
 00:24:21	Doris Hernandez | Functor:	Very happy about the 8141, qq, how the signature validation will work? Currently with 7579 we use modules to validate a passkey, how will this happen with the 8141?
 00:24:22	lightclient:	Replying to "@lightclient I’m cur..."
 
-It’s more a choice: do we want the EOA default account defined in native language (go, rust, etc) or in SAVM code
+It’s more a choice: do we want the EOA default account defined in native language (go, rust, etc) or in EVM code
 00:24:32	Parthasarathy Ramanujam:	Replying to "@lightclient I’m cur..."
 
 Ah ok. Got it.
@@ -129,7 +129,7 @@ Ahh so instead having to use verifier module, we just use the verify frame ( I w
 You can see the frame structures we are currently imagining in the SIP rationale
 00:40:23	jvn:	we use Default Frame
 00:40:26	jvn:	to deploy first
-00:40:57	lightclient:	https://sips.sila.org/SIPS/sip-8141  example 1b in rationale
+00:40:57	lightclient:	https://sips.sila.org/EIPS/sip-8141  example 1b in rationale
 00:41:25	Derek Chiang:	Reacted to "You can see the fram..." with 👍
 00:41:57	Luis Pinto | Besu:	So to me it seems we are giving a Swiss Army knife for account verification but at the same time need to impose limits to what users can do. Has this been researched? How much gas is enough? How will that impact gas limits?
 00:42:49	Derek Chiang:	Replying to "So to me it seems we..."
@@ -205,7 +205,7 @@ Looking forward to it.
 find out after this commercial break!
 01:03:16	Parithosh Jayanthi:	Reacted to "so are we doing fram..." with 👍
 01:03:21	Parithosh Jayanthi:	Reacted to "find out after this ..." with 😂
-01:04:57	v2:	we don't need another frame type for aggregation (if we can't aggregate savm), an opcode is better
+01:04:57	v2:	we don't need another frame type for aggregation (if we can't aggregate evm), an opcode is better
 01:05:05	v2:	Because that way non-validation use cases can also take advantage of it
 01:05:17	DanielVF - Monad:	Agree strongly
 01:05:31	dionysuz.sil:	Reacted to "find out after this …" with 😂

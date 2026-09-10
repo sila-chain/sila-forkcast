@@ -75,7 +75,8 @@ but this will automerge after the call then.
 00:24:03	Mario Vega:	Replying to "Can we get it approv..."
 
 https://github.com/sila-chain/SIPs/pull/11902
-00:24:13	Alexey:	with or without https://github.com/sila-chain/SIPs/pull/11902https://github.com/sila-chain/SIPs/pull/11891
+00:24:13	Alexey:	with or without https://github.com/sila-chain/SIPs/pull/11902
+https://github.com/sila-chain/SIPs/pull/11891
 00:24:34	terence:	yes
 00:24:41	Enrico Del Fante (tbenr):	yep
 00:24:55	Stefan Starflinger:	Toni - this is the PR right? https://github.com/sila-chain/SIPs/pull/11902
@@ -170,7 +171,7 @@ For p2p bids, this value must be zero. But if you receive a bid from elsewhere, 
 01:00:46	Nico Flaig:	Barnabas tested lodestar circuit breaker already
 01:00:55	potuz:	BTW Dima, we actually had this field outside of the signed part of the bid, it needs to be somewhere cause the builder needs to inform it to the proposer. We added it to the bid cause it can’t hurt, but it can easily be outside of the bid and kept offchain
 01:01:47	Pooja Ranjan:	https://github.com/sila-chain/pm/issues/2152#issuecomment-4924529318
-01:02:57	jochem-brouwer:	Ref: https://sips.sila.org/SIPS/sip-7723 [Network Upgrade Inclusion Stages]
+01:02:57	jochem-brouwer:	Ref: https://sips.sila.org/EIPS/sip-7723 [Network Upgrade Inclusion Stages]
 01:03:31	jochem-brouwer:	https://github.com/sila-chain/SIPs/pull/11006
 https://github.com/sila-chain/SIPs/pull/11904
 01:03:51	Pooja Ranjan:	https://github.com/sila-chain/pm/issues/2152#issuecomment-4924529318

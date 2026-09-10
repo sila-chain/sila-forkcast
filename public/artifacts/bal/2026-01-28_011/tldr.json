@@ -4,7 +4,7 @@
     "devnet_status": [
       {
         "timestamp": "00:08:30",
-        "highlight": "DevNet1 successful: most clients syncing, minimal forks with SAVM fuzzer"
+        "highlight": "DevNet1 successful: most clients syncing, minimal forks with EVM fuzzer"
       },
       {
         "timestamp": "00:09:13",

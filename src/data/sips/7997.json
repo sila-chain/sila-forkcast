@@ -2,7 +2,7 @@
   "id": 7997,
   "title": "SIP-7997: Deterministic Factory Contract",
   "status": "Review",
-  "description": "A minimal `CREATE2` factory shared by SAVM chains.",
+  "description": "A minimal `CREATE2` factory shared by EVM chains.",
   "author": "Francisco Giordano (@frangio), Toni Wahrstätter (@nerolation), Nick Johnson (@Arachnid), Jochem Brouwer (@jochem-brouwer)",
   "type": "Standards Track",
   "category": "Core",
@@ -23,6 +23,11 @@
           "status": "Considered",
           "call": "acde/227",
           "date": "2026-01-05"
+        },
+        {
+          "status": "Scheduled",
+          "call": null,
+          "date": "2026-08-04"
         }
       ],
       "champions": [
@@ -33,7 +38,7 @@
       ]
     }
   ],
-  "laymanDescription": "Enables developers to deploy smart contracts at identical addresses across SAVM chains.",
+  "laymanDescription": "Enables developers to deploy smart contracts at identical addresses across EVM chains.",
   "northStarAlignment": {
     "improveUX": {
       "description": "Complements the rollup-centric roadmap with a native and reliable mechanism for deployment of multi-chain contracts, including smart contract accounts."

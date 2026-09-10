@@ -1,13 +1,13 @@
 {
   "id": 3155,
-  "title": "SIP-3155: SAVM trace specification",
+  "title": "SIP-3155: EVM trace specification",
   "status": "Last Call",
-  "description": "A JSON format for SAVM traces",
+  "description": "A JSON format for EVM traces",
   "author": "Martin Holst Swende (@holiman), Marius van der Wijden (@MariusVanDerWijden)",
   "type": "Standards Track",
   "category": "Interface",
   "createdDate": "2020-12-07",
-  "discussionLink": "https://sila-magicians.org/t/sip-3155-create-savm-trace-specification/5007",
+  "discussionLink": "https://sila-magicians.org/t/sip-3155-create-evm-trace-specification/5007",
   "forkRelationships": [],
   "tradeoffs": null
 }

@@ -1,12 +1,12 @@
 {
   "id": 7692,
-  "title": "SIP-7692: SAVM Object Format (EOFv1) Meta",
+  "title": "SIP-7692: EVM Object Format (EOFv1) Meta",
   "status": "Stagnant",
   "description": "List of SIPs belonging to the EOFv1 proposal",
   "author": "Alex Beregszaszi (@axic), Paweł Bylica (@chfast), Andrei Maiboroda (@gumb0), Piotr Dobaczewski (@pdobacz), Danno Ferrin (@shemnon)",
   "type": "Meta",
   "createdDate": "2024-04-17",
-  "discussionLink": "https://sila-magicians.org/t/sip-7692-savm-object-format-eof-meta/19686",
+  "discussionLink": "https://sila-magicians.org/t/sip-7692-evm-object-format-eof-meta/19686",
   "reviewer": "bot",
   "layer": "EL",
   "forkRelationships": [
@@ -40,10 +40,10 @@
       ]
     }
   ],
-  "laymanDescription": "This introduces a new container format for SAVM bytecode that enables code versioning, removes complex jump analysis, and paves the way for new execution environments like RISC-V and EVM64 within the same contract. This SIP was Declined for Inclusion from Fusaka on [April 28th](https://blog.sila.org/2025/04/29/checkpoint-2#eof) due to a lack of consensus on implementation details and the resulting potential slowdown of shipping SilaPeerDAS. It has been re-proposed as a headlining feature in Glamsterdam with multiple variants to address community concerns.",
+  "laymanDescription": "This introduces a new container format for EVM bytecode that enables code versioning, removes complex jump analysis, and paves the way for new execution environments like RISC-V and EVM64 within the same contract. This SIP was Declined for Inclusion from Fusaka on [April 28th](https://blog.sila.org/2025/04/29/checkpoint-2#eof) due to a lack of consensus on implementation details and the resulting potential slowdown of shipping SilaPeerDAS. It has been re-proposed as a headlining feature in Glamsterdam with multiple variants to address community concerns.",
   "northStarAlignment": {
     "scaleL1": {
-      "description": "Enables incremental deployment of more efficient execution environments like RISC-V and EVM64 for computationally intensive tasks while maintaining SAVM compatibility. Removes JUMPDEST analysis overhead."
+      "description": "Enables incremental deployment of more efficient execution environments like RISC-V and EVM64 for computationally intensive tasks while maintaining EVM compatibility. Removes JUMPDEST analysis overhead."
     },
     "improveUX": {
       "description": "Provides better developer tools through improved code analysis, versioning capabilities, and performance improvements for computationally intensive applications."
@@ -54,7 +54,7 @@
       "description": "Indirect benefits from improved contract performance and reduced gas costs for computationally intensive operations. Better reliability from enhanced code validation."
     },
     "appDevs": {
-      "description": "Can use multiple execution environments within same contract - write normal logic in SAVM and intensive computations in EVM64/RISC-V. Better code analysis tools and function support improve development experience."
+      "description": "Can use multiple execution environments within same contract - write normal logic in EVM and intensive computations in EVM64/RISC-V. Better code analysis tools and function support improve development experience."
     },
     "walletDevs": {
       "description": "Minimal direct impact on wallet development, though improved contract reliability and performance benefit user experience indirectly."
@@ -81,9 +81,9 @@
     "Provides code versioning for backward-incompatible protocol changes",
     "Enables better code analysis and development tooling",
     "Introduces first-class function support improving analysis opportunities",
-    "Addresses multiple SAVM pain points through container format",
+    "Addresses multiple EVM pain points through container format",
     "Paves the way for maintaining existing toolchain while adding new capabilities",
-    "Enables 'both SAVM and RISC-V' rather than 'either SAVM or RISC-V' approach"
+    "Enables 'both EVM and RISC-V' rather than 'either EVM or RISC-V' approach"
   ],
   "tradeoffs": null,
   "requires": [

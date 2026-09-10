@@ -2,7 +2,7 @@
   "meeting": "ACDT #70 - February 16, 2026",
   "key_decisions": [
     {
-      "original_text": "BAL DOS protection constraint enforced outside SAVM at block receipt time",
+      "original_text": "BAL DOS protection constraint enforced outside EVM at block receipt time",
       "timestamp": "00:18:10",
       "type": "other",
       "sips": []

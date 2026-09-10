@@ -3,7 +3,7 @@
  * the search modal lives in the CallPage island. They coordinate through a window
  * event so the nav doesn't need to share React state with the page body.
  */
-const CALL_SEARCH_EVENT = 'sila-forkcast:open-call-search';
+const CALL_SEARCH_EVENT = 'forkcast:open-call-search';
 
 export function openCallSearch(): void {
   if (typeof window !== 'undefined') {

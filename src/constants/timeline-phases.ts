@@ -8,39 +8,39 @@ import devnetLaunches from '../data/generated/devnet-launches.json';
 
 export const GLAMSTERDAM_TIMELINE_PHASES: TimelinePhase[] = [
   {
-    id: 'fork-focus',
-    title: 'Fork Focus Discussion & Headliner Proposals',
-    dateRange: 'May 26 - June 20',
-    description: 'ACD calls focus on discussing Glamsterdam\'s high-level goals. Headliner champions present proposals.',
-    status: 'completed'
-  },
-  {
-    id: 'headliner-discussion',
-    title: 'Headliner Discussion & Finalization',
-    dateRange: 'June 23 - July 17',
-    description: 'ACD evaluates candidate headliners, solicits community feedback, and finalizes decisions.',
-    status: 'completed'
-  },
-  {
-    id: 'non-headliner-proposals',
-    title: 'Non-Headliner SIP Proposals',
-    dateRange: 'July 21 - Aug 21',
-    description: 'Non-headliner SIPs can now be proposed for inclusion in Glamsterdam.',
-    status: 'completed'
-  },
-  {
-    id: 'cfi-decisions',
-    title: 'Non-Headliner SIP CFI Decisions',
-    dateRange: 'Sep 4 & 11',
-    description: 'ACDC and ACDE calls select which Proposed for Inclusion SIPs advance to Considered for Inclusion.',
-    status: 'completed'
-  },
-  {
-    id: 'cfi-to-sfi',
-    title: 'CFI → SFI SIP Decisions',
-    dateRange: 'Date TBD',
-    description: 'As Glamsterdam devnets begin, final decisions on which CFI SIPs will be included in the upgrade\'s devnet.',
+    id: 'devnets',
+    title: 'Devnets',
+    dateRange: 'Ongoing',
+    description: 'Client teams implement and test Glamsterdam changes on internal development networks. Devnet-8 and Devnet-9 are live alongside the public testnets, and Devnet-10 is still to come.',
     status: 'in-progress'
+  },
+  {
+    id: 'plataberget',
+    title: 'Platåberget Testnet Deployment',
+    dateRange: 'Aug 13',
+    description: 'Deploy Glamsterdam to a purpose-built public testnet for initial testing. The network launched Aug 13; Gloas activates Aug 20.',
+    status: 'in-progress'
+  },
+  {
+    id: 'sepolia',
+    title: 'SilaSepolia Testnet Deployment',
+    dateRange: 'Oct 6 (proposed)',
+    description: 'Deploy Glamsterdam to the permissioned validator testnet.',
+    status: 'upcoming'
+  },
+  {
+    id: 'hoodi',
+    title: 'Hoodi Testnet Deployment',
+    dateRange: 'Oct 26 (proposed)',
+    description: 'Deploy Glamsterdam to the permissionless validator testnet for final testing.',
+    status: 'upcoming'
+  },
+  {
+    id: 'sila-mainnet',
+    title: 'SilaMainnet Deployment',
+    dateRange: 'Q4 2026',
+    description: 'Final deployment of Glamsterdam to Sila sila-mainnet after successful testnet validation.',
+    status: 'upcoming'
   }
 ];
 
@@ -131,16 +131,16 @@ export const HEGOTA_TIMELINE_PHASES: TimelinePhase[] = [
   {
     id: 'non-headliner-proposals',
     title: 'Non-Headliner SIP Proposals',
-    dateRange: 'Apr 9 - TBD',
-    description: 'Non-headliner SIPs can be proposed for inclusion in Hegotá. Window opens April 9th, deadline TBD.',
-    status: 'in-progress'
+    dateRange: 'Apr 9 - Aug 6',
+    description: 'Non-headliner SIPs can be proposed for inclusion in Hegotá. Window opens April 9th, deadline August 6th.',
+    status: 'completed'
   },
   {
     id: 'cfi-decisions',
     title: 'Non-Headliner SIP CFI Decisions',
     dateRange: 'TBD',
     description: 'ACDC and ACDE calls select which Proposed for Inclusion SIPs advance to Considered for Inclusion.',
-    status: 'upcoming'
+    status: 'in-progress'
   },
   {
     id: 'cfi-to-sfi',
@@ -246,28 +246,37 @@ const RAW_GLAMSTERDAM_PROGRESS: ForkProgress = {
       phaseId: 'development',
       status: 'in-progress',
       actualStartDate: 'Feb 2026',
-      projectedDate: 'Q2 2026',
-      progressNotes: 'Scoping complete, implemented SIPs are being tested on devnets',
+      progressNotes: 'Devnet-8 and Devnet-9 are live alongside the public testnets; Devnet-10 still to come',
+      // Only the planned devnets are declared here. Once one launches,
+      // enrichDevnetDates takes over its date and status from
+      // devnet-launches.json. Devnet-8 doubles as the Platåberget public testnet.
       devnets: [
-        { name: 'Devnet-0', status: 'completed', date: 'Apr 24, 2026' },
-        { name: 'Devnet-1', status: 'completed', date: 'Apr 29, 2026' },
-        { name: 'Devnet-2', status: 'completed', date: 'May 1, 2026' },
-        { name: 'Devnet-3', status: 'completed', date: 'May 6, 2026' },
-        { name: 'Devnet-4', status: 'upcoming', projectedDate: 'Q2 2026' },
-        { name: 'Devnet-5', status: 'upcoming', projectedDate: 'Q2 2026' },
-        { name: 'Devnet-6', status: 'upcoming', projectedDate: 'Q2 2026' },
-        { name: 'Devnet-7', status: 'upcoming', projectedDate: 'Jul 15, 2026' }
+        { name: 'Devnet-0', status: 'upcoming' },
+        { name: 'Devnet-1', status: 'upcoming' },
+        { name: 'Devnet-2', status: 'upcoming' },
+        { name: 'Devnet-3', status: 'upcoming' },
+        { name: 'Devnet-4', status: 'upcoming' },
+        { name: 'Devnet-5', status: 'upcoming' },
+        { name: 'Devnet-6', status: 'upcoming' },
+        { name: 'Devnet-7', status: 'upcoming' },
+        { name: 'Devnet-8', status: 'upcoming' },
+        { name: 'Devnet-9', status: 'upcoming' },
+        { name: 'Devnet-10', status: 'upcoming' }
       ]
     },
     {
       phaseId: 'public-testnets',
-      status: 'upcoming',
+      status: 'in-progress',
+      actualStartDate: 'Aug 13, 2026',
       projectedDate: 'Q3 2026',
-      progressNotes: 'Sequential testnet deployments',
+      progressNotes: 'Platåberget is live; SilaSepolia and Hoodi fork slots proposed, not yet agreed',
+      // Holešky is deprecated, so Glamsterdam gets a purpose-built public testnet
+      // (glamsterdam-devnet-8) in its place.
       testnets: [
-        { name: 'Holešky', status: 'deprecated' },
-        { name: 'SilaSepolia', status: 'upcoming', projectedDate: 'Q3 2026' },
-        { name: 'Hoodi', status: 'upcoming', projectedDate: 'Q3 2026' }
+        { name: 'Platåberget', status: 'completed', date: 'Aug 13, 2026' },
+        // Fork slots put forward on ACD, not yet agreed.
+        { name: 'SilaSepolia', status: 'upcoming', proposedDate: 'Oct 6, 2026' },
+        { name: 'Hoodi', status: 'upcoming', proposedDate: 'Oct 26, 2026' }
       ]
     },
     {
@@ -303,18 +312,22 @@ const RAW_HEGOTA_PROGRESS: ForkProgress = {
     },
     {
       phaseId: 'sip-selection',
-      status: 'upcoming',
+      status: 'in-progress',
       projectedDate: 'Q2-Q3 2026',
-      progressNotes: 'Non-headliner SIP proposal window opens April 9th',
+      progressNotes: 'Non-headliner SIP proposal window: April 9th – August 6th',
       substeps: [
         {
           name: 'PFI Deadline',
-          status: 'upcoming',
+          status: 'completed',
           date: 'Aug 6, 2026'
         },
         {
           name: 'CFI Deadline',
-          status: 'upcoming'
+          status: 'upcoming',
+          // No specific date was put forward — the stated goal is to CFI before
+          // Devcon (first week of November), and this is the last ACDC/ACDE call
+          // that fits.
+          proposedDate: 'Oct 29, 2026'
         }
       ]
     },
@@ -352,8 +365,10 @@ const RAW_HEGOTA_PROGRESS: ForkProgress = {
   ]
 };
 
+type DevnetLaunch = { version: number; date: string; active: boolean };
+
 function enrichDevnetDates(progress: ForkProgress, forkKey: string): ForkProgress {
-  const launches = (devnetLaunches as Record<string, { version: number; date: string }[]>)[forkKey] ?? [];
+  const launches = (devnetLaunches as Record<string, DevnetLaunch[]>)[forkKey] ?? [];
   if (!launches.length) return progress;
 
   return {
@@ -365,10 +380,12 @@ function enrichDevnetDates(progress: ForkProgress, forkKey: string): ForkProgres
         devnets: phase.devnets.map(devnet => {
           const version = parseInt(devnet.name.replace('Devnet-', ''), 10);
           const launch = launches.find(l => l.version === version);
-          if (launch) {
-            return { ...devnet, status: 'completed' as const, date: launch.date };
-          }
-          return devnet;
+          if (!launch) return devnet;
+          return {
+            ...devnet,
+            status: launch.active ? 'in-progress' : 'completed',
+            date: launch.date,
+          };
         }),
       };
     }),

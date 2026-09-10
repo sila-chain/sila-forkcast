@@ -1006,11 +1006,11 @@ Mario Vega: But, in any case, if you want to jump in and chime in into this issu
 
 252
 00:37:54.030 --> 00:38:04.779
-Mario Vega: Because you see more impact of this SAVM SIP, just please go into the issue and comment on there, and we'll try to prioritize,
+Mario Vega: Because you see more impact of this EVM SIP, just please go into the issue and comment on there, and we'll try to prioritize,
 
 253
 00:38:04.780 --> 00:38:16.869
-Mario Vega: to assess the complexity of the testing of this SAVM SIP, so we can move it forward, and maybe even start with the specification implementation, and also the testing implementation.
+Mario Vega: to assess the complexity of the testing of this EVM SIP, so we can move it forward, and maybe even start with the specification implementation, and also the testing implementation.
 
 254
 00:38:17.370 --> 00:38:19.080
@@ -1054,7 +1054,7 @@ Mario Vega: get a sentiment from the rest of the core devs for Glamstagram SIPs,
 
 264
 00:39:31.710 --> 00:39:39.029
-Mario Vega: based on their feeling on which one will have the better impact in the SAVM,
+Mario Vega: based on their feeling on which one will have the better impact in the EVM,
 
 265
 00:39:39.170 --> 00:39:44.319
@@ -1074,7 +1074,7 @@ lightclient: I mean, we want someone to, like, deeply look at all these SIPs, an
 
 269
 00:40:32.120 --> 00:40:36.440
-lightclient: that many impactful things to the SAVM on top of that, that are not related to pricing.
+lightclient: that many impactful things to the EVM on top of that, that are not related to pricing.
 
 270
 00:40:42.820 --> 00:40:47.659

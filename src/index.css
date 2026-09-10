@@ -18,20 +18,20 @@
   opacity: 1;
 }
 
-/* SilaForkcast logo */
+/* Forkcast logo */
 @keyframes glowPulse {
   0%, 100% { filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.3)); }
   50% { filter: drop-shadow(0 0 14px rgba(0, 212, 255, 0.5)) drop-shadow(0 0 28px rgba(168, 85, 247, 0.15)); }
 }
 
-.sila-forkcast-logo {
+.forkcast-logo {
   display: inline-flex;
   align-items: center;
   gap: 0.35em;
   text-decoration: none;
 }
 
-.sila-forkcast-logo .fork-symbol {
+.forkcast-logo .fork-symbol {
   font-weight: 700;
   background: linear-gradient(135deg, #00D4FF 0%, #A855F7 100%);
   -webkit-background-clip: text;
@@ -40,7 +40,7 @@
   animation: glowPulse 3s ease-in-out infinite;
 }
 
-.sila-forkcast-logo:hover .fork-symbol {
+.forkcast-logo:hover .fork-symbol {
   background: linear-gradient(135deg, #A855F7 0%, #00D4FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -49,15 +49,15 @@
   filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.4));
 }
 
-.sila-forkcast-wordmark {
+.forkcast-wordmark {
   filter: brightness(0);
 }
 
-.dark .sila-forkcast-wordmark {
+.dark .forkcast-wordmark {
   filter: brightness(0) invert(1);
 }
 
-.sila-forkcast-logo:hover img {
+.forkcast-logo:hover img {
   opacity: 0.85;
 }
 
@@ -112,6 +112,65 @@
 
 .animate-fade-scale {
   animation: fadeScale 0.2s ease-out;
+}
+
+/* Drawer: panel slide paired with a matching backdrop fade */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Decelerating curve: quick departure, gentle settle. `will-change` promotes the
+   panel to its own compositor layer so sliding its (large) subtree stays on the
+   GPU instead of repainting each frame. Exit runs faster than entry so dismissing
+   feels responsive. */
+.animate-slide-in-right {
+  animation: slideInRight 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  will-change: transform;
+}
+
+.animate-slide-out-right {
+  animation: slideOutRight 0.22s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  will-change: transform;
+}
+
+.animate-backdrop-in {
+  animation: fadeIn 0.32s ease-out;
+}
+
+.animate-backdrop-out {
+  animation: fadeOut 0.22s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-in-right,
+  .animate-slide-out-right,
+  .animate-backdrop-in,
+  .animate-backdrop-out {
+    animation-duration: 0.01ms;
+  }
 }
 
 /* Dark mode configuration */

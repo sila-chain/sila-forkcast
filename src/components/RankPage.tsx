@@ -1,30 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "./navigation";
-import { SIP, Champion } from "../types/sip";
+import { SIP } from "../types/sip";
 import {
   getLaymanTitle,
   getProposalPrefix,
   getEipLayer,
-  wasHeadlinerCandidate,
 } from "../utils/sip";
 import { useAnalytics } from "../hooks/useAnalytics";
-import { eipsData } from "../data/sips";
-import { getPendingProposalsForFork, PendingProposal } from "../data/pending-proposals";
-
-const ChampionDisplay: React.FC<{ champions?: Champion[] }> = ({ champions }) => {
-  if (!champions || champions.length === 0 || !champions.some(c => c.name)) return null;
-  return (
-    <div className="text-xs text-slate-500 dark:text-slate-400">
-      <span className="font-medium">{champions.length > 1 ? 'Champions:' : 'Champion:'}</span>{" "}
-      {champions.map(c => c.name).join(' & ')}
-    </div>
-  );
-};
+import { groupByCategory } from "../domain/sips/eipCategories";
+import { getRankableEips } from "../domain/sips/rankableEips";
+import { EipDrawer } from "./sip/EipDrawer";
+import { decodeRankingsHash, encodeRankingsHash } from "../utils/rankShare";
 
 interface TierItem {
   id: string;
   sip?: SIP;
-  pendingProposal?: PendingProposal;
   tier: string | null;
 }
 
@@ -67,20 +57,45 @@ const TIERS: Tier[] = [
   },
   {
     id: "D",
-    name: "D",
+    name: "DFI",
     color: "text-slate-900",
     bandColor: "bg-sky-300",
     rowBgColor: "bg-sky-100",
   },
 ];
 
+const TIER_IDS = TIERS.map((tier) => tier.id);
+
+const STORAGE_KEY = "hegota-rankings";
+
+// The unranked starting board: active Hegota SIPs, minus selected headliners
+const buildTierItems = (): TierItem[] =>
+  getRankableEips().map((sip) => ({
+    id: `sip-${sip.id}`,
+    sip,
+    tier: null,
+  }));
+
+// Merge the viewer's saved tier assignments onto the current board
+const applySavedRankings = (allItems: TierItem[]): TierItem[] => {
+  const savedRankings = localStorage.getItem(STORAGE_KEY);
+  if (!savedRankings) return allItems;
+  try {
+    const parsed = JSON.parse(savedRankings);
+    return allItems.map((item) => {
+      const saved = parsed.find((s: TierItem) => s.id === item.id);
+      return saved ? { ...item, tier: saved.tier } : item;
+    });
+  } catch {
+    // If parsing fails, just use default
+    return allItems;
+  }
+};
+
 // Helper function to get layer for a tier item
 const getItemLayer = (item: TierItem): 'EL' | 'CL' | null => {
   if (item.sip) {
     return getEipLayer(item.sip);
-  }
-  if (item.pendingProposal) {
-    return item.pendingProposal.layer;
   }
   return null;
 };
@@ -90,20 +105,6 @@ const getItemTitle = (item: TierItem): string => {
   if (item.sip) {
     return getLaymanTitle(item.sip);
   }
-  if (item.pendingProposal) {
-    return item.pendingProposal.title;
-  }
-  return '';
-};
-
-// Helper function to get description for a tier item
-const getItemDescription = (item: TierItem): string => {
-  if (item.sip) {
-    return item.sip.laymanDescription || item.sip.description;
-  }
-  if (item.pendingProposal) {
-    return item.pendingProposal.description;
-  }
   return '';
 };
 
@@ -112,36 +113,12 @@ const getItemDisplayId = (item: TierItem): string => {
   if (item.sip) {
     return `${getProposalPrefix(item.sip)}-${item.sip.id}`;
   }
-  if (item.pendingProposal) {
-    return 'Pending';
-  }
   return '';
-};
-
-// Helper function to clean author names - remove GitHub handles and emails
-const cleanAuthorName = (author: string): string => {
-  // Remove content in parentheses (e.g., GitHub handles)
-  let cleaned = author.replace(/\([^)]*\)/g, '');
-  // Remove content in angle brackets (e.g., email addresses)
-  cleaned = cleaned.replace(/<[^>]*>/g, '');
-  // Replace multiple spaces with single space
-  cleaned = cleaned.replace(/\s+/g, ' ');
-  // Clean up spaces around commas: remove space before comma, ensure single space after
-  cleaned = cleaned.replace(/\s*,\s*/g, ', ');
-  // Clean up extra commas and trailing commas
-  cleaned = cleaned.replace(/,\s*,/g, ',').replace(/,\s*$/g, '').trim();
-  return cleaned;
-};
-
-// Helper function to truncate long text with ellipsis
-const truncateText = (text: string, maxLength: number): string => {
-  if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength).trim() + '...';
 };
 
 const RankPage: React.FC = () => {
   const navigate = useNavigate();
-  const { trackLinkClick, trackEvent } = useAnalytics();
+  const { trackEvent } = useAnalytics();
   const [items, setItems] = useState<TierItem[]>([]);
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -153,59 +130,97 @@ const RankPage: React.FC = () => {
   );
   const [collectionOrder, setCollectionOrder] = useState<string[]>([]);
   const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState<TierItem | null>(null);
-  const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number } | null>(null);
+  const [drawerEipId, setDrawerEipId] = useState<number | null>(null);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">(
+    "idle"
+  );
+  // True while showing rankings from a shared link. Nothing is written to
+  // localStorage in this mode, so opening someone else's link can never
+  // clobber the viewer's own saved rankings.
+  const [isViewingSharedLink, setIsViewingSharedLink] = useState(false);
+  // Whether the viewer has moved anything since load, which decides if we own
+  // the URL fragment or are still displaying the one we were handed.
+  const hasEditedRef = useRef(false);
   const isTouchDevice =
     typeof window !== "undefined" &&
     ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 
-  // Initialize with Hegota headliner SIPs and pending proposals
+  // Initialize with active Hegota SIPs (excluding selected headliners)
   useEffect(() => {
-    // Get SIPs that were headliner candidates for Hegota
-    const hegotaHeadlinerEips = eipsData
-      .filter((sip) => wasHeadlinerCandidate(sip, "hegota"))
-      .map((sip) => ({
-        id: `sip-${sip.id}`,
-        sip,
-        tier: null,
-      }));
+    const allItems = buildTierItems();
 
-    // Get pending proposals for Hegota
-    const hegotaPendingProposals = getPendingProposalsForFork("hegota")
-      .map((proposal) => ({
-        id: `pending-${proposal.id}`,
-        pendingProposal: proposal,
-        tier: null,
-      }));
-
-    const allItems = [...hegotaHeadlinerEips, ...hegotaPendingProposals];
-
-    // Try to load saved rankings from localStorage
-    const savedRankings = localStorage.getItem("hegota-rankings");
-    if (savedRankings) {
-      try {
-        const parsed = JSON.parse(savedRankings);
-        // Merge saved tier assignments with current data
-        const merged = allItems.map((item) => {
-          const saved = parsed.find((s: TierItem) => s.id === item.id);
-          return saved ? { ...item, tier: saved.tier } : item;
-        });
-        setItems(merged);
-      } catch {
-        // If parsing fails, just use default
-        setItems(allItems);
-      }
-    } else {
-      setItems(allItems);
+    // A shared link's rankings take precedence over saved ones
+    const sharedRankings = decodeRankingsHash(window.location.hash, TIER_IDS);
+    if (sharedRankings) {
+      setIsViewingSharedLink(true);
+      setItems(
+        allItems.map((item) =>
+          item.sip && sharedRankings.has(item.sip.id)
+            ? { ...item, tier: sharedRankings.get(item.sip.id)! }
+            : item
+        )
+      );
+      return;
     }
+
+    setItems(applySavedRankings(allItems));
   }, []);
 
   // Save rankings to localStorage whenever they change
   useEffect(() => {
-    if (items.length > 0) {
-      localStorage.setItem("hegota-rankings", JSON.stringify(items));
+    if (items.length > 0 && !isViewingSharedLink) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
     }
-  }, [items]);
+  }, [items, isViewingSharedLink]);
+
+  // Keep the URL fragment in sync with the rankings, so the address bar is
+  // always a shareable link to the current state
+  useEffect(() => {
+    if (items.length === 0) return;
+    // Until the viewer touches a shared link's rankings, leave the URL exactly
+    // as it arrived so forwarding it on is lossless — re-encoding here would
+    // silently drop any SIP this build doesn't know about.
+    if (isViewingSharedLink && !hasEditedRef.current) return;
+    const rankings = new Map<number, string>();
+    items.forEach((item) => {
+      if (item.sip && item.tier !== null) {
+        rankings.set(item.sip.id, item.tier);
+      }
+    });
+    const hash = encodeRankingsHash(rankings, TIER_IDS);
+    if (window.location.hash === hash) return;
+    history.replaceState(
+      null,
+      "",
+      hash || window.location.pathname + window.location.search
+    );
+  }, [items, isViewingSharedLink]);
+
+  // Route ranking edits through this so the URL starts tracking the board once
+  // the viewer changes something
+  const editItems = (updater: (prev: TierItem[]) => TierItem[]) => {
+    hasEditedRef.current = true;
+    setItems(updater);
+  };
+
+  // Adopt the shared rankings as the viewer's own, replacing what they had
+  const handleKeepSharedRankings = () => {
+    setIsViewingSharedLink(false);
+  };
+
+  // Abandon the shared rankings and go back to the viewer's saved ones
+  const handleRestoreOwnRankings = () => {
+    hasEditedRef.current = false;
+    setItems(applySavedRankings(buildTierItems()));
+    setIsViewingSharedLink(false);
+  };
+
+  // Clear the "Copied!" / error hint after a moment
+  useEffect(() => {
+    if (copyStatus === "idle") return;
+    const timeout = window.setTimeout(() => setCopyStatus("idle"), 2500);
+    return () => window.clearTimeout(timeout);
+  }, [copyStatus]);
 
   // Initialize expanded collections based on layers
   useEffect(() => {
@@ -246,7 +261,7 @@ const RankPage: React.FC = () => {
   const handleDrop = (e: React.DragEvent, tierId: string) => {
     e.preventDefault();
     if (draggedItem) {
-      setItems((prev) =>
+      editItems((prev) =>
         prev.map((item) =>
           item.id === draggedItem ? { ...item, tier: tierId } : item
         )
@@ -272,7 +287,7 @@ const RankPage: React.FC = () => {
 
   const handleTierClick = (tierId: string) => {
     if (isTouchDevice && selectedMobileItem) {
-      setItems((prev) =>
+      editItems((prev) =>
         prev.map((item) =>
           item.id === selectedMobileItem ? { ...item, tier: tierId } : item
         )
@@ -282,7 +297,7 @@ const RankPage: React.FC = () => {
   };
 
   const handleRemoveFromTier = (itemId: string) => {
-    setItems((prev) =>
+    editItems((prev) =>
       prev.map((item) => (item.id === itemId ? { ...item, tier: null } : item))
     );
   };
@@ -333,7 +348,7 @@ const RankPage: React.FC = () => {
   };
 
   const getTotalItemsCountByLayer = (layer: string): number => {
-    return items.filter((item) => getItemLayer(item) === layer).length;
+    return items.filter((item) => (getItemLayer(item) || 'Other') === layer).length;
   };
 
   const toggleCollection = (collection: string) => {
@@ -354,18 +369,12 @@ const RankPage: React.FC = () => {
   };
 
   const generateTierImage = () => {
-    const rankedItems = items.filter((item) => item.tier !== null);
-    if (rankedItems.length === 0) {
-      alert("Please rank at least one proposal before generating an image.");
-      return;
-    }
+    if (rankedCount === 0) return;
 
     const scale = 2;
 
     // Track the image download event
-    trackEvent("Tier Maker Download Image", {
-      rankedCount: rankedItems.length,
-    });
+    trackEvent("Tier Maker Download Image", { rankedCount });
 
     // Canvas dimensions - two column layout
     const canvasWidth = 720 * scale; // Wider canvas for more text
@@ -435,7 +444,7 @@ const RankPage: React.FC = () => {
       ctx.fillStyle = bandColors[tier.id] || "#e5e7eb";
       ctx.fillRect(0, y, bandWidth, tierHeight);
 
-      // Draw tier letter centered in band
+      // Draw tier label centered in band
       ctx.save();
       ctx.fillStyle = "#18181b";
       ctx.font = `${
@@ -443,7 +452,7 @@ const RankPage: React.FC = () => {
       }px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(tier.id, bandWidth / 2, y + tierHeight / 2);
+      ctx.fillText(tier.name, bandWidth / 2, y + tierHeight / 2);
       ctx.restore();
 
       // Draw cards in two columns
@@ -488,7 +497,7 @@ const RankPage: React.FC = () => {
     ctx.textBaseline = "middle";
 
     // Title in the center with date
-    const titleText = "Hegota Headliner Rankings";
+    const titleText = "Hegot\u00e1 SIP Rankings";
     const titleFont = `${13 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
     const dateFont = `${13 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
 
@@ -511,9 +520,9 @@ const RankPage: React.FC = () => {
     ctx.fillStyle = "#f1f5f9";
     ctx.fillText(` • ${dateStamp}`, titleStartX + titleWidth, footerY1);
 
-    // Line 2: 'Make your own at sila-forkcast.org/rank'
+    // Line 2: 'Make your own at forkcast.org/rank'
     const prefix = "Make your own at ";
-    const logo = "sila-forkcast";
+    const logo = "forkcast";
     const suffix = ".org/rank";
     ctx.font = `${
       13 * scale
@@ -540,7 +549,7 @@ const RankPage: React.FC = () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "hegota-headliner-rankings.png";
+        a.download = "hegota-rankings.png";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -664,12 +673,24 @@ const RankPage: React.FC = () => {
   }
 
   const handleReset = () => {
-    setItems((prev) => prev.map((item) => ({ ...item, tier: null })));
-    localStorage.removeItem("hegota-rankings");
+    // The cleared board is persisted by the save effect (and deliberately not
+    // persisted at all while viewing someone else's link)
+    editItems((prev) => prev.map((item) => ({ ...item, tier: null })));
   };
 
-  const handleExternalLinkClick = (linkType: string, url: string) => {
-    trackLinkClick(linkType, url);
+  const rankedCount = items.filter((item) => item.tier !== null).length;
+
+  const handleCopyLink = async () => {
+    if (rankedCount === 0) return;
+
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      trackEvent("Tier Maker Copy Link", { rankedCount });
+      setCopyStatus("copied");
+    } catch {
+      // Clipboard access can be denied or unavailable outside a secure context
+      setCopyStatus("error");
+    }
   };
 
   return (
@@ -682,10 +703,10 @@ const RankPage: React.FC = () => {
               onClick={() => navigate("/upgrade/hegota")}
               className="mb-2 sm:mb-0 sm:absolute sm:left-0 sm:top-1/2 sm:-translate-y-1/2 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100 transition-colors"
             >
-              ← Back to Hegota
+              ← Back to Hegotá
             </button>
             <h1 className="font-semibold text-slate-900 dark:text-slate-100 text-center truncate max-w-full overflow-hidden text-base sm:text-xl">
-              Hegota Headliner Tier Maker
+              Hegotá Tier Maker
             </h1>
           </div>
         </div>
@@ -694,6 +715,28 @@ const RankPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Tiers */}
           <div className="flex flex-col gap-4">
+            {isViewingSharedLink && (
+              <div className="flex flex-col gap-2 p-3 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 rounded-lg text-xs text-purple-900 dark:text-purple-100 sm:flex-row sm:items-center sm:gap-3">
+                <span className="flex-1">
+                  You're viewing rankings from a shared link. Your own rankings
+                  are untouched.
+                </span>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <button
+                    onClick={handleRestoreOwnRankings}
+                    className="px-2 py-1 font-medium rounded border border-purple-300 dark:border-purple-600 hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors cursor-pointer"
+                  >
+                    Back to mine
+                  </button>
+                  <button
+                    onClick={handleKeepSharedRankings}
+                    className="px-2 py-1 font-medium rounded bg-purple-600 text-white hover:bg-purple-700 transition-colors cursor-pointer"
+                  >
+                    Save as mine
+                  </button>
+                </div>
+              </div>
+            )}
             {/* Instructions */}
             <div className="bg-white rounded-lg border border-slate-200 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
               <button
@@ -723,44 +766,26 @@ const RankPage: React.FC = () => {
                 <div className="px-4 pb-4">
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
                     Users, node operators, app developers, core developers, and any other stakeholders
-                    are invited to voice their support for their preferred headliner proposals for the Hegota upgrade.
+                    are invited to voice their support for their preferred non-headliner SIPs for the Hegotá upgrade.
+                    The deadline for proposing non-headliner SIPs was{" "}
+                    <strong>August 6, 2026</strong>.
                   </p>
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                    Drag and drop (desktop) or tap-to-assign (mobile) the headliner proposals
+                    Drag and drop (desktop) or tap-to-assign (mobile) the SIPs
                     into tiers. S-tier represents your highest priority proposals,
-                    while D-tier represents your lowest priority.
+                    while DFI represents proposals you explicitly reject.
                   </p>
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Download the image to share your rankings and start a conversation.{" "}
+                    Copy a link or download the image to share your rankings
+                    and start a conversation.{" "}
                     <a
-                      href="https://sila-forkcast.org/upgrade/hegota"
+                      href="https://forkcast.org/upgrade/hegota"
                       className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
                     >
-                      Learn more about Hegota
+                      Learn more about Hegotá
                     </a>
                     .
                   </p>
-                  <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-slate-200 bg-slate-100 p-3 dark:border-slate-700 dark:bg-slate-800">
-                    <div className="flex-shrink-0 pt-0.5">
-                      <svg
-                        className="h-4 w-4 text-slate-500 dark:text-slate-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2}
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.852l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12v-.008z"
-                        />
-                      </svg>
-                    </div>
-                    <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                      The deadline for headliner proposal submissions was February 4th, 2025.
-                    </p>
-                  </div>
                 </div>
               )}
             </div>
@@ -769,7 +794,7 @@ const RankPage: React.FC = () => {
               <div className="bg-slate-800 px-4 py-3 flex items-center justify-between flex-shrink-0">
                 <h3 className="text-lg font-bold text-white">Your Rankings</h3>
                 <span className="text-sm font-mono text-slate-400">
-                  sila-forkcast.org/rank
+                  forkcast.org/rank
                 </span>
               </div>
               {/* Scrollable tier rows container */}
@@ -841,7 +866,17 @@ const RankPage: React.FC = () => {
                             className="flex items-center justify-between p-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded shadow-sm lg:min-w-max"
                           >
                             <div className="flex items-center gap-2 min-w-0 flex-1 flex-nowrap">
-                              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 flex-shrink-0 whitespace-nowrap">
+                              <span
+                                className="text-xs font-mono text-purple-600 dark:text-purple-400 cursor-pointer inline-flex items-center flex-shrink-0 whitespace-nowrap hover:text-purple-800 dark:hover:text-purple-300 transition-colors"
+                                style={{
+                                  borderBottom: '1px dotted currentColor',
+                                  marginBottom: '-2px'
+                                }}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  if (item.sip) setDrawerEipId(item.sip.id);
+                                }}
+                              >
                                 {getItemDisplayId(item)}
                               </span>
                               {getItemLayer(item) && (
@@ -888,6 +923,11 @@ const RankPage: React.FC = () => {
               {/* Footer */}
               <div className="bg-slate-800 px-4 py-3 flex-shrink-0">
                 <div className="flex items-center justify-end gap-3">
+                  {copyStatus === "error" && (
+                    <span className="text-xs text-amber-300 text-right">
+                      Couldn't copy — the link is in your address bar
+                    </span>
+                  )}
                   <button
                     onClick={handleReset}
                     className="px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-700 transition-colors rounded cursor-pointer"
@@ -895,8 +935,26 @@ const RankPage: React.FC = () => {
                     Reset
                   </button>
                   <button
+                    onClick={handleCopyLink}
+                    disabled={rankedCount === 0}
+                    title={
+                      rankedCount === 0
+                        ? "Rank at least one proposal to share a link"
+                        : undefined
+                    }
+                    className="px-3 py-1.5 text-xs font-medium border border-slate-500 text-slate-200 rounded hover:bg-slate-700 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                  >
+                    {copyStatus === "copied" ? "Copied!" : "Copy Link"}
+                  </button>
+                  <button
                     onClick={handleSave}
-                    className="px-3 py-1.5 text-xs font-medium bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors cursor-pointer"
+                    disabled={rankedCount === 0}
+                    title={
+                      rankedCount === 0
+                        ? "Rank at least one proposal to download an image"
+                        : undefined
+                    }
+                    className="px-3 py-1.5 text-xs font-medium bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-purple-600"
                   >
                     Download Image
                   </button>
@@ -909,7 +967,7 @@ const RankPage: React.FC = () => {
           <div className="lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-hidden lg:flex lg:flex-col">
             <div className="flex items-center justify-between mb-4 flex-shrink-0">
               <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100">
-                Headliner Proposals
+                SIPs
                 <span className="ml-2 text-sm text-slate-500 dark:text-slate-400">
                   ({getUnassignedItems().length} unranked)
                 </span>
@@ -920,8 +978,25 @@ const RankPage: React.FC = () => {
                 </div>
               )}
             </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-shrink-0">
+              Excluded:{" "}
+              <a
+                href="/sips/7805/"
+                className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+              >
+                SIP-7805 (FOCIL)
+              </a>{" "}
+              and{" "}
+              <a
+                href="/sips/8141/"
+                className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+              >
+                SIP-8141 (Frames)
+              </a>{" "}
+              are already SFI.
+            </p>
             <div className="space-y-4 lg:overflow-y-auto lg:flex-1">
-              {getUnassignedItemsByLayer().map(([layer, layerItems]) => {
+              {getUnassignedItemsByLayer().filter(([, layerItems]) => layerItems.length > 0).map(([layer, layerItems]) => {
                 const isExpanded = expandedCollections.has(layer);
                 const layerLabel = layer === 'EL' ? 'Execution Layer' : layer === 'CL' ? 'Consensus Layer' : layer;
                 return (
@@ -962,116 +1037,94 @@ const RankPage: React.FC = () => {
                       </svg>
                     </button>
                     {isExpanded && (
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 p-3">
-                        {layerItems.map((item) => (
-                          <div
-                            key={item.id}
-                            draggable={!isTouchDevice}
-                            onDragStart={
-                              !isTouchDevice
-                                ? (e) => handleDragStart(e, item.id)
-                                : undefined
-                            }
-                            onDragEnd={!isTouchDevice ? handleDragEnd : undefined}
-                            onTouchStart={
-                              isTouchDevice
-                                ? () => setSelectedMobileItem(item.id)
-                                : undefined
-                            }
-                            onTouchEnd={
-                              isTouchDevice
-                                ? () => {
-                                    setItems((prev) =>
-                                      prev.map((item) =>
-                                        item.id === selectedMobileItem
-                                          ? { ...item, tier: dragOverTier || null }
-                                          : item
-                                      )
-                                    );
-                                    setSelectedMobileItem(null);
-                                  }
-                                : undefined
-                            }
-                            onClick={
-                              isTouchDevice
-                                ? () => handleMobileItemClick(item.id)
-                                : undefined
-                            }
-                            className={`relative p-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg cursor-move hover:shadow-md transition-all touch-manipulation ${
-                              draggedItem === item.id ? "opacity-50" : ""
-                            } ${
-                              selectedMobileItem === item.id
-                                ? "ring-2 ring-purple-400 bg-purple-50 dark:bg-purple-900/20"
-                                : ""
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 flex-nowrap">
-                              <span
-                                className="text-xs font-mono text-slate-500 dark:text-slate-400 lg:cursor-help inline-flex items-center flex-shrink-0 whitespace-nowrap"
-                                style={{
-                                  borderBottom: isTouchDevice ? 'none' : '1px dotted currentColor',
-                                  marginBottom: isTouchDevice ? '-1px' : '-2px'
-                                }}
-                                onMouseEnter={
-                                  !isTouchDevice
-                                    ? (e) => {
-                                        const rect = e.currentTarget.getBoundingClientRect();
-                                        const tooltipWidth = 400;
-                                        const tooltipHeight = 350; // estimated
-                                        const padding = 10;
-
-                                        // Try to position to the right first
-                                        let x = rect.right + padding;
-                                        let y = rect.top;
-
-                                        // If tooltip would go off right edge, position to the left
-                                        if (x + tooltipWidth > window.innerWidth - padding) {
-                                          x = rect.left - tooltipWidth - padding;
-                                        }
-
-                                        // If still off screen (left side), center it horizontally
-                                        if (x < padding) {
-                                          x = (window.innerWidth - tooltipWidth) / 2;
-                                        }
-
-                                        // Prevent tooltip from going off bottom
-                                        if (y + tooltipHeight > window.innerHeight - padding) {
-                                          y = Math.max(padding, window.innerHeight - tooltipHeight - padding);
-                                        }
-
-                                        setHoveredItem(item);
-                                        setTooltipPosition({ x, y });
-                                      }
-                                    : undefined
-                                }
-                                onMouseLeave={
-                                  !isTouchDevice
-                                    ? () => {
-                                        setHoveredItem(null);
-                                        setTooltipPosition(null);
-                                      }
-                                    : undefined
-                                }
-                              >
-                                {getItemDisplayId(item)}
-                              </span>
-                              {getItemLayer(item) && (
-                                <span
-                                  className={`px-1 py-0.5 text-xs font-medium rounded flex-shrink-0 ${
-                                    getItemLayer(item) === "EL"
-                                      ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300"
-                                      : "bg-teal-100 text-teal-700 dark:bg-teal-900/20 dark:text-teal-300"
-                                  }`}
-                                >
-                                  {getItemLayer(item)}
+                      <div className="flex flex-col gap-4 p-3">
+                        {/* The board is for dragging, so it reads at the finest
+                            cut a category offers rather than nesting headings. */}
+                        {groupByCategory(layerItems, (item) => item.sip?.id)
+                          .flatMap((group) =>
+                            group.subgroups.length > 0 ? group.subgroups : [group]
+                          )
+                          .map(
+                          ({ name, items: categoryItems }) => (
+                            <div key={name} className="flex flex-col gap-2">
+                              <div className="flex items-center gap-2">
+                                <h5 className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                                  {name}
+                                </h5>
+                                <span className="text-[10px] font-medium text-slate-400 dark:text-slate-500">
+                                  {categoryItems.length}
                                 </span>
-                              )}
-                              <span className="font-medium text-xs text-slate-900 dark:text-slate-100 truncate">
-                                {getItemTitle(item)}
-                              </span>
+                                <span className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+                              </div>
+                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                                {categoryItems.map((item) => (
+                                  <div
+                                    key={item.id}
+                                    draggable={!isTouchDevice}
+                                    onDragStart={
+                                      !isTouchDevice
+                                        ? (e) => handleDragStart(e, item.id)
+                                        : undefined
+                                    }
+                                    onDragEnd={
+                                      !isTouchDevice ? handleDragEnd : undefined
+                                    }
+                                    onTouchStart={
+                                      isTouchDevice
+                                        ? () => setSelectedMobileItem(item.id)
+                                        : undefined
+                                    }
+                                    onTouchEnd={
+                                      isTouchDevice
+                                        ? () => {
+                                            editItems((prev) =>
+                                              prev.map((item) =>
+                                                item.id === selectedMobileItem
+                                                  ? { ...item, tier: dragOverTier || null }
+                                                  : item
+                                              )
+                                            );
+                                            setSelectedMobileItem(null);
+                                          }
+                                        : undefined
+                                    }
+                                    onClick={
+                                      isTouchDevice
+                                        ? () => handleMobileItemClick(item.id)
+                                        : undefined
+                                    }
+                                    className={`relative p-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg cursor-move hover:shadow-md transition-all touch-manipulation ${
+                                      draggedItem === item.id ? "opacity-50" : ""
+                                    } ${
+                                      selectedMobileItem === item.id
+                                        ? "ring-2 ring-purple-400 bg-purple-50 dark:bg-purple-900/20"
+                                        : ""
+                                    }`}
+                                  >
+                                    <div className="flex items-center gap-2 flex-nowrap">
+                                      <span
+                                        className="text-xs font-mono text-purple-600 dark:text-purple-400 cursor-pointer inline-flex items-center flex-shrink-0 whitespace-nowrap hover:text-purple-800 dark:hover:text-purple-300 transition-colors"
+                                        style={{
+                                          borderBottom: '1px dotted currentColor',
+                                          marginBottom: '-2px'
+                                        }}
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          if (item.sip) setDrawerEipId(item.sip.id);
+                                        }}
+                                      >
+                                        {getItemDisplayId(item)}
+                                      </span>
+                                      <span className="font-medium text-xs text-slate-900 dark:text-slate-100 truncate">
+                                        {getItemTitle(item)}
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          )
+                        )}
                       </div>
                     )}
                   </div>
@@ -1082,70 +1135,14 @@ const RankPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Hover Tooltip for Proposal Details (Desktop Only) */}
-      {hoveredItem && !isTouchDevice && tooltipPosition && (
-        <div
-          className="fixed z-50"
-          style={{
-            left: tooltipPosition.x,
-            top: tooltipPosition.y,
-            maxWidth: '400px',
-            width: 'auto'
-          }}
-        >
-          <div className="bg-white dark:bg-slate-800 border-2 border-purple-300 dark:border-purple-600 rounded-lg shadow-2xl p-4">
-            <div className="flex items-start gap-2 mb-3">
-              <span className="text-sm font-mono font-bold text-purple-600 dark:text-purple-400">
-                {getItemDisplayId(hoveredItem)}
-              </span>
-              {getItemLayer(hoveredItem) && (
-                <span
-                  className={`px-1.5 py-0.5 text-xs font-medium rounded ${
-                    getItemLayer(hoveredItem) === "EL"
-                      ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300"
-                      : "bg-teal-100 text-teal-700 dark:bg-teal-900/20 dark:text-teal-300"
-                  }`}
-                >
-                  {getItemLayer(hoveredItem)}
-                </span>
-              )}
-            </div>
-
-            <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-2">
-              {getItemTitle(hoveredItem)}
-            </h4>
-
-            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
-              {truncateText(getItemDescription(hoveredItem), 300)}
-            </p>
-
-            {hoveredItem.sip?.author && (
-              <div className="text-xs text-slate-500 dark:text-slate-400 mb-2">
-                <span className="font-medium">Author:</span> {cleanAuthorName(hoveredItem.sip.author)}
-              </div>
-            )}
-
-            {hoveredItem.sip && (
-              <ChampionDisplay
-                champions={hoveredItem.sip.forkRelationships.find(fork => fork.forkName.toLowerCase() === "hegota")?.champions}
-              />
-            )}
-            {hoveredItem.pendingProposal && hoveredItem.pendingProposal.champions.length > 0 && (
-              <ChampionDisplay
-                champions={hoveredItem.pendingProposal.champions}
-              />
-            )}
-          </div>
-        </div>
-      )}
+      <EipDrawer eipId={drawerEipId} onClose={() => setDrawerEipId(null)} />
 
       {/* Experiment Disclaimer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="text-center space-y-3">
           <p className="text-xs text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-            This is an experimental tool for expressing preferences. Rankings
-            do not represent an official vote of any kind. To learn more about
-            Sila governance, visit{" "}
+            This is a tool for expressing preferences. Rankings do not represent an official
+            vote of any kind.<br />To learn more about Sila governance, visit{" "}
             <a
               target="_blank"
               href="https://sila.org/governance"
@@ -1155,37 +1152,6 @@ const RankPage: React.FC = () => {
             </a>
             .
           </p>
-          <div className="text-xs text-slate-400 dark:text-slate-400">
-            <span className="italic">Have feedback? Contact </span>
-            <a
-              href="mailto:nixo@sila.org"
-              onClick={() =>
-                handleExternalLinkClick(
-                  "email_contact",
-                  "mailto:nixo@sila.org"
-                )
-              }
-              className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 underline decoration-1 underline-offset-2"
-            >
-              nixo
-            </a>
-            <span className="italic"> or </span>
-            <a
-              href="https://x.com/wolovim"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                handleExternalLinkClick(
-                  "twitter_contact",
-                  "https://x.com/wolovim"
-                )
-              }
-              className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 underline decoration-1 underline-offset-2"
-            >
-              @wolovim
-            </a>
-            <span className="italic">.</span>
-          </div>
         </div>
       </div>
     </div>

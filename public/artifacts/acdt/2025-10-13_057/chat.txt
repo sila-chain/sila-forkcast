@@ -59,7 +59,7 @@ https://github.com/sil-clients/holesky/pull/136
 Anyone who have an interesting case could also drop a comment in this issue!
 https://github.com/sila-chain/execution-specs/issues/1577
 00:28:46	Marcin Sobczak:	AA40 over verificationGasLimit
-00:29:00	Marcin Sobczak:	https://silascan.io/tx/0x1010c2cbd31e3c46e512670bfc41f995a4811fc1bbceb62363d4a712dabc1b10
+00:29:00	Marcin Sobczak:	https://etherscan.io/tx/0x1010c2cbd31e3c46e512670bfc41f995a4811fc1bbceb62363d4a712dabc1b10
 00:30:07	felipe:	Reacted to "Yes any worst case..." with ❤️
 00:30:30	felipe:	Reacted to "Yes any worst case..." with ➕
 00:31:42	jochem-brouwer:	Heeft gereageerd op "Anyone who have an..." met 🚀
@@ -92,8 +92,8 @@ I like the site name
 00:36:17	felipe:	Replying to "Rahul are you runn..."
 
 Can you confirm which test this is that you flagged
-00:37:22	Mario Vega:	https://Sila Research/t/sila-needs-standards-punk/23151
-00:38:24	Bumblefudge:	Reacted to https://Sila Research... with "👍"
+00:37:22	Mario Vega:	https://ethresear.ch/t/sila-needs-standards-punk/23151
+00:38:24	Bumblefudge:	Reacted to https://ethresear.ch... with "👍"
 00:39:59	felipe:	I think I see it, the SSTORE case?
 00:40:11	Bumblefudge:	I also think that sil community often thinks of solidity as the "business logic" layer and browser/wallets/clients/dapps as the "client layer", and that entire disjointed pile of chaos is entirely interacting just via RPC...
 00:41:32	Bumblefudge:	or maybe the clients care about hive, but if they are confident the test is wrong and incentives aren't there to fix the test for everyone...
@@ -193,7 +193,8 @@ The only way I can see us moving to an actual rpc standard if we block devnets o
 I’d vote for simple changes first - consensus on RPC methods rather than a big change to rest
 00:57:34	Łukasz Rozmej:	Replying to "Tests are generated ..."
 
-So I assume not, so Geth is the spec ;)@Felix (Geth)
+So I assume not, so Geth is the spec ;)
+@Felix (Geth)
 00:57:49	Barnabas:	Replying to "Can we make it an EI..."
 
 sounds like 2 step pain vs 1 step pain

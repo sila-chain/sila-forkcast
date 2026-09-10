@@ -74,12 +74,12 @@ nothing locked in roadmap wise
 00:14:18	Carl Beekhuizen:	Reacted to "we don't have any nu..." with 👍
 00:14:31	Barnabé Monnot:	Replying to "the “super high end ..."
 
-arguments for/against: https://Sila Research/t/decoupling-throughput-from-local-building/22004
+arguments for/against: https://ethresear.ch/t/decoupling-throughput-from-local-building/22004
 00:14:53	Barnabas:	Reacted to "we don't have any nu..." with 👍
 00:14:54	Micah Zoltu:	Anyone have a link to 7870?  Not coming up for me.
 00:15:03	Kamil Chodoła:	SIP-7870: Hardware and Bandwidth Recommendations
 00:15:07	mrabino1:	Curious… doesnt the zkevm verification narrative solve this? Wouldn’t a pragmatic path be to keep the course of at home users as the priority until zkevm verification is everywhere? My $0.02
-00:15:16	Tim Beiko:	https://sips.sila.org/SIPS/sip-7870
+00:15:16	Tim Beiko:	https://sips.sila.org/EIPS/sip-7870
 00:15:20	Micah Zoltu:	Replying to "Curious… doesnt t..."
 
 It does not, you still need full head state.
@@ -87,7 +87,9 @@ It does not, you still need full head state.
 00:15:26	Sina Mahmoodi:	IMO heavy workloads such as a 30Tb archive node which is processing tons of rpc requests should be integrated into the tests. Hearing reports that they are under strain even at beefy hardware. Note that the “full archive” nodes are required for serving historical eth_getProof requests so many entities still need them.
 00:15:32	Barnabas:	I think this should be discussed offline.
 00:15:32	mrabino1:	Reacted to "It does not, you sti..." with 👍
-00:15:34	Łukasz Rozmej:	Minimum in Nethermind is about 200+GB, without storing receipts and blocks. With proper 4444 and storing a bit, we can reasonably get to 300GB for a proper node.If you want history, pay for 4TB SSD and be done with it
+00:15:34	Łukasz Rozmej:	Minimum in Nethermind is about 200+GB, without storing receipts and blocks. With proper 4444 and storing a bit, we can reasonably get to 300GB for a proper node.
+
+If you want history, pay for 4TB SSD and be done with it
 00:15:46	Justin Florentine (Besu):	off lining it is why we never talk about it
 00:15:54	Preston Van Loon:	There is also a diff between $2k device running on a fiber line at home vs a $10k machine that has to be in a colo data center. We can and should increase the requirements, but not so much that it isn't possible at all at home
 00:16:03	Łukasz Rozmej:	Replying to "IMO heavy workloads ..."
@@ -181,7 +183,7 @@ Higher hardware could make sense, higher bandwidth probably not.
 00:20:00	Marius:	Reacted to "Not cynical - we h..." with ➕
 00:20:11	Dustin:	incidentally, can the future of Portal-based 4444 be clarified?
 00:20:11	Marc:	Reacted to "There is also a diff…" with 👍
-00:20:11	Micah Zoltu:	Re https://sips.sila.org/SIPS/sip-7870, I have comments on the discussion thread for it, and I think a PR as well.
+00:20:11	Micah Zoltu:	Re https://sips.sila.org/EIPS/sip-7870, I have comments on the discussion thread for it, and I think a PR as well.
 00:20:15	Łukasz Rozmej:	Replying to "IMO heavy workloads ..."
 
 @Andrew Ashikhmin?
@@ -202,7 +204,8 @@ not cynical, accurate indictment of recent changes in Sila direction tbh
 00:20:52	Francesco:	Replying to "I don’t want ethereu..."
 
 Let alone for datacenter chain
-00:20:54	FLCL:	light clients can cover rpc argumentwhat specific UX issues does Dankrad mean?
+00:20:54	FLCL:	light clients can cover rpc argument
+what specific UX issues does Dankrad mean?
 00:20:57	Kamil Chodoła:	Replying to "I don’t want ethe..."
 
 5k you can get ryzen 9 with very very decent ram and disk and you will still have some to go for quite a few good lunches :D
@@ -235,7 +238,8 @@ Your concern was state growth pricing out normal hardware? I’m not sure I unde
 ones we need to develop
 00:22:05	Łukasz Rozmej:	Replying to "IMO heavy workloads ..."
 
-https://github.com/erigontech/erigon/issues/12984#issuecomment-2708213147 ah it is limited in time
+https://github.com/erigontech/erigon/issues/12984#issuecomment-2708213147 
+ah it is limited in time
 00:22:09	Parithosh Jayanthi:	Replying to "off lining it is why..."
 
 Happy to help debug that, but my $500 node from 2019 is still sitting at 20% CPU usage while being a full node.
@@ -265,7 +269,8 @@ mev builders and poor upstream bandwidth are far bigger threats than raw compute
 00:23:41	Gary Schulte:	Reacted to "Happy to help debug ..." with ➕
 00:23:42	FLCL:	Replying to "light clients can co..."
 
-Portal is dead, lightclient roadmap more deadWhich means it's a direction we need to prioritize
+Portal is dead, lightclient roadmap more dead
+Which means it's a direction we need to prioritize
 00:23:42	Barnabas:	Reacted to "@Parithosh Jayanthi ..." with 💯
 00:24:07	Gary Schulte:	Replying to "off lining it is why..."
 
@@ -343,7 +348,9 @@ SIP-7907: Meter Contract Code Size And Increase Limit
 SIP-7934: RLP Execution Block Size Limit
 00:30:31	Łukasz Rozmej:	Replying to "our values are chang..."
 
-but you can do it at home, at worst you have to buy a 4TB SSD, with Erigon3 you can have archive in 2TBthe only problematic thing is full-forest archive for eth_getproofs, but home-users don't really need it
+but you can do it at home, at worst you have to buy a 4TB SSD, with Erigon3 you can have archive in 2TB
+
+the only problematic thing is full-forest archive for eth_getproofs, but home-users don't really need it
 00:30:38	Gary Schulte:	Reacted to "our values are chang..." with ☝️
 00:30:47	Gabriel Trintinalia | Besu:	is sip-7907 making devnet 2?
 00:30:58	Barnabas:	Replying to "is sip-7907 making d..."
@@ -720,7 +727,7 @@ Already have a PR in Nethermind for it 🙂
 There were benefits around security presented in this call I believe, while EOF was still around
 00:53:55	Wei Tang:	Replying to "Has this been prot..."
 
-I've done a small prototype here: https://github.com/rust-sila/savm/tree/master/features/evm64
+I've done a small prototype here: https://github.com/rust-sila/evm/tree/master/features/evm64
 But benchmarking is still ongoing.
 00:54:22	Francesco:	Last week’s presentation time: https://youtu.be/cIHtUaIev4M?list=PLJqWcTqh_zKHU6gjnA6ZcFPU5Pr0xT0io&t=3378
 00:54:24	Ben Adams:	Reacted to "I have, do and will ..." with ➕
@@ -1013,7 +1020,7 @@ unless you want someone to complain (again) about or lack of market understandin
 01:26:12	Barnabas:	Replying to "@Justin Florentine (..."
 
 but haven’t heard your voice at all when it was time to chime in
-01:26:17	Tim Beiko:	https://sips.sila.org/SIPS/sip-7577
+01:26:17	Tim Beiko:	https://sips.sila.org/EIPS/sip-7577
 01:26:30	Parithosh Jayanthi:	Replying to "@Justin Florentine (..."
 
 Yessir, what made you be pro? that might even be enough reason
@@ -1035,7 +1042,8 @@ i am pro because the current means of transferring sil is an embarrassing hack. 
 01:28:41	Tim Beiko:	please
 01:28:43	Łukasz Rozmej:	Replying to "with big increases t..."
 
-just for my understanding, at which size (in kib) does it become a concern?that would have to be tested, I expect somewhere 10x+ current gas?
+just for my understanding, at which size (in kib) does it become a concern?
+that would have to be tested, I expect somewhere 10x+ current gas?
 01:28:48	Ben Adams:	Reacted to "can we include https..." with 💯
 01:28:52	Gary Schulte:	SIP versioning generally would clarify inclusion/devnet spec confusion we have experienced in the past.  It also can show at a glance whether a current implementation needs to be revisited
 01:28:55	Daniel Lehrner (Besu):	Replying to "with big increases t…"

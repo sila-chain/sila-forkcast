@@ -8,7 +8,7 @@
       },
       {
         "timestamp": "00:21:39",
-        "highlight": "Proof runs on optimized Yul IR, not SAVM bytecode \u2014 Solidity compiler backend (Yul\u2192bytecode) remains trusted but unverified"
+        "highlight": "Proof runs on optimized Yul IR, not EVM bytecode \u2014 Solidity compiler backend (Yul\u2192bytecode) remains trusted but unverified"
       },
       {
         "timestamp": "00:26:46",
@@ -26,7 +26,7 @@
       },
       {
         "timestamp": "00:34:00",
-        "highlight": "keccak assumed correct (long-standing SAVM primitive); not formally verified in this work"
+        "highlight": "keccak assumed correct (long-standing EVM primitive); not formally verified in this work"
       },
       {
         "timestamp": "00:35:09",
@@ -45,7 +45,7 @@
   "action_items": [
     {
       "timestamp": "00:50:24",
-      "action": "Extend verification to cover SAVM bytecode (not just optimized Yul), and add security reduction proof (breaking FORS+ implies breaking keccak pre-image)",
+      "action": "Extend verification to cover EVM bytecode (not just optimized Yul), and add security reduction proof (breaking FORS+ implies breaking keccak pre-image)",
       "owner": "Ricardo Perello / Riva Labs"
     }
   ],

@@ -36,7 +36,7 @@
     "implementation_challenges": [
       {
         "timestamp": "00:31:41",
-        "highlight": "14-bit Dilithium/Falcon encoding requires expensive bit manipulation in SAVM (~150K gas decompression cost)"
+        "highlight": "14-bit Dilithium/Falcon encoding requires expensive bit manipulation in EVM (~150K gas decompression cost)"
       },
       {
         "timestamp": "00:39:00",

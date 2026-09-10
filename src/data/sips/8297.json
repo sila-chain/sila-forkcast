@@ -8,9 +8,6 @@
   "category": "Core",
   "createdDate": "2026-06-11",
   "discussionLink": "https://sila-magicians.org/t/sip-8297-partitioned-binary-tree/28776",
-  "requires": [
-    7612
-  ],
   "forkRelationships": [],
   "tradeoffs": null
 }

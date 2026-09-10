@@ -26,7 +26,7 @@ Stefan Starflinger: Yeah, sure. So, definite one.
 
 7
 00:08:03.080 --> 00:08:16.919
-Stefan Starflinger: was working pretty well. We got syncing fixed in most clients, which is really nice. And, we managed to run stable with SAVM fuzzing and Uniswap trades as the workload.
+Stefan Starflinger: was working pretty well. We got syncing fixed in most clients, which is really nice. And, we managed to run stable with EVM fuzzing and Uniswap trades as the workload.
 
 8
 00:08:17.050 --> 00:08:27.240
@@ -1234,7 +1234,7 @@ Marius van der Wijden: So… We can… We can, in theory, also think about addin
 
 309
 00:47:37.980 --> 00:47:45.369
-Marius van der Wijden: So basically what this EAP also does is remove the transaction gas limit cap and move it into the SAVM.
+Marius van der Wijden: So basically what this EAP also does is remove the transaction gas limit cap and move it into the EVM.
 
 310
 00:47:45.500 --> 00:48:04.709

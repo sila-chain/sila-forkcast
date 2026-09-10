@@ -57,7 +57,7 @@
   "action_items": [
     {
       "timestamp": "00:40:02",
-      "action": "Publish SAVM-friendly SLHDSA parameter research with Keccak instantiation",
+      "action": "Publish EVM-friendly SLHDSA parameter research with Keccak instantiation",
       "owner": "Nico C"
     },
     {

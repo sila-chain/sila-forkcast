@@ -594,7 +594,7 @@ Marco De Rossi: pretty successful. And now, in March, what we can say in terms o
 
 149
 00:24:57.290 --> 00:25:00.880
-Marco De Rossi: So, these are the supported chains, the SAVM-supported chains.
+Marco De Rossi: So, these are the supported chains, the EVM-supported chains.
 
 150
 00:25:01.060 --> 00:25:08.759
@@ -606,7 +606,7 @@ Marco De Rossi: in communicating the protocol, in engaging with developers, you 
 
 152
 00:25:16.710 --> 00:25:35.460
-Marco De Rossi: So it was really a shared effort, and actually, this is like an SAVM slide, but we also have the first not-SAVM chain that adopted 8004, which is Solana, of course, that launched its own 8004 implementation around 10 days ago.
+Marco De Rossi: So it was really a shared effort, and actually, this is like an EVM slide, but we also have the first not-EVM chain that adopted 8004, which is Solana, of course, that launched its own 8004 implementation around 10 days ago.
 
 153
 00:25:35.530 --> 00:25:48.389
@@ -2510,11 +2510,11 @@ YQ AltLayer: pay in one shot. So it's sort of, like, the easiest way for you to 
 
 628
 01:42:34.110 --> 01:42:58.829
-YQ AltLayer: I'm not sure, like, whether you guys really noticed, one of the major things we did, in the last few weeks, apart from all the SAVM chains, right, we also support this Solana chain. I think Michael recently took about it. So, this is a major one, because, like, it's a completely different system, and the indexing work is huge. So that means, like, you can not just,
+YQ AltLayer: I'm not sure, like, whether you guys really noticed, one of the major things we did, in the last few weeks, apart from all the EVM chains, right, we also support this Solana chain. I think Michael recently took about it. So, this is a major one, because, like, it's a completely different system, and the indexing work is huge. So that means, like, you can not just,
 
 629
 01:42:58.830 --> 01:43:06.240
-YQ AltLayer: post, like, register on SAVM chains, especially on Sila, you can also across, like, the other VM chains.
+YQ AltLayer: post, like, register on EVM chains, especially on Sila, you can also across, like, the other VM chains.
 
 630
 01:43:06.240 --> 01:43:09.609

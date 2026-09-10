@@ -37,7 +37,7 @@ https://github.com/sila-chain/execution-specs/commit/79ce5c4a49fd86a35204695487c
 00:33:07	raxhvl:	Mark we created a thread on R&D to help Erigon with testing, feel free to post any questions related to testing.
 
 https://discord.com/channels/595666850260713488/1435636875321933885
-00:34:58	Stefan Starflinger:	For testing can clients please run the savm-fuzz scenario of the spamoor in their kurtosis testnets
+00:34:58	Stefan Starflinger:	For testing can clients please run the evm-fuzz scenario of the spamoor in their kurtosis testnets
 00:35:21	draganrakita:	I feel that revm is in good place regarding BAL. So if people want to run blockchain tests, they can install rust, clone revm repo (use rakita/bal branch), and run  cargo run -p revme — btest path_to_test . On BAL missmatch it should print out full BAL
 00:35:33	raxhvl:	Reacted to I feel that revm is ... with "👍"
 00:35:45	Stefan Starflinger:	Reacted to "I feel that revm is …" with 👍
@@ -63,7 +63,7 @@ Here is example of output: https://gist.github.com/rakita/e1e2d0dd26d9ab878235ff
 00:48:16	Gary Rong:	For batch read over the raw SSD, the qps is 570218.58
 00:51:01	Po:	okay,  seems the ssd's bandwidth is 2G/s. Say it we test it with FIO in 4k read size
 00:51:35	draganrakita:	While we are talking about number of cores, we should have minimum spec number for it. Something like, recommending 4 cores, similar how ram and disk are recommended.
-00:52:02	Toni Wahrstaetter:	https://sips.sila.org/SIPS/sip-7870
+00:52:02	Toni Wahrstaetter:	https://sips.sila.org/EIPS/sip-7870
 00:52:33	draganrakita:	Makes sense
 00:53:10	draganrakita:	Reacted to "https://sips.ethereu..." with 👍
 00:54:26	felipe:	Reacted to "While we are talki..." with 👍

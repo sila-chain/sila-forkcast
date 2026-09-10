@@ -370,7 +370,7 @@ mods crush their skulls
 01:20:53	Stefan Starflinger:	flatbuffers+ssz :D
 01:21:03	Raúl Kripalani:	I don’t care SSZ vs RLP, i just want binary and zero copy
 01:21:09	wolovim:	Replying to "Rlp on cl"
-good luck here sila-forkcast summary job
+good luck here forkcast summary job
 01:21:16	Barnabas:	Reacted to "good luck here forkc..." with 😰
 01:21:23	Stefan Starflinger:	Replying to "I don’t care SSZ vs ..."
 
@@ -521,7 +521,7 @@ Perhaps the champions could do a PoC to get some initial numbers
 01:32:44	Barnabas:	Replying to "Is there a a reason ..."
 
 like enable this feature for your customers, and submit the tx on their behalf
-01:33:11	Dima Gusakov | Lido:	https://sips.sila.org/SIPS/sip-8148
+01:33:11	Dima Gusakov | Lido:	https://sips.sila.org/EIPS/sip-8148
 01:33:51	Greg K | Lido:	Replying to "Is there a a reaso..."
 
 the point is to allow every validator use this feature, not only Lido ones :-)

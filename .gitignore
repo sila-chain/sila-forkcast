@@ -23,6 +23,7 @@ src/data/sips.json
 # Compiled search corpus (generated from public/artifacts/*)
 public/search-corpus.json
 public/search-corpus.meta.json
+public/search-light.json
 
 # Compiled SIP spec search index (generated from public/sips/*.md)
 public/sip-spec-index.json

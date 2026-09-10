@@ -26,7 +26,7 @@
         },
         {
           "timestamp": "00:13:22",
-          "highlight": "SAVM fuzz scenarios updated to include slot_num and call stack opcodes"
+          "highlight": "EVM fuzz scenarios updated to include slot_num and call stack opcodes"
         }
       ],
       "epbs_devnet_0": [

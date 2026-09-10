@@ -1,11 +1,11 @@
 ---
 name: add-breakout
-description: Onboard a brand-new breakout call series across sila/pm (trusted list, call series config, issue template, labeler) and SilaForkcast (via the add-series skill). Use when a new facilitator wants to start running a breakout. Pairs with add-series, which covers the SilaForkcast-only side.
+description: Onboard a brand-new breakout call series across sila/pm (trusted list, call series config, issue template, labeler) and Forkcast (via the add-series skill). Use when a new facilitator wants to start running a breakout. Pairs with add-series, which covers the Forkcast-only side.
 ---
 
 ## Add a new breakout series
 
-A breakout series requires changes in **two repos**: `sila/pm` (where the bot lives and the issue template lives) and `sila-forkcast` (where calls render). This skill covers the pm side and the cross-repo handoff. Invoke the `add-series` skill for the SilaForkcast-side file edits.
+A breakout series requires changes in **two repos**: `sila/pm` (where the bot lives and the issue template lives) and `forkcast` (where calls render). This skill covers the pm side and the cross-repo handoff. Invoke the `add-series` skill for the Forkcast-side file edits.
 
 Reference commit for the pm-side pattern: `6e572f83` ("acdbot: introduce native aa breakout"). Reference commit for adding to the trusted list: `14a86086` ("acdbot: add to trusted list for pqi").
 
@@ -19,13 +19,13 @@ You need:
 - **Duration** in minutes (typically 60 or 90)
 - **Cadence** — one of: `weekly`, `bi-weekly`, `monthly`, `other`
 - **Series config key** — lowercased, no-spaces version of the display name used as the pm config key (e.g., `p2pnetworking`, `nativeaa`, `encryptthemempool`). Derive and confirm with the user.
-- **SilaForkcast type abbreviation** — short slug used in SilaForkcast URLs/folders (e.g., `p2p`, `aa`, `pqi`). Existing values are in `src/data/calls.ts` `CallType`. Confirm with the user — this is the `add-series` "Short type key" input.
+- **Forkcast type abbreviation** — short slug used in Forkcast URLs/folders (e.g., `p2p`, `aa`, `pqi`). Existing values are in `src/data/calls.ts` `CallType`. Confirm with the user — this is the `add-series` "Short type key" input.
 - **Tailwind color** for the badge/border (used by `add-series`). Pick an unused color from the existing palettes in `src/components/calls-index/CallsIndexTimeline.tsx`.
 - **YouTube playlist ID** (recommended upfront) — ask the user to create an empty playlist named after the series and share the playlist ID. If they can't create it now, leave as `null` and they can land a follow-up PR later.
 
 ### Step 2: Locate the pm checkout
 
-The user typically has `sila/pm` checked out at `../pm` relative to sila-forkcast. Verify by running `ls ../pm/.github/ACDbot/call_series_config.yml`. If not present, ask the user for the path.
+The user typically has `sila/pm` checked out at `../pm` relative to forkcast. Verify by running `ls ../pm/.github/ACDbot/call_series_config.yml`. If not present, ask the user for the path.
 
 ### Step 3: Make the four pm-repo edits
 
@@ -57,25 +57,25 @@ All four files live under `../pm/.github/`:
    ```
    Match the existing file's indent style: one space before the `-` (unusual but consistent with the rest of the file). The regex should match plausible issue title phrasings — usually the display name and one short alias. Note the file does not end with a trailing newline; preserve that.
 
-### Step 4: Make the SilaForkcast-side edits via `add-series`
+### Step 4: Make the Forkcast-side edits via `add-series`
 
-Run the `add-series` skill with the SilaForkcast type abbreviation, display name, pm series key (so it knows whether to add a `SERIES_TO_TYPE` mapping), and Tailwind color. It will:
+Run the `add-series` skill with the Forkcast type abbreviation, display name, pm series key (so it knows whether to add a `SERIES_TO_TYPE` mapping), and Tailwind color. It will:
 
 - Update `src/data/calls.ts` (`CallType` union + `callTypeNames`)
 - Update color maps in `CallsIndexTimeline.tsx` and `HomePage.tsx`
 - Update `scripts/sync-call-assets.mjs` (`KNOWN_TYPES` and `SERIES_TO_TYPE` mapping)
 - Run typecheck/build
 
-Skip `add-series` Step 5 ("Verify artifacts exist") and Step 6 ("Update `protocol-calls.generated.json`") — for a brand-new breakout there are no calls yet. SilaForkcast renders nothing until the first call is synced via the normal `sync call assets from sil/pm` pipeline.
+Skip `add-series` Step 5 ("Verify artifacts exist") and Step 6 ("Update `protocol-calls.generated.json`") — for a brand-new breakout there are no calls yet. Forkcast renders nothing until the first call is synced via the normal `sync call assets from sil/pm` pipeline.
 
 ### Step 5: Open both PRs
 
 - **pm PR**: branch `acdbot/<series>-breakout`, title `acdbot: introduce <series> breakout`, against `sila/pm:master`.
-- **SilaForkcast PR**: branch `add-<series>-breakout`, title `add <series> breakout series`, against `sila-chain/sila-forkcast:main`.
+- **Forkcast PR**: branch `add-<series>-breakout`, title `add <series> breakout series`, against `sila/forkcast:main`.
 
 Use whichever remote the user pushes their fork branches to (check `git remote -v` if unsure).
 
-The SilaForkcast PR is safe to merge before any call exists — all new entries are latent until a record with the new type lands in `protocol-calls.generated.json`. The pm PR is the gating dependency: the facilitator can't open their first issue until the dropdown option exists.
+The Forkcast PR is safe to merge before any call exists — all new entries are latent until a record with the new type lands in `protocol-calls.generated.json`. The pm PR is the gating dependency: the facilitator can't open their first issue until the dropdown option exists.
 
 ### Step 6: Hand off the manual checklist to the user
 
@@ -89,4 +89,4 @@ Print this verbatim:
 
 ### Step 7: Done
 
-Confirm both PR URLs to the user. Summarize: "pm side configures the bot and dropdown; SilaForkcast side renders the calls once `sync call assets from sil/pm` picks them up after the first meeting."
+Confirm both PR URLs to the user. Summarize: "pm side configures the bot and dropdown; Forkcast side renders the calls once `sync call assets from sil/pm` picks them up after the first meeting."

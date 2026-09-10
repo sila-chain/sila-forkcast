@@ -90,7 +90,7 @@ Stefan Starflinger: here to the DORA Explorer.
 
 23
 00:04:13.720 --> 00:04:25.400
-Stefan Starflinger: And we've also started spamming transactions, so we're spamming right now SAVM fuzz transactions that should catch most of the SAVM-related SIP changes.
+Stefan Starflinger: And we've also started spamming transactions, so we're spamming right now EVM fuzz transactions that should catch most of the EVM-related SIP changes.
 
 24
 00:04:25.690 --> 00:04:39.749
@@ -134,7 +134,7 @@ Andrew Ashikhmin: So, about Erigon status, yeah, I have to apologize, we are sti
 
 34
 00:06:03.650 --> 00:06:12.310
-Andrew Ashikhmin: We, based our bell code on, parallelized SAVM, which still needs, some…
+Andrew Ashikhmin: We, based our bell code on, parallelized EVM, which still needs, some…
 
 35
 00:06:12.380 --> 00:06:24.920
@@ -1366,7 +1366,7 @@ Ansgar Dietrichs: Symmetric.
 
 342
 00:50:11.160 --> 00:50:29.900
-Gottfried Herold: Yeah, something like that, I presume. You wouldn't… I mean, if you… I mean, technically, I'm not sure whether it sort of would need to be a precompile inside the SAVM, but yes, I mean, probably AAS, or… I mean, you could also use ChaCha 2020, or whatever you… whatever you use. Probably AES is a good choice, but yeah, you would… you would… you might want to have an AS pre-compile.
+Gottfried Herold: Yeah, something like that, I presume. You wouldn't… I mean, if you… I mean, technically, I'm not sure whether it sort of would need to be a precompile inside the EVM, but yes, I mean, probably AAS, or… I mean, you could also use ChaCha 2020, or whatever you… whatever you use. Probably AES is a good choice, but yeah, you would… you would… you might want to have an AS pre-compile.
 
 343
 00:50:30.010 --> 00:50:31.140

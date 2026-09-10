@@ -74,7 +74,7 @@ Stefan Starflinger: Okay, great. So, NetherMind has managed to fix most of the i
 
 19
 00:06:43.400 --> 00:06:55.639
-Stefan Starflinger: We're running the SAVM fuzzer, and we're running Uniswap transactions consistently, and it seems there are no errors that we can find with these two strategies anymore.
+Stefan Starflinger: We're running the EVM fuzzer, and we're running Uniswap transactions consistently, and it seems there are no errors that we can find with these two strategies anymore.
 
 20
 00:06:55.860 --> 00:07:00.339

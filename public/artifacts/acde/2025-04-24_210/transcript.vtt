@@ -510,7 +510,7 @@ Danno Ferrin | Ipsilon: We have 2 full clients, Baysu and Geth, and as far as
 
 128
 00:21:48.620 --> 00:21:58.919
-Danno Ferrin | Ipsilon: libraries savm, one passes it, and I also have a patch out for yields to pass the test. So we have multiple clients that are passing the test as written
+Danno Ferrin | Ipsilon: libraries evm, one passes it, and I also have a patch out for yields to pass the test. So we have multiple clients that are passing the test as written
 
 129
 00:21:59.306 --> 00:22:12.889
@@ -834,7 +834,7 @@ Dan Cline: And like whatever we have, we should be happy with, otherwise remove.
 
 209
 00:34:02.030 --> 00:34:17.749
-Tim Beiko: Yeah, I would. I would strongly plus one. This, like, I think at this point we should only make substractive changes in a way like. I I think we don't want to reopen the entire can of worms around the design space of like potential savm changes. If
+Tim Beiko: Yeah, I would. I would strongly plus one. This, like, I think at this point we should only make substractive changes in a way like. I I think we don't want to reopen the entire can of worms around the design space of like potential evm changes. If
 
 210
 00:34:17.929 --> 00:34:20.770
@@ -1314,7 +1314,7 @@ Ben Adams: an advantage of of eof over
 
 329
 00:49:28.160 --> 00:49:33.940
-Ben Adams: just a raw change to the savm is eof contracts will fail to deploy
+Ben Adams: just a raw change to the evm is eof contracts will fail to deploy
 
 330
 00:49:34.538 --> 00:49:41.640
@@ -1322,7 +1322,7 @@ Ben Adams: on like an L. 2 that hasn't got eof, whereas the
 
 331
 00:49:42.070 --> 00:49:47.109
-Ben Adams: adding the opcodes, the savm will deploy on L. 2, and then fail at Runtime.
+Ben Adams: adding the opcodes, the evm will deploy on L. 2, and then fail at Runtime.
 
 332
 00:49:51.290 --> 00:50:20.430
@@ -1414,7 +1414,7 @@ Tim Beiko: Lucas.
 
 354
 00:53:52.150 --> 00:54:07.479
-Łukasz Rozmej: close to those numbers if we stop interpreting savm bytecode in those key provers which I think that is currently being done. So it's being interpreted
+Łukasz Rozmej: close to those numbers if we stop interpreting evm bytecode in those key provers which I think that is currently being done. So it's being interpreted
 
 355
 00:54:07.710 --> 00:54:13.050
@@ -1478,7 +1478,7 @@ Tim Beiko: Let's do on Andrew, and then Guillaume.
 
 370
 00:56:27.550 --> 00:56:44.639
-Andrew Ashikhmin: Yeah, maybe it's a stupid question. But why don't we turn the entire Evm into kind of a Turing universal risk? 5 machine? We we have savm one. So we can compile that into risk 5 and enshrine that as the Evm.
+Andrew Ashikhmin: Yeah, maybe it's a stupid question. But why don't we turn the entire Evm into kind of a Turing universal risk? 5 machine? We we have evm one. So we can compile that into risk 5 and enshrine that as the Evm.
 
 371
 00:56:45.540 --> 00:56:47.260
@@ -1502,7 +1502,7 @@ Tim Beiko: I'm Guillaume.
 
 376
 00:57:40.537 --> 00:57:52.819
-Guillaume: Yeah. So for having tried to compile the that's not my main point, but just wanted to add, having tried to compile savm, one to always 5. This is, this is more difficult than than you imagine.
+Guillaume: Yeah. So for having tried to compile the that's not my main point, but just wanted to add, having tried to compile evm, one to always 5. This is, this is more difficult than than you imagine.
 
 377
 00:57:53.300 --> 00:58:15.409
@@ -1910,7 +1910,7 @@ Kevaundray Wedderburn: Was mainly about is
 
 478
 01:12:52.110 --> 01:13:00.099
-Kevaundray Wedderburn: is the main argument that we need to switch from savm to a more traditional architecture? Or is this even more specific to risk 5.
+Kevaundray Wedderburn: is the main argument that we need to switch from evm to a more traditional architecture? Or is this even more specific to risk 5.
 
 479
 01:13:01.050 --> 01:13:14.010
@@ -1990,7 +1990,7 @@ Vitalik Buterin: a lot of the underlying philosophy behind some of those decisio
 
 498
 01:16:23.160 --> 01:16:43.820
-Vitalik Buterin: But then, if the end game for sila that we think makes sense ends up just being. Let's like switch from the savm entirely to some like much simpler either risk 5 or like prove prover oriented. Vm, then that's like a different
+Vitalik Buterin: But then, if the end game for sila that we think makes sense ends up just being. Let's like switch from the evm entirely to some like much simpler either risk 5 or like prove prover oriented. Vm, then that's like a different
 
 499
 01:16:43.840 --> 01:16:56.770
@@ -2054,7 +2054,7 @@ Vitalik Buterin: there is a large set of Co. Of contracts, where, if you in like
 
 514
 01:19:13.910 --> 01:19:40.590
-Vitalik Buterin: a lot of for like, for almost the the average computation, like the average number that the average computation manipulates is going is a very small number. Right? It's like an index. It's 0. It's 1. It's like a program counter, like basically stuff that fits in 32 bit right? And so the savm ends up wasting a lot of space by using 256 bit for those. And I just the computation ends up being
+Vitalik Buterin: a lot of for like, for almost the the average computation, like the average number that the average computation manipulates is going is a very small number. Right? It's like an index. It's 0. It's 1. It's like a program counter, like basically stuff that fits in 32 bit right? And so the evm ends up wasting a lot of space by using 256 bit for those. And I just the computation ends up being
 
 515
 01:19:40.940 --> 01:19:51.509
@@ -2194,7 +2194,7 @@ Tim Beiko: and and then the other option is some different version of Eof. And t
 
 549
 01:24:41.360 --> 01:24:43.693
-Tim Beiko: savm improvements in this fork.
+Tim Beiko: evm improvements in this fork.
 
 550
 01:24:44.410 --> 01:24:48.129
@@ -2314,7 +2314,7 @@ Tim Beiko: And if not, that's fine, like, I think one argument is like it
 
 579
 01:28:10.550 --> 01:28:20.294
-Tim Beiko: kind of doesn't. And like to the extent we need backwards compatibility with the savm. We're gonna need it with Eof. And we're gonna need to write all that tooling, anyway. And then
+Tim Beiko: kind of doesn't. And like to the extent we need backwards compatibility with the evm. We're gonna need it with Eof. And we're gonna need to write all that tooling, anyway. And then
 
 580
 01:28:21.800 --> 01:28:24.008
@@ -2326,7 +2326,7 @@ Tim Beiko: Then, yeah, maybe having like less.
 
 582
 01:28:29.750 --> 01:28:33.169
-Tim Beiko: like, yeah, maybe you want to keep a separate savm. Now, yeah.
+Tim Beiko: like, yeah, maybe you want to keep a separate evm. Now, yeah.
 
 583
 01:28:33.952 --> 01:28:56.867

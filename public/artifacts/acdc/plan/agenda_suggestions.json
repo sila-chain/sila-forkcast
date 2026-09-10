@@ -1,61 +1,61 @@
 {
   "series": "ACDC",
-  "generated": "2026-07-06",
-  "for_call": "ACDC #182",
+  "generated": "2026-09-07",
+  "for_call": "ACDC #187",
   "suggestions": [
     {
-      "topic": "glamsterdam-devnet-6 Gloas fork stability and devnet-7 readiness",
+      "topic": "Hegota SIP tier rankings review and rough consensus",
       "priority": "high",
-      "rationale": "devnet-6 launched just before #181 with Gloas fork activation during the call. Stability assessment is critical before proceeding to devnet-7 (targeted mid-July per #181). SIP-7688 DFI decision is contingent on devnet-6 stability.",
+      "rationale": "September 10 deadline for client team rankings is imminent (3 days away). Goal is to reach rough consensus before DevCon. This is the critical decision window for Hegota scope.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "DevNet 10 status and Gloas fork transition stability",
+      "priority": "high",
+      "rationale": "DevNet 9 exhibited critical failures (Prysm state transition failure, Grandine OOM, Teku memory issues). DevNet 10 was planned for the week of Sept 8 pending fixed images. Must confirm stability before proceeding with testnet forks.",
       "related_eips": [],
       "source": "devnet_update"
     },
     {
-      "topic": "SIP-8061 (increase exit/consolidation churn) SFI decision",
+      "topic": "SilaSepolia Glamsterdam fork final approval for October 6",
       "priority": "high",
-      "rationale": "Deferred from #179 for a two-week revisit (expected at #180 or #181 but not addressed). Already implemented and tested since devnet-1 with intent to SFI. Overdue for final stage decision.",
-      "related_eips": [],
-      "source": "deferred_decision"
-    },
-    {
-      "topic": "SIP-7688 (progressive containers) DFI decision for Glamsterdam",
-      "priority": "high",
-      "rationale": "Targeted for devnet-7 in #181 but not DFI'd, with decision deferred pending devnet-6 stability. devnet-7 is ~2–3 weeks out (mid-July), so DFI decision is needed now to finalize scope.",
-      "related_eips": [],
-      "source": "deferred_decision"
-    },
-    {
-      "topic": "SIP-8282 (builder deposit contract) contract finalization and audit scheduling",
-      "priority": "high",
-      "rationale": "Updated contract (fee-per-enqueue) targets devnet-7 with external audit scheduled for end of July. Action from #181 requires PR for new contract constants (target=8, max=64) and signal for audit readiness. Need confirmation on contract finalization status.",
-      "related_eips": [],
-      "source": "ongoing_discussion"
-    },
-    {
-      "topic": "Beacon API PRs review status (608, 580, 606, 621, 618)",
-      "priority": "medium",
-      "rationale": "Multiple Beacon API PRs were assigned for review by ACDT in #181. PR #618 (validator state rename) from #180 is a breaking change requiring broader ecosystem engagement. Need confirmation on review completion and merge readiness.",
+      "rationale": "Date was set in ACDC #186 but formal approval via PM PR #2205 is still pending. Fork is 29 days away; client teams need to finalize releases and coordination.",
       "related_eips": [],
       "source": "open_action_item"
     },
     {
-      "topic": "ePBS circuit breaker implementation status across clients",
+      "topic": "Hoodi Glamsterdam fork date decision",
       "priority": "medium",
-      "rationale": "#181 decided circuit breakers should track missing payloads (not beacon blocks) with client-specific implementations acceptable. Prysm was using incorrect consensus-block-based breaker. Need status updates on client implementations before devnet-7.",
+      "rationale": "Proposed for October 26 in ACDC #185 but deferred twice (in #185 and #186) pending stable devnets. DevNet 10 stability should unblock this decision.",
       "related_eips": [],
-      "source": "ongoing_discussion"
+      "source": "deferred_decision"
     },
     {
-      "topic": "Hegota headliner proposals: SIP-8148, SIP-8243, SIP-8025 status",
+      "topic": "SIP-8148 and SIP-8205 CFI/DFI discussion",
       "priority": "medium",
-      "rationale": "SIP-8148 (custom sweep threshold) proposed for Hegota in #179 with client review requested but not followed up in later calls. SIP-8243 (pre-aggregating attestations) presented in #180. SIP-8025 (optional execution proofs) from #178 had no subsequent discussion. Need clarity on Hegota scope decisions.",
+      "rationale": "Expected revisit at ~2 weeks from ACDC #186 (Sept 3) means this discussion should occur now. Specs and POC implementations are ready for validator withdrawal credential proposals.",
       "related_eips": [],
-      "source": "ongoing_discussion"
+      "source": "deferred_decision"
     },
     {
-      "topic": "PTC attestation cross-branch liveness concerns",
+      "topic": "SIP-8363 Tapered Issuance Burn community consensus check-in",
+      "priority": "medium",
+      "rationale": "PFI'd in ACDC #184 with explicit requirement for community consensus before any CFI. Community discussion was deferred to SIL R&D/SIL Magicians. Time to assess if consensus is forming or if this should be deprioritized for Hegota.",
+      "related_eips": [],
+      "source": "deferred_decision"
+    },
+    {
+      "topic": "Engine API SSZ implementation status",
       "priority": "low",
-      "rationale": "Potuz flagged in #180 that all clients use canonical head only for PTC duties, creating liveness risk during network forks. Issue was not revisited in #181. May warrant discussion if devnet-6 reveals related issues.",
+      "rationale": "Spec merged to execution-apis master in ACDC #186. Check-in on client implementation progress and any iteration needs.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "SIP-8037 cross-frame state gas fix deployment confirmation",
+      "priority": "low",
+      "rationale": "Approved in ACDC #186 for all EL clients to implement and deploy on DevNet 8. Quick confirmation that this is live and working as expected.",
       "related_eips": [],
       "source": "ongoing_discussion"
     }

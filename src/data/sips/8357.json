@@ -1,0 +1,26 @@
+{
+  "id": 8357,
+  "title": "SIP-8357: EVM Verification Key Registry",
+  "status": "Draft",
+  "description": "Exposes fork-approved EVM verification keys and activation timestamps to contracts",
+  "author": "Luca Donno (@lucadonnoh)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-07-30",
+  "discussionLink": "https://sila-magicians.org/t/sip-8357-evm-verification-key-registry/29222",
+  "requires": [
+    161,
+    1559,
+    7910,
+    7928,
+    7997,
+    8037,
+    8288
+  ],
+  "pendingPullRequest": {
+    "number": 12055,
+    "url": "https://github.com/sila-chain/SIPs/pull/12055"
+  },
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -92,7 +92,7 @@ Sorry until Tim takes back over I will be tribal
 00:16:43	Bharath:	Reacted to "Sorry wrong ACD" with 😂
 00:18:23	alex:	https://t.me/smilingalex
 00:20:34	alex:	ill add, the contentious views are on all kinds of points, but good to point out. they range from “why is this improvement worth adding” to “this change may centralize the out of protocol builder market more, we don’t want that”
-00:21:07	alex:	i also wrote a ethresearch opinion post to help give some context on the people which told me about the latter concern: https://Sila Research/t/trustless-payments-right-vibe-more-trust/23531
+00:21:07	alex:	i also wrote a ethresearch opinion post to help give some context on the people which told me about the latter concern: https://ethresear.ch/t/trustless-payments-right-vibe-more-trust/23531
 00:21:41	alex:	if you have strong feelings on this either way, please come join the discussion.
 00:21:46	Barnabas:	FOCIL to SFI to Heka
 00:21:48	kingy_sigp:	sfi focil for heka

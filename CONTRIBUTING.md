@@ -1,4 +1,4 @@
-# Contributing to SilaForkcast
+# Contributing to Forkcast
 
 If you see incorrect information about an SIP's impacts or benefits, content-only pull requests are very welcome. Structural changes or feature requests should open an issue first.
 
@@ -32,7 +32,7 @@ The site automatically deploys to GitHub Pages when changes are merged into the 
 ## Project Structure
 
 ```
-sila-forkcast/
+forkcast/
 ├── astro.config.mjs             # Astro config, integrations, and redirects
 ├── src/
 │   ├── pages/                   # Astro routes

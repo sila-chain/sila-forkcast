@@ -190,7 +190,7 @@ Felix (Geth): just predefined errors, which are just strings, and then it should
 
 48
 00:08:11.970 --> 00:08:29.259
-Felix (Geth): using the same machinery that we sometimes use also in ETHCAL to run the SAVM and capture the error, and then they return the error in this… in this way. So that… that leads to these diverging responses. I do think this fix is okay, we're not gonna change it in the spec.
+Felix (Geth): using the same machinery that we sometimes use also in ETHCAL to run the EVM and capture the error, and then they return the error in this… in this way. So that… that leads to these diverging responses. I do think this fix is okay, we're not gonna change it in the spec.
 
 49
 00:08:29.410 --> 00:08:42.449
@@ -226,7 +226,7 @@ Felix (Geth): Yeah, definitely, it's nice to have the message there, but it's al
 
 57
 00:09:46.610 --> 00:09:55.669
-Felix (Geth): general SAVM call message type error codes. So that's also a bit strange, that we're kind of hoisting these error codes up into the result of the
+Felix (Geth): general EVM call message type error codes. So that's also a bit strange, that we're kind of hoisting these error codes up into the result of the
 
 58
 00:09:56.380 --> 00:09:58.130
@@ -1634,7 +1634,7 @@ Felix (Geth): a chain that has a pre-merge prefix, so they could technically do 
 
 409
 00:52:42.910 --> 00:52:56.879
-Felix (Geth): That would be another valid way of doing it. They just cannot, like, full sync this chain, because they don't have the SAVM rules implemented for the earlier forks, but they have the ability to operate on a chain that has emerged in its history, I think.
+Felix (Geth): That would be another valid way of doing it. They just cannot, like, full sync this chain, because they don't have the EVM rules implemented for the earlier forks, but they have the ability to operate on a chain that has emerged in its history, I think.
 
 410
 00:52:57.270 --> 00:53:05.150

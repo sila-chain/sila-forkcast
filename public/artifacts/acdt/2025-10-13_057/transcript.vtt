@@ -566,7 +566,7 @@ Kamil Chodoła: to attack some specific clients in a worse way, which might not 
 
 142
 00:26:15.190 --> 00:26:27.290
-Kamil Chodoła: what gets warmed is not only SAVM, but then we have also loading of the data from disk to memory, and then also there is some kind of hardware warm-up, which affects the results pretty much.
+Kamil Chodoła: what gets warmed is not only EVM, but then we have also loading of the data from disk to memory, and then also there is some kind of hardware warm-up, which affects the results pretty much.
 
 143
 00:26:27.560 --> 00:26:34.879
@@ -1258,7 +1258,7 @@ Mario Vega: Thank you, Maurice. Lukash?
 
 315
 00:48:58.120 --> 00:49:17.080
-Łukasz Rozmej: changes in the nodes, and the bigger problems they are actually focusing on is the, like, RPC providers are, like, general SAVM compatibility of a train. So, for example, some L2s that have very custom and very,
+Łukasz Rozmej: changes in the nodes, and the bigger problems they are actually focusing on is the, like, RPC providers are, like, general EVM compatibility of a train. So, for example, some L2s that have very custom and very,
 
 316
 00:49:17.120 --> 00:49:19.849

@@ -74,7 +74,7 @@ Agree with Csaba, they should be described as possible optimizations and we do t
 Nvm found it
 00:29:12	Marius van der Wijden:	Replying to "We need the new et..."
 
-https://sips.sila.org/SIPS/sip-7975 Its in the networking category
+https://sips.sila.org/EIPS/sip-7975 Its in the networking category
 00:29:24	Francesco:	Replying to "if specific optimiza..."
 
 Well, as long as you don’t do it by e.g. doing it optimistically instead of using the BAL, which won’t deal with the worst case
@@ -243,7 +243,7 @@ Ah my question fits better here
 
 In LUCID linked above it is hidden
 01:12:29	Jannik Luhn:	For more on SIP-8105, we’re hosting a discussion session next week, Tuesday, ACDE time: https://meet.google.com/ccw-dwbm-mai
-01:12:41	lightclient:	https://sips.sila.org/SIPS/sip-8141
+01:12:41	lightclient:	https://sips.sila.org/EIPS/sip-8141
 01:12:44	Anders Elowsson:	Replying to "Does this leak tx me..."
 
 Sender of sealed transaction and revealed transaction can differ

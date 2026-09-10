@@ -1,9 +1,9 @@
 {
   "id": 8025,
   "title": "SIP-8025: Optional Execution Proofs",
-  "status": "Stagnant",
+  "status": "Draft",
   "description": "Introducing optional execution proofs on the consensus layer",
-  "author": "Kevaundray Wedderburn (@kevaundray), Justin Drake (@JustinDrake) <justin@sila.org>",
+  "author": "Kevaundray Wedderburn (@kevaundray), Justin Drake (@JustinDrake) <justin@sila.org>, Ignacio Hagopian (@jsign), Han (@han0110), Francesco Risitano (@frisitano), Cody Gunton (@codygunton)",
   "type": "Standards Track",
   "category": "Core",
   "createdDate": "2025-09-17",
@@ -13,7 +13,7 @@
   "faq": [
     {
       "question": "What's in SIP-8025?",
-      "answer": "SIP-8025 introduces a consensus-layer mechanism by which beacon nodes can verify the validity of an *execution payload* using execution proofs (aka zkEVM proofs) received over the P2P network, rather than purely re-executing locally.\n\nThe SIP **defines two new opt-in node roles**, expressed in the spec as modes a node enables independently or together:\n\n* **Provers** (proof-generating mode) altruistically produce zkEVM proofs for each block's execution and gossip them.\n* **zkAttesters**, also called stateless attesters (proof-verifying mode), verify received zkEVM proofs as a supplementary check on payload validity.\n\nEIP-8025 lives primarily on the consensus layer, but it also introduces an execution-layer artifact: the *guest program*, the block-execution logic that runs inside a zkVM and constitutes the computation the prover proves.\n\nThe SAVM itself is not modified; existing EL clients continue producing payloads as before.\n\nImportantly, validating nodes who do not opt in see no change."
+      "answer": "SIP-8025 introduces a consensus-layer mechanism by which beacon nodes can verify the validity of an *execution payload* using execution proofs (aka zkEVM proofs) received over the P2P network, rather than purely re-executing locally.\n\nThe SIP **defines two new opt-in node roles**, expressed in the spec as modes a node enables independently or together:\n\n* **Provers** (proof-generating mode) altruistically produce zkEVM proofs for each block's execution and gossip them.\n* **zkAttesters**, also called stateless attesters (proof-verifying mode), verify received zkEVM proofs as a supplementary check on payload validity.\n\nEIP-8025 lives primarily on the consensus layer, but it also introduces an execution-layer artifact: the *guest program*, the block-execution logic that runs inside a zkVM and constitutes the computation the prover proves.\n\nThe EVM itself is not modified; existing EL clients continue producing payloads as before.\n\nImportantly, validating nodes who do not opt in see no change."
     },
     {
       "question": "What problem does it solve?",
@@ -29,7 +29,7 @@
     },
     {
       "question": "Is it \"zkEVM\" or \"zkVM\"?",
-      "answer": "Both, depending on which layer of the stack you mean.\n\nA **zkVM** is a general-purpose virtual machine, typically RISC-V or a similar minimal ISA, whose execution can be proven inside a proof system. It knows nothing about Sila; it just executes whatever program you compile for it and produces a proof that the program ran correctly on the given inputs. ZisK, Jolt, and LambdaVM are all examples of zkVMs.\n\nA **zkEVM** is what you get when you run an SAVM implementation *as a guest program* inside a zkVM. The guest in SIP-8025 is exactly this: a stateless SAVM payload verifier, written against the execution specs, compiled to run inside a zkVM. So the rough equation is **zkEVM = zkVM + SAVM guest program**.\n\nA practical implication of this split: the zkVM and the SAVM guest program can evolve independently. You can swap the zkVM, for example by moving from one proof system to another, without changing the guest program, and you can upgrade the guest program, for example to handle a new SAVM fork, without changing the zkVM. SIP-8025's multi-proof-type support leans on exactly this separation."
+      "answer": "Both, depending on which layer of the stack you mean.\n\nA **zkVM** is a general-purpose virtual machine, typically RISC-V or a similar minimal ISA, whose execution can be proven inside a proof system. It knows nothing about Sila; it just executes whatever program you compile for it and produces a proof that the program ran correctly on the given inputs. ZisK, Jolt, and LambdaVM are all examples of zkVMs.\n\nA **zkEVM** is what you get when you run an EVM implementation *as a guest program* inside a zkVM. The guest in SIP-8025 is exactly this: a stateless EVM payload verifier, written against the execution specs, compiled to run inside a zkVM. So the rough equation is **zkEVM = zkVM + EVM guest program**.\n\nA practical implication of this split: the zkVM and the EVM guest program can evolve independently. You can swap the zkVM, for example by moving from one proof system to another, without changing the guest program, and you can upgrade the guest program, for example to handle a new EVM fork, without changing the zkVM. SIP-8025's multi-proof-type support leans on exactly this separation."
     },
     {
       "question": "What are the two new opt-in node modes?",
@@ -124,5 +124,15 @@
   "tradeoffs": [
     "No incentives for proof-generating nodes; relies on altruistic provers",
     "Adds gossip bandwidth and client implementation complexity for opted-in nodes"
+  ],
+  "requires": [
+    4844,
+    6110,
+    7002,
+    7251,
+    7688,
+    7732,
+    7928,
+    8282
   ]
 }

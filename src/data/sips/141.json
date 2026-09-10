@@ -1,6 +1,6 @@
 {
   "id": 141,
-  "title": "SIP-141: Designated invalid SAVM instruction",
+  "title": "SIP-141: Designated invalid EVM instruction",
   "status": "Final",
   "description": "",
   "author": "Alex Beregszaszi (@axic)",

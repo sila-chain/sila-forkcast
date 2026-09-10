@@ -53,7 +53,7 @@ describe('pending SIP pull request', () => {
 
     expect(isPendingEip(sip)).toBe(false);
     expect(getSpecificationUrl(sip)).toBe(
-      'https://sips.sila.org/SIPS/sip-8141',
+      'https://sips.sila.org/EIPS/sip-8141',
     );
   });
 });

@@ -878,7 +878,7 @@ Maria Silva: My… my view is that, from a general point of view, it should alwa
 
 220
 00:30:31.830 --> 00:30:43.330
-Maria Silva: But I think this then enters into conflict with some behavior that we currently have in the SAVM. So, for instance, the… the…
+Maria Silva: But I think this then enters into conflict with some behavior that we currently have in the EVM. So, for instance, the… the…
 
 221
 00:30:43.480 --> 00:30:47.440
@@ -894,7 +894,7 @@ Maria Silva: But it's still not being refunded when… when there's a failure, s
 
 224
 00:31:05.350 --> 00:31:18.390
-Maria Silva: a behavior in the SAVM. Although, I would argue it seems like the correct behavior, but we need to be really careful and make sure that we are not missing anything here. But so, but this is, like, my general…
+Maria Silva: a behavior in the EVM. Although, I would argue it seems like the correct behavior, but we need to be really careful and make sure that we are not missing anything here. But so, but this is, like, my general…
 
 225
 00:31:18.560 --> 00:31:26.770

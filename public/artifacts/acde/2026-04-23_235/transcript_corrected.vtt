@@ -1674,7 +1674,7 @@ Peter Miller: Rather than, like, this transitional solution before we go to prop
 
 419
 01:04:50.500 --> 01:05:09.920
-Marius Van Der Wijden (M): So, just as a counter to that, I think most of the complexity, or all of the complexity of 8037 is actually within the metering within the SAVM, and that will not change between AT37 and whatever fully… fully multidimensional gas thing we're going to decide on.
+Marius Van Der Wijden (M): So, just as a counter to that, I think most of the complexity, or all of the complexity of 8037 is actually within the metering within the EVM, and that will not change between AT37 and whatever fully… fully multidimensional gas thing we're going to decide on.
 
 420
 01:05:10.030 --> 01:05:19.820
@@ -1682,7 +1682,7 @@ Marius Van Der Wijden (M): The… the thing that's going to change is how these�
 
 421
 01:05:19.940 --> 01:05:34.970
-Marius Van Der Wijden (M): collected, and how do we put stuff in, and how… how much do we put back out? So, basically, the outer frame of the SAVM, but not within the SAVM. So this is kind of my counter-argument why,
+Marius Van Der Wijden (M): collected, and how do we put stuff in, and how… how much do we put back out? So, basically, the outer frame of the EVM, but not within the EVM. So this is kind of my counter-argument why,
 
 422
 01:05:35.150 --> 01:05:45.760
@@ -1694,7 +1694,7 @@ Marius Van Der Wijden (M): Because the metering that we need to do in the EBM is
 
 424
 01:05:54.000 --> 01:06:05.150
-Marius Van Der Wijden (M): are likely not inside the SAVM either, right? Except maybe for state access, everything else, call data,
+Marius Van Der Wijden (M): are likely not inside the EVM either, right? Except maybe for state access, everything else, call data,
 
 425
 01:06:05.420 --> 01:06:08.330
@@ -1794,7 +1794,7 @@ Piotr: Okay, thank you, hello, my name is Piotr, I work at Monopt Foundation. I'
 
 449
 01:09:42.819 --> 01:09:56.480
-Piotr: Which reserves AE as an extension opcode. So the AP asks to agree that Sila SAVM will not use the AE opcode as a valid instruction.
+Piotr: Which reserves AE as an extension opcode. So the AP asks to agree that Sila EVM will not use the AE opcode as a valid instruction.
 
 450
 01:09:56.850 --> 01:10:10.529
@@ -2198,7 +2198,7 @@ Greg Colvin: Yo.
 
 550
 01:22:46.380 --> 01:23:02.679
-Greg Colvin: And if we have to get buy-in from all the compiler teams, I cannot volunteer the time to do this. And I will simply leave the SAVM broken in this way.
+Greg Colvin: And if we have to get buy-in from all the compiler teams, I cannot volunteer the time to do this. And I will simply leave the EVM broken in this way.
 
 551
 01:23:02.850 --> 01:23:07.360
@@ -2222,7 +2222,7 @@ Ben Adams: From the NetherMind point of view, we have, tried to do, sort of, AIT
 
 556
 01:23:49.830 --> 01:23:59.960
-Ben Adams: one of the issues is with just pure random jumps everywhere. Essentially, an SAVM contract works as, like, a…
+Ben Adams: one of the issues is with just pure random jumps everywhere. Essentially, an EVM contract works as, like, a…
 
 557
 01:24:00.400 --> 01:24:04.400

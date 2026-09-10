@@ -4,7 +4,7 @@
     "testing_progress": [
       {
         "timestamp": "00:07:33",
-        "highlight": "bal-devnet-7 stable with 100% SAVM fuzzing participation; clients iterating on benchmarking"
+        "highlight": "bal-devnet-7 stable with 100% EVM fuzzing participation; clients iterating on benchmarking"
       },
       {
         "timestamp": "00:08:43",

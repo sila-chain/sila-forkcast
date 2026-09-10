@@ -9,6 +9,7 @@
   "createdDate": "2020-02-21",
   "discussionLink": "https://sila-magicians.org/t/eip2537-bls12-precompile-discussion-thread/4187",
   "reviewer": "bot",
+  "layer": "EL",
   "forkRelationships": [
     {
       "forkName": "Pectra",
@@ -41,10 +42,10 @@
       "description": "No changes for wallets"
     },
     "toolingInfra": {
-      "description": "Indexers and tools that analyze execution on SAVM level will need to update to recognize the new precompile."
+      "description": "Indexers and tools that analyze execution on EVM level will need to update to recognize the new precompile."
     },
     "layer2s": {
-      "description": "SAVM L2s need to update to stay compatible, certain L1 operations can take advantage of this."
+      "description": "EVM L2s need to update to stay compatible, certain L1 operations can take advantage of this."
     },
     "stakersNodes": {
       "description": "Not a direct impact on regular validators. Some pools with onchain infrastracture can upgrade to utilize the precompile."

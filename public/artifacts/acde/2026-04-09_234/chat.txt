@@ -61,7 +61,8 @@ Have a PR for the create geth split, but worth discussing whether the behaviour 
 
  While both are breaking? Makes not much sense right now
 00:11:40	Will Corcoran:	Reacted to "soon tbd" with 👀
-00:11:45	Łukasz Rozmej:	From Marius earlier today on STEEL discord:"One thing I realized yesterday is that we are refunding the state gas for access lists into the stateGasBudget instead of the regularGasBudget. I don't think we have a test for it."
+00:11:45	Łukasz Rozmej:	From Marius earlier today on STEEL discord:
+"One thing I realized yesterday is that we are refunding the state gas for access lists into the stateGasBudget instead of the regularGasBudget. I don't think we have a test for it."
 00:12:21	spencer:	Replying to "From Marius earlie..."
 
 Also in this PR: https://github.com/sila-chain/execution-specs/pull/2639
@@ -98,12 +99,12 @@ its a lot
 00:16:57	danceratopz:	Reacted to Want to say yes they... with "➕"
 00:17:42	Dragan Rakita:	Replying to "This sounds like we'..."
 
-@spencer is this issue 3 from https://github.com/misilva73/savm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md
+@spencer is this issue 3 from https://github.com/misilva73/evm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md
 00:17:53	Toni Wahrstätter:	Reacted to @spencer is this iss... with "🔥"
 00:18:22	felipe:	Reacted to "I meant it more li..." with 💯
 00:19:30	Dragan Rakita:	Replying to "From Marius earlier ..."
 
-@Maria Silva we should probably add access list issue to https://github.com/misilva73/savm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md
+@Maria Silva we should probably add access list issue to https://github.com/misilva73/evm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md
 00:19:46	Dustin:	safe block is currently useless
 00:19:50	Dustin:	as justified
 00:20:00	Toni Wahrstätter:	@Stefan Starflinger should we discuss bal-devnet-4 vs gloas-devnet-0?
@@ -383,7 +384,12 @@ yes
 00:53:31	jochem-brouwer:	Heeft gereageerd op "3 teams were in fa..." met 👍
 00:53:40	Iván | ethrex:	Reacted to "Gotta count the numbers beforehand giulio" with 😂
 00:53:44	Pedro:	Definitely more than 1 team was in favor of Frame Transactions and 2 transactions were neutral
-00:53:46	Łukasz Rozmej:	My problem with frames and all native AA proposal I read I can't combine:native AAstatelessness/partial statefulFOCIL/public mempoolMy concerns arn't political, my concers are purely technical.
+00:53:46	Łukasz Rozmej:	My problem with frames and all native AA proposal I read I can't combine:
+native AA
+statelessness/partial stateful
+FOCIL/public mempool
+
+My concerns arn't political, my concers are purely technical.
 00:53:54	FLCL:	5 years spent, so broader community need to spend how much time to agree on them? 1 month?
 00:53:59	DanielVF:	Reacted to "My problem with fr..." with ➕
 00:54:02	Luca Donno | L2BEAT:	Reacted to "My problem with fram..." with 👍
@@ -491,11 +497,11 @@ Strategy 2 makes it compatible.
 BUT, if we at some point need more, the mempool participant number will def sense it
 00:59:15	Derek Chiang | ZeroDev:	Replying to "My problem with fram..."
 
-VOPS was designed with native AA in mind: https://Sila Research/t/a-pragmatic-path-towards-validity-only-partial-statelessness-vops/22236#p-54075-vops-and-native-account-abstraction-aavops-9 
+VOPS was designed with native AA in mind: https://ethresear.ch/t/a-pragmatic-path-towards-validity-only-partial-statelessness-vops/22236#p-54075-vops-and-native-account-abstraction-aavops-9 
 
 This was written before frames, but frames was designed with VOPS in mind
 00:59:26	Luca Donno | L2BEAT:	Reacted to "well potentially if ..." with 👍
-00:59:52	Lumi | Offchain Labs:	Reacted to "VOPS was designed with native AA in mind: https://Sila Research/t/a-pragmatic-path-towards-validity-only-partial-statelessness-vops/22236#p-54075-vops-and-native-account-abstraction-aavops-9 
+00:59:52	Lumi | Offchain Labs:	Reacted to "VOPS was designed with native AA in mind: https://ethresear.ch/t/a-pragmatic-path-towards-validity-only-partial-statelessness-vops/22236#p-54075-vops-and-native-account-abstraction-aavops-9 
 
 This was written before frames, but frames was designed with VOPS in mind" with 👍
 00:59:57	CPerezz:	Replying to "My problem with fram..."
@@ -688,7 +694,7 @@ this is because the churn is capped at the moment. if we remove the cap and more
 
 It’s all about risk. If we’re fine with taking the risk of not getting the enshrined contract right, we can totally go Frame!!!
 
-I even mentioned this here: https://Sila Research/t/frame-transactions-through-a-statelessness-lens/24538
+I even mentioned this here: https://ethresear.ch/t/frame-transactions-through-a-statelessness-lens/24538
 01:20:19	Barnabas:	https://github.com/sila-chain/execution-apis/pull/764
 01:20:20	Dustin:	exchangeCapabilities is still a giant TOCTOU
 01:20:24	Dustin:	from a CL perspective

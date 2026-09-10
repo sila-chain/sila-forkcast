@@ -770,7 +770,7 @@ Carl Beekhuizen: So if we make one thing more expensive or another thing cheaper
 
 193
 00:37:15.930 --> 00:37:32.609
-Carl Beekhuizen: I think the name is a little bad, and then the third thing is that if we really want to start pushing the scale of Sila and the SAVM, we're going to very quickly start running into state bottlenecks. That's for both, like, history, like, state growth sites, and for just…
+Carl Beekhuizen: I think the name is a little bad, and then the third thing is that if we really want to start pushing the scale of Sila and the EVM, we're going to very quickly start running into state bottlenecks. That's for both, like, history, like, state growth sites, and for just…
 
 194
 00:37:32.640 --> 00:37:50.019
@@ -1218,11 +1218,11 @@ Ansgar Dietrichs: And…
 
 305
 00:52:05.550 --> 00:52:19.219
-Ansgar Dietrichs: So these are individual SAVM improvements. We have the payoff code, we have revert, revert creation in case of non-empty storage, linear SAVM memory limits.
+Ansgar Dietrichs: So these are individual EVM improvements. We have the payoff code, we have revert, revert creation in case of non-empty storage, linear EVM memory limits.
 
 306
 00:52:19.540 --> 00:52:32.590
-Ansgar Dietrichs: Slot num op code, guess to SIL opcode, setDelegate instruction, call and return opcodes for the SAVM, static relative jumps and calls for the SAVM, and backwards compatible swap end, dupe N, and exchange. Do we have…
+Ansgar Dietrichs: Slot num op code, guess to SIL opcode, setDelegate instruction, call and return opcodes for the EVM, static relative jumps and calls for the EVM, and backwards compatible swap end, dupe N, and exchange. Do we have…
 
 307
 00:52:33.620 --> 00:52:40.060
@@ -1894,7 +1894,7 @@ Danno Ferrin: So, yeah, Falcon 5's probably gonna be FNDSA. MLDSA is, final is F
 
 474
 01:14:18.190 --> 01:14:33.280
-Danno Ferrin: And when it comes to implementing these on the SAVM, MLDSA is one that's even more expensive, it'll take up the whole block. So pre-compiled to support these industry standard, features will be very valuable. But the reason for these two is because of post-quantum.
+Danno Ferrin: And when it comes to implementing these on the EVM, MLDSA is one that's even more expensive, it'll take up the whole block. So pre-compiled to support these industry standard, features will be very valuable. But the reason for these two is because of post-quantum.
 
 475
 01:14:33.470 --> 01:14:50.219

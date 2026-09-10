@@ -4,7 +4,7 @@
 00:07:20	Stefan Starflinger:	Pk is working on a builder for epbs depending on the timing we could consider building on top of that
 00:10:01	Stefan Starflinger:	Replying to "Pk is working on a b…"
 https://github.com/ethpandaops/buildoor
-00:15:25	soispoke:	Practically there are definitely ways to interleave plaint text and encrypted txns (this is part of the encrypted frame txn design I published) https://Sila Research/t/encrypted-frame-transactions/24440
+00:15:25	soispoke:	Practically there are definitely ways to interleave plaint text and encrypted txns (this is part of the encrypted frame txn design I published) https://ethresear.ch/t/encrypted-frame-transactions/24440
 00:16:08	soispoke:	Replying to "Practically there ar..."
 
 This doesn’t change what Anders is saying about needing to use onchain searching

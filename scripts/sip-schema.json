@@ -113,7 +113,7 @@
           "type": "array",
           "items": { "$ref": "#/$defs/Champion" },
           "minItems": 1,
-          "maxItems": 2
+          "maxItems": 3
         },
         "presentationHistory": {
           "type": "array",
@@ -178,7 +178,7 @@
       "properties": {
         "status": {
           "type": "string",
-          "enum": ["Proposed", "Considered", "Scheduled", "Declined", "Included", "Withdrawn"]
+          "enum": ["Proposed", "Considered", "Scheduled", "Declined", "Included", "Withdrawn", "Informational", "Networking"]
         },
         "call": {
           "oneOf": [

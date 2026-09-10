@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const EIPS_DIR = path.join(__dirname, '../src/data/sips');
-const OFFICIAL_EIP_BASE_URL = 'https://raw.githubusercontent.com/sila/SIPs/refs/heads/master/SIPS/sip-';
+const OFFICIAL_EIP_BASE_URL = 'https://raw.githubusercontent.com/sila/SIPs/refs/heads/master/EIPS/sip-';
 
 // Fields to compare between local and official
 const FIELDS_TO_CHECK = ['title', 'description', 'author', 'status', 'category', 'createdDate', 'type', 'discussionLink', 'requires'];
@@ -127,7 +127,7 @@ async function fetchOfficialEIP(eipNumber, localEip) {
  * Fetch SIP from an open PR's head branch
  */
 async function fetchEIPFromPR(eipNumber, prNumber) {
-  const url = `https://raw.githubusercontent.com/sila/SIPs/refs/pull/${prNumber}/head/SIPS/sip-${eipNumber}.md`;
+  const url = `https://raw.githubusercontent.com/sila/SIPs/refs/pull/${prNumber}/head/EIPS/sip-${eipNumber}.md`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

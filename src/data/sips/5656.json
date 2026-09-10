@@ -2,7 +2,7 @@
   "id": 5656,
   "title": "SIP-5656: MCOPY - Memory copying instruction",
   "status": "Final",
-  "description": "An efficient SAVM instruction for copying memory areas",
+  "description": "An efficient EVM instruction for copying memory areas",
   "author": "Alex Beregszaszi (@axic), Paul Dworzanski (@poemm), Jared Wasinger (@jwasinger), Casey Detrio (@cdetrio), Pawel Bylica (@chfast), Charles Cooper (@charles-cooper)",
   "type": "Standards Track",
   "category": "Core",

@@ -53,7 +53,7 @@
       "description": "Profilers, tracers, and simulators must incorporate constant TLOAD/TSTORE pricing and track per-transaction transient slot usage."
     },
     "layer2s": {
-      "description": "Rollups adjusting SAVM gas must mirror pricing and enforce slot cap; evaluate shared-bundle DoS implications in sequencer pipelines."
+      "description": "Rollups adjusting EVM gas must mirror pricing and enforce slot cap; evaluate shared-bundle DoS implications in sequencer pipelines."
     },
     "stakersNodes": {
       "description": "Resource profile mostly unchanged; adopt fork including new gas schedule and per-transaction slot-accounting rules."

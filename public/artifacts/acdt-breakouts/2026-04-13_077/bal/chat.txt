@@ -12,7 +12,7 @@
 @Rafael Matias (skylenet) I also sent you some messages on Steel when you will have time
 10:43:04	Rafael Matias (skylenet):	Reacted to "@Rafael Matias (sk..." with 👍
 10:47:39	Maria Silva:	https://github.com/sila-chain/SIPs/pull/11523
-10:47:47	Maria Silva:	https://github.com/misilva73/savm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md#3-gas_create-state-gas-pre-outcome-charge-and-sip-text
+10:47:47	Maria Silva:	https://github.com/misilva73/evm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md#3-gas_create-state-gas-pre-outcome-charge-and-sip-text
 10:52:06	Łukasz Rozmej:	We should default to do simplest things, 8037 is already too complicated.
 10:52:38	jochem-brouwer:	The refund, it is given at the end of the transaction, or also "in" the transaction in case if a sub-call frame reverts?
 10:53:21	FLCL:	in tx so can be reused

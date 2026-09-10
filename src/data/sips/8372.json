@@ -1,0 +1,41 @@
+{
+  "id": 8372,
+  "title": "SIP-8372: Normalized state gas limit",
+  "status": "Draft",
+  "description": "Scales and normalizes the state-gas limit to better balance state-gas and execution-gas utilization.",
+  "author": "Anders Elowsson (@anderselowsson)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-08-06",
+  "discussionLink": "https://sila-magicians.org/t/sip-8372-normalized-state-gas-limit/29332",
+  "requires": [
+    8037
+  ],
+  "reviewer": "expert",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/243",
+          "date": "2026-08-13"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Anders Elowsson",
+          "discord": "anderselowsson"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Blocks under the new state gas rules reserve as much room for creating state as for running code, but real demand rarely splits evenly, leaving one side underused. This re-tunes the price of new state and resizes its share of the block so both fill up at roughly the same rate.",
+  "benefits": [
+    "Balances the state gas and execution gas equilibrium for higher throughput"
+  ],
+  "tradeoffs": [
+    "Introduces a new constant that will need to be tuned manually for the hard fork based on observed elasticities"
+  ]
+}

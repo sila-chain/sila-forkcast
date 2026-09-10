@@ -318,14 +318,14 @@ ppl use the approve button on github 😂
 
 https://docs.google.com/presentation/d/1hbkdjHsP_2rTc0zTgXLBf3thYv9FHEcNurWiZKnR6c8/edit?slide=id.p34#slide=id.p34
 01:12:58	Mario Havel:	Reacted to "Stokes saying the ..." with ❤️
-01:13:00	Dima Gusakov | Lido:	https://sips.sila.org/SIPS/sip-8205
+01:13:00	Dima Gusakov | Lido:	https://sips.sila.org/EIPS/sip-8205
 01:13:09	Manu:	Reacted to "https://docs.google.com/presentation/d/1hbkdjHsP_2rTc0zTgXLBf3thYv9FHEcNurWiZKnR6c8/edit?slide=id.p34#slide=id.p34" with 👍
 01:14:52	Nico Flaig:	@Oisin Kyne we had this PR for SIP-7716 https://github.com/ChainSafe/lodestar/pull/6851
 01:15:37	Potuz:	@Toni Wahrstätter I think this is all that's needed https://github.com/sila-chain/consensus-specs/pull/5117
 01:16:03	Potuz:	I'll fix Heze/etc. if that's fine, I don't think you want BALs ont he Bid
 01:16:51	Bharath:	Reacted to "I'll fix Heze/etc. i..." with 👍
 01:17:04	Barnabas:	8205: IMO Overcomplicating the protocol for little benefit.
-01:17:31	Dima Gusakov | Lido:	https://sips.sila.org/SIPS/sip-8205
+01:17:31	Dima Gusakov | Lido:	https://sips.sila.org/EIPS/sip-8205
 01:17:58	stokes:	Replying to "8205: IMO Overcompli..."
 
 I think this is a problem staking pools face, FWIW

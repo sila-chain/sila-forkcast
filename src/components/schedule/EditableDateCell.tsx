@@ -19,6 +19,10 @@ export interface EditableDateCellProps {
   gapTooltip?: string;
   gapType?: 'fixed' | 'variable';
   isSourceLocked?: boolean;
+  /** Date was put forward on ACD but not yet agreed. */
+  isProposed?: boolean;
+  /** Network launched on this date and is still running. */
+  isLive?: boolean;
 }
 
 const EditableDateCell: React.FC<EditableDateCellProps> = ({
@@ -37,6 +41,8 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
   gapTooltip,
   gapType,
   isSourceLocked,
+  isProposed,
+  isLive,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState('');
@@ -45,8 +51,9 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
   const isLocked = dateKey in lockedDates;
   const displayDate = lockedDates[dateKey] ?? calculatedDate;
 
-  // Check if date is overdue (past today and not completed)
-  const isOverdue = !isCompleted && displayDate && (() => {
+  // Check if date is overdue (past today and the milestone hasn't happened).
+  // A live network's date is its launch, so it is in the past by definition.
+  const isOverdue = !isCompleted && !isLive && displayDate && (() => {
     const parsed = parseShortDate(displayDate);
     if (!parsed) return false;
     const today = new Date();
@@ -121,7 +128,7 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
         <Tooltip text={gapTooltip} position="top">
           <span className="inline-flex items-center gap-0.5">
             {span}
-            <span className="hidden md:inline text-slate-400 dark:text-slate-500 text-[10px]">ⓘ</span>
+            <span className="hidden md:inline text-slate-400 dark:text-slate-400 text-[10px]">ⓘ</span>
           </span>
         </Tooltip>
       );
@@ -224,10 +231,29 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
             ⚠
           </div>
         </Tooltip>
+      ) : isLive ? (
+        <Tooltip text="Launched on this date and still running." position="top">
+          <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300">
+            ●
+          </div>
+        </Tooltip>
+      ) : isProposed && displayDate === calculatedDate ? (
+        /* A specific date came out of ACD discussion. Firmer than a projection
+           off the sila-mainnet estimate, but not agreed, so no 🔒. */
+        <Tooltip text="Proposed, not yet agreed." position="top">
+          <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300">
+            ~
+          </div>
+        </Tooltip>
       ) : (
-        <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
-          ○
-        </div>
+        /* A question mark, not a neutral circle: these dates are projections
+           calculated backwards from a target sila-mainnet date, and readers routinely
+           quote them as if they were agreed. */
+        <Tooltip text="Projected, not agreed. Calculated from the target sila-mainnet date." position="top">
+          <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+            ?
+          </div>
+        </Tooltip>
       )}
       <div
         className={`text-sm ${dateWidth} cursor-pointer ${isOverdue ? 'text-amber-700 dark:text-amber-400 font-medium hover:text-amber-800 dark:hover:text-amber-300' : 'text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400'}`}

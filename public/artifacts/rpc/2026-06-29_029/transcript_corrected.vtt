@@ -1642,7 +1642,7 @@ Simson: they should be able to know what is wrong with it. So if they say, let's
 
 411
 01:01:03.580 --> 01:01:22.150
-Simson: We grouped like really, with basic, intentions rather than grouping like a client specific ones. For example, the simulation error may not happen the same way for all the clients, right? Maybe it's possible, get on get based, but if you take like an SAVM specific change.
+Simson: We grouped like really, with basic, intentions rather than grouping like a client specific ones. For example, the simulation error may not happen the same way for all the clients, right? Maybe it's possible, get on get based, but if you take like an EVM specific change.
 
 412
 01:01:22.150 --> 01:01:26.119
@@ -1714,7 +1714,7 @@ Simson: In the transaction validation error, this is where I'm confused. Let's s
 
 429
 01:03:56.520 --> 01:04:06.940
-Simson: is at the consensus level. So when you have the transaction, nonce too low at the transaction validation level, it might be different for a different chain, SAVM chain, or a different SAVM client.
+Simson: is at the consensus level. So when you have the transaction, nonce too low at the transaction validation level, it might be different for a different chain, EVM chain, or a different EVM client.
 
 430
 01:04:13.510 --> 01:04:31.789
@@ -1722,7 +1722,7 @@ Simson: If you know what I mean. So that's why we didn't want to categorize this
 
 431
 01:04:31.790 --> 01:04:49.309
-Simson: The more I delve deep, I noticed different chains, you know, errored out in a different situations for the same error. So if you put the nonce to low as a transaction validation error, it might be an actual execution error for, for a different SAVM chain.
+Simson: The more I delve deep, I noticed different chains, you know, errored out in a different situations for the same error. So if you put the nonce to low as a transaction validation error, it might be an actual execution error for, for a different EVM chain.
 
 432
 01:04:59.050 --> 01:04:59.970
@@ -1834,7 +1834,7 @@ Boma: Because each clients have like a different thing they're doing.
 
 459
 01:07:50.560 --> 01:07:56.229
-Chase Wright: Yeah, I don't, I mean, I don't, I don't know, cause I'm not part of the ZK SAVM stuff.
+Chase Wright: Yeah, I don't, I mean, I don't, I don't know, cause I'm not part of the ZK EVM stuff.
 
 460
 01:07:57.120 --> 01:07:57.929

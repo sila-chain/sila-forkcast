@@ -165,7 +165,7 @@ for the deployment at target address (it is fixed at 100k)
 00:36:39	jochem-brouwer:	Antwoord verzenden naar "arachnid has a har..."
 
 the nasty thing is that the transaction takes account high gas prices, but not that the gas cost would be more than double (in gas units)
-00:38:03	raxhvl:	Opstack supports this assumption laid by option 2 (https://github.com/sila-chain-optimism/optimism/blob/dfea9e09dd72372f6c879d83eafc58b81caab0a2/packages/contracts-bedrock/specs/l2-upgrades-2-contracts.md?plain=1#L133)
+00:38:03	raxhvl:	Opstack supports this assumption laid by option 2 (https://github.com/ethereum-optimism/optimism/blob/dfea9e09dd72372f6c879d83eafc58b81caab0a2/packages/contracts-bedrock/specs/l2-upgrades-2-contracts.md?plain=1#L133)
 00:38:04	Łukasz Rozmej:	SIP specyfies a super simple contract, why it is not deployable?
 00:38:10	Maria Silva:	Aren’t the next topics EL?
 00:38:27	Barnabas:	Replying to "Aren’t the next topi..."

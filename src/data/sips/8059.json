@@ -2,7 +2,7 @@
   "id": 8059,
   "title": "SIP-8059: Gas Units Rebase for High-precision Metering",
   "status": "Draft",
-  "description": "Gas parameters and variables are increased to a factor of `REBASE_FACTOR` to reduce rounding errors without major changes to the SAVM",
+  "description": "Gas parameters and variables are increased to a factor of `REBASE_FACTOR` to reduce rounding errors without major changes to the EVM",
   "author": "Maria Silva (@misilva73)",
   "type": "Standards Track",
   "category": "Core",
@@ -67,9 +67,9 @@
   },
   "benefits": [
     "Enables high-precision gas metering without fractional gas.",
-    "Reduces rounding errors when repricing SAVM operations.",
+    "Reduces rounding errors when repricing EVM operations.",
     "Future-proofs gas costs as hardware improves and state access stays costly.",
-    "Avoids major changes to internal SAVM logic."
+    "Avoids major changes to internal EVM logic."
   ],
   "tradeoffs": null
 }

@@ -698,7 +698,7 @@ Stefan Starflinger: I can also share, kind of, the spec updates,
 
 175
 00:25:24.830 --> 00:25:30.369
-Stefan Starflinger: that I haven't mentioned yet. PK has, added, SAVM fuzz.
+Stefan Starflinger: that I haven't mentioned yet. PK has, added, EVM fuzz.
 
 176
 00:25:30.890 --> 00:25:33.680
@@ -1046,7 +1046,7 @@ Toni Wahrstaetter: Making sure we don't forget anything.
 
 262
 00:35:05.150 --> 00:35:12.419
-Toni Wahrstaetter: I'm relaying this message from Stefan. The clients please run the SAVM fast scenario for Spammer.
+Toni Wahrstaetter: I'm relaying this message from Stefan. The clients please run the EVM fast scenario for Spammer.
 
 263
 00:35:17.860 --> 00:35:18.720
@@ -1918,7 +1918,7 @@ Gary Rong: So what I'm trying to say is that, if we think that the read is, unde
 
 480
 00:59:41.140 --> 00:59:49.759
-Gary Rong: So the worst case will be a block with all the, as load, with basically no SAVM computation.
+Gary Rong: So the worst case will be a block with all the, as load, with basically no EVM computation.
 
 481
 00:59:49.920 --> 00:59:55.319
@@ -1926,7 +1926,7 @@ Gary Rong: So in this case, if we dedicate all the CPU cores to the S load, it s
 
 482
 00:59:56.470 --> 01:00:05.190
-Gary Rong: Because there is no, other SAVM, computation, and, SAVM computation is, like,
+Gary Rong: Because there is no, other EVM, computation, and, EVM computation is, like,
 
 483
 01:00:05.390 --> 01:00:08.260
@@ -2018,7 +2018,7 @@ felipe: Something Mario, from Steel brought up is…
 
 505
 01:03:11.930 --> 01:03:25.010
-felipe: It would… it would be good for a future like this if we had, tracing aligned, too, at some point. I mean, this is somewhat in the future, but how we do SAVM tracing, but we can trace what the bow is doing for each client.
+felipe: It would… it would be good for a future like this if we had, tracing aligned, too, at some point. I mean, this is somewhat in the future, but how we do EVM tracing, but we can trace what the bow is doing for each client.
 
 506
 01:03:25.400 --> 01:03:28.439

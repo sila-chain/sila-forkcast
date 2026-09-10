@@ -934,7 +934,7 @@ Marius van der Wijden: We allow to limit execution to $16 million, and unlocking
 
 234
 00:32:03.450 --> 00:32:11.710
-Marius van der Wijden: And the changes are pretty limited to the SAVM. I've implemented this yesterday and today in roughly 4 hours combined.
+Marius van der Wijden: And the changes are pretty limited to the EVM. I've implemented this yesterday and today in roughly 4 hours combined.
 
 235
 00:32:12.150 --> 00:32:21.470
@@ -1290,7 +1290,7 @@ Maria Silva: What we have right now is, like, the minimum
 
 323
 00:44:48.010 --> 00:44:59.099
-Maria Silva: change in the SAVM that would allow us to meet their state growth independently from the other resources, which I think it's something we'll want to do at some point in the future, but
+Maria Silva: change in the EVM that would allow us to meet their state growth independently from the other resources, which I think it's something we'll want to do at some point in the future, but
 
 324
 00:44:59.219 --> 00:45:08.730
@@ -1954,7 +1954,7 @@ Felix (Geth): So I'm not inherently against it. It's also one of the extension p
 
 489
 01:06:57.150 --> 01:07:02.469
-Felix (Geth): kind of the most isolated in some ways, because it's just a function exposed to the SAVM.
+Felix (Geth): kind of the most isolated in some ways, because it's just a function exposed to the EVM.
 
 490
 01:07:04.110 --> 01:07:23.139
@@ -2054,7 +2054,7 @@ Ansgar Dietrichs: I think that the default decision here is DFI for Glamsterdam.
 
 514
 01:11:24.399 --> 01:11:36.569
-Ansgar Dietrichs: And maybe we can, like, in the run-up to the H-star decisions, consider having some ACD break out specifically about post-quantum signatures and SAVM changes.
+Ansgar Dietrichs: And maybe we can, like, in the run-up to the H-star decisions, consider having some ACD break out specifically about post-quantum signatures and EVM changes.
 
 515
 01:11:36.989 --> 01:11:40.069

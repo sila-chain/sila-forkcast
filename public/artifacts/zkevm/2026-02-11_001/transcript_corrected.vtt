@@ -406,7 +406,7 @@ Kevaundray Wedderburn: The prover then creates proofs, based on the guest progra
 
 102
 00:14:35.420 --> 00:14:41.460
-Kevaundray Wedderburn: he submits the ZK SAVM proofs to the builder, and then the builder then forwards it to the attesters.
+Kevaundray Wedderburn: he submits the ZK EVM proofs to the builder, and then the builder then forwards it to the attesters.
 
 103
 00:14:42.260 --> 00:14:53.460
@@ -982,7 +982,7 @@ Marcin Bugaj: Becoming consensus and liveness issues.
 
 246
 00:32:45.570 --> 00:33:03.390
-Marcin Bugaj: The second standard addresses the issue of calling precompiles. Sila's SAVM has precompiles which are expensive to prove using standard RISC-V instructions, so ZKVMs implement them as optimized ZKVM-specific circuits.
+Marcin Bugaj: The second standard addresses the issue of calling precompiles. Sila's EVM has precompiles which are expensive to prove using standard RISC-V instructions, so ZKVMs implement them as optimized ZKVM-specific circuits.
 
 247
 00:33:03.930 --> 00:33:09.019
@@ -2086,11 +2086,11 @@ Alex Hicks: Alright, it should be fine now. Okay, so, anyway, there's this big f
 
 522
 01:12:41.060 --> 01:12:52.650
-Alex Hicks: There was two tracks. There's the RISC-VKVM track, where we're looking at, you know, the circuit, and particularly the RISC-V circuits and precompiles, and as part of that, the cell RISC-V specification. There's the SAVM track, where we're looking at.
+Alex Hicks: There was two tracks. There's the RISC-VKVM track, where we're looking at, you know, the circuit, and particularly the RISC-V circuits and precompiles, and as part of that, the cell RISC-V specification. There's the EVM track, where we're looking at.
 
 523
 01:12:52.700 --> 01:12:58.190
-Alex Hicks: the guest program, SAVM STF running on RISC-V, and trying to assess that that is…
+Alex Hicks: the guest program, EVM STF running on RISC-V, and trying to assess that that is…
 
 524
 01:12:58.190 --> 01:13:15.629
@@ -2150,7 +2150,7 @@ Alex Hicks: being developed for all of this, I won't go into detail here.
 
 538
 01:16:11.780 --> 01:16:21.089
-Alex Hicks: For the SAVM track in 2025, we… we… there was a tooling developed with, runtime verification. We were able to verify
+Alex Hicks: For the EVM track in 2025, we… we… there was a tooling developed with, runtime verification. We were able to verify
 
 539
 01:16:21.090 --> 01:16:45.890
@@ -2194,7 +2194,7 @@ Alex Hicks: Okay, let me know if this is better.
 
 549
 01:17:57.760 --> 01:18:05.720
-Alex Hicks: So yeah, the SAVM track at the moment is a bit in flux, because we also have many new guest programs, and obviously the standardization at the risk-back target.
+Alex Hicks: So yeah, the EVM track at the moment is a bit in flux, because we also have many new guest programs, and obviously the standardization at the risk-back target.
 
 550
 01:18:06.040 --> 01:18:17.160

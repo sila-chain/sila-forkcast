@@ -31,9 +31,25 @@
           "telegram": "big_tech_sux"
         }
       ]
+    },
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/243",
+          "date": "2026-08-13"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Jochem Brouwer",
+          "discord": "jochembrouwer"
+        }
+      ]
     }
   ],
-  "laymanDescription": "Linearizes SAVM memory with 4KB pages: 100-gas allocation, 6-gas thrash, 64MB cap. Contracts that hit quadratic expansion limits finish with the same logic but steadier gas usage, allowing for more efficient memory management and predicatble gas costs.",
+  "laymanDescription": "Linearizes EVM memory with 4KB pages: 100-gas allocation, 6-gas thrash, 64MB cap. Contracts that hit quadratic expansion limits finish with the same logic but steadier gas usage, allowing for more efficient memory management and predicatble gas costs.",
   "northStarAlignment": {
     "scaleL1": {
       "description": "The more efficient memory management in contracts will lower the gas limit and allow for more operations onchain"
@@ -56,7 +72,7 @@
       "description": "Clients, tracers, profilers need LRU(512) page tracking and new gas accounting; optional mmap-style backing."
     },
     "layer2s": {
-      "description": "SAVM-equivalent chains must adopt new costing/limits; reassess proving and sequencer cost models for compatibility."
+      "description": "EVM-equivalent chains must adopt new costing/limits; reassess proving and sequencer cost models for compatibility."
     },
     "stakersNodes": {
       "description": "More predictable resource bounds via transaction-global memory limit, RPC providers can revise eth_call policies and DoS assumptions."

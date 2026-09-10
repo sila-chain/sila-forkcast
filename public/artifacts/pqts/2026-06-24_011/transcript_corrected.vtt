@@ -270,11 +270,11 @@ ricardoperello: When it's convinced, though, that it's optimized, then it,
 
 68
 00:21:56.420 --> 00:22:00.590
-ricardoperello: compiles that into SAVM bytecode, and that's what essentially gets put on-chain.
+ricardoperello: compiles that into EVM bytecode, and that's what essentially gets put on-chain.
 
 69
 00:22:01.190 --> 00:22:09.069
-ricardoperello: Now, our proof, runs on the optimized UL, not on the SAVM bytecode.
+ricardoperello: Now, our proof, runs on the optimized UL, not on the EVM bytecode.
 
 70
 00:22:09.490 --> 00:22:24.370
@@ -318,7 +318,7 @@ ricardoperello: The tool… the most important tool here is EVMYulLean, which is
 
 80
 00:23:14.690 --> 00:23:19.869
-ricardoperello: lean, and it gives us semantics to reason over what the SAVM state is going to be.
+ricardoperello: lean, and it gives us semantics to reason over what the EVM state is going to be.
 
 81
 00:23:20.090 --> 00:23:22.850
@@ -326,7 +326,7 @@ ricardoperello: After each iteration.
 
 82
 00:23:23.510 --> 00:23:32.499
-ricardoperello: And what we're trying to do is compare this, lean… Implementation of the SAVM with…
+ricardoperello: And what we're trying to do is compare this, lean… Implementation of the EVM with…
 
 83
 00:23:32.810 --> 00:23:37.429
@@ -386,7 +386,7 @@ ricardoperello: And finally, Look at the… bridge between, like, what Solidity 
 
 97
 00:25:10.770 --> 00:25:12.709
-ricardoperello: ran inside the SAVM Unit.
+ricardoperello: ran inside the EVM Unit.
 
 98
 00:25:14.230 --> 00:25:20.860
@@ -410,7 +410,7 @@ ricardoperello: So, to summarize, What we are checking in Lean is the…
 
 103
 00:25:43.970 --> 00:25:51.660
-ricardoperello: SAVM, behavior for this, assembly, reconstruction of the signature.
+ricardoperello: EVM, behavior for this, assembly, reconstruction of the signature.
 
 104
 00:25:52.710 --> 00:26:03.729
@@ -974,7 +974,7 @@ ricardoperello: And… To me, the simplest option was either,
 
 244
 00:42:36.670 --> 00:42:41.899
-ricardoperello: try to directly prove that SAVM bytecode inside
+ricardoperello: try to directly prove that EVM bytecode inside
 
 245
 00:42:42.420 --> 00:42:46.850
@@ -986,7 +986,7 @@ ricardoperello: Matches the reference.
 
 247
 00:42:50.070 --> 00:42:56.940
-ricardoperello: Or we can try to say that SAVM bytecode inside EVMYulLean equals
+ricardoperello: Or we can try to say that EVM bytecode inside EVMYulLean equals
 
 248
 00:42:57.360 --> 00:43:02.960
@@ -1086,7 +1086,7 @@ Yoichi: Yeah, for this, you know, one thing I can point out is, like, it's kind 
 
 272
 00:45:54.600 --> 00:45:59.439
-Yoichi: than to read the URL code, or than to read the SAVM byte code.
+Yoichi: than to read the URL code, or than to read the EVM byte code.
 
 273
 00:45:59.580 --> 00:46:05.199
@@ -1214,7 +1214,7 @@ ricardoperello: assumptions about this, like, if I… if I break force, that mea
 
 304
 00:50:47.460 --> 00:50:52.979
-ricardoperello: I broke a check, and also trying to get the SAVM bytecode
+ricardoperello: I broke a check, and also trying to get the EVM bytecode
 
 305
 00:50:53.710 --> 00:50:56.680

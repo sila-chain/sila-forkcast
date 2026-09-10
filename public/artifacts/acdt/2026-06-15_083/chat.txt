@@ -19,7 +19,7 @@ https://github.com/sila-chain/SIPs/pull/11760
 https://github.com/sila-chain/consensus-specs/pull/5359
 https://github.com/sila-chain/sys-asm/pull/43
 https://github.com/ChainSafe/lodestar/pull/9507
-https://sips.sila.org/SIPS/sip-8254
+https://sips.sila.org/EIPS/sip-8254
 @jtraglia @wemeetagain @ensi321 @markolazic01 @potuz @nerolation
 00:09:55	Nico Flaig:	https://github.com/jtraglia/kurtosis-devnets/tree/master/gloas-deposits
 00:10:09	Barnabas:	Can client teams pls estimate implementation of this change of logic? I assume most of the heavy lifting will need to be done on the CL side. 

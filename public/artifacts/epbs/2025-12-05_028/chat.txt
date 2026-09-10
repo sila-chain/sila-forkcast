@@ -28,7 +28,7 @@ i think the jargon is that it is an ergodic process
 00:12:19	terence:	Replying to "This feels super com..."
 
 why?
-00:12:31	Potuz:	https://Sila Research/t/dynamic-penalties-for-epbs/23472
+00:12:31	Potuz:	https://ethresear.ch/t/dynamic-penalties-for-epbs/23472
 00:12:32	alex:	is it correlation per builder or across all?
 00:12:42	Potuz:	Replying to "is it per builder or..."
 

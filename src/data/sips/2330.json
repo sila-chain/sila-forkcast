@@ -2,7 +2,7 @@
   "id": 2330,
   "title": "SIP-2330: EXTSLOAD opcode",
   "status": "Stagnant",
-  "description": "A new SAVM opcode to read external contract storage data.",
+  "description": "A new EVM opcode to read external contract storage data.",
   "author": "Dominic Letz (@dominicletz), Santiago Palladino (@spalladino)",
   "type": "Standards Track",
   "category": "Core",

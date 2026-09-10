@@ -45,7 +45,9 @@ Shoudn’t we wait for FN-DSA instead of integrating Falcon? It will be Keccak/S
 00:26:59	Simon - ZKNOX:	We also instantiated a ZK version of Dilithium for BabyBear, KoalaBear.
 00:30:38	Mike:	Replying to "You are aiming for L..."
 
-https://blog.cloudflare.com/pq-2025/#ml-kem-768-and-x25519 Discusses how they choose to use a higher level security (level 3) but aim is just to get 128 bits classical
+https://blog.cloudflare.com/pq-2025/#ml-kem-768-and-x25519 
+
+Discusses how they choose to use a higher level security (level 3) but aim is just to get 128 bits classical
 00:32:57	Renaud-ZKNOX:	What will happen to the current 4337 ecosystem (bundlers, etc), still working the same ?
 00:33:02	Parthasarathy Ramanujam:	Two questions: First, 8141, is still compatible with 7701, isn’t it? And second, Can you pls elaborate on the migration paths that is being considered? We have EOA, delegated EOA, 4337 smart accounts and several non 4337 smart accounts.
 00:34:23	David Nugent:	Is there supposed to be slides? We can’t see them

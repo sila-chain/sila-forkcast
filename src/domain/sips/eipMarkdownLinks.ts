@@ -1,5 +1,5 @@
 const eipReferencePattern =
-  /(?:\.\/sip-|(?:\.\.\/)?SIPS\/sip-|https?:\/\/sips\.sila\.org\/SIPS\/sip-)(\d+)(?:\.md)?/;
+  /(?:\.\/sip-|(?:\.\.\/)?EIPS\/sip-|https?:\/\/sips\.sila\.org\/EIPS\/sip-)(\d+)(?:\.md)?/;
 
 export type EipMarkdownLinkResolution =
   | { kind: 'internal'; eipId: number; href: string }
@@ -22,6 +22,6 @@ export function resolveEipMarkdownLink(
   return {
     kind: 'external',
     eipId,
-    href: `https://sips.sila.org/SIPS/sip-${eipId}`,
+    href: `https://sips.sila.org/EIPS/sip-${eipId}`,
   };
 }

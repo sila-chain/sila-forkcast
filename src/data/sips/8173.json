@@ -1,12 +1,36 @@
 {
   "id": 8173,
-  "title": "SIP-8173: Foundations of SAVM Control Flow",
+  "title": "SIP-8173: Foundations of EVM Control Flow",
   "status": "Draft",
-  "description": "Understanding SAVM control flow and its relation to Sila's scaling roadmap",
+  "description": "Understanding EVM control flow and its relation to Sila's scaling roadmap",
   "author": "Greg Colvin (@gcolvin)",
   "type": "Informational",
   "createdDate": "2026-02-16",
-  "discussionLink": "https://sila-magicians.org/t/sip-8173-foundations-of-savm-control-flow/27855",
-  "forkRelationships": [],
+  "discussionLink": "https://sila-magicians.org/t/sip-8173-foundations-of-evm-control-flow/27855",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/238",
+          "date": "2026-06-04"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Greg Colvin"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "The EVM lets a program jump to an address it computes while running, so tools cannot tell where the code will go without executing it. This document changes nothing in the protocol. It traces how control flow works in computing and why making it predictable matters for Sila's scaling plans.",
+  "benefits": [
+    "Gives the several competing static control flow proposals one shared reference",
+    "Explains why dynamic jumps make the EVM harder to compile, prove, and audit",
+    "Informs RISC-V and ZK verification discussions without prescribing a design"
+  ],
   "tradeoffs": null
 }

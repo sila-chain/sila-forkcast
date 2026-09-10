@@ -1,37 +1,37 @@
 ---
 name: fix-call-typos
-description: Fix transcript/tldr typos for a published SilaForkcast call AND update the upstream ACDbot vocab so the same typo doesn't recur. Use when a call page on sila-forkcast.org has wrong client/protocol/term names that the pipeline missed.
+description: Fix transcript/tldr typos for a published Forkcast call AND update the upstream ACDbot vocab so the same typo doesn't recur. Use when a call page on forkcast.org has wrong client/protocol/term names that the pipeline missed.
 ---
 
 ## Fix typos in a published call
 
-This skill walks the user through correcting typos in a call's artifacts on SilaForkcast (transcript, TLDR, key_decisions) and teaching the upstream ACDbot pipeline at `sila/pm` to catch those typos automatically next time.
+This skill walks the user through correcting typos in a call's artifacts on Forkcast (transcript, TLDR, key_decisions) and teaching the upstream ACDbot pipeline at `sila/pm` to catch those typos automatically next time.
 
 The "correct" approach would be to fix upstream and re-run the pipeline. In practice we patch the artifacts in both repos *and* update the vocab — that way published assets are right today, and future pipeline runs improve.
 
-See `docs/acdbot-sila-forkcast-asset-pipeline.md` for the full asset pipeline overview.
+See `docs/acdbot-forkcast-asset-pipeline.md` for the full asset pipeline overview.
 
 ### Step 0: Locate both repos
 
-This skill is invoked from inside a SilaForkcast checkout (or a worktree of one). It also needs the PM repo (`sila/pm`).
+This skill is invoked from inside a Forkcast checkout (or a worktree of one). It also needs the PM repo (`sila/pm`).
 
-1. **SilaForkcast root** — resolve via `git worktree list --porcelain | head -2 | awk '/^worktree/ {print $2; exit}'` from the current directory. This returns the main checkout path even when invoked from a worktree.
-2. **PM root** — first try the sibling next to sila-forkcast: `<dirname-of-sila-forkcast-root>/pm`. Verify it's a clone of `sila/pm`:
+1. **Forkcast root** — resolve via `git worktree list --porcelain | head -2 | awk '/^worktree/ {print $2; exit}'` from the current directory. This returns the main checkout path even when invoked from a worktree.
+2. **PM root** — first try the sibling next to forkcast: `<dirname-of-forkcast-root>/pm`. Verify it's a clone of `sila/pm`:
    ```sh
    git -C <candidate> remote get-url origin
    ```
    Expect a URL ending in `sila/pm` (HTTPS or SSH). If the sibling check fails, ask the user via `AskUserQuestion` for the absolute path to their PM clone, then validate the same way.
-3. Refer to these throughout the rest of the skill as `<sila-forkcast>` and `<pm>`. Don't hardcode them in commands; resolve once at the start and reuse.
+3. Refer to these throughout the rest of the skill as `<forkcast>` and `<pm>`. Don't hardcode them in commands; resolve once at the start and reuse.
 
-Then open a worktree off `origin/main` on the sila-forkcast side so the user's current branch isn't disturbed (`git -C <sila-forkcast> fetch origin main && git -C <sila-forkcast> worktree add <tmp-path> origin/main`). Work in PM directly — pull `master` first (`git -C <pm> checkout master && git -C <pm> pull --ff-only`).
+Then open a worktree off `origin/main` on the forkcast side so the user's current branch isn't disturbed (`git -C <forkcast> fetch origin main && git -C <forkcast> worktree add <tmp-path> origin/main`). Work in PM directly — pull `master` first (`git -C <pm> checkout master && git -C <pm> pull --ff-only`).
 
 ### Step 1: Identify the call
 
 Ask the user for:
 
 1. **Call slug + number** (e.g., `pqi/038`, `acdc/177`). This determines:
-   - SilaForkcast path: `<sila-forkcast>/public/artifacts/{slug}/{date}_{number_padded}/`
-   - PM path: `<pm>/.github/ACDbot/artifacts/{pm_series}/{date}_{number_padded}/` — the PM series name often differs from the sila-forkcast slug. Check `SERIES_TO_TYPE` in `<sila-forkcast>/scripts/sync-call-assets.mjs` for the mapping (e.g., `pqi` ↔ `pqinterop`, `price` ↔ `glamsterdamrepricings`). Core series (`acdc`, `acde`, `acdt`) pass through unchanged.
+   - Forkcast path: `<forkcast>/public/artifacts/{slug}/{date}_{number_padded}/`
+   - PM path: `<pm>/.github/ACDbot/artifacts/{pm_series}/{date}_{number_padded}/` — the PM series name often differs from the forkcast slug. Check `SERIES_TO_TYPE` in `<forkcast>/scripts/sync-call-assets.mjs` for the mapping (e.g., `pqi` ↔ `pqinterop`, `price` ↔ `glamsterdamrepricings`). Core series (`acdc`, `acde`, `acdt`) pass through unchanged.
 
 Resolve the absolute paths and confirm both directories exist before continuing.
 
@@ -76,9 +76,9 @@ File: `<pm>/.github/ACDbot/scripts/asset_pipeline/ethereum_vocab.yaml`.
    - Order longer patterns before shorter ones with the same prefix (e.g., `Zeeam` before `Zem`) so substring matches don't misfire.
    - Existing patterns are mixed-case; match the casing of the source token you want to catch.
 
-### Step 6: Fix the artifacts in SilaForkcast
+### Step 6: Fix the artifacts in Forkcast
 
-In the sila-forkcast worktree, edit `<sila-forkcast>/public/artifacts/{slug}/{date}_{number}/`:
+In the forkcast worktree, edit `<forkcast>/public/artifacts/{slug}/{date}_{number}/`:
 
 1. **`transcript_corrected.vtt`** — apply every typo correction. For multi-token corruptions (e.g., `ReamZeem eats Lambda` for what was meant as "Ream, Zeam, Ethlambda"), do the long unique replacement *first*, then run the single-word substitutions. Use `Edit` with `replace_all: true` for safe global swaps; use scoped `Edit` for one-line fixes (like the `Jim → Gean` case).
 2. **`tldr.json`** — apply the same replacements where applicable.
@@ -89,13 +89,13 @@ After editing, grep the file again for any remaining instance of every typo stri
 
 ### Step 7: Mirror the fixes into PM
 
-The PM repo holds the upstream copy of these same artifacts at `<pm>/.github/ACDbot/artifacts/{pm_series}/{date}_{number}/`. Before your edits these files were byte-identical to the sila-forkcast copies (they're produced by the pipeline and the sync script just downloads them). The simplest correct move is to `cp` the four edited files (vtt, tldr, changelog, key_decisions if it exists) from `<sila-forkcast>` to `<pm>`.
+The PM repo holds the upstream copy of these same artifacts at `<pm>/.github/ACDbot/artifacts/{pm_series}/{date}_{number}/`. Before your edits these files were byte-identical to the forkcast copies (they're produced by the pipeline and the sync script just downloads them). The simplest correct move is to `cp` the four edited files (vtt, tldr, changelog, key_decisions if it exists) from `<forkcast>` to `<pm>`.
 
 Verify with `diff` afterwards — both copies should be identical.
 
 ### Step 8: Commit and open PRs
 
-Two PRs, two commit-message styles (mirror prior commits — see PM `f7f549b3`, sila-forkcast `37db68a3` for examples):
+Two PRs, two commit-message styles (mirror prior commits — see PM `f7f549b3`, forkcast `37db68a3` for examples):
 
 **PM PR** — branch like `acdbot-fix-{slug}-{number}`. The commit covers:
 - The vocab additions (new terms + error patterns)
@@ -103,7 +103,7 @@ Two PRs, two commit-message styles (mirror prior commits — see PM `f7f549b3`, 
 
   Title: `acdbot: prevent {topic} transcript corruption` or `acdbot: fix {SLUG} {number} {topic} corruption`. Keep the title short; details go in the body.
 
-**SilaForkcast PR** — branch like `fix-{slug}-{number}-typos`. Single commit covering the artifact fixes only (no pipeline changes here).
+**Forkcast PR** — branch like `fix-{slug}-{number}-typos`. Single commit covering the artifact fixes only (no pipeline changes here).
 
   Title: `fix {SLUG} {number} {topic} typos` or `fix: normalize {topic} in {SLUG} {number} summary`.
 
@@ -111,8 +111,8 @@ For both, do NOT use `#N` for call numbers in PR title/body — GitHub treats it
 
 ### Step 9: Cleanup
 
-Once both PRs are open, remove the sila-forkcast worktree (`git worktree remove --force`). Tell the user to merge both PRs (PM first is fine, order doesn't matter — the sila-forkcast fix is a static patch, and the next pipeline run for *future* calls picks up the new vocab).
+Once both PRs are open, remove the forkcast worktree (`git worktree remove --force`). Tell the user to merge both PRs (PM first is fine, order doesn't matter — the forkcast fix is a static patch, and the next pipeline run for *future* calls picks up the new vocab).
 
 ### Step 10: Done
 
-Confirm to the user that the call page on sila-forkcast.org will show the corrections after the sila-forkcast PR's deploy completes, and that future calls will be auto-corrected by the pipeline using the new vocab entries.
+Confirm to the user that the call page on forkcast.org will show the corrections after the forkcast PR's deploy completes, and that future calls will be auto-corrected by the pipeline using the new vocab entries.

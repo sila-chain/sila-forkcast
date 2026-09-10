@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate, useSearchParams } from '../navigation';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import ChatLog from './ChatLog';
 import TldrSummary from './TldrSummary';
+import CallNotes, { type NotesData } from './CallNotes';
 import CallSearch from './CallSearch';
 import { protocolCalls, callTypeNames, isOneOffCall, type CallType } from '../../data/calls';
 import { breakouts, breakoutLabels, type Breakout, type BreakoutKind } from '../../data/breakouts';
@@ -35,17 +36,32 @@ interface CallData {
   transcriptContent?: string;
   videoUrl?: string;
   tldrData?: TldrData;
+  notesData?: NotesData;
   keyDecisions?: KeyDecision[];
+}
+
+interface SyncConfig {
+  transcriptStartTime: string | null;
+  videoStartTime: string | null;
+  description?: string;
+}
+
+interface BreakoutConfig {
+  videoUrl: string;
+  sync?: SyncConfig;
 }
 
 interface CallConfig {
   videoUrl?: string;
   issue?: number;
-  sync?: {
-    transcriptStartTime: string | null;
-    videoStartTime: string | null;
-    description?: string;
-  };
+  sync?: SyncConfig;
+  breakouts?: Record<string, BreakoutConfig>;
+}
+
+interface ActiveBreakout {
+  kind: string;
+  /** Legacy registry breakouts (breakouts.ts) have chat only — no transcript, TLDR, or sync. */
+  legacy: boolean;
 }
 
 interface UpcomingCallMeta {
@@ -64,7 +80,7 @@ const DESKTOP_WORKSPACE_HEIGHT_WITH_BAR = 'clamp(28rem, calc(100svh - 13.75rem),
 const DESKTOP_SIDEBAR_PANE_HEIGHT = `calc((${DESKTOP_WORKSPACE_HEIGHT} - 1rem) / 2)`;
 const DESKTOP_SIDEBAR_PANE_HEIGHT_WITH_BAR = `calc((${DESKTOP_WORKSPACE_HEIGHT_WITH_BAR} - 1rem) / 2)`;
 const TALL_SCREEN_QUERY = '(min-height: 1000px) and (min-width: 1200px) and (max-width: 1600px)';
-const SURFACE_DEEP_LINK_QUERY_KEYS = ['search', 'timestamp', 'type', 'text', 'chat'] as const;
+const SURFACE_DEEP_LINK_QUERY_KEYS = ['search', 'timestamp', 'type', 'text', 'chat', 'summary'] as const;
 const SUMMARY_CONTENT_ID = 'call-summary-content';
 
 const LAYOUT_DEFAULT = {
@@ -216,7 +232,13 @@ const upcomingLoadResult = (
   isUpcoming: true,
 });
 
-const loadBreakoutCallData = async (breakout: Breakout): Promise<LoadResult> => ({
+const getArtifactPath = (callPath: string): string | null => {
+  const [type, number] = callPath.split('/');
+  const matchingCall = protocolCalls.find(call => call.type === type && call.number === number);
+  return matchingCall ? `${type}/${matchingCall.date}_${number}` : null;
+};
+
+const loadLegacyBreakoutCallData = async (breakout: Breakout): Promise<LoadResult> => ({
   callData: {
     type: breakout.kind,
     date: '',
@@ -227,6 +249,44 @@ const loadBreakoutCallData = async (breakout: Breakout): Promise<LoadResult> => 
   callConfig: null,
   isUpcoming: false,
 });
+
+// Bundled breakouts (PM pipeline, ACDT 087+): assets live alongside the parent
+// call's with `_${kind}` suffixes, and video/sync come from the parent config.
+const loadBundledBreakoutCallData = async (
+  callPath: string,
+  kind: string,
+  breakoutConfig: BreakoutConfig,
+  issue?: number,
+): Promise<LoadResult | null> => {
+  const [type, number] = callPath.split('/');
+  const artifactPath = getArtifactPath(callPath);
+  if (!artifactPath) return null;
+
+  const chatContent = await readTextArtifact(`${artifactPath}/chat_${kind}.txt`, isChatArtifact);
+  const transcriptContent = await readTextArtifact(`${artifactPath}/transcript_${kind}.vtt`, isVttArtifact);
+  const tldrData = await readJsonArtifact<TldrData>(`${artifactPath}/tldr_${kind}.json`, `tldr_${kind}.json`);
+  const notesData = await readJsonArtifact<NotesData>(`${artifactPath}/notes_${kind}.json`, `notes_${kind}.json`);
+  const keyDecisionsData = await readJsonArtifact<{ key_decisions?: KeyDecision[] }>(
+    `${artifactPath}/key_decisions_${kind}.json`,
+    `key_decisions_${kind}.json`,
+  );
+
+  return {
+    callData: {
+      type: type?.toUpperCase() || '',
+      date: artifactPath.split('/')[1].split('_')[0],
+      number: number || '',
+      chatContent,
+      transcriptContent,
+      videoUrl: breakoutConfig.videoUrl,
+      tldrData,
+      notesData,
+      keyDecisions: keyDecisionsData?.key_decisions,
+    },
+    callConfig: { videoUrl: breakoutConfig.videoUrl, issue, sync: breakoutConfig.sync },
+    isUpcoming: false,
+  };
+};
 
 const loadMainCallData = async (
   callPath: string,
@@ -254,6 +314,7 @@ const loadMainCallData = async (
     await readTextArtifact(`${artifactPath}/transcript_corrected.vtt`, isVttArtifact) ??
     await readTextArtifact(`${artifactPath}/transcript.vtt`, isVttArtifact);
   const tldrData = await readJsonArtifact<TldrData>(`${artifactPath}/tldr.json`, 'tldr.json');
+  const notesData = await readJsonArtifact<NotesData>(`${artifactPath}/notes.json`, 'notes.json');
   const keyDecisionsData = await readJsonArtifact<{ key_decisions?: KeyDecision[] }>(
     `${artifactPath}/key_decisions.json`,
     'key_decisions.json',
@@ -272,6 +333,7 @@ const loadMainCallData = async (
       transcriptContent,
       videoUrl: config?.videoUrl ?? videoText?.trim() ?? 'https://www.youtube.com/watch?v=wF0gWBHZdu8',
       tldrData,
+      notesData,
       keyDecisions: keyDecisionsData?.key_decisions,
     },
     callConfig: config,
@@ -298,20 +360,29 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
   const [loading, setLoading] = useState(true);
   const [isUpcoming, setIsUpcoming] = useState(false);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const breakoutsForCall = useMemo(
+  const legacyBreakoutsForCall = useMemo(
     () => (normalizedPath ? breakouts.filter(b => b.parentPath === normalizedPath) : []),
     [normalizedPath],
   );
 
   // URL-driven so the tab selection is shareable. Unknown values fall through to main call.
-  const activeBreakout = useMemo(() => {
-    const param = searchParams.get('breakout');
-    return breakoutsForCall.find(b => b.kind === param) ?? null;
-  }, [searchParams, breakoutsForCall]);
+  const breakoutParam = searchParams.get('breakout');
 
-  const setActiveBreakoutKind = useCallback((kind: BreakoutKind | null) => {
+  // Set during load: bundled breakouts are discovered from the parent call's config.json.
+  const [activeBreakout, setActiveBreakout] = useState<ActiveBreakout | null>(null);
+  const [bundledBreakoutKinds, setBundledBreakoutKinds] = useState<string[]>([]);
+
+  const breakoutKindsForCall = useMemo(() => {
+    const bundledSet = new Set(bundledBreakoutKinds);
+    const legacyKinds = legacyBreakoutsForCall
+      .map(b => b.kind as string)
+      .filter(kind => !bundledSet.has(kind));
+    return [...legacyKinds, ...bundledBreakoutKinds];
+  }, [legacyBreakoutsForCall, bundledBreakoutKinds]);
+
+  const setActiveBreakoutKind = useCallback((kind: string | null) => {
     const next = new URLSearchParams(searchParams);
     for (const key of SURFACE_DEEP_LINK_QUERY_KEYS) {
       next.delete(key);
@@ -460,6 +531,25 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
     }
   }, [location.search]);
 
+  // A ?summary=notes deep link should land on the notes, but the summary card is
+  // collapsed by default. Fires once, so clicking the tab later doesn't re-scroll.
+  const hasHandledNotesDeepLink = useRef(false);
+  useEffect(() => {
+    if (hasHandledNotesDeepLink.current) return;
+    if (searchParams.get('summary') !== 'notes' || !callData?.notesData) return;
+
+    hasHandledNotesDeepLink.current = true;
+    setSummaryExpanded(true);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        summaryCardRef.current?.scrollIntoView({
+          behavior: getPageScrollBehavior(),
+          block: 'start',
+        });
+      });
+    });
+  }, [searchParams, callData]);
+
   // Keyboard shortcut to open search (Cmd/Ctrl + K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -494,18 +584,49 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
     setCallData(null);
     setCallConfig(null);
     setIsUpcoming(false);
+    setActiveBreakout(null);
+    setBundledBreakoutKinds([]);
     setPlayer(null);
     setCurrentVideoTime(0);
     setIsPlaying(false);
     lastHighlightedTimestampRef.current = null;
 
-    const loadCallData = activeBreakout
-      ? loadBreakoutCallData(activeBreakout)
-      : loadMainCallData(callPath, upcoming ?? null);
+    const loadCallData = async (): Promise<{ result: LoadResult | null; active: ActiveBreakout | null; bundledKinds: string[] }> => {
+      // The parent config lists bundled breakouts, needed for tabs on every view.
+      const artifactPath = getArtifactPath(normalizedPath);
+      const parentConfig = artifactPath
+        ? await readJsonArtifact<CallConfig>(`${artifactPath}/config.json`, 'config.json') ?? null
+        : null;
+      const bundledConfigs = parentConfig?.breakouts ?? {};
+      const bundledKinds = Object.keys(bundledConfigs);
 
-    loadCallData
-      .then(result => {
+      if (breakoutParam && bundledConfigs[breakoutParam]) {
+        const result = await loadBundledBreakoutCallData(
+          normalizedPath,
+          breakoutParam,
+          bundledConfigs[breakoutParam],
+          parentConfig?.issue,
+        );
+        return { result, active: { kind: breakoutParam, legacy: false }, bundledKinds };
+      }
+
+      const legacyBreakout = breakoutParam
+        ? legacyBreakoutsForCall.find(b => b.kind === breakoutParam) ?? null
+        : null;
+      if (legacyBreakout) {
+        const result = await loadLegacyBreakoutCallData(legacyBreakout);
+        return { result, active: { kind: legacyBreakout.kind, legacy: true }, bundledKinds };
+      }
+
+      const result = await loadMainCallData(callPath, upcoming ?? null);
+      return { result, active: null, bundledKinds };
+    };
+
+    loadCallData()
+      .then(({ result, active, bundledKinds }) => {
         if (cancelled) return;
+        setActiveBreakout(active);
+        setBundledBreakoutKinds(bundledKinds);
         if (result) {
           setCallData(result.callData);
           setCallConfig(result.callConfig);
@@ -521,7 +642,7 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
     return () => {
       cancelled = true;
     };
-  }, [callPath, activeBreakout, upcoming]);
+  }, [callPath, normalizedPath, breakoutParam, legacyBreakoutsForCall, upcoming]);
 
   // Clean up interval on unmount
   useEffect(() => {
@@ -627,9 +748,9 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
   }, []);
 
   // Handle navigation to selected search result when player is ready.
-  // Breakout pages intentionally have no callConfig, so chat anchors do not wait for the player.
+  // Legacy breakout pages intentionally have no callConfig, so chat anchors do not wait for the player.
   useEffect(() => {
-    const isBreakoutChatResult = Boolean(activeBreakout && selectedSearchResult?.type === 'chat');
+    const isBreakoutChatResult = Boolean(activeBreakout?.legacy && selectedSearchResult?.type === 'chat');
     if (!selectedSearchResult || (!player && !isBreakoutChatResult) || !callData || hasNavigatedToSearchResult.current) {
       return;
     }
@@ -792,7 +913,7 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
   };
 
   const handleTranscriptClick = (timestamp: string, searchResult?: { text: string; type: string }) => {
-    if (activeBreakout && searchResult?.type === 'chat') {
+    if (activeBreakout?.legacy && searchResult?.type === 'chat') {
       setSelectedSearchResult({
         timestamp,
         text: searchResult.text,
@@ -936,9 +1057,12 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
     return callTypeNames[type] || callData.type;
   };
 
+  const getBreakoutLabel = (kind: string): string =>
+    breakoutLabels[kind as BreakoutKind] ?? kind.toUpperCase();
+
   // Breakout views inherit the parent ACDT's identity so headers don't lose context.
   const headerLabel = activeBreakout
-    ? `${parentType.toUpperCase()} #${parentNumber} — ${breakoutLabels[activeBreakout.kind]} Breakout`
+    ? `${parentType.toUpperCase()} #${parentNumber} — ${getBreakoutLabel(activeBreakout.kind)} Breakout`
     : `${getCallTypeLabel()}${callNumberSuffix}`;
 
   // Get associated SIP info for breakout calls
@@ -1005,21 +1129,39 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
     return entries;
   };
 
+  const hasTldr = Boolean(callData.tldrData);
+  const hasNotes = Boolean(callData.notesData?.sections?.length);
+  const hasSummary = hasTldr || hasNotes;
+  const showSummaryTabs = hasTldr && hasNotes;
+  // ?type=agenda|action deep links scroll to anchors that only exist in the TL;DR view.
+  const forceTldr = hasTldr && (selectedSearchResult?.type === 'agenda' || selectedSearchResult?.type === 'action');
+  const wantsNotes = !hasTldr || (!forceTldr && searchParams.get('summary') === 'notes');
+  const summaryTab: 'tldr' | 'notes' = hasNotes && wantsNotes ? 'notes' : 'tldr';
+
+  const setSummaryTab = (tab: 'tldr' | 'notes') => {
+    const next = new URLSearchParams(searchParams);
+    if (tab === 'notes') next.set('summary', 'notes');
+    else next.delete('summary');
+    setSearchParams(next, { replace: true });
+  };
+
   const isExpandedVideo = isDesktopExpanded && Boolean(callData.videoUrl);
   const isWorkspaceView = !isExpandedVideo && isLargeScreen && Boolean(callData.videoUrl);
-  const showSummaryInColumn = isWorkspaceView && isTallScreen && Boolean(callData.tldrData);
-  const hasCollapsibleSummary = isWorkspaceView && !showSummaryInColumn && Boolean(callData.tldrData);
+  const showSummaryInColumn = isWorkspaceView && isTallScreen && hasSummary;
+  const hasCollapsibleSummary = isWorkspaceView && !showSummaryInColumn && hasSummary;
   const effectiveWorkspaceHeight = hasCollapsibleSummary ? DESKTOP_WORKSPACE_HEIGHT_WITH_BAR : DESKTOP_WORKSPACE_HEIGHT;
   const effectiveSidebarHeight = hasCollapsibleSummary ? DESKTOP_SIDEBAR_PANE_HEIGHT_WITH_BAR : DESKTOP_SIDEBAR_PANE_HEIGHT;
   const layout = isExpandedVideo ? LAYOUT_EXPANDED : LAYOUT_DEFAULT;
 
-  const renderSummaryHeader = () => callData.tldrData && (
+  const renderSummaryHeader = () => hasSummary && (
     <div className="flex items-center gap-2">
       <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
         Summary
       </h2>
       <span className="text-xs text-slate-500 dark:text-slate-400">
-        {Object.values(callData.tldrData.highlights).flat().length} highlights{callData.keyDecisions?.length ? ` • ${callData.keyDecisions.length} decisions` : ''} • {callData.tldrData.action_items?.length || 0} action items
+        {summaryTab === 'notes'
+          ? `${callData.notesData!.sections.length} sections`
+          : `${Object.values(callData.tldrData!.highlights).flat().length} highlights${callData.keyDecisions?.length ? ` • ${callData.keyDecisions.length} decisions` : ''} • ${callData.tldrData!.action_items?.length || 0} action items`}
       </span>
       <span className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-2 py-0.5 rounded-full font-normal border border-slate-200 dark:border-slate-600">
         Experimental
@@ -1027,17 +1169,54 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
     </div>
   );
 
-  const renderSummaryContent = () => callData.tldrData && (
-    <div className="p-6">
-      <TldrSummary
-        data={callData.tldrData}
-        keyDecisions={callData.keyDecisions}
-        onTimestampClick={handleTranscriptClick}
-        syncConfig={callConfig?.sync}
-        currentVideoTime={currentVideoTime}
-        selectedSearchResult={selectedSearchResult}
-      />
-    </div>
+  const renderSummaryTabs = () => {
+    if (!showSummaryTabs) return null;
+    const tabBase = 'shrink-0 px-6 py-2.5 text-sm font-medium transition-colors cursor-pointer';
+    const tabActive = 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400';
+    const tabInactive = 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300';
+    return (
+      <div className={`flex overflow-x-auto border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 ${showSummaryInColumn ? 'sticky top-0 z-10' : ''}`}>
+        <button
+          type="button"
+          onClick={() => setSummaryTab('tldr')}
+          className={`${tabBase} ${summaryTab === 'tldr' ? tabActive : tabInactive}`}
+        >
+          TL;DR
+        </button>
+        <button
+          type="button"
+          onClick={() => setSummaryTab('notes')}
+          className={`${tabBase} ${summaryTab === 'notes' ? tabActive : tabInactive}`}
+        >
+          Detailed Notes
+        </button>
+      </div>
+    );
+  };
+
+  const renderSummaryContent = () => hasSummary && (
+    <>
+      {renderSummaryTabs()}
+      <div className="p-6">
+        {summaryTab === 'notes' ? (
+          <CallNotes
+            data={callData.notesData!}
+            onTimestampClick={handleTranscriptClick}
+            syncConfig={callConfig?.sync}
+            currentVideoTime={currentVideoTime}
+          />
+        ) : (
+          <TldrSummary
+            data={callData.tldrData!}
+            keyDecisions={callData.keyDecisions}
+            onTimestampClick={handleTranscriptClick}
+            syncConfig={callConfig?.sync}
+            currentVideoTime={currentVideoTime}
+            selectedSearchResult={selectedSearchResult}
+          />
+        )}
+      </div>
+    </>
   );
 
   const handleSummaryToggle = () => {
@@ -1064,7 +1243,7 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
   };
 
   const renderBreakoutTabs = () => {
-    if (breakoutsForCall.length === 0) return null;
+    if (breakoutKindsForCall.length === 0) return null;
     const pillBase = 'px-3 py-1 rounded-full text-xs font-medium transition-colors';
     const pillActive = 'bg-blue-600 text-white hover:bg-blue-700';
     const pillInactive = 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600';
@@ -1081,16 +1260,16 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
         <span className="text-xs font-medium text-slate-500 dark:text-slate-400 mr-1">
           Breakouts:
         </span>
-        {breakoutsForCall.map(b => {
-          const isActive = activeBreakout?.kind === b.kind;
+        {breakoutKindsForCall.map(kind => {
+          const isActive = activeBreakout?.kind === kind;
           return (
             <button
-              key={b.kind}
+              key={kind}
               type="button"
-              onClick={() => setActiveBreakoutKind(b.kind)}
+              onClick={() => setActiveBreakoutKind(kind)}
               className={`${pillBase} ${isActive ? pillActive : pillInactive}`}
             >
-              {breakoutLabels[b.kind]}
+              {getBreakoutLabel(kind)}
             </button>
           );
         })}
@@ -1313,7 +1492,7 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
               );
             })}
         </div>
-      ) : activeBreakout ? (
+      ) : activeBreakout?.legacy ? (
         <TranscriptStatus
           status="unavailable"
           isWorkspaceView={isWorkspaceView}
@@ -1344,7 +1523,7 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
             syncConfig={callConfig?.sync}
             selectedSearchResult={selectedSearchResult}
             onTimestampClick={handleTranscriptClick}
-            allowTimestampNavigation={!activeBreakout}
+            allowTimestampNavigation={!activeBreakout?.legacy}
           />
         </div>
       ) : isUpcoming ? (
@@ -1404,7 +1583,7 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
             </div>
           )}
 
-          {showSummaryInColumn && callData.tldrData && (
+          {showSummaryInColumn && hasSummary && (
             <div
               className="lg:col-start-1 lg:row-start-2"
               style={{ height: effectiveSidebarHeight }}
@@ -1420,7 +1599,7 @@ const CallPage: React.FC<CallPageProps> = ({ callPath, upcoming }) => {
             </div>
           )}
 
-          {!showSummaryInColumn && callData.tldrData && (
+          {!showSummaryInColumn && hasSummary && (
             <div className={layout.summarySection}>
               <div
                 ref={summaryCardRef}

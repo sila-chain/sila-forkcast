@@ -574,7 +574,7 @@ lightclient: And, yeah, not to get them, like, too confused, we'll kind of see h
 
 144
 00:29:45.970 --> 00:29:54.240
-lightclient: call frames play into it later. But yeah, we think about frames as, like, individual instantiations of the SAVM.
+lightclient: call frames play into it later. But yeah, we think about frames as, like, individual instantiations of the EVM.
 
 145
 00:29:54.440 --> 00:29:57.920
@@ -1434,7 +1434,7 @@ lightclient: In the future, hopefully, we have block builders that understand so
 
 359
 00:59:12.720 --> 00:59:28.839
-lightclient: it's still a bit TBD, like, how do you expose this back to the SAVM to know that that frame was valid? And there are some ideas there, like, you can either do this, like, you know, still execute the frame to a degree, but somehow, like, have an opcode that pops validation results.
+lightclient: it's still a bit TBD, like, how do you expose this back to the EVM to know that that frame was valid? And there are some ideas there, like, you can either do this, like, you know, still execute the frame to a degree, but somehow, like, have an opcode that pops validation results.
 
 360
 00:59:28.860 --> 00:59:36.500

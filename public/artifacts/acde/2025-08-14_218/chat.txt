@@ -785,7 +785,7 @@ IMO the wait-for-big-SSZ-headliner is likely to run into the not-scaling/etc obj
 01:26:11	Potuz:	don't know where that ended up
 01:26:11	Cayman Nava:	Pureth meta-SIP dealing with provability of the chain in general (Includes ssz-ing all the things)
 
-https://sips.sila.org/SIPS/sip-7919
+https://sips.sila.org/EIPS/sip-7919
 01:26:11	Tim Beiko:	Replying to "We will never have t..."
 
 But maybe that just means we actually don’t value moving to SSZ above those things?

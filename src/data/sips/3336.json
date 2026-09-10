@@ -1,6 +1,6 @@
 {
   "id": 3336,
-  "title": "SIP-3336: Paged memory allocation for the SAVM",
+  "title": "SIP-3336: Paged memory allocation for the EVM",
   "status": "Stagnant",
   "description": "",
   "author": "Nick Johnson (@arachnid)",

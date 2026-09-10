@@ -8,7 +8,7 @@
 00:08:11	Parithosh Jayanthi:	https://github.com/sila-chain/execution-apis/pull/774
 00:08:11	FLCL:	sil/72 also plz optionally
 00:09:02	Potuz:	what is sil/72? that we need to do something?
-00:09:18	FLCL:	https://sips.sila.org/SIPS/sip-8070
+00:09:18	FLCL:	https://sips.sila.org/EIPS/sip-8070
 00:09:20	Potuz:	ahh alright, that's fine for us
 00:09:43	Kamil Salakhiev:	when blob devnet 0 is scheduled?
 00:09:51	Ansgar Dietrichs:	unfortunately can’t stay for most of the call, just wanted to drop in for the vibes :-)
@@ -308,10 +308,10 @@ Yes, and maybe better once we have decoupled consensus - there is more space in 
 01:12:47	Barnabas:	Replying to "ooooor we could just..."
 
 oh
-01:12:51	Parithosh Jayanthi:	https://github.com/frisitano/SIPs/blob/feat/eip8025/SIPS/sip-8025.md
+01:12:51	Parithosh Jayanthi:	https://github.com/frisitano/SIPs/blob/feat/eip8025/EIPS/sip-8025.md
 01:12:55	Francesco Risitano:	EIP8025
 Slides: https://frisitano.github.io/slides/presentations/eip8025-acdc-proposal-2026-05-14/index.html#1
-SIP: https://github.com/frisitano/SIPs/blob/feat/eip8025/SIPS/sip-8025.md
+SIP: https://github.com/frisitano/SIPs/blob/feat/eip8025/EIPS/sip-8025.md
 SIP PR: https://github.com/sila-chain/SIPs/pull/11604
 01:12:55	Barnabas:	Replying to "ooooor we could just..."
 

@@ -10,7 +10,7 @@
   "summary_details": [
     {
       "label": "DevNet Access and SIP Updates",
-      "summary": "The team discussed updates on block-level access with devnets, focusing on syncing fixes and stable performance with SAVM fuzzing and Uniswap trades. They decided to keep SIP 7843, an Engine API change, in DevNet 2 since Lodestar has already merged the PR, and Barnabas confirmed that Lighthouse updates would be ready soon. The team also agreed to deny the inclusion of SIP 8024, a switch encoding change, in DevNet 2 for now, and to revisit it on ACD if necessary. Finally, Tony presented SIP 7778 for alignment on specs, but the transcript ends before further discussion."
+      "summary": "The team discussed updates on block-level access with devnets, focusing on syncing fixes and stable performance with EVM fuzzing and Uniswap trades. They decided to keep SIP 7843, an Engine API change, in DevNet 2 since Lodestar has already merged the PR, and Barnabas confirmed that Lighthouse updates would be ready soon. The team also agreed to deny the inclusion of SIP 8024, a switch encoding change, in DevNet 2 for now, and to revisit it on ACD if necessary. Finally, Tony presented SIP 7778 for alignment on specs, but the transcript ends before further discussion."
     },
     {
       "label": "Transaction Receipts and SIP Updates",

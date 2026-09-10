@@ -122,7 +122,7 @@ should I have followed up on this? I stopped thinking about these topics when th
 01:00:00	Ben Adams:	wen CLs gaslimit
 01:00:02	Barnabas:	Replying to "I think we made that..."
 
-https://github.com/sila-chain/SIPs/blob/master/SIPS/sip-7892.md#L124
+https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7892.md#L124
 01:00:24	Barnabas:	Replying to "I think we made that..."
 
 yeah SIP changes need to be tracked, otherwise its gonna be lost in the echo

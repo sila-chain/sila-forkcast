@@ -354,7 +354,7 @@ lightclient: It's not a natural block base fee.
 
 89
 00:18:40.860 --> 00:18:58.839
-lightclient: But we could resolve that by changing 7918 to calculate its value based on the current header's excess blob gas instead of the parent. Because this is how blob base fee is computed for the SAVM.
+lightclient: But we could resolve that by changing 7918 to calculate its value based on the current header's excess blob gas instead of the parent. Because this is how blob base fee is computed for the EVM.
 
 90
 00:18:59.060 --> 00:19:09.370
@@ -2502,7 +2502,7 @@ Som - Erigon: I think that's the most confusing thing, to mingle it with.
 
 626
 01:31:23.290 --> 01:31:30.490
-Som - Erigon: The transactions, because… they're not going to go through SAVM in some cases, and are applied
+Som - Erigon: The transactions, because… they're not going to go through EVM in some cases, and are applied
 
 627
 01:31:30.930 --> 01:31:34.059

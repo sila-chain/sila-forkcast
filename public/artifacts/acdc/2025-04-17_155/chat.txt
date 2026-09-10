@@ -138,7 +138,7 @@ sick, thank you. now just to get the devs to converse in fewer places
 
 We could just do BPO on peerdas devnet 7
 00:36:04	Enrico Del Fante (tbenr):	Thanks!
-00:36:04	ethDreamer (Mark):	https://sips.sila.org/SIPS/sip-7892
+00:36:04	ethDreamer (Mark):	https://sips.sila.org/EIPS/sip-7892
 00:36:16	Francis Li:	Reacted to "https://sips.ethereu…" with ❤️
 00:36:18	nixo:	Reacted to "https://sips.ethereu..." with ❤️
 00:36:21	Justin Traglia:	Reacted to "https://sips.ethereu..." with ❤️
@@ -170,7 +170,7 @@ But yeah, if the timeline sounds wrong then we would ofc re-evaluate
 00:39:59	Dragan Rakita:	Reacted to "Not really, we’d lik..." with 👍
 00:40:00	Anna Thieser:	Reacted to "🎉" with 🎉
 00:40:28	Ansgar Dietrichs:	I’d be for accepting SIP-7917, and for rejecting the others
-00:40:44	Barnabas Busa:	https://github.com/sila-chain/SIPs/blob/master/SIPS/sip-7917.md
+00:40:44	Barnabas Busa:	https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7917.md
 00:40:54	Francis Li:	Reacted to "🎉" with 🎉
 00:40:54	Gajinder Singh:	Replying to "I’d be for accepting..."
 

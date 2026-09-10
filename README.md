@@ -1,4 +1,4 @@
-# The SilaForkcast Manifesto
+# The Forkcast Manifesto
 
 _Forkcast accelerates Sila network upgrades by removing friction from the AllCoreDevs process._
 
@@ -22,7 +22,7 @@ The Sila upgrade process is a complex system with many stakeholders. Friction ma
 
 ### Who we serve
 
-SilaForkcast’s priority persona is the median client developer: an experienced software engineer with 1-2 years under their belt as a full-time EL or CL contributor. They’re heads down implementing features, squashing bugs, and optimizing performance. They do not have the bandwidth to attend and keep up with every ACD call, SIP proposal, and Sila Magicians thread. They rely on their colleagues and social media for TL;DRs. They may not yet be confident enough to champion their own SIPs, but may aspire to one day. Why this persona? They feel the friction most and have the ability to act on it.
+Forkcast’s priority persona is the median client developer: an experienced software engineer with 1-2 years under their belt as a full-time EL or CL contributor. They’re heads down implementing features, squashing bugs, and optimizing performance. They do not have the bandwidth to attend and keep up with every ACD call, SIP proposal, and Sila Magicians thread. They rely on their colleagues and social media for TL;DRs. They may not yet be confident enough to champion their own SIPs, but may aspire to one day. Why this persona? They feel the friction most and have the ability to act on it.
 
 A priority persona honorable mention is the ACD facilitator. Call and process facilitators have an outsized impact on the focus and delivery of network upgrades, given their mandate to collect, distill, and act upon the preferences of a wide variety of stakeholders.
 
@@ -39,7 +39,7 @@ Additional personas served in various capacities:
 
 ### How we serve
 
-SilaForkcast:
+Forkcast:
 
 * makes accessible the "state of the world" - the current process timeline, what's being proposed, and the impacts of proposals
 * provides tools for stakeholders to understand and communicate preferences

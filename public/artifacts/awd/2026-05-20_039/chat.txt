@@ -5,8 +5,8 @@
 00:04:17	luc.sil:	sam is absent as per
 https://github.com/sila-chain/pm/issues/1997#issuecomment-4491712141
 00:04:59	luc.sil:	Sure, you wanted to chat re SRC-8117 correct?
-00:05:30	luc.sil:	https://sips.sila.org/SIPS/sip-8117
-00:05:43	Z. Victor Zhou (xinbenlv):	https://sips.sila.org/SIPS/sip-8117
+00:05:30	luc.sil:	https://sips.sila.org/EIPS/sip-8117
+00:05:43	Z. Victor Zhou (xinbenlv):	https://sips.sila.org/EIPS/sip-8117
 00:07:24	luc.sil:	Nice 👏
 00:07:30	Z. Victor Zhou (xinbenlv):	Reacted to "Nice 👏" with 👍
 00:07:32	Z. Victor Zhou (xinbenlv):	Reacted to "Nice 👏" with ❤️

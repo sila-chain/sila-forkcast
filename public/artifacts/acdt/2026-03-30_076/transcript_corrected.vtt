@@ -246,7 +246,7 @@ Stefan Starflinger: Yes, sir.
 
 62
 00:10:45.210 --> 00:11:01.679
-Stefan Starflinger: So, about definite 3, I think the main blocker, is 837 still, especially the 2D gas accounting. There are some issues when I run the SAVM fuzz, scenario, with the spammer.
+Stefan Starflinger: So, about definite 3, I think the main blocker, is 837 still, especially the 2D gas accounting. There are some issues when I run the EVM fuzz, scenario, with the spammer.
 
 63
 00:11:01.880 --> 00:11:10.880

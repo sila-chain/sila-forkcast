@@ -1,13 +1,13 @@
 {
   "id": 7979,
-  "title": "SIP-7979: Call and Return Opcodes for the SAVM",
+  "title": "SIP-7979: Call and Return Opcodes for the EVM",
   "status": "Draft",
-  "description": "Three new instructions to support calls and returns, with optional validated control flow.",
+  "description": "Three new instructions to support calls and returns.",
   "author": "Greg Colvin (@gcolvin) <greg@colvin.org>, Martin Holst Swende (@holiman), Brooklyn Zelenka (@expede), John Max Skaller",
   "type": "Standards Track",
   "category": "Core",
   "createdDate": "2025-12-17",
-  "discussionLink": "https://sila-magicians.org/t/sip-7979-call-and-return-opcodes-for-the-savm/24615",
+  "discussionLink": "https://sila-magicians.org/t/sip-7979-call-and-return-opcodes-for-the-evm/24615",
   "reviewer": "expert",
   "layer": "EL",
   "forkRelationships": [
@@ -31,9 +31,24 @@
           "email": "greg@colvin.org"
         }
       ]
+    },
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/238",
+          "date": "2026-06-04"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Greg Colvin"
+        }
+      ]
     }
   ],
-  "laymanDescription": "Introduces instructions to call and return from subroutines, which are missing from the SAVM.  This lets compilers generate code with static control flow, which allows for more performant clients and quadradictally more efficient static analysis tools",
+  "laymanDescription": "Introduces instructions to call and return from subroutines, which are missing from the EVM.  This lets compilers generate code with static control flow, which allows for more performant clients and quadradictally more efficient static analysis tools",
   "stakeholderImpacts": {
     "endUsers": {
       "description": "Increased security and more performant smart contract execution."
@@ -45,10 +60,10 @@
       "description": "No direct impact"
     },
     "toolingInfra": {
-      "description": "Compilers must produce static, validated SAVM code."
+      "description": "Compilers must produce static, validated EVM code."
     },
     "layer2s": {
-      "description": "Some Layer 2 and SAVM-compatible chains could benefit from more performant client."
+      "description": "Some Layer 2 and EVM-compatible chains could benefit from more performant client."
     },
     "stakersNodes": {
       "description": "No direct impact, but enables more clients to implement performance gains"
@@ -61,14 +76,11 @@
     }
   },
   "benefits": [
-    "Makes static SAVM control flow possible, which static analysis people have been requesting for many years.",
-    "Static control flow can make static analysis and formal verification of SAVM code quadratically more efficient.",
-    "Static control flow makes linear-time translators of SAVM code possible, including one-pass compilers to machine code and RISC-V.",
+    "Makes static EVM control flow possible, which static analysis people have been requesting for many years.",
+    "Static control flow can make static analysis and formal verification of EVM code quadratically more efficient.",
+    "Static control flow makes linear-time translators of EVM code possible, including one-pass compilers to machine code and RISC-V.",
     "Clients can validate that deployed code cannot execute invalid instructions, jump to invalid locations, or misuse the stack.",
     "Maintains backwards compatibility, enabling a smooth transition.  Tools and developers can take up the new features as they become available."
   ],
-  "tradeoffs": null,
-  "requires": [
-    3541
-  ]
+  "tradeoffs": null
 }

@@ -2,6 +2,102 @@
   "eipId": 8037,
   "commits": [
     {
+      "sha": "052029f3625328d6f51dec8e62a7090201e66f17",
+      "date": "2026-09-04T12:01:07Z",
+      "message": "Update SIP-8037: remove unused evm_execution_gas_used counter",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -99,14 +99,13 @@ Because [SIP-2780](./sip-2780.md) makes intrinsic gas state-independent, no stat\n \n This means that the `state_gas_reservoir` holds gas that exceeds [SIP-7825](./sip-7825.md)'s budget. Additionally, three new counters are introduced:\n \n-- `evm_execution_gas_used` encodes the total execution-gas used by the transaction, and it is initialized as `evm_execution_gas_used = 0`.\n - `evm_state_gas_used` encodes the total state-gas used by the transaction, and it is initialized as `evm_state_gas_used = 0`.\n - `state_gas_from_gas_left` encodes how much of the current frame's `gas_left` has been drawn for state-gas charges and not yet credited back (i.e., the state-gas not covered by the reservoir). Like `gas_left`, it is frame-local: it is initialized to `0` at the start of each call frame and is used to refill state-gas in last-in, first-out (LIFO) order.\n - `state_gas_baseline` records the value of `state_gas_reservoir` at the start of the state changes a frame's rollback undoes, which for a call frame is its entry. Like `gas_left`, it is frame-local.\n \n The gas counters operate as follows:\n \n-- Execution-gas charges deduct from `gas_left` only and increment `evm_execution_gas_used`.\n+- Execution-gas charges deduct from `gas_left` only.\n - State-gas charges deduct from `state_gas_reservoir` first. When the reservoir is exhausted, the remainder deducts from `gas_left` and increments `state_gas_from_gas_left` by that remainder. State-gas charges increment `evm_state_gas_used`.\n - If a state creation is undone during execution, the corresponding amount of state-gas is **refilled in last-in, first-out (LIFO) order**: because charges deduct from `state_gas_reservoir` first and from `gas_left` last, refills credit the pool charged last (`gas_left`) first. It is credited to `gas_left` first (decrementing `state_gas_from_gas_left` by the same amount) up to the current value of `state_gas_from_gas_left`, and any remainder is credited to `state_gas_reservoir`. State-gas refills decrement `evm_state_gas_used`. Throughout this specification, \"refilling state-gas\" refers to this LIFO operation.\n - `state_gas_reservoir` is passed to a child frame in full: the 63/64 rule applies to `gas_left` only. The parent keeps none of it while the child runs. On the child's exit it becomes the parent's again. Note: a refill in the child may have raised it above the amount passed in.\n@@ -189,11 +188,11 @@ This step is needed because a refill may happen in a different frame than the ma\n \n The step applies to successful children only. This requires that a frame that reverts or halts exceptionally returns no state-gas to its parent; the restore to the frame's baseline above provides that. Otherwise the parent receives state-gas for a slot the rollback restored, and a later merge moves it to `gas_left`.\n \n-When a child frame **reverts**, all of its state changes are rolled back, its state-gas is restored as above, and its resulting `gas_left` (including the credited `state_gas_from_gas_left`) is returned to the parent. `evm_execution_gas_used` is updated according to the execution gas consumed by the child frame before the revert.\n+When a child frame **reverts**, all of its state changes are rolled back, its state-gas is restored as above, and its resulting `gas_left` (including the credited `state_gas_from_gas_left`) is returned to the parent.\n \n When a child frame **halts exceptionally**, the same restore is applied, but the child's `gas_left` is consumed (set to zero) rather than returned, so the credited `state_gas_from_gas_left` is consumed with it.\n \n-The same rules apply when the top-level call frame reverts or halts, treating the frame as a child of the transaction boundary. In particular, for address collisions in contract-creation transactions, `gas_left` is consumed in full and `evm_execution_gas_used` is incremented by the initial `gas_left`; any account-creation state-gas charged for the destination (possible only for a storage-only collision, since a destination with nonce, code, or balance is existent) is undone by the frame's rollback, and the `state_gas_reservoir` is returned to the sender by the normal end-of-transaction settlement.\n+The same rules apply when the top-level call frame reverts or halts, treating the frame as a child of the transaction boundary. In particular, for address collisions in contract-creation transactions, `gas_left` is consumed in full; any account-creation state-gas charged for the destination (possible only for a storage-only collision, since a destination with nonce, code, or balance is existent) is undone by the frame's rollback, and the `state_gas_reservoir` is returned to the sender by the normal end-of-transaction settlement.\n \n ##### Gas accounting for [SIP-7702](./sip-7702.md) authorizations\n ",
+      "additions": 3,
+      "deletions": 4
+    },
+    {
+      "sha": "3ff5cff17a11ab31273ee14ebea0df8bbc4f4aef",
+      "date": "2026-09-04T11:46:11Z",
+      "message": "Update SIP-8037: return state-gas to gas_left when a child merges",
+      "author": "chfast",
+      "prNumber": null,
+      "additions": 29,
+      "deletions": 3
+    },
+    {
+      "sha": "c406bdb2ffbf2fbf9d85698e97b3b2e8b6e79112",
+      "date": "2026-09-04T11:22:38Z",
+      "message": "Update SIP-8037: correct the general state-gas charge timing",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -187,7 +187,7 @@ Gas charges for [SIP-7702](./sip-7702.md) authorizations follow the specificatio\n \n #### Pre-state and post-state gas validation\n \n-[SIP-7928](./sip-7928.md) defines two-phase gas validation for state-accessing opcodes: pre-state costs (determinable without state access) and post-state costs (requiring state access). Under this SIP, the execution-gas portion of these opcodes follows the [SIP-7928](./sip-7928.md) rules unchanged and is charged at opcode time against `gas_left`. The state-gas portion is also charged at the opcode level; it is computed and deducted at the end of the opcode execution, drawing first from `state_gas_reservoir` and then from `gas_left`.\n+[SIP-7928](./sip-7928.md) defines two-phase gas validation for state-accessing opcodes: pre-state costs (determinable without state access) and post-state costs (requiring state access). Under this SIP, the execution-gas portion of these opcodes follows the [SIP-7928](./sip-7928.md) rules unchanged and is charged at opcode time against `gas_left`. The state-gas portion is also charged at the opcode level, with the timing given for each opcode above.\n \n For `SSTORE`, the `GAS_CALL_STIPEND` pre-state check ([SIP-7928](./sip-7928.md)) applies to `gas_left` only, excluding the `state_gas_reservoir`.\n ",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "58596a9911b945fc855caa80a904c5b3f4c4f254",
+      "date": "2026-09-04T11:21:02Z",
+      "message": "Update SIP-8037: remove the duplicated calldata floor note",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -220,8 +220,6 @@ Since all state-gas charges are now applied as runtime or execution-time charges\n \n The [SIP-7623](./sip-7623.md) calldata floor participates in block accounting through the `max` term, applied to the execution-gas dimension: calldata is an execution-gas resource, and the floor's bound on worst-case block size holds only if a data-heavy transaction contributes at least the floor to the block's gas accounting. The floor is compared against the transaction's execution-gas portion alone — not the transaction total — so execution gas may absorb the floor exactly as under [SIP-7623](./sip-7623.md), while state-gas spending cannot (see [Calldata floor in block accounting](#calldata-floor-in-block-accounting)).\n \n-Note: `tx_gas_used` applies the [SIP-7623](./sip-7623.md) calldata floor after refunds, so the floor can effectively negate part of a refund when `calldata_floor_gas_cost > tx_gas_used_after_refund`. The receipt `cumulative_gas_used` uses this post-floor value.\n-\n The block header `gas_used` field is set to:\n \n ```python",
+      "additions": 0,
+      "deletions": 2
+    },
+    {
+      "sha": "65d177d431638639d35897d6e869301a5ea8a02c",
+      "date": "2026-09-04T11:16:08Z",
+      "message": "Update SIP-8037: restore a frame's state-gas on rollback",
+      "author": "chfast",
+      "prNumber": null,
+      "additions": 17,
+      "deletions": 6
+    },
+    {
+      "sha": "aa02d9934056b252768d673eafd2b668725cb138",
+      "date": "2026-08-31T08:22:32Z",
+      "message": "Update SIP-8037: include non-zero balance to description of existent address",
+      "author": "awskii",
+      "prNumber": null,
+      "patch": "@@ -143,7 +143,7 @@ State-gas accounting for `CALL*` and `CREATE`/`CREATE2` operations is performed\n **`CREATE`/`CREATE2` family (conditional charge).** [SIP-7928](./sip-7928.md) defers reading the computed destination address until creation has passed the checks that precede any state access: sender balance for the endowment, nonce overflow, and the call-stack depth limit. A creation failing those checks never reads the destination, and no account-creation state-gas is charged. Once the checks pass, the destination is accessed — a single read that also performs the [SIP-7610](./sip-7610.md) collision check:\n \n - If the destination is non-existent (per the existence rule above), `STATE_BYTES_PER_NEW_ACCOUNT × CPSB` is charged in the creating frame, before 63/64 of the remaining gas is forwarded: a portion drawn from `gas_left` reduces the gas forwarded to the create frame, and a failed charge exceptionally halts the creating frame — exactly as for `CALL*`. If the destination pre-exists (e.g., it holds a balance), nothing is charged. The charge is decided by existence alone, independently of the collision outcome below.\n-- On an address collision ([SIP-7610](./sip-7610.md)) the creation fails as an exceptional halt of the create frame, consuming the forwarded gas. A colliding destination is usually existent (non-zero nonce or non-empty code) and therefore was not charged; the one exception is a destination that collides on storage alone while having zero nonce, zero balance, and empty code — it is non-existent, so it was charged, and the charge is refilled by the failure rule below.\n+- On an address collision ([SIP-7610](./sip-7610.md)) the creation fails as an exceptional halt of the create frame, consuming the forwarded gas. A colliding destination is usually existent (non-zero nonce, non-empty code, or a non-zero balance) and therefore was not charged; the one exception is a destination that collides on storage alone while having zero nonce, zero balance, and empty code — it is non-existent, so it was charged, and the charge is refilled by the failure rule below.\n - If the create frame reverts or halts exceptionally (including an address collision and a failed code deposit), the account creation is rolled back and any charged account-creation state-gas is refilled in LIFO order, decreasing `evm_state_gas_used` by the same amount — exactly as for `CALL*`.\n \n The code-deposit portion (`L × CPSB`) is unaffected by this rule and is charged at code-deposit time as usual.",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "187336f46c2b54ae295ced6e8cffd48bf5989ba6",
+      "date": "2026-08-25T11:44:53Z",
+      "message": "Update SIP-8037: decouple SYSTEM_MAX_SSTORES_PER_CALL from request bounds",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -257,7 +257,7 @@ SYSTEM_CALL_GAS_LIMIT = 30_000_000 + STATE_BYTES_PER_STORAGE_SET × CPSB × SYST\n \n This ensures preservation of the existing execution margin for system contracts under higher state creation costs.\n \n-Here, `SYSTEM_MAX_SSTORES_PER_CALL = 16` is the upper bound on the number of new storage slots a single system call is expected to write. This value matches `MAX_WITHDRAWAL_REQUESTS_PER_BLOCK` ([SIP-7002](./sip-7002.md)), the largest per-block bound across the existing system contracts.\n+Here, `SYSTEM_MAX_SSTORES_PER_CALL = 16` is the upper bound on the number of new storage slots a single system call is expected to write. It is a margin rather than a bound derived from any particular system contract, and must be re-derived if a system call can write more new slots.\n \n The additional `STATE_BYTES_PER_STORAGE_SET × CPSB × SYSTEM_MAX_SSTORES_PER_CALL` is placed in `state_gas_reservoir` while the rest of the system call's gas is placed in `gas_left`. System calls remain not subject to the [SIP-7825](./sip-7825.md) `TX_MAX_GAS_LIMIT` cap, do not count against the block gas limit, and do not contribute to either `block_execution_gas_used` or `block_state_gas_used`.\n ",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "5a8c80897aeb0952322cd0dfff767c541002b8c3",
+      "date": "2026-07-31T15:51:07Z",
+      "message": "Update SIP-2780: variable rename + 8007 clean-ups",
+      "author": "misilva73",
+      "prNumber": null,
+      "additions": 35,
+      "deletions": 35
+    },
+    {
+      "sha": "0a1d42b3c7a455cd812ce73b4b937c16d6f20bd6",
+      "date": "2026-07-30T12:54:28Z",
+      "message": "Update SIP-2780: Move to Review",
+      "author": "misilva73",
+      "prNumber": null,
+      "patch": "@@ -4,7 +4,7 @@ title: State Creation Gas Cost Increase\n description: Harmonization, increase and separate metering of state creation gas costs to mitigate state growth and unblock scaling\n author: Maria Silva (@misilva73), Carlos Perez (@CPerezz), Jochem Brouwer (@jochem-brouwer), Ansgar Dietrichs (@adietrichs), Łukasz Rozmej (@LukaszRozmej), Anders Elowsson (@anderselowsson), Francesco D'Amato (@fradamt), Dragan Rakita (@rakita)\n discussions-to: https://sila-magicians.org/t/sip-8037-state-creation-gas-cost-increase/25694\n-status: Draft\n+status: Review\n type: Standards Track\n category: Core\n created: 2025-10-01\n@@ -378,7 +378,7 @@ State-gas refills are applied in last-in, first-out (LIFO) order: because charge\n \n #### Higher throughput\n \n-Another advantage of metering contract creation separately is that increasing the cost of state creation operation in line with the block limit will not affect the available gas for other operations. This allows for higher throughput, as explained in the original multidimensional gas metering introduced in [SIP-8011](./sip-8011.md).\n+Another advantage of metering contract creation separately is that increasing the cost of state creation operation in line with the block limit will not affect the available gas for other operations. This allows for higher throughput.\n \n #### Calldata floor in block accounting\n ",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "sha": "4ef37e3dde616e9660e42527c73a8bf9303ea8ed",
+      "date": "2026-07-22T16:04:52Z",
+      "message": "Update SIP-8037: rename \"regular gas\" to \"execution gas\" and update requires",
+      "author": "misilva73",
+      "prNumber": null,
+      "additions": 49,
+      "deletions": 49
+    },
+    {
       "sha": "190d539c9c49d91438a4d9977235c001a43b4df1",
       "date": "2026-07-10T21:56:35Z",
       "message": "Update SIP-8037: apply the SIP-7976 calldata floor to block-level gas accounting",
@@ -167,7 +263,7 @@
       "message": "Update SIP-8037: Align with SIP-7928 Gas Validation Phases",
       "author": "nerolation",
       "prNumber": null,
-      "patch": "@@ -116,6 +116,21 @@ The `state_gas_reservoir` holds gas that exceeds the [SIP-7825](./sip-7825.md)'s\n \n The two counters are returned by the transaction output. Besides the two counters, the SAVM also keeps track of `execution_state_gas_used` and `execution_regular_gas_used` during transaction execution. `state_gas` costs are added to `execution_state_gas_used` while `regular_gas` costs are added to `execution_regular_gas_used`. These two counters are also returned by the transaction output.\n \n+#### Pre-state and post-state gas validation\n+\n+[SIP-7928](./sip-7928.md) defines two-phase gas validation for state-accessing opcodes: pre-state costs (determinable without state access) and post-state costs (requiring state access). Pre-state validation must pass before any state access occurs. Under the reservoir model, both regular and state gas portions of pre-state costs must be satisfiable; regular gas is checked against `gas_left`, state gas against `state_gas_reservoir` (then `gas_left`). If either check fails, the state access does not occur.\n+\n+The cost parameters introduced by this SIP map to validation phases as follows:\n+\n+| Cost Parameter | Validation Phase | State Gas | Regular Gas |\n+|---|---|---|---|\n+| `GAS_CREATE` | Pre-state | 112 × `cpsb` | 9,000 |\n+| `GAS_CODE_DEPOSIT` | Post-state (on deployment success) | `cpsb` × L | 6 × ⌈L/32⌉ |\n+| `GAS_NEW_ACCOUNT` | Post-state (requires account existence check) | 112 × `cpsb` | 0 |\n+| `GAS_STORAGE_SET` | Post-state (requires reading current value) | 32 × `cpsb` | 2,900 |\n+\n+For `SSTORE`, the `GAS_CALL_STIPEND` pre-state check ([SIP-7928](./sip-7928.md)) applies to `gas_left` only, excluding the `state_gas_reservoir`.\n+\n #### Transaction gas used\n \n At the end of transaction execution, the gas used before and after refunds is defined as:\n@@ -204,7 +219,6 @@ When a contract creation transaction or opcode (`CREATE`/`CREATE2`) is executed,\n SUCCESS_PATH_TOTAL_GAS =\n     GAS_CREATE\n   + initcode_execution_cost\n-  + (GAS_NEW_ACCOUNT if account is new else 0)\n   + GAS_CODE_DEPOSIT * L\n   + HASH_COST(L)\n "
+      "patch": "@@ -116,6 +116,21 @@ The `state_gas_reservoir` holds gas that exceeds the [SIP-7825](./sip-7825.md)'s\n \n The two counters are returned by the transaction output. Besides the two counters, the EVM also keeps track of `execution_state_gas_used` and `execution_regular_gas_used` during transaction execution. `state_gas` costs are added to `execution_state_gas_used` while `regular_gas` costs are added to `execution_regular_gas_used`. These two counters are also returned by the transaction output.\n \n+#### Pre-state and post-state gas validation\n+\n+[SIP-7928](./sip-7928.md) defines two-phase gas validation for state-accessing opcodes: pre-state costs (determinable without state access) and post-state costs (requiring state access). Pre-state validation must pass before any state access occurs. Under the reservoir model, both regular and state gas portions of pre-state costs must be satisfiable; regular gas is checked against `gas_left`, state gas against `state_gas_reservoir` (then `gas_left`). If either check fails, the state access does not occur.\n+\n+The cost parameters introduced by this SIP map to validation phases as follows:\n+\n+| Cost Parameter | Validation Phase | State Gas | Regular Gas |\n+|---|---|---|---|\n+| `GAS_CREATE` | Pre-state | 112 × `cpsb` | 9,000 |\n+| `GAS_CODE_DEPOSIT` | Post-state (on deployment success) | `cpsb` × L | 6 × ⌈L/32⌉ |\n+| `GAS_NEW_ACCOUNT` | Post-state (requires account existence check) | 112 × `cpsb` | 0 |\n+| `GAS_STORAGE_SET` | Post-state (requires reading current value) | 32 × `cpsb` | 2,900 |\n+\n+For `SSTORE`, the `GAS_CALL_STIPEND` pre-state check ([SIP-7928](./sip-7928.md)) applies to `gas_left` only, excluding the `state_gas_reservoir`.\n+\n #### Transaction gas used\n \n At the end of transaction execution, the gas used before and after refunds is defined as:\n@@ -204,7 +219,6 @@ When a contract creation transaction or opcode (`CREATE`/`CREATE2`) is executed,\n SUCCESS_PATH_TOTAL_GAS =\n     GAS_CREATE\n   + initcode_execution_cost\n-  + (GAS_NEW_ACCOUNT if account is new else 0)\n   + GAS_CODE_DEPOSIT * L\n   + HASH_COST(L)\n "
     },
     {
       "sha": "48566ad265a5c2bb981e520a9b8e17ed9921b8a8",
@@ -175,7 +271,7 @@
       "message": "Update SIP-8037: clarify regular gas must be charged before state gas",
       "author": "spencer-tb",
       "prNumber": null,
-      "patch": "@@ -109,6 +109,7 @@ The `state_gas_reservoir` holds gas that exceeds the [SIP-7825](./sip-7825.md)'s\n \n - **Regular gas** charges deduct from `gas_left` only.\n - **State gas** charges deduct from `state_gas_reservoir` first; when the reservoir is exhausted, from `gas_left`.\n+- When an opcode requires both regular and state gas, the regular gas charge MUST be applied first. If the regular gas charge triggers an out-of-gas error, the state gas charge is not applied.\n - The `GAS` opcode returns `gas_left` only (excluding the reservoir).\n - The reservoir is passed **in full** to child frames (no 63/64 rule). On child success, the remaining `state_gas_reservoir` is returned to the parent. On child **revert** or **exceptional halt**, all state gas consumed by the child, both from the reservoir and any that spilled into `gas_left`, is restored to the parent's reservoir. On child **exceptional halt**, only `gas_left` is consumed (zeroed). State gas is fully preserved on failure because state changes are reverted, so no state was actually grown.\n - On **exceptional halt**, remaining `gas_left` is attributed to `execution_regular_gas_used` and set to zero (all regular gas consumed), consistent with existing SAVM out-of-gas semantics. The `state_gas_reservoir` is not consumed, it is returned to the parent frame or preserved at the top level for refund, consistent with the principle that state gas pays for long-term state growth which does not occur on failure. System transactions are not subject to the `TX_MAX_GAS_LIMIT` cap, their entire `execution_gas` is placed in `gas_left` with `state_gas_reservoir = 0`."
+      "patch": "@@ -109,6 +109,7 @@ The `state_gas_reservoir` holds gas that exceeds the [SIP-7825](./sip-7825.md)'s\n \n - **Regular gas** charges deduct from `gas_left` only.\n - **State gas** charges deduct from `state_gas_reservoir` first; when the reservoir is exhausted, from `gas_left`.\n+- When an opcode requires both regular and state gas, the regular gas charge MUST be applied first. If the regular gas charge triggers an out-of-gas error, the state gas charge is not applied.\n - The `GAS` opcode returns `gas_left` only (excluding the reservoir).\n - The reservoir is passed **in full** to child frames (no 63/64 rule). On child success, the remaining `state_gas_reservoir` is returned to the parent. On child **revert** or **exceptional halt**, all state gas consumed by the child, both from the reservoir and any that spilled into `gas_left`, is restored to the parent's reservoir. On child **exceptional halt**, only `gas_left` is consumed (zeroed). State gas is fully preserved on failure because state changes are reverted, so no state was actually grown.\n - On **exceptional halt**, remaining `gas_left` is attributed to `execution_regular_gas_used` and set to zero (all regular gas consumed), consistent with existing EVM out-of-gas semantics. The `state_gas_reservoir` is not consumed, it is returned to the parent frame or preserved at the top level for refund, consistent with the principle that state gas pays for long-term state growth which does not occur on failure. System transactions are not subject to the `TX_MAX_GAS_LIMIT` cap, their entire `execution_gas` is placed in `gas_left` with `state_gas_reservoir = 0`."
     },
     {
       "sha": "de0ad9db93813d9883302ec1517be668ed195cf3",
@@ -257,12 +353,28 @@
   ],
   "openPrs": [
     {
-      "number": 11879,
-      "title": "Update SIP-8037: Move to Review",
-      "author": "poojaranjan",
-      "updatedAt": "2026-07-12T15:04:53Z",
-      "additions": 1,
-      "deletions": 1
+      "number": 12296,
+      "title": "Update SIP-8037: remove stale SIP-7610 collision rules",
+      "author": "spencer-tb",
+      "updatedAt": "2026-09-04T13:59:23Z",
+      "additions": 5,
+      "deletions": 5
+    },
+    {
+      "number": 12249,
+      "title": "Update SIP-8037: refill state-gas for a SELFDESTRUCTed account",
+      "author": "chfast",
+      "updatedAt": "2026-09-04T12:24:32Z",
+      "additions": 7,
+      "deletions": 3
+    },
+    {
+      "number": 12303,
+      "title": "Update SIP-8037: keep pre-execution state-gas out of the frame rollback",
+      "author": "chfast",
+      "updatedAt": "2026-09-07T11:23:47Z",
+      "additions": 15,
+      "deletions": 2
     },
     {
       "number": 11570,

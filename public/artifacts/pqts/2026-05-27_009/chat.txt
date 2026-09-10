@@ -6,7 +6,8 @@ For the smart contract :)
 https://github.com/vbuterin/sphincsminus 
 
 but V is wrong here I need to patch it
-00:27:26	Alessandro Baiocchi:	We have our current numbers for the FORS in the NiceTry repohttps://github.com/RivaLabs-Core/NiceTry/tree/main
+00:27:26	Alessandro Baiocchi:	We have our current numbers for the FORS in the NiceTry repo
+https://github.com/RivaLabs-Core/NiceTry/tree/main
 00:28:54	Matteo Vicari:	https://github.com/RivaLabs-Core/NiceTry/tree/fors-verity-model/verity  we are working on the formal verification
 00:49:08	Nicolas Consigny:	Ah cool happy to see the combination of my projects :) actually SPHINCS- was a reason I pushed the verity idea lol
 00:49:34	Nicolas Consigny:	Let's ask LFG labs

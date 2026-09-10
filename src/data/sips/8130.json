@@ -1,8 +1,8 @@
 {
   "id": 8130,
-  "title": "SIP-8130: Account Abstraction by Account Configuration",
+  "title": "SIP-8130: Keystore Accounts",
   "status": "Draft",
-  "description": "Enable account abstraction feature set through onchain account configurations and a new transaction type",
+  "description": "Enable account abstraction through onchain keystore accounts and a new transaction type",
   "author": "Chris Hunter (@chunter-cb) <chris.hunter@coinbase.com>",
   "type": "Standards Track",
   "category": "Core",
@@ -11,7 +11,18 @@
   "forkRelationships": [],
   "tradeoffs": null,
   "requires": [
+    155,
     170,
-    2718
+    712,
+    1271,
+    1559,
+    2028,
+    2718,
+    2929,
+    4337,
+    6780,
+    7702,
+    7708,
+    7819
   ]
 }

@@ -54,7 +54,7 @@ because that would still achieve the same goal
 00:22:44	Ansgar Dietrichs:	Replying to "well it’s more expen..."
 
 right, so start with a reasonable cap
-00:23:17	Jason Vranek:	Proposals like Ultra TXs from Gwyneth use batched transactions to help with L1<>L2 composability. They rely on very very large txs for atomicity  https://Sila Research/t/ultra-tx-programmable-blocks-one-transaction-is-all-you-need-for-a-unified-and-extendable-sila/21673
+00:23:17	Jason Vranek:	Proposals like Ultra TXs from Gwyneth use batched transactions to help with L1<>L2 composability. They rely on very very large txs for atomicity  https://ethresear.ch/t/ultra-tx-programmable-blocks-one-transaction-is-all-you-need-for-a-unified-and-extendable-sila/21673
 00:23:23	Sophia Gold:	If we don't cap it now, we potentially break more thiings if we cap it in the future when the gas limit is higher
 00:23:32	Tim Beiko:	Reacted to "If we don't cap it n..." with 👍
 00:23:40	Kamil Chodoła:	Reacted to "If we don't cap it..." with 👍
@@ -367,7 +367,8 @@ SIP-7918: Blob base fee bounded by execution cost
 00:53:11	lightclient:	^ jumpdest analysis limit
 00:53:11	Nicolas Consigny:	Replying to "The current specific..."
 
-RIP-7212’s verifier should reduce the affine x-coordinate of the reconstructed point modulo n before it is compared with r, and it must explicitly reject the point-at-infinity.Without these two rules different SAVM chains can accept or reject exactly the same P-256 Schnorr signature, because an attacker can pick a nonce whose x-coordinate lies in [n, p) or that reconstructs to ∞
+RIP-7212’s verifier should reduce the affine x-coordinate of the reconstructed point modulo n before it is compared with r, and it must explicitly reject the point-at-infinity.
+Without these two rules different EVM chains can accept or reject exactly the same P-256 Schnorr signature, because an attacker can pick a nonce whose x-coordinate lies in [n, p) or that reconstructs to ∞
 00:53:14	Sophia Gold:	If you're concerned about the effect of code size, we should add the new SWAPs and DUPs in glamsterdam
 00:53:16	Łukasz Rozmej:	Replying to "do clients persist j..."
 
@@ -465,7 +466,7 @@ We would deploy the right thing to l1
 01:02:19	Nicolas Consigny:	Replying to "how much time would ..."
 
 Less than 3 month imo
-01:02:48	Tim Beiko:	https://sips.sila.org/SIPS/sip-7918
+01:02:48	Tim Beiko:	https://sips.sila.org/EIPS/sip-7918
 01:02:57	Nicolas Consigny:	Replying to "how much time would ..."
 
 If you meant 7212 😅
@@ -850,5 +851,5 @@ maybe something for glamsterdam?
 
 It feels like clients can already work with error codes but maybe I’m missing something
 01:41:35	Justin Florentine (Besu):	sorry, not ythoclock its on the calendar, and sil/pm repo
-01:41:53	Tim Beiko:	https://sips.sila.org/SIPS/sip-7939
+01:41:53	Tim Beiko:	https://sips.sila.org/EIPS/sip-7939
 01:41:58	Tim Beiko:	https://github.com/sila-chain/SIPs/pull/9792

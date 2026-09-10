@@ -48,7 +48,7 @@
       "description": "Node software, RPC services, and monitoring tools must implement updated gas formulas and parameters for account writes, ensuring estimates and analytics reflect the repricing."
     },
     "layer2s": {
-      "description": "SAVM-compatible layer 2s that follow sila-mainnet gas rules would need to mirror the new account write costs to preserve behavior compatibility."
+      "description": "EVM-compatible layer 2s that follow sila-mainnet gas rules would need to mirror the new account write costs to preserve behavior compatibility."
     },
     "stakersNodes": {
       "description": "Consensus participants and node operators must upgrade for the scheduled gas repricing fork and ensure RPC endpoints implement the new estimation behavior."

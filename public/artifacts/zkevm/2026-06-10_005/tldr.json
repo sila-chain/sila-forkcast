@@ -48,7 +48,7 @@
     "evm_formal_verification": [
       {
         "timestamp": "00:57:25",
-        "highlight": "EVMASM (SAVM in Lean4 assembly): 110 opcodes formally proved; STF modeling in progress (accounts, storage, SIP-1559 tx, call frames); targeting ZISK emulator for full ELF extraction; round-trip RISC-V tests in CI"
+        "highlight": "EVMASM (EVM in Lean4 assembly): 110 opcodes formally proved; STF modeling in progress (accounts, storage, SIP-1559 tx, call frames); targeting ZISK emulator for full ELF extraction; round-trip RISC-V tests in CI"
       }
     ]
   },

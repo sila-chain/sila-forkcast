@@ -58,7 +58,7 @@ yep agreed
 00:47:28	Lorenzo:	Replying to "but people argue t..."
 
 my point was mainly about client support
-00:48:43	terence:	the only reason is to something like: https://Sila Research/t/payload-chunking/23008/2 
+00:48:43	terence:	the only reason is to something like: https://ethresear.ch/t/payload-chunking/23008/2 
 but it's pretty side tracked
 00:51:02	owen:	For a validator to become a builder I assume they upgrade withdrawal creds. Does this happen in the first block following the fork? If so can that block be built by a builder or would that block need to be a self build?
 00:52:14	Justin Traglia:	Replying to "For a validator to b..."

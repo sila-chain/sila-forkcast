@@ -257,7 +257,7 @@ export const EipSpecHistory: React.FC<EipSpecHistoryProps> = ({
     return (
       <p className="text-sm text-slate-500 dark:text-slate-400 italic">
         <a
-          href={`https://github.com/sila-chain/SIPs/commits/master/SIPS/sip-${eipId}.md`}
+          href={`https://github.com/sila-chain/SIPs/commits/master/EIPS/sip-${eipId}.md`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-purple-600 dark:text-purple-400 underline underline-offset-2"

@@ -237,7 +237,7 @@ let’s just try to make Glamsterdam not get too off the rails :-)
 00:37:39	Parithosh Jayanthi:	Reacted to "I’ll write up a one-..." with ❤️
 00:37:52	Pooja Ranjan:	Reacted to "I’ll write up a one-..." with 👍
 00:37:53	Justin Florentine (Besu):	Reacted to "eof had stake holder..." with 💯
-00:37:59	Ansgar Dietrichs:	I think stakeholders need to not only be involved in SAVM changes - they need to drive them.
+00:37:59	Ansgar Dietrichs:	I think stakeholders need to not only be involved in EVM changes - they need to drive them.
 
 We can’t keep guessing what could be useful for them, even if we check with them afterwards
 00:38:09	Barnabé Monnot:	Replying to "I think researchers ..."
@@ -251,7 +251,7 @@ We can’t keep guessing what could be useful for them, even if we check with th
 market. analysis.
 00:39:28	Dustin:	Replying to "I think stakeholde..."
 
-Not sure if this is good/bad, but this is a process designed for a maintenance/bugfixing model of the SAVM. People will likely ask for some feature, or precompile, but likely not look at things architecturally.
+Not sure if this is good/bad, but this is a process designed for a maintenance/bugfixing model of the EVM. People will likely ask for some feature, or precompile, but likely not look at things architecturally.
 00:39:42	Josh Davis:	@Marc working on this 🙂
 00:40:05	sacha:	Replying to "I think researchers ..."
 
@@ -358,8 +358,8 @@ get ready for the conspiracy theories
 00:45:16	sacha:	Replying to "I think researchers ..."
 
 fair
-00:45:23	Tim Beiko:	https://sips.sila.org/SIPS/sip-2982
-00:45:25	Pooja Ranjan:	https://sips.sila.org/SIPS/sip-2982
+00:45:23	Tim Beiko:	https://sips.sila.org/EIPS/sip-2982
+00:45:25	Pooja Ranjan:	https://sips.sila.org/EIPS/sip-2982
 00:45:31	Toni Wahrstätter:	Reacted to ha, no one will ever... with "😂"
 00:45:42	Josh Davis:	Replying to "My one suggestion wo..."
 

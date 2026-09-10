@@ -4,7 +4,7 @@
     "evmasm_development": [
       {
         "timestamp": "00:08:18",
-        "highlight": "EVMASM: SAVM written in RISC-V assembly using Lean4 formal verification"
+        "highlight": "EVMASM: EVM written in RISC-V assembly using Lean4 formal verification"
       },
       {
         "timestamp": "00:14:52",

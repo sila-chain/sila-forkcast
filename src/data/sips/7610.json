@@ -23,6 +23,16 @@
           "status": "Considered",
           "call": "acde/229",
           "date": "2026-01-29"
+        },
+        {
+          "status": "Scheduled",
+          "call": null,
+          "date": "2026-08-04"
+        },
+        {
+          "status": "Declined",
+          "call": "acdc/185",
+          "date": "2026-08-20"
         }
       ],
       "champions": [

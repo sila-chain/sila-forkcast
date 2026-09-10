@@ -1,7 +1,7 @@
 {
   "id": 8159,
   "title": "SIP-8159: sil/71 - Block Access List Exchange",
-  "status": "Draft",
+  "status": "Review",
   "description": "Adds peer-to-peer exchange of block-level access lists to the sil protocol",
   "author": "Toni Wahrstätter (@nerolation)",
   "type": "Standards Track",
@@ -18,6 +18,11 @@
           "status": "Considered",
           "call": "acde/230",
           "date": "2026-02-12"
+        },
+        {
+          "status": "Networking",
+          "call": null,
+          "date": null
         }
       ],
       "champions": [

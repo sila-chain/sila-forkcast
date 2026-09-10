@@ -94,7 +94,7 @@ lightclient: I think Derek has put together a nice SIP around how this can be su
 
 24
 00:07:20.310 --> 00:07:37.179
-lightclient: then we can put in place some default account. And, like, the shape of this default account is, you know, definitely up for question. You know, it could be SAVM code, it could be a pre-compile, it could be extremely minimal, it could have some bells and whistles.
+lightclient: then we can put in place some default account. And, like, the shape of this default account is, you know, definitely up for question. You know, it could be EVM code, it could be a pre-compile, it could be extremely minimal, it could have some bells and whistles.
 
 25
 00:07:37.290 --> 00:07:39.510
@@ -230,7 +230,7 @@ Derek Chiang | ZeroDev: That's right, yeah, you know, so, like…
 
 58
 00:11:48.870 --> 00:12:03.980
-Derek Chiang | ZeroDev: Felix said, oh, we're not actually defining code in the SAVM assembly code sense, you know, like, like, it's more so that, like, if you really read the PR, it's actually very simple, you know, it's literally just saying that, like, oh, if the target of a frame is, has no code.
+Derek Chiang | ZeroDev: Felix said, oh, we're not actually defining code in the EVM assembly code sense, you know, like, like, it's more so that, like, if you really read the PR, it's actually very simple, you know, it's literally just saying that, like, oh, if the target of a frame is, has no code.
 
 59
 00:12:04.130 --> 00:12:21.189
@@ -714,7 +714,7 @@ Felix (Geth): we can also use. So instead of having, like, a special frame type,
 
 179
 00:28:06.440 --> 00:28:16.049
-Felix (Geth): what you, so one thing to understand about the SIP is that, when the approval of the sender happens in the SAVM,
+Felix (Geth): what you, so one thing to understand about the SIP is that, when the approval of the sender happens in the EVM,
 
 180
 00:28:16.970 --> 00:28:28.370
@@ -846,7 +846,7 @@ vitalik: it would basically have to, like, load storage, or load the public key 
 
 212
 00:32:31.940 --> 00:32:41.629
-vitalik: like, that feels like a very small amount of SAVM execution, right? Like, I would guess that's probably, like, literally less than 100 instructions, and so…
+vitalik: like, that feels like a very small amount of EVM execution, right? Like, I would guess that's probably, like, literally less than 100 instructions, and so…
 
 213
 00:32:42.080 --> 00:32:55.800
@@ -870,7 +870,7 @@ vitalik: account, like, a standardized accounts wrapper around, stuff… around 
 
 218
 00:33:37.190 --> 00:33:48.510
-vitalik: if we're seeing, like, 100 steps of SAVM code execution as a large problem, then, like, that feels like something that has to be addressed more broadly, and, like,
+vitalik: if we're seeing, like, 100 steps of EVM code execution as a large problem, then, like, that feels like something that has to be addressed more broadly, and, like,
 
 219
 00:33:48.700 --> 00:33:50.559
@@ -910,7 +910,7 @@ Chris - Base: It is hard to, manage, like, effectively, I guess.
 
 228
 00:34:51.630 --> 00:35:07.970
-vitalik: Right, but, like, the wasted… Yeah, like, the wasted compute here is, like, literally 100 SAVM, steps, potentially, right? Because it's basically wrapping up recompile. So, like, this is what I'm curious about, like, is, like, is it high overhead for you despite that?
+vitalik: Right, but, like, the wasted… Yeah, like, the wasted compute here is, like, literally 100 EVM, steps, potentially, right? Because it's basically wrapping up recompile. So, like, this is what I'm curious about, like, is, like, is it high overhead for you despite that?
 
 229
 00:35:09.980 --> 00:35:20.269
@@ -1526,7 +1526,7 @@ DanielVF - Monad: What's the fundamental difference between,
 
 382
 00:53:53.190 --> 00:54:00.250
-DanielVF - Monad: adding a new cryptographic system to the SAVM versus adding a new cryptographic system at the transaction level.
+DanielVF - Monad: adding a new cryptographic system to the EVM versus adding a new cryptographic system at the transaction level.
 
 383
 00:54:01.000 --> 00:54:12.030
@@ -1538,7 +1538,7 @@ Felix (Geth): The other thing is that we kind of see it in the long term that, I
 
 385
 00:54:28.020 --> 00:54:35.579
-Felix (Geth): we should just make the SAVM fast enough for people to be able to do anything they want, without having to rely on these precompiles.
+Felix (Geth): we should just make the EVM fast enough for people to be able to do anything they want, without having to rely on these precompiles.
 
 386
 00:54:35.720 --> 00:54:39.680
@@ -1550,7 +1550,7 @@ Felix (Geth): What, basically, we're trying to say is that, like.
 
 388
 00:54:42.840 --> 00:54:55.849
-Felix (Geth): the frame transaction gives you the ability to do whatever you want in the SAVM. You can use the fast paths, which we provide, and we can provide more fast paths as the world develops, but ultimately, we wanted
+Felix (Geth): the frame transaction gives you the ability to do whatever you want in the EVM. You can use the fast paths, which we provide, and we can provide more fast paths as the world develops, but ultimately, we wanted
 
 389
 00:54:56.060 --> 00:54:58.610
@@ -1762,7 +1762,7 @@ Chris - Base: On that topic, like, with… because frames can have, kind of, arb
 
 441
 01:02:11.690 --> 01:02:24.029
-Chris - Base: And can also see state across the entire SAVM? Like, doesn't that kind of break this kind of top-of-block aggregation of signatures? Or I guess that's kind of the open problem.
+Chris - Base: And can also see state across the entire EVM? Like, doesn't that kind of break this kind of top-of-block aggregation of signatures? Or I guess that's kind of the open problem.
 
 442
 01:02:25.570 --> 01:02:35.750
@@ -1786,7 +1786,7 @@ Felix (Geth): intent by way of splitting up the computation. Like, earlier accou
 
 447
 01:03:21.170 --> 01:03:40.709
-Felix (Geth): or they would have another, like, these kinds of things. So then, basically, the whole transaction would just be a single input, and you would basically execute it in the SAVM, and at some point, the validity of the sender and the gas payment would be established by the SAVM as it was executing. And these proposals got shut down because it is not possible, really.
+Felix (Geth): or they would have another, like, these kinds of things. So then, basically, the whole transaction would just be a single input, and you would basically execute it in the EVM, and at some point, the validity of the sender and the gas payment would be established by the EVM as it was executing. And these proposals got shut down because it is not possible, really.
 
 448
 01:03:40.710 --> 01:04:01.680

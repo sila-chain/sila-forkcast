@@ -1,9 +1,11 @@
 ---
 import '../index.css';
 import SiteNav from '../components/ui/SiteNav.astro';
+import GlobalSearchIsland from '../components/search/GlobalSearchIsland';
+import { serializeJsonLd } from '../domain/seo/structuredData';
 
 interface Props {
-  /** Full document title, e.g. "SIP Directory - SilaForkcast". */
+  /** Full document title, e.g. "SIP Directory - Forkcast". */
   title: string;
   description: string;
   /** Absolute or root-relative OG/Twitter image. Defaults to the site metacard. */
@@ -13,6 +15,12 @@ interface Props {
   enableCallSearch?: boolean;
   /** Keep the page out of the index (e.g. the 404): emits robots noindex and drops the self-canonical. */
   noindex?: boolean;
+  /**
+   * schema.org graphs for this page. The body is a `client:only` island, so this
+   * is the only structured description of the page a crawler gets without
+   * running JS. Build them with `src/domain/seo/structuredData.ts`.
+   */
+  jsonLd?: ReadonlyArray<object | undefined>;
 }
 
 const {
@@ -22,13 +30,16 @@ const {
   navVariant = 'default',
   enableCallSearch = false,
   noindex = false,
+  jsonLd = [],
 } = Astro.props;
 
-const site = Astro.site ?? new URL('https://sila-forkcast.org');
+const structuredData = serializeJsonLd(jsonLd);
+
+const site = Astro.site ?? new URL('https://forkcast.org');
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogImage = image
   ? new URL(image, site).href
-  : new URL('/sila-forkcast-metacard.png?v=2', site).href;
+  : new URL('/forkcast-metacard.png?v=2', site).href;
 ---
 
 <!doctype html>
@@ -50,13 +61,19 @@ const ogImage = image
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="alternate" type="application/rss+xml" title="Forkcast" href="/feed.xml" />
+    {
+      structuredData && (
+        <script type="application/ld+json" is:inline set:html={structuredData} />
+      )
+    }
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="SilaForkcast" />
+    <meta property="og:site_name" content="Forkcast" />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:alt" content={title} />
 
@@ -95,11 +112,13 @@ const ogImage = image
   </head>
   <body>
     <noscript>
-      SilaForkcast renders page content with client-side React. Visit /llms.txt for guidance on how to
+      Forkcast renders page content with client-side React. Visit /llms.txt for guidance on how to
       traverse and access information from this website.
     </noscript>
     <div class="scanlines" aria-hidden="true"></div>
     <SiteNav variant={navVariant} enableCallSearch={enableCallSearch} />
+    {/* `client:idle`, not `client:load`, so it doesn't contend with the page's own island. */}
+    <GlobalSearchIsland client:idle />
     <main>
       <slot />
     </main>

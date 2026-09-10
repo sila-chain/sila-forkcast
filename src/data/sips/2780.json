@@ -1,7 +1,7 @@
 {
   "id": 2780,
   "title": "SIP-2780: Resource-based intrinsic transaction gas",
-  "status": "Draft",
+  "status": "Review",
   "description": "Decompose the flat intrinsic transaction cost into explicit primitives priced to match the resources a transaction actually consumes",
   "author": "Matt Garnett (@lightclient), Uri Klarman (@uriklarman), Ben Adams (@benaadams), Maria Inês Silva (@misilva73), Anders Elowsson (@anderselowsson), Anthony Sassano (@sassal), Dragan Rakita (@rakita)",
   "type": "Standards Track",
@@ -23,6 +23,11 @@
           "status": "Considered",
           "call": "acde/226",
           "date": "2025-12-18"
+        },
+        {
+          "status": "Scheduled",
+          "call": null,
+          "date": "2026-08-04"
         }
       ],
       "champions": [
@@ -48,7 +53,7 @@
       "description": "Transaction analysis needs to distinguish new gas accounting."
     },
     "layer2s": {
-      "description": "L2s aiming to be SAVM compatible need to implement this change, SIL will can better for payments even on L2 chains."
+      "description": "L2s aiming to be EVM compatible need to implement this change, SIL will can better for payments even on L2 chains."
     },
     "stakersNodes": {
       "description": "No direct impact, state growth should stay constrained."
@@ -71,7 +76,6 @@
     2929,
     2930,
     6780,
-    7523,
     7623,
     7702,
     7708,

@@ -50,7 +50,7 @@
       },
       {
         "timestamp": "01:11:17",
-        "highlight": "Root cause: clients validate SAVM operations in different orders, causing different error codes; proposal to allow multiple acceptable error codes per test fixture"
+        "highlight": "Root cause: clients validate EVM operations in different orders, causing different error codes; proposal to allow multiple acceptable error codes per test fixture"
       }
     ]
   },

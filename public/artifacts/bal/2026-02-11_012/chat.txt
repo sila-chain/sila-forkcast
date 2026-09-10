@@ -54,7 +54,7 @@ Giphy [ID:NEvPzZ8bd1V4Y]
 00:39:01	Toni Wahrstätter:	https://github.com/sila-chain/devp2p/pull/264/
 00:40:27	jochem-brouwer:	Antwoord verzenden naar "https://github.com..."
 
-FYI, here is sil/70 SIP: https://sips.sila.org/SIPS/sip-7975
+FYI, here is sil/70 SIP: https://sips.sila.org/EIPS/sip-7975
 00:44:52	Karim T. (matkt):	What do you mean by “This check SHOULD be performed periodically (e.g., every 8 transactions) to enable early rejection without impacting parallel execution.” ?
 
 Do you think this check will impact // execution ? Seems to be a light check

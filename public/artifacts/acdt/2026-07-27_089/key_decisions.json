@@ -1,0 +1,43 @@
+{
+  "meeting": "ACDT #89 - July 27, 2026",
+  "key_decisions": [
+    {
+      "original_text": "SIP-8070 Engine API changes need further alignment before being made mandatory for devnet-8; cell-level DAS deferred",
+      "timestamp": "00:34:35",
+      "type": "other",
+      "sips": [
+        8070
+      ]
+    },
+    {
+      "original_text": "SIP-2780 log cost simplification included in devnet-8 with no objections",
+      "timestamp": "00:44:05",
+      "type": "other",
+      "sips": [
+        2780
+      ]
+    },
+    {
+      "original_text": "SIP-8037 rename 'regular gas' to 'execution gas' included in devnet-8 with no objections",
+      "timestamp": "00:49:49",
+      "type": "other",
+      "sips": [
+        8037
+      ]
+    },
+    {
+      "original_text": "SIP-7997: close both open PRs; existing spec text is correct — no BAL read or contract check at fork boundary",
+      "timestamp": "01:00:10",
+      "type": "other",
+      "sips": [
+        7997
+      ]
+    },
+    {
+      "original_text": "devnet-8 launch date deferred; to be revisited at next ACDT once repricing numbers are available",
+      "timestamp": "00:24:08",
+      "type": "other",
+      "sips": []
+    }
+  ]
+}

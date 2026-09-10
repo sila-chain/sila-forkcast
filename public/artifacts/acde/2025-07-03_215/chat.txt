@@ -59,15 +59,15 @@ Anyone tell Tim we completely changed what was in fork while he was away?
 00:11:01	Roman:	most likely also fork id related
 00:11:29	Tim Beiko:	Replying to "Is it Tim again?"
 
-On a more serious note, the changes should all be reflected here: https://sips.sila.org/SIPS/sip-7600
+On a more serious note, the changes should all be reflected here: https://sips.sila.org/EIPS/sip-7600
 00:11:41	Barnabas:	Maybe easier to list those that did not have issues
 00:11:56	Gabriel Trintinalia | Besu:	Besu was not calculating forkdId correctly. We fixed it
 00:12:05	potuz:	Prysm issue was localized to the fork transition and it's resolved, added Spec tests for them. didn't affect anything after that fork, restarting the nodes fixed it too
 00:13:06	Barnabas:	💯we should test this
-00:13:32	spencer-tb:	Think this was Danno’s proposal: https://sips.sila.org/SIPS/sip-2364
+00:13:32	spencer-tb:	Think this was Danno’s proposal: https://sips.sila.org/EIPS/sip-2364
 00:13:45	Trent:	Carson please stay muted 🙏
 00:13:57	Gabriel Trintinalia | Besu:	eth_config 🙂
-00:14:09	Gabriel Trintinalia | Besu:	https://sips.sila.org/SIPS/sip-7910
+00:14:09	Gabriel Trintinalia | Besu:	https://sips.sila.org/EIPS/sip-7910
 00:14:27	spencer-tb:	Reacted to "https://sips.ethereu..." with ➕
 00:14:35	Tim Beiko:	Reacted to "https://sips.ethereu..." with ➕
 00:14:36	Barnabas:	Reacted to "https://sips.ethereu..." with ➕
@@ -186,7 +186,7 @@ there's something wrong
 00:34:28	draganrakita:	Replying to "Do 48. 256 KiB w/h m..."
 
 Don’t having index does not mean that size is not going to be saved somewhere else.
-00:34:36	Tim Beiko:	https://sips.sila.org/SIPS/sip-7892
+00:34:36	Tim Beiko:	https://sips.sila.org/EIPS/sip-7892
 00:34:38	draganrakita:	Replying to "Do 48. 256 KiB w/h m..."
 
 Index as a separate table.
@@ -347,7 +347,7 @@ In the BPO config
 00:50:07	Barnabas:	in blob schedule
 00:50:08	Tim Beiko:	Replying to "wait where is that s..."
 
-https://sips.sila.org/SIPS/sip-7892#execution-layer-configuration
+https://sips.sila.org/EIPS/sip-7892#execution-layer-configuration
 00:50:11	potuz:	Reacted to "I think it’s the mai..." with 👍
 00:50:28	Ansgar Dietrichs:	Replying to "wait where is that s..."
 
@@ -375,7 +375,7 @@ but generally agree that we should raise it and accept affecting all precompile 
 So qeustion is do we want to reprice it again soon? Otherwise what is the target we want to go?
 00:58:22	Marius:	Replying to "Who would be most af..." 
 
- https://silascan.io/address/0x0000000000000000000000000000000000000005/advanced#internaltx
+ https://etherscan.io/address/0x0000000000000000000000000000000000000005/advanced#internaltx
 00:58:39	Sophia Gold:	gmp is effectively load bearing for a lot of computing. It's so commonly used I don't think it's a big deal for all clients to depend on it
 00:58:54	Łukasz Rozmej:	Reacted to "gmp is effectively l..." with 👍
 00:59:02	Ansgar Dietrichs:	Replying to "tripling in this cas..."
@@ -492,7 +492,7 @@ client diversity always requires at least 2 to hopefully avoid finalizing a bad 
 01:12:24	Francesco:	I can do it 😄
 01:12:31	Carson | STEEL (EELS):	Reacted to "I can do it 😄" with ❤️
 01:12:56	Gabriel Trintinalia | Besu:	which one?
-01:13:02	Tim Beiko:	https://sips.sila.org/SIPS/sip-7951
+01:13:02	Tim Beiko:	https://sips.sila.org/EIPS/sip-7951
 01:13:17	Gabriel Trintinalia | Besu:	I thought we would double the price?
 01:13:55	Ansgar Dietrichs:	if we don’t have more data on this, we should just 2x
 01:14:08	Ansgar Dietrichs:	Replying to "if we don’t have mor..."
@@ -541,14 +541,14 @@ The hash tree one?
 01:17:43	Sophia Gold:	We should make sure there's time to draw in attention from outside just core devs and researchers
 01:17:52	Justin Florentine (Besu):	great idea, i think 2-3 calls per layer feels right. should also do some impromptu breakout rooms
 01:17:54	Barnabé Monnot:	Reacted to "We should make sure ..." with 👍
-01:18:35	nixo:	maybe a good time to mention that Marc & I have been working on https://sila-forkcast.org/upgrade/glamsterdam as a resource to compare across headliners. Would love feedback on things people might find useful
+01:18:35	nixo:	maybe a good time to mention that Marc & I have been working on https://forkcast.org/upgrade/glamsterdam as a resource to compare across headliners. Would love feedback on things people might find useful
 01:18:41	Francesco:	Replying to "We should make sure ..."
 
 Also from core devs and researchers 😅
 01:18:42	potuz:	Replying to "We've been fuzzing g..."
 
 yep, it's used by us, caplin, Lodestar, Teku, Nimbus
-01:18:55	Ameziane Hamlat:	Just to be sure related to ModExp, we’re taking about 3X on top of https://sips.sila.org/SIPS/sip-7883 , correct ?
+01:18:55	Ameziane Hamlat:	Just to be sure related to ModExp, we’re taking about 3X on top of https://sips.sila.org/EIPS/sip-7883 , correct ?
 01:19:00	Ahmad Bitar | Nethermind:	Reacted to maybe a good time to... with "🚀"
 01:19:00	Ansgar Dietrichs:	“these 2 calls” can you clarify, does that include the next call already?
 01:19:01	potuz:	Reacted to "Also from core devs ..." with 😄
@@ -560,22 +560,22 @@ It does not
 01:19:15	Barnabé Monnot:	Reacted to "maybe a good time to..." with 🚀
 01:19:38	Anna Thieser:	Reacted to "maybe a good time to..." with 🚀
 01:19:41	Ansgar Dietrichs:	sounds like a good plan.
-01:20:13	jochem-brouwer:	sila-forkcast... this name is genius 😍
-01:20:24	Mario Vega:	Reacted to "sila-forkcast... this nam..." with ❤️
-01:20:25	Tim Beiko:	Reacted to "sila-forkcast... this nam..." with 🔥
-01:20:27	Parithosh Jayanthi:	Reacted to "sila-forkcast... this nam..." with ❤️
+01:20:13	jochem-brouwer:	forkcast... this name is genius 😍
+01:20:24	Mario Vega:	Reacted to "forkcast... this nam..." with ❤️
+01:20:25	Tim Beiko:	Reacted to "forkcast... this nam..." with 🔥
+01:20:27	Parithosh Jayanthi:	Reacted to "forkcast... this nam..." with ❤️
 01:20:41	Enrico Del Fante (tbenr):	Reacted to "maybe a good time to..." with 🚀
-01:20:46	felix (eest):	Reacted to "sila-forkcast... this n..." with ❤️
-01:20:49	nixo:	Reacted to "sila-forkcast... this nam..." with ❤️
-01:20:54	Ansgar Dietrichs:	Reacted to "sila-forkcast... this nam..." with 🔥
+01:20:46	felix (eest):	Reacted to "forkcast... this n..." with ❤️
+01:20:49	nixo:	Reacted to "forkcast... this nam..." with ❤️
+01:20:54	Ansgar Dietrichs:	Reacted to "forkcast... this nam..." with 🔥
 01:21:14	Som | Erigon:	Replying to "We've been fuzzing g..." 
 
  I fuzzed and didn't find a pre image of a hash doesn't make the hash a good one
-01:21:14	Allan | Offchain Labs:	Reacted to "sila-forkcast... this nam..." with ❤️
-01:21:17	Allan | Offchain Labs:	Reacted to "sila-forkcast... this nam..." with 🔥
-01:21:22	Allan | Offchain Labs:	Reacted to "sila-forkcast... this nam..." with 🎨
+01:21:14	Allan | Offchain Labs:	Reacted to "forkcast... this nam..." with ❤️
+01:21:17	Allan | Offchain Labs:	Reacted to "forkcast... this nam..." with 🔥
+01:21:22	Allan | Offchain Labs:	Reacted to "forkcast... this nam..." with 🎨
 01:21:26	Tim Beiko:	https://github.com/sila-chain/SIPs/pull/9970
-01:21:33	Som | Erigon:	Reacted to sila-forkcast... this nam... with "❤️"
+01:21:33	Som | Erigon:	Reacted to forkcast... this nam... with "❤️"
 01:21:35	Tim Beiko:	https://github.com/sila-chain/SIPs/pull/9970
 01:21:51	Ansgar Dietrichs:	I think it’s fine to not be super strict about general SIP discussion though, they can already be relevant for headliner discussion.
 
@@ -587,7 +587,7 @@ yeah, agreed, but the point remains, that using unaudited crypto libraries acros
 01:22:48	potuz:	Replying to "We've been fuzzing g..."
 
 at any rate, fuzzed and did a differential fuzzing against established libraries does make the hash good
-01:23:06	nixo:	Reacted to "sila-forkcast... this nam..." with 🎨
+01:23:06	nixo:	Reacted to "forkcast... this nam..." with 🎨
 01:23:10	Justin Florentine (Besu):	Glamsterdam PFI deadline was june 20, right?
 01:23:18	Ansgar Dietrichs:	Replying to "Glamsterdam PFI dead..."
 

@@ -156,7 +156,7 @@ yes
 Ah yeah, I think the idea is that with ExecutionProofStatus, we would not upgrade the version
 00:56:14	Francesco Risitano:	Introducing a new version touches pre-existing codepaths and adds complexity because peers would have to use different versions of the existing status type for different peers. I think its cleaner to have things decoupled into a separate rpc @Manu
 01:01:57	Andrea Barisani:	I need to go, thanks for the opportunity of presenting TamaGo. Again email me for any questions, happy to help, I think it would be a very interesting use case for it. Cheers.
-01:01:59	Kevaundray Wedderburn:	We also have been analysing what precompiles we can turn into savm bytecode.
+01:01:59	Kevaundray Wedderburn:	We also have been analysing what precompiles we can turn into evm bytecode.
 
 Currently doing some analysis to see how often the precompiles are being used.
 

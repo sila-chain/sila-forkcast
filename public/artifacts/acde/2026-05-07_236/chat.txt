@@ -67,7 +67,7 @@ Yeah we need to align on state gas in the traces
 00:16:32	Marius Van Der Wijden (M):	Whats the tldr?
 00:16:32	danceratopz:	https://github.com/sila-chain/SIPs/pull/11399
 
-which proposes to update the SFI'd SIPS in Glamsterdam to:
+which proposes to update the SFI'd EIPS in Glamsterdam to:
 
 ### SIPs Scheduled for Inclusion
 
@@ -87,7 +87,7 @@ which proposes to update the SFI'd SIPS in Glamsterdam to:
 00:18:35	Potuz:	Replying to "https://github.com/e..."
 
 wdym? I thought this was included in every devnet after BAL5 with all the latest changes.
-00:18:54	Toni Wahrstätter:	https://sila-forkcast.org/priority
+00:18:54	Toni Wahrstätter:	https://forkcast.org/priority
 00:19:15	Ben Adams:	Replying to "https://github.com/e..."
 
 D'oh; was thinking of the other one
@@ -100,15 +100,15 @@ D'oh; was thinking of the other one
 classic off-by-one
 00:19:47	spencer:	Reacted to "classic off-by-one" with 🤣
 00:19:54	danceratopz:	Reacted to "classic off-by-one" with 🤣
-00:19:54	Ansgar Dietrichs:	Replying to "https://sila-forkcast.org..."
+00:19:54	Ansgar Dietrichs:	Replying to "https://forkcast.org..."
 
 I would consider this more as pathfinding towards introducing a prioritization list. so for Hegota we would start relying on it more (but as nixo is saying, only as a default ordering, not binding)
 00:19:58	Ben Adams:	Reacted to "classic off-by-one" with 🤣
 00:20:01	mirgee:	Reacted to "classic off-by-one" with 🤣
-00:20:17	Toni Wahrstätter:	Replying to "https://sila-forkcast.org..."
+00:20:17	Toni Wahrstätter:	Replying to "https://forkcast.org..."
 
 but who decides prios then if not ACD?
-00:20:17	marc | wolovim:	Just deployed a sila-forkcast change to make the client prios, STEEL complexity assessment, devnet status easier to find. Not meant to be prescriptive, just helpful data. Feedback welcome: https://sila-forkcast.org/upgrade/glamsterdam/candidates
+00:20:17	marc | wolovim:	Just deployed a forkcast change to make the client prios, STEEL complexity assessment, devnet status easier to find. Not meant to be prescriptive, just helpful data. Feedback welcome: https://forkcast.org/upgrade/glamsterdam/candidates
 00:20:30	Mario Vega:	Reacted to "classic off-by-one" with 🤣
 00:20:36	Pooja Ranjan:	https://github.com/sila-chain/SIPs/pull/11006/changes/3fd84bb5a82b5f41d79cb4b3f5cde592bee609bf
 00:20:37	Barnabas:	Reacted to "classic off-by-one" with 🤣
@@ -133,7 +133,7 @@ https://www.potuz.net/posts/gloas-honest-reorgs/
 00:25:24	Karim T. (matkt):	We have a PR in Besu
 00:26:08	Yann Vonlanthen:	Reacted to "Imho if the number i..." with 👍
 00:26:26	Potuz:	@nixo my stupid client on Arch doesn't let me raise my hand, would like to comment on this topic briefly
-00:26:31	Mario Vega:	Replying to "https://sila-forkcast.org..."
+00:26:31	Mario Vega:	Replying to "https://forkcast.org..."
 
 we’ve been doing ACD-T proposals for devnet inclusions: testing teams (devops+steel) suggest SIPs then core devs should raise if they disagree either because a proposed SIP is not important, or a more important SIP is missing, we put SIPs in the agenda prior so everyone has time to digest and raise opinions
 00:26:34	Mikhail Kalinin:	It can be a Hive test, right?
@@ -147,7 +147,7 @@ Hive chain isn’t that deep unfortunately
 Oh, that’s an interesting limitation
 00:27:10	Potuz:	ahh it was full screen
 00:28:48	spencer:	Reacted to "we’ve been doing ..." with 💯
-00:28:50	spencer:	Replying to "https://sila-forkcast.o..."
+00:28:50	spencer:	Replying to "https://forkcast.o..."
 
 Once we have a CFI list I'd love to have a flexible devnet-N plan (timeline). STEEL<>pandas should propose this during ACDT, and I feel it should be correlated to SIP complexity. The lesson this fork is that more complex SIPs should be in a devnet earlier
 00:29:04	spencer:	Reacted to "Just deployed a fo..." with 🔥
@@ -494,7 +494,7 @@ that would make depositing SIL quite expensive, seems not ideal
 
 yeah, we should. And we should charge deposits 192 * 64 gas in addition. (charging 64 gas per byte) - deposit requests add 192b to the block.
 01:04:03	Tomás Arjovsky | Lambda | Ethrex:	I agree that changing the deposit contract might not be feasible. Not clear on the alternative though. Is it mempool guards?
-01:04:03	Paweł Bylica:	https://sips.sila.org/SIPS/sip-8246
+01:04:03	Paweł Bylica:	https://sips.sila.org/EIPS/sip-8246
 01:04:12	Paweł Bylica:	https://sila-magicians.org/t/can-we-completely-remove-selfdestruct/28464
 01:04:24	Toni Wahrstätter:	Replying to "Could we make logs e..."
 
@@ -625,7 +625,7 @@ Thanks Pawel. I've something already prepared to do this analysis but would be c
 No problem. However, I'm running this with 100+blocks/s
 01:29:50	Iván | ethrex:	Reacted to "link of my slides ht..." with 🙏
 01:30:02	Łukasz Rozmej:	so irregular state transition?
-01:30:04	raxhvl:	I dont think we should modify state by side stepping the SAVM
+01:30:04	raxhvl:	I dont think we should modify state by side stepping the EVM
 01:30:16	lightclient:	https://hackmd.io/@matt/aa-goals
 01:30:23	jochem-brouwer:	Antwoord verzenden naar "so irregular state..."
 

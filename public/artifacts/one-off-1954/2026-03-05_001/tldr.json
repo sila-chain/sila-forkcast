@@ -22,7 +22,7 @@
     "technical_design": [
       {
         "timestamp": "00:24:40",
-        "highlight": "Default account could be precompile or SAVM code; open question"
+        "highlight": "Default account could be precompile or EVM code; open question"
       },
       {
         "timestamp": "00:31:43",
@@ -62,7 +62,7 @@
       },
       {
         "timestamp": "00:50:34",
-        "highlight": "Protocol removes signatures entirely; all validation becomes user-defined SAVM computation"
+        "highlight": "Protocol removes signatures entirely; all validation becomes user-defined EVM computation"
       }
     ],
     "adoption_and_ux": [
@@ -83,7 +83,7 @@
   "action_items": [
     {
       "timestamp": "00:23:09",
-      "action": "Finalize default EOA account format (precompile vs SAVM code)",
+      "action": "Finalize default EOA account format (precompile vs EVM code)",
       "owner": "8141 authors and community (GitHub/AA Mafia/ETHRND Discord)"
     },
     {

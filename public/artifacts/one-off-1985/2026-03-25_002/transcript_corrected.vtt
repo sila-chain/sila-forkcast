@@ -130,7 +130,7 @@ frangio: also use… Like, tracing to validate the storage accesses and so on.
 
 33
 00:15:02.900 --> 00:15:16.869
-Felix (Geth): I wouldn't say necessarily tracing, so it's the question of, like, does… either the… this can be done with tracing, or it can be just done by adding some kind of policy to the SAVM that basically signals when one of these rules is met.
+Felix (Geth): I wouldn't say necessarily tracing, so it's the question of, like, does… either the… this can be done with tracing, or it can be just done by adding some kind of policy to the EVM that basically signals when one of these rules is met.
 
 34
 00:15:26.680 --> 00:15:29.629
@@ -190,7 +190,7 @@ Felix (Geth): In the end, to enforce these restrictions, because basically what 
 
 48
 00:17:34.910 --> 00:17:46.599
-Felix (Geth): Ultimately, it's a bit similar to the static call as well. Like, in static call, we have this… this is one way of implementing it, definitely. Like, with static call, there are restrictions on execution, and these restrictions are applied directly in the SAVM.
+Felix (Geth): Ultimately, it's a bit similar to the static call as well. Like, in static call, we have this… this is one way of implementing it, definitely. Like, with static call, there are restrictions on execution, and these restrictions are applied directly in the EVM.
 
 49
 00:17:46.740 --> 00:18:02.650
@@ -390,7 +390,7 @@ vitalik: Yeah, I mean, in terms of, kind of features, like, yeah, like, that kin
 
 98
 00:26:09.240 --> 00:26:19.959
-vitalik: theoretical option to make a precompile for everything, but probably the realistic thing is, like, you just have a piece of SAVM code that's,
+vitalik: theoretical option to make a precompile for everything, but probably the realistic thing is, like, you just have a piece of EVM code that's,
 
 99
 00:26:20.260 --> 00:26:24.590
@@ -398,11 +398,11 @@ vitalik: Makes multiple calls, and, realistically, that's, like.
 
 100
 00:26:24.600 --> 00:26:42.620
-vitalik: 50 SAVM steps, and it's, and it's not that bad, and that's one of the… one of the things that… that you could whitelist. I mean, you know, there's… there's always a boundary of, like, at some point, you know, if you want to start supporting more complex things, then, like.
+vitalik: 50 EVM steps, and it's, and it's not that bad, and that's one of the… one of the things that… that you could whitelist. I mean, you know, there's… there's always a boundary of, like, at some point, you know, if you want to start supporting more complex things, then, like.
 
 101
 00:26:42.830 --> 00:26:51.719
-vitalik: by far the easiest way is to ju… is to just open up the SAVM for it, but, you know, there is, like, there is a flexible space before that.
+vitalik: by far the easiest way is to ju… is to just open up the EVM for it, but, you know, there is, like, there is a flexible space before that.
 
 102
 00:26:52.600 --> 00:26:53.300
@@ -418,7 +418,7 @@ Chris - Base: Broke down, the, like, gas requirements for some quantum types,
 
 105
 00:27:10.860 --> 00:27:13.679
-Chris - Base: basically running in the SAVM versus natively.
+Chris - Base: basically running in the EVM versus natively.
 
 106
 00:27:13.930 --> 00:27:23.599
@@ -514,7 +514,7 @@ vitalik: a transaction type, because you get to support Falcon.
 
 129
 00:30:05.950 --> 00:30:28.899
-vitalik: like, single-key Falcon, just by default, but then you would also be able to support, multi-key Falcon, with, like, basically the same precompile, plus a tiny bit of SAVM code, like, the same multisig. But there's also, like, something, a more ambitious approach, and this is, like, really new information, and,
+vitalik: like, single-key Falcon, just by default, but then you would also be able to support, multi-key Falcon, with, like, basically the same precompile, plus a tiny bit of EVM code, like, the same multisig. But there's also, like, something, a more ambitious approach, and this is, like, really new information, and,
 
 130
 00:30:28.900 --> 00:30:52.779
@@ -570,7 +570,7 @@ Felix (Geth): if we make it… if we… if we were to add a Falcon precompile, t
 
 143
 00:33:14.320 --> 00:33:21.950
-Felix (Geth): Which is these precompiles that add features to the platform that would be impossible or, like, prohibitive to implement directly in SAVM.
+Felix (Geth): Which is these precompiles that add features to the platform that would be impossible or, like, prohibitive to implement directly in EVM.
 
 144
 00:33:22.030 --> 00:33:29.929
@@ -614,7 +614,7 @@ Chris - Base: We get this kind of nice property where people can experiment on t
 
 154
 00:34:47.170 --> 00:34:59.740
-Chris - Base: With contract SAVM logic, and we can also just add a native override without having to, like, trace anything for, you know, specific pieces of validation logic. And that means, like, you know, we…
+Chris - Base: With contract EVM logic, and we can also just add a native override without having to, like, trace anything for, you know, specific pieces of validation logic. And that means, like, you know, we…
 
 155
 00:34:59.880 --> 00:35:03.699
@@ -666,7 +666,7 @@ Felix (Geth): 8130 has…
 
 167
 00:36:20.700 --> 00:36:27.969
-Felix (Geth): also a lot of complexity, which is then all these specific details that can also be resolved in the SAVM.
+Felix (Geth): also a lot of complexity, which is then all these specific details that can also be resolved in the EVM.
 
 168
 00:36:30.150 --> 00:36:33.740
@@ -678,7 +678,7 @@ Chris - Base: I would… it would be great if we could agree on some place that 
 
 170
 00:36:43.990 --> 00:36:50.009
-Chris - Base: it's trying to maintain, you know, portability across the SAVM without, you know.
+Chris - Base: it's trying to maintain, you know, portability across the EVM without, you know.
 
 171
 00:36:50.340 --> 00:36:58.900
@@ -866,7 +866,7 @@ lightclient: But it's basically a matter of getting it to a place between now an
 
 217
 00:45:43.300 --> 00:46:00.309
-lightclient: So, Lucas is saying that things that they, the Nethermind team, dislike about frame transactions is, one, run an SAVM transaction in the pool, complex rules to potentially do it safely, and two, complex rules on special mode to run
+lightclient: So, Lucas is saying that things that they, the Nethermind team, dislike about frame transactions is, one, run an EVM transaction in the pool, complex rules to potentially do it safely, and two, complex rules on special mode to run
 
 218
 00:46:00.610 --> 00:46:07.460
@@ -1030,7 +1030,7 @@ vitalik: how strong the level of, like, comfort or discomfort with, even, like.
 
 258
 00:53:31.690 --> 00:53:43.340
-vitalik: even limited amounts of SAVM validation is, and what kinds of use cases people want, people wants to enable quickly, right? But essentially, we,
+vitalik: even limited amounts of EVM validation is, and what kinds of use cases people want, people wants to enable quickly, right? But essentially, we,
 
 259
 00:53:43.770 --> 00:53:56.019
@@ -1058,11 +1058,11 @@ vitalik: Add up to, you know, like, 95% of, like, current usage or people… ind
 
 265
 00:55:00.120 --> 00:55:11.800
-vitalik: that can be done, and like, the… and there is ways to make FastPass for it, so that, like, for example, SAVM cannot… does not have to be required at all, and… and, so forth.
+vitalik: that can be done, and like, the… and there is ways to make FastPass for it, so that, like, for example, EVM cannot… does not have to be required at all, and… and, so forth.
 
 266
 00:55:28.710 --> 00:55:36.840
-Ben Adams: The SAVM would still, regardless of the mempool, the SAVM would still have to validate all the rules.
+Ben Adams: The EVM would still, regardless of the mempool, the EVM would still have to validate all the rules.
 
 267
 00:55:37.030 --> 00:55:39.469
@@ -1070,11 +1070,11 @@ Ben Adams: One including the transactions and the block.
 
 268
 00:55:42.350 --> 00:55:51.119
-vitalik: The… right, the SAVM would need to run the verify frame, but that's just, but that's an SAVM call. Like, that's,
+vitalik: The… right, the EVM would need to run the verify frame, but that's just, but that's an EVM call. Like, that's,
 
 269
 00:55:51.620 --> 00:55:56.899
-vitalik: No, like, within the SAVM, that, like, that SAVM call is just an SAVM call.
+vitalik: No, like, within the EVM, that, like, that EVM call is just an EVM call.
 
 270
 00:55:59.110 --> 00:55:59.790
@@ -1142,7 +1142,7 @@ vitalik: come to a decision point at some point pretty soon of, basically, are w
 
 286
 00:58:13.420 --> 00:58:25.009
-vitalik: some support for SAVM with some… with, some restrictions, or are we going for… are we going for a whitelist mempool? And, that's, like…
+vitalik: some support for EVM with some… with, some restrictions, or are we going for… are we going for a whitelist mempool? And, that's, like…
 
 287
 00:58:25.260 --> 00:58:27.479

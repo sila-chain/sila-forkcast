@@ -17,7 +17,7 @@ REPORT_CONTENT=$(cat "$REPORT_FILE")
 
 jq -n \
   --arg text "$(printf '```\n%s\n```' "$REPORT_CONTENT")" \
-  '{username: "SilaForkcast Analytics", icon_emoji: ":bar_chart:", text: $text}' \
+  '{username: "Forkcast Analytics", icon_emoji: ":bar_chart:", text: $text}' \
 | curl -sf -o /dev/null -X POST "$MATTERMOST_WEBHOOK_URL" \
   -H "Content-Type: application/json" \
   -d @-

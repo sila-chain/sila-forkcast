@@ -11,9 +11,9 @@
 00:59:15	alan xu:	Where can I see the meeting summary?
 01:01:28	Ladislaus:	Antworten auf "Where can I see the ..."
 
-on sila-forkcast!
+on forkcast!
 
-https://sila-forkcast.org/calls
+https://forkcast.org/calls
 
 --> Breakouts --> PQ Interop
 

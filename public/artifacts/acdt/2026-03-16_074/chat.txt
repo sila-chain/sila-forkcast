@@ -40,7 +40,7 @@ https://hive.ethpandaops.io/ should we add a run for bal-devnet-3 here to track 
 00:22:41	Dragan Rakita:	Reacted to "I’d propose SFI-ing:..." with ➕
 00:23:50	Stefan Starflinger:	Replying to "To add to jochem's q..."
 
-For example: CREATE, CALL-with-value, or precompile calls. Nimbus records different storage/account accesses than geth for these operations. Simple eoatx passes. Only savm-fuzz triggers the divergence.
+For example: CREATE, CALL-with-value, or precompile calls. Nimbus records different storage/account accesses than geth for these operations. Simple eoatx passes. Only evm-fuzz triggers the divergence.
 00:24:49	nixo:	i think if ACDE/C is responsible, we can be a bit more proactive there
 00:25:19	FLCL:	Replying to "Are new tests planne..."
 

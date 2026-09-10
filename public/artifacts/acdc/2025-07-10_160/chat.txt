@@ -264,17 +264,17 @@ Thanks for pointing this out. We didn’t to put complex normal txs devnets this
 
 I currently disagree with the lighthouse glamsterdam post
 00:47:46	stokes:	https://github.com/sila-chain/pm/issues/1598#issuecomment-3055296963
-00:48:39	stokes:	https://sila-forkcast.org/upgrade/glamsterdam#headliner-proposals
+00:48:39	stokes:	https://forkcast.org/upgrade/glamsterdam#headliner-proposals
 00:48:40	Trent:	Can you link?
-00:48:56	Mario Havel:	Reacted to "https://sila-forkcast.o..." with 🔥
+00:48:56	Mario Havel:	Reacted to "https://forkcast.o..." with 🔥
 00:49:11	ethDreamer (Mark):	Replying to "Note lighthouse team..."
 
 https://blog.sigmaprime.io/glamsterdam-headliner.html
-00:49:12	Ansgar Dietrichs:	Replying to "https://sila-forkcast.org..."
+00:49:12	Ansgar Dietrichs:	Replying to "https://forkcast.org..."
 
 for an overview of all of them, scroll up.
 
-or: https://sila-forkcast.org/upgrade/glamsterdam#overview
+or: https://forkcast.org/upgrade/glamsterdam#overview
 00:50:53	Marius van der Wijden:	I don't think we should do aa
 00:50:56	Barnabas:	I think client teams should state their preference
 00:50:58	Ansgar Dietrichs:	we are also not fully certain about single headliner yet, right? some people want to have FOCIL combined with ePBS
@@ -499,7 +499,7 @@ oh great, i didn't get rickrolled
 We should include it
 01:03:07	Orest Tarasiuk (t1):	Reacted to "https://youtu.be/0Wi..." with 😇
 01:03:15	Parithosh Jayanthi:	Reacted to "oh great, i didn't g..." with 😁
-01:03:29	Raúl Kripalani:	there are useful considerations on https://sila-forkcast.org/, but no measurable signal intensity
+01:03:29	Raúl Kripalani:	there are useful considerations on https://forkcast.org/, but no measurable signal intensity
 01:03:36	Barnabas:	next acde? Nothing else to discuss anyways lol
 01:03:40	Raúl Kripalani:	Replying to "how are we factoring..."
 

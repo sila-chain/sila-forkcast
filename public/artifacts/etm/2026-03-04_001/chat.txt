@@ -12,7 +12,9 @@ View Realtime notes here: https://app.fireflies.ai/live/01KJQH7S8WS64CE5FR1ZBASZ
 00:03:34	Justin Florentine (Besu):	https://github.com/sila-chain/SIPs/pull/11376/changes
 00:03:45	Anders Elowsson:	https://github.com/sila-chain/SIPs/pull/11376/
 00:04:49	jochem-brouwer:	To check, SIP-8105 is  being withdrawn and being replaced by this PR to SIPs?
-00:07:02	Łukasz Rozmej:	I could use 5 min pitch of LUCID and another 5 min for its biggest issues and pitfalls ;)I see CL RPC as a definitive nuisance.
+00:07:02	Łukasz Rozmej:	I could use 5 min pitch of LUCID and another 5 min for its biggest issues and pitfalls ;)
+
+I see CL RPC as a definitive nuisance.
 00:07:15	Luis Pinto | Besu:	Reacted to "I could use 5 min pi..." with ➕
 00:07:17	jochem-brouwer:	Heeft gereageerd op "I could use 5 min ..." met ➕
 00:07:20	Łukasz Rozmej:	oh there is an SIP finally? :)
@@ -64,7 +66,8 @@ So it is max 1/8
 In the first SIP
 00:30:51	Łukasz Rozmej:	Replying to "why there is a reser..."
 
-but do I need to pay more than compeating transactions (either private order flow or public mempool?)Like in FOCIL I need to pay
+but do I need to pay more than compeating transactions (either private order flow or public mempool?)
+Like in FOCIL I need to pay
 00:35:34	FLCL:	Thank you!
 00:35:47	Anders Elowsson:	Thanks!
 00:35:57	admin:	Wallets too!

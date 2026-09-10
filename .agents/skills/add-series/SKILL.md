@@ -1,11 +1,11 @@
 ---
 name: add-series
-description: Register a new protocol call series in SilaForkcast. Use when a brand-new series type needs to be added to the codebase (not just syncing new calls in an existing series).
+description: Register a new protocol call series in Forkcast. Use when a brand-new series type needs to be added to the codebase (not just syncing new calls in an existing series).
 ---
 
 ## Add a new protocol call series
 
-This skill walks through registering a new series so its calls appear on SilaForkcast.
+This skill walks through registering a new series so its calls appear on Forkcast.
 
 ### Step 1: Gather info from the user
 

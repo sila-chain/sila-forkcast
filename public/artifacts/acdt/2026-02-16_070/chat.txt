@@ -14,7 +14,7 @@
 00:12:48	Marius van der Wijden:	cool
 00:13:07	Marius van der Wijden:	(github doesn't load for me atm)
 00:14:15	Dustin:	https://www.githubstatus.com/ says "All Systems Operational"
-00:15:03	jochem-brouwer:	It should not be possible to construct a block which violates this constraint (because then you have invalid SAVM execution) given that the formula is correct. So if we make this part of consensus then there should thus be tests of specifically sized BALs with items to test that invalidaton
+00:15:03	jochem-brouwer:	It should not be possible to construct a block which violates this constraint (because then you have invalid EVM execution) given that the formula is correct. So if we make this part of consensus then there should thus be tests of specifically sized BALs with items to test that invalidaton
 00:16:41	Barnabas:	https://github.com/sila-chain/execution-apis/pull/726
 00:20:49	Barnabas:	https://dora.nft-devnet-10.ethpandaops.io
 00:21:20	Barnabas:	try to sync with kurtosis —  network: nft-devnet-10

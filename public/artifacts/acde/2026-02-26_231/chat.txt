@@ -95,7 +95,9 @@ Didn’t know if Jen joined or not 🙂
 haha yes makes sense
 00:31:50	Parithosh Jayanthi:	Reacted to "I also hope I am her..." with 😂
 00:32:23	Barnabas:	since claude 4.6 😂
-00:32:29	Łukasz Rozmej:	Actually I have not-so optimistic AI summary, as soon as I want to do something more exploratory AI fails on its face immediately.It works decent for smaller bugs ect.
+00:32:29	Łukasz Rozmej:	Actually I have not-so optimistic AI summary, as soon as I want to do something more exploratory AI fails on its face immediately.
+
+It works decent for smaller bugs ect.
 00:32:29	Parithosh Jayanthi:	Reacted to "since claude 4.6 😂" with 🔥
 00:32:30	lightclient:	Reacted to "since claude 4.6 😂" with 🔥
 00:32:31	spencer:	Reacted to "since claude 4.6 �..." with 🔥
@@ -332,7 +334,7 @@ to allow such people not on the call today to ask questions as well
 One of the appealing parts for me personally is exactly that it's not entirely this single-purpose SIP which adds complexity for precisely one purpose, but strikes a reasonable design point regarding functionality vs complexity for several Sila roadmap goals at once
 00:53:23	felix (eest):	Reacted to "right, that was my..." with 👍
 00:53:34	Ansgar Dietrichs:	it seems to me like it will likely be a decision between frame txs and no headliner, with an outside chance for LUCID still
-00:55:17	Tamaghna Choudhuri:	https://sips.sila.org/SIPS/sip-7932 
+00:55:17	Tamaghna Choudhuri:	https://sips.sila.org/EIPS/sip-7932 
 Is another way to solve the signature problem while using ssz 
 This design allows for all the ecc sigs with ml-dsa and nl-dsa or even hash based ones
 00:55:54	Dragan Rakita:	Example of simpler solution: https://github.com/sila-chain/SIPs/pull/11355  (Done it today)
@@ -376,10 +378,10 @@ might also be valuable to bring Vitalik on for that, my understanding is he was 
 01:05:14	Danno Ferrin - Tectonic.xyz:	My subject is signature size and long term how it’s going to be addressed
 01:05:38	Łukasz Rozmej:	Reacted to "My subject is signat..." with 👍
 01:06:12	lightclient:	We are working with the clear signing standard and if accepted, frame tx will be incorporated into it. Also this is no different than SIP-7702 allowing wallet developers to choose the smart account for users.
-Clear signing: https://sips.sila.org/SIPS/sip-7730
+Clear signing: https://sips.sila.org/EIPS/sip-7730
 01:06:24	Barnabé Monnot:	Reacted to "We are working with ..." with 👍
 01:07:27	Ahmad Bitar | Nethermind:	Time to enshrine smart account implementation :p
-01:08:29	Danno Ferrin - Tectonic.xyz:	SAVM opcodes cannot handle Post-Quantum Cryptography.  No mattter what extensions are added.  RISC-V is a better solution, precompiles are the best.
+01:08:29	Danno Ferrin - Tectonic.xyz:	EVM opcodes cannot handle Post-Quantum Cryptography.  No mattter what extensions are added.  RISC-V is a better solution, precompiles are the best.
 01:08:37	Łukasz Rozmej:	Replying to "My subject is signat..."
 
 based on https://x.com/yq_acc/status/2026250003577209173  signature sizes grow 51x to 3,3GB/slot(!)

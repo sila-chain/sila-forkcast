@@ -9,6 +9,7 @@
   "createdDate": "2024-11-11",
   "discussionLink": "https://sila-magicians.org/t/sip-7823-set-upper-bounds-for-modexp/21798",
   "reviewer": "bot",
+  "layer": "EL",
   "forkRelationships": [
     {
       "forkName": "Fusaka",
@@ -21,7 +22,7 @@
       ]
     }
   ],
-  "laymanDescription": "This introduces a 8192-bit (1024 byte) limit on each input to the MODEXP cryptographic precompile. MODEXP has been a source of consensus bugs due to unbounded inputs. By setting practical limits that cover all real-world use cases (like RSA verification), this reduces the testing surface area and paves the way for future replacement with more efficient SAVM code.",
+  "laymanDescription": "This introduces a 8192-bit (1024 byte) limit on each input to the MODEXP cryptographic precompile. MODEXP has been a source of consensus bugs due to unbounded inputs. By setting practical limits that cover all real-world use cases (like RSA verification), this reduces the testing surface area and paves the way for future replacement with more efficient EVM code.",
   "northStarAlignment": {
     "scaleL1": {
       "description": "Improves network reliability by preventing consensus bugs and reducing testing complexity for a critical precompile."

@@ -88,7 +88,7 @@
   "decisions": [
     {
       "timestamp": "00:18:10",
-      "decision": "BAL DOS protection constraint enforced outside SAVM at block receipt time"
+      "decision": "BAL DOS protection constraint enforced outside EVM at block receipt time"
     },
     {
       "timestamp": "00:18:55",

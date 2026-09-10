@@ -23,7 +23,7 @@ View Realtime notes here: https://app.fireflies.ai/live/01KB862VH34897W0PDG1ACD1
 00:25:04	Barnabas:	Replying to "receipts are issues ..."
 
 sounds like 80<83 😄
-00:25:05	jochem-brouwer:	https://sips.sila.org/SIPS/sip-7975#rationale
+00:25:05	jochem-brouwer:	https://sips.sila.org/EIPS/sip-7975#rationale
 00:25:25	Kamil Chodoła:	Go to 75 then :D and then sip implementation to unlock 100
 00:26:10	Louis:	Reacted to "Go to 75 then :D and..." with ❤️
 00:26:14	draganrakita:	Reacted to "Go to 75 then :D and..." with ☝️
@@ -74,8 +74,8 @@ https://github.com/sila-chain/execution-apis/pull/710
 
 I think the only open qs for this was whether we want to create invalid blocks with this, but I think we really should not.
 00:37:43	pawan:	Can you link the PR/issue for this?
-00:38:10	Barnabas:	https://sila-forkcast.org/upgrade/glamsterdam#sip-7872
-00:38:16	Mario Vega:	https://sips.sila.org/SIPS/sip-7872
+00:38:10	Barnabas:	https://forkcast.org/upgrade/glamsterdam#sip-7872
+00:38:16	Mario Vega:	https://sips.sila.org/EIPS/sip-7872
 00:38:26	Stefan:	Replying to "This SIP is PFId for..."
 
 does this calculation consider the gas limit on individual txs of 23mil?

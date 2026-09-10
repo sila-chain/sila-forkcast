@@ -270,7 +270,7 @@ Marius van der Wijden: The… the things that are, and I think it is pretty…
 
 68
 00:12:20.320 --> 00:12:23.080
-Marius van der Wijden: It's pretty clean within the SAVM.
+Marius van der Wijden: It's pretty clean within the EVM.
 
 69
 00:12:23.830 --> 00:12:30.780
@@ -278,7 +278,7 @@ Marius van der Wijden: I think the only… the only questions, the only, like, T
 
 70
 00:12:31.220 --> 00:12:40.759
-Marius van der Wijden: when it's kind of outside of the SAVM itself, so the gas accounting between transactions, and with that also the…
+Marius van der Wijden: when it's kind of outside of the EVM itself, so the gas accounting between transactions, and with that also the…
 
 71
 00:12:41.730 --> 00:12:44.909
@@ -302,7 +302,7 @@ Marius van der Wijden: Much more… or much harder to reason about, about, gas, 
 
 76
 00:13:15.640 --> 00:13:27.360
-Marius van der Wijden: like, in the outer layer of the SAVM. So, basically, everything that is not inside of the SAVM, but the user… the stuff that we use to, to…
+Marius van der Wijden: like, in the outer layer of the EVM. So, basically, everything that is not inside of the EVM, but the user… the stuff that we use to, to…
 
 77
 00:13:27.360 --> 00:13:37.830
@@ -630,7 +630,7 @@ Stefan Starflinger: No, I just wanted to say that we should differentiate betwee
 
 158
 00:24:20.510 --> 00:24:30.299
-Stefan Starflinger: We're on a kurtosis network right now with SAVM fuzz. It's pretty easy that most clients run into some issue at the moment.
+Stefan Starflinger: We're on a kurtosis network right now with EVM fuzz. It's pretty easy that most clients run into some issue at the moment.
 
 159
 00:24:30.330 --> 00:24:42.819
@@ -990,7 +990,7 @@ Maria Silva: DevNet with enough time for them to… To… to update.
 
 248
 00:35:59.340 --> 00:36:02.870
-Dragan Rakita: Yeah, after we have that in our SAVM, we can propagate that to…
+Dragan Rakita: Yeah, after we have that in our EVM, we can propagate that to…
 
 249
 00:36:03.010 --> 00:36:07.569

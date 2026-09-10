@@ -4,7 +4,7 @@
     {
       "sha": "fe5cd0aef497f6a5cfe704d2788dd94b6e488936",
       "date": "2024-11-03T00:22:42Z",
-      "message": "(bot 1272989785) moving SIPS/sip-7645.md to stagnant (#8957)",
+      "message": "(bot 1272989785) moving EIPS/sip-7645.md to stagnant (#8957)",
       "author": "sil-bot",
       "prNumber": 8957,
       "patch": "@@ -4,7 +4,7 @@ title: Alias ORIGIN to SENDER\n description: Eliminate ORIGIN tech debt to lay groundwork for account abstraction and close security holes\n author: Cyrus Adkisson (@cyrusadkisson), Eirik Ulversøy (@EirikUlversoy)\n discussions-to: https://sila-magicians.org/t/sip-7645-alias-origin-to-sender/19047\n-status: Draft\n+status: Stagnant\n type: Standards Track\n category: Core\n created: 2024-03-03",

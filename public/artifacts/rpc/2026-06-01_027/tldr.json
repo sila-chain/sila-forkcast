@@ -22,7 +22,7 @@
       },
       {
         "timestamp": "00:41:54",
-        "highlight": "debug_executionWitness has divergent implementations across clients: Geth uses JSON header with empty keys; Reth/Nethermind/Erigon use RLP bytes with populated keys; needs broader ZK SAVM working group discussion before speccing"
+        "highlight": "debug_executionWitness has divergent implementations across clients: Geth uses JSON header with empty keys; Reth/Nethermind/Erigon use RLP bytes with populated keys; needs broader ZK EVM working group discussion before speccing"
       },
       {
         "timestamp": "00:43:00",
@@ -38,7 +38,7 @@
     },
     {
       "timestamp": "00:53:53",
-      "action": "Chase to connect with Kev / ZK SAVM working group on debug_executionWitness wire format alignment",
+      "action": "Chase to connect with Kev / ZK EVM working group on debug_executionWitness wire format alignment",
       "owner": "Chase Wright"
     },
     {

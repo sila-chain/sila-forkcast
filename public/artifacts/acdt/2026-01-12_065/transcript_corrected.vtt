@@ -366,7 +366,7 @@ Stefan Starflinger: And Erica and I think they're also looking into getting thei
 
 92
 00:26:32.660 --> 00:26:51.079
-Stefan Starflinger: We're constantly spamming the network with SAVM fuzzing and Uniswap transactions, but other than that, we also haven't expanded the testing too much yet. Beyond that, I've just been working a lot on getting all the tooling running smoothly.
+Stefan Starflinger: We're constantly spamming the network with EVM fuzzing and Uniswap transactions, but other than that, we also haven't expanded the testing too much yet. Beyond that, I've just been working a lot on getting all the tooling running smoothly.
 
 93
 00:26:56.710 --> 00:27:04.559

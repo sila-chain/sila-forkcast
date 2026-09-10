@@ -595,7 +595,7 @@ how does epbs change the builder market?
 01:12:51	Sam Jernigan:	Reacted to "there is a large des..." with 👍
 01:12:58	Barnabé Monnot:	Replying to "I don't fully buy th..."
 
-discussed this question in bullet point #5 of this section https://Sila Research/t/decoupling-throughput-from-local-building/22004#p-53517-block-production-liveness-7
+discussed this question in bullet point #5 of this section https://ethresear.ch/t/decoupling-throughput-from-local-building/22004#p-53517-block-production-liveness-7
 01:13:14	Toni Wahrstätter:	Replying to "Would be really good..."
 
 you need to stake right? and if I want to compete for a block with 10 SIL mev, I'd need to stake at least 10 SIL?
@@ -616,7 +616,7 @@ The proposal is great for other reasons but I won't say it's scaling, at least n
 01:14:34	Parithosh Jayanthi:	Reacted to "I think it's a nobra..." with ➕
 01:15:04	potuz:	Replying to "btw, @Drew Van der W..."
 
-The only written thing I can find is this old thing where I propose to use staked builders as preconfers. https://Sila Research/t/the-contention-between-preconfs-and-epbs/19770
+The only written thing I can find is this old thing where I propose to use staked builders as preconfers. https://ethresear.ch/t/the-contention-between-preconfs-and-epbs/19770
 01:15:06	Toni Wahrstätter:	Replying to "I don't fully buy th..."
 
 imagine you're forced to include tx of 30m gas but you thought you could always rely on builders and won't ever have to fall-back from mevboost (bc of a bug) and build blocks locally again.
@@ -692,12 +692,12 @@ I think those are the one "officially" proposed on ethmag under #glamsterdam
 01:20:54	soispoke:	Reacted to "I think those are th..." with 👍
 01:20:56	nixo:	Reacted to "I think those are th..." with 👍
 01:21:13	Barnabas:	+1 potuz, by far the biggest problem is always going to be networking. We can always buy a faster CPU/ more ram. But realistically we can’t always buy faster internet.
-01:21:26	Ansgar Dietrichs:	agreed the CL can help with scaling, but that’s still more high level. we already know we want to scale. EL needs to go talk to people about how the SAVM should evolve. Much more direct user interface
+01:21:26	Ansgar Dietrichs:	agreed the CL can help with scaling, but that’s still more high level. we already know we want to scale. EL needs to go talk to people about how the EVM should evolve. Much more direct user interface
 01:21:48	potuz:	that' s my point: and that' s why I want to scale that @Barnabas 
 01:21:53	Barnabas:	Reacted to "that' s my point: an..." with 🎉
 01:22:03	Ansgar Dietrichs:	Replying to "agreed the CL can he..."
 
-also with SAVM equivalence, EL changes affect all SAVM chains, not just L1.
+also with EVM equivalence, EL changes affect all EVM chains, not just L1.
 
 CL changes only affect L1.
 01:22:11	Parithosh Jayanthi:	Reacted to "that' s my point: an..." with 🎉

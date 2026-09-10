@@ -10,7 +10,7 @@ https://hackmd.io/@cU7QMf4cQE-bqaR_VenOTw/HyCKM3531e
 00:09:32	Danno Ferrin | Ipsilon:	Replying to "Transaction receipt ..."
 
 Is this is RPC only, not impacting any on-chain executions?
-00:09:35	Ben Adams:	eth69 drops Bloom and includes block ranges for history https://sips.sila.org/SIPS/sip-7642
+00:09:35	Ben Adams:	eth69 drops Bloom and includes block ranges for history https://sips.sila.org/EIPS/sip-7642
 00:10:01	lightclient:	ah right, it depends on the current nonce of the authorizer
 00:12:48	Mario Vega:	Wouldn’t querying the code of the account be better anyway? Because even if you store the success of a delegation on a particular tx, a subsequent tx could re-delegate
 00:13:02	Ansgar Dietrichs:	could this not be added to clients at a later time? does this require a hard fork?
@@ -22,13 +22,13 @@ I think same. In the end you want to know if the account is delegated correctly,
 
 Doesnt require a hardfork
 00:14:46	Hadrien Croubois (OpenZeppelin):	It feels like the workaround to this proposal, which is using getCode, also requires an archive node to get historical results. The delegation might have change since that Tx
-00:16:14	frangio:	another note here is that the delegation can be inspected in the SAVM so the entrypoint of the transaction can do the confirmation that the delegation was set
+00:16:14	frangio:	another note here is that the delegation can be inspected in the EVM so the entrypoint of the transaction can do the confirmation that the delegation was set
 00:17:24	Roman:	that‘s also a good point
 00:19:02	Trent:	🚢
 00:20:52	lightclient:	Reacted to "another note here is..." with 👍
 00:20:53	Marius:	Lets gooo
-00:21:29	Tim Beiko:	https://sips.sila.org/SIPS/sip-7607
-00:22:43	Tim Beiko:	https://sips.sila.org/SIPS/sip-7823
+00:21:29	Tim Beiko:	https://sips.sila.org/EIPS/sip-7607
+00:22:43	Tim Beiko:	https://sips.sila.org/EIPS/sip-7823
 00:22:45	lightclient:	SIP-7907: Meter Contract Code Size And Increase Limit
 00:22:56	Dankrad Feist:	Should we CFI a target gas limit increase to 100m?
 00:23:06	Carl Beekhuizen:	Reacted to "Should we CFI a targ..." with 👍
@@ -85,9 +85,9 @@ Should we just go through the PFI and reject them?
 
 Easier to just raise things we should CFI
 00:29:38	Pooja Ranjan:	Reacted to "info SIP" with 👍
-00:29:45	Andrew Ashikhmin:	https://sips.sila.org/SIPS/sip-7783
+00:29:45	Andrew Ashikhmin:	https://sips.sila.org/EIPS/sip-7783
 00:29:52	Gajinder Singh:	or the hardware spec SIP can specify the target
-00:30:18	Andrew Ashikhmin:	Or https://sips.sila.org/SIPS/sip-7790
+00:30:18	Andrew Ashikhmin:	Or https://sips.sila.org/EIPS/sip-7790
 00:30:29	Ansgar Dietrichs:	clearly we don’t need to freeze gas limit decision today, right?
 00:30:31	Marius:	Replying to "so quick process q..."
 
@@ -106,7 +106,9 @@ Sure, but this does affect the scope. If we CFI a bunch of SIPs and eat up all o
 Fusaka - 60M
 EOY - 100M
 00:31:25	nixo:	Reacted to "An info ei to commun..." with ➕
-00:31:29	Ben Adams:	Related to gaslimit; don't think we want 100M gas txs?SIP-7825: Transaction Gas Limit Cap https://sips.sila.org/SIPS/sip-7825
+00:31:29	Ben Adams:	Related to gaslimit; don't think we want 100M gas txs?
+
+SIP-7825: Transaction Gas Limit Cap https://sips.sila.org/EIPS/sip-7825
 00:31:30	Tim Beiko:	Yeah, I think an info SIP that says “we’re trying to reach X gas and fill fix the bugs until there"
 00:31:39	Łukasz Rozmej:	Reacted to "Related to gaslimit;..." with 👍
 00:31:41	Francesco:	Reacted to "Related to gaslimit;..." with 👍
@@ -172,7 +174,7 @@ happy to let client teams go first :-)
 
 We could have found this through testing, I would encourage RIP implementers to use EEST (execution-spec-tests) to write the tests, core protocol also benefits from this because if the RIP makes into sila-mainnet, then we already have tests
 00:41:42	Anders Elowsson:	I would like to argue for SIP-7918 instead of SIP-7762. It is a neutral change to fix the fee market
-00:41:49	Tim Beiko:	https://sips.sila.org/SIPS/sip-7907
+00:41:49	Tim Beiko:	https://sips.sila.org/EIPS/sip-7907
 00:42:03	Tim Beiko:	Reacted to "I would like to argu..." with 👍
 00:42:47	Ansgar Dietrichs:	Replying to "I would argue for CF..."
 
@@ -199,7 +201,7 @@ https://sila-magicians.org/t/sip-7918-blob-base-fee-bounded-by-execution-cost/23
 yes it is, because you are doing it in initcode and you can change initcode
 00:45:40	Ansgar Dietrichs:	why don’t we just charge proportional to code size in EOF?
 00:45:41	Kevaundray Wedderburn:	7903 seems problematic for zkEVMs if you can have arbitrary contract sizes
-00:45:46	lightclient:	this is one of the most requested SAVM improvements
+00:45:46	lightclient:	this is one of the most requested EVM improvements
 00:45:50	Ansgar Dietrichs:	Replying to "why don’t we just ch..."
 
 that way we can remove any hard limit
@@ -239,7 +241,7 @@ yes
 00:51:19	FLCL:	may be superficial idea: can code be encoded so length is always dividable by 32 or 1024, so you can store bigger x32/x1024 length
 00:51:27	lightclient:	Reacted to "There’s a code size ..." with 👍
 00:52:19	Charles C:	i'd like to discuss SIP-7923 -- just got merged today (so maybe it's too late for fusaka) but i'd like to get some discussion going around it anyway
-00:52:49	Tim Beiko:	https://sips.sila.org/SIPS/sip-7918
+00:52:49	Tim Beiko:	https://sips.sila.org/EIPS/sip-7918
 00:53:45	Marius:	Replying to "i'd like to discus..."
 
 This and EOF will be very annoying to test together imo. Not against this proposal, but I don'think we should do it in osaka
@@ -255,7 +257,7 @@ This and EOF will be very annoying to test together imo. Not against this propos
 00:54:54	Mario Vega:	Reacted to "My summary: it's als..." with 👍
 00:54:55	Parithosh Jayanthi:	Reacted to "My summary: it's als..." with 👍
 00:55:11	Ahmad Bitar | Nethermind:	Reacted to "My summary: it's als..." with 👍
-00:55:26	Tim Beiko:	This is the original SIP by Max that Ansgar referenced:  https://sips.sila.org/SIPS/sip-7762
+00:55:26	Tim Beiko:	This is the original SIP by Max that Ansgar referenced:  https://sips.sila.org/EIPS/sip-7762
 00:55:42	Charles C:	Reacted to "24k limit was larg..." with 👍
 00:56:05	Marius:	We have a constant floor for min-tip in geth, since there is some cost to distributing, verifying, mining the transactions. So I am not opposed to some sort of minimum floor price
 00:56:44	Gajinder Singh:	Reacted to "My summary: it's als..." with 👍
@@ -309,7 +311,7 @@ My preference is that this is part of the “gaspocalypse” where we do all the
 01:02:59	Marius:	Whats the number?
 01:03:03	Pooja Ranjan:	echo
 01:03:04	Kevaundray Wedderburn:	Reacted to "Hadrien, your audio ..." with 👍
-01:03:07	Tim Beiko:	https://sips.sila.org/SIPS/sip-7819
+01:03:07	Tim Beiko:	https://sips.sila.org/EIPS/sip-7819
 01:03:08	Danno Ferrin | Ipsilon:	Replying to "whats the deadline f..."
 
 when we schedule testnet forks?
@@ -433,7 +435,7 @@ Id rather everyone focus on peerdas/eof in stable devnet-0 before thinking about
 01:06:29	Parithosh Jayanthi:	Replying to "whats the deadline f..."
 
 More than complicated, its just bandwidth to work on another thing
-01:06:30	Lin Oshitani | Nethermind:	I'd like to discuss SIP-7917, we didn't reach a conclusion in the last CL call: https://sips.sila.org/SIPS/sip-7917
+01:06:30	Lin Oshitani | Nethermind:	I'd like to discuss SIP-7917, we didn't reach a conclusion in the last CL call: https://sips.sila.org/EIPS/sip-7917
 01:06:31	lightclient:	Reacted to "small fork" with 🧑‍🎓
 01:06:37	Parithosh Jayanthi:	Replying to "whats the deadline f..."
 
@@ -475,7 +477,7 @@ am i understand that we can get SIPs included by having babies?
 01:10:49	Toni Wahrstätter:	Gas limit Info SIP like the hardware specs
 01:10:52	Mario Vega:	Reacted to "^ by then teams shou..." with ❤️
 01:10:53	ethDreamer (Mark):	Did we already CFI BPO forks on the execution side?
-https://sips.sila.org/SIPS/sip-7892
+https://sips.sila.org/EIPS/sip-7892
 01:11:11	stokes:	Replying to "Did we already CFI B..."
 
 It was CFI’d last call
@@ -597,7 +599,7 @@ They were decided for Pectra
 01:24:11	Ansgar Dietrichs:	Replying to "There isn't any stro..."
 
 well yes, but then grandfathered into Fusaka when we did that split
-01:24:18	Tim Beiko:	https://sips.sila.org/SIPS/sip-7823
+01:24:18	Tim Beiko:	https://sips.sila.org/EIPS/sip-7823
 01:24:31	stokes:	Replying to "Etan not here?"
 
 There wasn’t much interest from last week’s ACDC

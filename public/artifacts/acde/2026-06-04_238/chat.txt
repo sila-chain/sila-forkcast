@@ -39,7 +39,7 @@ max pain, max gain
 00:20:08	Barnabas:	Replying to "if we are going to a..."
 
 ±2w
-00:20:22	CPerezz:	https://github.com/misilva73/savm-gas-repricings/blob/main/reports/sip-8038/runtime_estimation/2026-05-01_2026-05-08_interop/new_gas_proposal.md 
+00:20:22	CPerezz:	https://github.com/misilva73/evm-gas-repricings/blob/main/reports/sip-8038/runtime_estimation/2026-05-01_2026-05-08_interop/new_gas_proposal.md 
 
 Latest numbers from Maria for 8038 here. But we still need to re-take them with the latest optimizations. I’d not include in any glam devnet so far
 00:21:01	Christine Kim:	glamsterdam sip list in case helpful: https://docs.google.com/spreadsheets/d/1ifXjsiFFzQW8s1gl4Gz3kVDKE2pvTMkPslHuE3U7Nqk/edit?usp=sharing
@@ -47,7 +47,7 @@ Latest numbers from Maria for 8038 here. But we still need to re-take them with 
 00:22:58	Toni Wahrstätter:	how big is it on the EL?
 00:23:10	marc | wolovim:	Replying to "glamsterdam sip list..."
 
-+ https://sila-forkcast.org/upgrade/glamsterdam/devnet-inclusion
++ https://forkcast.org/upgrade/glamsterdam/devnet-inclusion
 00:23:28	Potuz:	Also I want to add that we are very very far away from Blobs propagation being an issue
 00:23:30	Potuz:	On sila-mainnet
 00:23:36	Barnabas:	Reacted to "Also I want to add that we are very very far away from Blobs propagation being an issue" with 👍
@@ -104,8 +104,8 @@ https://nerolation.github.io/hegota-sip-presentations/sip-8131_eip-8279.html
 00:51:04	mo (@mmjahanara):	Reacted to "PREACH BROTHER" with 😂
 00:51:30	Josh Davis:	We (PS) will be helping Greg schedule a call
 00:53:57	marc | wolovim:	For the bot, Greg referencing: 
-https://sips.sila.org/SIPS/sip-7979
-https://sips.sila.org/SIPS/sip-8173
+https://sips.sila.org/EIPS/sip-7979
+https://sips.sila.org/EIPS/sip-8173
 00:54:15	jochem-brouwer:	Antwoord verzenden naar "small nit: magic s..."
 
 could you post this on ethmag?
@@ -246,8 +246,8 @@ It's an opt-in flag. If you believe that it's fine with ECDSA you can sit on you
 
 How, if you disable the legacy contract?
 01:16:38	marc | wolovim:	Lightclient referencing:
-https://sips.sila.org/SIPS/sip-7851
-https://sips.sila.org/SIPS/sip-8151
+https://sips.sila.org/EIPS/sip-7851
+https://sips.sila.org/EIPS/sip-8151
 01:16:43	Gary Schulte:	Reacted to "Lightclient referenc..." with 🙏
 01:16:50	Matteo Vicari:	Reacted to "Lightclient referenc..." with 🙏
 01:17:56	CPerezz:	SETCODEFROM would also allow for extremely-cheap deployments for duplicated code that already exists on chain
@@ -342,8 +342,8 @@ yes plus 8037
 01:29:00	Justin Florentine (Besu):	Replying to "Start planning I sta..."
 
 quick schedule more features before the market tanks further i need job security
-01:29:06	Nico C:	https://sips.sila.org/SIPS/sip-7851
-01:29:13	Nico C:	https://sips.sila.org/SIPS/sip-8151
+01:29:06	Nico C:	https://sips.sila.org/EIPS/sip-7851
+01:29:13	Nico C:	https://sips.sila.org/EIPS/sip-8151
 01:29:14	Ahmad Bitar | Nethermind:	Reacted to quick schedule more ... with "😂"
 01:29:49	Ansgar Dietrichs:	I thought for a sec Barnabas was trying to use the opportunity to have Marius not on the call today to reverse the deicision :-)
 01:29:56	Parithosh Jayanthi:	Reacted to "I thought for a sec Barnabas was trying to use the opportunity to have Marius not on the call today to reverse the deicision :-)" with 😂

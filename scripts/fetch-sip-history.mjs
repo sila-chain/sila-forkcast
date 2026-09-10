@@ -118,8 +118,8 @@ async function fetchPatchForCommit(sha, eipNumber, headers) {
   const data = await response.json();
   const eipFile = (data.files || []).find(
     (f) =>
-      f.filename === `SIPS/sip-${eipNumber}.md` ||
-      f.previous_filename === `SIPS/sip-${eipNumber}.md`,
+      f.filename === `EIPS/sip-${eipNumber}.md` ||
+      f.previous_filename === `EIPS/sip-${eipNumber}.md`,
   );
   if (!eipFile) return null;
 
@@ -138,7 +138,7 @@ async function fetchPatchForCommit(sha, eipNumber, headers) {
  */
 async function fetchCommitsForEip(eipNumber, headers, since) {
   const params = new URLSearchParams({
-    path: `SIPS/sip-${eipNumber}.md`,
+    path: `EIPS/sip-${eipNumber}.md`,
     per_page: '100',
   });
   if (since) {
@@ -218,7 +218,7 @@ async function fetchAllOpenEipPrs(eipNumbers, headers) {
     }
     for (const f of files) {
       if (f.status !== 'modified') continue;
-      const match = f.filename.match(/^SIPS\/sip-(\d+)\.md$/);
+      const match = f.filename.match(/^EIPS\/sip-(\d+)\.md$/);
       if (!match) continue;
       const eipId = parseInt(match[1], 10);
       if (!eipSet.has(eipId)) continue;

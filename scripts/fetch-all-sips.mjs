@@ -57,7 +57,7 @@ async function fetchEipTree() {
   const data = await response.json();
 
   return data.tree
-    .filter((item) => /^SIPS\/sip-\d+\.md$/.test(item.path))
+    .filter((item) => /^EIPS\/sip-\d+\.md$/.test(item.path))
     .map((item) => {
       const match = item.path.match(/sip-(\d+)\.md$/);
       return parseInt(match[1], 10);
@@ -65,7 +65,7 @@ async function fetchEipTree() {
 }
 
 async function fetchEipContent(eipNumber) {
-  const url = `https://raw.githubusercontent.com/sila/SIPs/refs/heads/master/SIPS/sip-${eipNumber}.md`;
+  const url = `https://raw.githubusercontent.com/sila/SIPs/refs/heads/master/EIPS/sip-${eipNumber}.md`;
   const response = await fetch(url);
   if (!response.ok) {
     return { error: `HTTP ${response.status}` };

@@ -374,7 +374,7 @@ Jen: Yeah, I just added the… sorry, can you guys hear me? I had also issues wi
 
 94
 00:16:50.800 --> 00:17:10.720
-Jen: That should be the release for Pazaka, which includes a patch. This came in with, like, an SAVM regression, as mentioned before, that was already introduced for preparation for polls. And yeah, we're taking measures to make sure we don't have any further search regressions. I've been talking to the testing team.
+Jen: That should be the release for Pazaka, which includes a patch. This came in with, like, an EVM regression, as mentioned before, that was already introduced for preparation for polls. And yeah, we're taking measures to make sure we don't have any further search regressions. I've been talking to the testing team.
 
 95
 00:17:11.069 --> 00:17:12.640
@@ -718,7 +718,7 @@ spencer-tb: is out of office today, but he'll be back tomorrow, so, there'll be 
 
 180
 00:27:06.950 --> 00:27:16.920
-parithosh: Perfect, thank you. And, the second thing he mentioned was that, so Spammer has a basic SAVM fuzzing scenario in there now.
+parithosh: Perfect, thank you. And, the second thing he mentioned was that, so Spammer has a basic EVM fuzzing scenario in there now.
 
 181
 00:27:17.300 --> 00:27:27.650

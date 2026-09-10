@@ -22,7 +22,7 @@
     "testing_progress": [
       {
         "timestamp": "00:25:19",
-        "highlight": "Kurtosis SAVM fuzzing reveals edge cases; gas discrepancy tracing difficult across clients"
+        "highlight": "Kurtosis EVM fuzzing reveals edge cases; gas discrepancy tracing difficult across clients"
       },
       {
         "timestamp": "00:29:40",

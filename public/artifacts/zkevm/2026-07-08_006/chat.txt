@@ -4,9 +4,9 @@ Read provides AI generated meeting summaries to make meetings more effective and
 
 Type "read stop" to disable, or "opt out" to delete meeting data.
 00:04:47	ignacio:	Waiting some extra minute before starting
-00:06:38	Iván | ethrex:	https://Sila Research/t/a-native-zkevm-scales-bandwidth-not-just-execution/25254
+00:06:38	Iván | ethrex:	https://ethresear.ch/t/a-native-zkevm-scales-bandwidth-not-just-execution/25254
 00:06:49	Ömer:	Reacted to "https://ethresear...." with ❤️
-00:06:51	Ladislaus:	Hat auf "https://Sila Research..." mit ❤️ reagiert
+00:06:51	Ladislaus:	Hat auf "https://ethresear.ch..." mit ❤️ reagiert
 00:11:44	Ömer:	zevm doesn't do any pk verification but it is not failing any of the tests. maybe the test is not able to trigger the correct path?
 00:14:13	Łukasz Rozmej:	where is this hive dashboard?
 00:14:24	Iván | ethrex:	Replying to "where is this hive d..."
@@ -59,7 +59,7 @@ it would be interesting to see how much these numbers change if they include the
 00:42:59	Ladislaus:	Hat auf "Project 5 slide http..." mit 🙏 reagiert
 00:43:35	Chetany Bhardwaj:	Reacted to "Project 5 slide https://docs.google.com/presentation/d/1pK7Mu3AB28CGtjdUSrUOfNUjbCR43A6jJ781rANx94I" with 🙏
 00:45:36	cody:	My slides https://codygunton.github.io/talks-and-writing/2026-07-08-zkevm-breakout/
-00:47:58	cody:	https://github.com/frisitano/savm-sail
+00:47:58	cody:	https://github.com/frisitano/evm-sail
 00:48:16	Chetany Bhardwaj:	Reacted to "My slides https://codygunton.github.io/talks-and-writing/2026-07-08-zkevm-breakout/" with 🙏
 00:49:41	Ladislaus:	Hat auf "My slides https://co..." mit 🙏 reagiert
 00:56:01	Iván | ethrex:	Reacted to "Project 5 slide http..." with 🙏

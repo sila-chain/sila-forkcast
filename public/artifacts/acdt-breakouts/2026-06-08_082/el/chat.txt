@@ -49,7 +49,7 @@ Yes option 2
 10:51:17	 From Toni Wahrstätter : Replying to "i didn't understand ..."
 
 even if it's a no-op, we at least specify it in the genesis file. Draft here:
-https://github.com/nerolation/SIPs/blob/eaee46304d8c46c2c02fad963f7295d10396c6d8/SIPS/sip-8269.md
+https://github.com/nerolation/SIPs/blob/eaee46304d8c46c2c02fad963f7295d10396c6d8/EIPS/sip-8269.md
 10:51:20	 From frangio : Reacted to "The SIP being in t..." with 👍
 10:51:21	 From kevaundray wedderburn : Replying to "i didn't understand mario's point, can someone explain that again?"
 

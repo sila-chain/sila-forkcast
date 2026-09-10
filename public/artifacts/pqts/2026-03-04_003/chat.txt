@@ -10,7 +10,7 @@ Type:
 View Realtime notes here: https://app.fireflies.ai/live/01KJWFJGA8M4F7QC5JHE6XRR6M?ref=live_chat
 00:24:18	Gottfried Herold:	quick question:
 Do what extend do these precompiles utilize hardwiring the prime you work with?
-00:26:20	Stefa:	The way I always envisaged a development like a NumPy precompile would be to support a large set of vectorised — or, more broadly, tensorised — operations. It should be a universal extension to make SIMD programming feasible on the SAVM, and this would feed into a lot of new potential AI-related use cases for Sila. The bigger vision is so much more interesting.
+00:26:20	Stefa:	The way I always envisaged a development like a NumPy precompile would be to support a large set of vectorised — or, more broadly, tensorised — operations. It should be a universal extension to make SIMD programming feasible on the EVM, and this would feed into a lot of new potential AI-related use cases for Sila. The bigger vision is so much more interesting.
 00:27:38	Danno Ferrin - Tectonic.xyz:	How does the precompile plan on addressing the various bit widths of canonical public key and signaure format (3-bit, 4-bit, 10-bit, 14-bit,20-bit) and the huffman-style encoding of falcon signatures?
 00:27:51	Ak:	ML/finance primitives would benefit a lot from numpy precompile
 00:28:29	Stefa:	Replying to "ML/finance primitive..."

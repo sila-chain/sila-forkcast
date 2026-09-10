@@ -454,7 +454,7 @@ jochem-brouwer: well, at least be increased, but could you maybe share these ben
 
 114
 00:18:24.020 --> 00:18:33.739
-jochem-brouwer: to achieve using, like, the SAVM level benchmark. So you can't directly go into the client, you have to make SAVM tests, and then this cache keeps…
+jochem-brouwer: to achieve using, like, the EVM level benchmark. So you can't directly go into the client, you have to make EVM tests, and then this cache keeps…
 
 115
 00:18:34.020 --> 00:18:39.959
@@ -766,7 +766,7 @@ jochem-brouwer: again, the cache. So we just talked about the compute, caches, w
 
 192
 00:28:36.620 --> 00:28:54.329
-jochem-brouwer: And that's not what we want, because we are actually targeting the worst cases here, so we have to take care of these caches. And in the SAVM, we have the cache accounting, so we have cold storage and barn storage, both for the accounts and the storage.
+jochem-brouwer: And that's not what we want, because we are actually targeting the worst cases here, so we have to take care of these caches. And in the EVM, we have the cache accounting, so we have cold storage and barn storage, both for the accounts and the storage.
 
 193
 00:28:54.620 --> 00:29:02.380
@@ -774,7 +774,7 @@ jochem-brouwer: And this is what I wanted to mainly go into, because this is wha
 
 194
 00:29:02.620 --> 00:29:08.049
-jochem-brouwer: And the SAVM cache, this is from ERP2929,
+jochem-brouwer: And the EVM cache, this is from ERP2929,
 
 195
 00:29:08.300 --> 00:29:16.839
@@ -790,7 +790,7 @@ jochem-brouwer: So we get, like, a discount.
 
 198
 00:29:24.860 --> 00:29:29.110
-jochem-brouwer: And this happens on the transaction level. So there's the SAVM cache.
+jochem-brouwer: And this happens on the transaction level. So there's the EVM cache.
 
 199
 00:29:31.450 --> 00:29:35.800
@@ -814,7 +814,7 @@ jochem-brouwer: Before running the benchmark.
 
 204
 00:29:51.570 --> 00:30:06.890
-jochem-brouwer: And the reason for this is that in the accounts, but also in the stores, you have to pay extra if you start creating accounts, so this is one of the reasons from the SAVM. But also, from the clients, we see that in some clients, reading
+jochem-brouwer: And the reason for this is that in the accounts, but also in the stores, you have to pay extra if you start creating accounts, so this is one of the reasons from the EVM. But also, from the clients, we see that in some clients, reading
 
 205
 00:30:07.010 --> 00:30:11.789
@@ -822,7 +822,7 @@ jochem-brouwer: The storage or the accounts, which do not exist is actually the 
 
 206
 00:30:12.200 --> 00:30:24.169
-jochem-brouwer: So we need to have tests for both accounts or storage for which does not exist, and for which do exist, for both for the SAVM constant or the non-SAVM.
+jochem-brouwer: So we need to have tests for both accounts or storage for which does not exist, and for which do exist, for both for the EVM constant or the non-EVM.
 
 207
 00:30:24.290 --> 00:30:33.929
@@ -914,11 +914,11 @@ jochem-brouwer: And, well, as a nice thing, like, for the target contracts, we d
 
 229
 00:33:53.340 --> 00:34:12.420
-jochem-brouwer: old contracts, so we don't have to bloat on BloatNet, like these extra accounts. And the reason that we target the create opcode is because this generates a pattern of contracts, sorry, of addresses into the SAVM, which we can directly,
+jochem-brouwer: old contracts, so we don't have to bloat on BloatNet, like these extra accounts. And the reason that we target the create opcode is because this generates a pattern of contracts, sorry, of addresses into the EVM, which we can directly,
 
 230
 00:34:12.440 --> 00:34:22.199
-jochem-brouwer: generate in the SAVM without, like, a lot of cost, because otherwise we have to hard code the addresses into the SAVM, and this is, like, both complex and,
+jochem-brouwer: generate in the EVM without, like, a lot of cost, because otherwise we have to hard code the addresses into the EVM, and this is, like, both complex and,
 
 231
 00:34:22.530 --> 00:34:42.289
@@ -934,7 +934,7 @@ jochem-brouwer: For the benchmark targets, we have 3 levels of cache, and to als
 
 234
 00:35:00.920 --> 00:35:19.029
-jochem-brouwer: the caching at the THX level, that's where we target the state where it is both warm in the SAVM and it is warm in the cache, so we actually target the storage slots, or the accounts, into the SAVM where we first query these accounts before actually doing the opcodes which we are targeting for this benchmark.
+jochem-brouwer: the caching at the THX level, that's where we target the state where it is both warm in the EVM and it is warm in the cache, so we actually target the storage slots, or the accounts, into the EVM where we first query these accounts before actually doing the opcodes which we are targeting for this benchmark.
 
 235
 00:35:19.200 --> 00:35:28.250
@@ -1134,7 +1134,7 @@ Ameziane Hamlat: was related to blue tin. You said gluten was slow, and I was wo
 
 284
 00:42:04.400 --> 00:42:26.989
-jochem-brouwer: Yes. So, the problem with bloating is, like, it's not really about the network or, like, if you want to, like, stress test the network there. The problem is that we are really being constrained there by the SAVM. So, the bloating speed's essentially, like, you have to go… you have to do, like, a lot of overhead operations all the time.
+jochem-brouwer: Yes. So, the problem with bloating is, like, it's not really about the network or, like, if you want to, like, stress test the network there. The problem is that we are really being constrained there by the EVM. So, the bloating speed's essentially, like, you have to go… you have to do, like, a lot of overhead operations all the time.
 
 285
 00:42:27.020 --> 00:42:41.029

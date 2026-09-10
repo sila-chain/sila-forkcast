@@ -1306,7 +1306,7 @@ Jay || Silence Laboratoriesoratories: There's a pre-compile version as well, but
 
 327
 00:42:14.360 --> 00:42:31.219
-Reno - ZKNOX: So, mainly, the problem is that there are different versions. Here, Jay wanted to be compliant with NIST version, so it used SHAKE. Check is not part of SAVM opcode, so it's really expensive. There are versions where we replace Check by Keccak with its cryptographically…
+Reno - ZKNOX: So, mainly, the problem is that there are different versions. Here, Jay wanted to be compliant with NIST version, so it used SHAKE. Check is not part of EVM opcode, so it's really expensive. There are versions where we replace Check by Keccak with its cryptographically…
 
 328
 00:42:31.820 --> 00:42:40.590
@@ -1318,7 +1318,7 @@ Reno - ZKNOX: And this is mainly why we… we proposed, last year, EIP852 to… 
 
 330
 00:42:55.240 --> 00:42:57.129
-Reno - ZKNOX: in the SAVM, because
+Reno - ZKNOX: in the EVM, because
 
 331
 00:42:57.400 --> 00:43:06.850

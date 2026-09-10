@@ -274,15 +274,15 @@ http..." with ❤️
 00:56:48	nixo:	Replying to "https://sila-mag..."
 
 fyi this author confirmed that he’s listening but can’t attend - so any CTAs for him can be called out
-00:57:59	Antonio Sanso:	https://Sila Research/t/falcon-as-an-sila-transaction-signature-the-good-the-bad-and-the-gnarly/21512/5
-00:58:06	Radek | zkevm:	Reacted to "https://Sila Research..." with 👍
-00:58:17	Antonio Sanso:	https://Sila Research/t/so-you-wanna-post-quantum-sila-transaction-signature/21291
+00:57:59	Antonio Sanso:	https://ethresear.ch/t/falcon-as-an-sila-transaction-signature-the-good-the-bad-and-the-gnarly/21512/5
+00:58:06	Radek | zkevm:	Reacted to "https://ethresear.ch..." with 👍
+00:58:17	Antonio Sanso:	https://ethresear.ch/t/so-you-wanna-post-quantum-sila-transaction-signature/21291
 00:58:27	Danno Ferrin:	No PQ signatures have NIST supported key recovery
 00:58:42	Justin Florentine (Besu):	Reacted to "No PQ signatures hav..." with ➕
-00:58:49	Toni Wahrstätter:	https://sips.sila.org/SIPS/sip-7981 and https://sips.sila.org/SIPS/sip-7976
+00:58:49	Toni Wahrstätter:	https://sips.sila.org/EIPS/sip-7981 and https://sips.sila.org/EIPS/sip-7976
 00:58:50	Gary Schulte:	Reacted to "No PQ signatures hav..." with 👀
 00:58:51	potuz:	you can always have an ECRecover from any signature scheme
-00:58:52	Antonio Sanso:	https://Sila Research/t/the-road-to-post-quantum-sila-transaction-is-paved-with-account-abstraction-aa/21783
+00:58:52	Antonio Sanso:	https://ethresear.ch/t/the-road-to-post-quantum-sila-transaction-is-paved-with-account-abstraction-aa/21783
 00:59:04	Alexey:	if new pq sig is compromised, it might be cool to have a quick way to intro new one
 00:59:14	Antonio Sanso:	Replying to "you can always have ..."
 
@@ -325,7 +325,8 @@ yes, this is my point, we just need to design for that in the sig abstraction me
 01:06:53	Mario Vega:	The intrinsic gas cost calculation seems weird to me in this SIP, do we have to check the state now to determine the intrinsic gas cost now?
 It’s a very minor concern and I’m sure it can be addressed
 01:06:58	Luis Pinto | Besu:	Reacted to "i like 2780 seems li..." with ➕
-01:07:31	Alexey:	2 * WARM_ACCOUNT_ACCESS_COSTyou meant cold?
+01:07:31	Alexey:	2 * WARM_ACCOUNT_ACCESS_COST
+you meant cold?
 01:07:55	Ben Adams:	Replying to "2 * WARM_ACCOUNT_ACC..."
 
 no :)

@@ -218,7 +218,7 @@ Although it’s unlikely that something comes out of this due to the unrealistic
 00:51:16	Karlos Zurutuza:	Reacted to "Clients can do whate..." with 👍
 00:51:18	Ansgar Dietrichs:	so this is just about the CL side, right? so this is unrelated to EOF?
 00:51:48	Chris:	Reacted to "Clients can do wha..." with 👍
-00:52:07	nixo:	https://sips.sila.org/SIPS/sip-7917
+00:52:07	nixo:	https://sips.sila.org/EIPS/sip-7917
 00:52:22	Ladislaus:	Reacted to "https://sips.ethereu..." with 👍
 00:53:49	ethDreamer (Mark):	https://github.com/ethDreamer/lighthouse/compare/unstable..deterministic_proposer_lookahead
 00:54:32	Barnabas Busa:	any reason to do this at epoch transition instead of sometime in the middle of the epoch?  Feel like beacons do already enough computation on epoch transitions.
@@ -268,7 +268,7 @@ Problem I see is that this has been in the works for years and ditching years of
 01:03:26	Ladislaus:	Reacted to "https://hackmd.io/TS..." with 👍
 01:03:33	Gajinder Singh:	I want to propose: SIP-7898: Uncouple execution payload from beacon block to allow CLs to deal with bigger payloads from pumping the gas
 
-https://sips.sila.org/SIPS/sip-7898
+https://sips.sila.org/EIPS/sip-7898
 01:03:34	Enrico Del Fante (tbenr):	Reacted to "https://hackmd.io/TS..." with ❤️
 01:04:01	Anders Elowsson:	SIP-7918 https://sila-magicians.org/t/sip-7918-blob-base-fee-bounded-by-execution-cost/23271
 01:04:17	Justin Drake:	Reacted to "IBRL ? lol" with 😂
@@ -289,7 +289,7 @@ Hehe that’s my angle
 01:07:30	Dustin:	waiting for blobs is a mess
 01:07:36	Dustin:	it took months to sort out
 01:08:01	Dustin:	and I mean, across the ecosystem, it wasn't any one client
-01:08:13	Potuz:	https://github.com/sila-chain/SIPs/blob/master/SIPS/sip-7918.md  
+01:08:13	Potuz:	https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7918.md  
 
 Cause magicians is dead
 01:08:16	ethDreamer (Mark):	This is a massive change. Decoupling the ExecutionPayload from the BeaconBlock was most of the work of implementing SIP-7732
@@ -304,9 +304,9 @@ Yeah, I think it would be ok to do it few slots into the epoch. It's for the nex
 
 Thanks. Actually working from this morning, super snappy
 01:10:13	Lion dapplion:	Agree with Potuz, we have better solutions available
-01:10:32	Lion dapplion:	This one https://Sila Research/t/faster-block-blob-propagation-in-sila/21370
+01:10:32	Lion dapplion:	This one https://ethresear.ch/t/faster-block-blob-propagation-in-sila/21370
 01:11:44	mikeneuder:	@alex could i also talk about 7922 ? just need a few mins
-01:11:49	mikeneuder:	https://Sila Research/t/adding-flexibility-to-ethereums-exit-queue/22061
+01:11:49	mikeneuder:	https://ethresear.ch/t/adding-flexibility-to-ethereums-exit-queue/22061
 01:11:49	stokes:	Replying to "@alex could i also t..."
 
 Yes at the end
@@ -411,15 +411,15 @@ One sec
 01:23:48	ethDreamer (Mark):	Replying to "I want to point out ..."
 
 Or at least that’s my understanding rn
-01:23:53	nixo:	was already posted but reposting cuz it’s far up now: https://Sila Research/t/adding-flexibility-to-ethereums-exit-queue/22061
+01:23:53	nixo:	was already posted but reposting cuz it’s far up now: https://ethresear.ch/t/adding-flexibility-to-ethereums-exit-queue/22061
 01:24:12	Mallesh:	Reacted to was already posted b... with "❤️"
 01:26:10	Danno Ferrin | Ipsilon:	How do we prevent the exits from becoming 16*(M+1) exits in one block, and then M blocks of empty exits, repeated until the exit queue is empty?
 01:26:19	Julia:	Can you share the link to your slides?
-01:26:23	mikeneuder:	https://Sila Research/t/adding-flexibility-to-ethereums-exit-queue/22061
+01:26:23	mikeneuder:	https://ethresear.ch/t/adding-flexibility-to-ethereums-exit-queue/22061
 01:26:34	mikeneuder:	https://hackmd.io/@mikeneuder/eli5-sila-validator-exits
 01:27:14	nixo:	lol
 01:27:30	Ansgar Dietrichs:	danny in the chat 😢
-01:28:07	Julia:	Sorry I just dropped - did you share any other links other than this one https://Sila Research/t/adding-flexibility-to-ethereums-exit-queue/22061 ?
+01:28:07	Julia:	Sorry I just dropped - did you share any other links other than this one https://ethresear.ch/t/adding-flexibility-to-ethereums-exit-queue/22061 ?
 01:28:09	Potuz:	Testing this will be fun
 01:28:53	Josh Davis:	Replying to "Sorry I just dropped..."
 

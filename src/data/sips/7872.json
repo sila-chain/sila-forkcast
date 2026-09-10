@@ -38,7 +38,7 @@
       "description": "No direct UX changes; transaction semantics remain identical. Only block composition may vary by operator settings."
     },
     "appDevs": {
-      "description": "No SAVM or API changes. Apps sending blob transactions behave the same; inclusion depends on local builder caps."
+      "description": "No EVM or API changes. Apps sending blob transactions behave the same; inclusion depends on local builder caps."
     },
     "walletDevs": {
       "description": "No transaction format or signing changes. Wallet functionality unaffected by this configuration-only execution change."

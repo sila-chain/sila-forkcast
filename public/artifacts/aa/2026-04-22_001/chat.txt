@@ -77,7 +77,7 @@ I’d love to hear that it is not btw. Just asking stakeholders
 
 I meant it indirectly. Should’ve been more clear
 00:24:31	CPerezz:	Reacted to "The #1 desired featu..." with 😂
-00:24:35	Agusx1211 (Polygon):	trying to define a list of "features we need" is the wrong approach, it is like trying to code the initial version of the SAVM with the list of all "contract ideas" we will ever need
+00:24:35	Agusx1211 (Polygon):	trying to define a list of "features we need" is the wrong approach, it is like trying to code the initial version of the EVM with the list of all "contract ideas" we will ever need
 00:24:46	Parthasarathy Ramanujam:	Replying to "No one has mentioned..."
 
 Yes, erc20 is used to pay for gas. Not necessarily for sponsorship.
@@ -179,7 +179,7 @@ This is a good explainer too https://blog.lambdaclass.com/sila-signature-schemes
 00:36:02	Derek Chiang | ZeroDev:	Replying to "the idea of a guaran..."
 
 The guarantor doesn’t relay though.  You don’t need any relayer since it’s native AA.  And yes it can be an on-chain construct.  After all, payment is validated through a frame, so it can execute arbitrary logic, including deciding to guarantee based on some on-chain condition
-00:36:21	marc | wolovim:	fredrik speaking to https://sips.sila.org/SIPS/sip-7906
+00:36:21	marc | wolovim:	fredrik speaking to https://sips.sila.org/EIPS/sip-7906
 00:36:32	Ben Adams:	Replying to "How do you propose e..."
 
 7702 and then some of the disabling of EC SIPs that perminately convert to smart contract
@@ -209,12 +209,12 @@ I believe all proposals should consider a migration path and make it as easy as 
 But zooming out a bit, it's good programming practice to support hiding data where possible, in order to make sure it's possible to backwards compatibly upgrade things
 00:39:15	Alex Forshtat:	Replying to "@Fredrik is there a ..."
 
-https://sips.sila.org/SIPS/sip-7906
+https://sips.sila.org/EIPS/sip-7906
 00:39:38	vitalik:	Replying to "BTW side note, but..."
 
 how that occurs in the network <--- you mean p2p layer?
 00:39:43	Agusx1211 (Polygon):	strongly in favor of 7906, it would be awesome for wallets
-00:39:53	Derek Chiang | ZeroDev:	Reacted to "https://sips.sila.org/SIPS/sip-7906" with ❤️
+00:39:53	Derek Chiang | ZeroDev:	Reacted to "https://sips.sila.org/EIPS/sip-7906" with ❤️
 00:40:31	vitalik:	Replying to "BTW side note, but..."
 
 I agree that's a big challenge, I basically think we should address this iteratively, the exact work needed is pretty independent of the exact scheme used to manage accounts onchain
@@ -328,9 +328,9 @@ you have to modify it to work with the AA solution
 00:50:34	prestwich:	Replying to "Adoption has built i..."
 
 ecrecover is deeply embedded in too many economically critical contracts. just identifying them will be a huge task
-00:50:41	Nico C:	Here we propose:  https://sips.sila.org/SIPS/sip-7851 
+00:50:41	Nico C:	Here we propose:  https://sips.sila.org/EIPS/sip-7851 
 Deactivate a Delegated EOA's Key
-https://sips.sila.org/SIPS/sip-8151 
+https://sips.sila.org/EIPS/sip-8151 
 Private Key Deactivation Aware ecRecover
 00:50:48	lightclient:	Replying to "Adoption has built i..."
 
@@ -356,14 +356,14 @@ because we need a way to revoke ECDSA keys for EOAs when those EOAs are being us
 00:54:23	lightclient:	Replying to "Adoption has built i..."
 
 yeah there are several sips with different proposals for this
-00:54:33	Milos:	you can't have native AA without any SAVM usage
+00:54:33	Milos:	you can't have native AA without any EVM usage
 00:54:43	Jeevan:	Replying to "Adoption has built..."
 
 few are the ones nico shared below 
 
-Here we propose: https://sips.sila.org/SIPS/sip-7851
+Here we propose: https://sips.sila.org/EIPS/sip-7851
 Deactivate a Delegated EOA's Key
-https://sips.sila.org/SIPS/sip-8151
+https://sips.sila.org/EIPS/sip-8151
 Private Key Deactivation
 00:54:47	prestwich:	Replying to "Adoption has built i..."
 
@@ -472,7 +472,7 @@ ofc
 01:07:28	Chris - Base:	Thanks all!
 01:07:35	prestwich:	Replying to "i love me some Lampo..."
 
-anything that can be done in SAVM efficiently is allowed (hashes)
+anything that can be done in EVM efficiently is allowed (hashes)
 
 but why would we officially recommend it?
 01:07:39	prestwich:	<3

@@ -4,11 +4,11 @@ import { networkUpgrades, NetworkUpgrade } from '../data/upgrades';
 import { getRecentCalls, isOneOffCall, callTypeNames, protocolCalls, type Call, type CallType } from '../data/calls';
 import { eipsData, eipById } from '../data/sips';
 import { useAnalytics } from '../hooks/useAnalytics';
-import { getProposalPrefix, getLaymanTitle, getInclusionStage } from '../utils/sip';
+import { getProposalPrefix, getLaymanTitle } from '../utils/sip';
+import { getInclusionStageColor } from '../utils/colors';
 import UpgradeCard from './ui/UpgradeCard';
-import { UpgradeStageBadge } from './ui';
 import { StructuredDecisionContent, DecisionTextWithEipLinks } from './call/KeyDecisionsSection';
-import { SIP, KeyDecision } from '../types/sip';
+import { SIP, InclusionStage, KeyDecision } from '../types/sip';
 
 const ACD_TYPES: CallType[] = ['acdc', 'acde', 'acdt'];
 
@@ -17,22 +17,27 @@ interface RecentMeetingDecisions {
   decisions: KeyDecision[];
 }
 
-const latestDatedStatusTimestamp = (sip: SIP): number | null => {
-  let latest: number | null = null;
-
-  for (const fork of sip.forkRelationships) {
-    for (const entry of fork.statusHistory) {
-      if (!entry.date) continue;
-
-      const timestamp = Date.parse(entry.date);
-      if (!Number.isFinite(timestamp)) continue;
-
-      latest = latest === null ? timestamp : Math.max(latest, timestamp);
-    }
-  }
-
-  return latest;
+/** Status values from statusHistory → abbreviation labels for display. */
+const STATUS_ABBREV: Record<string, string> = {
+  Proposed: 'PFI',
+  Considered: 'CFI',
+  Scheduled: 'SFI',
+  Declined: 'DFI',
+  Included: 'Included',
+  Withdrawn: 'Withdrawn',
+  Informational: 'Info',
 };
+
+interface StageTransition {
+  sip: SIP;
+  forkName: string;
+  fromLabel: string | null;
+  fromStage: InclusionStage | null;
+  toLabel: string;
+  toStage: InclusionStage;
+  changeDate: string; // YYYY-MM-DD
+  timestamp: number;
+}
 
 const fetchLatestMeetingDecisions = async (): Promise<RecentMeetingDecisions | null> => {
   const acdCalls = protocolCalls
@@ -66,13 +71,59 @@ const quickLinks: NetworkUpgrade[] = (() => {
   return [previous, current, future].filter((u): u is NetworkUpgrade => u !== undefined);
 })();
 
-const featuredEips: SIP[] = (() => {
-  return eipsData
-    .map((sip) => ({ sip, lastUpdate: latestDatedStatusTimestamp(sip) }))
-    .filter((item): item is { sip: SIP; lastUpdate: number } => item.lastUpdate !== null)
-    .sort((a, b) => b.lastUpdate - a.lastUpdate)
-    .slice(0, 4)
-    .map((item) => item.sip);
+/** Map raw statusHistory status to the full InclusionStage name. */
+const STATUS_TO_STAGE: Record<string, InclusionStage> = {
+  Proposed: 'Proposed for Inclusion',
+  Considered: 'Considered for Inclusion',
+  Scheduled: 'Scheduled for Inclusion',
+  Declined: 'Declined for Inclusion',
+  Included: 'Included',
+  Withdrawn: 'Withdrawn',
+  Informational: 'Informational',
+  Networking: 'Networking',
+};
+
+const recentStageTransitions: StageTransition[] = (() => {
+  const transitions: StageTransition[] = [];
+
+  for (const sip of eipsData) {
+    for (const fork of sip.forkRelationships) {
+      // Find the most recent dated status entry in this fork
+      let latestIdx = -1;
+      let latestTimestamp = -1;
+
+      for (let i = 0; i < fork.statusHistory.length; i++) {
+        const entry = fork.statusHistory[i];
+        if (!entry.date) continue;
+        const ts = Date.parse(entry.date);
+        if (!Number.isFinite(ts)) continue;
+        if (ts > latestTimestamp) {
+          latestTimestamp = ts;
+          latestIdx = i;
+        }
+      }
+
+      if (latestIdx < 0) continue;
+
+      const current = fork.statusHistory[latestIdx];
+      const previous = latestIdx > 0 ? fork.statusHistory[latestIdx - 1] : null;
+
+      transitions.push({
+        sip,
+        forkName: fork.forkName,
+        fromLabel: previous ? (STATUS_ABBREV[previous.status] ?? previous.status) : null,
+        fromStage: previous ? (STATUS_TO_STAGE[previous.status] ?? null) : null,
+        toLabel: STATUS_ABBREV[current.status] ?? current.status,
+        toStage: STATUS_TO_STAGE[current.status] ?? 'Unknown',
+        changeDate: current.date!,
+        timestamp: latestTimestamp,
+      });
+    }
+  }
+
+  // Sort by most recent first, then by SIP id for stability
+  transitions.sort((a, b) => b.timestamp - a.timestamp || a.sip.id - b.sip.id);
+  return transitions.slice(0, 5);
 })();
 
 const HomePage = () => {
@@ -151,11 +202,11 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Featured SIPs Section */}
+        {/* Recent Stage Changes Section */}
         <div className="mt-12">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-medium text-slate-900 dark:text-slate-100">
-              Recently Updated SIPs
+              Recent Stage Changes
             </h2>
             <Link
               to="/sips"
@@ -165,38 +216,46 @@ const HomePage = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {featuredEips.map((sip) => {
-              const upgradeBadges = sip.forkRelationships.map((rel) => ({
-                forkName: rel.forkName,
-                stage: getInclusionStage(sip, rel.forkName),
-              }));
+          <div className="space-y-2">
+            {recentStageTransitions.map(({ sip, forkName, fromLabel, fromStage, toLabel, toStage, changeDate }) => {
+              const dateLabel = new Date(changeDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
               return (
                 <Link
-                  key={sip.id}
+                  key={`${sip.id}-${forkName}`}
                   to={`/sips/${sip.id}`}
-                  className="group flex items-start justify-between gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+                  className="group flex items-center justify-between gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
                 >
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      <span className="text-sm font-mono font-medium text-purple-600 dark:text-purple-400">
-                        {getProposalPrefix(sip)}-{sip.id}
-                      </span>
-                      {upgradeBadges.map(({ forkName, stage }) => (
-                        <UpgradeStageBadge key={forkName} forkName={forkName} stage={stage} />
-                      ))}
-                    </div>
-                    <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1 leading-snug">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="text-sm font-mono font-medium text-purple-600 dark:text-purple-400 flex-shrink-0">
+                      {getProposalPrefix(sip)}-{sip.id}
+                    </span>
+                    <span className="text-sm text-slate-900 dark:text-slate-100 truncate">
                       {getLaymanTitle(sip)}
-                    </h3>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">
-                      {sip.laymanDescription || sip.description}
-                    </p>
+                    </span>
                   </div>
-                  <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <div className="flex items-center gap-1.5 text-xs">
+                      <span className="hidden sm:inline text-slate-500 dark:text-slate-400">{forkName}:</span>
+                      {fromLabel && fromStage && (
+                        <>
+                          <span className={`px-1.5 py-0.5 rounded opacity-50 ${getInclusionStageColor(fromStage)}`}>
+                            {fromLabel}
+                          </span>
+                          <span className="text-slate-400 dark:text-slate-400">→</span>
+                        </>
+                      )}
+                      <span className={`font-medium px-1.5 py-0.5 rounded ${getInclusionStageColor(toStage)}`}>
+                        {toLabel}
+                      </span>
+                    </div>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                      {dateLabel}
+                    </span>
+                    <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </Link>
               );
             })}
@@ -345,20 +404,64 @@ const HomePage = () => {
             </Link>
 
             <Link
-              to="/devnets"
+              to="/cadence"
               className="group flex items-start gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
             >
               <div className="flex-shrink-0 w-9 h-9 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 13.125A1.125 1.125 0 014.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75c0 .621-.504 1.125-1.125 1.125h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
                 </svg>
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">
-                  Devnets
+                  Upgrade Cadence
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400">
-                  Active devnet series and combined inclusion status
+                  Shipping rate and SIP count across upgrades
+                </p>
+              </div>
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+
+            <Link
+              to="/rank"
+              className="group flex items-start gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+            >
+              <div className="flex-shrink-0 w-9 h-9 bg-amber-100 dark:bg-amber-900/40 rounded-lg flex items-center justify-center text-amber-600 dark:text-amber-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">
+                  SIP Rankings
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
+                  Rank and compare SIP proposals for upcoming upgrades
+                </p>
+              </div>
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+
+            <Link
+              to="/champions"
+              className="group flex items-start gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+            >
+              <div className="flex-shrink-0 w-9 h-9 bg-rose-100 dark:bg-rose-900/40 rounded-lg flex items-center justify-center text-rose-600 dark:text-rose-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">
+                  Champions Guide
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
+                  Write and preview the SIP fields Forkcast displays
                 </p>
               </div>
               <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -371,42 +474,49 @@ const HomePage = () => {
         {/* Footer */}
         <div className="mt-16 text-center text-sm text-slate-500 dark:text-slate-400">
           <div className="mb-6">
-            <a
-              href="https://ps.sila.foundation"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleExternalLinkClick('team_website', 'https://ps.sila.foundation')}
-              className="w-16 h-16 mx-auto mb-3 flex items-center justify-center"
-            >
-              <img
-                src="/blobby-gradient-red.svg"
-                alt="Sila Foundation Protocol Support team logo"
-                className="w-16 h-16 hover:invert dark:invert dark:hover:invert-0 transition-all duration-500"
-              />
-            </a>
-            <div className="text-center">
-              <p className="text-sm italic text-slate-500 dark:text-slate-400">
-                Brought to you by
-              </p>
+            <div className="group inline-block">
               <a
-                href="https://ps.sila.foundation"
+                href="https://ethcoordinate.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => handleExternalLinkClick('team_website', 'https://ps.sila.foundation')}
-                className="text-lg font-light text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors duration-200"
+                onClick={() => handleExternalLinkClick('team_website', 'https://ethcoordinate.org')}
+                className="w-16 h-16 mx-auto mb-3 flex items-center justify-center transition-transform duration-[1500ms] ease-out group-hover:rotate-[360deg]"
               >
-                EF Protocol Support
+                <img
+                  src="/ethcoordinate-dark.svg"
+                  alt="EthCoordinate logo"
+                  className="w-16 h-16 dark:hidden"
+                />
+                <img
+                  src="/ethcoordinate-light.svg"
+                  alt="EthCoordinate logo"
+                  className="w-16 h-16 hidden dark:block"
+                />
               </a>
+              <div className="text-center">
+                <p className="text-sm italic text-slate-500 dark:text-slate-400">
+                  Skies watched by
+                </p>
+                <a
+                  href="https://ethcoordinate.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleExternalLinkClick('team_website', 'https://ethcoordinate.org')}
+                  className="text-lg font-light text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors duration-200"
+                >
+                  EthCoordinate
+                </a>
+              </div>
             </div>
           </div>
           <div className="flex items-center justify-center gap-4">
             <a
-              href="https://ps.sila.foundation"
+              href="https://ethcoordinate.org"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => handleExternalLinkClick('team_website', 'https://ps.sila.foundation')}
+              onClick={() => handleExternalLinkClick('team_website', 'https://ethcoordinate.org')}
               className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-200"
-              aria-label="EF Protocol Support website"
+              aria-label="EthCoordinate website"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
@@ -415,10 +525,10 @@ const HomePage = () => {
               </svg>
             </a>
             <a
-              href="https://github.com/sila-chain/sila-forkcast"
+              href="https://github.com/sila-chain/forkcast"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => handleExternalLinkClick('source_code', 'https://github.com/sila-chain/sila-forkcast')}
+              onClick={() => handleExternalLinkClick('source_code', 'https://github.com/sila-chain/forkcast')}
               className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-200"
               aria-label="View source code on GitHub"
             >
@@ -427,12 +537,12 @@ const HomePage = () => {
               </svg>
             </a>
             <a
-              href="https://x.com/EFProtocol"
+              href="https://x.com/ethcoordinate"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => handleExternalLinkClick('twitter', 'https://x.com/EFProtocol')}
+              onClick={() => handleExternalLinkClick('twitter', 'https://x.com/ethcoordinate')}
               className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-200"
-              aria-label="EF Protocol Support on X"
+              aria-label="EthCoordinate on X"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>

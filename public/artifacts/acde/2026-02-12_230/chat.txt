@@ -153,7 +153,7 @@ Reth branch  matt/make-eth70-default  and image should be at ghcr.io/paradigmxyz
 FOCIL is a lot more on CL (but yes also cross layer)
 00:44:44	Justin Florentine (Besu):	Reacted to "FOCIL is a lot more ..." with ➕
 00:45:01	Justin Florentine (Besu):	yes, if you withold your key you still pay full gas, and your transaction is skipped
-00:45:11	Justin Florentine (Besu):	https://Sila Research/t/lucid-encrypted-mempool-with-distributed-payload-propagation/24042
+00:45:11	Justin Florentine (Besu):	https://ethresear.ch/t/lucid-encrypted-mempool-with-distributed-payload-propagation/24042
 00:45:11	lightclient:	what encryption scheme?
 00:45:53	Tomás Arjovsky | Lambda | Ethrex:	Who are the decrypters? What are their incentives? Is there any in-protocol mechanism to prevent them from decrypting the transactions earlier for the builders?
 00:46:09	Mehdi Aouadi:	Reacted to "Who are the decrypte..." with ➕
@@ -188,7 +188,7 @@ Keep Kems offchain, they generally are as impacted as assymetric algos (EC, RSA)
 otherwise, "like this" i would say is no, because lucid depends on focil/ePBS
 00:56:35	Anders Elowsson:	Replying to "Isn’t the decryption..."
 
-Benedikt Wagner has outlined one specification for this off-chain part included in Appendix C: https://Sila Research/t/lucid-encrypted-mempool-with-distributed-payload-propagation/24042#p-58297-appendix-c-kemdem-hybrid-encryption-51
+Benedikt Wagner has outlined one specification for this off-chain part included in Appendix C: https://ethresear.ch/t/lucid-encrypted-mempool-with-distributed-payload-propagation/24042#p-58297-appendix-c-kemdem-hybrid-encryption-51
 00:57:57	lightclient:	https://github.com/lightclient/execution-specs/pull/1
 00:58:18	Mario Vega:	Reacted to "https://github.com/l..." with 🔥
 01:01:04	frangio:	would you use immediates for TXPARAM or is stack ok?

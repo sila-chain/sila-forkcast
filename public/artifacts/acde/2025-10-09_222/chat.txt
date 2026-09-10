@@ -54,7 +54,7 @@ that would simplify a lot of things
 00:17:08	Justin Traglia:	Reacted to "reminder: we plan to..." with 👍🏽
 00:17:16	Justin Florentine (Besu):	Replying to "i proposed an SIP ag..."
 
-https://sips.sila.org/SIPS/sip-7949
+https://sips.sila.org/EIPS/sip-7949
 00:17:34	nixo:	Reacted to "https://sips.ethereu..." with 👀
 00:17:51	nixo:	Reacted to "reminder: we plan to..." with 👍🏽
 00:18:29	Martin | ethrex:	Reacted to "i proposed an SIP ag..." with 🔥
@@ -188,7 +188,7 @@ Barnabus: part of the point is to test large numbers of validators
 00:40:52	felipe:	Reacted to ""BAL-er dev work”" with 🥂
 00:41:24	raxhvl:	Reacted to "Stefan is the newest..." with 🔥
 00:45:18	Guillaume:	8007 is missing 2926
-00:45:54	wolovim:	https://sips.sila.org/SIPS/sip-8007
+00:45:54	wolovim:	https://sips.sila.org/EIPS/sip-8007
 00:47:00	Ansgar Dietrichs:	Replying to "8007 is missing 2926"
 
 ah, do you consider that a reprlcing SIP? I feel like it is more than that, given the tree changes
@@ -211,7 +211,7 @@ Some of the others have not yet, since the numbers are not final yet, but we are
 00:51:37	Stefan Starflinger:	Reacted to "we kinda rock for mo..." with 🔥
 00:51:42	Ben Adams:	Replying to "have you looked into..."
 
-This one seems very heavy https://sips.sila.org/SIPS/sip-8037
+This one seems very heavy https://sips.sila.org/EIPS/sip-8037
 00:52:06	Toni Wahrstätter:	Replying to "have you looked into..." 
 
  For calldata it's a 33% block size reduction for 1.5% of txs affected (of which most were already affected by 7623)
@@ -225,7 +225,7 @@ yeah 8037 is 6-8x’ing everything
 00:55:01	Katya:	Or Discord
 00:55:41	Ameziane Hamlat:	Replying to "have you looked into..."
 
-This SIP https://sips.sila.org/SIPS/sip-7904  looks also heavy. I wonder how this will work with existing gas limit, as it reduces the cost of most of the opcodes.
+This SIP https://sips.sila.org/EIPS/sip-7904  looks also heavy. I wonder how this will work with existing gas limit, as it reduces the cost of most of the opcodes.
 00:56:33	Ansgar Dietrichs:	note on SIP-8037: The pricing is currently based on very conservative assumptions. That’s a good starting point, but I would expect significant pricing adjustments to the SIP before inclusion (e.g. I would favor lesser pricing increases)
 00:56:39	Maria Silva:	Replying to "@Maria Silva how can..."
 
@@ -329,11 +329,11 @@ yes it's orthogonal because any update to the costs is only activated at the sta
 01:12:10	Toni Wahrstätter:	Replying to "Still didn't get it ..." 
 
  I guess we wouldn't need the depth in the BAL as it's not changing during the block. Just thinking out loud..
-01:12:15	jochem-brouwer:	https://sips.sila.org/SIPS/sip-7907
-https://sips.sila.org/SIPS/sip-7903
-https://sips.sila.org/SIPS/sip-5920
-https://sips.sila.org/SIPS/sip-7923
-https://sips.sila.org/SIPS/sip-7791
+01:12:15	jochem-brouwer:	https://sips.sila.org/EIPS/sip-7907
+https://sips.sila.org/EIPS/sip-7903
+https://sips.sila.org/EIPS/sip-5920
+https://sips.sila.org/EIPS/sip-7923
+https://sips.sila.org/EIPS/sip-7791
 01:12:29	nixo:	Reacted to "https://sips.ethereu..." with 🙏
 01:12:32	Marius van der Wijden:	Reacted to "https://sips.sila..." with 🙏
 01:12:34	draganrakita:	Replying to "Wouldn't be able to ..."

@@ -278,7 +278,7 @@ Barnabas: Alright, but then, could maybe Dragon mention what he means under disr
 
 70
 00:13:56.140 --> 00:14:08.329
-Dragan Rakita: Maybe that's true, forget, but for our SAVM, we still need to implement those dynamic changes, and there is additional, like, 4 or 5 additional changes that needed to land on the state gas.
+Dragan Rakita: Maybe that's true, forget, but for our EVM, we still need to implement those dynamic changes, and there is additional, like, 4 or 5 additional changes that needed to land on the state gas.
 
 71
 00:14:09.380 --> 00:14:14.720

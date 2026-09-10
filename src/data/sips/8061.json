@@ -1,7 +1,7 @@
 {
   "id": 8061,
   "title": "SIP-8061: Increase exit and consolidation churn",
-  "status": "Draft",
+  "status": "Review",
   "description": "Increase the exit and consolidation churn and create a separate consolidation churn limit parameter.",
   "author": "Francesco D'Amato (@fradamt), Anders Elowsson (@anderselowsson)",
   "type": "Standards Track",
@@ -18,6 +18,11 @@
           "status": "Considered",
           "call": "acdc/171",
           "date": "2025-12-11"
+        },
+        {
+          "status": "Scheduled",
+          "call": null,
+          "date": "2026-08-04"
         }
       ],
       "champions": [
@@ -63,6 +68,6 @@
   ],
   "tradeoffs": null,
   "requires": [
-    7521
+    7251
   ]
 }

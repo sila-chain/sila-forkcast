@@ -470,7 +470,7 @@ Andrew Ashikhmin: So I heard, if I'm not mistaken. I heard at the interrupt that
 
 118
 00:22:30.220 --> 00:22:43.719
-Andrew Ashikhmin: to produce Zk proofs. So if our strategic direction is Zk, savm, then maybe we should think twice about like increasing the code size limit.
+Andrew Ashikhmin: to produce Zk proofs. So if our strategic direction is Zk, evm, then maybe we should think twice about like increasing the code size limit.
 
 119
 00:22:44.710 --> 00:22:55.330
@@ -2350,7 +2350,7 @@ Etan (Nimbus): It's very difficult to use an Rpc in a trust minimized way. That'
 
 588
 01:32:13.100 --> 01:32:25.179
-Etan (Nimbus): Eip, that solves it like for the balances. And you can also run your own savm against it. But there are some things that just don't work. For example, Sil transfers.
+Etan (Nimbus): Eip, that solves it like for the balances. And you can also run your own evm against it. But there are some things that just don't work. For example, Sil transfers.
 
 589
 01:32:25.410 --> 01:32:45.480
@@ -2398,7 +2398,7 @@ Etan (Nimbus): contract that did not respond well for gas repricing, so they nee
 
 600
 01:35:10.620 --> 01:35:40.500
-Etan (Nimbus): And yeah, pure tries to solve these concerns. The minimal scope is like Schultz log index. That one gives us completeness proofs. It gives us the ability to efficiently search proofs within like one request. Then we also need to log all the internal East transfers. That's like extra information that we extract from the savm, but we don't have to change how the savm works or how it prices things.
+Etan (Nimbus): And yeah, pure tries to solve these concerns. The minimal scope is like Schultz log index. That one gives us completeness proofs. It gives us the ability to efficiently search proofs within like one request. Then we also need to log all the internal East transfers. That's like extra information that we extract from the evm, but we don't have to change how the evm works or how it prices things.
 
 601
 01:35:40.500 --> 01:35:47.299

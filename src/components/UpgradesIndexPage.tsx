@@ -117,7 +117,7 @@ const UpgradesIndexPage: React.FC = () => {
             Network Upgrades
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400">
-            Every Sila network upgrade SilaForkcast tracks — what's currently being scoped, what's live, and the historical record.
+            Every Sila network upgrade Forkcast tracks — what's currently being scoped, what's live, and the historical record.
           </p>
         </div>
 

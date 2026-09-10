@@ -264,7 +264,10 @@ it isn't really that stateful though, you can always default to publishing to p2
 "They work poorly"
 01:21:36	Parithosh Jayanthi:	SIP-8243: # Batching Attestations at Source (github.com/sila-chain/SIPs/pull/11589
 01:21:44	Parithosh Jayanthi:	Reacted to "well we already have a non-zero testing timeline as it is. (The S1-S9 attacks that are currently breaking clients). We can spend time on patching attack scenarios, or we can spend time doing some minor spec massage." with 👍
-01:21:51	Andrew B Coathup:	Mascot needed for Glamsterdam upgrade🐜🦫🐝🦩🐹🐙🐻‍❄️🐩Vote for your favorite on Sil Magicianshttps://sila-magicians.org/t/mascot-needed-for-glamsterdam-upgrade/26008
+01:21:51	Andrew B Coathup:	Mascot needed for Glamsterdam upgrade
+🐜🦫🐝🦩🐹🐙🐻‍❄️🐩
+Vote for your favorite on Sil Magicians
+https://sila-magicians.org/t/mascot-needed-for-glamsterdam-upgrade/26008
 01:22:23	Parithosh Jayanthi:	Replying to "I think this is real..."
 
 Yes that is fair, if we do go down this path we should consider splitting the fork + shipping the new contract + ssz as a CL fork after. BAL + repricing can be done earlier.

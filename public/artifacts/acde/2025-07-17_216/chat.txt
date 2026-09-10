@@ -231,7 +231,7 @@ Notably: "implemented" means "has been tested" insofar as whether CLs can rely o
 00:21:47	Marius van der Wijden:	Replying to "i think 50% increa..."
 
 Yeah thats what worries me
-00:21:51	Ansgar Dietrichs:	https://sips.sila.org/SIPS/sip-7954
+00:21:51	Ansgar Dietrichs:	https://sips.sila.org/EIPS/sip-7954
 00:21:54	Ben Adams:	32kB would be +1/3
 00:22:18	Roman:	Reacted to "https://sips.ethereu..." with 👍
 00:22:19	Mikhail Kalinin:	Replying to "7907 and getblobsv3"
@@ -330,7 +330,7 @@ L3s
 00:27:04	Charles (vyper):	Reacted to "Its implemented in..." with 👍
 00:27:05	donnoh | L2BEAT:	Reacted to "L3s" with 🤔
 00:27:18	Parithosh Jayanthi:	Reacted to "Its implemented in a..." with 👍
-00:27:19	Trent:	SAVM L2s differentiating is unlikely
+00:27:19	Trent:	EVM L2s differentiating is unlikely
 00:27:28	draganrakita:	It becomes maintenance problem
 00:27:28	Mikhail Kalinin:	yeah, that was my original point on not introducing v3. I am fine either way. The fact that we are debating on this for two weeks already makes me inclined towards v2 with no partial responses and without v3. v3 can be introduced once CL is ready to consume it
 00:27:40	Potuz:	but that' s my point
@@ -338,7 +338,7 @@ L3s
 00:27:44	Derek Lee:	Replying to "We already annoucned..."
 
 Multidimensional gas is one of them that we are already taking steps to implement
-00:27:46	donnoh | L2BEAT:	Reacted to "SAVM L2s differentiat..." with 👍
+00:27:46	donnoh | L2BEAT:	Reacted to "EVM L2s differentiat..." with 👍
 00:27:48	Marius van der Wijden:	Simple code size increase would be possible on L2s though imo
 00:27:52	Dustin:	Reacted to "yeah, that was my ..." with 🙏
 00:27:58	Potuz:	have 7907 without increases and then L2 can simply change the limit in their code
@@ -650,7 +650,7 @@ Again, testnets dying is not good
 00:45:04	Dustin:	Replying to "Re: getBlobV3, Man..."
 
 Yes, discussed earlier in this call, agree
-00:45:05	Mario Vega:	PSA that we have  eth_config  (https://sips.sila.org/SIPS/sip-7910) and tests for it now, please reach out to the R&D server for instructions on how to run them: https://discord.com/channels/595666850260713488/1392648788371570838
+00:45:05	Mario Vega:	PSA that we have  eth_config  (https://sips.sila.org/EIPS/sip-7910) and tests for it now, please reach out to the R&D server for instructions on how to run them: https://discord.com/channels/595666850260713488/1392648788371570838
 00:45:10	Parithosh Jayanthi:	Reacted to "Yes, discussed earli..." with 👍🏽
 00:45:17	Potuz:	Reacted to "Yes, discussed earli..." with 👍🏽
 00:46:10	terence:	Replying to "Re: getBlobV3, Manu ..."
@@ -824,7 +824,9 @@ Nope, lets focus on fusaka
 00:57:37	pawan:	Reacted to "how important is exa..." with 👍
 00:57:41	Łukasz Rozmej:	Replying to "Would we be in a pla..."
 
-so depends:for snap sync, yes we will request them, and at some point of MGas/s there are EDGE cases where BAL's will be life-saving, but this windows is very short (128-192 blocks)For archive processing, BAL's will speed up things for just processing, but with decent hardware shouldn't be necessary
+so depends:
+for snap sync, yes we will request them, and at some point of MGas/s there are EDGE cases where BAL's will be life-saving, but this windows is very short (128-192 blocks)
+For archive processing, BAL's will speed up things for just processing, but with decent hardware shouldn't be necessary
 00:57:46	thomasthiery:	What makes the difference between a headliner and not a headliner?
 00:57:46	Tim Beiko:	Replying to "how important is exa..."
 
@@ -863,7 +865,7 @@ There's no clear distinction yet
 00:59:18	Som - Erigon:	Reacted to "I propose to renam..." with 🎱
 00:59:28	thomasthiery:	Replying to "What makes the diffe..."
 
-Right that was my feeling as well. If it’s more about signaling candidates on ethmagicians then I don’t understand why it couldn’t be repurposed as vanilla SIPS
+Right that was my feeling as well. If it’s more about signaling candidates on ethmagicians then I don’t understand why it couldn’t be repurposed as vanilla EIPS
 00:59:33	Ansgar Dietrichs:	agree with Ben, BALs are small if you just talk spec compliance. but they are much heavier to fully utilize them for higher performance
 00:59:35	Roman:	Replying to "BALs aren't big from..."
 
@@ -903,7 +905,7 @@ What should we call it?
 
 let me ask claude
 01:01:24	Ansgar Dietrichs:	is repricing a “headliner” though?
-01:01:53	Wei Han Ng:	https://sips.sila.org/SIPS/sip-2926
+01:01:53	Wei Han Ng:	https://sips.sila.org/EIPS/sip-2926
 01:01:57	Ben Adams:	Replying to "is repricing a “head..."
 
 Is major as every single test would need to change?
@@ -1026,7 +1028,8 @@ might even defect to Teku to make this happen
 01:07:04	Lion dapplion:	In essence, take SIP-7732 and delete all the fork-choice changes, the bid market and the builder role
 01:07:05	Łukasz Rozmej:	Replying to "ePBS = "Sila fai..."
 
-giving people more time to propagate the block is failure of decentralization?I don't get it...
+giving people more time to propagate the block is failure of decentralization?
+I don't get it...
 01:07:06	stokes:	Replying to "ePBS+FOCIL+BAL is fi..."
 
 Yeah, I think epbs and focil would be a lot to do in one fork
@@ -1038,7 +1041,9 @@ right, I think.. FOCIL + BAL is fine. FOCIL + EPBS is what needs debate
 ePBS is a specific (very good!) opinionated version of slot restructuring plus delayed execution. main benefit is significant scaling, more slot time available for propagation + execution.
 
 implications around decentralization are mostly remnants of past discussions imo, very little real impact
-01:07:09	Ben Adams:	EL headliner, CL headliner and EL+CL headliner:)
+01:07:09	Ben Adams:	EL headliner, CL headliner and EL+CL headliner
+
+:)
 01:07:12	stokes:	Replying to "ePBS+FOCIL+BAL is fi..."
 
 Just in terms of scope
@@ -1562,7 +1567,7 @@ But the blocks become 40% bigger, if you scale it 10x, it's a lot!
 01:29:49	Justin Florentine (Besu):	idk, first i'm hearing of it
 01:29:52	Justin Florentine (Besu):	link?
 01:30:00	Barnabas:	Reacted to "idk, first i'm heari..." with 😂
-01:30:01	Ben Adams:	https://sips.sila.org/SIPS/sip-7903
+01:30:01	Ben Adams:	https://sips.sila.org/EIPS/sip-7903
 01:30:04	stokes:	Changing scope at all at this point injects uncertainty
 01:30:05	Barnabas:	Replying to "idk, first i'm heari..."
 

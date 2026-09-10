@@ -1526,7 +1526,7 @@ Josh | OP Labs: Excellent, thank you. Is this related to the, benchmarker tool t
 
 382
 00:53:59.590 --> 00:54:14.140
-jochem-brouwer: Yes, yeah, exactly. Because it's, like, it's generic SAVM opcodes benchmarks, and also an effort to run this on top of state, so also benchmarking the state-related opcodes, so on top of
+jochem-brouwer: Yes, yeah, exactly. Because it's, like, it's generic EVM opcodes benchmarks, and also an effort to run this on top of state, so also benchmarking the state-related opcodes, so on top of
 
 383
 00:54:14.280 --> 00:54:15.260

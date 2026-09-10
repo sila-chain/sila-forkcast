@@ -2,7 +2,7 @@
   "id": 2015,
   "title": "SIP-2015: wallet_updateEthereumChain RPC Method",
   "status": "Stagnant",
-  "description": "Adds an RPC method to switch between SAVM-compatible chains",
+  "description": "Adds an RPC method to switch between EVM-compatible chains",
   "author": "Pedro Gomes (@pedrouid), Erik Marks (@rekmarks), Pandapip1 (@Pandapip1)",
   "type": "Standards Track",
   "category": "Interface",

@@ -8,7 +8,7 @@
 00:11:14	Maria Silva:	https://github.com/sila-chain/SIPs/pull/11706
 00:12:09	Dragan Rakita:	Makes sense, but that PR needs a update from pseudo code from discord
 00:12:10	Maria Silva:	https://github.com/sila-chain/SIPs/pull/11715
-00:16:13	Maria Silva:	https://github.com/misilva73/savm-gas-repricings/blob/main/reports/runtime_estimation_update_2026-05-26.md
+00:16:13	Maria Silva:	https://github.com/misilva73/evm-gas-repricings/blob/main/reports/runtime_estimation_update_2026-05-26.md
 00:19:02	Stefan Starflinger:	We have AOT runs for besu now
 00:19:15	Stefan Starflinger:	updating this with thier newest image atm
 00:19:25	Maria Silva:	Reacted to "updating this with t..." with 👍

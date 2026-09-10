@@ -2,6 +2,15 @@
   "eipId": 8205,
   "commits": [
     {
+      "sha": "26eb9245919439fad389fc6802a34f9589aa1929",
+      "date": "2026-08-19T20:23:21Z",
+      "message": "Update SIP-8205: adapt to the latest Gloas specification",
+      "author": "avsetsin",
+      "prNumber": null,
+      "additions": 192,
+      "deletions": 162
+    },
+    {
       "sha": "dcf80d9dd8b85a8c1bf1869f3a50e7cb4d10787d",
       "date": "2026-04-15T08:14:37Z",
       "message": "Add SIP: Withdrawal credentials preregistration",

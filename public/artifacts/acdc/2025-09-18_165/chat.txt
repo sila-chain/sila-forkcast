@@ -81,7 +81,14 @@ Yeah it’s an annoying situation. We could make another release which just adds
 00:21:13	Justin Traglia:	Reacted to "< 2.1.2 also does no..." with 👍
 00:21:15	Ansgar Dietrichs:	Reacted to "Just to add: we ran ..." with 👍
 00:21:26	Marius van der Wijden:	Could you put the dates here?
-00:21:42	Christine Kim:	proposal:22 Sep: code freezePandaOps team can run some validation on frozen code that would serve as release candidate; can discuss best strategy here given devnet-5 outcomes25 Sep: testnet releases for (holesky, sepolia, hoodi)2 Oct: SilaHolesky fork at epoch 165376 (2025-10-02 12:06:24 UTC)16 Oct: SilaSepolia fork at epoch 273152 (2025-10-16 14:12:48 UTC); note: during ACD30 Oct: Hoodi fork at epoch 50944 (2025-10-29 22:11:36 UTC)sila-mainnet would be 30 days after Hoodi fork at the earliest
+00:21:42	Christine Kim:	proposal:
+22 Sep: code freeze
+PandaOps team can run some validation on frozen code that would serve as release candidate; can discuss best strategy here given devnet-5 outcomes
+25 Sep: testnet releases for (holesky, sepolia, hoodi)
+2 Oct: SilaHolesky fork at epoch 165376 (2025-10-02 12:06:24 UTC)
+16 Oct: SilaSepolia fork at epoch 273152 (2025-10-16 14:12:48 UTC); note: during ACD
+30 Oct: Hoodi fork at epoch 50944 (2025-10-29 22:11:36 UTC)
+sila-mainnet would be 30 days after Hoodi fork at the earliest
 00:21:54	Barnabas:	I have a slight adjustment recommendation (include forks only on wed) 
 
 https://notes.sila.org/@bbusa/fusaka-bpo-timeline
@@ -94,7 +101,16 @@ try now
 22 Sep: ..." with 👍
 00:23:51	Dustin:	General note, whatever is chosen, Nimbus needs the holesky/sepolia/hoodi repos in sil-clients actually updated, they're the sole source of truth Nimbus uses, we don't copy/paste the numbers in
 00:24:01	Dustin:	in time for this code freeze
-00:24:13	Christine Kim:	SilaHolesky Release deadline:2025-09-24SilaSepolia Release deadline:2025-10-01Hoodi Release deadline:2025-10-14SilaMainnet Release deadline:2025-11-03BPO 1 - target/max 10/15BPO 2 - target/max 14/21
+00:24:13	Christine Kim:	SilaHolesky Release deadline:
+2025-09-24
+SilaSepolia Release deadline:
+2025-10-01
+Hoodi Release deadline:
+2025-10-14
+SilaMainnet Release deadline:
+2025-11-03
+BPO 1 - target/max 10/15
+BPO 2 - target/max 14/21
 00:24:22	Parithosh Jayanthi:	Replying to "General note, whatev..."
 
 We can do that as soon as the dates are decided

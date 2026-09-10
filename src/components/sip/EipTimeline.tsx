@@ -66,6 +66,10 @@ const statusColors: Record<string, { dot: string; text: string }> = {
     dot: 'bg-slate-400',
     text: 'text-slate-600 dark:text-slate-400',
   },
+  Networking: {
+    dot: 'bg-emerald-500',
+    text: 'text-emerald-700 dark:text-emerald-400',
+  },
   created: {
     dot: 'bg-indigo-500',
     text: 'text-indigo-700 dark:text-indigo-400',
@@ -79,6 +83,7 @@ const statusLabels: Record<string, string> = {
   Declined: 'Declined',
   Included: 'Included',
   Withdrawn: 'Withdrawn',
+  Networking: 'Scheduled for Inclusion (Networking)',
 };
 
 function formatDate(dateString: string): string {
@@ -197,13 +202,13 @@ export const EipTimeline: React.FC<EipTimelineProps> = ({ sip }) => {
               return (
                 <div key={group.forkName} className="relative flex gap-2.5 sm:gap-3">
                   {/* Main timeline dot and line */}
-                  <div className="relative w-2.5 shrink-0 flex flex-col items-center pt-1">
+                  <div className="relative w-2.5 shrink-0 flex flex-col items-center pt-1.5">
                     <div className="w-2.5 h-2.5 rounded-full shrink-0 bg-slate-400 dark:bg-slate-500" />
                     {!isLastNode && (
-                      <div className="w-0.5 flex-1 bg-slate-200 dark:bg-slate-700 mb-[-4px]" />
+                      <div className="w-0.5 flex-1 bg-slate-200 dark:bg-slate-700 mb-[-6px]" />
                     )}
                     {/* Horizontal line to fork badge */}
-                    <div className="absolute left-2.5 top-[9px] w-2 h-0.5 bg-slate-200 dark:bg-slate-700" />
+                    <div className="absolute left-2.5 top-[11px] w-2.5 sm:w-3 h-0.5 bg-slate-200 dark:bg-slate-700" />
                   </div>
 
                   {/* Content */}
@@ -239,6 +244,9 @@ export const EipTimeline: React.FC<EipTimelineProps> = ({ sip }) => {
                     {/* Sub-items with dot-and-line */}
                     {allItems.length > 0 && (
                       <div className="mt-1.5 ml-2 relative">
+                        {/* Connector from fork badge down to the first sub-item dot.
+                            Hidden on mobile, where champions wrap between the two. */}
+                        <div className="hidden sm:block absolute left-[3px] top-[-6px] h-2.5 w-0.5 bg-slate-200 dark:bg-slate-700" />
                         {allItems.map((item, idx) => {
                           const isLastChild = idx === allItems.length - 1;
 
@@ -253,7 +261,7 @@ export const EipTimeline: React.FC<EipTimelineProps> = ({ sip }) => {
                                     <div className="absolute left-[3px] top-2 bottom-[-18px] w-0.5 bg-slate-200 dark:bg-slate-700" />
                                   )}
                                 </div>
-                                <div className="min-w-0 flex-1 leading-tight">
+                                <div className="min-w-0 flex-1 text-xs leading-tight">
                                   <span className={`text-xs ${entryColors.text}`}>
                                     {statusLabels[entry.status]}
                                   </span>
@@ -315,7 +323,7 @@ export const EipTimeline: React.FC<EipTimelineProps> = ({ sip }) => {
                                     <div className="absolute left-[3px] top-2 bottom-[-18px] w-0.5 bg-slate-200 dark:bg-slate-700" />
                                   )}
                                 </div>
-                                <div className="min-w-0 flex-1 leading-tight">
+                                <div className="min-w-0 flex-1 text-xs leading-tight">
                                   <span className="text-xs text-slate-500 dark:text-slate-400">
                                     {label}
                                   </span>
@@ -395,7 +403,7 @@ export const EipTimeline: React.FC<EipTimelineProps> = ({ sip }) => {
             {/* SIP Created node */}
             {hasCreatedDate && (
               <div className="relative flex gap-2.5 sm:gap-3">
-                <div className="relative w-2.5 shrink-0 flex flex-col items-center pt-1">
+                <div className="relative w-2.5 shrink-0 flex flex-col items-center pt-1.5">
                   <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${statusColors.created.dot}`} />
                 </div>
                 <div className="min-w-0 flex-1">

@@ -1070,7 +1070,7 @@ Maria Silva: Okay, so I will just give a quick overview on the repricing ZIP, so
 
 289
 00:43:07.260 --> 00:43:19.229
-Maria Silva: So the… the first point is, like, we know that SAVM operations don't have harmonized costs at the moment. So, for instance, on the compute side, we have operations that take
+Maria Silva: So the… the first point is, like, we know that EVM operations don't have harmonized costs at the moment. So, for instance, on the compute side, we have operations that take
 
 290
 00:43:19.340 --> 00:43:25.930
@@ -1790,7 +1790,7 @@ Charles: But in general, I think that having,
 
 469
 01:14:12.190 --> 01:14:16.450
-Charles: page-based memory is… is good and important for the SAVM.
+Charles: page-based memory is… is good and important for the EVM.
 
 470
 01:14:18.580 --> 01:14:26.459

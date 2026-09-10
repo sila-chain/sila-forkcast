@@ -43,7 +43,7 @@ Is there an SIP?
 00:26:58	Tim Beiko:	For repricings
 00:27:02	Tim Beiko:	Like we had for EOF
 00:27:13	Toni Wahrstätter:	I had this one too:
-https://sips.sila.org/SIPS/sip-7981
+https://sips.sila.org/EIPS/sip-7981
 00:29:04	Mario Vega:	Replying to "Can you quickly talk..."
 
 For SIP-7823?

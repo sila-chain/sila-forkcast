@@ -1,49 +1,76 @@
 {
   "series": "ACDT",
-  "generated": "2026-07-09",
+  "generated": "2026-09-03",
   "lookback_calls": [
-    "ACDT #82",
-    "ACDT #83",
-    "ACDT #84",
-    "ACDT #85",
-    "ACDT #86"
+    "ACDT #90",
+    "ACDT #91",
+    "ACDT #92",
+    "ACDT #93",
+    "ACDT #94"
   ],
   "deferred": [
     {
-      "topic": "SIP-7688 (stable containers) inclusion in Glamsterdam",
-      "deferred_in": "ACDT #82",
-      "deferred_date": "2026-06-08",
-      "expected_revisit": "after EPBS devnet stable for at least a weekend; targeting devnet-8",
-      "revisited": true,
-      "revisited_in": "ACDT #84 and ACDT #85",
-      "outcome": "Decision made in ACDT #85 to include SIP-7688 in glamsterdam-devnet-7; CL teams (Lodestar, Lighthouse, Nimbus) ready, Teku needs ~2 weeks"
-    },
-    {
-      "topic": "SIP-7688 inclusion decision for devnet-7",
-      "deferred_in": "ACDT #84",
-      "deferred_date": "2026-06-22",
-      "expected_revisit": "ACDC after seeing devnet-6 stability and CL-breakout feedback",
-      "revisited": true,
-      "revisited_in": "ACDT #85",
-      "outcome": "Approved for glamsterdam-devnet-7 with EL scope limited to refinements of existing SIPs"
-    },
-    {
-      "topic": "glamsterdam-devnet-7 EL scope finalization",
-      "deferred_in": "ACDT #85",
-      "deferred_date": "2026-06-29",
-      "expected_revisit": "ACDE this week",
-      "revisited": true,
-      "revisited_in": "ACDT #86",
-      "outcome": "EL spec changes (SIP-2780, SIP-8037, SIP-8282) finalized; devnet-7 targeted for Wednesday July 9 as final devnet"
-    },
-    {
-      "topic": "glamsterdam-devnet-7 CL scope finalization",
-      "deferred_in": "ACDT #85",
-      "deferred_date": "2026-06-29",
-      "expected_revisit": "ACDC next week",
+      "topic": "Attestation deadline lowering from 3s to 2s",
+      "deferred_in": "ACDT #90",
+      "deferred_date": "2026-08-03",
+      "expected_revisit": "post-fork via coordinated client release",
       "revisited": false,
       "revisited_in": null,
       "outcome": null
+    },
+    {
+      "topic": "SIP-8037 engine API discussion (FCU placement concerns)",
+      "deferred_in": "ACDT #90",
+      "deferred_date": "2026-08-03",
+      "expected_revisit": "ACDC (after confirming spec changes with potuz)",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "Payload-flooding attack retest",
+      "deferred_in": "ACDT #91",
+      "deferred_date": "2026-08-10",
+      "expected_revisit": "DevNet 8",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "Gas limit bump to 200M at Glamsterdam fork",
+      "deferred_in": "ACDT #91",
+      "deferred_date": "2026-08-10",
+      "expected_revisit": null,
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": "No resolution reached; Barnabas to draft proposal avoiding dual-flag complexity"
+    },
+    {
+      "topic": "SSZ encoding/testing on large genesis state",
+      "deferred_in": "ACDT #92",
+      "deferred_date": "2026-08-17",
+      "expected_revisit": "testnets (not devnets)",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-7610 removal from Glamsterdam and SIP-8253 discussion",
+      "deferred_in": "ACDT #92",
+      "deferred_date": "2026-08-17",
+      "expected_revisit": "ACDE in ~1.5 weeks and ACDC this week",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-8037 cross-frame state gas bug fix (SIPs PR #12265)",
+      "deferred_in": "ACDT #94",
+      "deferred_date": "2026-08-31",
+      "expected_revisit": "ACDC call, September 4, 2026",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": "Consensus-breaking spec change; async opinions gathering before ACDC decision"
     }
   ]
 }

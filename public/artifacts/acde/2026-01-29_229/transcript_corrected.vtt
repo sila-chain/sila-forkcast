@@ -1798,7 +1798,7 @@ Jannik Luhn: I'm… I'm not an expert on this. I could imagine that for many sch
 
 450
 01:07:38.040 --> 01:07:42.340
-Jannik Luhn: Yeah, I'm not sure, maybe some of them can be implemented in the SAVM.
+Jannik Luhn: Yeah, I'm not sure, maybe some of them can be implemented in the EVM.
 
 451
 01:07:48.930 --> 01:07:50.499
@@ -1946,7 +1946,7 @@ Felix (Geth): basically adds a list of multiple calls to the transaction, and th
 
 487
 01:13:22.380 --> 01:13:38.950
-Felix (Geth): modes of execution, we call it here, but they… you can think of them as, like, both a permission level, but also basically configuring the SAVM environment a bit differently for each mode. So we have one… this is like the unauthenticated mode, where the call happens from the entry point address.
+Felix (Geth): modes of execution, we call it here, but they… you can think of them as, like, both a permission level, but also basically configuring the EVM environment a bit differently for each mode. So we have one… this is like the unauthenticated mode, where the call happens from the entry point address.
 
 488
 01:13:39.390 --> 01:13:43.770
@@ -2014,15 +2014,15 @@ Felix (Geth): They are not,
 
 504
 01:16:15.790 --> 01:16:39.419
-Felix (Geth): The main one we have is… the one that actually changes the semantics the most is the approve opcode, which is basically another way to return. So this is, like, this is an opcode that terminates execution, and unlike return, it terminates it with a status code that is beyond the usual 0 and 1 status. So at the moment, returning from an SAVM call has a success or failure state, and with this new opcode, there are 3 more
+Felix (Geth): The main one we have is… the one that actually changes the semantics the most is the approve opcode, which is basically another way to return. So this is, like, this is an opcode that terminates execution, and unlike return, it terminates it with a status code that is beyond the usual 0 and 1 status. So at the moment, returning from an EVM call has a success or failure state, and with this new opcode, there are 3 more
 
 505
 01:16:39.470 --> 01:16:52.000
-Felix (Geth): states that a call can end in, and so this is, like, a change in SAVM semantics. In the other opcodes are just environment access opcodes that do not have any impact on the
+Felix (Geth): states that a call can end in, and so this is, like, a change in EVM semantics. In the other opcodes are just environment access opcodes that do not have any impact on the
 
 506
 01:16:53.490 --> 01:16:58.040
-Felix (Geth): the macro operation of the SAVM. And,
+Felix (Geth): the macro operation of the EVM. And,
 
 507
 01:16:58.450 --> 01:17:16.959
@@ -2190,7 +2190,7 @@ Felix (Geth): for a specific application, custom mempools can be built that vali
 
 548
 01:23:52.800 --> 01:24:04.560
-Felix (Geth): using the SAVM to verify the signature isn't different from calling the ECDSA verification in the native code, it's just a different way, it's just a different signature algorithm in the end.
+Felix (Geth): using the EVM to verify the signature isn't different from calling the ECDSA verification in the native code, it's just a different way, it's just a different signature algorithm in the end.
 
 549
 01:24:04.960 --> 01:24:15.759

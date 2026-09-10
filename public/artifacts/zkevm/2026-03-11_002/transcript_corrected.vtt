@@ -802,7 +802,7 @@ Guillaume: It's a spec question, yes.
 
 201
 00:34:06.800 --> 00:34:16.180
-ignacio: Yeah, so this chain config is basically enough information for the, guest program on how to configure the SAVM.
+ignacio: Yeah, so this chain config is basically enough information for the, guest program on how to configure the EVM.
 
 202
 00:34:16.830 --> 00:34:26.870
@@ -982,7 +982,7 @@ Marcin Bugaj: That preload inputs into memory.
 
 246
 00:39:56.460 --> 00:40:08.249
-Marcin Bugaj: Third is Cryptographic Acceleration C interface. It's a… it's a C header that exposes SAVM precompiled equivalent operations.
+Marcin Bugaj: Third is Cryptographic Acceleration C interface. It's a… it's a C header that exposes EVM precompiled equivalent operations.
 
 247
 00:40:08.470 --> 00:40:18.119

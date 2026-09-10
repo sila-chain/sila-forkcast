@@ -11,12 +11,12 @@
 00:15:57	Parthasarathy Ramanujam:	Canonical paymasters will also support gasless? If so, which tokens?
 00:16:18	Jeevan (jvn):	IMO having a canonical paymaster at start might mitigate a lot of problems at first
 00:16:34	Parthasarathy Ramanujam:	Reacted to "IMO having a canonic..." with 👍
-00:16:36	v2:	I don't think anything needs "tracing" per se, I think what it looks like in practice is: the SAVM implementation gets a new "call type", similar to StaticCall, but that call type is not in the sila protocol, it's only ever used by mempool nodes
-00:17:25	v2:	yeah, "tracing" has the overhead of writing out 50 things into stdout per SAVM opcode, that was needed in 4337 only because they were trying to make everything work with zero node changes
+00:16:36	v2:	I don't think anything needs "tracing" per se, I think what it looks like in practice is: the EVM implementation gets a new "call type", similar to StaticCall, but that call type is not in the sila protocol, it's only ever used by mempool nodes
+00:17:25	v2:	yeah, "tracing" has the overhead of writing out 50 things into stdout per EVM opcode, that was needed in 4337 only because they were trying to make everything work with zero node changes
 00:18:51	lightclient:	Reacted to "yeah, "tracing" has ..." with 👍
 00:19:15	v2:	(I personally prefer 8141 + whitelist in default mempool to any non-8141 AA
  
-and yeah whitelist-based is fully tracing-free and does not require new SAVM call types)
+and yeah whitelist-based is fully tracing-free and does not require new EVM call types)
 00:21:52	Chris - Base:	Can share that doc?
 00:22:08	Derek Chiang:	Precompiles automatically approving based on the approval bits could be interesting
 00:23:06	v2:	right, we could take every existing signature precompile (k1, r1 ...), make it approve if called with approval bits, and then in-protocol enshrined delegation, which would allow wallets to just set a precompile as their address
@@ -28,13 +28,13 @@ and yeah whitelist-based is fully tracing-free and does not require new SAVM cal
 00:25:10	Parthasarathy Ramanujam:	Reacted to "right, we could take..." with ❤️
 00:25:13	Derek Chiang:	Reacted to "right, we could take every existing signature precompile (k1, r1 ...), make it approve if called with approval bits, and then in-protocol enshrined delegation, which would allow wallets to just set a precompile as their address" with ❤️
 00:25:21	Chris - Base:	Single key per account then?
-00:26:53	DanielVF (Monad):	Yes, I'm fine having the "multisig" at the SAVM level - as long as it's not controlling transaction inclusion into a block.
+00:26:53	DanielVF (Monad):	Yes, I'm fine having the "multisig" at the EVM level - as long as it's not controlling transaction inclusion into a block.
 00:27:44	Derek Chiang:	@Chris - Base would the precompile idea address Base’s concern?
 00:28:04	Chris - Base:	https://sila-magicians.org/t/frame-transactions-vs-schemedtransactions-for-post-quantum-sila/28056
 
 is the one I referenced
 00:29:17	Derek Chiang:	Reacted to "IMO having a canonical paymaster at start might mitigate a lot of problems at first" with 👍
-00:29:32	Derek Chiang:	Reacted to "I don't think anything needs "tracing" per se, I think what it looks like in practice is: the SAVM implementation gets a new "call type", similar to StaticCall, but that call type is not in the sila protocol, it's only ever used by mempool nodes" with 👍
+00:29:32	Derek Chiang:	Reacted to "I don't think anything needs "tracing" per se, I think what it looks like in practice is: the EVM implementation gets a new "call type", similar to StaticCall, but that call type is not in the sila protocol, it's only ever used by mempool nodes" with 👍
 00:30:11	Danno Ferrin:	Don’t add falcon, wait for FN-DSA.  This will be keccak/SHA3 all over again
 00:32:09	Nico mobile:	Totally agree !
 00:33:13	Chris - Base:	We want key rotation, multiple owners (of different types). We are trying to provide tempo level native tx but also flexibility which is what led us to 8130. 
@@ -47,7 +47,7 @@ Hard to optimize 8141 (keep fully in protocol validation)
 it should be not hard to make sure the defailt mempool provides that!
  
 even the whitelist approach should
-00:33:51	Danno Ferrin:	I don’t share the optimism that a NTT precompile plus savm logic will get standard FN-DSA or Falcon signatures below calldata cost.  There is too much small size bit twidding.  A vector API to ahdnel that would need bit level strides, not byte.  Plus the falcon signature compression logic is not vector friendly.
+00:33:51	Danno Ferrin:	I don’t share the optimism that a NTT precompile plus evm logic will get standard FN-DSA or Falcon signatures below calldata cost.  There is too much small size bit twidding.  A vector API to ahdnel that would need bit level strides, not byte.  Plus the falcon signature compression logic is not vector friendly.
 00:34:32	Giulio:	Guys I am outside
 00:34:40	Danno Ferrin:	Replying to "I didn’t initially l..."
 
@@ -127,7 +127,9 @@ yep
 00:45:10	Luca Donno | L2BEAT:	Reacted to "What is the position..." with ➕
 00:45:11	Lumi | Offchain Labs:	Reacted to "What is the position of the Besu team now? They had some concerns and reservations with 8141 as a headliner during the last call." with ➕
 00:45:17	frangio:	Reacted to "What is the positi..." with ➕
-00:45:17	Łukasz Rozmej:	Things we dislike about frame transactions:running savm in transaction pool - complex rules to potentially do it safelycomplex rules on special mode to run authorization frames - big complexity increase
+00:45:17	Łukasz Rozmej:	Things we dislike about frame transactions:
+running evm in transaction pool - complex rules to potentially do it safely
+complex rules on special mode to run authorization frames - big complexity increase
 00:45:33	DanielVF (Monad):	Reacted to "Things we dislike ..." with 👍
 00:45:35	Jeevan (jvn):	Replying to "What is the positi..."
 
@@ -180,7 +182,7 @@ They are clearly not in favour of 8141. AFAIU, only Nethermind and Besu are stil
 
 yes using a canonical expiry contract for the sender verify frame would be a simple way to enable this in the mempool
 00:52:34	Orca 0x:	is it still the intention that you can call APPROVE in non-Verify frames? (this seems to add a decent amount of complexity, and it might be cleaner just to have APPROVE in verify frames)
-00:52:45	Derek Chiang:	I think privacy and multisig are the two use cases that can really benefit from SAVM-based validation.  Multisig can arguably be enshrined but in practice there are so many different multisig use cases like owners with different weights, conditional multisig (e.g. requiring a co-signer only for certain transactions), that it’s hard to properly enshrine it
+00:52:45	Derek Chiang:	I think privacy and multisig are the two use cases that can really benefit from EVM-based validation.  Multisig can arguably be enshrined but in practice there are so many different multisig use cases like owners with different weights, conditional multisig (e.g. requiring a co-signer only for certain transactions), that it’s hard to properly enshrine it
 00:52:59	frangio:	Replying to "Small question - f..."
 
 i'd think it needs to be the verify frame's call target though. not called inside
@@ -248,9 +250,9 @@ and then do the SIP that allows contracts to specify another address (incl preco
 01:04:45	v2:	basically we can do:
 
 (1A) whitelisted signatures, no paymaster allowed
-(1B) SAVM in validation, no paymaster allowed
+(1B) EVM in validation, no paymaster allowed
 (2A) whitelisted signatures, single canonical paymaster
-(2B) SAVM in validation, single canonical paymaster
+(2B) EVM in validation, single canonical paymaster
 (3) full 7562
 01:04:46	Chris - Base:	Replying to "What is the sugges..."
 

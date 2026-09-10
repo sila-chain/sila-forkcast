@@ -54,7 +54,7 @@ option 2: bal-devnet-4 + 770 = glam-devnet-0
 00:16:34	Barnabas:	Reacted to "option 1: bal-devnet..." with 1️⃣
 00:16:39	Dragan Rakita:	Replying to "Next devnet introduc..."
 
-Here is list: https://github.com/misilva73/savm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md
+Here is list: https://github.com/misilva73/evm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md
 00:16:42	Barnabas:	Reacted to "option 1: bal-devnet..." with 2️⃣
 00:16:44	Marius Van Der Wijden (M):	Reacted to option 1: bal-devnet... with "2️⃣"
 00:16:58	Stefan Starflinger:	Reacted to "option 1: bal-devnet..." with 2️⃣

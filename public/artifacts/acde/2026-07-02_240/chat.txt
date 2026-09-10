@@ -174,7 +174,7 @@ Mostly for client to take a look and give opinion on it
 00:33:51	spencer:	Reacted to "I closed" with 🙏🏼
 00:34:24	Iván | ethrex:	@Maria Silva will you need new snapshots for running these new benches? Just asking so we can start generating them in advance
 00:34:41	Mario Vega:	Reacted to "no worries, that’s what we hired Dragan as ACDE bouncer for!" with 😂
-00:35:45	CPerezz:	https://Sila Research/t/is-the-slot-0-reorg-cost-fixable-epbs-attestation-deadline-study/25338 
+00:35:45	CPerezz:	https://ethresear.ch/t/is-the-slot-0-reorg-cost-fixable-epbs-attestation-deadline-study/25338 
 
 Justification and research on att. deadline reasoning
 00:36:00	Barnabas:	Proposed:
@@ -211,11 +211,11 @@ we've had invalid blocks, clients stuck, etc.
 
 Yes, I will let you know if anything could be done in advance, thank you
 00:39:36	Iván | ethrex:	Reacted to "Yes, I will let you ..." with 🙏
-00:39:47	CPerezz:	Replying to "https://Sila Research..."
+00:39:47	CPerezz:	Replying to "https://ethresear.ch..."
 
 @Barnabas
 00:39:47	Iván | ethrex:	Reacted to "devnet 6 is pretty s..." with 🎩
-00:40:09	Barnabas:	Reacted to "https://Sila Research/t/is-the-slot-0-reorg-cost-fixable-epbs-attestation-deadline-study/25338 
+00:40:09	Barnabas:	Reacted to "https://ethresear.ch/t/is-the-slot-0-reorg-cost-fixable-epbs-attestation-deadline-study/25338 
 
 Justification and research on att. deadline reasoning" with 👍
 00:41:08	Marius Van Der Wijden (M):	To be precise 3 also helps local builders to build a decebt payload
@@ -343,8 +343,8 @@ but a node that didn't update votes differently, so you lose the head vote rewar
 Though true the more work we put on the prover, the harder it is.. that is undeniable
 01:00:20	soispoke:	link to today's presentation: https://docs.google.com/presentation/d/12HAIc8F0u5Rt3XGG9l_C-JK8h_BuSoERvOLXIGPLu9c/edit?usp=sharing
  
-link to 8250: https://sips.sila.org/SIPS/sip-8250
-link to 8272: https://sips.sila.org/SIPS/sip-8272
+link to 8250: https://sips.sila.org/EIPS/sip-8250
+link to 8272: https://sips.sila.org/EIPS/sip-8272
 01:00:20	lightclient:	it’s not for the block root
 01:00:30	soispoke:	it's for the privacy protocol merkle root
 01:01:03	ignacio:	Unless there is a standard about that merkle root being in a particular storage slot in these kind of contracts, I think you can't link them in an MPT yea
@@ -372,7 +372,7 @@ What is bottlenecks on reducing block times from 12s to something like 6s or 3s?
 
 1MB is really large message for gossipsub
 01:10:37	ignacio:	Provers can separate the provingo of post-state root of previous block, from subsequent block execution. Still unsure what this means reg potentially having to aggregate the proof. But worth creating some doc were we can explore this in more detail and we can share tradeoffs.
-01:11:36	Ben Adams:	https://sips.sila.org/SIPS/sip-8298
+01:11:36	Ben Adams:	https://sips.sila.org/EIPS/sip-8298
 01:11:36	Karim T. (matkt):	If we calculate the state root of the previous block, we can start without waiting the BAL of the new block it seems @Toni Wahrstätter  , so do that between two blocks
 01:12:28	Toni Wahrstätter:	Replying to "the usecase as pitched is, make MEV builders' jobs easier"
 
@@ -393,7 +393,7 @@ the thing with optimizing for building is the value yielded only ever accrues ba
 Are you sure? One could also argue that making building simpler, creating a more leveled playingfield, allows for more smaller builders that are less sophisticated to enter, thus making things more competetitve and being beneficial for proposers
 01:16:33	Karim T. (matkt):	Reacted to "right yeah, you coul..." with 👍
 01:16:42	Barnabas:	which one?
-01:17:02	Pooja Ranjan:	https://sips.sila.org/SIPS/sip-7610
+01:17:02	Pooja Ranjan:	https://sips.sila.org/EIPS/sip-7610
 01:17:43	Barnabas:	Will add it on our list
 01:17:43	Justin Florentine (Besu):	Replying to "the usecase as pitch..."
 

@@ -990,7 +990,7 @@ Ben Adams: entry point for L2s and everything to copy, so that you can have dete
 
 248
 00:39:42.210 --> 00:39:45.039
-Ben Adams: SAVM… 100% SAVM.
+Ben Adams: EVM… 100% EVM.
 
 249
 00:39:48.269 --> 00:39:58.228
@@ -1514,7 +1514,7 @@ Felix (Geth): Whereas with some other changes that are related with
 
 379
 01:00:48.679 --> 01:00:58.958
-Felix (Geth): SAVM execution, or things like that, it can often have a higher complexity because it ties in with the other workflows that the client has, or the state implementation, or…
+Felix (Geth): EVM execution, or things like that, it can often have a higher complexity because it ties in with the other workflows that the client has, or the state implementation, or…
 
 380
 01:00:59.849 --> 01:01:01.809

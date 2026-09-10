@@ -10,13 +10,13 @@
   "discussionLink": "https://sila-magicians.org/t/sip-8052-precompile-for-falcon-support/25860",
   "reviewer": "expert",
   "forkRelationships": [],
-  "laymanDescription": "Adds three precompiles for lattice-based signature verification that are safe against Quantum Computer analysis. The scheme splits verification into Hash-to-Point (with NIST SHAKE256 or SAVM-friendly Keccak variants) and a core algorithm, enabling both NIST compliance and gas-efficient verification.",
+  "laymanDescription": "Adds three precompiles for lattice-based signature verification that are safe against Quantum Computer analysis. The scheme splits verification into Hash-to-Point (with NIST SHAKE256 or EVM-friendly Keccak variants) and a core algorithm, enabling both NIST compliance and gas-efficient verification.",
   "northStarAlignment": {
     "scaleL1": {
       "description": "Enables quantum-resistant signatures at the protocol level with compact signature sizes (~666 bytes), supporting long-term security without sacrificing throughput"
     },
     "improveUX": {
-      "description": "Modular design allows choosing between NIST compliance and SAVM efficiency based on application needs"
+      "description": "Modular design allows choosing between NIST compliance and EVM efficiency based on application needs"
     }
   },
   "stakeholderImpacts": {
@@ -49,7 +49,7 @@
     "NIST-standardized lattice-based post-quantum cryptography",
     "Compact signatures (~666 bytes) compared to other PQ schemes",
     "Modular design separating Hash-to-Point from core verification",
-    "SAVM-optimized variant using Keccak-PRNG reduces gas costs significantly",
+    "EVM-optimized variant using Keccak-PRNG reduces gas costs significantly",
     "Enables future ZK-SNARK/STARK optimizations via alternative Hash-to-Point implementations",
     "Hardness based on SIS problem over NTRU lattices, secure against quantum adversaries"
   ],

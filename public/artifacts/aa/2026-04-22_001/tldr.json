@@ -50,7 +50,7 @@
     "technical_challenges": [
       {
         "timestamp": "00:53:16",
-        "highlight": "Ben: SAVM-based signature validation could cost 2M gas vs 3K for precompiles"
+        "highlight": "Ben: EVM-based signature validation could cost 2M gas vs 3K for precompiles"
       },
       {
         "timestamp": "00:59:34",

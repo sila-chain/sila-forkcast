@@ -162,7 +162,11 @@ each slot has deterministic time tho.
 so is the block number as far as we are concerned
 00:30:07	Ben Adams:	Replying to "qq, now that we have..."
 
-time isn't important 🙂 blockTime >= slotTimegap in blocks from slots missed would suggest the data was inactive when was just no blocks
+time isn't important 🙂 
+
+blockTime >= slotTime
+
+gap in blocks from slots missed would suggest the data was inactive when was just no blocks
 00:30:52	Karim T. (matkt):	With tis one we will not have the last recent read. So we will add only the recent write in mdbx with this SIP for example
 00:31:17	Ben Adams:	Replying to "qq, now that we have..."
 
@@ -297,7 +301,7 @@ yes that’s basically what keyed nonces is doing
 yeah that's good enough
 00:44:26	soispoke:	Replying to "really like the inte..."
 
-https://sips.sila.org/SIPS/sip-8250
+https://sips.sila.org/EIPS/sip-8250
 00:44:30	nixo:	just putting this here for the AI summary to cheat off of. the 3 SIPs being proposed for Hegota today:
 SIP-8188: State Tiering by Write Age 
 SIP-8182: Private SIL and SRC-20 Transfers 
@@ -356,7 +360,7 @@ Railgun is upgradable
 
 Tornado has more than double the volume of railgun
 00:54:02	Barnabas:	real reason people don’t use tornado is because they could get on the ofac list if they did. Would probably happen to all those that interact wtih this address too tbh.
-00:55:09	jochem-brouwer:	I remember we had some ideas regarding crypto to add "basic opcodes" to SAVM which would be building blocks to port an existing crypto algo to SAVM, instead of enshrining a specific cryptography method. Not sure how feasible this is because this assumes most/all crypto uses a small set of basic building blocks to function. But nevertheless something to re-explore, such that anyone can create a library contract implementing a specific cryptography method, instead of protocol deploying it as precompile
+00:55:09	jochem-brouwer:	I remember we had some ideas regarding crypto to add "basic opcodes" to EVM which would be building blocks to port an existing crypto algo to EVM, instead of enshrining a specific cryptography method. Not sure how feasible this is because this assumes most/all crypto uses a small set of basic building blocks to function. But nevertheless something to re-explore, such that anyone can create a library contract implementing a specific cryptography method, instead of protocol deploying it as precompile
 00:55:37	Dustin:	"credible neutrality"
 00:55:39	Privatised-Human:	Replying to "Sila is upgrad..."
 
@@ -364,7 +368,7 @@ Tornado has more than double the volume of railgun
 00:55:44	Dustin:	(In terms of such warnings)
 00:55:56	Luca Donno | L2BEAT:	Replying to "I remember we had so..."
 
-This would help 🙂 https://Sila Research/t/native-proof-verification/24798
+This would help 🙂 https://ethresear.ch/t/native-proof-verification/24798
 00:56:29	Luca Donno | L2BEAT:	Replying to "I remember we had so..."
 
 You get automatic post-quantum-like upgrades of the verification stack for all applications without enshrining any application
@@ -374,7 +378,7 @@ Great, thanks for the ref!! 😁👍
 00:57:11	Luca Donno | L2BEAT:	Reacted to "Great, thanks for th..." with ❤️
 00:57:23	Christine Kim:	kinda funny that the only way to build unstoppable apps on Sila is through enshrining your app into the protocol
 00:57:55	Christine Kim:	so it has to go through sil governance if you wanted to upgrade your contract
-00:58:24	jochem-brouwer:	https://sips.sila.org/SIPS/sip-6049
+00:58:24	jochem-brouwer:	https://sips.sila.org/EIPS/sip-6049
 Deprecate SELFDESTRUCT SIP 😁
 00:58:40	Luca Donno | L2BEAT:	Tornado cash has more than 5x the number of deposits of railgun
 00:58:41	Dragan Rakita:	Replying to "so it has to go thro..."
@@ -412,7 +416,7 @@ cc @spencre
 01:09:20	Luis Pinto | Besu:	Reacted to "does removing current SD enables anything?" with ➕
 01:09:32	Marius van der Wijden:	Replying to "does removing curr..."
 
-Much less edge cases in the savm
+Much less edge cases in the evm
 01:09:42	Iván | ethrex:	Reacted to "Much less edge cases..." with ☝️
 01:09:44	Radek | solidity:	Reacted to "Much less edge cases..." with 👍
 01:09:45	Guillaume:	Replying to "create a new contrac..."

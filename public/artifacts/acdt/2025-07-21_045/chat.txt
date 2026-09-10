@@ -49,7 +49,11 @@ Rpc testing tool? Yes, its a benchmark tool
 00:18:28	Parithosh Jayanthi:	Replying to "Does this test tool ..."
 
 Sync test tool is also happy case for now, since we are missing this data for 2x sila-mainnet or significantly larger state
-00:19:29	Marcin Sobczak:	SIP-7883 ModExp Comprehensive Analysis Report:https://github.com/nerolation/sil-7883-analysis/blob/master/eip7883_comprehensive_analysis.mdSIP-7883 Entity Impact Analysis (Updated):https://github.com/nerolation/sil-7883-analysis/blob/master/eip7883_entity_analysis.md
+00:19:29	Marcin Sobczak:	SIP-7883 ModExp Comprehensive Analysis Report:
+https://github.com/nerolation/sil-7883-analysis/blob/master/eip7883_comprehensive_analysis.md
+
+SIP-7883 Entity Impact Analysis (Updated):
+https://github.com/nerolation/sil-7883-analysis/blob/master/eip7883_entity_analysis.md
 00:21:44	Kamil Chodoła:	Nethermind - will report issue and want to add a metric for that
 00:22:14	Parithosh Jayanthi:	Can you guys please post metrics updates async on chat when its included?
 00:22:18	Parithosh Jayanthi:	Ideally in the performance branch
@@ -216,7 +220,9 @@ it removes the main bottleneck for sure
 00:54:34	nflaig:	Replying to "also, SSZ is fine, b..."
 
 the response was never a concern at least for me but network failures trying to submit blinded block to relay because you can't fallback at this point to local block
-00:55:18	Ben Adams:	CLZ is a single stack opcode like NEG; so much lighter than MULOnly issue is timing
+00:55:18	Ben Adams:	CLZ is a single stack opcode like NEG; so much lighter than MUL
+
+Only issue is timing
 00:55:22	Marius van der Wijden:	Why don't we have real benchmarks for this yet?
 00:55:47	Dustin:	Replying to "also, SSZ is fine,..."
 

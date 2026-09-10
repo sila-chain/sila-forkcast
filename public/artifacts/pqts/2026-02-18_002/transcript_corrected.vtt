@@ -706,7 +706,7 @@ Nicolas Consigny: So what did I do? I actually tweaked the Blockstream research 
 
 177
 00:24:27.440 --> 00:24:33.000
-Nicolas Consigny: So, in the SAVM context, you have a slightly different
+Nicolas Consigny: So, in the EVM context, you have a slightly different
 
 178
 00:24:33.280 --> 00:24:43.189
@@ -714,7 +714,7 @@ Nicolas Consigny: Constraints, because you have gas, and basically, it becomes, 
 
 179
 00:24:43.800 --> 00:24:54.269
-Nicolas Consigny: parameters within the SAVM constraints, so same as for other blockchains, you have the reuse constraints, so you want to be able to reuse your
+Nicolas Consigny: parameters within the EVM constraints, so same as for other blockchains, you have the reuse constraints, so you want to be able to reuse your
 
 180
 00:24:54.350 --> 00:25:08.470

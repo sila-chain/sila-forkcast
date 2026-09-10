@@ -18,7 +18,7 @@
       },
       {
         "timestamp": "00:15:06",
-        "highlight": "bal-devnet-3: SAVM fuzzing breaks clients quickly; hash mismatches across implementations"
+        "highlight": "bal-devnet-3: EVM fuzzing breaks clients quickly; hash mismatches across implementations"
       },
       {
         "timestamp": "00:16:34",

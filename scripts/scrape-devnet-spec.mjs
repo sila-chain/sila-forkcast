@@ -83,13 +83,14 @@ function parseEipTable(md) {
   // Find the SIP list table - look for rows with [SIP-NNNN](url)
   // Supports two layouts:
   //   A) | [SIP-NNNN](url) | title | status |        (shortcodes after title)
+  //   A') | [SIP-NNNN](url) [`spec@commit`](url) | title | status |  (extra link column after SIP link)
   //   B) | status_emoji | [SIP-NNNN](url) | title |  (emoji before SIP link)
   const sips = [];
   const rowRegex =
-    /\|([^[\n]*?)\[SIP-(\d+)\]\((https?:\/\/[^\s)]+)\)\s*\|\s*([^|\n]+)[^\S\n]*(?:\|[^\S\n]*([^|\n]*))?/g;
+    /\|([^[\n]*?)\[SIP-(\d+)\]\((https?:\/\/[^\s)]+)\)([^|\n]*)\s*\|\s*([^|\n]+)[^\S\n]*(?:\|[^\S\n]*([^|\n]*))?/g;
   let match;
   while ((match = rowRegex.exec(md)) !== null) {
-    const [, preEip, numberStr, url, title, postTitle] = match;
+    const [, preEip, numberStr, url, , title, postTitle] = match;
     const status = parseStatusCell(preEip) || (postTitle ? parseStatusCell(postTitle) : null);
 
     sips.push({

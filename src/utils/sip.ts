@@ -9,6 +9,8 @@ const INCLUSION_STAGE_BY_STATUS: Record<ForkStatus, InclusionStage> = {
   Declined: 'Declined for Inclusion',
   Included: 'Included',
   Withdrawn: 'Withdrawn',
+  Informational: 'Informational',
+  Networking: 'Networking',
 };
 
 const INCLUSION_STAGE_LABELS: Record<InclusionStage, string> = {
@@ -17,6 +19,8 @@ const INCLUSION_STAGE_LABELS: Record<InclusionStage, string> = {
   'Considered for Inclusion': 'CFI',
   'Proposed for Inclusion': 'PFI',
   'Declined for Inclusion': 'DFI',
+  'Informational': 'Info',
+  'Networking': 'Net',
   'Withdrawn': 'Withdrawn',
   'Unknown': 'Unknown',
 };
@@ -26,6 +30,8 @@ const INCLUSION_STAGE_ORDER: InclusionStage[] = [
   'Scheduled for Inclusion',
   'Considered for Inclusion',
   'Proposed for Inclusion',
+  'Networking',
+  'Informational',
   'Declined for Inclusion',
   'Withdrawn',
   'Unknown',
@@ -142,7 +148,7 @@ export const getSpecificationUrl = (sip: SIP): string => {
   if (sip.title.startsWith('RIP-')) {
     return `https://github.com/sila-chain/RIPs/blob/master/RIPS/rip-${sip.id}.md`;
   }
-  return `https://sips.sila.org/SIPS/sip-${sip.id}`;
+  return `https://sips.sila.org/EIPS/sip-${sip.id}`;
 };
 
 /**

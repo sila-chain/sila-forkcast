@@ -1,7 +1,7 @@
 00:02:12	Maria Silva:	https://github.com/sila-chain/pm/issues/1910
 00:02:35	Ansgar Dietrichs:	I feel like it’s tradition that whenever there is a group of ppl joining acd together, camera on is a must :-)
 00:02:44	Justin Florentine (Besu):	Reacted to "I feel like it’s tra..." with 💯
-00:03:57	Ansgar Dietrichs:	great to see some L2 ppl joining today as well btw! maybe if we have time at the end, we could briefly touch on the repricings implications for non-L1 SAVM chains?
+00:03:57	Ansgar Dietrichs:	great to see some L2 ppl joining today as well btw! maybe if we have time at the end, we could briefly touch on the repricings implications for non-L1 EVM chains?
 00:08:30	Maria Silva:	https://github.com/sila-chain/SIPs/pull/11244
 00:11:42	Ben Adams:	POINT_EVALUATION determines Blob price floor; so should be knock on to be tested there
 00:26:32	Toni Wahrstätter:	My feeling is that this might not even need to touch receipts
@@ -25,8 +25,8 @@ You mean from SIP-7778 ?
 00:37:14	jochem-brouwer:	Antwoord verzenden naar "Does it count agai..."
 
 Ah right, yes this makes sense
-00:37:54	Maria Silva:	https://Sila Research/t/failure-modes-in-sip-8037-and-state-gas-scaling/23975
-00:40:34	Maria Silva:	https://Sila Research/t/analysis-of-different-aggregation-functions-for-sip-8037-under-different-elasticity-regimes/24033
+00:37:54	Maria Silva:	https://ethresear.ch/t/failure-modes-in-sip-8037-and-state-gas-scaling/23975
+00:40:34	Maria Silva:	https://ethresear.ch/t/analysis-of-different-aggregation-functions-for-sip-8037-under-different-elasticity-regimes/24033
 00:43:37	jochem-brouwer:	9k transfer cost per call
 00:54:25	Louis:	The benchmark documentation for test generation is here: https://github.com/sila-chain/execution-specs/blob/forks/amsterdam/docs/writing_tests/benchmarks.md
 00:54:51	Louis:	We could construct the transaction and send it

@@ -494,7 +494,7 @@ Nicolas Consigny: And for laptop signers, I have the…
 
 124
 00:28:14.450 --> 00:28:25.290
-Nicolas Consigny: SPHINCS Minus, that is the most optimized for gas costs. And actually, I published a repo, which is the SAVM parameter research.
+Nicolas Consigny: SPHINCS Minus, that is the most optimized for gas costs. And actually, I published a repo, which is the EVM parameter research.
 
 125
 00:28:25.550 --> 00:28:38.810
@@ -654,7 +654,7 @@ Nicolas Consigny: So basically the trade-off here is just, trading
 
 164
 00:33:26.140 --> 00:33:32.009
-Nicolas Consigny: a kitchen time, versus, gas cost in the SAVM.
+Nicolas Consigny: a kitchen time, versus, gas cost in the EVM.
 
 165
 00:33:32.190 --> 00:33:39.300

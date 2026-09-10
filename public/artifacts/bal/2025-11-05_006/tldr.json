@@ -26,7 +26,7 @@
       },
       {
         "timestamp": "00:35:21",
-        "highlight": "Clients should run SAVM-fuzz spammer scenario in testnets"
+        "highlight": "Clients should run EVM-fuzz spammer scenario in testnets"
       }
     ],
     "performance_optimization": [

@@ -3,11 +3,12 @@
   "title": "SIP-8148: Custom sweep threshold for validators",
   "status": "Draft",
   "description": "Allow setting custom balance thresholds for sweep withdrawals for validators with compounding withdrawal credentials (`0x02`).",
-  "author": "Dmitry Gusakov (@dgusakov), Dmitry Chernukhin (@madlabman), Greg Koumoutsos (@gkoumout)",
+  "author": "Dmitry Gusakov (@dgusakov), Dmitry Chernukhin (@madlabman), Greg Koumoutsos (@gkoumout), Manu (@nalepae)",
   "type": "Standards Track",
   "category": "Core",
   "createdDate": "2026-02-05",
   "discussionLink": "https://sila-magicians.org/t/sip-8148-custom-sweep-threshold-for-validators/27669",
+  "reviewer": "bot",
   "layer": "CL",
   "forkRelationships": [
     {
@@ -27,10 +28,29 @@
           "date": "2026-05-28",
           "timestamp": 2068
         }
+      ],
+      "champions": [
+        {
+          "name": "Dmitry Gusakov",
+          "discord": "dgusakov"
+        },
+        {
+          "name": "Greg Koumoutsos",
+          "discord": "gkoumout"
+        }
       ]
     }
   ],
-  "tradeoffs": null,
+  "laymanDescription": "Currently, validator size choice is limited to 32 SIL (0x01) and 2048 SIL (0x02). This approach is very inflexible. Many solo stakers and professional operators defer migration from 0x01 to 0x02 because of the liquidity concerns. This SIP enables an arbitrary size of the 0x02 validator, ranging from 32 SIL to 2048 SIL, with liquidity concerns eliminated by the fact that any excess stake above the validator-owner-defined threshold is automatically swept to EL WC.",
+  "benefits": [
+    "Sila validators can now have configurable 'size'",
+    "Makes 0x02 validator withdrawal credentials available for any staker without compromises",
+    "Allows for the future MAX_EB changes or removal"
+  ],
+  "tradeoffs": [
+    "Adds a per-validator mapping to the beacon state",
+    "Adds new EL request type and corresponding system contract"
+  ],
   "requires": [
     7251,
     7685

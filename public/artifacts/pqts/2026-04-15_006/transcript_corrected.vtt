@@ -346,7 +346,7 @@ Giulio: And, this is it. Like, there is… this is just a smart contract. It's n
 
 87
 00:11:53.520 --> 00:12:11.039
-Giulio: A few things, about… just a few things about direct compiles versus NTTs, that direct PRAC compiles are much lower in gas, especially lithium. This is because of, if anything, because of the SAVM and the fact that you need to… the memory requirements for
+Giulio: A few things, about… just a few things about direct compiles versus NTTs, that direct PRAC compiles are much lower in gas, especially lithium. This is because of, if anything, because of the EVM and the fact that you need to… the memory requirements for
 
 88
 00:12:11.040 --> 00:12:30.249
@@ -502,7 +502,7 @@ Antonio Sanso: All right. And I see a question from Simon that is asking if this
 
 126
 00:17:13.530 --> 00:17:19.939
-Giulio: Yeah, the cost… okay, so the cost on the page is the raw SAVM execution.
+Giulio: Yeah, the cost… okay, so the cost on the page is the raw EVM execution.
 
 127
 00:17:20.089 --> 00:17:29.180
@@ -1206,7 +1206,7 @@ Nico C: Yes. So, in the next few days, I will be publishing a small research, po
 
 302
 00:39:32.400 --> 00:39:35.039
-Nico C: parameters that are friendly to the SAVM.
+Nico C: parameters that are friendly to the EVM.
 
 303
 00:39:35.200 --> 00:39:39.000
@@ -1230,7 +1230,7 @@ Nico C: More hardware-friendly and more adapted to
 
 308
 00:40:04.030 --> 00:40:07.719
-Nico C: To… to the SAVM constraints.
+Nico C: To… to the EVM constraints.
 
 309
 00:40:08.570 --> 00:40:12.220
@@ -1390,7 +1390,7 @@ Nico C: a lean implementation of, the contract. So this is,
 
 348
 00:45:00.840 --> 00:45:08.430
-Nico C: using the Verity project, where you can get your lean codes to compile to… down to the SAVM bytecode.
+Nico C: using the Verity project, where you can get your lean codes to compile to… down to the EVM bytecode.
 
 349
 00:45:09.150 --> 00:45:15.059

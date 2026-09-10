@@ -2,6 +2,92 @@
   "eipId": 8250,
   "commits": [
     {
+      "sha": "94f5a3e3c146c28625d9ab2f8a7c0a848530a13a",
+      "date": "2026-09-02T11:38:14Z",
+      "message": "Update SIP-8250: charge keyed nonce first use as state gas",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 19,
+      "deletions": 13
+    },
+    {
+      "sha": "e5cf246ff18d0f82df8e7175d05ff9cb9f9aedd7",
+      "date": "2026-08-31T08:14:46Z",
+      "message": "Update SIP-8250: move TXPARAM_LEGACY_NONCE off 0x0C",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "additions": 14,
+      "deletions": 14
+    },
+    {
+      "sha": "c9d962f194b9b167e045b3b68a7a292cdc4cec7f",
+      "date": "2026-08-08T07:58:20Z",
+      "message": "Update SIP-8250: Highlight privacy benefit upfront",
+      "author": "nerolation",
+      "prNumber": null,
+      "patch": "@@ -13,7 +13,7 @@ requires: 7623, 8141\n \n ## Abstract\n \n-Replaces the single sender nonce of an [SIP-8141](./sip-8141.md) frame transaction with `(nonce_keys, nonce_seq)`: a bounded set of nonce keys sharing one sequence number. `nonce_keys == [0]` aliases the legacy account nonce; each non-zero key selects an independent protocol-managed nonce sequence stored in a `NONCE_MANAGER` system contract. Transactions whose non-zero key sets do not overlap are replay-independent.\n+Replaces the single sender nonce of an [SIP-8141](./sip-8141.md) frame transaction with `(nonce_keys, nonce_seq)`: a bounded set of nonce keys sharing one sequence number. `nonce_keys == [0]` aliases the legacy account nonce; each non-zero key selects an independent protocol-managed nonce sequence stored in a `NONCE_MANAGER` system contract. Transactions whose non-zero key sets do not overlap are replay-independent. This helps privacy applications use one shared sender for many users without forcing every transaction through the same nonce sequence.\n \n ## Motivation\n ",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "81b976ac01591fed2eecb73fa574f27cd18db2e8",
+      "date": "2026-08-03T06:30:36Z",
+      "message": "Update SIP-8250: pin NONCE_MANAGER to 0x...8250",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -36,7 +36,7 @@ This specification is a delta against [SIP-8141](./sip-8141.md).\n | Name | Value |\n |---|---|\n | `FORK_TIMESTAMP` | `TBD` |\n-| `NONCE_MANAGER` | `0xTBD` |\n+| `NONCE_MANAGER` | `0x0000000000000000000000000000000000008250` |\n | `NONCE_MANAGER_CODE` | `0x60006000fd` |\n | `KEYED_NONCE_FIRST_USE_GAS` | `20000` |\n | `MAX_NONCE_SEQ` | `2**64 - 1` |",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "8ff5c1359f94ad413c06b0ba1b2a025df8ebaed7",
+      "date": "2026-07-29T09:05:54Z",
+      "message": "Update SIP-8250: make keyed nonce changes additive",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 27,
+      "deletions": 27
+    },
+    {
+      "sha": "66e475b052c038adc59397d119cc1c65b87f12fc",
+      "date": "2026-07-19T14:11:06Z",
+      "message": "Update SIP-8250: align transaction introspection assignments",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 8,
+      "deletions": 8
+    },
+    {
+      "sha": "60449e5093e848938db144ee0fef873d90d0bede",
+      "date": "2026-07-19T13:57:48Z",
+      "message": "Update SIP-8250: price nonce_keys and nonce_seq as transaction data",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -8,7 +8,7 @@ status: Draft\n type: Standards Track\n category: Core\n created: 2026-04-16\n-requires: 8141\n+requires: 7623, 8141\n ---\n \n ## Abstract\n@@ -62,16 +62,44 @@ The frame-transaction payload becomes:\n \n `nonce_keys` is a list of `uint256` values; `nonce_seq` is a `uint64`. Each nonce key and `nonce_seq` MUST be encoded as canonical minimal-length RLP integers. The frame layout, signature-hash procedure, and all other SIP-8141 transaction fields are unchanged.\n \n+The bytes this SIP adds to the payload are priced as transaction data. Define:\n+\n+```python\n+nonce_calldata = rlp(nonce_keys) || rlp(nonce_seq)\n+```\n+\n+`nonce_calldata` is priced exactly as SIP-8141 prices frame and signature data under [SIP-7623](./sip-7623.md), by adding it to SIP-8141's three gas quantities:\n+\n+- `calldata_cost(nonce_calldata)` is added to `tx_gas_limit`;\n+- `calldata_cost(nonce_calldata)` is added to the non-floor argument of the `max` in `charged_gas`;\n+- `tokens_in(nonce_calldata)` is added to `calldata_tokens`, which feeds the SIP-7623 floor argument `TOTAL_COST_FLOOR_PER_TOKEN * calldata_tokens`.\n+\n+Explicitly, `charged_gas` becomes:\n+\n+```python\n+charged_gas = (\n+    FRAME_TX_INTRINSIC_COST\n+    + len(tx.frames) * FRAME_TX_PER_FRAME_COST\n+    + signature_verification_cost\n+    + max(\n+        frame_data_cost + signature_data_cost + calldata_cost(nonce_calldata) + total_gas_used,\n+        TOTAL_COST_FLOOR_PER_TOKEN * calldata_tokens,\n+    )\n+)\n+```\n+\n+This keeps `nonce_keys` and `nonce_seq` consistent with the pricing of SIP-8141's other transaction data, and keeps `tx_gas_limit` and `charged_gas` consistent.\n+\n Decoders MUST reject a post-fork `FRAME_TX_TYPE` transaction if any of the following is true:\n \n-* the payload does not match the post-fork schema;\n-* `nonce_keys` is not an RLP list;\n-* `len(nonce_keys) < 1` or `len(nonce_keys) > MAX_NONCE_KEYS`;\n-* any item in `nonce_keys`, or `nonce_seq`, is not encoded as a canonical RLP integer;\n-* any item in `nonce_keys` is greater than or equal to `2**256`;\n-* `nonce_seq >= 2**64`;\n-* `nonce_keys` is not strictly increasing by numeric value;\n-* any item in `nonce_keys` is `0` and `nonce_keys != [0]`.\n+- the payload does not match the post-fork schema;\n+- `nonce_keys` is not an RLP list;\n+- `len(nonce_keys) < 1` or `len(nonce_keys) > MAX_NONCE_KEYS`;\n+- any item in `nonce_keys`, or `nonce_seq`, is not encoded as a canonical RLP integer;\n+- any item in `nonce_keys` is greater than or equal to `2**256`;\n+- `nonce_seq >= 2**64`;\n+- `nonce_keys` is not strictly increasing by numeric value;\n+- any item in `nonce_keys` is `0` and `nonce_keys != [0]`.\n \n ### Nonce state\n ",
+      "additions": 37,
+      "deletions": 9
+    },
+    {
+      "sha": "c0f23a03e5dd31ea37e38c6bda70b03eea06266c",
+      "date": "2026-07-18T10:20:12Z",
+      "message": "Update SIP-8250: restore signatures in payload and correct signature-hash description",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -55,12 +55,12 @@ This specification is a delta against [SIP-8141](./sip-8141.md).\n The frame-transaction payload becomes:\n \n ```text\n-[chain_id, nonce_keys, nonce_seq, sender, frames,\n+[chain_id, nonce_keys, nonce_seq, sender, frames, signatures,\n  max_priority_fee_per_gas, max_fee_per_gas,\n  max_fee_per_blob_gas, blob_versioned_hashes]\n-````\n+```\n \n-`nonce_keys` is a list of `uint256` values; `nonce_seq` is a `uint64`. Each nonce key and `nonce_seq` MUST be encoded as canonical minimal-length RLP integers. The frame layout, signature-hash procedure with `VERIFY`-frame `data` elided, and all other SIP-8141 transaction fields are unchanged.\n+`nonce_keys` is a list of `uint256` values; `nonce_seq` is a `uint64`. Each nonce key and `nonce_seq` MUST be encoded as canonical minimal-length RLP integers. The frame layout, signature-hash procedure, and all other SIP-8141 transaction fields are unchanged.\n \n Decoders MUST reject a post-fork `FRAME_TX_TYPE` transaction if any of the following is true:\n ",
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "sha": "c2eeb0cff56785496f9832ec3f16fde1f3a8e28a",
+      "date": "2026-07-18T06:11:51Z",
+      "message": "Update SIP-8250: align NONCE_MANAGER activation wording with SIP-8272",
+      "author": "AnkushinDaniil",
+      "prNumber": null,
+      "patch": "@@ -194,13 +194,13 @@ If `timestamp < FORK_TIMESTAMP`, clients MUST apply the pre-fork SIP-8141 `FRAME\n \n If `timestamp >= FORK_TIMESTAMP`, clients MUST apply the post-fork `FRAME_TX_TYPE` schema defined in this SIP.\n \n-At activation, on the first execution payload with `timestamp >= FORK_TIMESTAMP` and before any transaction in that payload runs, clients MUST initialize `NONCE_MANAGER` with `NONCE_MANAGER_CODE`, nonce `1`, and empty storage, preserving any pre-existing balance.\n+For every block `B` with `B.timestamp >= FORK_TIMESTAMP` whose parent has `parent.timestamp < FORK_TIMESTAMP`, and before any transaction in `B` runs, clients MUST initialize `NONCE_MANAGER` with `NONCE_MANAGER_CODE`, nonce `1`, and empty storage, preserving any pre-existing balance.\n \n If `NONCE_MANAGER` does not exist, clients MUST create it with balance `0`, nonce `1`, code `NONCE_MANAGER_CODE`, and empty storage.\n \n If `NONCE_MANAGER` already exists with empty code and empty storage, clients MUST set its code to `NONCE_MANAGER_CODE`, set its nonce to `max(existing_nonce, 1)`, preserve its balance, and leave storage empty.\n \n-This initialization runs exactly once at fork activation and MUST NOT be re-applied during normal chain progression after activation. Clients MUST handle reorgs across the fork boundary by applying or undoing this transition according to the canonical chain.\n+For all other blocks, clients MUST NOT run this initialization. Clients MUST handle reorgs across the fork boundary by applying or undoing this transition according to the canonical chain.\n \n Pre-fork frame transactions and authorizations bound to the pre-fork canonical signature hash do not survive the boundary and MUST be evicted from mempools and regenerated.\n ",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
       "sha": "4de629be62b178712832a9d972c1cab7d19b9c2f",
       "date": "2026-06-01T07:12:36Z",
       "message": "Update SIP-8250: Update SIP-8250 to support nonce key sets",
@@ -18,6 +104,24 @@
       "prNumber": 11598,
       "additions": 227,
       "deletions": 0
+    }
+  ],
+  "openPrs": [
+    {
+      "number": 12039,
+      "title": "Update SIP-8250: Define keyed mempool concurrency",
+      "author": "soispoke",
+      "updatedAt": "2026-07-30T16:42:08Z",
+      "additions": 19,
+      "deletions": 3
+    },
+    {
+      "number": 12266,
+      "title": "Update SIP-8250: forbid reverting approval effects on validation-prefix restore",
+      "author": "AnkushinDaniil",
+      "updatedAt": "2026-09-02T20:30:00Z",
+      "additions": 1,
+      "deletions": 1
     }
   ]
 }

@@ -257,17 +257,17 @@ Also we now like removing precompiles in H* instead of repricing for zk :)
 00:36:36	Mario Vega:	The bundling has made it difficult for the testing team to assess its testing complexity
 00:36:51	Jihoon:	Reacted to "and FOCIL shouldn't …" with 🔥
 00:37:08	lightclient:	I wish this was just 1 SIP
-00:37:14	lightclient:	SAVM prices 2.0
-00:37:40	draganrakita:	Replying to "SAVM prices 2.0"
+00:37:14	lightclient:	EVM prices 2.0
+00:37:40	draganrakita:	Replying to "EVM prices 2.0"
 
-SAVM v2 didn’t go that well
+EVM v2 didn’t go that well
 00:37:50	Mario Vega:	Replying to "The bundling has mad..."
 
 Talking about 7904
-00:38:02	lightclient:	Replying to "SAVM prices 2.0"
+00:38:02	lightclient:	Replying to "EVM prices 2.0"
 
 But Sil 2.0 went extremely well
-00:38:09	Barnabas:	Replying to "SAVM prices 2.0"
+00:38:09	Barnabas:	Replying to "EVM prices 2.0"
 
 EOF was too small it should have included all the repricing SIPs too
 00:38:12	draganrakita:	Hm, that is true
@@ -359,7 +359,7 @@ much simpler than binary trees
 00:49:40	Mario Vega:	Reacted to "The transition there..." with 👍🏼
 00:49:54	draganrakita:	I think we are not using the lists the clients make and compounding it into one doc with priorities
 00:49:54	Marius van der Wijden:	Martin had a writeuo why we shouldn't do this
-00:50:10	Carl Beekhuizen:	https://sips.sila.org/SIPS/sip-7686
+00:50:10	Carl Beekhuizen:	https://sips.sila.org/EIPS/sip-7686
 00:50:13	Danno Ferrin:	The paging is the key value to any memory costing changes.
 00:50:30	Mario Vega:	Replying to "The transition there..."
 
@@ -413,7 +413,7 @@ not super easy? isn't it just a new field on a message frame?
 it's not super necessary, but it opens up some interesting app layer designs, @Marc  can elaborate
 00:55:28	Marius van der Wijden:	Replying to "I kinda disagree wit..." 
 
- It should be, but its not local to the savm
+ It should be, but its not local to the evm
 00:55:33	Marius van der Wijden:	Reacted to it's not super neces... with "👍"
 00:55:33	lightclient:	8024 gud
 00:55:34	Mario Vega:	Reacted to "it's not super neces..." with 👍
@@ -541,7 +541,9 @@ yes
 01:06:52	Dustin:	Reacted to "It doesn't work fo..." with 👍
 01:07:15	Ben Adams:	Replying to "We were pretty suppo..."
 
-Is very low effort 🙂 And nice to have a standard
+Is very low effort 🙂 
+
+And nice to have a standard
 01:07:15	spencer-tb:	Replying to "Is 7907 redundant if..."
 
 Then I don’t think we should add 7907. Feels like wasted time.
@@ -585,7 +587,7 @@ this is not the way  imo
 If not now, next fork after Glamsterdam
 01:12:13	Danno Ferrin:	Replying to "strongly against add..."
 
-SAVM PQ is on the order od 2-15M
+EVM PQ is on the order od 2-15M
 01:12:18	spencer-tb:	Replying to "strongly against add..."
 
 What’s PQ?
@@ -611,7 +613,7 @@ https://www.youtube.com/watch?v=OkVYJx1iLNs
 01:13:33	spencer-tb:	Reacted to "https://quantumdoomc..." with 👀
 01:13:36	frangio:	Replying to "strongly against a..."
 
-probably gas cost to verify pq sigs on savm
+probably gas cost to verify pq sigs on evm
 01:13:40	Danno Ferrin:	Replying to "https://quantumdoomc..."
 
 Also, government mandates are setting a 2030/2035 deprecation/removal timeline
@@ -852,7 +854,7 @@ What makes an SIP a headliner?
 01:29:06	lightclient:	Can we move 8024 to CFI since every client wants it?
 01:29:07	Danno Ferrin:	Replying to "strongly against add..."
 
-No vector is fine, it’s doing 14 bit math on 256 bit registers that is the real issue for an efficient SAVM solution.
+No vector is fine, it’s doing 14 bit math on 256 bit registers that is the real issue for an efficient EVM solution.
 01:29:18	spencer-tb:	Reacted to "Can we move 8024 to ..." with ➕
 01:29:22	soispoke:	Replying to "Idk FOCIL failed to ..."
 

@@ -16,9 +16,9 @@ export type ComplexityTier = 'Low' | 'Medium' | 'High';
 
 // The 23 STEEL complexity anchors
 export const COMPLEXITY_ANCHORS = [
-  'SAVM Gas rule changes',
+  'EVM Gas rule changes',
   'Blob gas accounting changes',
-  'New SAVM gas refund',
+  'New EVM gas refund',
   'Patterns affecting pre-existing tests',
   'Transition-tool interface changes',
   'Cryptography',

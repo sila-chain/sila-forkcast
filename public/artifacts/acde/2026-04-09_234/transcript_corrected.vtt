@@ -862,7 +862,7 @@ Pedro: a lot of demand for this. We have navigated through account abstraction i
 
 216
 00:37:55.219 --> 00:38:03.059
-Pedro: I don't want to be coming into a core devs call and start comparing SAVM to other machines, but
+Pedro: I don't want to be coming into a core devs call and start comparing EVM to other machines, but
 
 217
 00:38:03.449 --> 00:38:14.409
@@ -958,7 +958,7 @@ nixo: Yep.
 
 240
 00:40:57.210 --> 00:41:03.340
-Ben Adams: It's an SRC, it's not an SIP, because it lives at the SAVM level.
+Ben Adams: It's an SRC, it's not an SIP, because it lives at the EVM level.
 
 241
 00:41:03.619 --> 00:41:12.380
@@ -1058,7 +1058,7 @@ Ben Adams: it's an NFT, and the NFT is an account, and you can transfer it. You 
 
 265
 00:43:40.179 --> 00:43:58.938
-Ben Adams: put the NFTs inside each other, they can contain each other, and then you can create a SAVM-enforced organizational hierarchy, either, you know, because you want to do some layout, or perhaps you're an organization, and you want to have your treasury separate from your engineering, your marketing, your operations.
+Ben Adams: put the NFTs inside each other, they can contain each other, and then you can create a EVM-enforced organizational hierarchy, either, you know, because you want to do some layout, or perhaps you're an organization, and you want to have your treasury separate from your engineering, your marketing, your operations.
 
 266
 00:43:59.099 --> 00:44:03.579
@@ -1130,7 +1130,7 @@ Ben Adams: none for the sponsorship path, because any EOA can relay.
 
 283
 00:45:45.920 --> 00:45:50.780
-Ben Adams: it's the standard SAVM protocol transaction.
+Ben Adams: it's the standard EVM protocol transaction.
 
 284
 00:45:50.969 --> 00:45:55.820

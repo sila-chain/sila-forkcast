@@ -2,6 +2,52 @@
   "eipId": 2780,
   "commits": [
     {
+      "sha": "7243c92ba812437c64bae9fc6524ee269b29daa9",
+      "date": "2026-09-04T13:35:32Z",
+      "message": "Update SIP-2780: align runtime charging and reference cases",
+      "author": "spencer-tb",
+      "prNumber": null,
+      "additions": 16,
+      "deletions": 16
+    },
+    {
+      "sha": "8331fb3eed0a5366b28b25a016f1ad04fac0fa8e",
+      "date": "2026-08-04T12:14:19Z",
+      "message": "Update SIP-2780: revise COLD_STORAGE_ACCESS and ACCOUNT_WRITE values",
+      "author": "misilva73",
+      "prNumber": null,
+      "additions": 7,
+      "deletions": 7
+    },
+    {
+      "sha": "5a8c80897aeb0952322cd0dfff767c541002b8c3",
+      "date": "2026-07-31T15:51:07Z",
+      "message": "Update SIP-2780: variable rename + 8007 clean-ups",
+      "author": "misilva73",
+      "prNumber": null,
+      "additions": 29,
+      "deletions": 29
+    },
+    {
+      "sha": "0a1d42b3c7a455cd812ce73b4b937c16d6f20bd6",
+      "date": "2026-07-30T12:54:28Z",
+      "message": "Update SIP-2780: Move to Review",
+      "author": "misilva73",
+      "prNumber": null,
+      "patch": "@@ -4,7 +4,7 @@ title: Resource-based intrinsic transaction gas\n description: Decompose the flat intrinsic transaction cost into explicit primitives priced to match the resources a transaction actually consumes\n author: Matt Garnett (@lightclient), Uri Klarman (@uriklarman), Ben Adams (@benaadams), Maria Inês Silva (@misilva73), Anders Elowsson (@anderselowsson), Anthony Sassano (@sassal), Dragan Rakita (@rakita)\n discussions-to: https://sila-magicians.org/t/sip-2780-reduce-intrinsic-cost-of-transactions/4413\n-status: Draft\n+status: Review\n type: Standards Track\n category: Core\n created: 2020-07-11",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "04dd54c2e7ec1f408cf4a150d5c1aa43573bd025",
+      "date": "2026-07-22T16:05:24Z",
+      "message": "Update SIP-2780: fold transfer log cost into TX_VALUE_COST",
+      "author": "misilva73",
+      "prNumber": null,
+      "additions": 18,
+      "deletions": 25
+    },
+    {
       "sha": "2e7e88bb8dc0ead4db7726ac6af89f576c221d93",
       "date": "2026-07-09T16:33:20Z",
       "message": "Update SIP-2780: align with recent SIP-2780 changes",
@@ -380,18 +426,10 @@
       "message": "Intial draft of sip to reduce intrinsic gas cost of transactions (#2780)",
       "author": "lightclient",
       "prNumber": 2780,
-      "patch": "@@ -0,0 +1,63 @@\n+---\n+sip: 2780\n+title: Reduce intrinsic transaction gas\n+author: Matt Garnett (@lightclient)>\n+discussions-to: https://sila-magicians.org/t/sip-2780-reduce-intrinsic-cost-of-transactions/4413\n+status: Draft\n+type: Standards Track\n+category: Core\n+created: 2020-07-11\n+---\n+\n+## Abstract\n+Reduce the intrinsic cost of a transaction to `16,360` gas.\n+\n+## Motivation\n+The current `21,000` gas intrinsic cost of a transaction does not accurately\n+represent the true cost of the transaction.\n+\n+## Specification\n+After `block.number >= FORK_BLOCK`, enforce an intrinsic gas cost of `16,360`.\n+\n+## Rationale\n+\n+The SAVM-equivalent of transaction validation would consist mostly of ~110 bytes\n+of data and 2 x `SLOAD (0x54)`, 2 x `SSTORE (0x55)`, and an `ECRECOVER`. This\n+translates to `(16 * 110) + 2 * 800 + 2 * 5,000 (assuming account is\n+initialized) + 3000 = 16,360`. This implies that the current intrinsic cost of\n+a transaction is overpriced by `4,640` gas. Since validation is implemented\n+natively, it's possible that this is a conservative estimate.\n+\n+## Backwards Compatibility\n+TBD\n+\n+## Test Cases\n+TBD\n+\n+## Implementation\n+TBD\n+\n+## Security Considerations\n+\n+#### Increased transactions-per-block\n+Reducing the intrinsic gas of transaction will lead to an increase of\n+transactions per block. This has several consequences:\n+\n+* Historically, periods of high transaction counts has correlated with\n+  higher-than-average uncle blocks being mined. It must be determined that the\n+  new intrinsic cost `16,360` will not adversely affect.\n+\n+* The state size of Sila continues to grow at an unsustainable pace.\n+  Increased the transaction throughput will exasperate this problem.\n+\n+#### Storage may be accessed more than once\n+It is difficult to arrive at a fixed-cost for the intrinsic transaction fee,\n+because it's possible for clients to need to revalidate a transaction in its\n+mempool. This can be caused artificially by submitting a chain of transactions\n+and bumping the gas price of the first transaction by minimal step sizes. Since\n+the first transaction is now a \"new\" transaction, the transactions that follow\n+sequentially will need to ensure the account's balance can still afford to\n+transact.\n+\n+## Copyright\n+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/)."
+      "patch": "@@ -0,0 +1,63 @@\n+---\n+sip: 2780\n+title: Reduce intrinsic transaction gas\n+author: Matt Garnett (@lightclient)>\n+discussions-to: https://sila-magicians.org/t/sip-2780-reduce-intrinsic-cost-of-transactions/4413\n+status: Draft\n+type: Standards Track\n+category: Core\n+created: 2020-07-11\n+---\n+\n+## Abstract\n+Reduce the intrinsic cost of a transaction to `16,360` gas.\n+\n+## Motivation\n+The current `21,000` gas intrinsic cost of a transaction does not accurately\n+represent the true cost of the transaction.\n+\n+## Specification\n+After `block.number >= FORK_BLOCK`, enforce an intrinsic gas cost of `16,360`.\n+\n+## Rationale\n+\n+The EVM-equivalent of transaction validation would consist mostly of ~110 bytes\n+of data and 2 x `SLOAD (0x54)`, 2 x `SSTORE (0x55)`, and an `ECRECOVER`. This\n+translates to `(16 * 110) + 2 * 800 + 2 * 5,000 (assuming account is\n+initialized) + 3000 = 16,360`. This implies that the current intrinsic cost of\n+a transaction is overpriced by `4,640` gas. Since validation is implemented\n+natively, it's possible that this is a conservative estimate.\n+\n+## Backwards Compatibility\n+TBD\n+\n+## Test Cases\n+TBD\n+\n+## Implementation\n+TBD\n+\n+## Security Considerations\n+\n+#### Increased transactions-per-block\n+Reducing the intrinsic gas of transaction will lead to an increase of\n+transactions per block. This has several consequences:\n+\n+* Historically, periods of high transaction counts has correlated with\n+  higher-than-average uncle blocks being mined. It must be determined that the\n+  new intrinsic cost `16,360` will not adversely affect.\n+\n+* The state size of Sila continues to grow at an unsustainable pace.\n+  Increased the transaction throughput will exasperate this problem.\n+\n+#### Storage may be accessed more than once\n+It is difficult to arrive at a fixed-cost for the intrinsic transaction fee,\n+because it's possible for clients to need to revalidate a transaction in its\n+mempool. This can be caused artificially by submitting a chain of transactions\n+and bumping the gas price of the first transaction by minimal step sizes. Since\n+the first transaction is now a \"new\" transaction, the transactions that follow\n+sequentially will need to ensure the account's balance can still afford to\n+transact.\n+\n+## Copyright\n+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/)."
     }
   ],
   "openPrs": [
-    {
-      "number": 11882,
-      "title": "Update SIP-2780: Move to Review",
-      "author": "poojaranjan",
-      "updatedAt": "2026-07-10T12:45:27Z",
-      "additions": 1,
-      "deletions": 1
-    },
     {
       "number": 11377,
       "title": "Update SIP-2780: fix minor typos and wording",

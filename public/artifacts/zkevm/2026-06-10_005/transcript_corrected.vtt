@@ -150,7 +150,7 @@ ignacio: We can have some Q&A after each project presentation, if there's any qu
 
 38
 00:08:00.520 --> 00:08:07.360
-ignacio: And then we will have three presentations, one from Derek about SAVM ASM progress.
+ignacio: And then we will have three presentations, one from Derek about EVM ASM progress.
 
 39
 00:08:08.120 --> 00:08:15.249
@@ -1050,7 +1050,7 @@ Francesco Risitano: the definition, or the specification of the execution layer.
 
 263
 00:38:18.500 --> 00:38:32.200
-Francesco Risitano: And then we have the SAVM specification. So the SAVM is specified primarily using opcodes, but the kind of host, so to speak, that invokes the SAVM
+Francesco Risitano: And then we have the EVM specification. So the EVM is specified primarily using opcodes, but the kind of host, so to speak, that invokes the EVM
 
 264
 00:38:32.200 --> 00:38:38.760
@@ -1586,7 +1586,7 @@ Derek Sorensen: Okay, right, I'll give a quick update on where EVASM is.
 
 397
 00:57:25.670 --> 00:57:32.970
-Derek Sorensen: If you don't have context, SAVM ASM is an assembly-level implementation of the SAVM.
+Derek Sorensen: If you don't have context, EVM ASM is an assembly-level implementation of the EVM.
 
 398
 00:57:33.130 --> 00:57:40.340
@@ -1602,11 +1602,11 @@ Derek Sorensen: kind of pin, Gen AI between
 
 401
 00:57:56.180 --> 00:58:06.900
-Derek Sorensen: two formal specs. One of them is of RISC-V, and the other of the SAVM, and have it write assembly directly. And then we can extract… we can… we can…
+Derek Sorensen: two formal specs. One of them is of RISC-V, and the other of the EVM, and have it write assembly directly. And then we can extract… we can… we can…
 
 402
 00:58:07.730 --> 00:58:25.809
-Derek Sorensen: get this RISC-V and put it in an ELF and run it in ZKVMs in the wild. So that's the idea. I'll give an update on… on three kind of levels, on the SAVM opcode, level, then the state transition function, and the code gem.
+Derek Sorensen: get this RISC-V and put it in an ELF and run it in ZKVMs in the wild. So that's the idea. I'll give an update on… on three kind of levels, on the EVM opcode, level, then the state transition function, and the code gem.
 
 403
 00:58:26.110 --> 00:58:35.259
@@ -1670,11 +1670,11 @@ Derek Sorensen: Kind of models and aren't kind of running yet, but this is the�
 
 418
 01:00:52.660 --> 01:00:58.840
-Derek Sorensen: And then from here, we can, the code gen, extracting SAVM…
+Derek Sorensen: And then from here, we can, the code gen, extracting EVM…
 
 419
 01:00:58.840 --> 01:01:22.879
-Derek Sorensen: I guess the goal is to be able to take the entire SAVM, put it into an ELF, and then run it in, we're targeting first the ZISC emulator. Right now, what we can do is we can individually take opcodes, or small groups of opcodes, and kind of package them together and test them. We have these round-trip tests that, extract the RISC-V… the code,
+Derek Sorensen: I guess the goal is to be able to take the entire EVM, put it into an ELF, and then run it in, we're targeting first the ZISC emulator. Right now, what we can do is we can individually take opcodes, or small groups of opcodes, and kind of package them together and test them. We have these round-trip tests that, extract the RISC-V… the code,
 
 420
 01:01:23.040 --> 01:01:32.739
@@ -1702,7 +1702,7 @@ Derek Sorensen: The state transition function is, of course, very, very big. We 
 
 426
 01:02:12.260 --> 01:02:20.350
-Derek Sorensen: We need to have a stronger sense of what the formal spec that we're working with is going to be for the SAVM.
+Derek Sorensen: We need to have a stronger sense of what the formal spec that we're working with is going to be for the EVM.
 
 427
 01:02:20.430 --> 01:02:28.320
@@ -1714,7 +1714,7 @@ Derek Sorensen: And also, we've had a lot of success with the EST, and we're hop
 
 429
 01:02:41.420 --> 01:02:47.119
-Derek Sorensen: Of the SAVM, but that is… That's a speedrun update.
+Derek Sorensen: Of the EVM, but that is… That's a speedrun update.
 
 430
 01:02:51.690 --> 01:03:03.210
@@ -1746,7 +1746,7 @@ ignacio: Cool.
 
 437
 01:03:32.530 --> 01:03:37.670
-Derek Sorensen: SAVM, you'll lean. Yeah, I'm happy to talk… maybe right now isn't,
+Derek Sorensen: EVM, you'll lean. Yeah, I'm happy to talk… maybe right now isn't,
 
 438
 01:03:38.340 --> 01:03:45.189

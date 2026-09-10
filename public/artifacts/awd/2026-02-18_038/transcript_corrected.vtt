@@ -286,7 +286,7 @@ lcastillo: is really all the binding context of when the 7730 file is applicable
 
 72
 00:18:38.010 --> 00:19:02.409
-lcastillo: what are the deployment addresses of this contract in the various chains that are SAVM compatible. For a message, it will give you the similar kind of information. You can actually add the name of the contract that you want to pad into. In the V1 of the format, we had also the ABI and the schema of the contract here, but we realized that it was better
+lcastillo: what are the deployment addresses of this contract in the various chains that are EVM compatible. For a message, it will give you the similar kind of information. You can actually add the name of the contract that you want to pad into. In the V1 of the format, we had also the ABI and the schema of the contract here, but we realized that it was better
 
 73
 00:19:02.410 --> 00:19:04.309

@@ -342,7 +342,7 @@ Ben Adams: Validate that.
 
 86
 00:19:42.320 --> 00:19:49.040
-Ben Adams: In… in that, but at the moment, we don't have a way in the SAVM of
+Ben Adams: In… in that, but at the moment, we don't have a way in the EVM of
 
 87
 00:19:49.400 --> 00:19:50.870
@@ -370,11 +370,11 @@ Ben Adams: in protocol, as a precompile or native, then it becomes, you know, 3,
 
 93
 00:20:22.260 --> 00:20:27.579
-Ben Adams: If it's running as… current SAVM bike code. I know there were…
+Ben Adams: If it's running as… current EVM bike code. I know there were…
 
 94
 00:20:27.940 --> 00:20:35.939
-Ben Adams: proposals, which I'm not sure are currently active to do, like, SAVM Max and FIMD to do efficient
+Ben Adams: proposals, which I'm not sure are currently active to do, like, EVM Max and FIMD to do efficient
 
 95
 00:20:36.700 --> 00:20:41.090
@@ -414,7 +414,7 @@ Ben Adams: Processing for these, signatures.
 
 104
 00:21:31.610 --> 00:21:36.799
-Ben Adams: Rather than… you know, write it as raw SAVM bike code when
+Ben Adams: Rather than… you know, write it as raw EVM bike code when
 
 105
 00:21:37.070 --> 00:21:39.829
@@ -750,7 +750,7 @@ Ben Adams: the Memple could go, okay, does this contract have enough SIL to pay 
 
 188
 00:32:49.650 --> 00:32:53.959
-Ben Adams: Rather than having to invoke the, SAVM.
+Ben Adams: Rather than having to invoke the, EVM.
 
 189
 00:32:54.400 --> 00:32:59.090
@@ -1306,7 +1306,7 @@ Ben Adams: Yeah, so I have a concern of any transaction type that needs to
 
 327
 00:53:16.750 --> 00:53:21.760
-Ben Adams: In fact, the SAVM, in terms of… First…
+Ben Adams: In fact, the EVM, in terms of… First…
 
 328
 00:53:23.040 --> 00:53:30.830
@@ -1366,7 +1366,7 @@ Ben Adams: If you're validating signatures in the, in the… In the block and me
 
 342
 00:55:18.750 --> 00:55:21.040
-Ben Adams: Using SAVM instructions.
+Ben Adams: Using EVM instructions.
 
 343
 00:55:25.630 --> 00:55:32.039
@@ -1390,7 +1390,7 @@ Ben Adams: Well, because the… at the moment, we use the EC Recover precompile.
 
 348
 00:55:46.800 --> 00:55:54.340
-Ben Adams: Which is… If you write EC Recover in SAVM bike code, it is significantly more expensive.
+Ben Adams: Which is… If you write EC Recover in EVM bike code, it is significantly more expensive.
 
 349
 00:55:54.760 --> 00:55:55.280
@@ -1446,7 +1446,7 @@ vitalik: Yeah, so, like, one example is that any, hash-based signature algorithm
 
 362
 00:57:24.650 --> 00:57:42.960
-vitalik: a hash output and put it back into a hash input, but if you, like, kind of do the SAVM math, it's, like, less than, like, 1.3x or something, right? I guess, like, two other big categories of examples of this that count. One of them is that, you know, with this,
+vitalik: a hash output and put it back into a hash input, but if you, like, kind of do the EVM math, it's, like, less than, like, 1.3x or something, right? I guess, like, two other big categories of examples of this that count. One of them is that, you know, with this,
 
 363
 00:57:42.960 --> 00:57:48.570

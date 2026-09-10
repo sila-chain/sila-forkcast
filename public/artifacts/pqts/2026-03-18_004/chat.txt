@@ -7,7 +7,7 @@ Type:
 View Realtime notes here: https://app.fireflies.ai/live/01KKVTXT6D8KKR9BZD6B8H70PR?ref=live_chat
 00:14:55	Antonio Sanso:	https://t.me/+ozVdiAeQleBhZDg0
 00:21:45	Matteo:	https://nicetry.xyz/
-00:22:13	Matteo:	https://Sila Research/t/achieving-quantum-safety-through-ephemeral-key-pairs-and-account-abstraction/24273
+00:22:13	Matteo:	https://ethresear.ch/t/achieving-quantum-safety-through-ephemeral-key-pairs-and-account-abstraction/24273
 00:25:04	Oleg Lodygensky:	The beauté of simplicity 🙂
 00:25:23	Matteo Vicari:	Reacted to "The beauté of simpli..." with 😎
 00:27:01	Alessandro Baiocchi:	Reacted to "The beauté of simpli..." with ❤️
@@ -35,7 +35,7 @@ Are all bundlers gonna die ? Or move to be broadcasters like ?
 00:55:05	Antonio Sanso:	I am probably going to move the unanswered  questions in the telegram channel  (assume we do not have time for all)
 00:55:30	Renaud-ZKNOX:	Could you give link to tg plz ?
 00:57:19	Antonio Sanso:	https://t.me/+ozVdiAeQleBhZDg0
-00:59:16	Antonio Sanso:	Aggregation wise we released this post today https://Sila Research/t/revisiting-falcon-signature-aggregation-for-pq-mempools/24431
+00:59:16	Antonio Sanso:	Aggregation wise we released this post today https://ethresear.ch/t/revisiting-falcon-signature-aggregation-for-pq-mempools/24431
 00:59:53	Oleg Lodygensky:	Reacted to "Aggregation wise we …" with 👍
 01:00:00	Danno Ferrin - Tectonic.xyz:	The validation frame gets the signature in the calldara, correct?
 01:02:04	lightclient:	Replying to "The validation frame..."

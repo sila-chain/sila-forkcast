@@ -130,7 +130,7 @@ Hehe late headliner. It will be proposed as a regular SIP
 00:22:29	Stefan Starflinger:	Reacted to "SIP-8037 as a change..." with 👍
 00:22:33	Ben Adams:	Replying to "I don't think that 8..."
 
-Drop refunds? https://sips.sila.org/SIPS/sip-3298
+Drop refunds? https://sips.sila.org/EIPS/sip-3298
 00:22:39	spencer:	Reacted to "SIP-8037 as a chan..." with 👍
 00:22:46	Francesco:	What is the alternative? We are not going to do 7999 in Glamsterdam. What is this simple solution?
 00:22:55	Dragan Rakita:	Replying to "I don't think that 8..."
@@ -173,7 +173,10 @@ https://github.com/sila-chain/execution-spec-tests/releases/tag/bal@v5.4.0
 🤷‍♂️ Will ping back when merged or can say more
 00:26:30	Łukasz Rozmej:	Replying to "8037 is very very co..."
 
-Sila narrative: simplify protocolSila reality: spaghetti? :(
+Sila narrative: simplify protocol
+Sila reality: spaghetti? 
+
+:(
 00:27:02	jvn:	Reacted to "Sila narrative..." with 🙃
 00:27:15	spencer:	Replying to "what did we just c..."
 
@@ -262,7 +265,8 @@ Or how would we do it in a non-consensus way?
  We should use this as a shelling point to rework the engine api imho
 00:41:47	Łukasz Rozmej:	Replying to "we are open for engi..."
 
-Isn't it just a transport entry-point?Not sure if we are talking same thing
+Isn't it just a transport entry-point?
+Not sure if we are talking same thing
 00:41:47	Barnabas:	Replying to "we are open for engi..."
 
 https://github.com/sila-chain/execution-apis/pull/764
@@ -550,7 +554,7 @@ We did a lot good for the protocol, this just feel a bad take.
 01:12:25	Francesco:	Replying to "Sorry but reth shoul..."
 
 On a personal level, I believe you. But it is a conflict of interest, there’s a competing standard being proposed essentially...
-01:12:31	lightclient:	mempool rules: https://sips.sila.org/SIPS/sip-7562
+01:12:31	lightclient:	mempool rules: https://sips.sila.org/EIPS/sip-7562
 01:12:51	lightclient:	i wouldn’t say that “it isn’t defined” we just have to decide how much of 7562 we want in the core protocol
 01:12:59	lightclient:	it is very well thought through and thorough
 01:13:17	Ansgar Dietrichs:	I will keep the discussion open for however much longer there are things to discuss, but I would need either Besu, Nethermind, or reth to flip to frame tx headliner support to not then propose rejecting this headliner proposal at the end.
@@ -562,7 +566,7 @@ On a personal level, I believe you. But it is a conflict of interest, there’s 
 Nethermind team is split on this, personally I would be open to making headliner
 01:13:56	Pablo Deymo | Lambda:	Reacted to "Sorry but reth shoul..." with 👍
 01:14:17	DanielVF | Monad:	SIP-8141 spec metions rules "similar to" 
-https://sips.sila.org/SIPS/sip-7562
+https://sips.sila.org/EIPS/sip-7562
 01:14:17	Dragan Rakita:	Replying to "Sorry but reth shoul..."
 
 If you believe me, you wouldn’t state it like that, it is really hurtful. The outcome we all want is what is best for etheream, proposing different approach does not make our vote invalid. It is just a bad take.
@@ -623,7 +627,7 @@ This is that it’s one of the most asked for features by end users as it basica
 01:20:54	Parthasarathy Ramanujam:	Wouldn’t that help with most of the complexities associated to mempool validation?
 01:21:03	lightclient:	Replying to "Is there a native tr..."
 
-we would just run the savm in a specific mode
+we would just run the evm in a specific mode
 01:21:34	Parthasarathy Ramanujam:	Replying to "Isn’t there a native..."
 
 I blame auto-correct. I was supposed to type “Isn’t”
@@ -661,7 +665,7 @@ This hiding behind process is not a good look.
 process should reflect consensus, not enforce it.
 01:25:57	Dragan Rakita:	Replying to "Sorry but reth shoul..."
 
-For example this is improvement ever tempo in terms in SIP: https://sips.sila.org/SIPS/sip-8175  that would be even better than tempo,
+For example this is improvement ever tempo in terms in SIP: https://sips.sila.org/EIPS/sip-8175  that would be even better than tempo,
 01:26:16	Derek Chiang | ZeroDev:	What would need to change to change Besu/Nethermind/Reth’s minds?
 01:26:21	Trent:	Reacted to "Can we wait another ..." with 👍
 01:26:23	Dragan Rakita:	Echoing that we all want to improve protocol, and think what is best for it.

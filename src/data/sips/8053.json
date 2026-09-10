@@ -2,7 +2,7 @@
   "id": 8053,
   "title": "SIP-8053: Milli-gas for High-precision Gas Metering",
   "status": "Draft",
-  "description": "Adds `milli-gas` as the SAVM’s internal gas accounting unit, reducing rounding errors without impacting UX",
+  "description": "Adds `milli-gas` as the EVM’s internal gas accounting unit, reducing rounding errors without impacting UX",
   "author": "Maria Silva (@misilva73)",
   "type": "Standards Track",
   "category": "Core",
@@ -33,7 +33,7 @@
       ]
     }
   ],
-  "laymanDescription": "Counts gas in thousandths (milli-gas) during SAVM execution for finer precision, then rounds to normal gas at transaction end. Fees and limits stay the same, so users and apps shouldn't notice changes.",
+  "laymanDescription": "Counts gas in thousandths (milli-gas) during EVM execution for finer precision, then rounds to normal gas at transaction end. Fees and limits stay the same, so users and apps shouldn't notice changes.",
   "northStarAlignment": {
     "scaleL1": {
       "description": "Enables a more precise accounting of efficient compute operations, thus removing an average of 4% loss in block space per transaction from roundig errors."
@@ -53,7 +53,7 @@
       "description": "Tools using gas_used remain accurate; no explicit requirement to expose milli_gas since it is an internal accounting detail."
     },
     "layer2s": {
-      "description": "No specific L2 impacts stated; proposal covers internal SAVM accounting only, with fees and limits unchanged at transaction interface."
+      "description": "No specific L2 impacts stated; proposal covers internal EVM accounting only, with fees and limits unchanged at transaction interface."
     },
     "stakersNodes": {
       "description": "Fee mechanics and limits remain as today; no staking or validator configuration changes are described in this proposal."

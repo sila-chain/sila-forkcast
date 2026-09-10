@@ -12,16 +12,16 @@
 00:17:10	Toni Wahrstaetter:	This was the latest BAL size analysis but lacks a comparison to the block size:
 https://github.com/nerolation/sil-bal-analysis/blob/main/reports/sip-7928-analysis.md 
 
-I assumed the block size is 120 KiB (based on a dashboard from silascan).
+I assumed the block size is 120 KiB (based on a dashboard from etherscan).
 But can double-check that number
 00:19:18	Ben Adams:	puts more pressure/incentive to drop blocks via 4444 to always keep BALs so historic blocks would become less available?
 00:19:52	Karim T.:	Reacted to "puts more pressure/i..." with ➕
 00:22:42	Karim T.:	I think that block datas are going to grow enormously anyway. I think 4444 might be the solution, as Ben said
-00:25:24	Karim T.:	The fact that with BAL we can synchronize an archive node more quickly is a real plus. Archive nodes will become increasingly difficult to resynchronize, and having this capability can, for example, allow synchronization of an archive node without needing all versions of the SAVM fork .
+00:25:24	Karim T.:	The fact that with BAL we can synchronize an archive node more quickly is a real plus. Archive nodes will become increasingly difficult to resynchronize, and having this capability can, for example, allow synchronization of an archive node without needing all versions of the EVM fork .
 00:33:11	Ben Adams:	BALs in blobs :)
 00:45:04	Jared Wasinger:	Yeah we want to bound the healing phase
 00:45:47	Karim T.:	I see also regarding backward sync , not need to replay block . So snap protocol I don’t know , but specific P2P message why not
-00:47:16	Karim T.:	No need to keep savm history if we have all BALs ^^ the fix to legacy code
+00:47:16	Karim T.:	No need to keep evm history if we have all BALs ^^ the fix to legacy code
 00:47:39	Stefan Starflinger:	Storage is cheaper than RAM now 🙃
 00:47:46	Ben Adams:	Reacted to "Storage is cheaper t..." with 😂
 00:52:48	draganrakita:	What is as is?
@@ -75,7 +75,9 @@ my understanding is we don't need a sidecar in this case
 Blob BALs :)
 01:04:53	Ben Adams:	Replying to "So if we replay an o..."
 
-1 blob reserved per blockThough I'm not entirely serious
+1 blob reserved per block
+
+Though I'm not entirely serious
 01:05:32	Stefan Starflinger:	Replying to "So if we replay an o..."
 
 system Blobs
@@ -83,7 +85,9 @@ system Blobs
 01:06:32	Stefan Starflinger:	Replying to "So if we replay an o..."
 
 blob without size limits :D
-01:07:23	Łukasz Rozmej:	famous last words...told you it won't be "quick discussion" :P
+01:07:23	Łukasz Rozmej:	famous last words...
+
+told you it won't be "quick discussion" :P
 01:07:33	Stefan Starflinger:	Reacted to "famous last words......" with 😁
 01:07:38	Toni Wahrstaetter:	Reacted to "famous last words......" with 😁
 01:07:41	felipe:	Reacted to "famous last words...." with 😁

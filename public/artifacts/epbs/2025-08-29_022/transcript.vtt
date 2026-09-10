@@ -794,7 +794,7 @@ Will Corcoran: Okay.
 
 199
 00:29:08.900 --> 00:29:18.249
-Will Corcoran: Yeah, POTUS, this is accessing post-state information, like account balances, contract states, and the SAVM after execution payload processing.
+Will Corcoran: Yeah, POTUS, this is accessing post-state information, like account balances, contract states, and the EVM after execution payload processing.
 
 200
 00:29:18.700 --> 00:29:24.820
@@ -810,7 +810,7 @@ Potuz: And document to see if it was there or not. Yeah, so, okay, so this is so
 
 203
 00:29:42.610 --> 00:30:01.179
-Potuz: How does someone prove something on the SAVM today about the consensus layer? Say that you want to prove that the validator, you want to act, for example, like returning money to someone that is running a validator, and you want to prove that this validator is not slashed.
+Potuz: How does someone prove something on the EVM today about the consensus layer? Say that you want to prove that the validator, you want to act, for example, like returning money to someone that is running a validator, and you want to prove that this validator is not slashed.
 
 204
 00:30:01.500 --> 00:30:03.750
@@ -818,7 +818,7 @@ Potuz: At least up to the previous block.
 
 205
 00:30:04.050 --> 00:30:12.589
-Potuz: the SAVM… has the last block route, and it gives you that by EIP4788,
+Potuz: the EVM… has the last block route, and it gives you that by EIP4788,
 
 206
 00:30:13.020 --> 00:30:22.399
@@ -1026,7 +1026,7 @@ Potuz: I also think that we should just leave this problem alone until someone r
 
 257
 00:36:05.570 --> 00:36:18.899
-Potuz: Because the fix can come either on committing more on the… so the Beacon block can commit to a previous state route, the… the SAVM can commit to the execution payload envelope route.
+Potuz: Because the fix can come either on committing more on the… so the Beacon block can commit to a previous state route, the… the EVM can commit to the execution payload envelope route.
 
 258
 00:36:19.190 --> 00:36:25.019

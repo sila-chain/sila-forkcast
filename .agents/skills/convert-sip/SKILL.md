@@ -1,11 +1,15 @@
 ---
 name: convert-sip
-description: Convert an SIP proposed for the current fork into sila-forkcast JSON format. Use when adding a new SIP to the tracker.
+description: Convert an SIP proposed for the current fork into forkcast JSON format. Use when adding a new SIP to the tracker.
 ---
 
-## Convert SIP to sila-forkcast format
+## Convert SIP to forkcast format
 
-Convert an SIP proposed for the current fork (e.g., Glamsterdam, Hegota) into sila-forkcast JSON format.
+Convert an SIP proposed for the current fork (e.g., Glamsterdam, Hegota) into forkcast JSON format.
+
+**Scope note**: this is the whole-file workflow. If the SIP already exists in `src/data/sips/` and
+only needs its `laymanDescription`, `benefits`, and `tradeoffs` filled in, use the
+`draft-sip-narrative` skill instead — it is the reduced-scope version of the same field rules.
 
 ### Schema
 
@@ -72,7 +76,7 @@ Use the SIP number to gather all resources:
 
 Fetch the current version from master:
 ```bash
-gh api '/repos/sila/SIPs/contents/SIPS/sip-{EIP_NUMBER}.md' --jq '.content' | base64 -d
+gh api '/repos/sila/SIPs/contents/EIPS/sip-{EIP_NUMBER}.md' --jq '.content' | base64 -d
 ```
 
 If this 404s (unmerged SIP), fall back to fetching from the PR branch instead. Find the PR, get the head SHA, and fetch from that ref.
@@ -81,7 +85,7 @@ If this 404s (unmerged SIP), fall back to fetching from the PR branch instead. F
 
 Get all commits that modified this SIP:
 ```bash
-gh api '/repos/sila/SIPs/commits?path=SIPS/sip-{EIP_NUMBER}.md' --jq '.[] | {sha: .sha[0:7], date: .commit.author.date[0:10], message: .commit.message | split("\n")[0]}'
+gh api '/repos/sila/SIPs/commits?path=EIPS/sip-{EIP_NUMBER}.md' --jq '.[] | {sha: .sha[0:7], date: .commit.author.date[0:10], message: .commit.message | split("\n")[0]}'
 ```
 
 Review these to understand how the SIP evolved. The original "Add SIP" commit is typically the last/oldest one.
@@ -91,7 +95,7 @@ Review these to understand how the SIP evolved. The original "Add SIP" commit is
 Find the original PR from the first commit:
 ```bash
 # Get the original commit SHA (last in list = oldest). Validate it looks like a hex SHA before using.
-ORIGINAL_SHA=$(gh api '/repos/sila/SIPs/commits?path=SIPS/sip-{EIP_NUMBER}.md' --jq '.[-1].sha')
+ORIGINAL_SHA=$(gh api '/repos/sila/SIPs/commits?path=EIPS/sip-{EIP_NUMBER}.md' --jq '.[-1].sha')
 
 # Find the PR for that commit
 gh api "/repos/sila/SIPs/commits/$ORIGINAL_SHA/pulls" --jq '.[0] | {number, title, html_url}'
@@ -167,13 +171,13 @@ The context file preserves the FULL raw data used to generate the SIP. **Every s
 Generated: {date}
 
 ## Raw SIP Content
-Source: https://github.com/sila-chain/SIPs/blob/master/SIPS/sip-{number}.md
+Source: https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-{number}.md
 \`\`\`
 {full raw SIP markdown}
 \`\`\`
 
 ## Commit History
-Source: https://github.com/sila-chain/SIPs/commits/master/SIPS/sip-{number}.md
+Source: https://github.com/sila-chain/SIPs/commits/master/EIPS/sip-{number}.md
 \`\`\`
 {full commit history output}
 \`\`\`
@@ -241,11 +245,11 @@ If there are errors in either step, fix them before reporting success.
 **PR Body**:
 ```
 > [!NOTE]
-> This PR was generated with the `convert-sip` skill (see [SKILL.md](https://github.com/sila-chain/sila-forkcast/blob/main/.agents/skills/convert-sip/SKILL.md)).
+> This PR was generated with the `convert-sip` skill (see [SKILL.md](https://github.com/sila-chain/forkcast/blob/main/.agents/skills/convert-sip/SKILL.md)).
 
 ## SIP-{number}: {title}
 
-Ported to sila-forkcast format.
+Ported to forkcast format.
 
 ### Files
 - `src/data/sips/{number}.json` - SIP data
@@ -253,7 +257,7 @@ Ported to sila-forkcast format.
 ### Sources Used
 | Source | Reference |
 |--------|-----------|
-| Raw SIP | sila/SIPs/SIPS/sip-{number}.md |
+| Raw SIP | sila/SIPs/EIPS/sip-{number}.md |
 | Original PR | #{pr_number} - {pr_title} |
 | Commits | {count} commits ({date range}) |
 | PR Discussion | {comment_count} comments |

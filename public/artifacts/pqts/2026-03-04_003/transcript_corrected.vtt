@@ -350,11 +350,11 @@ Renaud-ZKNOX: To, to, to verifying a signature.
 
 88
 00:15:36.320 --> 00:15:44.680
-Renaud-ZKNOX: It does not include the ash, so as we presented for Falcons, if you have an SAVM,
+Renaud-ZKNOX: It does not include the ash, so as we presented for Falcons, if you have an EVM,
 
 89
 00:15:44.950 --> 00:15:53.369
-Renaud-ZKNOX: equivalent, where you replace the hash2Plane function by, SAVM compatible. You have something that is
+Renaud-ZKNOX: equivalent, where you replace the hash2Plane function by, EVM compatible. You have something that is
 
 90
 00:15:53.520 --> 00:16:10.330
@@ -470,15 +470,15 @@ Renaud-ZKNOX: Yeah, and so this NumPy, so that's a promising parallel track, we 
 
 118
 00:20:20.850 --> 00:20:32.399
-Renaud-ZKNOX: So it's a NumPy-like frequency for the SAVM, so it's introducing vectorized modular arithmetic for those who have followed, their proposition, which was kind of…
+Renaud-ZKNOX: So it's a NumPy-like frequency for the EVM, so it's introducing vectorized modular arithmetic for those who have followed, their proposition, which was kind of…
 
 119
 00:20:32.690 --> 00:20:39.120
-Renaud-ZKNOX: abandon, with the… with the deaths of, EOF, which was SAVM max.
+Renaud-ZKNOX: abandon, with the… with the deaths of, EOF, which was EVM max.
 
 120
 00:20:39.420 --> 00:20:51.299
-Renaud-ZKNOX: So, SAVM Max was a powerful, but very complex precompiled. I think the problem with SAVM Max, it was introducing too much things at a time, and was too…
+Renaud-ZKNOX: So, EVM Max was a powerful, but very complex precompiled. I think the problem with EVM Max, it was introducing too much things at a time, and was too…
 
 121
 00:20:51.590 --> 00:20:58.800
@@ -702,7 +702,7 @@ Renaud-ZKNOX: of the precompile. So it's a bit less complex than, than.
 
 176
 00:27:16.890 --> 00:27:21.250
-Renaud-ZKNOX: than, SAVM Max, of course, bets.
+Renaud-ZKNOX: than, EVM Max, of course, bets.
 
 177
 00:27:21.490 --> 00:27:24.709
@@ -842,7 +842,7 @@ Danno Ferrin - Tectonic.xyz: And, like, the keys of the Lithium and Falcon, they
 
 211
 00:32:04.830 --> 00:32:11.890
-Danno Ferrin - Tectonic.xyz: Or will you be taking the canonical keys and be able to use those within the precompiler, or will we have to massage them with SAVM?
+Danno Ferrin - Tectonic.xyz: Or will you be taking the canonical keys and be able to use those within the precompiler, or will we have to massage them with EVM?
 
 212
 00:32:12.600 --> 00:32:18.009
@@ -1118,7 +1118,7 @@ Antonio Sanso: Alright.
 
 280
 00:40:05.780 --> 00:40:11.370
-Danno Ferrin - Tectonic.xyz: So, my concern is that, anything with SAVM cost exceeds the data carriage cost.
+Danno Ferrin - Tectonic.xyz: So, my concern is that, anything with EVM cost exceeds the data carriage cost.
 
 281
 00:40:11.600 --> 00:40:17.130
@@ -1358,7 +1358,7 @@ Renaud-ZKNOX: No, it will be higher, but once again, NumPy is very versatile.
 
 340
 00:45:52.030 --> 00:46:11.770
-Renaud-ZKNOX: it's not limited to, to just, even if you remove all Lattice's candidates, because, for instance, when SAVM Max, started, it was absolutely not to implement, Lattice candidates. So, it's more the high, genericity of,
+Renaud-ZKNOX: it's not limited to, to just, even if you remove all Lattice's candidates, because, for instance, when EVM Max, started, it was absolutely not to implement, Lattice candidates. So, it's more the high, genericity of,
 
 341
 00:46:12.410 --> 00:46:27.880
@@ -1862,7 +1862,7 @@ Fab: So…
 
 466
 01:01:51.610 --> 01:02:03.440
-Danno Ferrin - Tectonic.xyz: Exactly what I proposed in the first meeting, if you looked at my slides. We put the signatures and we put the body in two separate places. We don't rely on account abstraction and pushing in the SAVM. I agree with you. We need to have a…
+Danno Ferrin - Tectonic.xyz: Exactly what I proposed in the first meeting, if you looked at my slides. We put the signatures and we put the body in two separate places. We don't rely on account abstraction and pushing in the EVM. I agree with you. We need to have a…
 
 467
 01:02:03.560 --> 01:02:22.059

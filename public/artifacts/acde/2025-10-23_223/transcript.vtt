@@ -1414,7 +1414,7 @@ Maria Silva: Or we can do fractional gas. So, there was an old SIP called partic
 
 354
 00:52:14.620 --> 00:52:25.690
-Maria Silva: And then all… everything inside the SAVM execution of the transaction is, accounted in Milligas, and then we do a rounding at the end of the transaction, so…
+Maria Silva: And then all… everything inside the EVM execution of the transaction is, accounted in Milligas, and then we do a rounding at the end of the transaction, so…
 
 355
 00:52:25.690 --> 00:52:39.510
@@ -1426,7 +1426,7 @@ Maria Silva: So these are the two…
 
 357
 00:52:42.850 --> 00:52:59.410
-Maria Silva: solution, so both have pros and cons. So, on fractional gas, you are essentially adding some, complexity to the SAVM, so we are adding a new variable, and we are adding this, mechanism of running a transaction level.
+Maria Silva: solution, so both have pros and cons. So, on fractional gas, you are essentially adding some, complexity to the EVM, so we are adding a new variable, and we are adding this, mechanism of running a transaction level.
 
 358
 00:52:59.970 --> 00:53:11.569
@@ -1622,7 +1622,7 @@ Carl Beekhuizen: Doing particle gas, I think it's just, like, massive complexity
 
 406
 00:59:15.800 --> 00:59:19.479
-Carl Beekhuizen: But, like, within the SAVM, and, and risks of…
+Carl Beekhuizen: But, like, within the EVM, and, and risks of…
 
 407
 00:59:19.620 --> 00:59:38.119
@@ -1650,11 +1650,11 @@ Carl Beekhuizen: So it seems to be, like, very marginal effects to, like, actual
 
 413
 01:00:06.080 --> 01:00:11.710
-Carl Beekhuizen: SAVM users and transactions, so I don't think that should be a major thing that's holding us back right now.
+Carl Beekhuizen: EVM users and transactions, so I don't think that should be a major thing that's holding us back right now.
 
 414
 01:00:13.290 --> 01:00:28.739
-Carl Beekhuizen: I think the bigger things you're gonna see is, like, what happens on, like, when we, like, to existing, like, tooling and that kind of thing outside of the SAVM, and wallets, as opposed to, like, how does it break contracts within the SAVM? It seems like people have been pretty good about not hard-coding too much.
+Carl Beekhuizen: I think the bigger things you're gonna see is, like, what happens on, like, when we, like, to existing, like, tooling and that kind of thing outside of the EVM, and wallets, as opposed to, like, how does it break contracts within the EVM? It seems like people have been pretty good about not hard-coding too much.
 
 415
 01:00:29.460 --> 01:00:32.699
@@ -1710,7 +1710,7 @@ Ben Adams: Whereas we could do… in… we could do… I mean, at particle gas, 
 
 428
 01:01:37.950 --> 01:01:46.429
-Ben Adams: Internally rebased, so… in the SAVM, we'd rebate everything up, and then when it was red, we'd just…
+Ben Adams: Internally rebased, so… in the EVM, we'd rebate everything up, and then when it was red, we'd just…
 
 429
 01:01:46.800 --> 01:01:48.730
@@ -1754,7 +1754,7 @@ Maria Silva: Yeah, that's… that's exactly how it works. So you have an interna
 
 439
 01:02:41.240 --> 01:02:48.209
-Maria Silva: But then at the end of the transaction, you round up to GAD, and so you report… the SAVM reports back
+Maria Silva: But then at the end of the transaction, you round up to GAD, and so you report… the EVM reports back
 
 440
 01:02:48.310 --> 01:02:57.399
@@ -1998,7 +1998,7 @@ nixo: This, this SIP was originally proposed in April of 2024.
 
 500
 01:11:04.130 --> 01:11:21.159
-Ansgar Dietrichs: And just for context for people, like, this EAP, the reason why that one… this one is at least in principle still relevant for the future, and even before any state changes, is that the idea is to make precompiles more expensive to account for the cost that it causes for ZK SAVM provers.
+Ansgar Dietrichs: And just for context for people, like, this EAP, the reason why that one… this one is at least in principle still relevant for the future, and even before any state changes, is that the idea is to make precompiles more expensive to account for the cost that it causes for ZK EVM provers.
 
 501
 01:11:21.340 --> 01:11:37.579

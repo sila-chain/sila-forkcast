@@ -88,7 +88,7 @@ Another one that I think would be good to get in
 00:26:38	Eitan Seri-Levi:	lgtm
 00:26:42	Eitan Seri-Levi:	Reacted to "I’m gonna block dora..." with 😂
 00:26:42	bfqm:	Reacted to "I’m gonna block d..." with 😂
-00:26:47	Parithosh Jayanthi:	https://sila-forkcast.org/sips/7688/
+00:26:47	Parithosh Jayanthi:	https://forkcast.org/sips/7688/
 00:27:28	Barnabas:	SFI decision will have to wait till implementations are done, and its running fine on a devnet.
 00:27:54	Etan (Nimbus):	Reacted to "SFI decision will ha..." with ❤️
 00:27:55	cayman:	Lodestar has an implementation
@@ -150,7 +150,7 @@ Also two ELs have kept doing fake invalids, through the last week or so
 00:33:39	saulius:	Grandine maybe, it really depends if there will be left enough of time after ePBS works.
 00:33:52	Parithosh Jayanthi:	Reacted to "Grandine maybe, it really depends if there will be left enough of time after ePBS works." with 👍
 00:34:57	kasey:	IMO if it doesn’t go into devnet-7 it should be in devnet-8, I’m against DFI
-00:35:18	Parithosh Jayanthi:	https://sips.sila.org/SIPS/sip-8080
+00:35:18	Parithosh Jayanthi:	https://sips.sila.org/EIPS/sip-8080
 00:35:42	Greg K | Lido:	May I ask why to DFI?
 00:36:11	Dima Gusakov | Lido:	But it is good for SIL in general
 00:36:17	Greg K | Lido:	Reacted to "But it is good for..." with 👍
@@ -177,7 +177,7 @@ hold my beer" with 🤪
 
 I tend to agree with this. We should do only if it’s a “strong must have”. But ill leave this decision to whether that’s true
 00:40:14	Francesco:	I can repropose but I am not going to champion the SIP, if someone wants to do it go ahead
-00:41:29	Parithosh Jayanthi:	https://sips.sila.org/SIPS/sip-8045
+00:41:29	Parithosh Jayanthi:	https://sips.sila.org/EIPS/sip-8045
 00:41:39	Marius Van Der Wijden (M):	If clients have not looked into it at all we should dfi it
 00:41:57	Nico Flaig:	it's on devnet-6 already
 00:42:04	Nico Flaig:	5*

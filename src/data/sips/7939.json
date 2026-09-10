@@ -9,6 +9,7 @@
   "createdDate": "2025-04-28",
   "discussionLink": "https://sila-magicians.org/t/create-a-new-opcode-for-counting-leading-zeros-clz/10805",
   "reviewer": "bot",
+  "layer": "EL",
   "forkRelationships": [
     {
       "forkName": "Fusaka",
@@ -26,7 +27,7 @@
       ]
     }
   ],
-  "laymanDescription": "This adds a new CLZ (Count Leading Zeros) opcode to the SAVM that efficiently counts the number of zero bits at the start of a 256-bit number. This is a fundamental mathematical operation used in many algorithms, especially for mathematical computations, data compression, and cryptographic operations. Currently, implementing this operation in Solidity requires complex and expensive code - this opcode makes it much cheaper and faster.",
+  "laymanDescription": "This adds a new CLZ (Count Leading Zeros) opcode to the EVM that efficiently counts the number of zero bits at the start of a 256-bit number. This is a fundamental mathematical operation used in many algorithms, especially for mathematical computations, data compression, and cryptographic operations. Currently, implementing this operation in Solidity requires complex and expensive code - this opcode makes it much cheaper and faster.",
   "northStarAlignment": {
     "scaleL1": {
       "description": "Significantly reduces gas costs for mathematical operations that require bit manipulation, improving computational efficiency and enabling more complex on-chain calculations."

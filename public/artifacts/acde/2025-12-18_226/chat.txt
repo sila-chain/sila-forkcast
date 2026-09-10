@@ -173,7 +173,8 @@ what is "access" here ?
 State IO
 00:29:18	Łukasz Rozmej:	Replying to "Here is the breakdow..."
 
-State -> state writeAccess -> state read?
+State -> state write
+Access -> state read?
 00:29:37	Luis Pinto | Besu:	BALs will make compute much cheaper than state access, why don’t we go through a general repricing after that is integrated? It feels we will go through another round of repricing after all clients implement that
 00:29:42	Ahmad Bitar | Nethermind:	Replying to "Here is the breakdow..."
 
@@ -217,7 +218,7 @@ I split each opcode cost into the different components. For instance, SSTORE has
 True state access will be much trivial
 00:32:17	Maria Silva:	Replying to "Here is the breakdow..."
 
-Here is the analysis: https://Sila Research/t/going-multidimensional-an-empirical-analysis-on-gas-metering-in-the-savm/22621
+Here is the analysis: https://ethresear.ch/t/going-multidimensional-an-empirical-analysis-on-gas-metering-in-the-evm/22621
 00:32:22	Toni Wahrstätter:	Reacted to fyi :) - Glamsterdam... with "🔥"
 00:32:23	Guillaume:	Replying to "Here is the breakdow..."
 
@@ -277,7 +278,7 @@ Let schedule some time to go over it
 We could setup a guide/workshop as an entry point to write benchmarks. I'll contact you :)
 00:37:09	Maria Silva:	Replying to "Here is the breakdow..."
 
-Also, please read here: https://Sila Research/t/going-multidimensional-an-empirical-analysis-on-gas-metering-in-the-savm/22621
+Also, please read here: https://ethresear.ch/t/going-multidimensional-an-empirical-analysis-on-gas-metering-in-the-evm/22621
 00:37:09	Ahmad Bitar | Nethermind:	Replying to "why the 60M not 100M..."
 
 yeah, but 100M was one of the goals for 2026, no?
@@ -405,7 +406,7 @@ So 7971 w/h limit
 01:11:04	Ansgar Dietrichs:	I personally would propose waiting with 8032 decision until Jan 5, to have better state benchmarks.
 
 those better benchmark numbers will tell us how harsh the state access cost increases will be without this SIP, which will inform the urgency here.
-01:11:09	Maria Silva:	8038 has a section on how it can be complemented with 8032: https://sips.sila.org/SIPS/sip-8038#interaction-with-sip-8032
+01:11:09	Maria Silva:	8038 has a section on how it can be complemented with 8032: https://sips.sila.org/EIPS/sip-8038#interaction-with-sip-8032
 01:11:59	lightclient:	does delay mean CFI?
 01:12:38	Ansgar Dietrichs:	we have not made any SFI decisions beyond headliners
 01:12:44	Ansgar Dietrichs:	Replying to "we have not made any..."
@@ -428,7 +429,7 @@ Good point, also regarding interactions with these SIPs which might not directly
 Migration is something that was never done
 01:14:30	Marius van der Wijden:	Replying to "sorry guys just jo..."
 
-fyi we have DFI'd the savm memory limit sips
+fyi we have DFI'd the evm memory limit sips
 01:14:48	Charles:	ack
 01:15:15	Marius van der Wijden:	Replying to "sorry guys just jo..."
 

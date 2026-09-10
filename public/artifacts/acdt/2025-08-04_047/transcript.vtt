@@ -378,7 +378,7 @@ marek: I just want to mention that. Never mind has an early integration with our
 
 95
 00:18:15.223 --> 00:18:38.839
-marek: And also it's like integration with State. So never mind, can work with our builder as a State provider, but it still uses our savm. Us. For execution. So it's it's only replaces the state. Yeah. But just wanted to mention, because I heard some discussion about
+marek: And also it's like integration with State. So never mind, can work with our builder as a State provider, but it still uses our evm. Us. For execution. So it's it's only replaces the state. Yeah. But just wanted to mention, because I heard some discussion about
 
 96
 00:18:39.424 --> 00:18:44.549

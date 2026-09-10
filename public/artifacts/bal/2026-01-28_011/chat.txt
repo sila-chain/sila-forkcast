@@ -67,7 +67,7 @@ This gives the realistic gains, not the worst case gains
 00:37:27	Jared Wasinger:	Geth doesn’t have Otel for bals yet
 00:37:30	Karim T. (matkt):	It is for devnet 2 your open telemetry spec ?
 00:37:34	felipe:	Reacted to "Geth doesn’t have..." with 👍
-00:39:12	jochem-brouwer:	https://Sila Research/t/a-small-step-towards-data-driven-protocol-decisions-unified-slowblock-metrics-across-clients/23907
+00:39:12	jochem-brouwer:	https://ethresear.ch/t/a-small-step-towards-data-driven-protocol-decisions-unified-slowblock-metrics-across-clients/23907
 00:39:28	Stefan Starflinger:	Replying to "It is for devnet 2 y..."
 
 Its not a requirement for devnet 2

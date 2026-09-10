@@ -63,7 +63,7 @@
       "description": "Explorers need to be able to display the bigger initcode."
     },
     "layer2s": {
-      "description": "SAVM-equivalent need to implement the change to follow the execution layer specification."
+      "description": "EVM-equivalent need to implement the change to follow the execution layer specification."
     },
     "stakersNodes": {
       "description": "Node operators shouldn't notice a direct change because the bigger initcode still fits in the same block size. Over the time, stored initcode will take bigger part of the disk space."

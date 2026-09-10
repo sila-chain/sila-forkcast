@@ -4,10 +4,13 @@ import { fileURLToPath } from 'url';
 import { parseFrontmatter, mapOfficialToLocal } from './lib/sip-parsing.mjs';
 import {
   buildNewEipJson,
+  findOtherClaimingPr,
   getPendingPullRequestNumber,
+  hasCuratedContent,
   pendingPullRequest,
   updateExistingEip,
 } from './sip-record-sync.mjs';
+import { loadDecisionEipIds } from './lib/key-decisions.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -147,7 +150,7 @@ async function fetchPrEipFiles(prNumber, headers) {
   return allFiles
     .filter(
       (f) =>
-        f.status === 'added' && /^SIPS\/sip-\d+\.md$/.test(f.filename),
+        f.status === 'added' && /^EIPS\/sip-\d+\.md$/.test(f.filename),
     )
     .map((f) => {
       const match = f.filename.match(/sip-(\d+)\.md$/);
@@ -156,10 +159,39 @@ async function fetchPrEipFiles(prNumber, headers) {
 }
 
 /**
+ * Find the open sila/SIPs PR that adds EIPS/sip-{eipNumber}.md.
+ *
+ * Used by the decision sweep to reach PRs older than the incremental
+ * watermark. Search narrows candidates; fetchPrEipFiles confirms the PR
+ * actually adds the target SIP file.
+ */
+async function findOpenPrAddingEip(eipNumber, headers) {
+  const query = `repo:sila/SIPs is:pr is:open sip-${eipNumber}`;
+  const url = `https://api.github.com/search/issues?q=${encodeURIComponent(query)}&per_page=10`;
+  const response = await fetch(url, { headers });
+  if (!response.ok) {
+    throw new Error(
+      `Search failed for SIP-${eipNumber}: HTTP ${response.status}`,
+    );
+  }
+
+  const data = await response.json();
+  for (const item of data.items || []) {
+    const added = await fetchPrEipFiles(item.number, headers);
+    if (added.includes(eipNumber)) {
+      return { number: item.number, updatedAt: item.updated_at };
+    }
+    await sleep(200);
+  }
+
+  return null;
+}
+
+/**
  * Fetch raw SIP content from a PR branch.
  */
 async function fetchEipFromPrBranch(prNumber, eipNumber, headers) {
-  const url = `https://raw.githubusercontent.com/sila/SIPs/refs/pull/${prNumber}/head/SIPS/sip-${eipNumber}.md`;
+  const url = `https://raw.githubusercontent.com/sila/SIPs/refs/pull/${prNumber}/head/EIPS/sip-${eipNumber}.md`;
   const response = await fetch(url, { headers });
   if (!response.ok) {
     throw new Error(
@@ -172,7 +204,7 @@ async function fetchEipFromPrBranch(prNumber, eipNumber, headers) {
 /**
  * Process a single PR: fetch its SIP files, parse, and create/update JSON.
  */
-async function processPr(prNumber, headers, trackedEipIds, requiresFilter) {
+async function processPr(prNumber, headers, trackedEipIds, requiresFilter, decisionEipIds = new Set()) {
   const eipNumbers = await fetchPrEipFiles(prNumber, headers);
   if (eipNumbers.length === 0) return { eipNumbers: [] };
 
@@ -199,11 +231,14 @@ async function processPr(prNumber, headers, trackedEipIds, requiresFilter) {
 
     const mapped = mapOfficialToLocal(frontmatter);
 
-    // In auto-discovery mode, skip if requires doesn't reference any tracked SIP
+    // In auto-discovery mode, keep an SIP if its requires references a tracked
+    // SIP OR an ACD call has already acted on it (stage-change decision in a
+    // key_decisions.json). Otherwise skip it.
     if (requiresFilter) {
       const requires = mapped.requires || [];
       const referencesTracked = requires.some((id) => trackedEipIds.has(id));
-      if (!referencesTracked) continue;
+      const hasDecision = decisionEipIds.has(eipNumber);
+      if (!referencesTracked && !hasDecision) continue;
     }
 
     candidates.push({ eipNumber, mapped });
@@ -253,7 +288,7 @@ async function processPr(prNumber, headers, trackedEipIds, requiresFilter) {
   return { eipNumbers: processed };
 }
 
-function removePendingEipFilesForPr(prNumber, eipNumbers, reason) {
+function removePendingEipFilesForPr(manifest, prNumber, eipNumbers, reason) {
   let removed = 0;
 
   for (const eipNumber of eipNumbers) {
@@ -264,6 +299,26 @@ function removePendingEipFilesForPr(prNumber, eipNumbers, reason) {
     if (getPendingPullRequestNumber(existing) !== Number(prNumber)) {
       console.log(
         `  Preserving SIP-${eipNumber}; it is no longer pending on PR #${prNumber}`,
+      );
+      continue;
+    }
+
+    const otherPr = findOtherClaimingPr(manifest, prNumber, eipNumber);
+    if (otherPr) {
+      existing.pendingPullRequest = pendingPullRequest(otherPr);
+      fs.writeFileSync(filePath, JSON.stringify(existing, null, 2) + '\n');
+      console.log(
+        `  Preserving SIP-${eipNumber}; repointed from PR #${prNumber} to #${otherPr}`,
+      );
+      continue;
+    }
+
+    if (hasCuratedContent(existing)) {
+      delete existing.pendingPullRequest;
+      fs.writeFileSync(filePath, JSON.stringify(existing, null, 2) + '\n');
+      console.warn(
+        `  WARNING: SIP-${eipNumber} has curated data but PR #${prNumber} is gone (${reason}). ` +
+        `Cleared pendingPullRequest and kept the record — needs human review.`,
       );
       continue;
     }
@@ -281,6 +336,7 @@ function removePendingEipsForPr(manifest, prNumber, reason) {
   if (!entry) return 0;
 
   const removed = removePendingEipFilesForPr(
+    manifest,
     prNumber,
     entry.eipNumbers,
     reason,
@@ -330,7 +386,10 @@ Environment:
 
   // Auto-discovery mode
   const trackedEipIds = getTrackedEipIds();
-  console.log(`Loaded ${trackedEipIds.size} tracked SIP IDs.`);
+  const decisionEipIds = loadDecisionEipIds();
+  console.log(
+    `Loaded ${trackedEipIds.size} tracked SIP IDs, ${decisionEipIds.size} decision SIP IDs.`,
+  );
 
   const manifest = loadPrManifest();
   console.log(
@@ -361,6 +420,7 @@ Environment:
             headers,
             trackedEipIds,
             true,
+            decisionEipIds,
           );
           return {
             prNumber: pr.number,
@@ -391,6 +451,7 @@ Environment:
             (eipNumber) => !currentEipNumbers.has(eipNumber),
           );
           removed += removePendingEipFilesForPr(
+            manifest,
             r.prNumber,
             staleEipNumbers,
             'no longer qualifies',
@@ -417,6 +478,53 @@ Environment:
     if (i + BATCH_SIZE < openPrs.length) {
       await sleep(BATCH_DELAY);
     }
+  }
+
+  // Decision sweep: the incremental crawl above only sees PRs updated since
+  // lastRun, so a decision SIP whose open PR predates the watermark is missed.
+  // Explicitly fetch any decision SIP that still has no local record.
+  const currentTracked = getTrackedEipIds();
+  const missingDecisionIds = [...decisionEipIds].filter(
+    (id) => !currentTracked.has(id),
+  );
+
+  if (missingDecisionIds.length > 0) {
+    console.log(
+      `\nDecision sweep: ${missingDecisionIds.length} decision SIP(s) without a record.`,
+    );
+  }
+
+  for (const eipNumber of missingDecisionIds) {
+    try {
+      const pr = await findOpenPrAddingEip(eipNumber, headers);
+      if (!pr) {
+        console.log(
+          `  SIP-${eipNumber}: has a decision but no open SIPs PR found; skipping`,
+        );
+        continue;
+      }
+      if (manifest.prs[pr.number]) continue; // already handled by the crawl
+
+      const result = await processPr(
+        pr.number,
+        headers,
+        currentTracked,
+        true,
+        decisionEipIds,
+      );
+      if (result.eipNumbers.length > 0) {
+        manifest.prs[pr.number] = {
+          updatedAt: pr.updatedAt,
+          eipNumbers: result.eipNumbers,
+        };
+        created += result.eipNumbers.length;
+      }
+    } catch (err) {
+      console.error(`  Error sweeping SIP-${eipNumber}: ${err.message}`);
+      processingErrors++;
+    }
+
+    await sleep(BATCH_DELAY);
   }
 
   if (processingErrors > 0) {

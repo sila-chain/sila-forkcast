@@ -223,7 +223,7 @@ nothing specified yet
 00:39:50	Luca Donno | L2BEAT:	Reacted to "@Chris - Base what a..." with ➕
 00:39:53	Derek Chiang:	Replying to "@Chris - Base what a..."
 
-https://sips.sila.org/SIPS/sip-8130
+https://sips.sila.org/EIPS/sip-8130
 00:40:22	Ansgar Dietrichs:	EthereumJS: https://github.com/sila-chain/pm/issues/1970#issuecomment-4116337595
 00:42:26	Derek Chiang:	Reacted to "Lfg @Derek Chiang" with ❤️
 00:42:31	Danno Ferrin:	Wasn’t post-quantum the reason we are even discussing frames? It’s the first line in the motivation section. We’ve discussed basically everything but post-quantum cryptography in the pros and cons.
@@ -318,7 +318,7 @@ VERIFY is what we are aiming to deliver though. schemed tx doesnt provide anythi
 we have been discussing this a lot more and i think we are beginning to be open to moving signatures up to the root of the tx
 00:53:17	lightclient:	Replying to "the sponsor address ..."
 
-we want aggregation to work both on protocol level signatures and in signatures used during savm execution
+we want aggregation to work both on protocol level signatures and in signatures used during evm execution
 00:53:46	Filip - Biconomy:	any contract that's managing funds / value can become a "paymaster"
 
 say you start with usdc and want to swap via uniswap, pool contract could become a paymaster where output amount can be used to cover for gas as well.
@@ -487,7 +487,7 @@ it seems like we are debating the means more than we are debating the goals?
  Frames gud
 01:09:12	Vitalik:	Replying to "on the breakout ye..."
 
-https://sips.sila.org/SIPS/sip-7819 is not exactly that, but a good companion
+https://sips.sila.org/EIPS/sip-7819 is not exactly that, but a good companion
 
 is
 01:09:31	Luca Donno | L2BEAT:	Reacted to "frames gud" with 👍

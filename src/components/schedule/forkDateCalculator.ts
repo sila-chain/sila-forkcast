@@ -76,7 +76,7 @@ export function daysBetween(date1: Date, date2: Date): number {
 }
 
 export interface CalculatedDates {
-  sila-mainnet: Date;
+  silaMainnet: Date;
   hoodi: Date;
   sepolia: Date;
   holesky: Date;
@@ -119,7 +119,7 @@ export function calculateForkDates(
   const headlinerProposalDeadline = subtractDays(headlinerSelectionDeadline, durations.HEADLINER_SELECTION_DURATION);
 
   return {
-    sila-mainnet: mainnetDate,
+    silaMainnet: mainnetDate,
     hoodi,
     sepolia,
     holesky,
@@ -142,9 +142,9 @@ export function calculateSoonestMainnetDate(
     durations.DEVNET_TO_SEPOLIA +
     durations.SEPOLIA_TO_HOODI +
     durations.HOODI_TO_MAINNET;
-  const sila-mainnet = new Date(devnet0Start);
-  sila-mainnet.setDate(sila-mainnet.getDate() + daysFromDevnet0);
-  return sila-mainnet;
+  const silaMainnet = new Date(devnet0Start);
+  silaMainnet.setDate(silaMainnet.getDate() + daysFromDevnet0);
+  return silaMainnet;
 }
 
 // Format a Date as 'YYYY-MM-DD'
@@ -273,7 +273,7 @@ export function generateForkProgress(
       {
         phaseId: 'sila-mainnet-deployment',
         status: 'upcoming',
-        projectedDate: formatDate(dates.sila-mainnet),
+        projectedDate: formatDate(dates.silaMainnet),
         progressNotes: 'Target sila-mainnet activation'
       }
     ]

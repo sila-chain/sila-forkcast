@@ -32,7 +32,7 @@ Yes they are speaking
 00:09:22	Łukasz Rozmej:	Reacted to "omg is this gonna be..." with ❤️
 00:09:39	Stefan Starflinger:	https://github.com/sila-chain/SIPs/pull/11522
 00:10:58	Stefan Starflinger:	https://notes.sila.org/@ethpandaops/bal-devnet-4
-00:12:20	spencer:	https://github.com/misilva73/savm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md#3-gas_create-state-gas-pre-outcome-charge-and-sip-text
+00:12:20	spencer:	https://github.com/misilva73/evm-gas-repricings/blob/main/reports/sip-8037/spec_review_state_gas_accounting.md#3-gas_create-state-gas-pre-outcome-charge-and-sip-text
 00:14:14	Ben Adams:	Replying to "https://notes.ethere..."
 
 I'd like to add 2780 to devnet4 since it effects every tx would be good to get sight of it soon

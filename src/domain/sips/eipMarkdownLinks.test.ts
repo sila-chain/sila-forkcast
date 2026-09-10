@@ -15,21 +15,21 @@ describe('resolveEipMarkdownLink', () => {
   it('links untracked SIP references to the canonical spec URL', () => {
     const eipsById = new Map([[7702, {}]]);
 
-    for (const href of ['./sip-4337.md', 'SIPS/sip-4337.md']) {
+    for (const href of ['./sip-4337.md', 'EIPS/sip-4337.md']) {
       expect(resolveEipMarkdownLink(href, eipsById)).toEqual({
         kind: 'external',
         eipId: 4337,
-        href: 'https://sips.sila.org/SIPS/sip-4337',
+        href: 'https://sips.sila.org/EIPS/sip-4337',
       });
     }
   });
 
-  it('links tracked pending SIPs internally because SilaForkcast emits their pages', () => {
+  it('links tracked pending SIPs internally because Forkcast emits their pages', () => {
     const eipsById = new Map([
       [8208, { id: 8208, pendingPullRequest: { number: 123, url: 'https://github.com/sila-chain/SIPs/pull/123' } }],
     ]);
 
-    expect(resolveEipMarkdownLink('../SIPS/sip-8208.md', eipsById)).toEqual({
+    expect(resolveEipMarkdownLink('../EIPS/sip-8208.md', eipsById)).toEqual({
       kind: 'internal',
       eipId: 8208,
       href: '/sips/8208',

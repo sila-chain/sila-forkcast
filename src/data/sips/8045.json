@@ -1,7 +1,7 @@
 {
   "id": 8045,
   "title": "SIP-8045: Exclude slashed validators from proposing",
-  "status": "Draft",
+  "status": "Review",
   "description": "Modify proposer selection to exclude slashed validators, improving network resilience and performance after mass slashings",
   "author": "Francesco D'Amato (@fradamt), Barnabas Busa (@barnabasbusa)",
   "type": "Standards Track",
@@ -23,6 +23,11 @@
           "status": "Considered",
           "call": "acdc/170",
           "date": "2025-11-27"
+        },
+        {
+          "status": "Scheduled",
+          "call": null,
+          "date": "2026-08-04"
         }
       ],
       "champions": [

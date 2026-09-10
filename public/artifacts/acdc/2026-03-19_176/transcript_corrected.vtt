@@ -410,7 +410,7 @@ Potuz: That's one thing. The other thing that was raised is with the issue of
 
 103
 00:16:18.610 --> 00:16:37.890
-Potuz: proving things on the CL side. Today, we have a block route that is exposed with a slot of delay on the SAVM, and this block route might be actually, would change semantics.
+Potuz: proving things on the CL side. Today, we have a block route that is exposed with a slot of delay on the EVM, and this block route might be actually, would change semantics.
 
 104
 00:16:38.050 --> 00:16:50.349
@@ -1110,7 +1110,7 @@ Potuz: and then the chain of empty blocks will just not process any withdrawals 
 
 278
 00:38:50.720 --> 00:38:59.050
-stokes: Right, yeah, like, there is no execution for these empty payloads, so in terms of the SAVM, which is where you would consume 4788, it…
+stokes: Right, yeah, like, there is no execution for these empty payloads, so in terms of the EVM, which is where you would consume 4788, it…
 
 279
 00:38:59.190 --> 00:39:01.220

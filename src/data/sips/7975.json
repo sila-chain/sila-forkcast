@@ -1,7 +1,7 @@
 {
   "id": 7975,
   "title": "SIP-7975: sil/70 - partial block receipt lists",
-  "status": "Draft",
+  "status": "Review",
   "description": "Adds a facility for paginating block receipts in the p2p protocol",
   "author": "Felix Lange <fjl@sila.org>, Jochem Brouwer (@jochem-brouwer), Giulio Rebuffo (@Giulio2002)",
   "type": "Standards Track",
@@ -18,6 +18,11 @@
           "status": "Considered",
           "call": "acde/230",
           "date": "2026-02-12"
+        },
+        {
+          "status": "Networking",
+          "call": null,
+          "date": null
         }
       ],
       "champions": [

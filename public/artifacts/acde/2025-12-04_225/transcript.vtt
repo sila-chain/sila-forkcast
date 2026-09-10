@@ -1490,7 +1490,7 @@ Ansgar Dietrichs: concerns around implications, that overall implications are ju
 
 373
 00:58:15.330 --> 00:58:23.209
-Ansgar Dietrichs: pretty big paradigm change to the SAVM was proposed relatively late, so for that reason, it seemed…
+Ansgar Dietrichs: pretty big paradigm change to the EVM was proposed relatively late, so for that reason, it seemed…
 
 374
 00:58:23.500 --> 00:58:28.220
@@ -1546,7 +1546,7 @@ Ansgar Dietrichs: whether there's interest in CFI-ing it now, or whether this is
 
 387
 01:00:07.450 --> 01:00:09.050
-Łukasz Rozmej: on the SAVM side.
+Łukasz Rozmej: on the EVM side.
 
 388
 01:00:20.640 --> 01:00:27.759
@@ -1562,7 +1562,7 @@ Ansgar Dietrichs: And next one, EIP7979.
 
 391
 01:00:40.260 --> 01:00:43.410
-Ansgar Dietrichs: call and return opcodes for the SAVM.
+Ansgar Dietrichs: call and return opcodes for the EVM.
 
 392
 01:00:43.640 --> 01:00:48.780
@@ -1582,11 +1582,11 @@ Ansgar Dietrichs: interest in it, so I just wanted to double-check with, Netherl
 
 396
 01:01:07.890 --> 01:01:13.970
-Łukasz Rozmej: talks about potentially changing SAVM to RISC-V, for example.
+Łukasz Rozmej: talks about potentially changing EVM to RISC-V, for example.
 
 397
 01:01:14.210 --> 01:01:27.130
-Łukasz Rozmej: Which… I'm totally not convinced. I think SAVM has a benefit of being more domain-specific, and I think
+Łukasz Rozmej: Which… I'm totally not convinced. I think EVM has a benefit of being more domain-specific, and I think
 
 398
 01:01:27.560 --> 01:01:31.600
@@ -1594,11 +1594,11 @@ Ansgar Dietrichs: interest in it, so I just wanted to double-check with, Netherl
 
 399
 01:01:31.910 --> 01:01:38.839
-Łukasz Rozmej: But if we moved the SAVM bytecode to this kind of call return opcodes.
+Łukasz Rozmej: But if we moved the EVM bytecode to this kind of call return opcodes.
 
 400
 01:01:38.840 --> 01:01:53.730
-Łukasz Rozmej: We could relatively easy transpile, compile, whatever we want to call it, JIT, whatever we want to call it, SAVM bytecode to basically any other form. We could go to RISC-V, we could go to native x86, we could go to ARM,
+Łukasz Rozmej: We could relatively easy transpile, compile, whatever we want to call it, JIT, whatever we want to call it, EVM bytecode to basically any other form. We could go to RISC-V, we could go to native x86, we could go to ARM,
 
 401
 01:01:53.730 --> 01:02:00.870
@@ -1718,7 +1718,7 @@ Greg Colvin: For this work, and it is such a small change, and that it is such a
 
 430
 01:05:38.760 --> 01:05:44.949
-Greg Colvin: such an industry standard operation, there's just no reason it should not be an SAVM.
+Greg Colvin: such an industry standard operation, there's just no reason it should not be an EVM.
 
 431
 01:05:47.530 --> 01:05:48.450
@@ -1918,7 +1918,7 @@ Ansgar Dietrichs: We have another ERP right under this one, ERP 8013.
 
 480
 01:11:53.590 --> 01:12:04.410
-Ansgar Dietrichs: static relative jumps and calls for the SAVM, also listed as a potential DFI candidate potential, just because, all clients had
+Ansgar Dietrichs: static relative jumps and calls for the EVM, also listed as a potential DFI candidate potential, just because, all clients had
 
 481
 01:12:04.620 --> 01:12:13.489

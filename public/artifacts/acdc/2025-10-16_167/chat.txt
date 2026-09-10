@@ -488,7 +488,7 @@ Agree FOCIL is much more useful than trustless payments, but it's not clear to m
 00:55:46	Josh Davis:	30
 00:55:50	Justin Florentine (Besu):	tbf FOCIL is CFI
 00:55:54	Etan (Nimbus):	quite a few SIPs actually depend on 7688 too, e.g., terence’s 8015 would be enabled
-00:55:54	wolovim:	Glamsterdam point of contacts/champions are listed on sila-forkcast now: https://sila-forkcast.org/upgrade/glamsterdam — some assumptions made, reach out if anything is not as expected.
+00:55:54	wolovim:	Glamsterdam point of contacts/champions are listed on forkcast now: https://forkcast.org/upgrade/glamsterdam — some assumptions made, reach out if anything is not as expected.
 00:56:00	Etan (Nimbus):	that’s why I brought it up early, as it’s foundational
 00:56:04	nixo:	yea i do think there’s good reason to treat focil differently from the PFIs
 00:56:09	Parithosh Jayanthi:	Replying to "isnt that too early?"

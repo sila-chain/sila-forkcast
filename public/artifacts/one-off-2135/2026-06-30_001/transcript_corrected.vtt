@@ -650,7 +650,7 @@ Luis Pinto | Besu: Regarding the deployed contracts, I guess in the…
 
 163
 00:24:45.280 --> 00:25:00.430
-Luis Pinto | Besu: most clients, since there's such a performance concern about having them being performant, I think most clients will eventually have their own baked-in validation, which just avoids the SAVM interpreter altogether.
+Luis Pinto | Besu: most clients, since there's such a performance concern about having them being performant, I think most clients will eventually have their own baked-in validation, which just avoids the EVM interpreter altogether.
 
 164
 00:25:00.700 --> 00:25:04.339
@@ -670,7 +670,7 @@ Ben Adams: I mean, we can measure.
 
 168
 00:25:16.090 --> 00:25:17.130
-Ben Adams: the SAVM.
+Ben Adams: the EVM.
 
 169
 00:25:17.290 --> 00:25:18.090
@@ -1270,7 +1270,7 @@ Greg: Just like current code.
 
 318
 00:40:28.390 --> 00:40:38.459
-Luis Pinto | Besu: Yeah, so if there's a call sub and there's no enter sub following, what would an SAVM interpreter, what should it do? Should it fail?
+Luis Pinto | Besu: Yeah, so if there's a call sub and there's no enter sub following, what would an EVM interpreter, what should it do? Should it fail?
 
 319
 00:40:39.420 --> 00:40:40.319

@@ -1710,7 +1710,7 @@ Paweł Bylica: And the main motivation why we would like to remove that is the o
 
 428
 01:01:33.140 --> 01:01:44.079
-Paweł Bylica: So, kind of contrary to the CIP, I propose that instead of emitting logs for the burn events, we actually get rid of burn events from SAVM.
+Paweł Bylica: So, kind of contrary to the CIP, I propose that instead of emitting logs for the burn events, we actually get rid of burn events from EVM.
 
 429
 01:01:44.560 --> 01:01:47.620
@@ -2042,7 +2042,7 @@ Paweł Bylica: Yeah, so… so I kind of find it this… this pattern… It's bas
 
 511
 01:12:15.120 --> 01:12:24.289
-Paweł Bylica: scalper SAVM bytecode, but I… I kind of feel there's a way to migrate existing users.
+Paweł Bylica: scalper EVM bytecode, but I… I kind of feel there's a way to migrate existing users.
 
 512
 01:12:24.410 --> 01:12:31.700

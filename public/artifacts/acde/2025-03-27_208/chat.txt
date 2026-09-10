@@ -79,7 +79,7 @@ yeah
 00:21:24	Parithosh Jayanthi:	Reacted to "We kind of doing it ..." with 👍
 00:21:27	Parithosh Jayanthi:	Reacted to "Strong +1 for this" with ➕
 00:21:56	Justin Traglia:	Reacted to "Strong +1 for this" with ➕
-00:22:06	Tim Beiko:	https://sips.sila.org/SIPS/sip-7910
+00:22:06	Tim Beiko:	https://sips.sila.org/EIPS/sip-7910
 00:22:44	nflaig:	Reacted to "Strong +1 for this" with ➕
 00:24:03	Mario Vega:	Reacted to "Strong +1 for this" with ➕
 00:24:24	Barnabas:	Can’t we do REST api instead of JSON rpc? And might as well start pushing for making all EL’s REST compatible.
@@ -321,7 +321,7 @@ My understanding is that there are a lot of exisitng practices/standards that ca
 00:46:50	Mario Vega:	Reacted to "Cc-ing hive instance..." with 💙
 00:46:53	William Morriss:	this objection is solved by the PAY opcode
 00:46:54	Danno Ferrin | Ipsilon:	William morris, PAY opcode fixes
-00:47:10	Alex (axic):	It was not discovered last week, it is a well known TODO item on Solidity. It is just not implemented yet in Solidity, and is not an SAVM issue.
+00:47:10	Alex (axic):	It was not discovered last week, it is a well known TODO item on Solidity. It is just not implemented yet in Solidity, and is not an EVM issue.
 00:47:11	Hadrien Croubois (OpenZeppelin):	Replying to "What is the reasonin..."
 
 In particular SRC-721 requires checking if some account has code to do stuff conditionnally
@@ -472,7 +472,7 @@ During that period we keep using EntryPoint as a legacy contract which can call 
 00:57:04	frangio:	Replying to "chain side features ..."
 
 i don't think it's been settled that legacy can never be deprecated. it's possible there are small additions to eof that enable translating legacy to eof code
-00:57:20	Ansgar Dietrichs:	one more aspect here: the SAVM was pretty ossified over the past few years, but we will start to make bigger changes in the future again, on the path to scaling the L1.
+00:57:20	Ansgar Dietrichs:	one more aspect here: the EVM was pretty ossified over the past few years, but we will start to make bigger changes in the future again, on the path to scaling the L1.
 
 That includes major changes to the gas model. A lot of the “hard coded assumptions around gas” will break at this point anyway. it would be very healthy to have the modern part of the smart contract ecosystem no longer rely on the crutch of gas introspection that we will take away soon anyway
 00:57:37	Kevaundray Wedderburn:	I didn’t get the point about side stepping — can I still deploy legacy contracts once EOF is live?
@@ -512,8 +512,8 @@ right
 00:58:31	Roman:	Very out of scope for the discussion
 00:58:54	Danno Ferrin | Ipsilon:	Replying to "also should note tha..."
 
-SIP-7666: SAVM-ify the identity precompile
-https://sips.sila.org/SIPS/sip-7666
+SIP-7666: EVM-ify the identity precompile
+https://sips.sila.org/EIPS/sip-7666
 00:59:01	0xTraub:	Replying to "I didn’t get the poi..."
 
 How so?
@@ -584,7 +584,7 @@ yeah, create a bunch of "gadget" contracts which exist to call now-banned opcode
 01:03:02	William Morriss:	Reacted to "Nethermind supports ..." with 👍
 01:03:04	Piper Merriam:	Replying to "I haven't heard a st..." 
 
- But legacy savm still allows 4337 stuff yes?
+ But legacy evm still allows 4337 stuff yes?
 01:03:06	rodiazet | Ipsilon:	If we ban it now it can be reintroduced back without version bump.
 01:03:07	Ansgar Dietrichs:	Replying to "I haven't heard a st..."
 
@@ -745,7 +745,7 @@ Core devs are disconnected to some extend to the application layer if you ask me
 01:09:24	rodiazet | Ipsilon:	lest decide and get back to testing and finalising spec
 01:09:24	Potuz:	Replying to "The discussion has b..."
 
-I agree, but there's not much that can be done but ossifying if any change to the SAVM takes over 4 years to agree on and the community reacts after things have been scheduled after years of active discussions
+I agree, but there's not much that can be done but ossifying if any change to the EVM takes over 4 years to agree on and the community reacts after things have been scheduled after years of active discussions
 01:09:25	Roman:	Replying to "The discussion has b..."
 
 @pcaversaccio do you wanna speak up since you are informed and haven’t had a chance to? Or do you feel like the post was enough?
@@ -807,16 +807,16 @@ a suicide pact is rough consensus though
 
 Would love more EL resources on blobs (mempool)
 01:11:06	Hsiao-Wei Wang:	Reacted to "rough consensus is n..." with 😂
-01:11:12	Luis Pinto | Besu:	What is complex is for a compiler to go through the current SAVM bytecode
+01:11:12	Luis Pinto | Besu:	What is complex is for a compiler to go through the current EVM bytecode
 01:11:12	Fabio Di Fabio:	Reacted to "rough consensus is n..." with 😂
 01:11:15	Tim Beiko:	If we do Option A (with PAY), what is the diff with the current Meta SIP? 
 
-https://sips.sila.org/SIPS/sip-7607
+https://sips.sila.org/EIPS/sip-7607
 01:11:16	Ansgar Dietrichs:	Replying to "What if EOF is ready..."
 
 yes I don’t expect EOF to miss the fork. just wanted to make sure we are aligned on process here
 01:11:22	Francesco:	Reacted to "I agree, but there's..." with 👍
-01:11:24	frangio:	it's a very technical SAVM change so i dont know to what extent app devs can give feedback
+01:11:24	frangio:	it's a very technical EVM change so i dont know to what extent app devs can give feedback
 
 and fwiw i think EOF is really hard to understand in large part because of the split into thousands of SIPs and overall its not well presented
 01:11:44	Tim Beiko:	Replying to "it's a very technica..."
@@ -840,7 +840,7 @@ It used to be a single SIP but then people gave the feedback that it was too lon
 01:12:58	yoav:	Reacted to "But same, very appre..." with 👍
 01:13:00	Dustin:	Replying to "I'm not sold on ge..."
 
-Yes, also, various of the objections were generic "SAVM change" objections, it didn't matter which change
+Yes, also, various of the objections were generic "EVM change" objections, it didn't matter which change
 01:13:01	Luis Pinto | Besu:	Reacted to "But same, very appre..." with 💯
 01:13:02	pcaversaccio:	to be clear I don't want to sound disrespectful
 01:13:07	sacha:	mteam has a good thread on pushbacks
@@ -942,7 +942,7 @@ verkle tree SIP has versioning as well btw
 01:17:44	marek:	Reacted to "+1 to modexp raise c..." with 👍
 01:17:52	Ben Adams:	Reacted to "+1 to modexp raise c..." with 👍
 01:18:01	Roman:	Reacted to "+1 to modexp raise c..." with 👍
-01:18:24	Francis Li:	Would love to include https://sips.sila.org/SIPS/sip-7892 as well, it's BPO, and requires minimal change with PoC already done
+01:18:24	Francis Li:	Would love to include https://sips.sila.org/EIPS/sip-7892 as well, it's BPO, and requires minimal change with PoC already done
 01:18:32	Ansgar Dietrichs:	acd process halted for 4 weeks while geth looks into blog providers
 01:18:40	Sina Mahmoodi:	Reacted to "acd process halted f..." with 😂
 01:18:41	Roman:	Reacted to "acd process halted f..." with 😂
@@ -963,7 +963,7 @@ There will be always someone in the community who has not had enough time yet to
 01:19:26	Ben Adams:	Reacted to "ohh crap" with 😂
 01:19:44	Barnabas:	Reacted to "ohh crap" with 😂
 01:19:51	rudolf:	Reacted to "Would love to includ…" with 👌
-01:19:52	Tim Beiko:	https://sips.sila.org/SIPS/sip-7607#proposed-for-inclusion
+01:19:52	Tim Beiko:	https://sips.sila.org/EIPS/sip-7607#proposed-for-inclusion
 01:19:55	Roman:	Reacted to "ohh crap" with 😂
 01:19:57	milen:	Reacted to "acd process halted f..." with 😂
 01:20:00	Potuz:	Replying to "ohh crap"

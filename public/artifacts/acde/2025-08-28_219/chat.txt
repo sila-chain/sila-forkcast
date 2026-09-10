@@ -293,21 +293,21 @@ my personal feeling is that with the current client situation, ideal outcome wou
 +2
 00:59:45	Greg Colvin:	The discussions threads on the Magicians is a good place to ask the SIP authors your questions.
 01:00:01	donnoh | L2BEAT:	Reacted to "The discussions thre..." with 👍
-01:00:05	marc|wolovim:	SilaForkcast will introduce the tier ranking feature again for signal gathering. Open to other experiments/ideas.
+01:00:05	marc|wolovim:	Forkcast will introduce the tier ranking feature again for signal gathering. Open to other experiments/ideas.
 01:00:13	Justin Florentine (Besu):	Reacted to "The discussions thre..." with 👍
 01:00:16	Greg Colvin:	Every SIP has a thread.
 01:00:17	Ben Adams:	Reacted to "The discussions thre..." with 👍
-01:00:20	donnoh | L2BEAT:	Reacted to "SilaForkcast will introd..." with ❤️
+01:00:20	donnoh | L2BEAT:	Reacted to "Forkcast will introd..." with ❤️
 01:01:04	Parithosh Jayanthi:	Replying to "in principle of cour..."
 
 IMO this is a discussion we should realistically have in person and everyone can sort their teams accordingly
 01:01:33	Parithosh Jayanthi:	Reacted to "Not every SIP needs ..." with 💯
 01:02:00	Ansgar Dietrichs:	Reacted to "IMO this is a discus..." with 👍
-01:02:15	Kevaundray Wedderburn:	https://sips.sila.org/SIPS/sip-2926
+01:02:15	Kevaundray Wedderburn:	https://sips.sila.org/EIPS/sip-2926
 01:02:34	Tim Beiko:	Reacted to "https://sips.ethereu..." with ❤️
 01:02:37	Kevaundray Wedderburn:	Replying to "https://sips.ethereu..."
 
-https://sips.sila.org/SIPS/sip-4762
+https://sips.sila.org/EIPS/sip-4762
 01:04:26	Tim Beiko:	What is the main benefit of this?
 01:04:37	donnoh | L2BEAT:	Reacted to "What is the main ben..." with ➕
 01:05:19	CPerezz:	Replying to "What is the main ben..."
@@ -359,8 +359,8 @@ If anyone wants more data point regarding bytecode utilization, please check out
 
 TLDR - only small chunks of bytecodes are touch
 01:11:51	Wei Han Ng:	Reacted to "we feel you" with ❤️
-01:12:07	Tim Beiko:	https://sips.sila.org/SIPS/sip-7843
-01:12:19	Tim Beiko:	https://sips.sila.org/SIPS/sip-7793
+01:12:07	Tim Beiko:	https://sips.sila.org/EIPS/sip-7843
+01:12:19	Tim Beiko:	https://sips.sila.org/EIPS/sip-7793
 01:12:30	CPerezz:	Reacted to "https://hackmd.io/Rf..." with ❤️
 01:14:21	Marius van der Wijden:	Conditional transactions sound like a LOT of work in the mempool
 01:14:44	Csaba:	That enforced fixed position sounds something that needs lots of coordination.

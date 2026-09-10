@@ -442,7 +442,7 @@ Stefan Starflinger: Yes, we're making some…
 
 111
 00:16:49.360 --> 00:17:06.130
-Stefan Starflinger: some small progress, but I've also been testing with all the clients with a basic payload of creating a large contract and SAVM fuzzing, and those networks don't seem very healthy yet, so there are still a lot of things to uncover.
+Stefan Starflinger: some small progress, but I've also been testing with all the clients with a basic payload of creating a large contract and EVM fuzzing, and those networks don't seem very healthy yet, so there are still a lot of things to uncover.
 
 112
 00:17:06.359 --> 00:17:11.239

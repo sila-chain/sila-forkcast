@@ -9,6 +9,7 @@
   "createdDate": "2024-05-07",
   "discussionLink": "https://sila-magicians.org/t/sip-set-eoa-account-code-for-one-transaction/19923",
   "reviewer": "bot",
+  "layer": "EL",
   "forkRelationships": [
     {
       "forkName": "Pectra",

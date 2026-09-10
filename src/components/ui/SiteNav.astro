@@ -1,5 +1,5 @@
 ---
-import { isPathActive, normalizePathname } from '../../utils/path';
+import { canonicalHref, isPathActive, normalizePathname } from '../../utils/path';
 
 interface Props {
   variant?: 'default' | 'wide';
@@ -27,23 +27,31 @@ const navItems = [
   { to: '/sips', label: 'SIPs' },
   { to: '/calls', label: 'Calls' },
   { to: '/decisions', label: 'Decisions' },
-  { to: '/devnets', label: 'Devnets' },
+  { to: '/networks', label: 'Networks' },
   { to: '/schedule', label: 'Schedule' },
+  // Highlighted while headliner ranking is open; drop `highlight` once it closes.
+  { to: '/rank', label: 'Rank', highlight: true },
 ];
 
 const upgradeNavItems = [
   { to: '/upgrade/glamsterdam', label: 'Glamsterdam', variant: 'item' },
-  { to: '/upgrade/hegota', label: 'Hegota', variant: 'item' },
+  { to: '/upgrade/hegota', label: 'Hegotá', variant: 'item' },
   { to: '/upgrades', label: 'View all upgrades', variant: 'index' },
 ];
 
 const upgradesActive = pathname === '/upgrades' || pathname.startsWith('/upgrade/');
 
-const navLinkClass = (active: boolean) =>
+const navLinkClass = (active: boolean, highlight = false) =>
   `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-    active
-      ? 'text-purple-700 dark:text-purple-300'
-      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100'
+    highlight
+      ? `text-purple-700 dark:text-purple-300 ${
+          active
+            ? 'bg-purple-100 dark:bg-purple-500/20'
+            : 'bg-purple-50 hover:bg-purple-100 dark:bg-purple-500/10 dark:hover:bg-purple-500/20'
+        }`
+      : active
+        ? 'text-purple-700 dark:text-purple-300'
+        : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100'
   }`;
 
 const menuLinkClass = (active: boolean, itemVariant: string) =>
@@ -66,19 +74,20 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
 ---
 
 <header
+  data-global-hotkey={enableCallSearch ? 'off' : 'on'}
   class="sticky top-0 z-30 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700"
 >
   <div class={headerPadding}>
     <nav class={`relative ${navMaxWidth} mx-auto h-14 flex items-center justify-between gap-4`}>
-      <a href="/" class="sila-forkcast-logo" data-astro-prefetch aria-label="SilaForkcast home">
+      <a href="/" class="forkcast-logo" data-astro-prefetch aria-label="Forkcast home">
         <span class="fork-symbol text-lg" aria-hidden="true">⎇</span>
         <img
-          src="/sila-forkcast-logo.svg"
-          alt="SilaForkcast"
+          src="/forkcast-logo.svg"
+          alt="Forkcast"
           width="907"
           height="213"
           fetchpriority="high"
-          class="h-5 w-auto sila-forkcast-wordmark transition-opacity duration-200"
+          class="h-5 w-auto forkcast-wordmark transition-opacity duration-200"
         />
       </a>
 
@@ -121,7 +130,7 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
                     class={item.variant === 'index' ? 'border-t border-slate-200 pt-1 dark:border-slate-700' : undefined}
                   >
                     <a
-                      href={item.to}
+                      href={canonicalHref(item.to)}
                       data-astro-prefetch
                       class={menuLinkClass(isPathActive(pathname, item.to), item.variant)}
                     >
@@ -136,7 +145,11 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
 
         {
           navItems.map((item) => (
-            <a href={item.to} data-astro-prefetch class={navLinkClass(isPathActive(pathname, item.to))}>
+            <a
+              href={canonicalHref(item.to)}
+              data-astro-prefetch
+              class={navLinkClass(isPathActive(pathname, item.to), item.highlight)}
+            >
               {item.label}
             </a>
           ))
@@ -144,11 +157,29 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
       </div>
 
       <div class="flex items-center gap-2">
+        {/* Call pages swap this for the per-call button below — one magnifier in the
+            nav, with global search reached from inside the per-call modal. */}
+        {
+          !enableCallSearch && (
+            <button
+              type="button"
+              data-global-search
+              aria-label="Search Forkcast"
+              title="Search Forkcast"
+              class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors"
+            >
+              <svg class="w-5 h-5 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          )
+        }
+
         {
           enableCallSearch && (
             <Fragment>
               <a
-                href="/calls"
+                href="/calls/"
                 data-astro-prefetch
                 class="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors whitespace-nowrap"
               >
@@ -216,7 +247,7 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
               class={item.variant === 'index' ? 'mt-2 border-t border-slate-200 pt-2 dark:border-slate-700' : undefined}
             >
               <a
-                href={item.to}
+                href={canonicalHref(item.to)}
                 data-astro-prefetch
                 class={mobileLinkClass(isPathActive(pathname, item.to), item.variant === 'index')}
               >
@@ -229,10 +260,10 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
       {
         navItems.map((item) => (
           <a
-            href={item.to}
+            href={canonicalHref(item.to)}
             data-astro-prefetch
             class={`block px-1 py-2 text-sm ${
-              isPathActive(pathname, item.to)
+              item.highlight || isPathActive(pathname, item.to)
                 ? 'text-purple-700 dark:text-purple-300 font-medium'
                 : 'text-slate-700 dark:text-slate-200'
             }`}
@@ -247,6 +278,8 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
 
 <script>
   import { openCallSearch } from '../../domain/calls/callSearch';
+  import { openGlobalSearch } from '../../domain/search/globalSearchBridge';
+  import { isSearchHotkey } from '../search/searchShortcuts';
 
   // Theme toggle: flip the `.dark` class that the layout's pre-paint script set,
   // persist the choice, and broadcast it so any other island can stay in sync. The
@@ -263,10 +296,10 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
     } catch {
       // Ignore storage failures (private mode, etc.); the class still applies.
     }
-    window.dispatchEvent(new Event('sila-forkcast:themechange'));
+    window.dispatchEvent(new Event('forkcast:themechange'));
     syncThemeLabel();
   });
-  window.addEventListener('sila-forkcast:themechange', syncThemeLabel);
+  window.addEventListener('forkcast:themechange', syncThemeLabel);
   syncThemeLabel();
 
   // While no explicit choice is stored (the default "system" mode), follow the OS
@@ -282,7 +315,7 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
     }
     if (stored === 'dark' || stored === 'light') return;
     document.documentElement.classList.toggle('dark', event.matches);
-    window.dispatchEvent(new Event('sila-forkcast:themechange'));
+    window.dispatchEvent(new Event('forkcast:themechange'));
   });
 
   // Mobile menu: toggle the panel and swap the hamburger / close icons.
@@ -308,4 +341,20 @@ const mobileLinkClass = (active: boolean, isIndexLink: boolean) =>
 
   // The per-call search button asks the CallPage island to open search (window event).
   document.querySelector('[data-call-search]')?.addEventListener('click', () => openCallSearch());
+
+  // Global search. This script runs at parse time, whereas the island hydrates on
+  // idle — so the hotkey lives here, and `openGlobalSearch` stashes the request for
+  // an island that hasn't mounted yet.
+  // The button sits in the always-visible right-hand cluster, so the mobile panel
+  // doesn't need its own row.
+  document.querySelector('[data-global-search]')?.addEventListener('click', () => openGlobalSearch());
+
+  // On call pages ⌘K stays "search this call"; the nav button is the only way in.
+  if (document.querySelector('header[data-global-hotkey="on"]')) {
+    document.addEventListener('keydown', (event) => {
+      if (!isSearchHotkey(event)) return;
+      event.preventDefault();
+      openGlobalSearch();
+    });
+  }
 </script>

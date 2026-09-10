@@ -2,7 +2,7 @@
 
 ## Goal
 
-Move SilaForkcast from a Vite/React Router SPA to an Astro 6 static site foundation. Astro should own routing, layouts, document head, metadata, 404s, sitemap generation, and build/preview/check commands.
+Move Forkcast from a Vite/React Router SPA to an Astro 6 static site foundation. Astro should own routing, layouts, document head, metadata, 404s, sitemap generation, and build/preview/check commands.
 
 Existing React page bodies should keep rendering client-side for this phase, so user-facing behavior on canonical routes stays roughly the same while the routing and document shell become Astro-native. This Phase 1 migration is setting the structure and shell, and later PRs will individually migrate each route into more idiomatic Astro primitives.
 
@@ -11,7 +11,7 @@ Existing React page bodies should keep rendering client-side for this phase, so 
 ### 1. Add the Astro static foundation
 
 - Add Astro 6, `@astrojs/react`, `@astrojs/check`, and `@astrojs/sitemap`.
-- Configure `output: 'static'` and `site: 'https://sila-forkcast.org'`.
+- Configure `output: 'static'` and `site: 'https://forkcast.org'`.
 - Keep the output portable for GitHub Pages and Netlify.
 - Do not add `@astrojs/netlify` unless a deployment feature requires it.
 - Preserve the source/data compilation steps before Astro commands that need generated data:
@@ -29,15 +29,15 @@ Existing React page bodies should keep rendering client-side for this phase, so 
 ### 2. Make canonical public URLs real Astro routes
 
 - Add Astro pages for the canonical public routes.
-- Canonical static routes include `/`, `/upgrades`, `/schedule`, `/agenda`, `/decisions`, `/devnets`, `/rank`, `/sips`, `/calls`, `/upgrade/pectra`, `/upgrade/fusaka`, `/upgrade/hegota`, `/upgrade/glamsterdam`, `/upgrade/glamsterdam/stakeholders`, `/upgrade/glamsterdam/devnet-inclusion`, `/upgrade/glamsterdam/client-priority`, and `/upgrade/glamsterdam/test-complexity`.
+- Canonical static routes include `/`, `/upgrades`, `/schedule`, `/agenda`, `/decisions`, `/networks`, `/rank`, `/sips`, `/calls`, `/upgrade/pectra`, `/upgrade/fusaka`, `/upgrade/hegota`, `/upgrade/glamsterdam`, `/upgrade/glamsterdam/stakeholders`, `/upgrade/glamsterdam/devnet-inclusion`, `/upgrade/glamsterdam/client-priority`, and `/upgrade/glamsterdam/test-complexity`.
 - Use Astro dynamic routes with `getStaticPaths()` for:
   - Canonical SIP pages, excluding pending PR-only SIPs.
   - Protocol call pages, including completed calls and any upcoming call watch URLs linked from the call index.
   - Devnet pages, including local spec IDs and active network IDs from `networks.json` that render network-only pages.
   - Canonical call index scope routes.
-- Treat pending PR-only SIPs as external PR records, not canonical SilaForkcast SIP pages. `/sips` should link them directly to their GitHub PRs, while `/sips/{pendingId}` should use Astro configured redirects to preserve existing shared URLs.
+- Treat pending PR-only SIPs as external PR records, not canonical Forkcast SIP pages. `/sips` should link them directly to their GitHub PRs, while `/sips/{pendingId}` should use Astro configured redirects to preserve existing shared URLs.
 - Use one build-time route/data snapshot for runtime-discovered routes. `getStaticPaths()` and hydrated React islands must share the same upcoming-call and active-network snapshots.
-  - Snapshots (`src/data/generated/{upcoming-calls,devnet-networks}.json`) are committed generated data, like the repo's other compiled artifacts. `dev`/`build` read them as-is; `build:fresh` (used by `predeploy` and the deploy workflow) re-runs `snapshot-routes` to refresh them from the live GitHub/cartographoor endpoints first. The script writes only on a successful fetch, so a failed refresh leaves the committed snapshot untouched and exits non-zero — if the deploy's refresh fails, the deploy fails; re-run it once the upstream is reachable.
+  - Snapshots (`src/data/generated/{upcoming-calls,networks}.json`) are committed generated data, like the repo's other compiled artifacts. `dev`/`build` read them as-is; `build:fresh` (used by `predeploy` and the deploy workflow) re-runs `snapshot-routes` to refresh them from the live GitHub/cartographoor endpoints first. The script writes only on a successful fetch, so a failed refresh leaves the committed snapshot untouched and exits non-zero — if the deploy's refresh fails, the deploy fails; re-run it once the upstream is reachable.
 - Hydrated islands must not create internal links to runtime-only routes that were not emitted in the static build.
 - Generate only canonical public URLs plus the new Astro-native call scope URLs.
 - Preserve simple legacy aliases with Astro configured redirects in `astro.config.mjs`. Static meta-refresh redirect output is acceptable; Phase 1 does not require HTTP 301/302 redirects.
@@ -98,7 +98,7 @@ Preserve `/calls/{github-issue-number}` aliases as Astro configured redirects to
 ```txt
 User-agent: *
 Allow: /
-Sitemap: https://sila-forkcast.org/sitemap-index.xml
+Sitemap: https://forkcast.org/sitemap-index.xml
 ```
 
 ### 7. Verify the migration
@@ -114,7 +114,7 @@ Run:
 Use your built-in browser to carefully spot-check at least:
 
 - Every route in the canonical static route inventory.
-- Dynamic route reloads for SIPs, calls, devnets, and call index scopes.
+- Dynamic route reloads for SIPs, calls, networks, and call index scopes.
 - Pending PR-only SIP links and `/sips/{pendingId}` redirects.
 - Network-only devnet routes backed by active `networks.json` IDs.
 - Upcoming call watch routes linked from the call index.
@@ -166,6 +166,8 @@ Use [Astro configured redirects](https://docs.astro.build/en/reference/configura
 - `/upgrade/glamsterdam/devnets` -> `/upgrade/glamsterdam/devnet-inclusion`
 - `/upgrade/glamsterdam/devnets/priority` -> `/upgrade/glamsterdam/client-priority`
 - `/upgrade/glamsterdam/devnets/complexity` -> `/upgrade/glamsterdam/test-complexity`
+- `/devnets` -> `/networks`
+- `/devnets/{id}` -> `/networks/{id}` for every devnet spec, active devnet, and public network
 - `/calls/{github-issue-number}` -> `/calls/{series}/{number}` for every completed call. This replaces the SPA's in-React issue-number redirect; the alias map is derived from `src/data/protocol-calls.generated.json` at build time (see `src/domain/calls/callRoutes.ts`), so it stays in sync as calls are added rather than being a hand-maintained legacy artifact. One-off calls follow the same rule (e.g. `/calls/1954` -> `/calls/one-off-1954/001`).
 
 ### Removed Routes
@@ -174,7 +176,7 @@ Use [Astro configured redirects](https://docs.astro.build/en/reference/configura
 
 ### Changed Routes
 
-- Pending PR-only SIPs become external GitHub PR links from `/sips`; `/sips/{pendingId}` redirects preserve existing shared SilaForkcast URLs.
+- Pending PR-only SIPs become external GitHub PR links from `/sips`; `/sips/{pendingId}` redirects preserve existing shared Forkcast URLs.
 - Concrete `/calls/{type}` paths such as `/calls/acde`, `/calls/acdc`, `/calls/acdt`, `/calls/bal`, and `/calls/epbs` become real Astro-generated scoped call index routes instead of React redirects to `/calls?filter={type}`.
 - Aggregate call filters remain query-string state in Phase 1.
 
@@ -186,7 +188,7 @@ Follow-up work for subsequent PRs, as routes move from React bodies into more id
 - Remove the React Router compatibility props from the temporary link helper, such as the ignored `state` / `replace`.
 - Continue narrowing the navigation helper (`src/components/navigation.tsx`) (and consider renaming) so it exposes only the browser URL state hydrated islands need, not router-shaped abstractions.
 - As more routes move from React bodies into Astro, move query/hash ownership into page-specific Astro or component primitives where that becomes natural.
-- Drop the now-vestigial `loading` / `error` / `refetch` fields from `useDevnetNetworks` (it derives synchronously from the committed snapshot, so they are permanently `false`/`null`/no-op) and remove the dead loading/error branches in `DevnetsIndexPage`. Kept in Phase 1 only for source-compatibility with the components that still destructure them.
+- Drop the now-vestigial `loading` / `error` / `refetch` fields from `useNetworks` (it derives synchronously from the committed snapshot, so they are permanently `false`/`null`/no-op) and remove the dead loading/error branches in `NetworksIndexPage`. Kept in Phase 1 only for source-compatibility with the components that still destructure them.
 - Refresh the route snapshots (`snapshot-routes`) from a scheduled workflow that commits — like `scrape-devnet-specs.yml` / `sync-call-assets.yml` already do for other generated data — instead of fetching them during the deploy build. Deploys then become plain `build` off committed data: deterministic and never blocked by a third-party outage.
 
 ## Astro Docs References

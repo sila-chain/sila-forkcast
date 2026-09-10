@@ -8,6 +8,7 @@
   "createdDate": "2025-02-28",
   "discussionLink": "https://sila-magicians.org/t/sip-7892-blob-parameter-only-hardforks/23018",
   "reviewer": "bot",
+  "layer": "EL",
   "forkRelationships": [
     {
       "forkName": "Fusaka",

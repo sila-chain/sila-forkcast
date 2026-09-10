@@ -1,8 +1,8 @@
 {
   "id": 6968,
-  "title": "SIP-6968: Contract Secured Revenue on an SAVM based L2",
+  "title": "SIP-6968: Contract Secured Revenue on an EVM based L2",
   "status": "Stagnant",
-  "description": "Contract Secured Revenue on an SAVM based L2",
+  "description": "Contract Secured Revenue on an EVM based L2",
   "author": "Zak Cole <zak@numbergroup.xyz>, Zak Cole (@zscole), Kevin Owocki <kevin@supermodular.xyz>, lightclient (@lightclient)",
   "type": "Standards Track",
   "category": "Core",

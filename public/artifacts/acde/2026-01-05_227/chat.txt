@@ -54,7 +54,9 @@ I’m you now.
 00:13:11	Greg K | Lido:	Reacted to "I'm afraid of too ..." with 👍
 00:14:00	Pooja Ranjan:	Thank you!
 00:15:40	Justin Florentine (Besu):	i'm only seeing a black screen being shared, what'd i do wrong
-00:15:50	Łukasz Rozmej:	So my comment: I don't expect many people joining that ACDG meetings because: already too many meetings, governance & politics is boring ect. So would this meeting mean there are decisions that are made there? Or it will just be proposals which will be brought later to other ACD calls? If that is the case it more "governance breakout room", and it is fine. Another question how often do you expect those meetings?
+00:15:50	Łukasz Rozmej:	So my comment: I don't expect many people joining that ACDG meetings because: already too many meetings, governance & politics is boring ect. So would this meeting mean there are decisions that are made there? Or it will just be proposals which will be brought later to other ACD calls? If that is the case it more "governance breakout room", and it is fine. 
+
+Another question how often do you expect those meetings?
 00:16:56	Anders Elowsson:	Replying to "So my comment: I don..."
 
 It’s a big difference indeed if it is a decision-making body or just a forum for deeper discussion, that can make a recommendation, where the decision is then taken on a regular call for example.
@@ -62,7 +64,7 @@ It’s a big difference indeed if it is a decision-making body or just a forum f
 00:17:42	Csaba:	As a reminder I would have 2 Networking SIPs (8077, 8094) to introduce briefly. Would take 3 minutes.
 00:18:56	CPerezz:	Reacted to "As a reminder I woul..." with 👀
 00:19:54	Antoine James:	Reacted to "As a reminder I woul..." with 👀
-00:20:27	jochem-brouwer:	I think this one https://sips.sila.org/SIPS/sip-7954
+00:20:27	jochem-brouwer:	I think this one https://sips.sila.org/EIPS/sip-7954
 00:21:32	Pooja Ranjan:	Replying to "So my comment: I don..."
 
 So would this meeting mean there are decisions that are made there? 
@@ -70,7 +72,11 @@ So would this meeting mean there are decisions that are made there?
 In short, yes. ACD-G would define the process—for example, limiting an upgrade to five SIPs—while SIP selection and decision enforcement would remain within ACD.
 
 Expected participants include SIP Editors and the EF Protocol Coordination / Protocol Support teams; however, interested client team representatives and other community participants are also welcome.
-00:21:49	Marcin Sobczak:	We prepared an SIP for increasing price of point evaluation precompile: https://github.com/sila-chain/SIPs/blob/master/SIPS/sip-8096.mdPoint Evaluation is currently performing in all clients ~32MGas/s on reference machine which is a bottleneck for compute on protocol level.It is not included in general repricing sip, so we proposed brand new SIP-8096, potentially it can be unified with next iteration of general repricing sip.
+00:21:49	Marcin Sobczak:	We prepared an SIP for increasing price of point evaluation precompile: https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-8096.md
+
+Point Evaluation is currently performing in all clients ~32MGas/s on reference machine which is a bottleneck for compute on protocol level.
+
+It is not included in general repricing sip, so we proposed brand new SIP-8096, potentially it can be unified with next iteration of general repricing sip.
 00:23:00	Pooja Ranjan:	Reacted to "It’s once per month" with 👍
 00:23:17	Ben Adams:	I would prefer to have some increase
 00:23:22	Greg K | Lido:	Reacted to "I would prefer to ..." with 👍
@@ -132,7 +138,7 @@ So we can take a data-driven decision
 what is the simpler approach?
 00:29:27	Ben Adams:	Replying to "An early complexity ..."
 
-https://sips.sila.org/SIPS/sip-7954
+https://sips.sila.org/EIPS/sip-7954
 00:29:28	Marius van der Wijden:	Reacted to didn’t we agree last... with "👍"
 00:29:30	Łukasz Rozmej:	Yeah I also am thinking 7907 as a dead end and we should focus on 2926-like chunking - how to prototype/implement it correctly for H* to avoid performance hit.
 00:29:34	felipe:	Replying to "An early complexit..."
@@ -156,7 +162,9 @@ Would help to frame it for H* if this time it doesn’t make it! 🙂
 00:31:39	jochem-brouwer:	I don't want to overload myself, I could assist here but do not want to take this task
 00:31:48	Łukasz Rozmej:	Replying to "Yeah I also am think..."
 
-I objected on the scope size + timing + lack of prototype mostlyI just think it is a big one
+I objected on the scope size + timing + lack of prototype mostly
+
+I just think it is a big one
 00:31:56	CPerezz:	Reacted to "Can we quickly discu..." with 👍
 00:32:07	Łukasz Rozmej:	Replying to "Yeah I also am think..."
 
@@ -298,7 +306,7 @@ fuckin corporate managed laptops fml... all I was trying to say is that if 7907 
 we had nothing to add for 7997, it's fine just lower priority
 00:51:35	Ben Adams:	Replying to "can anyone see my ch..."
 
-@Justin Florentine (Besu) https://sips.sila.org/SIPS/sip-7954
+@Justin Florentine (Besu) https://sips.sila.org/EIPS/sip-7954
 00:51:53	Justin Florentine (Besu):	Replying to "can anyone see my ch..."
 
 word, thanks man
@@ -314,7 +322,7 @@ Specification
 The logs bloom of an execution block is now required to be empty (ie. 0 bytes long). The logs bloom of a transaction receipt is now required to be empty (ie. 0 bytes long).
 00:53:05	jochem-brouwer:	Antwoord verzenden naar "I'm not gonna push..."
 
-https://sips.sila.org/SIPS/sip-7668
+https://sips.sila.org/EIPS/sip-7668
 00:53:08	Ansgar Dietrichs:	geth and besu signalled for 7745 inclusion, nethermind and erigon against
 00:53:17	Łukasz Rozmej:	it is consensus, it is as dangerous as consensus issue
 00:54:38	Tamaghna Choudhuri:	For 7745 it is better to postpone it to next fork just from the implementation and also the deep testing and fuzzing required for the filtermap X log index

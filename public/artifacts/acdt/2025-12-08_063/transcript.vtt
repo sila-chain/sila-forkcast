@@ -490,7 +490,7 @@ Stefan Starflinger: Otherwise, we've been finding still quite a few issues in th
 
 123
 00:24:57.870 --> 00:25:11.449
-Stefan Starflinger: run with the SAVM fuzzer still to see if there are any issues with their clients. I think that's the easiest way, kind of, to figure out if there are any inconsistencies still. Even if you pass all the tests, we're still finding some issues.
+Stefan Starflinger: run with the EVM fuzzer still to see if there are any issues with their clients. I think that's the easiest way, kind of, to figure out if there are any inconsistencies still. Even if you pass all the tests, we're still finding some issues.
 
 124
 00:25:11.820 --> 00:25:17.590

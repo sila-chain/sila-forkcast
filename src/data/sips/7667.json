@@ -15,7 +15,7 @@
       "forkName": "Glamsterdam",
       "statusHistory": [
         {
-          "status": "Withdrawn",
+          "status": "Declined",
           "call": "acde/223",
           "date": "2025-10-23"
         }
@@ -48,7 +48,7 @@
       "description": "Minimal operational effect; block production logic unchanged beyond adopting clients with updated gas schedule if activated during network upgrades only."
     },
     "clClients": {
-      "description": "Consensus-layer functionality unaffected; coordination for any network upgrade only, with no SAVM pricing logic implemented here within this client layer."
+      "description": "Consensus-layer functionality unaffected; coordination for any network upgrade only, with no EVM pricing logic implemented here within this client layer."
     },
     "elClients": {
       "description": "Must implement updated opcode and precompile gas constants; affects transaction validation, simulation, and gas accounting across execution clients implementations universally."

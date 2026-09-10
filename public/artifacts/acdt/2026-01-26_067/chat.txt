@@ -172,7 +172,7 @@ I mostly take the whole EOF saga as an indication that it was SFI'd prematurely.
 01:07:13	Toni Wahrstätter:	Replying to "if we don’t want an ..." 
 
  That's what you might think
-01:07:29	wolovim:	psa: iterating on devnet decision making aid here: https://sila-forkcast.org/devnets. Feedback/feature requests welcome.
+01:07:29	wolovim:	psa: iterating on devnet decision making aid here: https://forkcast.org/devnets. Feedback/feature requests welcome.
 01:07:33	Dustin:	it's also how intertwined it is
 01:07:57	Justin Florentine (Besu):	and testing impact
 01:08:22	Toni Wahrstätter:	What is the conclusion now?

@@ -55,7 +55,7 @@
 
 You mentioned that your personal use case would be affected by this change.
 00:12:28	donnoh | L2BEAT:	Reacted to "Duncan, what is your..." with ➕
-00:13:19	potuz:	https://sips.sila.org/SIPS/sip-2929
+00:13:19	potuz:	https://sips.sila.org/EIPS/sip-2929
 00:13:22	Parithosh Jayanthi:	Reacted to "Duncan, what is your..." with ➕
 00:13:49	Justin Florentine (Besu):	Reacted to "Duncan, what is your..." with ➕
 00:13:59	Ansgar Dietrichs:	I don’t have a strong opinion on the specific best per-tx gas limit, but I do think we need to get significantly more comfortable with (careful, thoughtful) breaking changes going forward
@@ -183,7 +183,7 @@ So if we do 20m soon, then when we have to reorg limits again for the sake of mu
 00:35:54	Toni Wahrstätter:	Let's keep 16M and see if there's something where 20M helps anf is worth the trade off
 00:35:58	Vitalik Buterin:	> can there be like a formula which is quadratic in the tx gas used
 
-I used to be in favor of things like this (see the quadratic savm memory cost :D:D) but I think in practice the gains of hard bounds are better
+I used to be in favor of things like this (see the quadratic evm memory cost :D:D) but I think in practice the gains of hard bounds are better
 00:36:02	felix (eest):	Reacted to "Let's keep 16M and..." with 👍
 00:36:05	Nicolas Consigny:	Reacted to Let's keep 16M and s... with "👍"
 00:36:13	Ben Adams:	Reacted to "Let's keep 16M and s..." with 👍

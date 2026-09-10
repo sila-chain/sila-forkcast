@@ -6,6 +6,12 @@ export interface TimelineEvent {
   datetime?: string; // Optional UTC datetime (YYYY-MM-DD HH:MM:SS)
   title: string;
   category: 'sila-mainnet' | 'testnet' | 'milestone' | 'announcement' | 'devnet';
+  /**
+   * `/networks/{id}` page this event happened on. Only set it for a network that
+   * still has a page: retired ones (Holešky, the Fusaka devnets) drop out of the
+   * Cartographoor snapshot the route set is built from.
+   */
+  networkId?: string;
 }
 
 const FORK_DISPLAY_NAMES: Record<string, string> = {
@@ -21,6 +27,7 @@ const generatedDevnetEvents: TimelineEvent[] = Object.entries(
     date: l.dateISO,
     title: `${FORK_DISPLAY_NAMES[fork] ?? fork} Devnet-${l.version} Launches`,
     category: 'devnet' as const,
+    networkId: `${fork}-devnet-${l.version}`,
   })),
 );
 
@@ -29,7 +36,8 @@ export const timelineEvents: TimelineEvent[] = [
     type: 'event',
     date: '2025-05-07',
     title: 'Pectra Live on SilaMainnet',
-    category: 'sila-mainnet'
+    category: 'sila-mainnet',
+    networkId: 'sila-mainnet'
   },
   {
     type: 'event',
@@ -95,57 +103,66 @@ export const timelineEvents: TimelineEvent[] = [
     type: 'event',
     date: '2025-10-14',
     title: 'Fusaka Live on SilaSepolia Testnet',
-    category: 'testnet'
+    category: 'testnet',
+    networkId: 'sepolia'
   },
   {
     type: 'event',
     date: '2025-10-21',
     title: 'Fusaka BPO1 on SilaSepolia (10/15 blobs)',
-    category: 'testnet'
+    category: 'testnet',
+    networkId: 'sepolia'
   },
   {
     type: 'event',
     date: '2025-10-27',
     title: 'Fusaka BPO2 on SilaSepolia (14/21 blobs)',
-    category: 'testnet'
+    category: 'testnet',
+    networkId: 'sepolia'
   },
   {
     type: 'event',
     date: '2025-10-28',
     title: 'Fusaka Live on Hoodi Testnet',
-    category: 'testnet'
+    category: 'testnet',
+    networkId: 'hoodi'
   },
   {
     type: 'event',
     date: '2025-11-05',
     title: 'Fusaka BPO1 on Hoodi (10/15 blobs)',
-    category: 'testnet'
+    category: 'testnet',
+    networkId: 'hoodi'
   },
   {
     type: 'event',
     date: '2025-11-12',
     title: 'Fusaka BPO2 on Hoodi (14/21 blobs)',
-    category: 'testnet'
+    category: 'testnet',
+    networkId: 'hoodi'
   },
   {
     type: 'event',
     date: '2025-12-03',
     title: 'Fusaka Live on SilaMainnet',
-    category: 'sila-mainnet'
+    category: 'sila-mainnet',
+    networkId: 'sila-mainnet'
   },
   {
     type: 'event',
     date: '2025-12-09',
     datetime: '2025-12-09 14:21:11',
     title: 'BPO1 on SilaMainnet (10/15 blobs)',
-    category: 'sila-mainnet'
+    category: 'sila-mainnet',
+    networkId: 'sila-mainnet'
   },
   {
     type: 'event',
     date: '2026-01-07',
     datetime: '2026-01-07 01:01:11',
     title: 'BPO2 on SilaMainnet (14/21 blobs)',
-    category: 'sila-mainnet'
+    category: 'sila-mainnet',
+    networkId: 'sila-mainnet'
   },
   ...generatedDevnetEvents,
 ];

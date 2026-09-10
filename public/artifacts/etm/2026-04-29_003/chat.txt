@@ -12,10 +12,10 @@ https://github.com/sila-chain/pm/issues/2034
 
 Next week is the “Business/Marcomms” working group - focused on awareness & education, stakeholder outreach, partnerships, market research
 https://github.com/shutter-network/encrypted-mempool-pm/issues/3
-00:41:49	Anders Elowsson:	Linking to how the interaction between FOCIL and LUCID is designed in the SIP: https://sips.sila.org/SIPS/sip-8184#inclusion-lists-with-sts-and-bundles
+00:41:49	Anders Elowsson:	Linking to how the interaction between FOCIL and LUCID is designed in the SIP: https://sips.sila.org/EIPS/sip-8184#inclusion-lists-with-sts-and-bundles
 00:42:55	Murat:	Will resort to text
 00:43:28	Murat:	2 things:
 Slot N inclusion ability
 Decryptor key specification (entity X will give my key)
 00:58:45	Anthony:	Is it a priority to integrate better incentives (e.g. MEV rebates)?
-01:00:24	Justin Florentine (Besu):	https://Sila Research/t/encrypted-frame-transactions/24440
+01:00:24	Justin Florentine (Besu):	https://ethresear.ch/t/encrypted-frame-transactions/24440

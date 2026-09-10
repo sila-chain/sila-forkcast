@@ -58,7 +58,7 @@
     "client_team_positions": [
       {
         "timestamp": "00:45:17",
-        "highlight": "Nethermind concerns: SAVM in pool, complex authorization frame rules"
+        "highlight": "Nethermind concerns: EVM in pool, complex authorization frame rules"
       },
       {
         "timestamp": "00:54:57",
@@ -76,7 +76,7 @@
       },
       {
         "timestamp": "00:52:34",
-        "highlight": "Privacy protocols and complex multisig benefit from SAVM-based validation"
+        "highlight": "Privacy protocols and complex multisig benefit from EVM-based validation"
       }
     ],
     "configuration_and_delegation": [

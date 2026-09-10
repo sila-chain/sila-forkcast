@@ -2142,7 +2142,7 @@ Ben Adams: Potentially, ultimately, you'd be in a situation where to accept
 
 536
 01:19:27.120 --> 01:19:30.590
-Ben Adams: transactions, you'd have to be invoking the SAVM.
+Ben Adams: transactions, you'd have to be invoking the EVM.
 
 537
 01:19:31.450 --> 01:19:33.780
@@ -2154,11 +2154,11 @@ Ben Adams: To decide whether it's a valid transaction.
 
 539
 01:19:36.890 --> 01:19:56.789
-Felix (Geth): Yeah, I mean, that's kind of a part of it, yeah. But then there's a question, like, what can the SAVM do, and like, what do you allow the SAVM to do in this environment? Like, it is definitely a new environment for the SAVM. Like, the SAVM has not run in the transaction pool before, so in this case, we are treating the SAVM as more like, yeah, like an arbitrary function, basically.
+Felix (Geth): Yeah, I mean, that's kind of a part of it, yeah. But then there's a question, like, what can the EVM do, and like, what do you allow the EVM to do in this environment? Like, it is definitely a new environment for the EVM. Like, the EVM has not run in the transaction pool before, so in this case, we are treating the EVM as more like, yeah, like an arbitrary function, basically.
 
 540
 01:19:58.820 --> 01:20:06.760
-mark: Yeah, I think it's fair to say you have to… you have to introspect the SAVM instructions in the, in the…
+mark: Yeah, I think it's fair to say you have to… you have to introspect the EVM instructions in the, in the…
 
 541
 01:20:07.130 --> 01:20:08.599
@@ -2174,7 +2174,7 @@ mark: of the rules was so that for certain of them, you don't need to execute, y
 
 544
 01:20:22.820 --> 01:20:41.990
-Felix (Geth): There are various ways to do it. There is, for example, also the possibility of allow listing certain contracts, because they are known to be safe. So, for example, if you know that a certain, like, a certain account contract has a specific semantics, you can just model these semantics in native code, and then apply this model in your transaction pool, then you don't have to run the SAVM.
+Felix (Geth): There are various ways to do it. There is, for example, also the possibility of allow listing certain contracts, because they are known to be safe. So, for example, if you know that a certain, like, a certain account contract has a specific semantics, you can just model these semantics in native code, and then apply this model in your transaction pool, then you don't have to run the EVM.
 
 545
 01:20:41.990 --> 01:21:01.820
@@ -2190,7 +2190,7 @@ Felix (Geth): and this call has this much gas, so it can right away say, yeah, I
 
 548
 01:21:29.450 --> 01:21:39.009
-Felix (Geth): So, it's not like you have to run the SAVM to the full extent for every single transaction, you only have to run it, like, when it seems like it's gonna have any chance at actually validating, for example.
+Felix (Geth): So, it's not like you have to run the EVM to the full extent for every single transaction, you only have to run it, like, when it seems like it's gonna have any chance at actually validating, for example.
 
 549
 01:21:40.590 --> 01:21:47.799

@@ -210,7 +210,7 @@ Stefan Starflinger: It's described here as well, and then Geth is already workin
 
 53
 00:13:06.970 --> 00:13:22.440
-Stefan Starflinger: and Lodestar SCL ready for testing. In the spec sheet, I have a small example for a Kurtosis config, and if your client is working really well, you should also try to add the SAVM fuzz.
+Stefan Starflinger: and Lodestar SCL ready for testing. In the spec sheet, I have a small example for a Kurtosis config, and if your client is working really well, you should also try to add the EVM fuzz.
 
 54
 00:13:22.490 --> 00:13:31.540
@@ -218,7 +218,7 @@ Stefan Starflinger: to the network and see if it, can, work under some transacti
 
 55
 00:13:31.810 --> 00:13:51.420
-Stefan Starflinger: PK has already modified the latest spammer to… and the SAVM first scenario to include the new opcodes. So, slot num op codes and the other call stack opcodes as well. So that would be great if you have some time to test with the spammer as well.
+Stefan Starflinger: PK has already modified the latest spammer to… and the EVM first scenario to include the new opcodes. So, slot num op codes and the other call stack opcodes as well. So that would be great if you have some time to test with the spammer as well.
 
 56
 00:13:51.840 --> 00:13:56.530

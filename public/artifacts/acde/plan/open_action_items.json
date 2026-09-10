@@ -1,116 +1,103 @@
 {
   "series": "ACDE",
-  "generated": "2026-07-06",
+  "generated": "2026-08-24",
   "lookback_calls": [
-    "ACDE #236",
-    "ACDE #237",
-    "ACDE #238",
-    "ACDE #239",
-    "ACDE #240"
+    "ACDE #239 - June 18, 2026",
+    "ACDE #240 - July 2, 2026",
+    "ACDE #241 - July 16, 2026",
+    "ACDE #242 - July 30, 2026",
+    "ACDE #243 - August 13, 2026"
   ],
   "open_items": [
-    {
-      "action": "Create debug gas endpoint spec in EL channel",
-      "owner": "Stefan Starflinger",
-      "source_call": "ACDE #236",
-      "source_date": "2026-05-07",
-      "notes": "No mention of completion in subsequent meetings"
-    },
-    {
-      "action": "Update the reorg-depth SIP around a 38-day target and gather client feedback",
-      "owner": "Toni Wahrstätter",
-      "source_call": "ACDE #236",
-      "source_date": "2026-05-07",
-      "notes": "No updates provided in later calls"
-    },
-    {
-      "action": "Create Hive tests for deep reorg scenarios",
-      "owner": "Jochem Brouwer and Mario Vega",
-      "source_call": "ACDE #236",
-      "source_date": "2026-05-07",
-      "notes": "No completion reported"
-    },
-    {
-      "action": "PFI SIP-8254 to Glamsterdam meta (deposit limit discussion ongoing)",
-      "owner": "Barnabas",
-      "source_call": "ACDE #236",
-      "source_date": "2026-05-07",
-      "notes": "SIP-8254 not mentioned in subsequent meetings; unclear if action completed"
-    },
-    {
-      "action": "Review 7702 delegation BAL implementation and weigh in on BAL Discord thread",
-      "owner": "EL client teams",
-      "source_call": "ACDE #237",
-      "source_date": "2026-05-21",
-      "notes": "ACDE #237 deferred the 7702 delegation change; no later confirmation of team reviews"
-    },
-    {
-      "action": "Review execution-apis cross-client JSON-RPC matrix; flag methods to spec or drop",
-      "owner": "Execution client teams",
-      "source_call": "ACDE #237",
-      "source_date": "2026-05-21",
-      "notes": "No follow-up reported in subsequent calls"
-    },
-    {
-      "action": "Schedule SIP-7979 breakout call once draft is merged; coordinate timing with Protocol Support (Josh Davis)",
-      "owner": "Greg Colvin + Protocol Support",
-      "source_call": "ACDE #238",
-      "source_date": "2026-06-04",
-      "notes": "ACDE #238 mentions breakout planned; no confirmation of scheduling in later meetings"
-    },
     {
       "action": "Review Dragan's three-option summary for SIP-7928 BAL state access ordering; respond async by end of day (EU teams by tomorrow morning)",
       "owner": "All EL client teams",
       "source_call": "ACDE #239",
       "source_date": "2026-06-18",
-      "notes": "ACDE #239 decision shows soft-commitment to Tony's proposal with async review; ACDE #240 mentions SIP-8038 PR #11854 related to pre-access check, suggesting ongoing work but no explicit confirmation teams completed review"
+      "notes": "ACDE #242 shows Hive chain PR #1589 blocked due to client disagreement on SIP-7928 BAL contents at block 57, suggesting the async review never fully resolved implementation differences"
     },
     {
-      "action": "Review Dragan's SIP-2780 intrinsic gas PR #11844 and weigh in on Discord thread before ACDT",
-      "owner": "All EL client teams",
-      "source_call": "ACDE #240",
-      "source_date": "2026-07-02",
-      "notes": "Action assigned July 2, targeting ACDT Monday July 6/7; remains open as of today"
+      "action": "Review non-engine methods exposed on engine port; confirm which are needed and whether eth1 deposit path can be retired",
+      "owner": "CL client teams",
+      "source_call": "ACDE #241",
+      "source_date": "2026-07-16",
+      "notes": "Prysm confirmed only 4 methods still used; eth1 deposit path methods identified as dead code post-Pectra but no later meeting confirms retirement decision"
     },
     {
-      "action": "Open consensus-specs PR for 3s/6s/9s ePBS deadlines; finalize at ACDT Monday",
-      "owner": "Justin Traglia / Potuz",
-      "source_call": "ACDE #240",
-      "source_date": "2026-07-02",
-      "notes": "Action assigned July 2, targeting ACDT Monday July 6/7; remains open as of today"
+      "action": "Confirm four SFI milestone criteria met with testing team before promoting Glamsterdam SIPs to SFI",
+      "owner": "Pooja Ranjan / testing team",
+      "source_call": "ACDE #241",
+      "source_date": "2026-07-16",
+      "notes": "ACDE #242 and #243 show Glamsterdam SIPs still pending promotion to Review/SFI status; no evidence testing milestones confirmed"
     },
     {
-      "action": "Fix HTML issue on SIP-8282 so PR can merge and Meta SIP PR can follow",
-      "owner": "Cayman (SIP-8282 author)",
-      "source_call": "ACDE #240",
-      "source_date": "2026-07-02",
-      "notes": "Action assigned July 2; no confirmation of completion yet"
+      "action": "EL client teams: finalize repricing optimizations and confirm benchmark numbers by early next week",
+      "owner": "EL client teams",
+      "source_call": "ACDE #242",
+      "source_date": "2026-07-30",
+      "notes": "ACDE #243 confirms repricing numbers are final, but does not explicitly state which teams completed optimizations"
+    },
+    {
+      "action": "All EL clients: return ENR fields (not just eNode) in admin_nodeInfo RPC endpoint for discv5-only support",
+      "owner": "EL client teams",
+      "source_call": "ACDE #242",
+      "source_date": "2026-07-30",
+      "notes": "ACDE #242 noted no client had implemented ENR fields yet; no later meeting confirms implementation"
+    },
+    {
+      "action": "Review and unblock Hive chain PR #1589; resolve SIP-7928 BAL disagreement at block 57",
+      "owner": "EL client teams / Chase Wright",
+      "source_call": "ACDE #242",
+      "source_date": "2026-07-30",
+      "notes": "No later meeting references resolution; likely still blocked"
+    },
+    {
+      "action": "Converge on single history expiry window number and decide where to spec it",
+      "owner": "EL client teams via SIL R&D history-expiry channel",
+      "source_call": "ACDE #243",
+      "source_date": "2026-08-13",
+      "notes": "Clients still have divergent targets (6 months to 1 year); deferred to async discussion"
+    },
+    {
+      "action": "Bring concrete 8141 vs 8130 comparison and required-modification list to AA breakout Aug 25",
+      "owner": "L2 teams (Base, Offchain Labs) and Frames authors",
+      "source_call": "ACDE #243",
+      "source_date": "2026-08-13",
+      "notes": "AA breakout scheduled for August 25; today is August 24 so deadline has not passed yet, but no resolution confirmed in provided calls"
     }
   ],
   "resolved_items": [
-    {
-      "action": "CFI SIP-8246 (remove selfdestruct burn) to Glamsterdam",
-      "owner": "Paweł Bylica",
-      "source_call": "ACDE #236",
-      "source_date": "2026-05-07",
-      "resolved_in": "ACDE #238",
-      "resolution": "ACDE #238 decision confirms SIP-8246 included in glamsterdam-devnet-6 scope"
-    },
-    {
-      "action": "EL clients review engine API changes (execution-apis PRs #796, #786) for glamsterdam-devnet-5 onboarding",
-      "owner": "EL client teams",
-      "source_call": "ACDE #238",
-      "source_date": "2026-06-04",
-      "resolved_in": "ACDE #239",
-      "resolution": "ACDE #239 reports glamsterdam-devnet-5 at 95% participation, indicating successful onboarding and review completion"
-    },
     {
       "action": "Merge SIP-8282 into Glamsterdam Meta SIP (8081) following no objections on call",
       "owner": "nixo",
       "source_call": "ACDE #239",
       "source_date": "2026-06-18",
       "resolved_in": "ACDE #240",
-      "resolution": "ACDE #240 notes HTML fix needed before merge can proceed, but SIP-8282 was accepted as CFI in ACDE #239 decision; merge process in progress with only technical blocker remaining"
+      "resolution": "ACDE #240 notes SIP-8282 HTML fix needed before merge, and ACDE #241 confirms SIP-8282 is pending author approval, indicating the merge was attempted but encountered technical blockers that were subsequently addressed"
+    },
+    {
+      "action": "Review Dragan's SIP-2780 intrinsic gas PR #11844 and weigh in on Discord thread before ACDT",
+      "owner": "All EL client teams",
+      "source_call": "ACDE #240",
+      "source_date": "2026-07-02",
+      "resolved_in": "ACDE #243",
+      "resolution": "ACDE #243 confirms SIP-2780/8037/8038 specs are unchanged and repricing numbers are final, indicating the PR review was completed and integrated"
+    },
+    {
+      "action": "Open consensus-specs PR for 3s/6s/9s ePBS deadlines; finalize at ACDT Monday",
+      "owner": "Justin Traglia / Potuz",
+      "source_call": "ACDE #240",
+      "source_date": "2026-07-02",
+      "resolved_in": "ACDE #241",
+      "resolution": "ACDE #241 shows devnet-7 launched with Gloas fork, implying the ePBS deadline PR was merged as planned for devnet-7 spec"
+    },
+    {
+      "action": "Fix HTML issue on SIP-8282 so PR can merge and Meta SIP PR can follow",
+      "owner": "Cayman (SIP-8282 author)",
+      "source_call": "ACDE #240",
+      "source_date": "2026-07-02",
+      "resolved_in": "ACDE #241",
+      "resolution": "ACDE #241 shows seven Glamsterdam SIPs pending promotion to Review, suggesting the HTML issue was resolved and the SIP is progressing through status changes"
     }
   ]
 }

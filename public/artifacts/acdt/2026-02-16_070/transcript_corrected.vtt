@@ -334,7 +334,7 @@ jochem-brouwer: It's basically a check which you do on quickly invalidating the 
 
 84
 00:15:37.370 --> 00:15:46.920
-jochem-brouwer: But it should not be interpreted as, like, a constraint which should be checked in the SAVM, because you cannot constrict such a block-level exit list.
+jochem-brouwer: But it should not be interpreted as, like, a constraint which should be checked in the EVM, because you cannot constrict such a block-level exit list.
 
 85
 00:15:54.630 --> 00:16:08.550

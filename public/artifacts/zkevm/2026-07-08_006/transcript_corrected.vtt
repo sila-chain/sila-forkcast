@@ -1294,7 +1294,7 @@ cody: Tao, who presented earlier.
 
 324
 00:41:47.910 --> 00:42:04.729
-cody: will, has been working on an SAVM spec in this language called SAIL. Sail is, is behind the RISC-V formal verification efforts, because the RISC-V community has been building, an executable formal specification in SAIL.
+cody: will, has been working on an EVM spec in this language called SAIL. Sail is, is behind the RISC-V formal verification efforts, because the RISC-V community has been building, an executable formal specification in SAIL.
 
 325
 00:42:05.100 --> 00:42:12.669
@@ -1302,7 +1302,7 @@ cody: And we've been using it to, to build, lean specifications using this backe
 
 326
 00:42:12.940 --> 00:42:31.979
-cody: I expect this backend to be there more and more, meaning we can use Lean, or be in use more and more, meaning we can use Lean to make proofs about RISC-V compliance. We'd like to do the same for SAVM implementation, so a first step would be to build an SAVM sale spec.
+cody: I expect this backend to be there more and more, meaning we can use Lean, or be in use more and more, meaning we can use Lean to make proofs about RISC-V compliance. We'd like to do the same for EVM implementation, so a first step would be to build an EVM sale spec.
 
 327
 00:42:32.040 --> 00:42:50.870
@@ -1354,15 +1354,15 @@ Francesco Risitano (Tau): Cool. So yeah.
 
 339
 00:44:20.040 --> 00:44:27.960
-Francesco Risitano (Tau): I will… so, yeah, essentially what SEL intends to be is the formal specification of the SAVM.
+Francesco Risitano (Tau): I will… so, yeah, essentially what SEL intends to be is the formal specification of the EVM.
 
 340
 00:44:28.110 --> 00:44:37.990
-Francesco Risitano (Tau): As Cody mentioned, we leverage SAIL, which is a very good language for defining ISAs, which the SAVM is.
+Francesco Risitano (Tau): As Cody mentioned, we leverage SAIL, which is a very good language for defining ISAs, which the EVM is.
 
 341
 00:44:38.230 --> 00:44:57.070
-Francesco Risitano (Tau): In terms of how it's structured, we essentially have SAVM core. So this encapsulates opcodes, gas frames and other kind of SAVM centric components. And then we have a kernel interface and the kernel interface is essentially.
+Francesco Risitano (Tau): In terms of how it's structured, we essentially have EVM core. So this encapsulates opcodes, gas frames and other kind of EVM centric components. And then we have a kernel interface and the kernel interface is essentially.
 
 342
 00:44:57.310 --> 00:45:10.720
@@ -1422,7 +1422,7 @@ Francesco Risitano (Tau): So maybe we can dive dive into the code.
 
 356
 00:46:52.950 --> 00:47:05.370
-Francesco Risitano (Tau): So, as I mentioned, we've got the SAVM, we've got the host, and we've got some kind of libraries which encapsulate things like RLP and and
+Francesco Risitano (Tau): So, as I mentioned, we've got the EVM, we've got the host, and we've got some kind of libraries which encapsulate things like RLP and and
 
 357
 00:47:05.980 --> 00:47:07.799
@@ -1434,11 +1434,11 @@ Francesco Risitano (Tau): So maybe I can just give a quick example of.
 
 359
 00:47:11.180 --> 00:47:22.290
-Francesco Risitano (Tau): a quick overview of how the SAVM opcodes are structured. So, essentially, define an abstract syntax tree, and this encapsulates all of the operations that we have
+Francesco Risitano (Tau): a quick overview of how the EVM opcodes are structured. So, essentially, define an abstract syntax tree, and this encapsulates all of the operations that we have
 
 360
 00:47:22.430 --> 00:47:25.420
-Francesco Risitano (Tau): Inside of the, the, the SAVM.
+Francesco Risitano (Tau): Inside of the, the, the EVM.
 
 361
 00:47:25.790 --> 00:47:32.549
@@ -1486,7 +1486,7 @@ Francesco Risitano (Tau): So, that's kind of where we're at. There's also some a
 
 372
 00:48:42.290 --> 00:48:55.339
-Francesco Risitano (Tau): Guest, like, RISC-V Guest Program, verification. So, I've done a few experiments using Isleris, and it looks quite promising. And we're hoping to collaborate with the SAVM ASM team
+Francesco Risitano (Tau): Guest, like, RISC-V Guest Program, verification. So, I've done a few experiments using Isleris, and it looks quite promising. And we're hoping to collaborate with the EVM ASM team
 
 373
 00:48:57.030 --> 00:49:13.430

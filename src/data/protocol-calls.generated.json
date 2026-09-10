@@ -7,6 +7,27 @@
     "issue": 2018
   },
   {
+    "type": "aa",
+    "date": "2026-08-25",
+    "number": "002",
+    "path": "aa/002",
+    "issue": 2191
+  },
+  {
+    "type": "aa",
+    "date": "2026-09-01",
+    "number": "003",
+    "path": "aa/003",
+    "issue": 2206
+  },
+  {
+    "type": "aa",
+    "date": "2026-09-08",
+    "number": "004",
+    "path": "aa/004",
+    "issue": 2212
+  },
+  {
     "type": "acdc",
     "date": "2025-04-03",
     "number": "154",
@@ -208,6 +229,34 @@
     "number": "182",
     "path": "acdc/182",
     "issue": 2152
+  },
+  {
+    "type": "acdc",
+    "date": "2026-07-23",
+    "number": "183",
+    "path": "acdc/183",
+    "issue": 2158
+  },
+  {
+    "type": "acdc",
+    "date": "2026-08-06",
+    "number": "184",
+    "path": "acdc/184",
+    "issue": 2177
+  },
+  {
+    "type": "acdc",
+    "date": "2026-08-20",
+    "number": "185",
+    "path": "acdc/185",
+    "issue": 2187
+  },
+  {
+    "type": "acdc",
+    "date": "2026-09-03",
+    "number": "186",
+    "path": "acdc/186",
+    "issue": 2199
   },
   {
     "type": "acde",
@@ -439,6 +488,34 @@
     "number": "240",
     "path": "acde/240",
     "issue": 2140
+  },
+  {
+    "type": "acde",
+    "date": "2026-07-16",
+    "number": "241",
+    "path": "acde/241",
+    "issue": 2157
+  },
+  {
+    "type": "acde",
+    "date": "2026-07-30",
+    "number": "242",
+    "path": "acde/242",
+    "issue": 2166
+  },
+  {
+    "type": "acde",
+    "date": "2026-08-13",
+    "number": "243",
+    "path": "acde/243",
+    "issue": 2178
+  },
+  {
+    "type": "acde",
+    "date": "2026-08-27",
+    "number": "244",
+    "path": "acde/244",
+    "issue": 2197
   },
   {
     "type": "acdt",
@@ -770,6 +847,69 @@
     "issue": 2144
   },
   {
+    "type": "acdt",
+    "date": "2026-07-13",
+    "number": "087",
+    "path": "acdt/087",
+    "issue": 2151
+  },
+  {
+    "type": "acdt",
+    "date": "2026-07-20",
+    "number": "088",
+    "path": "acdt/088",
+    "issue": 2162
+  },
+  {
+    "type": "acdt",
+    "date": "2026-07-27",
+    "number": "089",
+    "path": "acdt/089",
+    "issue": 2170
+  },
+  {
+    "type": "acdt",
+    "date": "2026-08-03",
+    "number": "090",
+    "path": "acdt/090",
+    "issue": 2174
+  },
+  {
+    "type": "acdt",
+    "date": "2026-08-10",
+    "number": "091",
+    "path": "acdt/091",
+    "issue": 2181
+  },
+  {
+    "type": "acdt",
+    "date": "2026-08-17",
+    "number": "092",
+    "path": "acdt/092",
+    "issue": 2186
+  },
+  {
+    "type": "acdt",
+    "date": "2026-08-24",
+    "number": "093",
+    "path": "acdt/093",
+    "issue": 2195
+  },
+  {
+    "type": "acdt",
+    "date": "2026-08-31",
+    "number": "094",
+    "path": "acdt/094",
+    "issue": 2204
+  },
+  {
+    "type": "acdt",
+    "date": "2026-09-07",
+    "number": "095",
+    "path": "acdt/095",
+    "issue": 2209
+  },
+  {
     "type": "awd",
     "date": "2026-02-18",
     "number": "038",
@@ -782,6 +922,13 @@
     "number": "039",
     "path": "awd/039",
     "issue": 1997
+  },
+  {
+    "type": "awd",
+    "date": "2026-07-15",
+    "number": "040",
+    "path": "awd/040",
+    "issue": 2139
   },
   {
     "type": "bal",
@@ -980,6 +1127,27 @@
     "issue": 2118
   },
   {
+    "type": "etm",
+    "date": "2026-07-22",
+    "number": "007",
+    "path": "etm/007",
+    "issue": 2165
+  },
+  {
+    "type": "etm",
+    "date": "2026-08-12",
+    "number": "008",
+    "path": "etm/008",
+    "issue": 2182
+  },
+  {
+    "type": "etm",
+    "date": "2026-08-19",
+    "number": "009",
+    "path": "etm/009",
+    "issue": 2193
+  },
+  {
     "type": "fcr",
     "date": "2026-03-03",
     "number": "004",
@@ -1027,6 +1195,20 @@
     "number": "010",
     "path": "fcr/010",
     "issue": 2136
+  },
+  {
+    "type": "fcr",
+    "date": "2026-07-21",
+    "number": "011",
+    "path": "fcr/011",
+    "issue": 2149
+  },
+  {
+    "type": "fcr",
+    "date": "2026-08-04",
+    "number": "012",
+    "path": "fcr/012",
+    "issue": 2167
   },
   {
     "type": "focil",
@@ -1162,6 +1344,34 @@
     "issue": 2142
   },
   {
+    "type": "focil",
+    "date": "2026-07-21",
+    "number": "038",
+    "path": "focil/038",
+    "issue": 2146
+  },
+  {
+    "type": "focil",
+    "date": "2026-08-04",
+    "number": "039",
+    "path": "focil/039",
+    "issue": 2179
+  },
+  {
+    "type": "focil",
+    "date": "2026-08-18",
+    "number": "040",
+    "path": "focil/040",
+    "issue": 2194
+  },
+  {
+    "type": "focil",
+    "date": "2026-09-01",
+    "number": "041",
+    "path": "focil/041",
+    "issue": 2208
+  },
+  {
     "type": "one-off-1954",
     "date": "2026-03-05",
     "number": "001",
@@ -1191,7 +1401,7 @@
     "number": "001",
     "path": "one-off-2135/001",
     "issue": 2135,
-    "name": "Subroutines for the SAVM #1"
+    "name": "Subroutines for the EVM #1"
   },
   {
     "type": "p2p",
@@ -1213,6 +1423,41 @@
     "number": "003",
     "path": "p2p/003",
     "issue": 2129
+  },
+  {
+    "type": "p2p",
+    "date": "2026-07-15",
+    "number": "004",
+    "path": "p2p/004",
+    "issue": 2161
+  },
+  {
+    "type": "p2p",
+    "date": "2026-07-29",
+    "number": "005",
+    "path": "p2p/005",
+    "issue": 2175
+  },
+  {
+    "type": "p2p",
+    "date": "2026-08-12",
+    "number": "006",
+    "path": "p2p/006",
+    "issue": 2189
+  },
+  {
+    "type": "p2p",
+    "date": "2026-08-26",
+    "number": "007",
+    "path": "p2p/007",
+    "issue": 2203
+  },
+  {
+    "type": "p2p",
+    "date": "2026-09-09",
+    "number": "008",
+    "path": "p2p/008",
+    "issue": 2214
   },
   {
     "type": "pqi",
@@ -1341,6 +1586,20 @@
     "issue": 2153
   },
   {
+    "type": "pqi",
+    "date": "2026-07-22",
+    "number": "048",
+    "path": "pqi/048",
+    "issue": 2169
+  },
+  {
+    "type": "pqi",
+    "date": "2026-07-29",
+    "number": "049",
+    "path": "pqi/049",
+    "issue": 2176
+  },
+  {
     "type": "pqts",
     "date": "2026-02-04",
     "number": "001",
@@ -1416,6 +1675,27 @@
     "number": "011",
     "path": "pqts/011",
     "issue": 2124
+  },
+  {
+    "type": "pqts",
+    "date": "2026-07-22",
+    "number": "012",
+    "path": "pqts/012",
+    "issue": 2164
+  },
+  {
+    "type": "pqts",
+    "date": "2026-08-19",
+    "number": "013",
+    "path": "pqts/013",
+    "issue": 2188
+  },
+  {
+    "type": "pqts",
+    "date": "2026-09-02",
+    "number": "014",
+    "path": "pqts/014",
+    "issue": 2210
   },
   {
     "type": "price",
@@ -1544,6 +1824,41 @@
     "issue": 2141
   },
   {
+    "type": "rpc",
+    "date": "2026-07-13",
+    "number": "030",
+    "path": "rpc/030",
+    "issue": 2154
+  },
+  {
+    "type": "rpc",
+    "date": "2026-07-27",
+    "number": "031",
+    "path": "rpc/031",
+    "issue": 2172
+  },
+  {
+    "type": "rpc",
+    "date": "2026-08-10",
+    "number": "032",
+    "path": "rpc/032",
+    "issue": 2185
+  },
+  {
+    "type": "rpc",
+    "date": "2026-08-24",
+    "number": "033",
+    "path": "rpc/033",
+    "issue": 2198
+  },
+  {
+    "type": "rpc",
+    "date": "2026-09-07",
+    "number": "034",
+    "path": "rpc/034",
+    "issue": 2213
+  },
+  {
     "type": "ssz",
     "date": "2026-06-26",
     "number": "001",
@@ -1556,6 +1871,20 @@
     "number": "002",
     "path": "ssz/002",
     "issue": 2145
+  },
+  {
+    "type": "ssz",
+    "date": "2026-07-24",
+    "number": "003",
+    "path": "ssz/003",
+    "issue": 2168
+  },
+  {
+    "type": "ssz",
+    "date": "2026-08-28",
+    "number": "004",
+    "path": "ssz/004",
+    "issue": 2196
   },
   {
     "type": "tli",
@@ -1612,5 +1941,19 @@
     "number": "006",
     "path": "zkevm/006",
     "issue": 2148
+  },
+  {
+    "type": "zkevm",
+    "date": "2026-08-12",
+    "number": "007",
+    "path": "zkevm/007",
+    "issue": 2184
+  },
+  {
+    "type": "zkevm",
+    "date": "2026-09-09",
+    "number": "008",
+    "path": "zkevm/008",
+    "issue": 2215
   }
 ]

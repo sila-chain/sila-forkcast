@@ -391,7 +391,7 @@ it will just take longer
 00:42:58	George Kadianakis:	Reacted to "they don't know im ... with "😂"
 00:43:00	Mario Havel:	Reacted to ""they don't know i..." with 😆
 00:43:08	milen:	Reacted to ""they don't know im ..." with 😂
-00:43:11	lightclient:	while i think introspection is a major issue, we are hyper fixated on this EOF detail and not yet even discussing the fact that zk-vm teams would rather just have native RISC-V execution instead of dealing with SAVM/EOF at all
+00:43:11	lightclient:	while i think introspection is a major issue, we are hyper fixated on this EOF detail and not yet even discussing the fact that zk-vm teams would rather just have native RISC-V execution instead of dealing with EVM/EOF at all
 00:43:16	Ahmad Bitar | Nethermind:	What about tx create. This will still require changes
 00:43:17	Ansgar Dietrichs:	Would it be so bad if ecosystem adoption only really picks up after Glamsterdam? My feeling is we expect limited readiness at Fusaka anyway (especially say on L2s)? And in the meantime we would get valuable signal from early adopters on small Glamsterdam EOF tweaks that would be valuable. And can consider them in due time, rather than like here rushed last minute without sufficient context
 00:43:30	Ahmad Bitar | Nethermind:	Replying to "What about tx create..." 
@@ -508,7 +508,7 @@ Ya, this is the “py2->py3” argument
 00:48:43	Charles C (vyper):	7907
 00:48:52	MariusVanDerWijden:	Replying to "a lag is the best ..."
 
-Any version, any substantial change with the savm imho. You would need to know the target chain when compiling your contract
+Any version, any substantial change with the evm imho. You would need to know the target chain when compiling your contract
 00:48:54	Carl Beekhuizen:	Reacted to "would still require …" with 👍
 00:49:10	Ansgar Dietrichs:	Replying to "what’s the best reso..."
 
@@ -539,7 +539,7 @@ it’s CFI
 hence, users need to maintain two versions of code
 00:51:15	Charles C (vyper):	Replying to "a lag is the best ..."
 
-because sila-mainnet is not the only SAVM
+because sila-mainnet is not the only EVM
 00:51:19	Richard Meissner:	Replying to "7907"
 
 Gotta love news: https://www.binance.com/en/square/post/23264062999666
@@ -551,7 +551,7 @@ Gotta love news: https://www.binance.com/en/square/post/23264062999666
 yes, true
 00:52:05	Parithosh Jayanthi:	Replying to "a lag is the best ca..."
 
-And not every SAVM will upgrade asap, so this migration would take ~years
+And not every EVM will upgrade asap, so this migration would take ~years
 00:52:10	gakonst:	Yes IMO
 00:52:18	gakonst:	Reacted to "to clarify - would w…" with 👍
 00:52:19	Tim Beiko:	Replying to "to clarify - would w..."
@@ -587,7 +587,7 @@ Again, here’s the link: https://github.com/sila-chain/pm/issues/1499  😄
 00:54:17	Dustin:	Replying to "Remember eWASM?  P..."
 
 i.e. some of the ecosystem advantages were hard to take advantage of in Sila because if someone hit some optimization thing that took O(n^2) time, oops
-00:54:20	gakonst:	It's a dual RiscV / SAVM runtime where we alrd demonstrars SAVM / r5 interop / xcontract calls
+00:54:20	gakonst:	It's a dual RiscV / EVM runtime where we alrd demonstrars EVM / r5 interop / xcontract calls
 00:54:25	andrei:	Reacted to "feels like we are no..." with 👍🏽
 00:54:30	Barnabas:	Replying to "feels like we are no..."
 
@@ -634,7 +634,7 @@ Sila abstractions are not part of RISCV, i.e. gas or state interaction. There’
 00:59:01	lightclient:	Replying to "risc-v, wasm, etc, i..."
 
 the issue is that people aren’t saying it’s EOF
-00:59:02	Łukasz Rozmej:	switch zk-VM's to SAVM bytecode?
+00:59:02	Łukasz Rozmej:	switch zk-VM's to EVM bytecode?
 00:59:19	Charles C (vyper):	Reacted to "Traditional execut..." with 👍
 00:59:24	Sophia Gold:	Reacted to "It's not just a "w..." with 👍
 00:59:26	Paweł Bylica:	Every commit of evmone is build and executed on riscv32. https://github.com/sila-chain/evmone/blob/master/circle.yml#L658-L666
@@ -642,7 +642,7 @@ the issue is that people aren’t saying it’s EOF
 
 fair. but like, then we need to get serious about it. not just acd vibe discussion.
 
-have a defined emergency future-of-SAVM breakout process. say we make a final go/no-go decision on EOF in 4 weeks. have an active fasttracked process between now and then to really dive deep on how realistic a near-term VM change like RISC-V is.
+have a defined emergency future-of-EVM breakout process. say we make a final go/no-go decision on EOF in 4 weeks. have an active fasttracked process between now and then to really dive deep on how realistic a near-term VM change like RISC-V is.
 00:59:43	iPhone - Radek:	Reacted to "Every commit of evmo…" with 👍
 00:59:48	sacha:	Reacted to "feels like we are no..." with 👍🏽
 00:59:59	Richard Meissner:	Reacted to "fair. but like, then..." with ➕
@@ -677,7 +677,7 @@ Different from the point at which we would be comfortable with protocol inclusio
 
  also given proving is now 15 cents per block, proving is simply not going to be the bottleneck
 01:02:16	lightclient:	potential for EOF being out python 2->3 moment + we know EOF isn’t the endgame......
-01:02:18	Felix (Geth):	Even if we enable support for RISCV, we would still support SAVM for a long time
+01:02:18	Felix (Geth):	Even if we enable support for RISCV, we would still support EVM for a long time
 01:02:23	iPhone - Radek:	We don’t know if it’s doable but we assume that it will happen in up to 5 years.
 01:02:36	lightclient:	Replying to "potential for EOF be..."
 
@@ -685,7 +685,7 @@ i don’t see what there is to debate, it seems like we aren’t ready to make t
 01:02:39	Felix (Geth):	So any work for converting contracts to EOF will be worth it
 01:02:51	Vitalik Buterin:	Replying to "Even if we enable su..."
 
-the deprecation path for SAVM would be to turn it into a smart contract on RISCV, so it would remain available to devs forever
+the deprecation path for EVM would be to turn it into a smart contract on RISCV, so it would remain available to devs forever
 01:03:39	Richard Meissner:	is adopting EOF now a blocker for RISC-V?
 01:03:46	Ansgar Dietrichs:	Replying to "is adopting EOF now ..."
 
@@ -710,7 +710,7 @@ Hasn’t this been an argument that the geth team has been proposing for a while
 01:05:25	Ansgar Dietrichs:	Replying to "is adopting EOF now ..."
 
 yes, but we heard that concern and then made the decision pro EOF anyway
-01:05:30	Ahmad Bitar | Nethermind:	Isnt the idea of version number in EOF is to support multiple versions of SAVM?
+01:05:30	Ahmad Bitar | Nethermind:	Isnt the idea of version number in EOF is to support multiple versions of EVM?
 01:06:05	Vitalik Buterin:	I think the way that riscv (or other vm, eg. cairo) changes EOF discussions is:
 
 It's not EOF vs nothing, it's EOF vs (contract code size increase + swap32). And a big part of the argument for EOF was future-proofness. But if the future-proofness strategy is to ossify RISCV, then that changes things
@@ -732,7 +732,7 @@ so overall you would prefer dropping EOF?
 01:08:34	Carl Beekhuizen:	Reacted to "I think the way that…" with 👍
 01:08:34	Charles C (vyper):	Replying to "btw we don't even ..."
 
-https://sips.sila.org/SIPS/sip-7923
+https://sips.sila.org/EIPS/sip-7923
 01:08:42	SanLeo:	Reacted to "we need a stable a..." with 👍
 01:08:49	Ben Adams:	will be lots of "precompile" syscalls instead with riscv?
 01:09:00	sina:	Reacted to "we need a stable and..." with 👍
@@ -743,14 +743,14 @@ I view imemidate ossification as the real competitive alternative to EOF.
 
 And metering
 01:09:40	frangio:	Reacted to "we need a stable and..." with 👍
-01:10:07	Gajinder Singh:	to apply gas which is basic SAVM construct, we will need to dev/maintain our own interpreters?
+01:10:07	Gajinder Singh:	to apply gas which is basic EVM construct, we will need to dev/maintain our own interpreters?
 01:10:08	sina:	Replying to "will be lots of "pre..."
 
 Possibly also big int arithmetic
 01:10:10	Danno Ferrin | Ipsilon:	Replying to "we need a stable and..."
 
 every new addition is a precompile or system call, mostly for consensus data.
-01:10:16	SanLeo:	Going from Legacy SAVM to EOF to RiscV in the span of a few years wouldn't exactly spur great confidence for newcomers
+01:10:16	SanLeo:	Going from Legacy EVM to EOF to RiscV in the span of a few years wouldn't exactly spur great confidence for newcomers
 01:10:31	lightclient:	Reacted to "Going from Legacy EV..." with 👍
 01:10:34	Cody Gunton:	Reacted to "Going from Legacy EV..." with 👍
 01:10:45	Cody Gunton:	Reacted to "we need a stable and..." with 👍
@@ -769,7 +769,7 @@ i think the cost matters a lot here
 01:11:35	Charles C (vyper):	haven't multiple zk teams looked at this problem as well, and several custom ISAs were developed as opposed to risc-v (which was also a strategy that was taken by a couple teams)
 01:11:35	Kevaundray Wedderburn:	At what level of conviction is this at?
 
-We need to change the SAVM to a more traditional architecture like RISCV/WASM
+We need to change the EVM to a more traditional architecture like RISCV/WASM
 We need to change to RISCV
 01:11:52	Ansgar Dietrichs:	okay so if we really want to seriously reconsider EOF, what’s the process? Decide on Monday? Breakout to study the RISC-V (or similar) roadmap feasibility in more depth?
 
@@ -813,7 +813,7 @@ If we spend 4 weeks researching this, then we’ll delay EOF 4 weeks, then maybe
 
 no, the idea is we continue as-is, assuming EOF goes in ofc
 01:14:17	ethDreamer (Mark):	Reacted to "no, the idea is we c..." with 👍
-01:14:24	MariusVanDerWijden:	Remote Code Execution in the SAVM lfg 🚀
+01:14:24	MariusVanDerWijden:	Remote Code Execution in the EVM lfg 🚀
 01:14:30	Francesco:	Replying to "okay so if we really..."
 
 If we get there, would we put it in a fusaka-devnet-1 while still going through this process?
@@ -830,7 +830,7 @@ yes
 01:14:54	Charles C (vyper):	Reacted to "Right now it seems..." with 👍
 01:14:55	Parithosh Jayanthi:	Replying to "Remote Code Executio..."
 
-You bet we’re gonna run kurtosis inside the savm
+You bet we’re gonna run kurtosis inside the evm
 01:14:56	Tim Beiko:	Continue with EOF, RISC-V “research sprint” and then decide EOF/no-EOF based on this in “a few weeks?
 01:15:06	Mario Vega:	Reacted to "You bet we’re gonna ..." with 😂
 01:15:08	Alex (axic):	Reacted to "Remote Code Executio..." with 🚀
@@ -1030,7 +1030,7 @@ You can come to totally opposite conclusion based on the first statement too: th
 Yeah, I would not extend the CFI list, especially given the gas limit increases
 01:26:39	stokes:	Replying to "clarification questi..."
 
-We could do no EOF, the other SIPs for contract size and stack issues; and then one day have a single SAVM interpreter for -some_ zk ISA
+We could do no EOF, the other SIPs for contract size and stack issues; and then one day have a single EVM interpreter for -some_ zk ISA
 01:26:48	Francesco:	Replying to "somewhat insane ques..."
 
 Nah we can just keep it to gas limit increases
@@ -1080,7 +1080,7 @@ no it’s about arch that the prover is executing on for zkp
 
 is risc-v-like change in a few years a foregone conclusion?  zkevm’s exist currently.  It isn’t clear to me that we have to make this kind of VM rewrite, tooling rewrites, etc
 01:29:39	ethDreamer (Mark):	Reacted to "no it’s about arch t..." with 👍
-01:29:42	Łukasz Rozmej:	If we need to suport SAVM bytecode in risc-v by some kind of interpreter, what prevents us from taking existing SAVM implementation and compiling it to risc-v. If it has EOF or not then is just a minor difference?
+01:29:42	Łukasz Rozmej:	If we need to suport EVM bytecode in risc-v by some kind of interpreter, what prevents us from taking existing EVM implementation and compiling it to risc-v. If it has EOF or not then is just a minor difference?
 01:29:49	Gajinder Singh:	Replying to "the question is all ..."
 
 so lets do that and then evaluate if we need EOF
@@ -1089,10 +1089,10 @@ so lets do that and then evaluate if we need EOF
  Even risc-v bytecode can have a container structure
 01:30:18	lightclient:	Replying to "maybe RiscV is insid..."
 
-AFAIK zk-savm is basically dead for now and everyone is focusing on ZK-VM where they compile SAVM interpreter to RISC-V or the like
+AFAIK zk-evm is basically dead for now and everyone is focusing on ZK-VM where they compile EVM interpreter to RISC-V or the like
 01:30:18	Kevaundray Wedderburn:	Replying to "clarification questi..."
 
-I think I’d prefer savm over some zk ISA until its clear that a zk specific ISA with its own pipeline is needed
+I think I’d prefer evm over some zk ISA until its clear that a zk specific ISA with its own pipeline is needed
 01:30:18	Dustin:	does a gas limit thing need to be consensus/an SIP?
 01:30:27	Ahmad Bitar | Nethermind:	Replying to "maybe RiscV is insid..." 
 
@@ -1105,12 +1105,12 @@ no
 info SIP
 01:30:43	Łukasz Rozmej:	Replying to "If we need to suport..."
 
-So you will have SAVM interpreter run on RISC-V interpreter, being interpreted in zk-SAVM
+So you will have EVM interpreter run on RISC-V interpreter, being interpreted in zk-EVM
 01:31:02	Łukasz Rozmej:	Replying to "If we need to suport..."
 
 Ya Dawg I heard you like interpreters...
 01:31:03	andrei:	Reacted to "If we need to suport..." with 👍
-01:31:12	Justin Florentine (Besu):	Reacted to "AFAIK zk-savm is basi..." with 🙏
+01:31:12	Justin Florentine (Besu):	Reacted to "AFAIK zk-evm is basi..." with 🙏
 01:31:17	Gary Schulte:	Replying to "maybe RiscV is insid..."
 
 dead how?  linea and zksync etc might disagree
@@ -1138,10 +1138,10 @@ The main claim is that it is done once by the block builder, then it “won’t 
 sure, but I mean about core dev support
 01:33:09	Alex (axic):	Replying to "If we need to suport..."
 
-But I think that is somewhat unrelated to the SAVM level.
+But I think that is somewhat unrelated to the EVM level.
 01:33:21	Kevaundray Wedderburn:	Replying to "maybe RiscV is insid..."
 
-It’s undesirable/dead because theres not a stable abstraction layer between the circuit and the SAVM
+It’s undesirable/dead because theres not a stable abstraction layer between the circuit and the EVM
 01:33:26	Trent:	Replying to "does a gas limit thi..."
 
 Schelling point to articulate shared strategy
@@ -1157,7 +1157,7 @@ I only mean for making zk provers’ lives easier. They use lots of GPU compute 
 "At some point" came pretty quick
 01:34:56	Gary Schulte:	Replying to "maybe RiscV is insid..."
 
-because the savm is a moving target - this seems like a self inflicted wound.  Change the vm because we are always changing the vm
+because the evm is a moving target - this seems like a self inflicted wound.  Change the vm because we are always changing the vm
 01:35:24	Gajinder Singh:	Replying to "does a gas limit thi..."
 
 SIP requires clients to support limit and not break on it, so that way its more than a campaign and require some client effort

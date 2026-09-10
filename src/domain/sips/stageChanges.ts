@@ -9,7 +9,14 @@ export interface EipStageChange {
   title: string;
   prefix: 'SIP' | 'RIP';
   status: string;
+  /** The plain-language rewrite when one has been written, else the spec one-liner. */
   description: string;
+  /**
+   * The SIP's own one-liner from its spec preamble, never the plain-language
+   * rewrite. Empty when the SIP has none. `/feed.xml` uses this: the rewrite is
+   * hand-authored prose that gets revised, and a feed item can't be recalled.
+   */
+  specDescription: string;
   /** YYYY-MM-DD of the most recent dated status entry. */
   lastStageChange: string;
   lastStageChangeFork: string | null;
@@ -19,6 +26,7 @@ export interface EipStageChange {
 
 export interface EipStageChangesPayload {
   generatedAt: string;
+  count: number;
   sips: EipStageChange[];
 }
 
@@ -26,12 +34,15 @@ const getProposalPrefix = (sip: SIP): 'SIP' | 'RIP' =>
   sip.title.startsWith('RIP-') ? 'RIP' : 'SIP';
 
 /**
- * Pure selection logic for the recent-stage-change feed. Finds the most recent
- * dated status across all fork relationships, then reports the current stage from
- * that fork's latest status entry. Shared by the Astro API endpoint that emits the
- * static JSON artifact.
+ * Pure selection logic for the stage-change feed. Finds the most recent dated
+ * status across all fork relationships, then reports the current stage from that
+ * fork's latest status entry. Ordered newest first. Used by the Astro API
+ * endpoint that emits the static JSON artifact.
+ *
+ * `count` is optional: unbounded by default, since the endpoint publishes the
+ * whole chronology.
  */
-export function getRecentStageChanges(sips: SIP[], count = 10): EipStageChange[] {
+export function getStageChanges(sips: SIP[], count?: number): EipStageChange[] {
   const eipsWithDates: Array<{
     sip: SIP;
     lastUpdate: Date;
@@ -65,15 +76,18 @@ export function getRecentStageChanges(sips: SIP[], count = 10): EipStageChange[]
     eipsWithDates.push({ sip, lastUpdate: mostRecentDate, forkName: mostRecentFork, currentStage });
   }
 
-  return eipsWithDates
-    .sort((a, b) => b.lastUpdate.getTime() - a.lastUpdate.getTime() || a.sip.id - b.sip.id)
-    .slice(0, count)
+  const ordered = eipsWithDates.sort(
+    (a, b) => b.lastUpdate.getTime() - a.lastUpdate.getTime() || a.sip.id - b.sip.id,
+  );
+
+  return (count === undefined ? ordered : ordered.slice(0, count))
     .map(({ sip, lastUpdate, forkName, currentStage }) => ({
       id: sip.id,
       title: sip.title.replace(/^(SIP|RIP)-\d+:\s*/, ''),
       prefix: getProposalPrefix(sip),
       status: sip.status,
       description: sip.laymanDescription || sip.description,
+      specDescription: sip.description,
       lastStageChange: lastUpdate.toISOString().split('T')[0],
       lastStageChangeFork: forkName,
       currentStage,
@@ -84,7 +98,8 @@ export function getRecentStageChanges(sips: SIP[], count = 10): EipStageChange[]
 export function buildEipStageChangesPayload(
   sips: SIP[],
   generatedAt: string,
-  count = 10,
+  count?: number,
 ): EipStageChangesPayload {
-  return { generatedAt, sips: getRecentStageChanges(sips, count) };
+  const changes = getStageChanges(sips, count);
+  return { generatedAt, count: changes.length, sips: changes };
 }

@@ -10,7 +10,7 @@
   "summary_details": [
     {
       "label": "DevNet Stability and SIP Planning",
-      "summary": "The team discussed updates on DevNet 1, where Nethermind reported stability after resolving syncing issues and successfully running SAVM fuzzer and Uniswap transactions without errors. The group then considered adding four SIPs to DevNet 2, including slot SIPs and transfer lock SIPs, but debated whether to proceed given the current state of the network."
+      "summary": "The team discussed updates on DevNet 1, where Nethermind reported stability after resolving syncing issues and successfully running EVM fuzzer and Uniswap transactions without errors. The group then considered adding four SIPs to DevNet 2, including slot SIPs and transfer lock SIPs, but debated whether to proceed given the current state of the network."
     },
     {
       "label": "Batch Reading Implementation Progress",

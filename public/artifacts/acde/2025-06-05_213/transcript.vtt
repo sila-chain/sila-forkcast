@@ -1246,11 +1246,11 @@ Wei Tang: Okay, yeah, I will. Okay, I'll continue then. Then the second version,
 
 312
 00:49:27.750 --> 00:49:38.260
-Wei Tang: And in this case we do need to do a change to the savm format which add a type.
+Wei Tang: And in this case we do need to do a change to the evm format which add a type.
 
 313
 00:49:38.400 --> 00:50:05.930
-Wei Tang: a type parameter into the code section. So the interpreter can can know, whether is running a code section of the the legacy savm or savm 64 and I think this this is the option I would prefer is it will be open up. A lot of organization
+Wei Tang: a type parameter into the code section. So the interpreter can can know, whether is running a code section of the the legacy evm or evm 64 and I think this this is the option I would prefer is it will be open up. A lot of organization
 
 314
 00:50:06.160 --> 00:50:18.150

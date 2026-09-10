@@ -121,7 +121,7 @@ We updated the notes page also with this!
 
 This proposal is also very reachable per say and much easier to implement that the previous 7745 design
 00:49:31	Marius Van Der Wijden (M):	What is 7645?
-00:49:34	marc | wolovim:	7645: https://sips.sila.org/SIPS/sip-7645
+00:49:34	marc | wolovim:	7645: https://sips.sila.org/EIPS/sip-7645
 00:50:05	Marius Van Der Wijden (M):	Reacted to 7645: https://sips.e... with "👍"
 00:50:20	Potuz:	Replying to "Big fan of the idea!..."
 
@@ -163,7 +163,7 @@ No emoji though
 
 Maybe the position info would require an extra field (tx index, frame index, log index?) But I don't see it as a potential problem.
 00:54:05	Jared Wasinger:	Reacted to "geth is in favor of ..." with ➕
-00:54:05	Pooja Ranjan:	https://sips.sila.org/SIPS/sip-8066
+00:54:05	Pooja Ranjan:	https://sips.sila.org/EIPS/sip-8066
 00:54:10	Marius Van Der Wijden (M):	Replying to "geth is in favor of ..." 
 
  Not all of geth

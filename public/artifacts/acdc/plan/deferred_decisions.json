@@ -1,100 +1,73 @@
 {
   "series": "ACDC",
-  "generated": "2026-07-06",
+  "generated": "2026-09-07",
   "lookback_calls": [
-    "ACDC #177",
-    "ACDC #178",
-    "ACDC #179",
-    "ACDC #180",
-    "ACDC #181"
+    "ACDC #182 - July 9, 2026",
+    "ACDC #183 - July 23, 2026",
+    "ACDC #184 - August 6, 2026",
+    "ACDC #185 - August 20, 2026",
+    "ACDC #186 - September 3, 2026"
   ],
   "deferred": [
     {
-      "topic": "Blinding execution requests on gossip to reduce duplication",
-      "deferred_in": "ACDC #177",
-      "deferred_date": "2026-04-16",
-      "expected_revisit": null,
+      "topic": "SIP-8321 Hash-Chain RANDAO PFI decision",
+      "deferred_in": "ACDC #183",
+      "deferred_date": "2026-07-23",
+      "expected_revisit": "async discussion in Post Quantum Discord channel",
       "revisited": false,
       "revisited_in": null,
       "outcome": null
     },
     {
-      "topic": "Partial slashing SIP 8045 scope expansion",
-      "deferred_in": "ACDC #177",
-      "deferred_date": "2026-04-16",
-      "expected_revisit": "Interop discussion",
-      "revisited": false,
-      "revisited_in": null,
-      "outcome": null
-    },
-    {
-      "topic": "SIL/72 inclusion in Glamsterdam",
-      "deferred_in": "ACDC #178",
-      "deferred_date": "2026-05-14",
-      "expected_revisit": "blob devnets pending spec freeze",
-      "revisited": false,
-      "revisited_in": null,
-      "outcome": null
-    },
-    {
-      "topic": "SSZ Engine API approach decision (Barnabas vs. Marius proposals)",
-      "deferred_in": "ACDC #178",
-      "deferred_date": "2026-05-14",
-      "expected_revisit": "ACDE/ACDT",
-      "revisited": true,
-      "revisited_in": "ACDC #179",
-      "outcome": "Adopted Marius's approach (PR #793) over Barnabas's (#764)"
-    },
-    {
-      "topic": "Two SIPs for Hegota: return deposits for distinct credentials and custom suite thresholds",
-      "deferred_in": "ACDC #178",
-      "deferred_date": "2026-05-14",
+      "topic": "SIP-8333 (Align Checkpoint with Epoch Boundary Block) and Engine API sync status SIP",
+      "deferred_in": "ACDC #184",
+      "deferred_date": "2026-08-06",
       "expected_revisit": "next ACDC",
       "revisited": true,
-      "revisited_in": "ACDC #179",
-      "outcome": "SIP-8148 (custom sweep threshold) was presented and proposed for Hegota"
+      "revisited_in": "ACDC #185",
+      "outcome": "Both SIPs PFI'd for Hegota (SIP-8333 and SIP-8379)"
     },
     {
-      "topic": "SIP-8080 (exits use consolidation queue) DFI decision",
-      "deferred_in": "ACDC #179",
-      "deferred_date": "2026-05-28",
-      "expected_revisit": "two weeks (next ACDC)",
+      "topic": "SilaSepolia Glamsterdam fork date confirmation",
+      "deferred_in": "ACDC #185",
+      "deferred_date": "2026-08-20",
+      "expected_revisit": "next ACDC",
       "revisited": true,
-      "revisited_in": "ACDC #181",
-      "outcome": "DFI'd from Glamsterdam; authors may re-propose for Hegota"
+      "revisited_in": "ACDC #186",
+      "outcome": "SilaSepolia Glamsterdam fork date set to October 6, 2026"
     },
     {
-      "topic": "SIP-8061 (increase exit/consolidation churn) SFI decision",
-      "deferred_in": "ACDC #179",
-      "deferred_date": "2026-05-28",
-      "expected_revisit": "two weeks (next ACDC)",
+      "topic": "Hoodi Glamsterdam fork date",
+      "deferred_in": "ACDC #185",
+      "deferred_date": "2026-08-20",
+      "expected_revisit": "contingent on stable DevNets",
+      "revisited": true,
+      "revisited_in": "ACDC #186",
+      "outcome": "Hoodi date deferred to a later decision (further postponed)"
+    },
+    {
+      "topic": "Optimism and Lido testing on stable devnet",
+      "deferred_in": "ACDC #185",
+      "deferred_date": "2026-08-20",
+      "expected_revisit": "after stable DevNet achieved",
+      "revisited": true,
+      "revisited_in": "ACDC #186",
+      "outcome": "Testing deferred until stable fork transition achieved on DevNet 10"
+    },
+    {
+      "topic": "SIP-8148 and SIP-8205 CFI/DFI discussion",
+      "deferred_in": "ACDC #186",
+      "deferred_date": "2026-09-03",
+      "expected_revisit": "~2 weeks",
       "revisited": false,
       "revisited_in": null,
       "outcome": null
     },
     {
-      "topic": "submitBeaconBlock builder API (builder-specs #162)",
-      "deferred_in": "ACDC #180",
-      "deferred_date": "2026-06-11",
-      "expected_revisit": "pending more client implementation experience",
-      "revisited": false,
-      "revisited_in": null,
-      "outcome": null
-    },
-    {
-      "topic": "SIP-8282 (separate builder deposit contract) decision",
-      "deferred_in": "ACDC #180",
-      "deferred_date": "2026-06-11",
-      "expected_revisit": "ACDT Monday",
-      "revisited": true,
-      "revisited_in": "ACDC #181",
-      "outcome": "Updated contract (fee-per-enqueue) targets devnet-7; external audit post-devnet-7"
-    },
-    {
-      "topic": "SIP-7688 (progressive containers) DFI decision",
-      "deferred_in": "ACDC #181",
-      "deferred_date": "2026-06-25",
-      "expected_revisit": "revisit if devnet-6 instability warrants it",
+      "topic": "SIP-8363 Tapered Issuance Burn CFI decision",
+      "deferred_in": "ACDC #184",
+      "deferred_date": "2026-08-06",
+      "expected_revisit": "SIL R&D issuance channel and SIL Magicians thread discussion",
       "revisited": false,
       "revisited_in": null,
       "outcome": null

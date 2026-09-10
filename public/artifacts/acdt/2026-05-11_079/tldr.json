@@ -60,7 +60,7 @@
       },
       {
         "timestamp": "00:27:26",
-        "highlight": "Alternative: SAVM signature verification in new contract (caps by gas limit)"
+        "highlight": "Alternative: EVM signature verification in new contract (caps by gas limit)"
       }
     ],
     "ssz_limits": [

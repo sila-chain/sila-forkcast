@@ -1,8 +1,8 @@
 {
   "id": 6888,
-  "title": "SIP-6888: Arithmetic verification at SAVM level",
+  "title": "SIP-6888: Arithmetic verification at EVM level",
   "status": "Stagnant",
-  "description": "Check for math overflows and division by zero at SAVM level",
+  "description": "Check for math overflows and division by zero at EVM level",
   "author": "Renan Rodrigues de Souza (@RenanSouza2)",
   "type": "Standards Track",
   "category": "Core",

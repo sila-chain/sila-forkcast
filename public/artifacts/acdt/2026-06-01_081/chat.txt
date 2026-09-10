@@ -4,7 +4,7 @@
 00:04:49	Justin Traglia:	Gm
 00:07:09	danceratopz:	📋 GM! ACDT #81 agenda
 https://github.com/sila-chain/pm/issues/2085
-00:07:20	danceratopz:	🟢 bal-devnet-7 - stable, 100% SAVM fuzzing
+00:07:20	danceratopz:	🟢 bal-devnet-7 - stable, 100% EVM fuzzing
 hive <https://hive.ethpandaops.io/#/group/bal>
 dora <https://dora.bal-devnet-7.ethpandaops.io/>
 🧪 final test release tests-bal@v7.3.0 once 8037 lands in forks/amsterdam
@@ -47,7 +47,7 @@ Oh yeah, that would be good to include too
 00:18:42	Eitan Seri-Levi:	It’s not a huge lift for us but would delay our devnet readiness by a bit
 00:18:59	marc | wolovim:	Potuz in #interop channel: "I don't think I will be able to make it to ACDT so I'll leave my vote here to include 8045 in devnet 5”
 00:18:59	Nico Flaig:	potuz said yes
-00:19:07	danceratopz:	https://sips.sila.org/SIPS/sip-8045
+00:19:07	danceratopz:	https://sips.sila.org/EIPS/sip-8045
 00:19:09	Justin Traglia:	Reacted to "Potuz in #interop ch..." with 🙏
 00:19:32	James He:	Potuz voted yes to include 8045
 00:20:19	Justin Traglia:	Fwiw I also like 8045 & support including it.
@@ -89,8 +89,8 @@ Launch two devnets simultaneously and merge into later devnet:
 i. glamsterdam-devnet-5 for CL stability.
 ii. bal-devnet-8 for close-to-final EL spec.
 iii. -> merge into glamsterdam-devnet-6.
-00:49:30	Stefan Starflinger:	7997 is marked https://sips.sila.org/SIPS/sip-7773  as CFI
-00:49:32	danceratopz:	https://github.com/sila-chain/SIPs/blob/master/SIPS/sip-7997.md
+00:49:30	Stefan Starflinger:	7997 is marked https://sips.sila.org/EIPS/sip-7773  as CFI
+00:49:32	danceratopz:	https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7997.md
 00:49:57	Dragan Rakita:	Ship it I guess
 00:50:01	Stefan Starflinger:	Reacted to "Ship it I guess" with 👍
 00:50:47	Stefan Starflinger:	Replying to "Ship it I guess"

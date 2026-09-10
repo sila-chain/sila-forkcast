@@ -355,7 +355,7 @@ After lodestar!
 
 We have FOCILR in SIP-8046 which extends on FOCIL. FOCILR offers strong censorship resistance. But that extension means we still benefit from shipping FOCIL first.
 
-https://sips.sila.org/SIPS/sip-8046
+https://sips.sila.org/EIPS/sip-8046
 00:50:50	Toni Wahrstätter:	Replying to "Personally, seeing h..." 
 
  Complexity piles up though. No matter how enthusiastic we are
