@@ -24,6 +24,11 @@ jobs:
           ref: 0c357e072114d2fc791bef9347399790d49d0044
           path: _upstream
           fetch-depth: 1
+      - name: Set up Node 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
       - name: Mirror exact authority, convert identity, and verify
         shell: bash
         run: |
