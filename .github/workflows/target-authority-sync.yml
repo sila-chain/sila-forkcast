@@ -1,0 +1,53 @@
+name: Target Authority Sync
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.event.pull_request.title == 'Finalize latest Forkcast authority b53e0b294 via isolated target'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout control branch
+        uses: actions/checkout@v6
+        with:
+          ref: sila/forkcast-latest-pure-20260910
+          path: control
+          fetch-depth: 1
+      - name: Checkout clean target branch
+        uses: actions/checkout@v6
+        with:
+          ref: sila/forkcast-latest-pure-target-20260910
+          path: target
+          fetch-depth: 1
+      - name: Checkout exact latest upstream authority
+        uses: actions/checkout@v6
+        with:
+          repository: ethereum/forkcast
+          ref: b53e0b2943865e0c1da0892e99c14cd6e6df674c
+          path: expected
+          fetch-depth: 1
+      - name: Transform exact authority into target
+        run: python3 control/scripts/_tmp_sila_authority_transform.py
+      - name: Set up Node 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install exact dependencies
+        working-directory: target
+        run: npm ci
+      - name: Verify full build
+        working-directory: target
+        run: npm run build
+      - name: Commit and push verified target
+        working-directory: target
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'sync: latest Forkcast authority b53e0b294' || true
+          git push origin HEAD:sila/forkcast-latest-pure-target-20260910
