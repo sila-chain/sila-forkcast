@@ -1,0 +1,16 @@
+{
+  "id": 4747,
+  "title": "SIP-4747: Simplify SIP-161",
+  "status": "Stagnant",
+  "description": "Simplify SIP-161 and retroactively deprecate unused aspects of it",
+  "author": "Peter Davies (@petertdavies)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2022-02-02",
+  "discussionLink": "https://sila-magicians.org/t/sip-4747-simplify-sip-161/8246",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    161
+  ]
+}

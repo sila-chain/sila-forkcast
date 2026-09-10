@@ -1,0 +1,16 @@
+{
+  "id": 3198,
+  "title": "SIP-3198: BASEFEE opcode",
+  "status": "Final",
+  "description": "",
+  "author": "Abdelhamid Bakhta (@abdelhamidbakhta), Vitalik Buterin (@vbuterin)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-01-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-3198-basefeeopcode/5162",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1559
+  ]
+}

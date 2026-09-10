@@ -1,0 +1,726 @@
+import React, { useState, useMemo, useEffect } from 'react';
+import { Link } from '../navigation';
+import { eipsData } from '../../data/sips';
+import { useComplexityData, getComplexityForEip } from '../../domain/complexity/useComplexityData';
+import { getComplexityTierColor, getComplexityTierEmoji } from '../../domain/complexity/complexity';
+import type { EipComplexity } from '../../domain/complexity/types';
+import { usePrioritizationData } from '../../hooks/usePrioritizationData';
+import { getScoreColor } from '../../utils/prioritization';
+import {
+  getInclusionStage,
+  getInclusionStageSortRank,
+  getLaymanTitle,
+  getProposalPrefix,
+  getStageAbbreviation,
+} from '../../utils';
+import { getInclusionStageColor } from '../../utils/colors';
+import { InclusionStage } from '../../types';
+import { EipAggregateStance } from '../../types/prioritization';
+import {
+  compareExecutionSpecTestCounts,
+  getExecutionSpecTestCaseCount,
+  getExecutionSpecTestCountForEip,
+  getExecutionSpecTestDirectoryUrl,
+  type ExecutionSpecTestCount,
+} from '../../domain/execution-specs/execution-specs';
+import { getAllDevnetSpecIds, getDevnetSpec } from '../../data/devnet-specs';
+
+type SortField = 'sip' | 'complexity' | 'support' | 'stage' | 'devnets' | 'tests';
+type SortDirection = 'asc' | 'desc';
+
+const GAS_REPRICING_EIPS = new Set([2780, 7778, 7904, 7976, 7981, 8037, 8038]);
+
+const GLAMSTERDAM_SERIES = new Set(['bal', 'epbs', 'glamsterdam']);
+
+interface DevnetInfo {
+  id: string;
+  headliner: string;
+  version: number;
+}
+
+/** Parse "bal-devnet-3" → { series: "bal", version: 3 } */
+function parseDevnetId(id: string): { series: string; version: number } | null {
+  const match = id.match(/^(.+)-devnet-(\d+)$/);
+  if (!match) return null;
+  return { series: match[1], version: parseInt(match[2], 10) };
+}
+
+interface CombinedEipData {
+  eipId: number;
+  title: string;
+  stage: string;
+  complexity: EipComplexity | null;
+  priority: EipAggregateStance | null;
+  layer: 'EL' | 'CL' | null;
+  devnets: DevnetInfo[];
+  testCount: ExecutionSpecTestCount | null;
+}
+
+/**
+ * For each SIP, find the most recent devnet per series that includes it.
+ * Sources data from scraped spec files so new devnets appear automatically.
+ */
+function buildDevnetMap(): Map<number, DevnetInfo[]> {
+  // Find the latest spec per glamsterdam-affiliated series
+  const latestBySeriesMap = new Map<string, { id: string; series: string; version: number }>();
+  for (const specId of getAllDevnetSpecIds()) {
+    const parsed = parseDevnetId(specId);
+    if (!parsed || !GLAMSTERDAM_SERIES.has(parsed.series)) continue;
+    const existing = latestBySeriesMap.get(parsed.series);
+    if (!existing || parsed.version > existing.version) {
+      latestBySeriesMap.set(parsed.series, { id: specId, ...parsed });
+    }
+  }
+
+  // Build SIP → DevnetInfo[] from the latest spec per series
+  const raw = new Map<number, Map<string, DevnetInfo>>();
+  for (const entry of latestBySeriesMap.values()) {
+    const spec = getDevnetSpec(entry.id);
+    if (!spec) continue;
+    const headliner = entry.series.toUpperCase();
+    const info: DevnetInfo = { id: entry.id, headliner, version: entry.version };
+
+    for (const sip of spec.sips) {
+      if (!raw.has(sip.number)) raw.set(sip.number, new Map());
+      raw.get(sip.number)!.set(headliner, info);
+    }
+  }
+
+  const map = new Map<number, DevnetInfo[]>();
+  for (const [eipId, byHeadliner] of raw) {
+    map.set(eipId, Array.from(byHeadliner.values()));
+  }
+  return map;
+}
+
+function getDevnetColor(headliner: string): string {
+  switch (headliner.toUpperCase()) {
+    case 'BAL':
+      return 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300';
+    case 'EPBS':
+      return 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300';
+    case 'GLAMSTERDAM':
+      return 'bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/30 dark:text-fuchsia-300';
+    default:
+      return 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300';
+  }
+}
+
+const GlamsterdamPrioritizationSection: React.FC = () => {
+  const [sortField, setSortField] = useState<SortField>('support');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
+  const [hideExcluded, setHideExcluded] = useState(true);
+  const [hideInDevnet, setHideInDevnet] = useState(false);
+  const [stageFilter, setStageFilter] = useState<string>('all');
+  const [layerFilter, setLayerFilter] = useState<'all' | 'EL' | 'CL'>('all');
+  const [filtersModalOpen, setFiltersModalOpen] = useState(false);
+  const { complexityMap, loading: complexityLoading, refetch } = useComplexityData();
+
+  useEffect(() => {
+    if (filtersModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [filtersModalOpen]);
+
+  const activeFilterCount = [
+    stageFilter !== 'all',
+    layerFilter !== 'all',
+  ].filter(Boolean).length;
+
+  const clearFilters = () => {
+    setStageFilter('all');
+    setLayerFilter('all');
+  };
+
+  const { aggregates: priorityAggregates } = usePrioritizationData('glamsterdam');
+
+  const devnetMap = useMemo(() => buildDevnetMap(), []);
+
+  const stageOptions = [
+    'Included',
+    'Scheduled for Inclusion',
+    'Considered for Inclusion',
+    'Proposed for Inclusion',
+    'Declined for Inclusion',
+    'Withdrawn',
+  ];
+
+  const combinedData = useMemo(() => {
+    const glamsterdamEips = eipsData.filter((sip) =>
+      sip.forkRelationships.some(
+        (rel) => rel.forkName.toLowerCase() === 'glamsterdam'
+      )
+    );
+
+    return glamsterdamEips.map((sip): CombinedEipData => {
+      const complexity = getComplexityForEip(complexityMap, sip.id);
+      const priority = priorityAggregates.find((p) => p.eipId === sip.id) || null;
+      const stage = getInclusionStage(sip, 'glamsterdam');
+      const devnets = devnetMap.get(sip.id) || [];
+      const layer = sip.layer || null;
+      const testCount = getExecutionSpecTestCountForEip(sip.id);
+      return { eipId: sip.id, title: getLaymanTitle(sip), stage, complexity, priority, layer, devnets, testCount };
+    });
+  }, [complexityMap, priorityAggregates, devnetMap]);
+
+  const filteredData = useMemo(() => {
+    let result = combinedData;
+    if (hideExcluded) {
+      result = result.filter((e) => e.stage !== 'Declined for Inclusion' && e.stage !== 'Withdrawn' && e.stage !== 'Unknown');
+    }
+    if (hideInDevnet) {
+      result = result.filter((e) => e.devnets.length === 0);
+    }
+    if (stageFilter !== 'all') {
+      result = result.filter((e) => e.stage === stageFilter);
+    }
+    if (layerFilter !== 'all') {
+      result = result.filter((e) => e.layer === layerFilter);
+    }
+    return result;
+  }, [combinedData, hideExcluded, hideInDevnet, stageFilter, layerFilter]);
+
+  const sortedData = useMemo(() => {
+    return [...filteredData].sort((a, b) => {
+      let comparison = 0;
+      switch (sortField) {
+        case 'sip':
+          comparison = a.eipId - b.eipId;
+          break;
+        case 'complexity':
+          if (!a.complexity && !b.complexity) return 0;
+          if (!a.complexity) return 1;
+          if (!b.complexity) return -1;
+          comparison = a.complexity.totalScore - b.complexity.totalScore;
+          break;
+        case 'support': {
+          const aScore = a.priority?.averageScore ?? -1;
+          const bScore = b.priority?.averageScore ?? -1;
+          if (aScore === -1 && bScore === -1) return 0;
+          if (aScore === -1) return 1;
+          if (bScore === -1) return -1;
+          comparison = aScore - bScore;
+          break;
+        }
+        case 'stage': {
+          comparison = getInclusionStageSortRank(a.stage) - getInclusionStageSortRank(b.stage);
+          break;
+        }
+        case 'devnets': {
+          const aMax = a.devnets.length > 0 ? Math.max(...a.devnets.map((d) => d.version)) : -1;
+          const bMax = b.devnets.length > 0 ? Math.max(...b.devnets.map((d) => d.version)) : -1;
+          comparison = aMax - bMax;
+          if (comparison === 0) comparison = a.devnets.length - b.devnets.length;
+          break;
+        }
+        case 'tests': {
+          return compareExecutionSpecTestCounts(a.testCount, b.testCount, sortDirection);
+        }
+      }
+      return sortDirection === 'asc' ? comparison : -comparison;
+    });
+  }, [filteredData, sortField, sortDirection]);
+
+  const handleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortDirection((d) => (d === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortField(field);
+      setSortDirection(field === 'sip' ? 'asc' : 'desc');
+    }
+  };
+
+  const SortIcon = ({ field }: { field: SortField }) => {
+    if (sortField !== field) {
+      return (
+        <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+        </svg>
+      );
+    }
+    return sortDirection === 'asc' ? (
+      <svg className="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+      </svg>
+    ) : (
+      <svg className="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    );
+  };
+
+  return (
+    <>
+      {/* Filters Modal */}
+      {filtersModalOpen && (
+        <div className="fixed inset-0 z-50 animate-fadeIn">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setFiltersModalOpen(false)}
+          />
+          <div className="md:absolute md:inset-0 md:flex md:items-center md:justify-center absolute bottom-0 left-0 right-0">
+            <div className="bg-white dark:bg-slate-800 md:rounded-2xl rounded-t-2xl md:max-w-2xl md:w-full max-h-[85vh] md:max-h-[90vh] overflow-hidden flex flex-col animate-fade-scale md:shadow-2xl">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-700">
+                <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Filters</h2>
+                <div className="flex items-center gap-3">
+                  {activeFilterCount > 0 && (
+                    <button
+                      onClick={clearFilters}
+                      className="text-sm text-purple-600 dark:text-purple-400 font-medium"
+                    >
+                      Clear all
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setFiltersModalOpen(false)}
+                    className="p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                  >
+                    <svg className="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-4 md:p-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Inclusion Stage</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {[{ value: 'all', label: 'All Stages' }, ...stageOptions.map(s => ({ value: s, label: getStageAbbreviation(s) }))].map(({ value, label }) => {
+                        const isSelected = stageFilter === value;
+                        return (
+                          <button
+                            key={value}
+                            onClick={() => setStageFilter(value)}
+                            className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                              isSelected
+                                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 ring-2 ring-purple-500 ring-offset-1 dark:ring-offset-slate-800'
+                                : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Layer</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {(['all', 'EL', 'CL'] as const).map((layer) => {
+                        const isSelected = layerFilter === layer;
+                        const label = layer === 'all' ? 'All Layers' : layer === 'EL' ? 'Execution Layer' : 'Consensus Layer';
+                        return (
+                          <button
+                            key={layer}
+                            onClick={() => setLayerFilter(layer)}
+                            className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                              isSelected
+                                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 ring-2 ring-purple-500 ring-offset-1 dark:ring-offset-slate-800'
+                                : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-4 py-3 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+                <button
+                  onClick={() => setFiltersModalOpen(false)}
+                  className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  Show {sortedData.length} {sortedData.length === 1 ? 'result' : 'results'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="mb-4">
+        <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+          Aggregated data points as a devnet inclusion decision-making aid, not a recommendation.
+        </p>
+
+        {/* Toolbar */}
+        <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+            <button
+              onClick={() => setFiltersModalOpen(true)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                activeFilterCount > 0
+                  ? 'bg-purple-50 dark:bg-purple-900/20 border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300'
+                  : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              </svg>
+              <span className="hidden sm:inline">Filters</span>
+              {activeFilterCount > 0 && (
+                <span className="px-1.5 py-0.5 text-xs bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 rounded-full">
+                  {activeFilterCount}
+                </span>
+              )}
+            </button>
+
+            <label className="flex items-center gap-2 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={hideExcluded}
+                onChange={(e) => setHideExcluded(e.target.checked)}
+                className="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-purple-600 focus:ring-purple-500"
+              />
+              <span className="text-sm text-slate-600 dark:text-slate-300">Active only</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={hideInDevnet}
+                onChange={(e) => setHideInDevnet(e.target.checked)}
+                className="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-purple-600 focus:ring-purple-500"
+              />
+              <span className="text-sm text-slate-600 dark:text-slate-300">Hide in devnet</span>
+            </label>
+
+            <button
+              onClick={refetch}
+              disabled={complexityLoading}
+              className="p-1.5 text-slate-400 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 transition-colors disabled:opacity-50 ml-auto"
+              title="Refresh complexity data"
+            >
+              <svg className={`w-4 h-4 ${complexityLoading ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Card List */}
+      <div className="md:hidden space-y-2">
+        {sortedData.length === 0 ? (
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-6 text-center text-slate-500 dark:text-slate-400">
+            No SIPs found
+          </div>
+        ) : (
+          sortedData.map((item) => {
+            const sip = eipsData.find((e) => e.id === item.eipId);
+            return (
+              <div
+                key={item.eipId}
+                className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4"
+              >
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <div>
+                    <Link
+                      to={`/sips/${item.eipId}`}
+                      className="font-mono text-sm text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300"
+                    >
+                      {sip ? getProposalPrefix(sip) : 'SIP'}-{item.eipId}
+                    </Link>
+                    {item.layer && (
+                      <span className={`ml-2 text-[10px] px-1.5 py-0.5 rounded ${
+                        item.layer === 'EL'
+                          ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/20 dark:text-indigo-300'
+                          : 'bg-teal-100 text-teal-700 dark:bg-teal-900/20 dark:text-teal-300'
+                      }`}>
+                        {item.layer}
+                      </span>
+                    )}
+                    {GAS_REPRICING_EIPS.has(item.eipId) && (
+                      <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                        repricing
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <p className="text-sm text-slate-900 dark:text-slate-100 mb-3">
+                  {item.title}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  <span className={`inline-block px-2 py-0.5 text-[10px] rounded ${getInclusionStageColor(item.stage as InclusionStage)}`} title={item.stage}>
+                    {getStageAbbreviation(item.stage)}
+                  </span>
+                  {item.devnets.map((devnet) => (
+                    <Link
+                      key={devnet.id}
+                      to={`/networks/${devnet.id}`}
+                      className={`inline-block px-1.5 py-0.5 text-[10px] font-medium rounded hover:opacity-80 transition-opacity ${getDevnetColor(devnet.headliner)}`}
+                    >
+                      {devnet.id}
+                    </Link>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+                  {item.testCount && (
+                    <div className="flex items-center gap-1">
+                      <span className="text-slate-400 dark:text-slate-400">Tests:</span>
+                      <a
+                        href={getExecutionSpecTestDirectoryUrl(item.testCount)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300"
+                      >
+                        {getExecutionSpecTestCaseCount(item.testCount)}
+                      </a>
+                    </div>
+                  )}
+                  {item.complexity && (
+                    <div className="flex items-center gap-1">
+                      <span className="text-slate-400 dark:text-slate-400">Complexity:</span>
+                      <span className={`px-1.5 py-0.5 rounded ${getComplexityTierColor(item.complexity.tier)}`}>
+                        {getComplexityTierEmoji(item.complexity.tier)} {item.complexity.totalScore}
+                      </span>
+                    </div>
+                  )}
+                  {item.priority?.averageScore !== null && item.priority?.averageScore !== undefined && (
+                    <div className="flex items-center gap-1">
+                      <span className="text-slate-400 dark:text-slate-400">Support:</span>
+                      <span className={`px-1.5 py-0.5 rounded ${getScoreColor(Math.round(item.priority.averageScore))}`}>
+                        {item.priority.averageScore.toFixed(1)}
+                      </span>
+                      <span className="text-slate-400 dark:text-slate-400">
+                        ({item.priority.stanceCount})
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-slate-50 dark:bg-slate-700/50">
+              <tr>
+                <th
+                  className="px-4 py-3 text-left text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/50"
+                  onClick={() => handleSort('sip')}
+                >
+                  <div className="flex items-center gap-2">
+                    SIP
+                    <SortIcon field="sip" />
+                  </div>
+                </th>
+                <th className="px-4 py-3 text-left text-sm font-medium text-slate-700 dark:text-slate-300">
+                  Title
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/50"
+                  onClick={() => handleSort('stage')}
+                >
+                  <div className="flex items-center gap-2">
+                    Stage
+                    <SortIcon field="stage" />
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/50"
+                  onClick={() => handleSort('devnets')}
+                >
+                  <div className="flex items-center gap-2">
+                    Devnets
+                    <SortIcon field="devnets" />
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-center text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/50"
+                  onClick={() => handleSort('tests')}
+                  title="Test count from execution-specs"
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    Tests
+                    <SortIcon field="tests" />
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-center text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/50"
+                  onClick={() => handleSort('complexity')}
+                  title="Testing complexity score from STEEL"
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    Test Complexity
+                    <SortIcon field="complexity" />
+                  </div>
+                </th>
+                <th
+                  className="px-4 py-3 text-center text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/50"
+                  onClick={() => handleSort('support')}
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    Avg Support
+                    <SortIcon field="support" />
+                  </div>
+                </th>
+                <th className="px-4 py-3 text-center text-sm font-medium text-slate-700 dark:text-slate-300">
+                  Stances
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+              {sortedData.length === 0 ? (
+                <tr>
+                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500 dark:text-slate-400">
+                    No SIPs found
+                  </td>
+                </tr>
+              ) : (
+                sortedData.map((item) => {
+                  const sip = eipsData.find((e) => e.id === item.eipId);
+                  return (
+                    <tr
+                      key={item.eipId}
+                      className="hover:bg-slate-50 dark:hover:bg-slate-700/30"
+                    >
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-2">
+                          <Link
+                            to={`/sips/${item.eipId}`}
+                            className="font-mono text-sm text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300"
+                          >
+                            {sip ? getProposalPrefix(sip) : 'SIP'}-{item.eipId}
+                          </Link>
+                          {item.layer && (
+                            <span className={`px-1.5 py-0.5 text-[10px] rounded ${
+                              item.layer === 'EL'
+                                ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300'
+                                : 'bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300'
+                            }`}>
+                              {item.layer}
+                            </span>
+                          )}
+                          {GAS_REPRICING_EIPS.has(item.eipId) && (
+                            <span className="px-1.5 py-0.5 text-[10px] rounded bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                              repricing
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className="text-sm text-slate-900 dark:text-slate-100">
+                          {item.title}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-block px-2 py-0.5 text-xs rounded ${getInclusionStageColor(item.stage as InclusionStage)}`} title={item.stage}>
+                          {getStageAbbreviation(item.stage)}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        {item.devnets.length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {item.devnets
+                              .sort((a, b) => a.version - b.version)
+                              .map((devnet) => (
+                                <Link
+                                  key={devnet.id}
+                                  to={`/networks/${devnet.id}`}
+                                  className={`inline-block px-1.5 py-0.5 text-[10px] font-medium rounded hover:opacity-80 transition-opacity ${getDevnetColor(devnet.headliner)}`}
+                                  title={devnet.id}
+                                >
+                                  {devnet.id}
+                                </Link>
+                              ))}
+                          </div>
+                        ) : (
+                          <span className="text-xs text-slate-400 dark:text-slate-400">&mdash;</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        {item.testCount ? (
+                          <a
+                            href={getExecutionSpecTestDirectoryUrl(item.testCount)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block px-2 py-0.5 text-xs font-medium rounded bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/40 transition-colors"
+                            title={`${getExecutionSpecTestCaseCount(item.testCount)} test cases (${item.testCount.testFunctions} functions in ${item.testCount.testFiles} files)`}
+                          >
+                            {getExecutionSpecTestCaseCount(item.testCount)}
+                          </a>
+                        ) : (
+                          <span className="text-xs text-slate-400 dark:text-slate-400">&mdash;</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        {item.complexity ? (
+                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded ${getComplexityTierColor(item.complexity.tier)}`}>
+                            {getComplexityTierEmoji(item.complexity.tier)} {item.complexity.totalScore}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-slate-400 dark:text-slate-400">&mdash;</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        {item.priority?.averageScore !== null && item.priority?.averageScore !== undefined ? (
+                          <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded ${getScoreColor(Math.round(item.priority.averageScore))}`}>
+                            {item.priority.averageScore.toFixed(1)}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-slate-400 dark:text-slate-400">&mdash;</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        {item.priority?.stanceCount ? (
+                          <span className="text-xs text-slate-600 dark:text-slate-400">
+                            {item.priority.stanceCount}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-slate-400 dark:text-slate-400">0</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-8 text-center text-xs text-slate-400 dark:text-slate-400">
+        <p>
+          Test data from{' '}
+          <a href="https://github.com/sila-chain/execution-specs" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-600 dark:hover:text-slate-300">
+            execution-specs
+          </a>
+          {' \u2022 '}
+          Complexity data from{' '}
+          <a href="https://github.com/ethsteel/pm" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-600 dark:hover:text-slate-300">
+            STEEL
+          </a>
+          {' \u2022 '}
+          Prioritization data from client team publications
+          {' \u2022 '}
+          <Link to="/upgrade/glamsterdam/test-complexity" className="underline hover:text-slate-600 dark:hover:text-slate-300">
+            Full complexity view
+          </Link>
+          {' \u2022 '}
+          <Link to="/upgrade/glamsterdam/client-priority" className="underline hover:text-slate-600 dark:hover:text-slate-300">
+            Full priority view
+          </Link>
+        </p>
+      </div>
+    </>
+  );
+};
+
+export default GlamsterdamPrioritizationSection;

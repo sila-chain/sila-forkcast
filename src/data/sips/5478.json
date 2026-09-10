@@ -1,0 +1,17 @@
+{
+  "id": 5478,
+  "title": "SIP-5478: CREATE2COPY Opcode",
+  "status": "Stagnant",
+  "description": "Reducing the gas cost of contract creation with existing code",
+  "author": "Qi Zhou (@qizhou)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2022-08-17",
+  "discussionLink": "https://sila-magicians.org/t/sip-5478-reducing-the-gas-cost-of-contract-creation-with-existing-code/10419",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1014,
+    2929
+  ]
+}

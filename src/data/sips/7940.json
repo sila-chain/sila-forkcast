@@ -1,0 +1,12 @@
+{
+  "id": 7940,
+  "title": "SIP-7940: Sila Shah",
+  "status": "Draft",
+  "description": "Proposal to elect an Sila Shah who will act as a \"protector\" for the core devs and the Sila protocol.",
+  "author": "Ameen Soleimani (@ameensol), Gregory Markou",
+  "type": "Informational",
+  "createdDate": "2025-04-28",
+  "discussionLink": "https://sila-magicians.org/t/discussion-for-sip-sila-shah/23909",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,63 @@
+{
+  "series": "ACDT",
+  "generated": "2026-09-03",
+  "for_call": "ACDT #95",
+  "suggestions": [
+    {
+      "topic": "SIP-8037 cross-frame state gas bug resolution and devnet impact",
+      "priority": "high",
+      "rationale": "ACDC decision expected yesterday (Sept 4) on consensus-breaking SIP-8037 PR #12265. If fix is adopted, could require ~1-month SilaSepolia delay and new devnet cycle. Critical path decision for fork timeline.",
+      "related_eips": [],
+      "source": "deferred_decision"
+    },
+    {
+      "topic": "Devnet-9 non-finality testing status and readiness for SilaSepolia",
+      "priority": "high",
+      "rationale": "Devnet-9 launched Sept 1 as chaos network. Need status update on stability, client participation (Nimbus EL, Reth, Grandine trunk branches), and whether it unblocked SilaSepolia shadow fork targeting mid-to-end September.",
+      "related_eips": [],
+      "source": "devnet_update"
+    },
+    {
+      "topic": "SilaSepolia shadow fork launch decision and client release status",
+      "priority": "high",
+      "rationale": "ACDT #94 targeted SilaSepolia for mid-to-end September pending devnet-9 stability and client releases. With Sept 3 today, need go/no-go decision and confirmation all clients have stable releases ready.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "HiveChain RPC compatibility test blocker resolution",
+      "priority": "medium",
+      "rationale": "ACDT #93 identified HiveChain PRs (#1589, #1585) blocking all RPC compat test writing for Glamsterdam. No resolution in ACDT #94. Critical for test coverage before public testnets.",
+      "related_eips": [],
+      "source": "open_action_item"
+    },
+    {
+      "topic": "REST SSZ Engine API (execution-apis PR #793) review status",
+      "priority": "medium",
+      "rationale": "PR is spec-complete but stuck in Draft awaiting EL team reviews. Blocking merge into SSZ branch. Needs push to unblock before testnets.",
+      "related_eips": [],
+      "source": "open_action_item"
+    },
+    {
+      "topic": "FOCIL inclusion list P2P message size and empty transaction handling",
+      "priority": "medium",
+      "rationale": "ACDT #94 proposed raising signed inclusion list size from 8KB to 41KB and rejecting empty transaction lists. No decisions reached; needs CL breakout discussion before testnet deployment.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "Devnet-8 RPC interoperability issues and eth_estimateGas consistency",
+      "priority": "low",
+      "rationale": "Stefan's ACDT #93 report highlighted eth_estimateGas inconsistencies across clients on devnet-8. Client teams asked to review; no follow-up yet. Should be addressed before SilaSepolia.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "Post-fork attestation deadline analysis planning",
+      "priority": "low",
+      "rationale": "EthPandaOps action item from ACDT #90 to gather timing data post-fork for potential 2s attestation deadline. Fork approaching; should confirm data collection plan is in place.",
+      "related_eips": [],
+      "source": "open_action_item"
+    }
+  ]
+}

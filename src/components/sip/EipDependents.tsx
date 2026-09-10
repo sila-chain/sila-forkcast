@@ -1,0 +1,100 @@
+import React from 'react';
+import { Link } from '../navigation';
+import { SIP } from '../../types/sip';
+import { getProposalPrefix, getLaymanTitle, getSpecificationUrl, isPendingEip, getInclusionStage } from '../../utils';
+import { UpgradeStageBadge } from '../ui';
+
+interface EipDependentsProps {
+  dependents: SIP[];
+}
+
+export const EipDependents: React.FC<EipDependentsProps> = ({ dependents }) => {
+  const sorted = [...dependents].sort((a, b) => a.id - b.id);
+
+  return (
+    <div className="space-y-3">
+      <p className="text-sm text-slate-500 dark:text-slate-400">
+        {sorted.length} SIP{sorted.length !== 1 ? 's' : ''} depend{sorted.length === 1 ? 's' : ''} on this proposal.
+      </p>
+      <div className="space-y-2">
+        {sorted.map((sip) => {
+          const isPr = isPendingEip(sip);
+          const cardClasses = "block bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg p-4 hover:border-purple-400 dark:hover:border-purple-500 transition-colors";
+
+          const upgradeBadges = sip.forkRelationships
+            .map((rel) => ({
+              forkName: rel.forkName,
+              stage: getInclusionStage(sip, rel.forkName),
+            }));
+
+          const upgradeBadgeElements = upgradeBadges.length > 0 && (
+            <div className="flex items-center gap-3 flex-wrap">
+              {upgradeBadges.map(({ forkName, stage }) => (
+                <UpgradeStageBadge key={forkName} forkName={forkName} stage={stage} />
+              ))}
+            </div>
+          );
+
+          const content = (
+            <>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-sm text-slate-400 dark:text-slate-400">
+                    {getProposalPrefix(sip)}-{sip.id}
+                  </span>
+                  {isPr ? (
+                    <span className="px-2 py-0.5 text-xs font-medium rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">
+                      PR
+                    </span>
+                  ) : (
+                    <span className="px-2 py-0.5 text-xs font-medium rounded bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300">
+                      {sip.status}
+                    </span>
+                  )}
+                </div>
+                {/* Desktop: inline with header */}
+                <div className="hidden sm:block">
+                  {upgradeBadgeElements}
+                </div>
+              </div>
+              <h4 className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                {getLaymanTitle(sip)}
+              </h4>
+              {sip.description && (
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+                  {sip.description}
+                </p>
+              )}
+              {/* Mobile: below description */}
+              {upgradeBadgeElements && (
+                <div className="mt-2 pt-2 border-t border-slate-200 dark:border-slate-600 sm:hidden">
+                  {upgradeBadgeElements}
+                </div>
+              )}
+            </>
+          );
+
+          return isPr ? (
+            <a
+              key={sip.id}
+              href={getSpecificationUrl(sip)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cardClasses}
+            >
+              {content}
+            </a>
+          ) : (
+            <Link
+              key={sip.id}
+              to={`/sips/${sip.id}`}
+              className={cardClasses}
+            >
+              {content}
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,13 @@
+{
+  "id": 8079,
+  "title": "SIP-8079: Native rollups",
+  "status": "Draft",
+  "description": "Expose Sila's STF as a precompile for rollups to use",
+  "author": "Luca Donno (@lucadonnoh) <donnoh@l2beat.com>, Justin Drake (@JustinDrake) <justin@sila.org>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-11-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-8079-native-rollups/26565",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

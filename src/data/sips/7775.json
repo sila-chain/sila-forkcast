@@ -1,0 +1,13 @@
+{
+  "id": 7775,
+  "title": "SIP-7775: BURN opcode",
+  "status": "Stagnant",
+  "description": "An opcode to burn native sila at the given address",
+  "author": "Dev Bear (@itsdevbear)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2024-09-30",
+  "discussionLink": "https://sila-magicians.org/t/sip-7775-burn-opcode/21287",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

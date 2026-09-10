@@ -1,0 +1,18 @@
+{
+  "id": 8175,
+  "title": "SIP-8175: Composable Transaction",
+  "status": "Draft",
+  "description": "An extensible SIP-2718 transaction type with separated signatures, fee delegation via fee_auth, and opcodes for signature introspection",
+  "author": "Dragan Rakita (@rakita)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-02-26",
+  "discussionLink": "https://sila-magicians.org/t/sip-8175-composable-transaction/27850",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2,
+    1559,
+    2718
+  ]
+}

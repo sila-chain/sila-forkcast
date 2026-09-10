@@ -1,0 +1,19 @@
+{
+  "id": 1013,
+  "title": "SIP-1013: \"Hardfork Meta: Constantinople\"",
+  "status": "Final",
+  "description": "",
+  "author": "Nick Savers (@nicksavers)",
+  "type": "Meta",
+  "createdDate": "2018-04-20",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    145,
+    609,
+    1014,
+    1052,
+    1234,
+    1283
+  ]
+}

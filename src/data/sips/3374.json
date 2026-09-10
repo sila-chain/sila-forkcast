@@ -1,0 +1,13 @@
+{
+  "id": 3374,
+  "title": "SIP-3374: Predictable Proof-of-Work (POW) Sunsetting",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "Query0x (@Query0x)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-03-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-3374-predictable-proof-of-work-sunsetting",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

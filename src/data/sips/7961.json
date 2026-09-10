@@ -1,0 +1,18 @@
+{
+  "id": 7961,
+  "title": "SIP-7961: EVM64 - EOF code section",
+  "status": "Draft",
+  "description": "Define \"pure\" EVM64 mode, as an EOF code section.",
+  "author": "Wei Tang (@sorpaas)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-05-28",
+  "discussionLink": "https://sila-magicians.org/t/sip-series-evm64/23794",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    3540,
+    4750,
+    7960
+  ]
+}

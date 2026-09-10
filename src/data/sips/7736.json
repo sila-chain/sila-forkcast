@@ -1,0 +1,16 @@
+{
+  "id": 7736,
+  "title": "SIP-7736: Leaf-level state expiry in verkle trees",
+  "status": "Stagnant",
+  "description": "Simple state expiry scheme in which only \"extension-and-suffix trees\" are expired.",
+  "author": "Guillaume Ballet (@gballet), Wei Han Ng (@weiihann)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2024-07-05",
+  "discussionLink": "https://sila-magicians.org/t/sip-7736-leaf-level-state-expiry-in-verkle-trees/20474",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    6800
+  ]
+}

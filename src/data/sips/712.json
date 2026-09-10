@@ -1,0 +1,17 @@
+{
+  "id": 712,
+  "title": "SIP-712: Typed structured data hashing and signing",
+  "status": "Final",
+  "description": "A procedure for hashing and signing of typed structured data as opposed to just bytestrings.",
+  "author": "Remco Bloemen (@Recmo), Leonid Logvinov (@LogvinovLeon), Jacob Evans (@dekz)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2017-09-12",
+  "discussionLink": "https://sila-magicians.org/t/sip-712-sil-signtypeddata-as-a-standard-for-machine-verifiable-and-human-readable-typed-data-signing/397",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    155,
+    191
+  ]
+}

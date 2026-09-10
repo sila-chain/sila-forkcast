@@ -1,0 +1,41 @@
+{
+  "meeting": "ACDE #226 - December 18, 2025",
+  "key_decisions": [
+    {
+      "original_text": "CFI: SIP-2780, SIP-7904 (downscoped), SIP-7976, SIP-7981, SIP-8038",
+      "timestamp": "00:41:28",
+      "type": "stage_change",
+      "sips": [
+        2780,
+        7904,
+        7976,
+        7981,
+        8038
+      ],
+      "stage_change": {
+        "to": "Considered"
+      },
+      "context": "SIP-7904 downscoped to floor enforcement only"
+    },
+    {
+      "original_text": "DFI: SIP-2926, SIP-7686, SIP-7923, SIP-7973",
+      "timestamp": "01:01:48",
+      "type": "stage_change",
+      "sips": [
+        2926,
+        7686,
+        7923,
+        7973
+      ],
+      "stage_change": {
+        "to": "Declined"
+      }
+    },
+    {
+      "original_text": "Fork name finalized: Heze (CL) + Bogotá (EL) = Hegotá",
+      "timestamp": "00:11:48",
+      "type": "other",
+      "sips": []
+    }
+  ]
+}

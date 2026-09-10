@@ -1,0 +1,12 @@
+{
+  "id": 211,
+  "title": "SIP-211: \"New opcodes: RETURNDATASIZE and RETURNDATACOPY\"",
+  "status": "Final",
+  "description": "",
+  "author": "Christian Reitwiessner <chris@sila.org>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2017-02-13",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,17 @@
+{
+  "id": 7749,
+  "title": "SIP-7749: Add wallet_signIntendedValidatorData method",
+  "status": "Draft",
+  "description": "A new RPC method to sign data with an intended validator address according to SRC-191 version 0x00.",
+  "author": "Yamen Merhi (@YamenMerhi), Patronum Labs (@Patronum-Labs)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2024-06-21",
+  "discussionLink": "https://sila-magicians.org/t/sip-7749-add-wallet-signintendedvalidatordata-method/20693",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    191,
+    712
+  ]
+}

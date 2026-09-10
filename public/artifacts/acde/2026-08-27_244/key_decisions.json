@@ -1,0 +1,53 @@
+{
+  "meeting": "ACDE #244 - August 27, 2026",
+  "key_decisions": [
+    {
+      "original_text": "SIP-8037 SELFDESTRUCT gas refill not added to Glamsterdam; deferred to Hegota with proper SIP",
+      "timestamp": "00:32:07",
+      "type": "other",
+      "sips": [
+        8037
+      ]
+    },
+    {
+      "original_text": "SIP-7609 (TLOAD/TSTORE cost decrease) not taken up for Hegota — no champion present",
+      "timestamp": "00:40:03",
+      "type": "other",
+      "sips": [
+        7609
+      ],
+      "context": "no champion present"
+    },
+    {
+      "original_text": "SIP-8058 (bytecode deduplication discount) not taken up for Hegota — no champion, superseded by SETCODEFROM",
+      "timestamp": "00:40:03",
+      "type": "other",
+      "sips": [
+        8058
+      ],
+      "context": "no champion; superseded by SETCODEFROM"
+    },
+    {
+      "original_text": "SIP-8360 (TCREATE) retained as placeholder for ephemeral-contract solution replacing SELFDESTRUCT refill",
+      "timestamp": "00:40:03",
+      "type": "other",
+      "sips": [
+        8360
+      ],
+      "context": "retained as placeholder for ephemeral-contract solution replacing SELFDESTRUCT refill"
+    },
+    {
+      "original_text": "SIP-8141 (Frames) SFI for Hegota; spec may still change; SFI status must not impede continued L2 collaboration or spec iteration",
+      "timestamp": "01:37:56",
+      "type": "stage_change",
+      "sips": [
+        8141
+      ],
+      "stage_change": {
+        "to": "Scheduled"
+      },
+      "fork": "Hegota",
+      "context": "spec may still change; SFI must not impede continued iteration"
+    }
+  ]
+}

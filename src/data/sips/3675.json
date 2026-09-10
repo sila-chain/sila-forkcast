@@ -1,0 +1,16 @@
+{
+  "id": 3675,
+  "title": "SIP-3675: Upgrade consensus to Proof-of-Stake",
+  "status": "Final",
+  "description": "Specification of the consensus mechanism upgrade on Sila SilaMainnet that introduces Proof-of-Stake",
+  "author": "Mikhail Kalinin (@mkalinin), Danny Ryan (@djrtwo), Vitalik Buterin (@vbuterin)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-07-22",
+  "discussionLink": "https://sila-magicians.org/t/sip-3675-upgrade-consensus-to-proof-of-stake/6706",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2124
+  ]
+}

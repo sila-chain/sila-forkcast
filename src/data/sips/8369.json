@@ -1,0 +1,56 @@
+{
+  "id": 8369,
+  "title": "SIP-8369: VOPS Profiles for FOCIL Eligibility",
+  "status": "Draft",
+  "description": "Describes VOPS profiles that a future FOCIL extension could use to determine which transactions receive inclusion enforcement.",
+  "author": "Thomas Thiery (@soispoke)",
+  "type": "Informational",
+  "createdDate": "2026-08-05",
+  "discussionLink": "https://sila-magicians.org/t/sip-8369-vops-profiles-for-focil-eligibility/29298",
+  "requires": [
+    1559,
+    2718,
+    2930,
+    3607,
+    4844,
+    7702,
+    7732,
+    7805,
+    7843,
+    7928,
+    8141,
+    8250,
+    8272
+  ],
+  "reviewer": "bot",
+  "layer": "CL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acdc/184",
+          "date": "2026-08-06"
+        }
+      ],
+      "champions": [
+        {
+          "name": "soispoke",
+          "discord": "soispoke"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Inclusion lists only work if every node can cheaply agree on whether a skipped transaction was genuinely invalid. Ordinary transactions are easy to check; account abstraction transactions can depend on almost any state. This document maps out which transactions are cheap enough to enforce, without setting any rules itself.",
+  "benefits": [
+    "One shared eligibility boundary stops nodes agreeing on a list but disagreeing on enforcement",
+    "Checking each omission at one claimed index replaces an append loop that was quadratic",
+    "Any includer can classify a candidate without first obtaining a witness"
+  ],
+  "tradeoffs": [
+    "The builder picks the index, so a transaction is protected only if valid at every choice",
+    "Transactions whose validity depends on a predecessor in the same block get the weaker guarantee",
+    "Every binding rule and constant must be restated in a future Standards Track SIP"
+  ]
+}

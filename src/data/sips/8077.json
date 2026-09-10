@@ -1,0 +1,44 @@
+{
+  "id": 8077,
+  "title": "SIP-8077: sil/XX - announce transactions with nonce",
+  "status": "Draft",
+  "description": "Adds source and nonce to transaction announcements",
+  "author": "Csaba Kiraly (@cskiraly)",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2025-11-07",
+  "discussionLink": "https://sila-magicians.org/t/sip-8077-sil-xx-add-nonce-and-source-to-transactions-announcement/26505",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/243",
+          "date": "2026-08-13"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Csaba Kiraly"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "When a node hears that a peer has a new transaction, it learns only the transaction's hash, type, and size, which is not enough to judge whether downloading it is worthwhile. This proposal adds the sender's address and its position in that sender's sequence, so nodes can fetch in an order that actually produces a usable pool.",
+  "benefits": [
+    "Nodes can schedule fetches without creating unusable gaps in their own mempool view",
+    "Requests can target a specific sender, filling gaps without trial and error",
+    "Stale announcements can be filtered against chain state instead of caching every hash"
+  ],
+  "tradeoffs": [
+    "Every announcement grows by a sender address and a nonce, a significant bandwidth cost",
+    "The announced sender and nonce cannot be verified until the transaction is fetched",
+    "Better scheduling is left to implementations, so the benefit is not guaranteed"
+  ],
+  "requires": [
+    7642
+  ]
+}

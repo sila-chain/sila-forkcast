@@ -1,0 +1,13 @@
+{
+  "id": 1930,
+  "title": "SIP-1930: CALLs with strict gas semantic. Revert if not enough gas available.",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Ronan Sandford (@wighawag)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-04-10",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/1930",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,17 @@
+{
+  "id": 3044,
+  "title": "SIP-3044: Adds `baseFee` to `eth_getBlockByNumber`",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Abdelhamid Bakhta (@abdelhamidbakhta)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2020-10-14",
+  "discussionLink": "https://sila-magicians.org/t/sip-3044-add-basefee-to-sil-getblockbynumber/4828",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1474,
+    1559
+  ]
+}
