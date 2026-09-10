@@ -1,0 +1,79 @@
+name: Final Sila Authority Audit
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  authority:
+    if: github.event.pull_request.title == 'Final post-root Sila Forkcast verification'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout root-only Sila main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          path: target
+          fetch-depth: 1
+
+      - name: Checkout current upstream main
+        uses: actions/checkout@v6
+        with:
+          repository: ethereum/forkcast
+          ref: main
+          path: upstream
+          fetch-depth: 1
+
+      - name: Verify latest official authority and root tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          UPSTREAM="$(git -C upstream rev-parse HEAD)"
+          HEAD="$(git -C target rev-parse HEAD)"
+          TREE="$(git -C target rev-parse 'HEAD^{tree}')"
+          PARENTS="$(git -C target cat-file -p HEAD | grep -c '^parent ' || true)"
+          echo "CURRENT_UPSTREAM_MAIN=$UPSTREAM"
+          echo "TARGET_HEAD=$HEAD"
+          echo "TARGET_TREE=$TREE"
+          echo "TARGET_PARENT_COUNT=$PARENTS"
+          test "$UPSTREAM" = '0104c412e08a341e7ca21107c85f21375e319ae1'
+          test "$HEAD" = '83a7401d75108458c845d54323f6ecea1b1d1ae8'
+          test "$TREE" = '2882093fe0f9374c2ad6b86d7ea03c27f22eea0f'
+          test "$PARENTS" = '0'
+          echo 'LATEST_UPSTREAM_AUTHORITY_GATE=PASS'
+          echo 'ROOT_ONLY_HISTORY_GATE=PASS'
+
+      - name: Verify Pure Sila actionable identity residuals
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          root=Path('target')
+          ids=['Ethereum','ethereum','ETHEREUM','EIPs','eips','EIP','eip','ERCs','ercs','ERC','erc','ETH','Eth','eth','Ether','ether']
+          word=re.compile(r'\b(?:'+'|'.join(map(re.escape,ids))+r')\b')
+          gh=re.compile(r'github\.com/ethereum(?=/|$|[\s"\'<>),.;:#?])')
+          domains=re.compile(r'eips\.ethereum\.org|ethereum\.org')
+          def binary(p):
+              b=p.read_bytes()[:8192]
+              if b'\x00' in b: return True
+              try: b.decode('utf-8'); return False
+              except UnicodeDecodeError: return True
+          residual=[]
+          for p in root.rglob('*'):
+              if '.git' in p.parts: continue
+              rel=p.relative_to(root).as_posix()
+              if word.search(rel) or gh.search(rel) or domains.search(rel): residual.append('PATH:'+rel)
+              if p.is_file() and not binary(p):
+                  s=p.read_text('utf-8')
+                  s=re.sub(r'https?://github\.com/ethereum[A-Za-z0-9_.-]+','__THIRD_PARTY_GITHUB__',s)
+                  if word.search(s) or gh.search(s) or domains.search(s): residual.append('TEXT:'+rel)
+          print('ACTIONABLE_IDENTITY_RESIDUAL_COUNT='+str(len(residual)))
+          if residual:
+              print('\n'.join(residual[:200])); raise SystemExit(1)
+          print('PURE_SILA_IDENTITY_GATE=PASS')
+          PY
