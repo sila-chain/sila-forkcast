@@ -19,6 +19,11 @@ jobs:
         with:
           ref: sila/forkcast-latest-pure-20260910
           fetch-depth: 0
+
+      - name: Preserve temporary sync workflow
+        shell: bash
+        run: cp .github/workflows/verify-build.yml /tmp/sila-sync-workflow.yml
+
       - name: Checkout exact upstream authority
         uses: actions/checkout@v6
         with:
@@ -26,124 +31,199 @@ jobs:
           ref: 0c357e072114d2fc791bef9347399790d49d0044
           path: _upstream
           fetch-depth: 1
+
       - name: Set up Node 24
         uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
-      - name: Mirror exact authority, convert identity, and verify
+
+      - name: Mirror exact authority, convert identity, verify, and commit
         shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
+          exec > >(tee /tmp/sila-sync.log) 2>&1
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
           import re, shutil
-          root=Path.cwd(); up=root/'_upstream'
+
+          root = Path.cwd()
+          up = root / '_upstream'
+
           for p in list(root.iterdir()):
-              if p.name in {'.git','_upstream'}: continue
+              if p.name in {'.git', '_upstream'}:
+                  continue
               shutil.rmtree(p) if p.is_dir() else p.unlink()
+
           for src in up.rglob('*'):
-              rel=src.relative_to(up)
-              if '.git' in rel.parts: continue
-              dst=root/rel
-              if src.is_dir(): dst.mkdir(parents=True,exist_ok=True)
-              else: dst.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(src,dst)
+              rel = src.relative_to(up)
+              if '.git' in rel.parts:
+                  continue
+              dst = root / rel
+              if src.is_dir():
+                  dst.mkdir(parents=True, exist_ok=True)
+              else:
+                  dst.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(src, dst)
           shutil.rmtree(up)
+
           U='Ethe'+'reum'; u='ethe'+'reum'; UU='ETHE'+'REUM'
           EIPS='EI'+'Ps'; eips='ei'+'ps'; EIP='EI'+'P'; eip='ei'+'p'
           ERCS='ER'+'Cs'; ercs='er'+'cs'; ERC='ER'+'C'; erc='er'+'c'
           ETH='E'+'TH'; Eth='E'+'th'; eth='e'+'th'; Ether='Et'+'her'; ether='et'+'her'
-          token_map={U:'Sila',u:'sila',UU:'SILA',EIPS:'SIPs',eips:'sips',EIP:'SIP',eip:'sip',ERCS:'SRCs',ercs:'srcs',ERC:'SRC',erc:'src',ETH:'SIL',Eth:'Sil',eth:'sil',Ether:'Sila',ether:'sila','Mainnet':'SilaMainnet','mainnet':'sila-mainnet','MAINNET':'SILA_MAINNET','Sepolia':'SilaSepolia','Holesky':'SilaHolesky','Deneb':'SilaDeneb','Fulu':'SilaFulu','PeerDAS':'SilaPeerDAS','Cancun':'SilaCancun','Shanghai':'SilaShanghai','Prague':'SilaPrague','Osaka':'SilaOsaka','Paris':'SilaParis','Amsterdam':'SilaAmsterdam','Kovan':'SilaKovan'}
-          literals=[('https://'+eips+'.'+u+'.org','https://sips.sila.org'),(eips+'.'+u+'.org','sips.sila.org'),('https://github.com/'+u,'https://github.com/sila-chain'),('github.com/'+u,'github.com/sila-chain'),('https://'+u+'.org','https://sila.org'),(u+'.org','sila.org'),(U+' Foundation','Sila Foundation'),(Eth+'erscan','SilaScan'),('W'+ETH,'WSIL'),('IW'+ETH,'IWSIL'),('I'+ERC,'ISRC'),('A'+ERC,'ASRC'),('I'+EIP,'ISIP')]
-          rx=re.compile(r'\b(?:'+'|'.join(sorted(map(re.escape,token_map),key=len,reverse=True))+r')\b')
-          prx=re.compile(r'(?<![A-Za-z0-9])(?:'+'|'.join(sorted(map(re.escape,token_map),key=len,reverse=True))+r')(?![A-Za-z0-9])')
-          source_exts={'.ts','.tsx','.js','.jsx','.mjs','.cjs'}
-          sentinel='__SILA_MAINNET_IDENTIFIER__'
+
+          token_map = {
+              U:'Sila', u:'sila', UU:'SILA',
+              EIPS:'SIPs', eips:'sips', EIP:'SIP', eip:'sip',
+              ERCS:'SRCs', ercs:'srcs', ERC:'SRC', erc:'src',
+              ETH:'SIL', Eth:'Sil', eth:'sil', Ether:'Sila', ether:'sila',
+              'Mainnet':'SilaMainnet', 'mainnet':'sila-mainnet', 'MAINNET':'SILA_MAINNET',
+              'Sepolia':'SilaSepolia', 'Holesky':'SilaHolesky', 'Deneb':'SilaDeneb',
+              'Fulu':'SilaFulu', 'PeerDAS':'SilaPeerDAS', 'Cancun':'SilaCancun',
+              'Shanghai':'SilaShanghai', 'Prague':'SilaPrague', 'Osaka':'SilaOsaka',
+              'Paris':'SilaParis', 'Amsterdam':'SilaAmsterdam', 'Kovan':'SilaKovan'
+          }
+
+          literals = [
+              ('https://'+eips+'.'+u+'.org', 'https://sips.sila.org'),
+              (eips+'.'+u+'.org', 'sips.sila.org'),
+              ('https://github.com/'+u+'/', 'https://github.com/sila-chain/'),
+              ('github.com/'+u+'/', 'github.com/sila-chain/'),
+              ('https://'+u+'.org', 'https://sila.org'),
+              (u+'.org', 'sila.org'),
+              (U+' Foundation', 'Sila Foundation'),
+              (Eth+'erscan', 'SilaScan'),
+              ('W'+ETH, 'WSIL'), ('IW'+ETH, 'IWSIL'),
+              ('I'+ERC, 'ISRC'), ('A'+ERC, 'ASRC'), ('I'+EIP, 'ISIP')
+          ]
+
+          rx = re.compile(r'\b(?:' + '|'.join(sorted(map(re.escape, token_map), key=len, reverse=True)) + r')\b')
+          prx = re.compile(r'(?<![A-Za-z0-9])(?:' + '|'.join(sorted(map(re.escape, token_map), key=len, reverse=True)) + r')(?![A-Za-z0-9])')
+          source_exts = {'.ts','.tsx','.js','.jsx','.mjs','.cjs'}
+          mainnet_sentinel = '__SILA_MAINNET_IDENTIFIER__'
+
           def protect_code_mainnet(s):
               out=[]; i=0; state='code'
-              while i<len(s):
-                  if state=='code':
-                      if s.startswith('//',i): out.append('//'); i+=2; state='line'; continue
-                      if s.startswith('/*',i): out.append('/*'); i+=2; state='block'; continue
+              while i < len(s):
+                  if state == 'code':
+                      if s.startswith('//', i): out.append('//'); i+=2; state='line'; continue
+                      if s.startswith('/*', i): out.append('/*'); i+=2; state='block'; continue
                       c=s[i]
                       if c=="'": out.append(c); i+=1; state='single'; continue
                       if c=='"': out.append(c); i+=1; state='double'; continue
                       if c=='`': out.append(c); i+=1; state='template'; continue
-                      if s.startswith('mainnet',i):
+                      if s.startswith('mainnet', i):
                           before=s[i-1] if i else ''
-                          after=s[i+7] if i+7<len(s) else ''
+                          after=s[i+7] if i+7 < len(s) else ''
                           if (not before or not (before.isalnum() or before in '_$')) and (not after or not (after.isalnum() or after in '_$')):
-                              out.append(sentinel); i+=7; continue
+                              out.append(mainnet_sentinel); i+=7; continue
                       out.append(c); i+=1; continue
                   c=s[i]; out.append(c); i+=1
-                  if c=='\\' and state in {'single','double','template'} and i<len(s): out.append(s[i]); i+=1; continue
+                  if c=='\\' and state in {'single','double','template'} and i < len(s):
+                      out.append(s[i]); i+=1; continue
                   if state=='single' and c=="'": state='code'
                   elif state=='double' and c=='"': state='code'
                   elif state=='template' and c=='`': state='code'
                   elif state=='line' and c=='\n': state='code'
-                  elif state=='block' and c=='*' and i<len(s) and s[i]=='/': out.append('/'); i+=1; state='code'
+                  elif state=='block' and c=='*' and i < len(s) and s[i]=='/':
+                      out.append('/'); i+=1; state='code'
               return ''.join(out)
+
+          def protect_third_party_github(s):
+              saved=[]
+              pat=re.compile(r'https?://github\.com/([A-Za-z0-9_.-]+)')
+              def repl(m):
+                  org=m.group(1)
+                  if org.lower().startswith(u) and org.lower() != u:
+                      key=f'__SILA_TP_GITHUB_{len(saved)}__'
+                      saved.append((key,m.group(0)))
+                      return key
+                  return m.group(0)
+              s=pat.sub(repl,s)
+              return s,saved
+
           def binary(p):
               b=p.read_bytes()[:8192]
-              if b'\x00' in b:return True
-              try:b.decode('utf-8');return False
-              except UnicodeDecodeError:return True
+              if b'\x00' in b: return True
+              try: b.decode('utf-8'); return False
+              except UnicodeDecodeError: return True
+
           for p in root.rglob('*'):
-              if not p.is_file() or '.git' in p.parts or binary(p): continue
+              if not p.is_file() or '.git' in p.parts or binary(p):
+                  continue
               s=p.read_text('utf-8')
-              if p.suffix.lower() in source_exts:s=protect_code_mainnet(s)
-              for a,b in literals:s=s.replace(a,b)
-              s=rx.sub(lambda m:token_map[m.group(0)],s)
-              s=s.replace(sentinel,'silaMainnet')
+              s,saved=protect_third_party_github(s)
+              if p.suffix.lower() in source_exts:
+                  s=protect_code_mainnet(s)
+              for a,b in literals:
+                  s=s.replace(a,b)
+              s=rx.sub(lambda m: token_map[m.group(0)], s)
+              s=s.replace(mainnet_sentinel,'silaMainnet')
+              for key,val in saved:
+                  s=s.replace(key,val)
               if p.as_posix().endswith('src/components/calls-index/CallsIndexTimeline.tsx'):
-                  s=re.sub(r'(?m)^(\s*)silaMainnet:',r"\1'sila-mainnet':",s)
+                  s=re.sub(r'(?m)^(\s*)silaMainnet:', r"\1'sila-mainnet':", s)
               p.write_text(s,'utf-8')
-          for p in sorted([x for x in root.rglob('*') if '.git' not in x.parts],key=lambda x:len(x.parts),reverse=True):
-              if not p.exists():continue
-              n=prx.sub(lambda m:token_map[m.group(0)],p.name)
-              if n!=p.name:
+
+          for p in sorted([x for x in root.rglob('*') if '.git' not in x.parts], key=lambda x:len(x.parts), reverse=True):
+              if not p.exists():
+                  continue
+              n=prx.sub(lambda m: token_map[m.group(0)], p.name)
+              if n != p.name:
                   q=p.with_name(n)
-                  if q.exists():raise SystemExit(f'PATH_COLLISION:{p}->{q}')
+                  if q.exists():
+                      raise SystemExit(f'PATH_COLLISION:{p}->{q}')
                   p.rename(q)
+
           ids=[U,u,UU,EIPS,eips,EIP,eip,ERCS,ercs,ERC,erc,ETH,Eth,eth,Ether,ether]
-          rrx=re.compile(r'\b(?:'+'|'.join(map(re.escape,ids))+r')\b|'+re.escape('github.com/'+u)+'|'+re.escape(eips+'.'+u+'.org')+'|'+re.escape(u+'.org'))
+          word_identity=re.compile(r'\b(?:'+'|'.join(map(re.escape,ids))+r')\b')
+          exact_gh=re.compile(r'github\.com/'+re.escape(u)+r'(?=/|$|[\s"\'<>),.;:#?])')
+          exact_domains=re.compile(re.escape(eips+'.'+u+'.org')+'|'+re.escape(u+'.org'))
           residual=[]
           for p in root.rglob('*'):
-              if '.git' in p.parts:continue
+              if '.git' in p.parts:
+                  continue
               rel=p.relative_to(root).as_posix()
-              if rrx.search(rel):residual.append('PATH:'+rel)
+              if word_identity.search(rel) or exact_gh.search(rel) or exact_domains.search(rel):
+                  residual.append('PATH:'+rel)
               if p.is_file() and not binary(p):
-                  try:s=p.read_text('utf-8')
-                  except UnicodeDecodeError:continue
-                  if rrx.search(s):residual.append('TEXT:'+rel)
+                  try: s=p.read_text('utf-8')
+                  except UnicodeDecodeError: continue
+                  # Do not classify third-party GitHub orgs such as ethereumjs/ethereum-optimism as Sila identity residuals.
+                  masked=re.sub(r'https?://github\.com/'+re.escape(u)+r'[A-Za-z0-9_.-]+', '__THIRD_PARTY_GITHUB__', s)
+                  if word_identity.search(masked) or exact_gh.search(masked) or exact_domains.search(masked):
+                      residual.append('TEXT:'+rel)
+
           print('ACTIONABLE_IDENTITY_RESIDUAL_COUNT='+str(len(residual)))
           if residual:
-              print('\n'.join(residual[:200]));raise SystemExit(1)
+              print('\n'.join(residual[:200]))
+              raise SystemExit(1)
           PY
-          set +e
-          npm ci > /tmp/sila-sync-build.log 2>&1
-          rc=$?
-          if [ "$rc" -eq 0 ]; then
-            npm run build >> /tmp/sila-sync-build.log 2>&1
-            rc=$?
-          fi
-          set -e
-          cat /tmp/sila-sync-build.log
-          if [ "$rc" -ne 0 ]; then
-            {
-              echo '### Temporary exact build diagnostic'
-              echo
-              echo '```text'
-              tail -n 100 /tmp/sila-sync-build.log
-              echo '```'
-            } > /tmp/sila-sync-comment.md
-            gh api "repos/${GITHUB_REPOSITORY}/issues/${{ github.event.pull_request.number }}/comments" -f body="$(cat /tmp/sila-sync-comment.md)"
-            exit "$rc"
-          fi
+
+          npm ci
+          npm run build
+
+          # Keep the temporary workflow byte-for-byte unchanged during the bot push.
+          mkdir -p .github/workflows
+          cp /tmp/sila-sync-workflow.yml .github/workflows/verify-build.yml
+
           git config user.name 'SILA Network'
           git config user.email 'sila-chain@users.noreply.github.com'
           git add -A
           git commit -m 'sync: exact latest Forkcast authority as pure Sila'
           git push origin HEAD:sila/forkcast-latest-pure-20260910
+
+      - name: Post exact failure diagnostic
+        if: failure()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo '### Temporary exact sync diagnostic'
+            echo
+            echo '```text'
+            tail -n 140 /tmp/sila-sync.log 2>/dev/null || echo 'No sync log was produced.'
+            echo '```'
+          } > /tmp/sila-sync-comment.md
+          gh api "repos/${GITHUB_REPOSITORY}/issues/${{ github.event.pull_request.number }}/comments" -f body="$(cat /tmp/sila-sync-comment.md)" || true
