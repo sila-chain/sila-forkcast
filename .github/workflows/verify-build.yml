@@ -93,6 +93,8 @@ jobs:
               for a,b in literals:s=s.replace(a,b)
               s=rx.sub(lambda m:token_map[m.group(0)],s)
               s=s.replace(sentinel,'silaMainnet')
+              if p.as_posix().endswith('src/components/calls-index/CallsIndexTimeline.tsx'):
+                  s=re.sub(r'(?m)^(\s*)silaMainnet:',r"\1'sila-mainnet':",s)
               p.write_text(s,'utf-8')
           for p in sorted([x for x in root.rglob('*') if '.git' not in x.parts],key=lambda x:len(x.parts),reverse=True):
               if not p.exists():continue
