@@ -81,6 +81,16 @@
       "name": "L2Beat",
       "type": "OTHER",
       "initials": "L2B"
+    },
+    {
+      "name": "Lido",
+      "type": "OTHER",
+      "initials": "Li"
+    },
+    {
+      "name": "Serenita",
+      "type": "OTHER",
+      "initials": "Se"
     }
   ],
   "sips": [
@@ -705,6 +715,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Lido",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/9",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Nethermind",
           "clientType": "EL",
           "ratingSystem": "tier-abcds-reject",
@@ -787,6 +806,15 @@
           "normalizedScore": 2,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Teku",
@@ -876,6 +904,15 @@
           "normalizedScore": 1,
           "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lido",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/9",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Nethermind",
@@ -1394,6 +1431,15 @@
           "lastUpdated": "2026-09-08"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -1468,6 +1514,15 @@
           "normalizedScore": 2,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Teku",
@@ -1974,6 +2029,15 @@
           "lastUpdated": "2026-09-08"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -2039,6 +2103,15 @@
           "normalizedScore": 3,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         }
       ]
     },
@@ -2070,6 +2143,15 @@
           "rawRating": "D",
           "normalizedScore": 0,
           "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
           "lastUpdated": "2026-09-10"
         },
         {
@@ -2312,6 +2394,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Lido",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/9",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Nethermind",
           "clientType": "EL",
           "ratingSystem": "tier-abcds-reject",
@@ -2472,6 +2563,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -2622,6 +2722,15 @@
           "lastUpdated": "2026-09-08"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -2686,6 +2795,15 @@
           "normalizedScore": 1,
           "sourceUrl": "https://notes.sila.org/@lightclient/geth-hegota-tiers",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lido",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/9",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Nethermind",
@@ -2764,6 +2882,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -2820,6 +2947,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
           "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Teku",
@@ -2904,6 +3040,15 @@
           "normalizedScore": 4,
           "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lido",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/9",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Nethermind",
@@ -3086,6 +3231,15 @@
           "normalizedScore": 4,
           "sourceUrl": "https://forum.l2beat.com/t/l2beats-research-team-hegota-ranking/439",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Lido",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/9",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Nethermind",
@@ -3407,6 +3561,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3454,6 +3617,15 @@
           "normalizedScore": 3,
           "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
           "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Teku",
@@ -3514,6 +3686,15 @@
           "lastUpdated": "2026-09-08"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3551,6 +3732,15 @@
           "rawRating": "B",
           "normalizedScore": 2,
           "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
           "lastUpdated": "2026-09-10"
         },
         {
@@ -3762,6 +3952,15 @@
           "lastUpdated": "2026-09-08"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3809,6 +4008,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://hackmd.io/@matthewkeil/HkcMqKQdfg",
           "lastUpdated": "2026-09-08"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         }
       ]
     },
@@ -3852,6 +4060,15 @@
           "lastUpdated": "2026-09-08"
         },
         {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3889,6 +4106,15 @@
           "rawRating": "D",
           "normalizedScore": 0,
           "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
           "lastUpdated": "2026-09-10"
         },
         {
@@ -4247,6 +4473,15 @@
           "normalizedScore": 1,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         }
       ]
     },
@@ -4297,6 +4532,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Serenita",
+          "clientType": "OTHER",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://sila-magicians.org/t/sip-8081-hegota-network-upgrade-meta-thread/26876/11",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Teku",
