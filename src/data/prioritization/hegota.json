@@ -128,8 +128,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -203,8 +203,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "C",
           "normalizedScore": 1,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -278,8 +278,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "C",
           "normalizedScore": 1,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Nethermind",
@@ -344,8 +344,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "B",
           "normalizedScore": 2,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -419,8 +419,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -494,8 +494,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "A",
           "normalizedScore": 3,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -523,6 +523,14 @@
           "normalizedScore": 1,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nimbus",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Reth",
@@ -578,8 +586,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "A",
           "normalizedScore": 3,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -598,6 +606,14 @@
           "normalizedScore": 3,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nimbus",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Reth",
@@ -667,8 +683,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "A",
           "normalizedScore": 3,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -696,6 +712,14 @@
           "normalizedScore": 1,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nimbus",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Reth",
@@ -727,6 +751,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "L2Beat",
@@ -823,8 +856,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "A",
           "normalizedScore": 3,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -852,6 +885,14 @@
           "normalizedScore": 1,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nimbus",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Reth",
@@ -907,8 +948,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -982,8 +1023,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Nethermind",
@@ -1123,8 +1164,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "S",
           "normalizedScore": 4,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -1207,8 +1248,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -1282,8 +1323,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -1335,6 +1376,15 @@
           "lastUpdated": "2026-08-14"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Lodestar",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -1382,6 +1432,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "L2Beat",
@@ -1544,8 +1603,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -1619,8 +1678,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -1639,6 +1698,14 @@
           "normalizedScore": 3,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nimbus",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Reth",
@@ -1694,8 +1761,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -1714,6 +1781,14 @@
           "normalizedScore": 3,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nimbus",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Reth",
@@ -1778,8 +1853,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "B",
           "normalizedScore": 2,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -1863,6 +1938,15 @@
           "lastUpdated": "2026-08-14"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Geth",
           "clientType": "EL",
           "ratingSystem": "tier-abcds-reject",
@@ -1930,6 +2014,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Lodestar",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -1969,6 +2062,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Teku",
@@ -2024,8 +2126,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "A",
           "normalizedScore": 3,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2188,8 +2290,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2272,8 +2374,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2332,6 +2434,15 @@
           "normalizedScore": 4,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "L2Beat",
@@ -2414,8 +2525,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "A",
           "normalizedScore": 3,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2443,6 +2554,14 @@
           "normalizedScore": 0,
           "sourceUrl": "https://x.com/URozmej/status/2097679407292821916",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Nimbus",
+          "clientType": "CL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Reth",
@@ -2474,6 +2593,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "L2Beat",
@@ -2547,8 +2675,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2598,6 +2726,15 @@
           "normalizedScore": 2,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2656,6 +2793,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2738,8 +2884,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "S",
           "normalizedScore": 4,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2822,8 +2968,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "C",
           "normalizedScore": 1,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -2920,8 +3066,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "S",
           "normalizedScore": 4,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3013,8 +3159,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "B",
           "normalizedScore": 2,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3088,8 +3234,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "A",
           "normalizedScore": 3,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3172,8 +3318,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "B",
           "normalizedScore": 2,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3234,6 +3380,15 @@
           "lastUpdated": "2026-08-14"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "S",
+          "normalizedScore": 4,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Lodestar",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3283,6 +3438,15 @@
           "lastUpdated": "2026-08-14"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Lodestar",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3321,6 +3485,15 @@
           "normalizedScore": 3,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-09-09"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "C",
+          "normalizedScore": 1,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3372,6 +3545,15 @@
           "lastUpdated": "2026-08-14"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Teku",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3418,6 +3600,15 @@
           "normalizedScore": 3,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3500,8 +3691,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3553,6 +3744,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Lodestar",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3582,6 +3782,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
           "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "L2Beat",
@@ -3625,6 +3834,15 @@
           "lastUpdated": "2026-08-14"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "A",
+          "normalizedScore": 3,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Lodestar",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -3663,6 +3881,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://ethlabs.org/writings/hegota-view.html",
           "lastUpdated": "2026-08-14"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Teku",
@@ -3786,6 +4013,15 @@
           "lastUpdated": "2026-09-09"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "B",
+          "normalizedScore": 2,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Geth",
           "clientType": "EL",
           "ratingSystem": "tier-abcds-reject",
@@ -3858,8 +4094,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3933,8 +4169,8 @@
           "ratingSystem": "tier-abcds-reject",
           "rawRating": "D",
           "normalizedScore": 0,
-          "sourceUrl": "https://x.com/ethrex_client/status/2097737646176948379",
-          "lastUpdated": "2026-09-09"
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
@@ -3986,6 +4222,15 @@
           "lastUpdated": "2026-08-14"
         },
         {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
+        },
+        {
           "clientName": "Lodestar",
           "clientType": "CL",
           "ratingSystem": "tier-abcds-reject",
@@ -4016,6 +4261,15 @@
           "normalizedScore": 0,
           "sourceUrl": "https://blog.sila.org/2026/09/07/protocol-hegota-sips",
           "lastUpdated": "2026-09-07"
+        },
+        {
+          "clientName": "Ethrex",
+          "clientType": "EL",
+          "ratingSystem": "tier-abcds-reject",
+          "rawRating": "D",
+          "normalizedScore": 0,
+          "sourceUrl": "https://x.com/ethrex_client/status/2098035569431384211",
+          "lastUpdated": "2026-09-10"
         },
         {
           "clientName": "Geth",
