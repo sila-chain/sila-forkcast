@@ -20,9 +20,12 @@ jobs:
           ref: sila/forkcast-latest-pure-20260910
           fetch-depth: 0
 
-      - name: Preserve temporary sync workflow
+      - name: Preserve target workflows for token-safe push
         shell: bash
-        run: cp .github/workflows/verify-build.yml /tmp/sila-sync-workflow.yml
+        run: |
+          rm -rf /tmp/sila-sync-workflows
+          mkdir -p /tmp/sila-sync-workflows
+          cp -a .github/workflows/. /tmp/sila-sync-workflows/
 
       - name: Checkout exact upstream authority
         uses: actions/checkout@v6
@@ -189,7 +192,6 @@ jobs:
               if p.is_file() and not binary(p):
                   try: s=p.read_text('utf-8')
                   except UnicodeDecodeError: continue
-                  # Do not classify third-party GitHub orgs such as ethereumjs/ethereum-optimism as Sila identity residuals.
                   masked=re.sub(r'https?://github\.com/'+re.escape(u)+r'[A-Za-z0-9_.-]+', '__THIRD_PARTY_GITHUB__', s)
                   if word_identity.search(masked) or exact_gh.search(masked) or exact_domains.search(masked):
                       residual.append('TEXT:'+rel)
@@ -203,9 +205,10 @@ jobs:
           npm ci
           npm run build
 
-          # Keep the temporary workflow byte-for-byte unchanged during the bot push.
+          # Restore all target workflows byte-for-byte so GITHUB_TOKEN never attempts a workflow-file mutation.
+          rm -rf .github/workflows
           mkdir -p .github/workflows
-          cp /tmp/sila-sync-workflow.yml .github/workflows/verify-build.yml
+          cp -a /tmp/sila-sync-workflows/. .github/workflows/
 
           git config user.name 'SILA Network'
           git config user.email 'sila-chain@users.noreply.github.com'
