@@ -1,0 +1,40 @@
+{
+  "id": 8368,
+  "title": "SIP-8368: CPSB Recalibration for New Gas Limit",
+  "status": "Draft",
+  "description": "Re-derives the cost per state byte (CPSB) parameter introduced in SIP-8037 for a new reference block gas limit",
+  "author": "Maria Silva (@misilva73), Toni Wahrstätter (@nerolation)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-08-05",
+  "discussionLink": "https://sila-magicians.org/t/sip-8368-cpsb-recalibration-for-new-gas-limit/29293",
+  "requires": [
+    8037
+  ],
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/243",
+          "date": "2026-08-13"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Maria Silva",
+          "discord": "misilva73"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "SIP-8037 prices each new byte of state using a figure derived from a 150 million gas block. Raise the gas limit and that figure no longer holds state growth to target. This proposal re-derives it for a higher limit. The new numbers are not yet decided.",
+  "benefits": [
+    "Keeps state growth on target as the block gas limit rises past 150 million",
+    "Changes one parameter; every other mechanism in SIP-8037 is untouched"
+  ],
+  "tradeoffs": null
+}

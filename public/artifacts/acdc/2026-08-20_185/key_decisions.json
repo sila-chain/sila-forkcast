@@ -1,0 +1,73 @@
+{
+  "meeting": "ACDC #185 - August 20, 2026",
+  "key_decisions": [
+    {
+      "original_text": "SIP-7610 cancelled from Glamsterdam; not postponed — superseded by SIP-8253 targeting Hegota",
+      "timestamp": "00:30:21",
+      "type": "stage_change",
+      "sips": [
+        7610
+      ],
+      "stage_change": {
+        "to": "Declined"
+      },
+      "fork": "Glamsterdam",
+      "context": "not postponed — superseded by SIP-8253 targeting Hegota"
+    },
+    {
+      "original_text": "Non-finality DevNet targeted for the week after next; all clients must be on trunk/unstable branches first",
+      "timestamp": "00:23:04",
+      "type": "other",
+      "sips": []
+    },
+    {
+      "original_text": "SIP-8333 PFI'd for Hegota",
+      "timestamp": "00:54:23",
+      "type": "stage_change",
+      "sips": [
+        8333
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota"
+    },
+    {
+      "original_text": "SIP-8379 PFI'd for Hegota",
+      "timestamp": "00:54:23",
+      "type": "stage_change",
+      "sips": [
+        8379
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota"
+    },
+    {
+      "original_text": "SIP-8383 PFI'd for Hegota",
+      "timestamp": "00:54:23",
+      "type": "stage_change",
+      "sips": [
+        8383
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota",
+      "context": "technical discussion to continue on SIL R&D"
+    },
+    {
+      "original_text": "SIP-8253 PFI'd for Hegota (supersedes SIP-7610)",
+      "timestamp": "00:30:21",
+      "type": "stage_change",
+      "sips": [
+        8253
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota"
+    }
+  ]
+}

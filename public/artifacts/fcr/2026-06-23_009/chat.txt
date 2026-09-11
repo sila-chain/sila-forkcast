@@ -1,0 +1,6 @@
+00:05:24	Mikhail Kalinin:	https://github.com/sila-chain/pm/issues/2079
+00:13:45	Nico Flaig:	we are also passing the fcr spec tests for gloas that we have since alpha.11
+00:15:32	Mikhail Kalinin:	https://github.com/sila-chain/consensus-specs/pull/5376
+00:18:34	Mikhail Kalinin:	https://github.com/sila-chain/beacon-APIs/pull/616
+00:18:57	Mikhail Kalinin:	https://github.com/sila-chain/beacon-metrics/pull/22
+00:26:55	Nico Flaig:	https://lab.ethpandaops.io/sila/live

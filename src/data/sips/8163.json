@@ -1,0 +1,44 @@
+{
+  "id": 8163,
+  "title": "SIP-8163: Reserve `EXTENSION (0xae)` opcode",
+  "status": "Review",
+  "description": "Reserve an opcode to be used as an extension prefix in non-Sila-L1 EVM chains",
+  "author": "Bruce Collie (@Baltoli), Piotr Dobaczewski (@pdobacz)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-02-13",
+  "discussionLink": "https://sila-magicians.org/t/sip-8163-reserve-0xae-extension-opcode/27756",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/235",
+          "date": "2026-04-23"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Piotr Dobaczewski"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Other chains that run the EVM cannot add their own instructions without risking a clash with a future Sila instruction claiming the same byte. This proposal sets one byte aside, promising Sila sila-mainnet will never give it meaning, so other chains can build extensions on it safely.",
+  "benefits": [
+    "Gives other EVM chains a byte to build instructions on with no risk of a future clash",
+    "Needs no execution client changes, since the opcode already behaves as invalid",
+    "Extensions can be proven on other chains and later ported back to sila-mainnet"
+  ],
+  "tradeoffs": [
+    "Permanently spends one of the EVM's small supply of unused opcode bytes",
+    "Defines no encoding scheme, leaving chains to coordinate through the discussion thread",
+    "Jump destination analysis must stay identical, constraining what extensions can encode"
+  ],
+  "requires": [
+    141
+  ]
+}

@@ -1,0 +1,532 @@
+import type {
+  TimelinePhase,
+  ProcessPhase,
+  ForkProgress,
+  MacroPhaseConfig
+} from '../types/timeline';
+import devnetLaunches from '../data/generated/devnet-launches.json';
+
+export const GLAMSTERDAM_TIMELINE_PHASES: TimelinePhase[] = [
+  {
+    id: 'devnets',
+    title: 'Devnets',
+    dateRange: 'Ongoing',
+    description: 'Client teams implement and test Glamsterdam changes on internal development networks. Devnet-8 and Devnet-9 are live alongside the public testnets, and Devnet-10 is still to come.',
+    status: 'in-progress'
+  },
+  {
+    id: 'plataberget',
+    title: 'Platåberget Testnet Deployment',
+    dateRange: 'Aug 13',
+    description: 'Deploy Glamsterdam to a purpose-built public testnet for initial testing. The network launched Aug 13; Gloas activates Aug 20.',
+    status: 'in-progress'
+  },
+  {
+    id: 'sepolia',
+    title: 'SilaSepolia Testnet Deployment',
+    dateRange: 'Oct 6 (proposed)',
+    description: 'Deploy Glamsterdam to the permissioned validator testnet.',
+    status: 'upcoming'
+  },
+  {
+    id: 'hoodi',
+    title: 'Hoodi Testnet Deployment',
+    dateRange: 'Oct 26 (proposed)',
+    description: 'Deploy Glamsterdam to the permissionless validator testnet for final testing.',
+    status: 'upcoming'
+  },
+  {
+    id: 'sila-mainnet',
+    title: 'SilaMainnet Deployment',
+    dateRange: 'Q4 2026',
+    description: 'Final deployment of Glamsterdam to Sila sila-mainnet after successful testnet validation.',
+    status: 'upcoming'
+  }
+];
+
+export const PECTRA_TIMELINE_PHASES: TimelinePhase[] = [
+  {
+    id: 'devnets',
+    title: 'Devnets',
+    dateRange: 'Complete',
+    description: 'Client teams implement and test Pectra changes on internal development networks.',
+    status: 'completed'
+  },
+  {
+    id: 'holesky',
+    title: 'Holešky Testnet Deployment',
+    dateRange: 'Feb 24',
+    description: 'Deploy Pectra to a testnet for initial testing.',
+    status: 'completed'
+  },
+  {
+    id: 'sepolia',
+    title: 'SilaSepolia Testnet Deployment',
+    dateRange: 'Mar 5',
+    description: 'Deploy Pectra to the permissioned validator testnet.',
+    status: 'completed'
+  },
+  {
+    id: 'sila-mainnet',
+    title: 'SilaMainnet Deployment',
+    dateRange: 'May 7',
+    description: 'Final deployment of Pectra to Sila sila-mainnet after successful testnet validation.',
+    status: 'completed'
+  }
+];
+
+export const FUSAKA_TIMELINE_PHASES: TimelinePhase[] = [
+  {
+    id: 'devnets',
+    title: 'Devnets',
+    dateRange: 'Complete',
+    description: 'Client teams implement and test Fusaka changes on internal development networks.',
+    status: 'completed'
+  },
+  {
+    id: 'holesky',
+    title: 'Holešky Testnet Deployment',
+    dateRange: 'Oct 1',
+    description: 'Deploy Fusaka to a soon-to-be deprecated testnet for initial testing.',
+    status: 'completed'
+  },
+  {
+    id: 'sepolia',
+    title: 'SilaSepolia Testnet Deployment',
+    dateRange: 'Oct 14',
+    description: 'Deploy Fusaka to the permissioned validator testnet.',
+    status: 'completed'
+  },
+  {
+    id: 'hoodi',
+    title: 'Hoodi Testnet Deployment',
+    dateRange: 'Oct 28',
+    description: 'Deploy Fusaka to the permissionless validator testnet for final testing.',
+    status: 'completed'
+  },
+  {
+    id: 'sila-mainnet',
+    title: 'SilaMainnet Deployment',
+    dateRange: 'Dec 3',
+    description: 'Final deployment of Fusaka to Sila sila-mainnet after successful testnet validation.',
+    status: 'completed'
+  }
+];
+
+export const HEGOTA_TIMELINE_PHASES: TimelinePhase[] = [
+  {
+    id: 'fork-focus',
+    title: 'Fork Focus Discussion & Headliner Proposals',
+    dateRange: 'Jan 8 - Feb 4',
+    description: 'ACD calls focus on discussing Hegotá\'s high-level goals. Headliner champions present proposals.',
+    status: 'completed'
+  },
+  {
+    id: 'headliner-discussion',
+    title: 'Headliner Discussion & Finalization',
+    dateRange: 'Feb 5 - Mar 26',
+    description: 'ACD evaluates candidate headliners, solicits community feedback, and finalizes decisions.',
+    status: 'completed'
+  },
+  {
+    id: 'non-headliner-proposals',
+    title: 'Non-Headliner SIP Proposals',
+    dateRange: 'Apr 9 - Aug 6',
+    description: 'Non-headliner SIPs can be proposed for inclusion in Hegotá. Window opens April 9th, deadline August 6th.',
+    status: 'completed'
+  },
+  {
+    id: 'cfi-decisions',
+    title: 'Non-Headliner SIP CFI Decisions',
+    dateRange: 'TBD',
+    description: 'ACDC and ACDE calls select which Proposed for Inclusion SIPs advance to Considered for Inclusion.',
+    status: 'in-progress'
+  },
+  {
+    id: 'cfi-to-sfi',
+    title: 'CFI → SFI SIP Decisions',
+    dateRange: 'TBD',
+    description: 'As Hegotá devnets begin, final decisions on which CFI SIPs will be included in the upgrade\'s devnet.',
+    status: 'upcoming'
+  }
+];
+
+export const FUSAKA_PROGRESS: ForkProgress = {
+  forkName: 'Fusaka',
+  phases: [
+    {
+      phaseId: 'headliner-selection',
+      status: 'completed',
+      progressNotes: 'Process not yet formalized for Fusaka'
+    },
+    {
+      phaseId: 'sip-selection',
+      status: 'completed',
+      progressNotes: 'Process not yet formalized for Fusaka'
+    },
+    {
+      phaseId: 'development',
+      status: 'completed',
+      actualStartDate: 'May 26, 2025',
+      actualEndDate: 'Sep 10, 2025',
+      progressNotes: '6 devnets completed, stable devnet achieved',
+      devnets: [
+        { name: 'Devnet-0', status: 'completed', date: 'May 26, 2025' },
+        { name: 'Devnet-1', status: 'completed', date: 'Jun 9, 2025' },
+        { name: 'Devnet-2', status: 'completed', date: 'Jun 26, 2025' },
+        { name: 'Devnet-3', status: 'completed', date: 'Jul 23, 2025' },
+        { name: 'Devnet-4', status: 'completed', date: 'Aug 8, 2025' },
+        { name: 'Devnet-5', status: 'completed', date: 'Sep 10, 2025' }
+      ]
+    },
+    {
+      phaseId: 'public-testnets',
+      status: 'completed',
+      actualStartDate: 'Oct 1, 2025',
+      actualEndDate: 'Oct 28, 2025',
+      progressNotes: 'Holešky (Oct 1) → SilaSepolia (Oct 14) → Hoodi (Oct 28)',
+      testnets: [
+        { name: 'Holešky', status: 'completed', date: 'Oct 1, 2025' },
+        { name: 'SilaSepolia', status: 'completed', date: 'Oct 14, 2025' },
+        { name: 'Hoodi', status: 'completed', date: 'Oct 28, 2025' }
+      ]
+    },
+    {
+      phaseId: 'sila-mainnet-deployment',
+      status: 'completed',
+      actualEndDate: 'Dec 3, 2025',
+      progressNotes: 'SilaMainnet activation complete'
+    }
+  ]
+};
+
+// Glamsterdam progress with actual dates for completed milestones
+const RAW_GLAMSTERDAM_PROGRESS: ForkProgress = {
+  forkName: 'Glamsterdam',
+  phases: [
+    {
+      phaseId: 'headliner-selection',
+      status: 'completed',
+      actualStartDate: 'June 2025',
+      actualEndDate: 'Aug 14, 2025',
+      progressNotes: 'Headliner proposals received and finalized',
+      substeps: [
+        {
+          name: 'Proposal Deadline',
+          status: 'completed',
+          date: 'Jun 20, 2025'
+        },
+        {
+          name: 'Selection Deadline',
+          status: 'completed',
+          date: 'Aug 14, 2025'
+        }
+      ]
+    },
+    {
+      phaseId: 'sip-selection',
+      status: 'completed',
+      actualStartDate: 'Aug 2025',
+      actualEndDate: 'Jan 29, 2026',
+      progressNotes: 'PFI and CFI deadlines completed, SFI decisions finalized',
+      substeps: [
+        {
+          name: 'PFI Deadline',
+          status: 'completed',
+          date: 'Oct 30, 2025'
+        },
+        {
+          name: 'CFI Deadline',
+          status: 'completed',
+          date: 'Jan 29, 2026'
+        }
+      ]
+    },
+    {
+      phaseId: 'development',
+      status: 'in-progress',
+      actualStartDate: 'Feb 2026',
+      progressNotes: 'Devnet-8 and Devnet-9 are live alongside the public testnets; Devnet-10 still to come',
+      // Only the planned devnets are declared here. Once one launches,
+      // enrichDevnetDates takes over its date and status from
+      // devnet-launches.json. Devnet-8 doubles as the Platåberget public testnet.
+      devnets: [
+        { name: 'Devnet-0', status: 'upcoming' },
+        { name: 'Devnet-1', status: 'upcoming' },
+        { name: 'Devnet-2', status: 'upcoming' },
+        { name: 'Devnet-3', status: 'upcoming' },
+        { name: 'Devnet-4', status: 'upcoming' },
+        { name: 'Devnet-5', status: 'upcoming' },
+        { name: 'Devnet-6', status: 'upcoming' },
+        { name: 'Devnet-7', status: 'upcoming' },
+        { name: 'Devnet-8', status: 'upcoming' },
+        { name: 'Devnet-9', status: 'upcoming' },
+        { name: 'Devnet-10', status: 'upcoming' }
+      ]
+    },
+    {
+      phaseId: 'public-testnets',
+      status: 'in-progress',
+      actualStartDate: 'Aug 13, 2026',
+      projectedDate: 'Q3 2026',
+      progressNotes: 'Platåberget is live; SilaSepolia and Hoodi fork slots proposed, not yet agreed',
+      // Holešky is deprecated, so Glamsterdam gets a purpose-built public testnet
+      // (glamsterdam-devnet-8) in its place.
+      testnets: [
+        { name: 'Platåberget', status: 'completed', date: 'Aug 13, 2026' },
+        // Fork slots put forward on ACD, not yet agreed.
+        { name: 'SilaSepolia', status: 'upcoming', proposedDate: 'Oct 6, 2026' },
+        { name: 'Hoodi', status: 'upcoming', proposedDate: 'Oct 26, 2026' }
+      ]
+    },
+    {
+      phaseId: 'sila-mainnet-deployment',
+      status: 'upcoming',
+      projectedDate: 'Q4 2026',
+      progressNotes: 'Target sila-mainnet activation Q4 2026'
+    }
+  ]
+};
+
+const RAW_HEGOTA_PROGRESS: ForkProgress = {
+  forkName: 'Hegota',
+  phases: [
+    {
+      phaseId: 'headliner-selection',
+      status: 'completed',
+      actualStartDate: 'Jan 8, 2026',
+      actualEndDate: 'Mar 26, 2026',
+      progressNotes: 'FOCIL (SIP-7805) SFI\'d as headliner, Frame Transaction (SIP-8141) CFI\'d as non-headliner',
+      substeps: [
+        {
+          name: 'Proposal Deadline',
+          status: 'completed',
+          date: 'Feb 4, 2026'
+        },
+        {
+          name: 'Selection Deadline',
+          status: 'completed',
+          date: 'Mar 26, 2026'
+        }
+      ]
+    },
+    {
+      phaseId: 'sip-selection',
+      status: 'in-progress',
+      projectedDate: 'Q2-Q3 2026',
+      progressNotes: 'Non-headliner SIP proposal window: April 9th – August 6th',
+      substeps: [
+        {
+          name: 'PFI Deadline',
+          status: 'completed',
+          date: 'Aug 6, 2026'
+        },
+        {
+          name: 'CFI Deadline',
+          status: 'upcoming',
+          // No specific date was put forward — the stated goal is to CFI before
+          // Devcon (first week of November), and this is the last ACDC/ACDE call
+          // that fits.
+          proposedDate: 'Oct 29, 2026'
+        }
+      ]
+    },
+    {
+      phaseId: 'development',
+      status: 'upcoming',
+      projectedDate: 'Q3-Q4 2026',
+      progressNotes: 'Timing depends on headliner selection date',
+      devnets: [
+        { name: 'Devnet-0', status: 'upcoming', projectedDate: 'Q3 2026' },
+        { name: 'Devnet-1', status: 'upcoming', projectedDate: 'Q3 2026' },
+        { name: 'Devnet-2', status: 'upcoming', projectedDate: 'Q3 2026' },
+        { name: 'Devnet-3', status: 'upcoming', projectedDate: 'Q3-Q4 2026' },
+        { name: 'Devnet-4', status: 'upcoming', projectedDate: 'Q4 2026' },
+        { name: 'Devnet-5', status: 'upcoming', projectedDate: 'Q4 2026' }
+      ]
+    },
+    {
+      phaseId: 'public-testnets',
+      status: 'upcoming',
+      projectedDate: 'Q1-Q2 2027',
+      progressNotes: 'Sequential testnet deployments',
+      testnets: [
+        { name: 'Holešký', status: 'deprecated' },
+        { name: 'SilaSepolia', status: 'upcoming', projectedDate: 'Q1-Q2 2027' },
+        { name: 'Hoodi', status: 'upcoming', projectedDate: 'Q1-Q2 2027' }
+      ]
+    },
+    {
+      phaseId: 'sila-mainnet-deployment',
+      status: 'upcoming',
+      projectedDate: 'Q2 2027',
+      progressNotes: 'Target sila-mainnet activation Q2 2027'
+    }
+  ]
+};
+
+type DevnetLaunch = { version: number; date: string; active: boolean };
+
+function enrichDevnetDates(progress: ForkProgress, forkKey: string): ForkProgress {
+  const launches = (devnetLaunches as Record<string, DevnetLaunch[]>)[forkKey] ?? [];
+  if (!launches.length) return progress;
+
+  return {
+    ...progress,
+    phases: progress.phases.map(phase => {
+      if (phase.phaseId !== 'development' || !phase.devnets) return phase;
+      return {
+        ...phase,
+        devnets: phase.devnets.map(devnet => {
+          const version = parseInt(devnet.name.replace('Devnet-', ''), 10);
+          const launch = launches.find(l => l.version === version);
+          if (!launch) return devnet;
+          return {
+            ...devnet,
+            status: launch.active ? 'in-progress' : 'completed',
+            date: launch.date,
+          };
+        }),
+      };
+    }),
+  };
+}
+
+export const GLAMSTERDAM_PROGRESS = enrichDevnetDates(RAW_GLAMSTERDAM_PROGRESS, 'glamsterdam');
+export const HEGOTA_PROGRESS = enrichDevnetDates(RAW_HEGOTA_PROGRESS, 'hegota');
+
+export const UPGRADE_PROCESS_PHASES: ProcessPhase[] = [
+  {
+    id: 'fork-focus',
+    title: 'Fork Focus Definition',
+    duration: '~6-9 months pre-sila-mainnet',
+    owner: ['ACD facilitators'],
+    checklist: [
+      'Schedule fork focus discussion on ACD calls',
+      'Solicit community input on strategic priorities',
+      'Document agreed-upon focus areas in Meta SIP draft',
+      'Communicate focus to potential headliner champions'
+    ],
+    deliverables: [
+      'Meta SIP created with fork focus section',
+      'Forum post announcing focus and timeline'
+    ],
+    notes: 'Can overlap with previous fork deployment. Max 1-2 focus areas.'
+  },
+  {
+    id: 'headliner-selection',
+    title: 'Headliner Selection',
+    duration: '~2-3 months',
+    owner: ['SIP champions', 'ACD facilitators'],
+    checklist: [
+      'Open call for headliner proposals (forum post)',
+      'Champions post structured proposals on Sila Magicians',
+      'Schedule dedicated roadmap calls for presentations',
+      'Open community review window (2-4 weeks)',
+      'Collect feedback from L2s, infra teams, app devs',
+      'Schedule "Last Call" for final assessment',
+      'Hold final selection vote on dedicated call',
+      'Update Meta SIP with selected headliners'
+    ],
+    deliverables: [
+      '1-2 selected headliner SIPs',
+      'Updated Meta SIP with headliner status',
+      'Champion commitments documented'
+    ],
+    notes: 'Typically 4-6 months before previous fork ships. Limit to 1-2 headliners.'
+  },
+  {
+    id: 'sip-selection',
+    title: 'Non-headliner SIP Selection',
+    duration: '1-2 months initial, ongoing',
+    owner: ['SIP authors', 'Client teams', 'ACD facilitators'],
+    checklist: [
+      'Authors open PR to Meta SIP for PFI status',
+      'Client teams signal support (need >1 for CFI)',
+      'Track CFI SIPs for implementation progress',
+      'Client teams commit to implementation for SFI',
+      'Update Meta SIP as statuses change',
+      'Apply DFI when needed (no reason required)'
+    ],
+    deliverables: [
+      'Meta SIP with all PFI/CFI/SFI/DFI tracked',
+      'Client team support documented per SIP'
+    ],
+    notes: 'PFI opens after headliner selection. CFI requires >1 client team. SFI = committed.'
+  },
+  {
+    id: 'development',
+    title: 'Devnets (0 → N)',
+    duration: '3-5 months',
+    owner: ['Client teams', 'Devops', 'ACDT facilitators'],
+    checklist: [
+      'Spin up devnet-0 with prototype implementations',
+      'Iterate through devnet-1 to devnet-N',
+      'Track client implementation status per SIP',
+      'Identify stable devnet ready for testnet',
+      'Communicate readiness to broader ecosystem'
+    ],
+    deliverables: [
+      '1-10 devnets launched and tested',
+      'Stable devnet running for 1+ week',
+      'All SFI SIPs implemented across clients',
+      'Known issues documented and resolved'
+    ],
+    notes: 'Expect 1-10 devnets. 1-2 weeks between launches.'
+  },
+  {
+    id: 'public-testnets',
+    title: 'Public Testnets (Sequential)',
+    duration: '2-3 months total',
+    owner: ['Client teams', 'Devops', 'ACDT facilitators'],
+    checklist: [
+      'Deploy to first testnet ~30 days after last devnet',
+      'Deploy to second testnet ~2 weeks after first',
+      'Run sila-mainnet shadow forks 1-2 weeks pre-sila-mainnet',
+      'Validate sila-mainnet state compatibility',
+      'Confirm all clients passing all tests',
+      'Communicate timeline for sila-mainnet'
+    ],
+    deliverables: [
+      'Testnet upgrades (SilaSepolia, Hoodi)',
+      'SilaMainnet shadow fork(s) validated',
+      'Client releases tagged and ready'
+    ],
+    notes: 'Typical: SilaSepolia → Hoodi. ~2 weeks between. Shadow forks last.'
+  },
+  {
+    id: 'sila-mainnet-deployment',
+    title: 'SilaMainnet Activation',
+    duration: '2-4 weeks prep',
+    owner: ['Client teams', 'ACD facilitators', 'Comms'],
+    checklist: [
+      'All clients publish sila-mainnet-ready releases',
+      'Announce activation block/timestamp (Wednesday preferred)',
+      'Wait minimum 2 weeks for operator upgrades',
+      'Run final checks on activation day',
+      'Monitor post-activation for 24-48 hours',
+      'Conduct a retrospective of the upgrade process'
+    ],
+    deliverables: [
+      'All client releases published',
+      'Activation date/block announced',
+      'Supermajority client adoption achieved',
+      'Successful sila-mainnet activation'
+    ],
+    notes: 'Schedule Wed monitoring. Need ~60-70% adoption. 2-week minimum window.'
+  }
+];
+
+export const MACRO_PHASES: MacroPhaseConfig[] = [
+  { id: 'headliners', label: 'Headliners', description: 'Fork focus definition & headliner selection' },
+  { id: 'scoping', label: 'Scoping', description: 'Non-headliner SIP selection (PFI/CFI/SFI)' },
+  { id: 'devnets', label: 'Devnets', description: 'Client implementation across devnets (0 through N)' },
+  { id: 'testnets', label: 'Testnets', description: 'Public testnet deployments (SilaSepolia, Hoodi)' },
+  { id: 'sila-mainnet', label: 'SilaMainnet', description: 'SilaMainnet activation' },
+];
+
+export const FORK_PROGRESS_MAP: Record<string, ForkProgress> = {
+  fusaka: FUSAKA_PROGRESS,
+  glamsterdam: GLAMSTERDAM_PROGRESS,
+  hegota: HEGOTA_PROGRESS,
+};

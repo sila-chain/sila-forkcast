@@ -1,0 +1,12 @@
+{
+  "id": 867,
+  "title": "SIP-867: Standardized Sila Recovery Proposals",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Dan Phifer <dp@musiconomi.com>, James Levy <james@taptrust.com>, Reuben Youngblom <reuben@taptrust.com>",
+  "type": "Meta",
+  "createdDate": "2018-02-02",
+  "discussionLink": "https://sila-magicians.org/t/sip-867-standardized-sila-recovery-proposals-erps/139",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

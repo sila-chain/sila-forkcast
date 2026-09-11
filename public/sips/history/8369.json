@@ -1,0 +1,23 @@
+{
+  "eipId": 8369,
+  "commits": [
+    {
+      "sha": "51dc7b939adae83369e1bf37b9ad71a3b190cd00",
+      "date": "2026-09-02T06:30:39Z",
+      "message": "Update SIP-8369: Clarify SIP-8369 review follow-ups",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 9,
+      "deletions": 11
+    },
+    {
+      "sha": "8f1fe737929d0816743c66fd334710de9af7384a",
+      "date": "2026-09-01T23:39:37Z",
+      "message": "Add SIP: VOPS Profiles for FOCIL Eligibility",
+      "author": "soispoke",
+      "prNumber": null,
+      "additions": 214,
+      "deletions": 0
+    }
+  ]
+}

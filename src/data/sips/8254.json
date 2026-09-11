@@ -1,0 +1,40 @@
+{
+  "id": 8254,
+  "title": "SIP-8254: Cap Deposit Requests Per Block",
+  "status": "Draft",
+  "description": "Limits the number of deposit requests in an Execution Layer block to 8192",
+  "author": "pk910 (@pk910), Barnabas Busa (@barnabasbusa)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-05-06",
+  "discussionLink": "https://sila-magicians.org/t/sip-8254-cap-deposit-requests-per-block/28453",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Glamsterdam",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/236",
+          "date": "2026-05-07",
+          "timestamp": 3375
+        },
+        {
+          "status": "Declined",
+          "call": null,
+          "date": null
+        }
+      ],
+      "champions": [
+        {
+          "name": "Barnabas Busa",
+          "discord": "barnabasbusa"
+        }
+      ]
+    }
+  ],
+  "tradeoffs": null,
+  "requires": [
+    6110
+  ]
+}

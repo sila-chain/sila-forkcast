@@ -1,0 +1,18 @@
+{
+  "id": 607,
+  "title": "SIP-607: \"Hardfork Meta: Spurious Dragon\"",
+  "status": "Final",
+  "description": "",
+  "author": "Alex Beregszaszi (@axic)",
+  "type": "Meta",
+  "createdDate": "2017-04-23",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    155,
+    160,
+    161,
+    170,
+    608
+  ]
+}

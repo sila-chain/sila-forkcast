@@ -1,0 +1,44 @@
+{
+  "id": 2488,
+  "title": "SIP-2488: Deprecate the CALLCODE opcode",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Alex Beregszaszi (@axic)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-12-20",
+  "discussionLink": "https://sila-magicians.org/t/sip-2488-deprecate-the-callcode-opcode/3957",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/239",
+          "date": "2026-06-18"
+        },
+        {
+          "status": "Declined",
+          "call": "acde/245",
+          "date": "2026-09-10"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "CALLCODE is an original Sila instruction that proved flawed within months of launch and was superseded by DELEGATECALL in early 2016. Almost nothing uses it, yet every client must still implement it. This proposal makes CALLCODE always report failure, so the behavior behind it no longer has to be carried forward.",
+  "benefits": [
+    "Retires an instruction superseded by DELEGATECALL in 2016 and effectively unused since",
+    "Removes logic that every EVM implementation currently has to carry and maintain",
+    "Helps light clients and clients syncing from a recent point rather than genesis"
+  ],
+  "tradeoffs": [
+    "Breaking change: any contract still using CALLCODE fails instead of executing",
+    "The claim that no contracts of value are affected is explicitly unvalidated",
+    "No benefit for clients that sync from genesis and must keep the old behavior"
+  ],
+  "requires": [
+    7
+  ]
+}

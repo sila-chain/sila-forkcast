@@ -1,0 +1,17 @@
+{
+  "id": 1193,
+  "title": "SIP-1193: Sila Provider JavaScript API",
+  "status": "Final",
+  "description": "",
+  "author": "Fabian Vogelsteller (@frozeman), Ryan Ghods (@ryanio), Victor Maia (@MaiaVictor), Marc Garreau (@wolovim), Erik Marks (@rekmarks)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2018-06-30",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/2319",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    155,
+    695
+  ]
+}

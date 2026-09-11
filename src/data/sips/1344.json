@@ -1,0 +1,16 @@
+{
+  "id": 1344,
+  "title": "SIP-1344: ChainID opcode",
+  "status": "Final",
+  "description": "",
+  "author": "Richard Meissner (@rmeissner), Bryant Eisenbach (@fubuloubu)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2018-08-22",
+  "discussionLink": "https://sila-magicians.org/t/add-chain-id-opcode-for-replay-protection-when-handling-signed-messages-in-contracts/1131",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    155
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": 1015,
+  "title": "SIP-1015: Configurable On Chain Issuance",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Alex Van de Sande <avsa@sila.org>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2018-04-20",
+  "discussionLink": "https://sila-magicians.org/t/sip-dynamic-block-rewards-with-governance-contract/204",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

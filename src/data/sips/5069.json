@@ -1,0 +1,15 @@
+{
+  "id": 5069,
+  "title": "SIP-5069: SIP Editor Handbook",
+  "status": "Living",
+  "description": "Organizational structure, decision making process, and other SIP Editor odds and ends.",
+  "author": "Pooja Ranjan (@poojaranjan), Gavin John (@Pandapip1), Sam Wilson (@SamWilsn), et al.",
+  "type": "Meta",
+  "createdDate": "2022-05-02",
+  "discussionLink": "https://sila-magicians.org/t/pr-5069-sip-editor-handbook/9137",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": 6968,
+  "title": "SIP-6968: Contract Secured Revenue on an EVM based L2",
+  "status": "Stagnant",
+  "description": "Contract Secured Revenue on an EVM based L2",
+  "author": "Zak Cole <zak@numbergroup.xyz>, Zak Cole (@zscole), Kevin Owocki <kevin@supermodular.xyz>, lightclient (@lightclient)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2023-05-01",
+  "discussionLink": "https://sila-magicians.org/t/sip-6968-generalized-csr-protocol/14178",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

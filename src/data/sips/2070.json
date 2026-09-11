@@ -1,0 +1,15 @@
+{
+  "id": 2070,
+  "title": "SIP-2070: \"Hardfork Meta: Berlin\"",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "Alex Beregszaszi (@axic)",
+  "type": "Meta",
+  "createdDate": "2019-05-20",
+  "discussionLink": "https://sila-magicians.org/t/hardfork-meta-sip-2070-berlin-discussion/3561",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1679
+  ]
+}

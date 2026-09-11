@@ -1,0 +1,15 @@
+{
+  "id": 8134,
+  "title": "SIP-8134: Hardfork Meta - BPO1",
+  "status": "Final",
+  "description": "Blob parameter changes with BPO1 on Sila sila-mainnet.",
+  "author": "Pooja Ranjan (@poojaranjan)",
+  "type": "Meta",
+  "createdDate": "2026-01-24",
+  "discussionLink": "https://sila-magicians.org/t/sip-8134-hardfork-meta-bpo1/27582",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7892
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": 7705,
+  "title": "SIP-7705: NONREENTRANT and REENTRANT opcodes",
+  "status": "Stagnant",
+  "description": "Opcodes to mark a contract as nonreentrant",
+  "author": "Charles Cooper (@charles-cooper)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2024-05-09",
+  "discussionLink": "https://sila-magicians.org/t/sip-7705-nonreentrant-opcodes/19957",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

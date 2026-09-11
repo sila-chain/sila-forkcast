@@ -1,0 +1,13 @@
+{
+  "id": 7966,
+  "title": "SIP-7966: eth_sendRawTransactionSync Method",
+  "status": "Draft",
+  "description": "A JSON-RPC method to reduce transaction submission latency by allowing synchronous receipt of transaction hash and block inclusion.",
+  "author": "Sam Battenally (@SmoothBot), Hai Nguyen (@hai-rise), Thanh Nguyen (@LampardNguyen234), Loc Nguyen (@silver-rise)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2025-06-11",
+  "discussionLink": "https://sila-magicians.org/t/sip-7966-sil-sendrawtransactionsync-method/24640",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

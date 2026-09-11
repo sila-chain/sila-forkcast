@@ -1,0 +1,13 @@
+{
+  "id": 7864,
+  "title": "SIP-7864: Sila state using a unified binary tree",
+  "status": "Draft",
+  "description": "Switch Sila state tree to a unified binary tree",
+  "author": "Vitalik Buterin (@vbuterin), Guillaume Ballet (@gballet), Dankrad Feist (@dankrad), Ignacio Hagopian (@jsign), Kevaundray Wedderburn (@kevaundray), Tanishq Jasoria (@tanishqjasoria), Gajinder Singh (@g11tech), Danno Ferrin (@shemnon), Piper Merriam (@pipermerriam), Gottfried Herold (@GottfriedHerold)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-01-20",
+  "discussionLink": "https://sila-magicians.org/t/sip-7864-sila-state-using-a-unified-binary-tree/22611",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

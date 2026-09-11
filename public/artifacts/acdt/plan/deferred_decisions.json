@@ -1,0 +1,67 @@
+{
+  "series": "ACDT",
+  "generated": "2026-09-10",
+  "lookback_calls": [
+    "ACDT #91 - August 10, 2026",
+    "ACDT #92 - August 17, 2026",
+    "ACDT #93 - August 24, 2026",
+    "ACDT #94 - August 31, 2026",
+    "ACDT #95 - September 7th, 2026"
+  ],
+  "deferred": [
+    {
+      "topic": "Payload-flooding attack retest with duplicate envelope fix",
+      "deferred_in": "ACDT #91",
+      "deferred_date": "2026-08-10",
+      "expected_revisit": "DevNet 8",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "DevNet 8 launch pending repricing number confirmation",
+      "deferred_in": "ACDT #91",
+      "deferred_date": "2026-08-10",
+      "expected_revisit": "ACDE (August 14, 2026)",
+      "revisited": true,
+      "revisited_in": "ACDT #92",
+      "outcome": "DevNet 8 successfully launched and running by ACDT #92"
+    },
+    {
+      "topic": "SIP-7610 removal from Glamsterdam (formal decision)",
+      "deferred_in": "ACDT #92",
+      "deferred_date": "2026-08-17",
+      "expected_revisit": "ACDE in ~1.5 weeks",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SSZ testing with large genesis state",
+      "deferred_in": "ACDT #92",
+      "deferred_date": "2026-08-17",
+      "expected_revisit": "testnets",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-8037 cross-frame state gas bug fix (PR #12265)",
+      "deferred_in": "ACDT #94",
+      "deferred_date": "2026-08-31",
+      "expected_revisit": "ACDC call, September 4, 2026",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    },
+    {
+      "topic": "SIP-8253 inclusion in Glamsterdam vs Hegota",
+      "deferred_in": "ACDT #95",
+      "deferred_date": "2026-09-07",
+      "expected_revisit": "Thursday's ACDE",
+      "revisited": false,
+      "revisited_in": null,
+      "outcome": null
+    }
+  ]
+}

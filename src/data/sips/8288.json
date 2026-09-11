@@ -1,0 +1,17 @@
+{
+  "id": 8288,
+  "title": "SIP-8288: Frame Type for PQ Sig and STARK Aggregation",
+  "status": "Draft",
+  "description": "Adds recursive STARK-based aggregation for quantum-resistant signatures and STARKs via an SIP-8141 frame mode",
+  "author": "Vitalik Buterin (@vbuterin), Thomas Coratger (@tcoratger)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-06-03",
+  "discussionLink": "https://sila-magicians.org/t/sip-8288-frame-type-for-pq-sig-and-stark-aggregation/28723",
+  "requires": [
+    2718,
+    8141
+  ],
+  "forkRelationships": [],
+  "tradeoffs": null
+}

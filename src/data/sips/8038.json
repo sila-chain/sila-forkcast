@@ -1,0 +1,77 @@
+{
+  "id": 8038,
+  "title": "SIP-8038: State-access gas cost update",
+  "status": "Review",
+  "description": "Increases the gas cost of state-access operations to reflect Sila’s larger state",
+  "author": "Maria Silva (@misilva73), Wei Han Ng (@weiihann), Ansgar Dietrichs (@adietrichs)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-10-03",
+  "discussionLink": "https://sila-magicians.org/t/sip-8038-state-access-gas-cost-update/25693",
+  "reviewer": "expert",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Glamsterdam",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": null,
+          "date": null
+        },
+        {
+          "status": "Considered",
+          "call": "acde/226",
+          "date": "2025-12-18"
+        },
+        {
+          "status": "Scheduled",
+          "call": null,
+          "date": "2026-08-04"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Maria Silva",
+          "discord": "misilva73"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Increases gas costs for accessing state data to ensure alignment with current performance.",
+  "stakeholderImpacts": {
+    "endUsers": {
+      "description": "Users may experience cost adjustments for transactions related to state access."
+    },
+    "appDevs": {
+      "description": "Developers must account for higher state access costs, potentially leading to adjustments in gas estimations during deployment."
+    },
+    "walletDevs": {
+      "description": "Wallets need to update gas estimation logic to incorporate the new parameters, affecting the transaction success rate."
+    },
+    "toolingInfra": {
+      "description": "Tools must adapt to new gas cost models to ensure accurate reporting and analysis of transaction behaviors."
+    },
+    "layer2s": {
+      "description": "L2 implementations need to align with the updated state access costs; anticipate necessary updates to ensure compatibility."
+    },
+    "stakersNodes": {
+      "description": "Node operators must upgrade to new client versions to accommodate updated gas pricing; minimal impact on runtime behavior."
+    },
+    "clClients": {
+      "description": "No consensus changes expected for CL; only standard fork coordination. No new serialization or gossip rules necessitated by this proposal."
+    },
+    "elClients": {
+      "description": "Adaptations required in gas accounting for state access operations; must ensure compatibility with previous gas models and SIP-2929."
+    }
+  },
+  "benefits": [
+    "Improved alignment of gas costs with actual state access performance.",
+    "Enhanced network performance while maintaining optimal resource usage.",
+    "Encourages more efficient smart contract design by reflecting true operational costs."
+  ],
+  "tradeoffs": null,
+  "requires": [
+    8037
+  ]
+}

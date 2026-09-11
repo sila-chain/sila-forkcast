@@ -1,0 +1,41 @@
+{
+  "meeting": "ACDT #088 - 2026-07-20 (CL Breakout)",
+  "sections": [
+    {
+      "heading": "Devnet 7 Chaos Testing Plans",
+      "summary": "Blob spamming, deposit stress tests, and malicious CL node deployment are all planned for this week on devnet 7.",
+      "timestamp": "00:01:16",
+      "body": "- Grandine asked when more chaos testing (blob spamming, stress testing) would begin on devnet 7, noting the network is becoming stable enough to start breaking again.\n- Parithosh confirmed most chaos testing is planned for this week; basic spamming can start immediately.\n  - The malicious CL (Prysm) node needs a few PRs merged by the Aussie team before it can be released on the network.\n- The new 300 million gas limit has not been acutely tested on devnet 7 yet but will be.\n- No payload with more than 8,192 deposits has been submitted yet; Parithosh will do that.\n- Blob limit on devnet 7 is 21, same as sila-mainnet — unchanged from defaults."
+    },
+    {
+      "heading": "Malicious Prysm Node vs Death Star",
+      "summary": "The malicious Prysm node uses an orchestrator with a global view to coordinate builder and proposer misbehavior, complementing Death Star's malformed-payload approach.",
+      "timestamp": "00:03:18",
+      "body": "- The malicious Prysm node works alongside a malicious orchestrator that has a global view of the builder and proposer, enabling coordinated edge cases (e.g., builder releasing payload late while proposer withholds blobs).\n- Death Star already covers many edge cases such as malformed payloads.\n- Lodestar (Nico Flaig) has additional features planned for Death Star; coordination needed to avoid overlap with the malicious Prysm node.\n  - Death Star currently builds on empty and withholds PTC votes, and always reorgs payloads.\n  - Honest reorgs from genuinely late payloads on devnet 7 make it harder to distinguish malicious from honest behavior."
+    },
+    {
+      "heading": "Devnet 8 and Testnet Timeline",
+      "summary": "Devnet 8 targeted for approximately two weeks out; testnets ideally begin in September, contingent on benchmarking and repricing data.",
+      "timestamp": "00:05:08",
+      "body": "- Parithosh's ideal timeline: testnets in September.\n  - Depends on whether issues are found in the next month and on EL repricing numbers.\n- Devnet 8 goal: a large-ish, public-ish devnet approximately first week of August, inviting contract developers to deploy and stress-test.\n  - Roughly 2 weeks after devnet 8 launch to process data and inform repricing decisions.\n- A non-finality devnet is planned in parallel, covering 3 or 4 non-finality scenarios plus one potential decoupled consensus test.\n- By the end of this testing cycle, malicious proposals, basic fuzzing, benchmarking, and non-finality testing would all be complete."
+    },
+    {
+      "heading": "Builder API, Beacon API, and Key Manager API Readiness",
+      "summary": "Builder-related API specs (Beacon API POST ProduceBlock, Key Manager API, builder-specs) need review and merging before devnet 8; CommitBoost and PBS Foundation are waiting on finalized specs.",
+      "timestamp": "00:07:00",
+      "body": "- Potuz stressed that builder API paths — external builders called with signed authorizations, validator client and key manager API flows — must be tested before testnets; 99% of sila-mainnet blocks come through builders.\n- Prysm already has an implementation but it is not yet merged; the spec itself is not finalized.\n- Key open PRs:\n  - Potuz's Beacon API PR for POST version of ProduceBlock: [PR #625](https://github.com/sila-chain/beacon-APIs/pull/625)\n  - James's Key Manager API PR building on Potuz's work: [PR #87](https://github.com/sila-chain/keymanager-APIs/pull/87)\n  - Related builder-specs change: [commit](https://github.com/sila-chain/builder-specs/commit/5078eabc63cf092007bb933ae16209087c053eba)\n  - Luca's Beacon API improvement for produceBlockV4: [PR #627](https://github.com/sila-chain/beacon-APIs/pull/627)\n- Terence noted comments from last week on Potuz's PR are awaiting Potuz's response; merge conflicts exist since Nico's other PR was merged.\n- Parithosh asked if all these changes can target the next devnet (two-week ETA). Teku (Enrico) said Stefan is working on direct builder connections but could not commit to the timeline.\n- Lodestar has a draft PR for implementation but it needs significant work.\n- CommitBoost and PBS Foundation teams are willing to help test but are blocked on API finalization.\n  - MEV Boost community calls (hosted by PBS Foundation, biweekly) are a good venue to coordinate."
+    },
+    {
+      "heading": "Builder Preferences: Ahead-of-Time vs Just-in-Time",
+      "summary": "No consensus on whether builder preferences should be sent ahead of time; the strongest case for ahead-of-time was deemed unconvincing by some participants.",
+      "timestamp": "00:16:06",
+      "body": "- Nico Flaig raised uncertainty about whether builder preferences should be sent ahead of time or just in time, favoring simplicity and avoiding unnecessary complexity.\n- Some builders on Discord stated they needed ahead-of-time preferences but could not clearly explain why.\n- Dustin found Alex's comment (the strongest case for ahead-of-time) unconvincing: it described a timing edge case where a proposer changes their bid acceptance very late, giving builders only hundreds of milliseconds — but Dustin argued this is on the proposer, not a protocol concern.\n- No resolution; the topic remains open."
+    },
+    {
+      "heading": "Fork Choice and Attestation Analysis with Kurtosis",
+      "summary": "Potuz is running Kurtosis scenarios focused on fork choice and attestation correctness; some clients are attesting for unexpected blocks, and controlled peering helps isolate issues.",
+      "timestamp": "00:18:23",
+      "body": "- Potuz asked what Death Star is currently doing because he is running Kurtosis scenarios focused on how clients attest, and attestations appear scattered.\n  - Hard to pinpoint issues on the live devnet due to honest reorgs and Death Star's payload withholding.\n- Potuz emphasized the focus should be on fork choice correctness (why clients attest for the wrong block) rather than simply trying to break the chain.\n- Kurtosis provides controlled peering, making it easier to isolate fork choice issues than on the devnet.\n- Testing covers all types of withholding, long reorgs, and builder-proposer collusion scenarios.\n- Results so far: with an even distribution of clients, the network works collectively correctly, but some individual client attestations remain unexplained."
+    }
+  ]
+}

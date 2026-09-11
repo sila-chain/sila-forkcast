@@ -1,0 +1,12 @@
+{
+  "id": 7768,
+  "title": "SIP-7768: No-Sila transactions with free-for-all tips",
+  "status": "Stagnant",
+  "description": "Externally-owned account having no Sila can send transactions and pay tips using a new \"free-for-all\" bucket",
+  "author": "William Entriken (@fulldecent)",
+  "type": "Meta",
+  "createdDate": "2024-09-14",
+  "discussionLink": "https://sila-magicians.org/t/sip-7768-no-sila-transactions-with-free-for-all-tips/21108",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

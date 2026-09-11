@@ -1,0 +1,17 @@
+{
+  "id": 8310,
+  "title": "SIP-8310: Post-Quantum Keystore for Stateful Keys",
+  "status": "Draft",
+  "description": "A keystore format for XMSS and other consumable signing keys, defining state authority, durability ordering, and safe import/export.",
+  "author": "Anshal Shukla (@anshalshukla), Benedikt Wagner (@benedikt-wagner), Gajinder Singh (@g11tech), Guillaume Ballet (@gballet), Justin Drake (@JustinDrake), Kolby Moroz Liebl (@KolbyML), Parthasarathy Ramanujam (@ch4r10t33r), Shariq Naiyer (@shariqnaiyer), Thomas Coratger (@tcoratger), Unnawut Leepaisalsuwanna (@unnawut)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2026-06-19",
+  "discussionLink": "https://sila-magicians.org/t/sip-8310-post-quantum-keystore-for-stateful-keys/28853",
+  "requires": [
+    2335,
+    3076
+  ],
+  "forkRelationships": [],
+  "tradeoffs": null
+}

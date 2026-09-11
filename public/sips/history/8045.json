@@ -1,0 +1,42 @@
+{
+  "eipId": 8045,
+  "commits": [
+    {
+      "sha": "fd5e8784b7c1c655054a7ba8e41793458feeed57",
+      "date": "2026-07-29T17:24:23Z",
+      "message": "Update SIP-8045: Move to Review",
+      "author": "poojaranjan",
+      "prNumber": null,
+      "patch": "@@ -4,7 +4,7 @@ title: Exclude slashed validators from proposing\n description: Modify proposer selection to exclude slashed validators, improving network resilience and performance after mass slashings\n author: Francesco D'Amato (@fradamt), Barnabas Busa (@barnabasbusa)\n discussions-to: https://sila-magicians.org/t/sip-8045-exclude-slashed-validators-from-proposing/25850\n-status: Draft\n+status: Review\n type: Standards Track\n category: Core\n created: 2025-10-16",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "sha": "414a8404198c5afaa3cfed10a385a9aae1dfaae3",
+      "date": "2025-10-21T15:04:01Z",
+      "message": "Add SIP: Exclude slashed validators from proposing",
+      "author": "fradamt",
+      "prNumber": null,
+      "additions": 78,
+      "deletions": 0
+    }
+  ],
+  "openPrs": [
+    {
+      "number": 10632,
+      "title": "Update SIP-8045: misssed \"it\"",
+      "author": "avorylli",
+      "updatedAt": "2025-10-28T20:54:19Z",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "number": 11443,
+      "title": "Update SIP-8045: Exclude slashed validators from all duties",
+      "author": "barnabasbusa",
+      "updatedAt": "2026-04-16T11:28:43Z",
+      "additions": 58,
+      "deletions": 12
+    }
+  ]
+}
