@@ -1,0 +1,16 @@
+{
+  "id": 234,
+  "title": "SIP-234: Add `blockHash` to JSON-RPC filter options.",
+  "status": "Final",
+  "description": "",
+  "author": "Micah Zoltu (@MicahZoltu)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2017-03-24",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/234",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    1474
+  ]
+}

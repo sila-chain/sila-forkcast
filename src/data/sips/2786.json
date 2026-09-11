@@ -1,0 +1,16 @@
+{
+  "id": 2786,
+  "title": "SIP-2786: Sila Provider Connect/Disconnect Events",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "Micah Zoltu (@MicahZoltu), Erik Marks (@rekmarks)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2020-07-15",
+  "discussionLink": "https://github.com/sila-chain/SIPs/issues/2787",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2700
+  ]
+}

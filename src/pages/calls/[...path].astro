@@ -1,0 +1,111 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Layout from '../../layouts/Layout.astro';
+import CallPage from '../../components/call/CallPage';
+import { protocolCalls, getCallTypeName } from '../../data/calls';
+import { upcomingCalls, hasUpcomingWatchPage } from '../../domain/calls/upcomingCalls';
+import { breadcrumbList, callVideo } from '../../domain/seo/structuredData';
+
+// Canonical call pages (/calls/{series}/{number}) for completed calls, plus
+// upcoming-call watch pages from the build-time snapshot. Single-segment paths
+// like /calls/acde are handled by the higher-priority [type].astro scope route.
+interface CallPageRouteProps {
+  title: string;
+  description: string;
+  jsonLd?: ReadonlyArray<object | undefined>;
+  upcoming?: { date: string; youtubeUrl?: string; githubUrl: string; issueNumber: number };
+}
+
+export function getStaticPaths() {
+  const paths: Array<{ params: { path: string }; props: CallPageRouteProps }> = [];
+
+  // Declared here rather than at module scope: Astro evaluates getStaticPaths in
+  // isolation, so it can't reach the component's frontmatter bindings.
+  const callVideoUrl = (type: string, date: string, number: string): string | undefined => {
+    const config = path.join(
+      process.cwd(),
+      'public/artifacts',
+      type,
+      `${date}_${number}`,
+      'config.json',
+    );
+    try {
+      return JSON.parse(fs.readFileSync(config, 'utf-8')).videoUrl;
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code !== 'ENOENT') throw err;
+      return undefined;
+    }
+  };
+
+  for (const call of protocolCalls) {
+    const seriesName = getCallTypeName(call.type);
+    const name = call.name || seriesName;
+    // A hand-written name already reads as a full title, so it takes no number.
+    const numbered = call.name ? name : `${name} #${call.number}`;
+    const displayName = call.topic ? `${numbered} | ${call.topic}` : numbered;
+    const description = call.name
+      ? `Watch ${name} from ${call.date}.`
+      : `Watch ${name} call #${call.number} from ${call.date}.`;
+    paths.push({
+      params: { path: call.path },
+      props: {
+        title: `${displayName} - Forkcast`,
+        description,
+        jsonLd: [
+          callVideo({
+            name: displayName,
+            description,
+            date: call.date,
+            path: call.path,
+            videoUrl: callVideoUrl(call.type, call.date, call.number),
+          }),
+          breadcrumbList([
+            { name: 'Forkcast', url: 'https://forkcast.org/' },
+            { name: 'Calls', url: 'https://forkcast.org/calls/' },
+            { name: seriesName, url: `https://forkcast.org/calls/${call.type}/` },
+            { name: displayName },
+          ]),
+        ],
+      },
+    });
+  }
+
+  // Upcoming calls get an internal watch page only when the index links to one
+  // (i.e. there's a video to watch); calls without one link out to the GitHub
+  // issue instead, so emitting a page for them would be an unreachable route.
+  for (const call of upcomingCalls) {
+    if (!hasUpcomingWatchPage(call)) continue;
+    if (protocolCalls.some((c) => c.type === call.type && c.number === call.number)) continue;
+    const name = getCallTypeName(call.type);
+    paths.push({
+      params: { path: `${call.type}/${call.number}` },
+      props: {
+        title: `${name} #${call.number} - Forkcast`,
+        description: `Watch ${name} call #${call.number} from ${call.date}.`,
+        upcoming: {
+          date: call.date,
+          youtubeUrl: call.youtubeUrl,
+          githubUrl: call.githubUrl,
+          issueNumber: call.issueNumber,
+        },
+      },
+    });
+  }
+
+  return paths;
+}
+
+const callPath = Astro.params.path!;
+const { title, description, jsonLd, upcoming } = Astro.props;
+---
+
+<Layout
+  title={title}
+  description={description}
+  jsonLd={jsonLd}
+  navVariant="wide"
+  enableCallSearch
+>
+  <CallPage client:only="react" callPath={callPath} upcoming={upcoming} />
+</Layout>

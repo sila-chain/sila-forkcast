@@ -1,0 +1,16 @@
+{
+  "id": 3074,
+  "title": "SIP-3074: AUTH and AUTHCALL opcodes",
+  "status": "Withdrawn",
+  "description": "Allow externally owned accounts to delegate control to a contract.",
+  "author": "Sam Wilson (@SamWilsn), Ansgar Dietrichs (@adietrichs), Matt Garnett (@lightclient), Micah Zoltu (@micahzoltu)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2020-10-15",
+  "discussionLink": "https://sila-magicians.org/t/sip-3074-sponsored-transaction-precompile/4880",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    155
+  ]
+}

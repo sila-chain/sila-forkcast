@@ -1,0 +1,228 @@
+{
+  "id": "glamsterdam-devnet-4",
+  "title": "glamsterdam-devnet-4",
+  "sourceUrl": "https://notes.sila.org/@ethpandaops/glamsterdam-devnet-4",
+  "scrapedAt": "2026-09-11T06:43:10.256Z",
+  "announcements": [
+    "glamsterdam-devnet-4 targets to launch in late May 2026.",
+    "**First `glamsterdam-` prefixed CL+EL devnet** combining `consensus-specs` **v1.7.0-alpha.8** with the **bal-devnet-7** EL feature set, plus the new `targetGasLimit` engine API field ([execution-apis#796](https://github.com/sila-chain/execution-apis/pull/796) ↔ [consensus-specs#5235](https://github.com/sila-chain/consensus-specs/pull/5235)).",
+    "**`targetGasLimit` on `PayloadAttributesV4`** — CL now passes the per-validator target gas limit to the EL on `engine_forkchoiceUpdatedV4`, replacing the static EL-side flag. CL also enforces `target_gas_limit` consistency with the block's `gas_limit` (CL PR-5236).",
+    "**SIP-8037 final shape:** `cost_per_state_byte` **1174 → 1530** (fixed), `STATE_BYTES_PER_NEW_ACCOUNT` 112 → 120, `STATE_BYTES_PER_STORAGE_SET` 32 → 64. `SYSTEM_CALL_GAS_LIMIT` raised so system calls can't OOG on state-gas alone. Reference block gas limit raised 96M → **150M**.",
+    "**sil/70 (SIP-7975) and sil/71 (SIP-8159) are now mandatory** — every EL must implement both (promoted from optional in bal-devnet-7)."
+  ],
+  "sips": [
+    {
+      "number": 7708,
+      "title": "SIL transfers emit a log",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-7708"
+    },
+    {
+      "number": 7732,
+      "title": "Enshrined Proposer-Builder Separation",
+      "status": "updated",
+      "url": "https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7732.md"
+    },
+    {
+      "number": 7778,
+      "title": "Block Gas Accounting without Refunds",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-7778"
+    },
+    {
+      "number": 7843,
+      "title": "SLOTNUM opcode",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-7843"
+    },
+    {
+      "number": 7928,
+      "title": "Block-Level Access Lists",
+      "status": "updated",
+      "url": "https://sips.sila.org/EIPS/sip-7928"
+    },
+    {
+      "number": 7954,
+      "title": "Increase Maximum Contract Size",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-7954"
+    },
+    {
+      "number": 7975,
+      "title": "sil/70 - partial block receipt lists",
+      "status": "required",
+      "url": "https://sips.sila.org/EIPS/sip-7975"
+    },
+    {
+      "number": 7976,
+      "title": "Increase Calldata Floor Cost (64/64)",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-7976"
+    },
+    {
+      "number": 7981,
+      "title": "Increase Access List Cost",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-7981"
+    },
+    {
+      "number": 8024,
+      "title": "Backward compatible SWAPN, DUPN, EXCHANGE",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-8024"
+    },
+    {
+      "number": 8037,
+      "title": "State Creation Gas — CPSB=1530, system-call gas bump, halt/revert + SELFDESTRUCT refunds",
+      "status": "updated",
+      "url": "https://sips.sila.org/EIPS/sip-8037"
+    },
+    {
+      "number": 8061,
+      "title": "Increase exit and consolidation churn",
+      "status": null,
+      "url": "https://sips.sila.org/EIPS/sip-8061"
+    },
+    {
+      "number": 8159,
+      "title": "sil/71 - Block Access List Exchange",
+      "status": "required",
+      "url": "https://sips.sila.org/EIPS/sip-8159"
+    }
+  ],
+  "elClientSupport": {
+    "clients": [
+      "Geth",
+      "Besu",
+      "Reth",
+      "Nethermind",
+      "Erigon",
+      "Nimbus-EL",
+      "Ethrex"
+    ],
+    "matrix": [
+      {
+        "eipNumber": 7708,
+        "label": "7708 / 7778 / 7843 / 7928 / 7954 / 7976 / 7981 / 8024",
+        "support": {
+          "Geth": "supported",
+          "Besu": "supported",
+          "Reth": "supported",
+          "Nethermind": "supported",
+          "Erigon": "supported",
+          "Nimbus-EL": "supported",
+          "Ethrex": "supported"
+        }
+      },
+      {
+        "eipNumber": 7975,
+        "label": "7975 (sil/70 — required)",
+        "support": {
+          "Geth": "supported",
+          "Besu": "supported",
+          "Reth": "supported",
+          "Nethermind": "supported",
+          "Erigon": "supported",
+          "Nimbus-EL": "supported",
+          "Ethrex": "supported"
+        }
+      },
+      {
+        "eipNumber": 8037,
+        "label": "8037 (CPSB=1530 + #11611)",
+        "support": {
+          "Geth": "in_progress",
+          "Besu": "in_progress",
+          "Reth": "in_progress",
+          "Nethermind": "in_progress",
+          "Erigon": "in_progress",
+          "Nimbus-EL": "in_progress",
+          "Ethrex": "in_progress"
+        }
+      },
+      {
+        "eipNumber": 8159,
+        "label": "8159 (sil/71 — required)",
+        "support": {
+          "Geth": "in_progress",
+          "Besu": "supported",
+          "Reth": "in_progress",
+          "Nethermind": "supported",
+          "Erigon": "supported",
+          "Nimbus-EL": "supported",
+          "Ethrex": "in_progress"
+        }
+      },
+      {
+        "eipNumber": 7732,
+        "label": "7732 ePBS",
+        "support": {
+          "Geth": "not_supported",
+          "Besu": "not_supported",
+          "Reth": "not_supported",
+          "Nethermind": "not_supported",
+          "Erigon": "not_supported",
+          "Nimbus-EL": "not_supported",
+          "Ethrex": "not_supported"
+        }
+      },
+      {
+        "eipNumber": 0,
+        "label": "engine: `targetGasLimit` (#796)",
+        "support": {
+          "Geth": "in_progress",
+          "Besu": "in_progress",
+          "Reth": "in_progress",
+          "Nethermind": "in_progress",
+          "Erigon": "in_progress",
+          "Nimbus-EL": "in_progress",
+          "Ethrex": "in_progress"
+        }
+      }
+    ]
+  },
+  "clClientSupport": {
+    "clients": [
+      "Lodestar",
+      "Lighthouse",
+      "Prysm"
+    ],
+    "matrix": [
+      {
+        "eipNumber": 7928,
+        "label": "SIP-7928",
+        "support": {
+          "Lodestar": "supported",
+          "Lighthouse": "supported",
+          "Prysm": "glamsterdam-devnet-0"
+        }
+      },
+      {
+        "eipNumber": 0,
+        "label": "alpha.8 rebase",
+        "support": {
+          "Lodestar": "in_progress",
+          "Lighthouse": "in_progress",
+          "Prysm": "in_progress"
+        }
+      },
+      {
+        "eipNumber": 5235,
+        "label": "`target_gas_limit` (#5235)",
+        "support": {
+          "Lodestar": "in_progress",
+          "Lighthouse": "in_progress",
+          "Prysm": "in_progress"
+        }
+      }
+    ]
+  },
+  "specReferences": {
+    "consensusSpecs": {
+      "version": "v1.7.0-alpha.8",
+      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-alpha.8"
+    },
+    "executionSpecs": null
+  },
+  "genesisTime": 1779443940
+}

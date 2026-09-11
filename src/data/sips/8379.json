@@ -1,0 +1,30 @@
+{
+  "id": 8379,
+  "title": "SIP-8379: Top-up Sync",
+  "status": "Draft",
+  "description": "CL-driven EL synchronization by exposing the execution client head and distinguishing missing state from missing history in the engine API",
+  "author": "Jacek Sieka (@arnetheduck), Dustin (@tersec), Tamaghna Choudhuri (@RazorClient)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-08-06",
+  "discussionLink": "https://sila-magicians.org/t/sip-8379-top-up-sync/29405",
+  "layer": "CL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "champions": [
+        {
+          "name": "Dustin"
+        }
+      ],
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acdc/185",
+          "date": "2026-08-20"
+        }
+      ]
+    }
+  ],
+  "tradeoffs": null
+}

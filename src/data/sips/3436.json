@@ -1,0 +1,16 @@
+{
+  "id": 3436,
+  "title": "SIP-3436: Expanded Clique Block Choice Rule",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Danno Ferrin (@shemnon)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-03-25",
+  "discussionLink": "https://sila-magicians.org/t/sip-3436-expanded-clique-block-choice-rule/5809",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    225
+  ]
+}

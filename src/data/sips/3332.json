@@ -1,0 +1,13 @@
+{
+  "id": 3332,
+  "title": "SIP-3332: MEDGASPRICE Opcode",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "Justice Hudson (@jchancehud)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-03-05",
+  "discussionLink": "https://sila-magicians.org/t/medgasprice-opcode-sip/5480",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

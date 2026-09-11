@@ -1,0 +1,17 @@
+{
+  "id": 2046,
+  "title": "SIP-2046: Reduced gas cost for static calls made to precompiles",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Alex Beregszaszi (@axic)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-05-17",
+  "discussionLink": "https://sila-magicians.org/t/sip-2046-reduced-gas-cost-for-static-calls-made-to-precompiles/3291",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    214,
+    1352
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": 4758,
+  "title": "SIP-4758: Deactivate SELFDESTRUCT",
+  "status": "Stagnant",
+  "description": "Deactivate SELFDESTRUCT by changing it to SENDALL, which does recover all funds to the caller but does not delete any code or storage.",
+  "author": "Guillaume Ballet (@gballet), Vitalik Buterin (@vbuterin), Dankrad Feist (@dankrad)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2022-02-03",
+  "discussionLink": "https://sila-magicians.org/t/sip-4758-deactivate-selfdestruct/8710",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/237",
+          "date": "2026-05-21",
+          "timestamp": 4148
+        }
+      ],
+      "champions": [
+        {
+          "name": "Peter Miller"
+        }
+      ],
+      "presentationHistory": [
+        {
+          "type": "presentation",
+          "call": "acde/237",
+          "date": "2026-05-21",
+          "timestamp": 3352
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "SELFDESTRUCT lets a contract erase its own code and storage in one step. Wiping an account that way will not be workable under the planned state layout, where an account's data is spread across many unconnected keys. This proposal keeps only the useful part: the instruction still sends the account's entire SIL balance to the caller, but deletes nothing.",
+  "benefits": [
+    "Removes the only operation that erases an account's code and storage wholesale",
+    "A prerequisite for statelessness and the planned Verkle tree state layout",
+    "Contracts that use the opcode only to recover funds keep working unchanged"
+  ],
+  "tradeoffs": [
+    "Redeploying a contract at the same address via CREATE2 no longer works",
+    "Contracts using self-destruction for upgradeability break and must switch to delegation",
+    "Any contract burning non-SIL token balances by self-destructing is no longer safe"
+  ]
+}

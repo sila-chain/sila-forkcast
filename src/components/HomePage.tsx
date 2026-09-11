@@ -1,0 +1,559 @@
+import { useEffect, useState } from 'react';
+import { Link } from './navigation';
+import { networkUpgrades, NetworkUpgrade } from '../data/upgrades';
+import { getRecentCalls, getCallTypeBadgeLabel, isOneOffCall, callTypeNames, protocolCalls, type Call, type CallType } from '../data/calls';
+import { eipsData, eipById } from '../data/sips';
+import { useAnalytics } from '../hooks/useAnalytics';
+import { getProposalPrefix, getLaymanTitle } from '../utils/sip';
+import { getInclusionStageColor } from '../utils/colors';
+import UpgradeCard from './ui/UpgradeCard';
+import { StructuredDecisionContent, DecisionTextWithEipLinks } from './call/KeyDecisionsSection';
+import { SIP, InclusionStage, KeyDecision } from '../types/sip';
+
+const ACD_TYPES: CallType[] = ['acdc', 'acde', 'acdt'];
+
+interface RecentMeetingDecisions {
+  call: Call;
+  decisions: KeyDecision[];
+}
+
+/** Status values from statusHistory → abbreviation labels for display. */
+const STATUS_ABBREV: Record<string, string> = {
+  Proposed: 'PFI',
+  Considered: 'CFI',
+  Scheduled: 'SFI',
+  Declined: 'DFI',
+  Included: 'Included',
+  Withdrawn: 'Withdrawn',
+  Informational: 'Info',
+};
+
+interface StageTransition {
+  sip: SIP;
+  forkName: string;
+  fromLabel: string | null;
+  fromStage: InclusionStage | null;
+  toLabel: string;
+  toStage: InclusionStage;
+  changeDate: string; // YYYY-MM-DD
+  timestamp: number;
+}
+
+const fetchLatestMeetingDecisions = async (): Promise<RecentMeetingDecisions | null> => {
+  const acdCalls = protocolCalls
+    .filter((call) => ACD_TYPES.includes(call.type as CallType))
+    .sort((a, b) => b.date.localeCompare(a.date));
+
+  for (const call of acdCalls) {
+    try {
+      const artifactPath = `${call.type}/${call.date}_${call.number}`;
+      const response = await fetch(`/artifacts/${artifactPath}/key_decisions.json`);
+      if (!response.ok) continue;
+
+      const data = await response.json();
+      const decisions: KeyDecision[] = data?.key_decisions;
+      if (Array.isArray(decisions) && decisions.length > 0) {
+        return { call, decisions };
+      }
+    } catch {
+      // Network or parse failure — try the next call rather than tearing down the section.
+    }
+  }
+
+  return null;
+};
+
+const quickLinks: NetworkUpgrade[] = (() => {
+  const active = networkUpgrades.filter((u) => !u.disabled);
+  const previous = [...active].reverse().find((u) => u.status === 'Live');
+  const current = active.find((u) => u.status === 'Upcoming');
+  const future = active.find((u) => u.status === 'Planning' || u.status === 'Research');
+  return [previous, current, future].filter((u): u is NetworkUpgrade => u !== undefined);
+})();
+
+/** Map raw statusHistory status to the full InclusionStage name. */
+const STATUS_TO_STAGE: Record<string, InclusionStage> = {
+  Proposed: 'Proposed for Inclusion',
+  Considered: 'Considered for Inclusion',
+  Scheduled: 'Scheduled for Inclusion',
+  Declined: 'Declined for Inclusion',
+  Included: 'Included',
+  Withdrawn: 'Withdrawn',
+  Informational: 'Informational',
+  Networking: 'Networking',
+};
+
+const recentStageTransitions: StageTransition[] = (() => {
+  const transitions: StageTransition[] = [];
+
+  for (const sip of eipsData) {
+    for (const fork of sip.forkRelationships) {
+      // Find the most recent dated status entry in this fork
+      let latestIdx = -1;
+      let latestTimestamp = -1;
+
+      for (let i = 0; i < fork.statusHistory.length; i++) {
+        const entry = fork.statusHistory[i];
+        if (!entry.date) continue;
+        const ts = Date.parse(entry.date);
+        if (!Number.isFinite(ts)) continue;
+        if (ts > latestTimestamp) {
+          latestTimestamp = ts;
+          latestIdx = i;
+        }
+      }
+
+      if (latestIdx < 0) continue;
+
+      const current = fork.statusHistory[latestIdx];
+      const previous = latestIdx > 0 ? fork.statusHistory[latestIdx - 1] : null;
+
+      transitions.push({
+        sip,
+        forkName: fork.forkName,
+        fromLabel: previous ? (STATUS_ABBREV[previous.status] ?? previous.status) : null,
+        fromStage: previous ? (STATUS_TO_STAGE[previous.status] ?? null) : null,
+        toLabel: STATUS_ABBREV[current.status] ?? current.status,
+        toStage: STATUS_TO_STAGE[current.status] ?? 'Unknown',
+        changeDate: current.date!,
+        timestamp: latestTimestamp,
+      });
+    }
+  }
+
+  // Sort by most recent first, then by SIP id for stability
+  transitions.sort((a, b) => b.timestamp - a.timestamp || a.sip.id - b.sip.id);
+  return transitions.slice(0, 5);
+})();
+
+const HomePage = () => {
+  const recentCalls = getRecentCalls(5);
+  const [recentMeetingDecisions, setRecentMeetingDecisions] = useState<RecentMeetingDecisions | null>(null);
+  const { trackLinkClick } = useAnalytics();
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchLatestMeetingDecisions().then((result) => {
+      if (!cancelled) {
+        setRecentMeetingDecisions(result);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const handleExternalLinkClick = (linkType: string, url: string) => {
+    trackLinkClick(linkType, url);
+  };
+
+  // Colors for call type badges
+  const callTypeBadgeColors: Record<CallType, string> = {
+    acdc: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+    acde: 'bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300',
+    acdt: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300',
+    epbs: 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300',
+    bal: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
+    focil: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300',
+    price: 'bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300',
+    tli: 'bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300',
+    pqts: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300',
+    rpc: 'bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300',
+    zkevm: 'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-700 dark:text-fuchsia-300',
+    etm: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
+    awd: 'bg-stone-100 dark:bg-stone-900/30 text-stone-700 dark:text-stone-300',
+    pqi: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
+    fcr: 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300',
+    aa: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300',
+    p2p: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
+    ssz: 'bg-zinc-100 dark:bg-zinc-900/30 text-zinc-700 dark:text-zinc-300',
+    ethproofs: 'bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300'
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-10 text-center">
+          <h1 className="text-2xl sm:text-3xl font-light text-slate-900 dark:text-slate-100 tracking-tight mb-2">
+            Sila Upgrade Tracker
+          </h1>
+          <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            See what's on the horizon and how it impacts you.
+          </p>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-medium text-slate-900 dark:text-slate-100">
+              Network Upgrades
+            </h2>
+            <Link
+              to="/upgrades"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+            >
+              View all upgrades →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {quickLinks.map((upgrade) => (
+              <UpgradeCard key={upgrade.id} upgrade={upgrade} />
+            ))}
+          </div>
+        </div>
+
+        {/* Recent Stage Changes Section */}
+        <div className="mt-12">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-medium text-slate-900 dark:text-slate-100">
+              Recent Stage Changes
+            </h2>
+            <Link
+              to="/sips"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+            >
+              Browse all SIPs →
+            </Link>
+          </div>
+
+          <div className="space-y-2">
+            {recentStageTransitions.map(({ sip, forkName, fromLabel, fromStage, toLabel, toStage, changeDate }) => {
+              const dateLabel = new Date(changeDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+              return (
+                <Link
+                  key={`${sip.id}-${forkName}`}
+                  to={`/sips/${sip.id}`}
+                  className="group flex items-center justify-between gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="text-sm font-mono font-medium text-purple-600 dark:text-purple-400 flex-shrink-0">
+                      {getProposalPrefix(sip)}-{sip.id}
+                    </span>
+                    <span className="text-sm text-slate-900 dark:text-slate-100 truncate">
+                      {getLaymanTitle(sip)}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <div className="flex items-center gap-1.5 text-xs">
+                      <span className="hidden sm:inline text-slate-500 dark:text-slate-400">{forkName}:</span>
+                      {fromLabel && fromStage && (
+                        <>
+                          <span className={`px-1.5 py-0.5 rounded opacity-50 ${getInclusionStageColor(fromStage)}`}>
+                            {fromLabel}
+                          </span>
+                          <span className="text-slate-400 dark:text-slate-400">→</span>
+                        </>
+                      )}
+                      <span className={`font-medium px-1.5 py-0.5 rounded ${getInclusionStageColor(toStage)}`}>
+                        {toLabel}
+                      </span>
+                    </div>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                      {dateLabel}
+                    </span>
+                    <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Recent Protocol Calls Section */}
+        <div className="mt-12">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-medium text-slate-900 dark:text-slate-100">
+              Recent Protocol Calls
+            </h2>
+            <Link
+              to="/calls"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+            >
+              View all calls →
+            </Link>
+          </div>
+
+          <div className="space-y-2">
+            {recentCalls.map((call) => {
+              const oneOff = isOneOffCall(call.type);
+              const fallbackBadgeColor = 'bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300';
+              return (
+                <Link
+                  key={call.path}
+                  to={`/calls/${call.path}`}
+                  className="group flex items-center justify-between gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded min-w-[3.5rem] text-center flex-shrink-0 ${callTypeBadgeColors[call.type as CallType] || fallbackBadgeColor}`}>
+                      {oneOff ? '1-OFF' : getCallTypeBadgeLabel(call.type)}
+                    </span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-slate-100 truncate">
+                      {oneOff
+                        ? call.name || call.type
+                        : <><span className="sm:hidden">Call #{call.number}</span><span className="hidden sm:inline">{callTypeNames[call.type as CallType] || call.type} #{call.number}</span></>
+                      }
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                      {call.date}
+                    </span>
+                    <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {recentMeetingDecisions && (() => {
+          const { call, decisions } = recentMeetingDecisions;
+          const callType = call.type as CallType;
+          const callBadgeColor = callTypeBadgeColors[callType];
+          const callName = callTypeNames[callType];
+          return (
+            <div className="mt-12">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-medium text-slate-900 dark:text-slate-100">
+                  Recent Decisions
+                </h2>
+                <Link
+                  to="/decisions"
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+                >
+                  View all decisions →
+                </Link>
+              </div>
+
+              <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                <Link
+                  to={`/calls/${call.path}`}
+                  className="group flex items-center justify-between gap-3 px-4 py-3 border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded min-w-[3.5rem] text-center flex-shrink-0 ${callBadgeColor}`}>
+                      {call.type.toUpperCase()}
+                    </span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-slate-100 truncate">
+                      {callName} #{call.number}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <span className="hidden sm:inline text-sm text-slate-600 dark:text-slate-400">
+                      {call.date}
+                    </span>
+                    <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+
+                <ul className="px-4 py-3 space-y-1.5 list-none">
+                  {decisions.map((decision, i) => {
+                    const isStructured = decision.type !== 'other';
+                    return (
+                      <li
+                        key={i}
+                        className="text-sm before:content-['→'] before:mr-2 before:text-slate-400 dark:before:text-slate-500 text-slate-600 dark:text-slate-400"
+                      >
+                        {isStructured
+                          ? <StructuredDecisionContent decision={decision} eipMap={eipById} />
+                          : <DecisionTextWithEipLinks decision={decision} eipMap={eipById} />}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          );
+        })()}
+
+        <div className="mt-12">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-medium text-slate-900 dark:text-slate-100">
+              Planning Tools
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link
+              to="/schedule"
+              className="group flex items-start gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+            >
+              <div className="flex-shrink-0 w-9 h-9 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">
+                  Schedule
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
+                  Plan fork timelines with adjustable milestones
+                </p>
+              </div>
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+
+            <Link
+              to="/cadence"
+              className="group flex items-start gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+            >
+              <div className="flex-shrink-0 w-9 h-9 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 13.125A1.125 1.125 0 014.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75c0 .621-.504 1.125-1.125 1.125h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">
+                  Upgrade Cadence
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
+                  Shipping rate and SIP count across upgrades
+                </p>
+              </div>
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+
+            <Link
+              to="/rank"
+              className="group flex items-start gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+            >
+              <div className="flex-shrink-0 w-9 h-9 bg-amber-100 dark:bg-amber-900/40 rounded-lg flex items-center justify-center text-amber-600 dark:text-amber-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">
+                  SIP Rankings
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
+                  Rank and compare SIP proposals for upcoming upgrades
+                </p>
+              </div>
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+
+            <Link
+              to="/champions"
+              className="group flex items-start gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:shadow-md dark:hover:shadow-slate-700/20 hover:border-purple-300 dark:hover:border-purple-600"
+            >
+              <div className="flex-shrink-0 w-9 h-9 bg-rose-100 dark:bg-rose-900/40 rounded-lg flex items-center justify-center text-rose-600 dark:text-rose-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">
+                  Champions Guide
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
+                  Write and preview the SIP fields Forkcast displays
+                </p>
+              </div>
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-purple-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-16 text-center text-sm text-slate-500 dark:text-slate-400">
+          <div className="mb-6">
+            <div className="group inline-block">
+              <a
+                href="https://ethcoordinate.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleExternalLinkClick('team_website', 'https://ethcoordinate.org')}
+                className="w-16 h-16 mx-auto mb-3 flex items-center justify-center transition-transform duration-[1500ms] ease-out group-hover:rotate-[360deg]"
+              >
+                <img
+                  src="/ethcoordinate-dark.svg"
+                  alt="EthCoordinate logo"
+                  className="w-16 h-16 dark:hidden"
+                />
+                <img
+                  src="/ethcoordinate-light.svg"
+                  alt="EthCoordinate logo"
+                  className="w-16 h-16 hidden dark:block"
+                />
+              </a>
+              <div className="text-center">
+                <p className="text-sm italic text-slate-500 dark:text-slate-400">
+                  Skies watched by
+                </p>
+                <a
+                  href="https://ethcoordinate.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleExternalLinkClick('team_website', 'https://ethcoordinate.org')}
+                  className="text-lg font-light text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors duration-200"
+                >
+                  EthCoordinate
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-4">
+            <a
+              href="https://ethcoordinate.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleExternalLinkClick('team_website', 'https://ethcoordinate.org')}
+              className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-200"
+              aria-label="EthCoordinate website"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.6 9h16.8M3.6 15h16.8" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/sila-chain/forkcast"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleExternalLinkClick('source_code', 'https://github.com/sila-chain/forkcast')}
+              className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-200"
+              aria-label="View source code on GitHub"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a
+              href="https://x.com/ethcoordinate"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleExternalLinkClick('twitter', 'https://x.com/ethcoordinate')}
+              className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors duration-200"
+              aria-label="EthCoordinate on X"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;

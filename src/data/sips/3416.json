@@ -1,0 +1,13 @@
+{
+  "id": 3416,
+  "title": "SIP-3416: Median Gas Premium",
+  "status": "Stagnant",
+  "description": "",
+  "author": "HexZorro (@hexzorro), Mojtaba Tefagh (@mtefagh)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2021-03-18",
+  "discussionLink": "https://sila-magicians.org/t/sip-3416-median-gas-premium/5755",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,16 @@
+{
+  "id": 7980,
+  "title": "SIP-7980: Ed25519 transaction support",
+  "status": "Withdrawn",
+  "description": "Adds an SIP-7932 algorithm type for Ed25519 support of type `0x0`",
+  "author": "James Kempton (@SirSpudlington)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2025-06-25",
+  "discussionLink": "https://sila-magicians.org/t/sip-7980-adding-ed25519-as-a-signature-scheme-to-test-sip-7932/24663",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7932
+  ]
+}

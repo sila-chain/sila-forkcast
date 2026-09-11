@@ -1,0 +1,63 @@
+{
+  "series": "ACDC",
+  "generated": "2026-09-07",
+  "for_call": "ACDC #187",
+  "suggestions": [
+    {
+      "topic": "Hegota SIP tier rankings review and rough consensus",
+      "priority": "high",
+      "rationale": "September 10 deadline for client team rankings is imminent (3 days away). Goal is to reach rough consensus before DevCon. This is the critical decision window for Hegota scope.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "DevNet 10 status and Gloas fork transition stability",
+      "priority": "high",
+      "rationale": "DevNet 9 exhibited critical failures (Prysm state transition failure, Grandine OOM, Teku memory issues). DevNet 10 was planned for the week of Sept 8 pending fixed images. Must confirm stability before proceeding with testnet forks.",
+      "related_eips": [],
+      "source": "devnet_update"
+    },
+    {
+      "topic": "SilaSepolia Glamsterdam fork final approval for October 6",
+      "priority": "high",
+      "rationale": "Date was set in ACDC #186 but formal approval via PM PR #2205 is still pending. Fork is 29 days away; client teams need to finalize releases and coordination.",
+      "related_eips": [],
+      "source": "open_action_item"
+    },
+    {
+      "topic": "Hoodi Glamsterdam fork date decision",
+      "priority": "medium",
+      "rationale": "Proposed for October 26 in ACDC #185 but deferred twice (in #185 and #186) pending stable devnets. DevNet 10 stability should unblock this decision.",
+      "related_eips": [],
+      "source": "deferred_decision"
+    },
+    {
+      "topic": "SIP-8148 and SIP-8205 CFI/DFI discussion",
+      "priority": "medium",
+      "rationale": "Expected revisit at ~2 weeks from ACDC #186 (Sept 3) means this discussion should occur now. Specs and POC implementations are ready for validator withdrawal credential proposals.",
+      "related_eips": [],
+      "source": "deferred_decision"
+    },
+    {
+      "topic": "SIP-8363 Tapered Issuance Burn community consensus check-in",
+      "priority": "medium",
+      "rationale": "PFI'd in ACDC #184 with explicit requirement for community consensus before any CFI. Community discussion was deferred to SIL R&D/SIL Magicians. Time to assess if consensus is forming or if this should be deprioritized for Hegota.",
+      "related_eips": [],
+      "source": "deferred_decision"
+    },
+    {
+      "topic": "Engine API SSZ implementation status",
+      "priority": "low",
+      "rationale": "Spec merged to execution-apis master in ACDC #186. Check-in on client implementation progress and any iteration needs.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    },
+    {
+      "topic": "SIP-8037 cross-frame state gas fix deployment confirmation",
+      "priority": "low",
+      "rationale": "Approved in ACDC #186 for all EL clients to implement and deploy on DevNet 8. Quick confirmation that this is live and working as expected.",
+      "related_eips": [],
+      "source": "ongoing_discussion"
+    }
+  ]
+}

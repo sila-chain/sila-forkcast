@@ -1,0 +1,53 @@
+{
+  "id": 8200,
+  "title": "SIP-8200: EVMification",
+  "status": "Draft",
+  "description": "Replace the RIPEMD-160, MODEXP, and BLAKE2f precompiles with equivalent EVM bytecode",
+  "author": "Kevaundray Wedderburn (@kevaundray)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-03-21",
+  "discussionLink": "https://sila-magicians.org/t/sip-8200-evmification/28036",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/242",
+          "date": "2026-07-30"
+        },
+        {
+          "status": "Declined",
+          "call": "acde/245",
+          "date": "2026-09-10"
+        }
+      ],
+      "champions": [
+        {
+          "name": "Kevaundray Wedderburn",
+          "discord": "kevaundray"
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "Three of Sila's built-in cryptographic helpers are hand-written into every client, and each one is a place where implementations can quietly disagree. This proposal replaces them with ordinary EVM bytecode deployed at the same addresses, so contracts calling them keep working unchanged.",
+  "benefits": [
+    "Removes three hand-written implementations every client must maintain and keep identical",
+    "Lowers the barrier for zkEVMs, which need a separate optimized version of each precompile",
+    "Contracts keep calling the same addresses, so nothing needs redeploying"
+  ],
+  "tradeoffs": [
+    "Gas costs change, and modular exponentiation is expected to cost more for large inputs",
+    "Contracts passing a fixed gas amount to these addresses may start reverting",
+    "The replacement bytecode must be audited to match the precompile on every input"
+  ],
+  "requires": [
+    152,
+    7666,
+    7823,
+    7883
+  ]
+}

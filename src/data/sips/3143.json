@@ -1,0 +1,13 @@
+{
+  "id": 3143,
+  "title": "SIP-3143: Increase block rewards to 5 SIL",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Ben Tinner (@Terra854)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2020-12-01",
+  "discussionLink": "https://sila-magicians.org/t/sip-3143-increase-block-rewards-to-5-sil/5061",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

@@ -1,0 +1,13 @@
+{
+  "id": 1087,
+  "title": "SIP-1087: Net gas metering for SSTORE operations",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Nick Johnson (@arachnid)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2018-05-17",
+  "discussionLink": "https://sila-magicians.org/t/sip-net-storage-gas-metering-for-the-evm/383",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

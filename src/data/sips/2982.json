@@ -1,0 +1,12 @@
+{
+  "id": 2982,
+  "title": "SIP-2982: Serenity Phase 0",
+  "status": "Final",
+  "description": "Phase 0 of the release schedule of Serenity, a series of updates to Sila a scalable, proof-of-stake consensus",
+  "author": "Danny Ryan (@djrtwo), Vitalik Buterin (@vbuterin)",
+  "type": "Informational",
+  "createdDate": "2020-09-15",
+  "discussionLink": "https://sila-magicians.org/t/serenity-phase-0-sip/4621",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

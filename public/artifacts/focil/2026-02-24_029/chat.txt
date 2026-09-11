@@ -1,0 +1,2 @@
+00:04:33	Jihoon:	https://sila.github.io/consensus-specs/specs/heze/beacon-chain/
+00:09:23	Pelle Krabbenhoeft:	Just some data on IL building. It’s taking longer then expected to step through all of the data.

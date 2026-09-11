@@ -1,0 +1,76 @@
+{
+  "eipId": 8246,
+  "commits": [
+    {
+      "sha": "9207c6011f526bd40abd79649484a1a342585bd4",
+      "date": "2026-09-04T15:24:45Z",
+      "message": "Update SIP-8246: give a concrete example of L2 burn usage",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -69,7 +69,9 @@ For the balance-only accounts created this way, `CREATE2` still may recreate a c\n \n For contracts not created in the same transaction in which `SELFDESTRUCT` is executed, the behavior is unchanged from [SIP-6780](./sip-6780.md).\n \n-Unlike SilaMainnet, Optimism-based L2 chains use the burn feature of `SELFDESTRUCT` regularly. These chains will require a separate migration plan.\n+Unlike SilaMainnet, some L2 chains use the burn feature of `SELFDESTRUCT` regularly and will require a separate migration plan.\n+\n+In the OP Stack, SIL withdrawn to L1 accumulates in the `L2ToL1MessagePasser` predeploy at `0x4200000000000000000000000000000000000016`. It provides a permissionless `burn()` function which destroys that balance by creating a contract whose constructor executes `SELFDESTRUCT` with itself as the beneficiary, so the L2 SIL supply does not inflate. Chains derived from that codebase inherit the dependency unless they modify the predeploy, including those not commonly identified as Optimism-based. Such contracts are deployed with `CREATE`, so the balance-only accounts they leave behind cannot be recreated by the `CREATE2` pattern described above.\n \n ## Test Cases\n ",
+      "additions": 3,
+      "deletions": 1
+    },
+    {
+      "sha": "9388239ee5205f341d948a73bf8eb109f761b167",
+      "date": "2026-09-04T15:23:24Z",
+      "message": "Update SIP-8246: note the CREATE2 redeploy of a funded remnant",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -118,6 +118,7 @@ Each of the following test cases should be executed (where physically meaningful\n \n 1. `SELFDESTRUCT` behavior modification has a combinatorial effect on a vast number of test scenarios involving multi-call/create contract interactions. This SIP requires significant testing effort. However, many existing test cases for SIP-6780 can be adapted to the new behavior.\n 2. When a use case relies on the SIL burn happening, the transaction will create dust-like accounts with potentially locked non-zero balance. However, the new account creation gas cost is paid by the transaction, so dust accounts are not a free DoS vector. Only 2 such events have been recorded on SilaMainnet (SilaCancun–25M) so far.\n+3. Preserving the balance leaves a funded account whose nonce, code and storage are cleared, which makes the address a valid `CREATE2` target again (a non-zero balance alone never triggers a creation collision, per [SIP-684](./sip-684.md)). The `(sender, salt, initcode)` of a deployment is public data, so when the `sender` is a permissionless factory anyone can redeploy the account and potentially take the preserved balance.\n \n ## Copyright\n ",
+      "additions": 1,
+      "deletions": 0
+    },
+    {
+      "sha": "45b443dc26ffae9437f8e396e677b4242e067613",
+      "date": "2026-05-21T18:47:39Z",
+      "message": "Update SIP-8246: Move to Review",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -4,7 +4,7 @@ title: Remove SELFDESTRUCT Burn\n description: Eliminate the remaining cases where SELFDESTRUCT burns SIL.\n author: Paweł Bylica (@chfast)\n discussions-to: https://sila-magicians.org/t/sip-8246-remove-selfdestruct-burn/28416\n-status: Draft\n+status: Review\n type: Standards Track\n category: Core\n created: 2026-05-01"
+    },
+    {
+      "sha": "60a241e35e88a147fb08db96a786275b384fbe6a",
+      "date": "2026-05-14T17:49:23Z",
+      "message": "Update SIP-8246: Add Test Cases",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -73,7 +73,46 @@ Unlike SilaMainnet, Optimism-based L2 chains use the burn feature of `SELFDESTRUCT`\n \n ## Test Cases\n \n-TBD\n+### Unmodified behavior\n+\n+General test coverage of the `SELFDESTRUCT` instruction is expected to be excellent already because this instruction has been modified multiple times in the past. Updating existing test cases to align with this SIP should give us good coverage of all **unmodified** features of `SELFDESTRUCT`.\n+\n+### Modified behavior\n+\n+Each of the following test cases should be executed (where physically meaningful) across the combinations of these factors:\n+\n+- level: top-level transaction, internal call,\n+- call type: CALL (including top-level tx), CREATE (including top-level tx), CREATE2,\n+- code state: SELFDESTRUCT executed inside initcode (before deployment) / from deployed code,\n+- status: SELFDESTRUCT succeeds, SELFDESTRUCT fails due to OOG,\n+- revert: effects of SELFDESTRUCT are committed to the post-state, effects of SELFDESTRUCT are reverted (only for wrapped internal calls),\n+- balance: balance of the selfdestructing account at the SELFDESTRUCT instruction is zero / non-zero.\n+\n+#### Instruction level\n+\n+1. Same-transaction selfdestruct-to-self.\n+2. Same-transaction selfdestruct-to-self, followed by selfdestruct-to-self.\n+3. Same-transaction selfdestruct-to-self, followed by selfdestruct-to-other.\n+4. Same-transaction selfdestruct-to-other, followed by selfdestruct-to-self.\n+\n+#### Transaction finalization\n+\n+5. Same-transaction selfdestruct-to-other, followed by a CALL with value to the selfdestructed account.\n+6. Same-transaction selfdestruct-to-other, followed by multiple CALLs with value to the selfdestructed account.\n+7. Same-transaction selfdestruct-to-other, followed by a CALL with value to the selfdestructed account, followed by selfdestruct-to-other.\n+8. Same-transaction selfdestruct-to-other, followed by a CALL with value to the selfdestructed account, followed by selfdestruct-to-self.\n+9. Same-transaction selfdestruct-to-self, followed by a CALL with value to the selfdestructed account.\n+10. Same-transaction selfdestruct-to-self, followed by multiple CALLs with value to the selfdestructed account.\n+11. Same-transaction selfdestruct-to-self, followed by a CALL with value to the selfdestructed account, followed by selfdestruct-to-other.\n+12. Same-transaction selfdestruct-to-self, followed by a CALL with value to the selfdestructed account, followed by selfdestruct-to-self.\n+13. Create new account, new account creates other accounts to bump its nonce, new account selfdestruct-to-self.\n+14. Create new account, new account creates other accounts to bump its nonce, new account selfdestruct-to-other.\n+15. Create new account, new account adds new storage, new account selfdestruct-to-self.\n+16. Create new account, new account adds new storage, new account selfdestruct-to-other.\n+\n+#### Multi-transaction\n+\n+17. Tx-1: CREATE2 new account with non-zero balance, new account selfdestruct-to-self. Tx-2: Repeats Tx-1.\n \n ## Security Considerations\n "
+    },
+    {
+      "sha": "3b30ff829e5e698f1c6f69427111d194b80af38d",
+      "date": "2026-05-08T11:47:20Z",
+      "message": "Update SIP-8246: small spec style changes",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -20,15 +20,15 @@ This SIP removes the remaining cases where `SELFDESTRUCT` burns SIL. Accounts ma\n The remaining burn behavior of `SELFDESTRUCT` is almost completely unused, but it still forces special-case handling in EVM implementations, specifications, and tests.\n \n After [SIP-6780](./sip-6780.md), SIL can still be burned only when a contract created in the same transaction executes `SELFDESTRUCT`, either with itself as beneficiary or in a case where the contract receives additional SIL (via `CALL` or via `SELFDESTRUCT`, potentially multiple times) later in the same transaction.\n-A full replay of Sila sila-mainnet from genesis to approximately block 24.95M found only 2 post-SilaCancun burns through this path and 0 cases of balance being burned during transaction finalization. By comparison, pre-SilaCancun history contained 54 self-burns in total. This indicates that the remaining burn behavior is rarer than the burn behavior already removed by SIP-6780, so the complete removal proposed here should affect fewer transactions than the partial removal already introduced there.\n+A full replay of Sila sila-mainnet from genesis to approximately block 25M found only 2 post-SilaCancun burns through this path and 0 cases of balance being burned during transaction finalization. By comparison, pre-SilaCancun history contained 54 self-burns in total. This indicates that the remaining burn behavior is rarer than the burn behavior already removed by SIP-6780, so the complete removal proposed here should affect fewer transactions than the partial removal already introduced there.\n \n Removing the final burn cases simplifies `SELFDESTRUCT` semantics and avoids preserving an exotic special case that is barely used in practice.\n \n As a consequence, this also removes the last EVM mechanism by which SIL can leave total supply.\n \n ## Specification\n \n-The behavior of `SELFDESTRUCT` is changed in the following way:\n+The behavior of `SELFDESTRUCT` changes as follows:\n \n 1. When `SELFDESTRUCT` is executed in the same transaction as the contract was created,\n    and if the beneficiary address is the executing account address,\n@@ -43,8 +43,9 @@ The behavior of `SELFDESTRUCT` is changed in the following way:\n    3. code is cleared,\n    4. all storage is cleared.\n \n-3. Note: all other behavior of `SELFDESTRUCT` is unchanged.\n-4. Note: if the resulting balance is 0, the account is *empty* and is deleted from the state by [SIP-161](./sip-161.md).\n+Note: All other behavior of `SELFDESTRUCT` is unchanged.\n+\n+Note: If the resulting balance is 0, the account is *empty* and is deleted from the state by [SIP-161](./sip-161.md).\n \n ## Rationale\n \n@@ -68,7 +69,7 @@ For the balance-only accounts created this way, `CREATE2` still may recreate a c\n \n For contracts not created in the same transaction in which `SELFDESTRUCT` is executed, the behavior is unchanged from [SIP-6780](./sip-6780.md).\n \n-Unlike SilaMainnet, Optimism-based L2 chains use the burn feature of `SELFDESTRUCT` regularly. These systems require a different adoption path.\n+Unlike SilaMainnet, Optimism-based L2 chains use the burn feature of `SELFDESTRUCT` regularly. These chains will require a separate migration plan.\n \n ## Test Cases\n \n@@ -77,7 +78,7 @@ TBD\n ## Security Considerations\n \n 1. `SELFDESTRUCT` behavior modification has a combinatorial effect on a vast number of test scenarios involving multi-call/create contract interactions. This SIP requires significant testing effort. However, many existing test cases for SIP-6780 can be adapted to the new behavior.\n-2. When a use case relies on the SIL burn happening, the transaction will create dust-like accounts with potentially locked non-zero balance. However, the new account creation cost is properly included in the transaction cost. Only 2 such events have been recorded on SilaMainnet (SilaCancun–25M) so far.\n+2. When a use case relies on the SIL burn happening, the transaction will create dust-like accounts with potentially locked non-zero balance. However, the new account creation gas cost is paid by the transaction, so dust accounts are not a free DoS vector. Only 2 such events have been recorded on SilaMainnet (SilaCancun–25M) so far.\n \n ## Copyright\n "
+    },
+    {
+      "sha": "4e303336fc9970887aea31579f9e804f4a186030",
+      "date": "2026-05-08T11:10:59Z",
+      "message": "Update SIP-8246: Fix typos and grammar",
+      "author": "chfast",
+      "prNumber": null,
+      "patch": "@@ -28,7 +28,7 @@ As a consequence, this also removes the last EVM mechanism by which SIL can leav\n \n ## Specification\n \n-The behaviour of `SELFDESTRUCT` is changed in the following way:\n+The behavior of `SELFDESTRUCT` is changed in the following way:\n \n 1. When `SELFDESTRUCT` is executed in the same transaction as the contract was created,\n    and if the beneficiary address is the executing account address,\n@@ -64,20 +64,20 @@ Previously it was possible to burn SIL by executing `SELFDESTRUCT` in a contract\n \n Previously such contracts were always deleted at transaction finalization. After this SIP, a contract with zero final balance is still deleted, but a contract with nonzero final balance remains in the state as a balance-only account with empty code, empty storage, and nonce 0.\n \n-For the balance-only accounts created this way, `CREATE2` still may recreate a contract at the same address in a follow-up transaction. Such usage pattern remains operational.\n+For the balance-only accounts created this way, `CREATE2` still may recreate a contract at the same address in a follow-up transaction. Such a usage pattern remains operational.\n \n For contracts not created in the same transaction in which `SELFDESTRUCT` is executed, the behavior is unchanged from [SIP-6780](./sip-6780.md).\n \n-Differently to SilaMainnet, the Optimizm-based L2 chains use the burn feature of the `SELFDESTRUCT` regularly. These systems require different addoption path.\n+Unlike SilaMainnet, Optimism-based L2 chains use the burn feature of `SELFDESTRUCT` regularly. These systems require a different adoption path.\n \n ## Test Cases\n \n TBD\n \n ## Security Considerations\n \n-1. `SELFDESTRUCT` behavior modification has combinatory effect on vast amount of test scenarios involving multi call/create contract interactions. This SIP requires significant testing effort. However, many existing test cases for SIP-6780 can be addapted to the new behavior.\n-2. In case of usage expecting the SIL burn to happen the transaction will create dust-like accounts with potentially locked non-zero balance. However, the new account creation cost is properly included in the transaction cost. Only 2 such events have been recorded on SilaMainnet (SilaCancun–25M) so far.\n+1. `SELFDESTRUCT` behavior modification has a combinatorial effect on a vast number of test scenarios involving multi-call/create contract interactions. This SIP requires significant testing effort. However, many existing test cases for SIP-6780 can be adapted to the new behavior.\n+2. When a use case relies on the SIL burn happening, the transaction will create dust-like accounts with potentially locked non-zero balance. However, the new account creation cost is properly included in the transaction cost. Only 2 such events have been recorded on SilaMainnet (SilaCancun–25M) so far.\n \n ## Copyright\n "
+    },
+    {
+      "sha": "630c3420dacd31a90ce702b76092f4c9f085d4d4",
+      "date": "2026-05-06T12:59:06Z",
+      "message": "Add SIP-8246: Remove SELFDESTRUCT Burn (#11590)",
+      "author": "chfast",
+      "prNumber": 11590,
+      "additions": 84,
+      "deletions": 0
+    }
+  ],
+  "openPrs": [
+    {
+      "number": 12297,
+      "title": "Update SIP-8246: Move to Last Call",
+      "author": "chfast",
+      "updatedAt": "2026-09-04T18:17:36Z",
+      "additions": 2,
+      "deletions": 1
+    }
+  ]
+}

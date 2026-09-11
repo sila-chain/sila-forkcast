@@ -1,0 +1,55 @@
+{
+  "id": 8253,
+  "title": "SIP-8253: Bump nonce of zero-nonce storage accounts",
+  "status": "Draft",
+  "description": "Set nonce to 1 for accounts with empty code, zero nonce, and non-empty storage via an irregular state transition",
+  "author": "Jochem Brouwer (@jochem-brouwer)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2026-05-05",
+  "reviewer": "bot",
+  "layer": "EL",
+  "forkRelationships": [
+    {
+      "forkName": "Hegota",
+      "statusHistory": [
+        {
+          "status": "Proposed",
+          "call": "acde/236",
+          "date": "2026-05-07",
+          "timestamp": 4879
+        }
+      ],
+      "champions": [
+        {
+          "name": "Jochem Brouwer",
+          "discord": "jochembrouwer"
+        }
+      ],
+      "presentationHistory": [
+        {
+          "type": "presentation",
+          "call": "acde/236",
+          "date": "2026-05-07",
+          "timestamp": 4879
+        }
+      ]
+    }
+  ],
+  "laymanDescription": "A quirk of Sila's early years left 28 accounts holding storage but looking brand new, so a future contract deployment could in principle land on top of one. Today every deployment pays an extra check to prevent that. This proposal instead marks those 28 accounts as used, once.",
+  "benefits": [
+    "Removes a storage check, and for some clients a disk read, from every contract creation",
+    "Bumping a nonce touches 28 accounts, where clearing the storage would touch 129 slots",
+    "Retires an account shape that no path can produce, shrinking the test surface of later SIPs"
+  ],
+  "tradeoffs": [
+    "An omitted or spurious entry in the account list is consensus-relevant",
+    "Each chain forked from sila-mainnet must generate and verify its own list",
+    "A one-time consensus mutation of account state, rather than a rule applied uniformly"
+  ],
+  "discussionLink": "https://sila-magicians.org/t/sip-8253-upgrade-pre-spurious-dragon-accounts/28505",
+  "requires": [
+    161,
+    684
+  ]
+}

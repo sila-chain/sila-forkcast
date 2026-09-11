@@ -1,0 +1,13 @@
+{
+  "id": 2542,
+  "title": "SIP-2542: New opcodes TXGASLIMIT and CALLGASLIMIT",
+  "status": "Withdrawn",
+  "description": "",
+  "author": "Alex Forshtat <forshtat1@gmail.com>",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2020-02-29",
+  "discussionLink": "https://sila-magicians.org/t/sip-2542-add-txgaslimit-callgaslimit-txgasrefund-opcodes",
+  "forkRelationships": [],
+  "tradeoffs": null
+}

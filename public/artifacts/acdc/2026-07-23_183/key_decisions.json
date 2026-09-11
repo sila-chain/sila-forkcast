@@ -1,0 +1,65 @@
+{
+  "meeting": "ACDC #183 - July 23, 2026",
+  "key_decisions": [
+    {
+      "original_text": "All devnet-7 SIPs ratified SFI; PRs to update SIP statuses will be opened",
+      "timestamp": "00:21:33",
+      "type": "stage_change",
+      "sips": [],
+      "stage_change": {
+        "to": "Scheduled"
+      },
+      "context": "all devnet-7 SIPs ratified; PRs to update statuses will be opened"
+    },
+    {
+      "original_text": "SIP-8334 Bundled Attestation Propagation: PFI for Hegota; will be made required at fork even though backwards compatible",
+      "timestamp": "00:25:37",
+      "type": "stage_change",
+      "sips": [
+        8334
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota",
+      "context": "backwards compatible and doesn't require fork"
+    },
+    {
+      "original_text": "SIP-8341 Partial Execution Payload Commitments: PFI for Hegota",
+      "timestamp": "00:27:49",
+      "type": "stage_change",
+      "sips": [
+        8341
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota"
+    },
+    {
+      "original_text": "SIP-8321 Hash-Chain RANDAO: PFI for Hegota; debate on whether iterative PQ approach is premature; async discussion to continue in Post Quantum Discord channel",
+      "timestamp": "00:41:51",
+      "type": "stage_change",
+      "sips": [
+        8321
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota",
+      "context": "debate on whether iterative PQ approach is premature; async discussion to continue in Post Quantum Discord channel"
+    },
+    {
+      "original_text": "SIP-8015 Remove deposit/ETH1 data fields: PFI for Hegota",
+      "timestamp": "01:01:59",
+      "type": "stage_change",
+      "sips": [
+        8015
+      ],
+      "stage_change": {
+        "to": "Proposed"
+      },
+      "fork": "Hegota"
+    }
+  ]
+}

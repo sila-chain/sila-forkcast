@@ -1,0 +1,16 @@
+{
+  "id": 1803,
+  "title": "SIP-1803: Rename opcodes for clarity",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Alex Beregszaszi (@axic)",
+  "type": "Standards Track",
+  "category": "Interface",
+  "createdDate": "2017-07-28",
+  "discussionLink": "https://sila-magicians.org/t/sip-1803-rename-opcodes-for-clarity/3345",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    141
+  ]
+}

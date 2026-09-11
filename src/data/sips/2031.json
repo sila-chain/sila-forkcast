@@ -1,0 +1,16 @@
+{
+  "id": 2031,
+  "title": "SIP-2031: State Rent B - Net transaction counter",
+  "status": "Stagnant",
+  "description": "",
+  "author": "Alexey Akhunov (@AlexeyAkhunov)",
+  "type": "Standards Track",
+  "category": "Core",
+  "createdDate": "2019-05-15",
+  "discussionLink": "https://sila-magicians.org/t/sip-2031-net-transaction-counter-change-b-from-state-rent-v3-proposal/3283",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    2029
+  ]
+}

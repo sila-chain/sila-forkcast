@@ -1,0 +1,16 @@
+{
+  "id": 7542,
+  "title": "SIP-7542: sil/70 - available-blocks-extended protocol",
+  "status": "Withdrawn",
+  "description": "Adds more info in the handshake about available block range and adds message types to request block ranges and the send them",
+  "author": "Ahmad Bitar (@smartprogrammer93) <smartprogrammer@windowslive.com>",
+  "type": "Standards Track",
+  "category": "Networking",
+  "createdDate": "2023-10-21",
+  "discussionLink": "https://sila-magicians.org/t/sip-sil-70-available-blocks-extended-protocol-handshake/16188",
+  "forkRelationships": [],
+  "tradeoffs": null,
+  "requires": [
+    7642
+  ]
+}
