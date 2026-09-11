@@ -48,8 +48,6 @@ jobs:
           cp -a clean-main/.github/workflows/. /tmp/sila-official-workflows/
           find target -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
           cp -a expected/. target/
-          rm -rf target/.git
-          cp -a clean-main/.git target/.git
           rm -rf target/.github/workflows
           mkdir -p target/.github/workflows
           cp -a /tmp/sila-official-workflows/. target/.github/workflows/
@@ -191,4 +189,4 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git commit -m 'sync: latest Forkcast authority 449d492a' || true
-          git push --force origin HEAD:sila/forkcast-latest-pure-20260910
+          git push origin HEAD:sila/forkcast-latest-pure-20260910
