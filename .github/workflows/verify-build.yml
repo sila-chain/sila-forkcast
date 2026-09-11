@@ -189,4 +189,4 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git commit -m 'sync: latest Forkcast authority 449d492a' || true
-          git push origin HEAD:sila/forkcast-latest-pure-20260910
+          git push origin HEAD:sila/generated-449d492a
