@@ -12,27 +12,17 @@ jobs:
     if: github.event.pull_request.title == 'Finalize Forkcast root authority 449d492a'
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout work branch
-        uses: actions/checkout@v6
-        with:
-          ref: sila/forkcast-latest-pure-20260910
-          fetch-depth: 0
-      - name: Checkout canonical merged main workflows
+      - name: Checkout exact merged main tree
         uses: actions/checkout@v6
         with:
           ref: main
-          path: canonical-main
-          fetch-depth: 1
-      - name: Revalidate exact final tree
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf .github/workflows
-          mkdir -p .github/workflows
-          cp -a canonical-main/.github/workflows/. .github/workflows/
-          rm -rf canonical-main
-          npm ci
-          npm run build
+          fetch-depth: 0
+      - name: Revalidate merged main
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run build
       - name: Create and publish orphan root candidate
         shell: bash
         run: |
