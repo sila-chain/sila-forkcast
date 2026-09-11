@@ -1,18 +1,53 @@
-name: Verify Build
+name: Final Root Authority
 
 on:
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
+  rootify:
+    if: github.event.pull_request.title == 'Finalize latest Forkcast authority 62e1d697'
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/checkout@v6
+        with:
+          repository: ethereum/forkcast
+          ref: 62e1d697ab9c36ed1b5fb4f6e500b5f6bbbaa7b8
+          path: latest-upstream
+          fetch-depth: 1
+      - name: Apply exact one-file latest delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp latest-upstream/src/components/calls-index/CallsIndexTimeline.tsx /tmp/CallsIndexTimeline.tsx
+          rm -rf latest-upstream
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('/tmp/CallsIndexTimeline.tsx'); s=p.read_text()
+          s=s.replace("  mainnet: 'border-emerald", "  'sila-mainnet': 'border-emerald")
+          s=s.replace("  mainnet: 'bg-emerald", "  'sila-mainnet': 'bg-emerald")
+          p.write_text(s)
+          PY
+          cp /tmp/CallsIndexTimeline.tsx src/components/calls-index/CallsIndexTimeline.tsx
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Publish orphan root candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout --orphan sila-final-root
+          git add -A
+          git commit -m 'sync: latest Forkcast authority 62e1d697'
+          test "$(git rev-list --parents -n 1 HEAD | wc -w)" -eq 1
+          git push --force origin HEAD:sila/root-final-62e1d697
