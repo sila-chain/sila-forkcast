@@ -1,0 +1,103 @@
+name: Forkcast Sila Identity Repair
+
+on:
+  push:
+    branches:
+      - sila/forkcast-latest-pure-20260913
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sila/forkcast-latest-pure-20260913
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Restore canonical Sila identity on upstream delta
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess
+
+          BRANCH = 'sila/forkcast-latest-pure-20260913'
+          WORKFLOW = Path('.github/workflows/forkcast-sila-identity-repair-temp.yml')
+
+          def run(args, capture=False):
+              return subprocess.run(args, text=True, check=True,
+                                    stdout=subprocess.PIPE if capture else None,
+                                    stderr=subprocess.PIPE if capture else None)
+
+          run(['git', 'fetch', 'origin', 'main'])
+          changed = run(['git', 'diff', '--name-only', 'origin/main...HEAD'], capture=True).stdout.splitlines()
+          touched = []
+
+          binary_suffixes = {'.png','.jpg','.jpeg','.gif','.webp','.ico','.woff','.woff2'}
+          for rel in changed:
+              p = Path(rel)
+              if not p.is_file() or p.suffix.lower() in binary_suffixes:
+                  continue
+              try:
+                  text = p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              original = text
+
+              # Preserve the established Sila GitHub organization used by this repository.
+              text = text.replace('https://github.com/sila/', 'https://github.com/sila-chain/')
+              text = text.replace('http://github.com/sila/', 'http://github.com/sila-chain/')
+
+              # Parser-safe lowercase network identity: transform standalone token only,
+              # including prose, string values and hyphenated IDs, never identifiers.
+              text = re.sub(r'(?<![A-Za-z0-9_])mainnet(?![A-Za-z0-9_])', 'sila-mainnet', text)
+
+              if text != original:
+                  p.write_text(text, encoding='utf-8')
+                  touched.append(rel)
+
+          # Strict delta-level assertions.
+          bad_mainnet = []
+          bad_org = []
+          token = re.compile(r'(?<![A-Za-z0-9_])mainnet(?![A-Za-z0-9_])')
+          for rel in changed:
+              p = Path(rel)
+              if not p.is_file() or p.suffix.lower() in binary_suffixes:
+                  continue
+              try:
+                  text = p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              for n, line in enumerate(text.splitlines(), 1):
+                  if token.search(line):
+                      bad_mainnet.append(f'{rel}:{n}:{line[:180]}')
+                  if 'https://github.com/sila/' in line or 'http://github.com/sila/' in line:
+                      bad_org.append(f'{rel}:{n}:{line[:180]}')
+
+          print('IDENTITY_REPAIR_TOUCHED_COUNT=' + str(len(touched)))
+          print('LOWERCASE_MAINNET_RESIDUAL_COUNT=' + str(len(bad_mainnet)))
+          print('NONCANONICAL_SILA_GITHUB_ORG_COUNT=' + str(len(bad_org)))
+          if bad_mainnet or bad_org:
+              print('\n'.join((bad_mainnet + bad_org)[:100]))
+              raise RuntimeError('Sila identity repair gate failed')
+
+          run(['npm', 'ci'])
+          run(['npm', 'run', 'build'])
+
+          run(['git', 'config', 'user.name', 'github-actions[bot]'])
+          run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'])
+          for rel in touched:
+              run(['git', 'add', '--', rel])
+          if WORKFLOW.exists():
+              WORKFLOW.unlink()
+              run(['git', 'add', '-u', '--', str(WORKFLOW)])
+          run(['git', 'commit', '-m', 'fix: preserve canonical Sila identity in Forkcast delta'])
+          run(['git', 'push', 'origin', 'HEAD:' + BRANCH])
+          PY
