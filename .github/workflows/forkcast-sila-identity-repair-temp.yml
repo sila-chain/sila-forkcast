@@ -45,9 +45,11 @@ jobs:
           touched = []
 
           binary_suffixes = {'.png','.jpg','.jpeg','.gif','.webp','.ico','.woff','.woff2'}
+          mainnet_token = re.compile(r'(?<!sila-)(?<![A-Za-z0-9_])mainnet(?![A-Za-z0-9_])')
+
           for rel in changed:
               p = Path(rel)
-              if not p.is_file() or p.suffix.lower() in binary_suffixes:
+              if p == WORKFLOW or not p.is_file() or p.suffix.lower() in binary_suffixes:
                   continue
               try:
                   text = p.read_text(encoding='utf-8')
@@ -57,7 +59,7 @@ jobs:
 
               text = text.replace('https://github.com/sila/', 'https://github.com/sila-chain/')
               text = text.replace('http://github.com/sila/', 'http://github.com/sila-chain/')
-              text = re.sub(r'(?<![A-Za-z0-9_])mainnet(?![A-Za-z0-9_])', 'sila-mainnet', text)
+              text = mainnet_token.sub('sila-mainnet', text)
 
               if text != original:
                   p.write_text(text, encoding='utf-8')
@@ -65,17 +67,16 @@ jobs:
 
           bad_mainnet = []
           bad_org = []
-          token = re.compile(r'(?<![A-Za-z0-9_])mainnet(?![A-Za-z0-9_])')
           for rel in changed:
               p = Path(rel)
-              if not p.is_file() or p.suffix.lower() in binary_suffixes:
+              if p == WORKFLOW or not p.is_file() or p.suffix.lower() in binary_suffixes:
                   continue
               try:
                   text = p.read_text(encoding='utf-8')
               except UnicodeDecodeError:
                   continue
               for n, line in enumerate(text.splitlines(), 1):
-                  if token.search(line):
+                  if mainnet_token.search(line):
                       bad_mainnet.append(f'{rel}:{n}:{line[:180]}')
                   if 'https://github.com/sila/' in line or 'http://github.com/sila/' in line:
                       bad_org.append(f'{rel}:{n}:{line[:180]}')
