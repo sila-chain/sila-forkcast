@@ -4,12 +4,16 @@ on:
   push:
     branches:
       - sila/forkcast-latest-pure-20260913
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
   sync:
+    if: github.event_name == 'push' || github.head_ref == 'sila/forkcast-latest-pure-20260913'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -54,7 +58,6 @@ jobs:
               return '/'.join(mapped)
 
           def pure_sila(text: str, suffix: str) -> str:
-              # Exact identity tokens only. Third-party names containing eth/ethereum remain untouched.
               text = text.replace('github.com/ethereum/', 'github.com/sila/')
               text = text.replace('https://ethereum.org', 'https://sila.org')
               text = text.replace('http://ethereum.org', 'http://sila.org')
@@ -79,7 +82,6 @@ jobs:
               for old, new in token_pairs:
                   text = re.sub(r'(?<![A-Za-z0-9_])' + re.escape(old) + r'(?![A-Za-z0-9_])', new, text)
 
-              # Lowercase mainnet is parser-safe in code: only string literals are hyphenated.
               if suffix in {'.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs'}:
                   text = re.sub(r"(['\"])mainnet\1", lambda m: m.group(1) + 'sila-mainnet' + m.group(1), text)
               else:
@@ -109,7 +111,6 @@ jobs:
                   target.write_text(pure_sila(text, target.suffix.lower()), encoding='utf-8')
               staged.append(dst)
 
-          # No actionable Ethereum identity may remain in the changed Sila paths.
           residuals = []
           actionable = re.compile(r'(?<![A-Za-z0-9_])(Ethereum|ethereum|ETHEREUM|EIPs|EIP|eips|eip|ERCs|ERC|erc|Mainnet|MAINNET)(?![A-Za-z0-9_])')
           for p in staged:
