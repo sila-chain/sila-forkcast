@@ -21,6 +21,10 @@ jobs:
           ref: sila/forkcast-latest-pure-20260913
           fetch-depth: 0
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
       - name: Synchronize exact upstream delta as pure Sila
         shell: bash
         run: |
