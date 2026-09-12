@@ -56,7 +56,6 @@ jobs:
           token_map={U:'Sila',u:'sila',UU:'SILA',EIPS:'SIPs',eips:'sips',EIP:'SIP',eip:'sip',ERCS:'SRCs',ercs:'srcs',ERC:'SRC',erc:'src',ETH:'SIL',Eth:'Sil',eth:'sil',Ether:'Sila',ether:'sila','Mainnet':'SilaMainnet','MAINNET':'SILA_MAINNET','Sepolia':'SilaSepolia','Holesky':'SilaHolesky','Deneb':'SilaDeneb','Fulu':'SilaFulu','PeerDAS':'SilaPeerDAS','Cancun':'SilaCancun','Shanghai':'SilaShanghai','Prague':'SilaPrague','Osaka':'SilaOsaka','Paris':'SilaParis','Amsterdam':'SilaAmsterdam','Kovan':'SilaKovan'}
           literals=[('https://'+eips+'.'+u+'.org','https://sips.sila.org'),(eips+'.'+u+'.org','sips.sila.org'),('https://github.com/'+u,'https://github.com/sila-chain'),('github.com/'+u,'github.com/sila-chain'),('https://'+u+'.org','https://sila.org'),(u+'.org','sila.org'),(U+' Foundation','Sila Foundation'),(Eth+'erscan','SilaScan'),('W'+ETH,'WSIL'),('IW'+ETH,'IWSIL'),('I'+ERC,'ISRC'),('A'+ERC,'ASRC'),('I'+EIP,'ISIP')]
           rx=re.compile(r'\b(?:'+'|'.join(sorted(map(re.escape,token_map),key=len,reverse=True))+r')\b')
-          prx=re.compile(r'(?<![A-Za-z0-9])(?:'+'|'.join(sorted(map(re.escape,{**token_map,'mainnet':'sila-mainnet'}),key=len,reverse=True))+r')(?![A-Za-z0-9])')
           def binary(p):
               b=p.read_bytes()[:8192]
               if b'\x00' in b:return True
@@ -70,8 +69,10 @@ jobs:
               if p.suffix in code_ext:
                   s=re.sub(r'(?<![A-Za-z0-9_$])mainnet\s*:', "'sila-mainnet':", s)
                   s=re.sub(r'\.mainnet\b', "['sila-mainnet']", s)
+                  s=re.sub(r'\bmainnet\b','silaMainnet',s)
+              else:
+                  s=re.sub(r'\bmainnet\b','sila-mainnet',s)
               s=rx.sub(lambda m:token_map[m.group(0)],s)
-              s=re.sub(r'\bmainnet\b','sila-mainnet',s)
               p.write_text(s,'utf-8')
           path_map={**token_map,'mainnet':'sila-mainnet'}
           path_rx=re.compile(r'(?<![A-Za-z0-9])(?:'+'|'.join(sorted(map(re.escape,path_map),key=len,reverse=True))+r')(?![A-Za-z0-9])')
