@@ -2,7 +2,7 @@
   "id": "glamsterdam-devnet-1",
   "title": "glamsterdam-devnet-1",
   "sourceUrl": "https://notes.sila.org/@ethpandaops/glamsterdam-devnet-1",
-  "scrapedAt": "2026-09-11T06:43:08.142Z",
+  "scrapedAt": "2026-09-12T18:29:30.965Z",
   "sameSpecAs": "glamsterdam-devnet-0",
   "announcements": [],
   "sips": [
@@ -16,7 +16,7 @@
       "number": 7732,
       "title": "Enshrined Proposer-Builder Separation",
       "status": "updated",
-      "url": "https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7732.md"
+      "url": "https://github.com/sila/SIPs/blob/master/EIPS/sip-7732.md"
     },
     {
       "number": 7778,
@@ -90,11 +90,11 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.7.0-alpha.5",
-      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-alpha.5"
+      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-alpha.5"
     },
     "executionSpecs": {
       "version": "bal@v5.6.1",
-      "url": "https://github.com/sila-chain/execution-spec-tests/releases/tag/bal@v5.6.1"
+      "url": "https://github.com/sila/execution-spec-tests/releases/tag/bal@v5.6.1"
     }
   },
   "genesisTime": 1777420800

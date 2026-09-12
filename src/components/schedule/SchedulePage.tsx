@@ -41,7 +41,7 @@ const DEFAULT_STATE: PlanningTableState = {
 
 // Human-readable labels for duration settings
 const DURATION_LABELS: Record<keyof PhaseDurations, { label: string; description: string }> = {
-  HOODI_TO_MAINNET: { label: 'Hoodi → SilaMainnet', description: 'Days between Hoodi testnet and sila-mainnet' },
+  HOODI_TO_MAINNET: { label: 'Hoodi → SilaMainnet', description: 'Days between Hoodi testnet and mainnet' },
   SEPOLIA_TO_HOODI: { label: 'SilaSepolia → Hoodi', description: 'Days between SilaSepolia and Hoodi testnets' },
   DEVNET_TO_SEPOLIA: { label: 'Last Devnet → SilaSepolia', description: 'Days between last devnet and SilaSepolia' },
   DEVNET_DURATION: { label: 'Devnet Duration', description: 'Days between each devnet' },
@@ -94,7 +94,7 @@ const SchedulePage: React.FC = () => {
     return { days, isUnderExpected: days < expectedDuration };
   };
 
-  // Generate dynamic fork projections based on selected sila-mainnet dates
+  // Generate dynamic fork projections based on selected mainnet dates
   // These will override the static data for dates that haven't occurred yet
   const dynamicGlamsterdamProjection = useMemo(() => {
     const generated = generateForkProgress('Glamsterdam', parseLocalDate(glamsterdamMainnetDate), {
@@ -145,6 +145,13 @@ const SchedulePage: React.FC = () => {
                   projectedDate: staticDevnet.projectedDate
                 };
               }
+              // The projection only infers status from whether the whole fork is
+              // historical, so a devnet we know the state of keeps its own — a
+              // dateless devnet that has already run would otherwise read as
+              // upcoming against a projected date.
+              if (staticDevnet) {
+                return { ...devnet, status: staticDevnet.status };
+              }
               return devnet;
             })
           };
@@ -166,11 +173,13 @@ const SchedulePage: React.FC = () => {
       ...withStatic,
       phases: withStatic.phases.map(phase => {
         if (phase.phaseId !== 'public-testnets' || !phase.testnets || !plataberget) return phase;
-        // A proposed fork slot beats the backwards-from-sila-mainnet projection, but
+        // A proposed fork slot beats the backwards-from-mainnet projection, but
         // stays overridable in the sandbox.
         const withProposals = phase.testnets.map(testnet => {
-          const proposedDate = staticTestnets?.find(t => t.name === testnet.name)?.proposedDate;
-          return proposedDate ? { ...testnet, proposedDate } : testnet;
+          const proposal = staticTestnets?.find(t => t.name === testnet.name);
+          return proposal?.proposedDate
+            ? { ...testnet, proposedDate: proposal.proposedDate, proposedSource: proposal.proposedSource }
+            : testnet;
         });
         const sepoliaIdx = withProposals.findIndex(t => t.name === 'SilaSepolia');
         const insertAt = sepoliaIdx === -1 ? withProposals.length : sepoliaIdx;
@@ -437,7 +446,7 @@ const SchedulePage: React.FC = () => {
             return `${months}mo ${days}d`;
           };
 
-          // Calculate time between upgrade sila-mainnet dates
+          // Calculate time between upgrade mainnet dates
           const pectraMainnet = parseShortDate('May 7, 2025')!;
           const fusakaMainnet = parseShortDate('Dec 3, 2025')!;
           const glamsterdamMainnet = parseLocalDate(glamsterdamMainnetDate);
@@ -582,7 +591,7 @@ const SchedulePage: React.FC = () => {
                     </thead>
                     <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
                     {UPGRADE_PROCESS_PHASES.filter(phase =>
-                      phase.id !== 'sila-mainnet-deployment' &&
+                      phase.id !== 'mainnet-deployment' &&
                       phase.id !== 'public-testnets' &&
                       phase.id !== 'fork-focus'
                     ).map((phase) => {
@@ -867,6 +876,7 @@ const SchedulePage: React.FC = () => {
                                           gapIsNegative={glamDevnetGap.isNegative}
                                           gapType="variable"
                                           isLive={glamDevnet.status === 'in-progress'}
+                                          liveHref={`/networks/glamsterdam-devnet-${idx}`}
                                         />
                                       );
                                     })() : (
@@ -893,6 +903,7 @@ const SchedulePage: React.FC = () => {
                                           gapIsNegative={hegotaDevnetGap.isNegative}
                                           gapType="variable"
                                           isLive={hegotaDevnet.status === 'in-progress'}
+                                          liveHref={`/networks/hegota-devnet-${idx}`}
                                         />
                                       );
                                     })() : (
@@ -1010,6 +1021,7 @@ const SchedulePage: React.FC = () => {
                                       gapTooltip={showGap ? currentGapTooltip : undefined}
                                       gapType="fixed"
                                       isProposed={!glamTestnet.date && !!glamTestnet.proposedDate}
+                                      proposedSource={glamTestnet.proposedSource}
                                       isLive={glamTestnet.status === 'in-progress'}
                                     />
                                   );
@@ -1085,7 +1097,7 @@ const SchedulePage: React.FC = () => {
                             value={glamsterdamMainnetDate}
                             onChange={(e) => setGlamsterdamMainnetDate(e.target.value)}
                             className="px-1.5 py-0.5 text-sm border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-purple-500 cursor-pointer"
-                            title="Click to adjust Glamsterdam sila-mainnet date"
+                            title="Click to adjust Glamsterdam mainnet date"
                           />
                           {(() => {
                             const glamDate = parseLocalDate(glamsterdamMainnetDate);
@@ -1114,7 +1126,7 @@ const SchedulePage: React.FC = () => {
                             value={hegotaMainnetDate}
                             onChange={(e) => setHegotaMainnetDate(e.target.value)}
                             className="px-1.5 py-0.5 text-sm border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-purple-500 cursor-pointer"
-                            title="Click to adjust Hegota sila-mainnet date"
+                            title="Click to adjust Hegota mainnet date"
                           />
                           {(() => {
                             const hegotaDate = parseLocalDate(hegotaMainnetDate);
@@ -1155,7 +1167,7 @@ const SchedulePage: React.FC = () => {
             ]}
             startDate={new Date(2025, 4, 1)} // May 2025
             monthsToShow={(() => {
-              // Calculate months from May 2025 to Hegota sila-mainnet + 1 month buffer
+              // Calculate months from May 2025 to Hegota mainnet + 1 month buffer
               const start = new Date(2025, 4, 1);
               const hegotaDate = parseLocalDate(hegotaMainnetDate);
               const months = (hegotaDate.getFullYear() - start.getFullYear()) * 12

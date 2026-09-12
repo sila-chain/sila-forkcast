@@ -2,7 +2,7 @@
   "id": "glamsterdam-devnet-9",
   "title": "glamsterdam-devnet-9",
   "sourceUrl": "https://notes.sila.org/@ethpandaops/glamsterdam-devnet-9",
-  "scrapedAt": "2026-09-11T06:43:13.036Z",
+  "scrapedAt": "2026-09-12T18:29:36.826Z",
   "announcements": [
     "**Genesis 2026-09-01 15:00:00 UTC** (`MIN_GENESIS_TIME` 1788274800). **Gloas fork at epoch 225 — 2026-09-02 15:00:00 UTC**, 24 h after genesis.",
     "**Client teams - please get your trunk branches ready.** devnet-9 runs **trunk images**\n(`:master` / `:main` / `:unstable` / `:develop`)",
@@ -37,7 +37,7 @@
       "number": 7732,
       "title": "Enshrined Proposer-Builder Separation",
       "status": null,
-      "url": "https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7732.md"
+      "url": "https://github.com/sila/SIPs/blob/master/EIPS/sip-7732.md"
     },
     {
       "number": 7778,
@@ -163,7 +163,7 @@
       "number": 8282,
       "title": "Add builder execution requests",
       "status": null,
-      "url": "https://github.com/sila-chain/SIPs/pull/11760"
+      "url": "https://github.com/sila/SIPs/pull/11760"
     }
   ],
   "elClientSupport": {
@@ -231,7 +231,7 @@
       },
       {
         "eipNumber": 0,
-        "label": "Undecodable BAL → `INVALID` ([#869](https://github.com/sila-chain/execution-apis/pull/869))",
+        "label": "Undecodable BAL → `INVALID` ([#869](https://github.com/sila/execution-apis/pull/869))",
         "support": {
           "Geth": "not_supported",
           "Besu": "supported",
@@ -280,7 +280,7 @@
       },
       {
         "eipNumber": 5096,
-        "label": "`get_parent_payload_status` for a pre-Gloas parent ([#5096](https://github.com/sila-chain/consensus-specs/issues/5096))",
+        "label": "`get_parent_payload_status` for a pre-Gloas parent ([#5096](https://github.com/sila/consensus-specs/issues/5096))",
         "support": {
           "Lodestar": "`FULL`",
           "Lighthouse": "`PENDING`",
@@ -307,7 +307,7 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.7.0-alpha.14",
-      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-alpha.14"
+      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-alpha.14"
     },
     "executionSpecs": null
   },

@@ -2,10 +2,10 @@
   "id": "glamsterdam-devnet-5",
   "title": "glamsterdam-devnet-5",
   "sourceUrl": "https://notes.sila.org/@ethpandaops/glamsterdam-devnet-5",
-  "scrapedAt": "2026-09-11T06:43:10.834Z",
+  "scrapedAt": "2026-09-12T18:29:34.575Z",
   "announcements": [
     "glamsterdam-devnet-5 targets to launch on 4th of June 2026 and shut off on 25th of June 2026.",
-    "**First `glamsterdam-` prefixed CL+EL devnet** combining `consensus-specs` **v1.7.0-alpha.10** with the **bal-devnet-7** EL feature set, plus the new `targetGasLimit` engine API field ([execution-apis#796](https://github.com/sila-chain/execution-apis/pull/796) ↔ [consensus-specs#5235](https://github.com/sila-chain/consensus-specs/pull/5235)).",
+    "**First `glamsterdam-` prefixed CL+EL devnet** combining `consensus-specs` **v1.7.0-alpha.10** with the **bal-devnet-7** EL feature set, plus the new `targetGasLimit` engine API field ([execution-apis#796](https://github.com/sila/execution-apis/pull/796) ↔ [consensus-specs#5235](https://github.com/sila/consensus-specs/pull/5235)).",
     "**`targetGasLimit` on `PayloadAttributesV4`** — CL now passes the per-validator target gas limit to the EL on `engine_forkchoiceUpdatedV4`, replacing the static EL-side flag. CL also enforces `target_gas_limit` consistency with the block's `gas_limit` (CL PR-5236)."
   ],
   "sips": [
@@ -19,7 +19,7 @@
       "number": 7732,
       "title": "Enshrined Proposer-Builder Separation",
       "status": "updated",
-      "url": "https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7732.md"
+      "url": "https://github.com/sila/SIPs/blob/master/EIPS/sip-7732.md"
     },
     {
       "number": 7778,
@@ -239,7 +239,7 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.7.0-alpha.10",
-      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-alpha.10"
+      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-alpha.10"
     },
     "executionSpecs": null
   },

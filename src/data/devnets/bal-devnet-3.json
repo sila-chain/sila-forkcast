@@ -2,7 +2,7 @@
   "id": "bal-devnet-3",
   "title": "bal-devnet-3",
   "sourceUrl": "https://notes.sila.org/@ethpandaops/bal-devnet-3",
-  "scrapedAt": "2026-09-11T06:43:00.994Z",
+  "scrapedAt": "2026-09-12T18:29:24.076Z",
   "announcements": [
     "bal-devnet-3 targets to launch 08 April 2026.",
     "EL clients: please add flags to enable/disable BAL optimizations batch/parallel io and parallel execution.",
@@ -224,11 +224,11 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.6.1",
-      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.6.1"
+      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.6.1"
     },
     "executionSpecs": {
       "version": "bal@v5.6.0",
-      "url": "https://github.com/sila-chain/execution-spec-tests/releases/tag/bal@v5.6.0"
+      "url": "https://github.com/sila/execution-spec-tests/releases/tag/bal@v5.6.0"
     }
   },
   "genesisTime": 1775658600

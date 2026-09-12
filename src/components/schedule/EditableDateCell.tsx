@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { parseLocalDate, parseShortDate } from './forkDateCalculator';
 import { formatISODate } from '../../utils/date';
 import { Tooltip } from '../ui';
+import { Link } from '../navigation';
+
+const badgeBase = 'inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium';
+const doneBadgeClasses = `${badgeBase} bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300`;
+const proposedBadgeClasses = `${badgeBase} bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300`;
 
 export interface EditableDateCellProps {
   fork: string;
@@ -21,8 +26,12 @@ export interface EditableDateCellProps {
   isSourceLocked?: boolean;
   /** Date was put forward on ACD but not yet agreed. */
   isProposed?: boolean;
+  /** Where the proposal was put forward, linked from the proposed badge. */
+  proposedSource?: string;
   /** Network launched on this date and is still running. */
   isLive?: boolean;
+  /** Page for the running network, linked from the live badge. */
+  liveHref?: string;
 }
 
 const EditableDateCell: React.FC<EditableDateCellProps> = ({
@@ -42,7 +51,9 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
   gapType,
   isSourceLocked,
   isProposed,
+  proposedSource,
   isLive,
+  liveHref,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState('');
@@ -52,8 +63,7 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
   const displayDate = lockedDates[dateKey] ?? calculatedDate;
 
   // Check if date is overdue (past today and the milestone hasn't happened).
-  // A live network's date is its launch, so it is in the past by definition.
-  const isOverdue = !isCompleted && !isLive && displayDate && (() => {
+  const isOverdue = !isCompleted && displayDate && (() => {
     const parsed = parseShortDate(displayDate);
     if (!parsed) return false;
     const today = new Date();
@@ -116,6 +126,21 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
         ? 'text-blue-500 dark:text-blue-400'
         : 'text-slate-400 dark:text-slate-400';
 
+  const renderLiveBadge = () => (
+    <Tooltip
+      text={liveHref ? 'Launched on this date and still running. View the network.' : 'Launched on this date and still running.'}
+      position="top"
+    >
+      {liveHref ? (
+        <Link to={liveHref} className={`${doneBadgeClasses} hover:bg-green-200 dark:hover:bg-green-900/40`}>
+          ●
+        </Link>
+      ) : (
+        <div className={doneBadgeClasses}>●</div>
+      )}
+    </Tooltip>
+  );
+
   const renderGap = () => {
     if (!gapText) return <span className={gapWidth}></span>;
     const span = (
@@ -157,13 +182,12 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
     );
   }
 
-  // Completed milestone (not editable)
-  if (isCompleted) {
+  // Already happened, so the date is a fact rather than an estimate: not
+  // editable, and nothing downstream of it is recalculated.
+  if (isCompleted || isLive) {
     return (
       <div className="flex items-center gap-1">
-        <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300">
-          ✓
-        </div>
+        {isLive ? renderLiveBadge() : <div className={doneBadgeClasses}>✓</div>}
         <div className={`text-slate-700 dark:text-slate-300 text-sm ${dateWidth}`}>
           {displayDate}
         </div>
@@ -231,25 +255,31 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
             ⚠
           </div>
         </Tooltip>
-      ) : isLive ? (
-        <Tooltip text="Launched on this date and still running." position="top">
-          <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300">
-            ●
-          </div>
-        </Tooltip>
       ) : isProposed && displayDate === calculatedDate ? (
         /* A specific date came out of ACD discussion. Firmer than a projection
-           off the sila-mainnet estimate, but not agreed, so no 🔒. */
-        <Tooltip text="Proposed, not yet agreed." position="top">
-          <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300">
-            ~
-          </div>
+           off the mainnet estimate, but not agreed, so no 🔒. */
+        <Tooltip
+          text={proposedSource ? 'Proposed, not yet agreed. See the proposal.' : 'Proposed, not yet agreed.'}
+          position="top"
+        >
+          {proposedSource ? (
+            <a
+              href={proposedSource}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${proposedBadgeClasses} hover:bg-blue-200 dark:hover:bg-blue-900/40`}
+            >
+              ~
+            </a>
+          ) : (
+            <div className={proposedBadgeClasses}>~</div>
+          )}
         </Tooltip>
       ) : (
         /* A question mark, not a neutral circle: these dates are projections
-           calculated backwards from a target sila-mainnet date, and readers routinely
+           calculated backwards from a target mainnet date, and readers routinely
            quote them as if they were agreed. */
-        <Tooltip text="Projected, not agreed. Calculated from the target sila-mainnet date." position="top">
+        <Tooltip text="Projected, not agreed. Calculated from the target mainnet date." position="top">
           <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
             ?
           </div>
@@ -266,7 +296,7 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
       <button
         onClick={handleToggleLock}
         className={`${iconWidth} text-xs text-center transition-opacity ${isLocked ? 'text-amber-500' : 'opacity-0 group-hover:opacity-100 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
-        title={isLocked ? 'Unlock (recalculate from sila-mainnet date)' : 'Lock this date'}
+        title={isLocked ? 'Unlock (recalculate from mainnet date)' : 'Lock this date'}
       >
         {isLocked ? '🔒' : '🔓'}
       </button>

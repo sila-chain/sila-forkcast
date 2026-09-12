@@ -1,18 +1,18 @@
 {
-  "id": "glamsterdam-devnet-8",
-  "title": "Plataberget",
-  "sourceUrl": "https://notes.sila.org/@ethpandaops/glamsterdam-devnet-8",
-  "scrapedAt": "2026-09-12T18:29:36.277Z",
+  "id": "glamsterdam-devnet-11",
+  "title": "glamsterdam-devnet-11",
+  "sourceUrl": "https://notes.sila.org/@ethpandaops/glamsterdam-devnet-11",
+  "scrapedAt": "2026-09-12T18:29:31.975Z",
   "announcements": [
-    "Plataberget launched 13.08 2026 with the gloas fork happening in 7 days (20.08.26 20:08) at epoch 1536. **",
-    "**Scope.** Short-lived fork-transition devnet: all clients fork together from a big pre-fork state (config similar to devnet-7). EL discovery runs **discv5-only** (per-client flags under Networking); QUIC stays enabled on the CL. The new **builder API** flow (Beacon API / Keymanager / Builder Specs PRs below) is **best effort**. **Repricing numbers are frozen** (ACDT #90) and the SIP has merged; EELS still needs a follow-up release to carry them. Stress goals: SSZ/stable-container performance and builder lifecycle at scale (see Testing focus). devnet-9 (non-finality testing) follows within the month.",
-    "8282 system contracts are unchanged from devnet-7 (no sys-asm bytecode changes since):\n\n| Req | type | Address | \n|---------|------|--------------------------------------------|\n| deposit | 0x03 | 0x0000bff46984e3725691fa540a8c7589300d8282 | \n| exit | 0x04 | 0x000064d678505ad48f8ccb093bc65613800e8282 |"
+    "**Genesis Monday 2026-09-14 12:00 UTC** (`MIN_GENESIS_TIME` 1789387200). **Gloas at epoch 450 — Wednesday 2026-09-16 12:00 UTC** (48 h). Gas limit 60M → 200M at epoch 480 (15:12 UTC). Short-lived; devnet-8 (Plataberget) stays up until the sila-mainnet fork.",
+    "**Scope.** Happy-path fork-transition devnet for L2s (Lido, Optimism, Arbitrum — Lido asked for ≥ 2 days pre-fork). A devnet-8 copy: same SIPs, same 6 CL × 7 EL × 2 grid, 84k validators, same premines and 8282 contracts. **No new SIPs, no adversarial testing** — attacks stay on devnet-8.",
+    "**Trunk images with a binding floor.** devnet-9 asked for \"trunk\" without saying which spec, and Prysm forked on alpha.12. For devnet-11 an image goes into the genesis set only if it is at\n**CL** [consensus-specs `v1.7.0-beta.0`](https://github.com/sila/consensus-specs/releases/tag/v1.7.0-beta.0) (`756f49cf`, 09-04) and **EL** passes [`tests-glamsterdam-devnet@v8.1.4`](https://github.com/sila/execution-specs/releases/tag/tests-glamsterdam-devnet@v8.1.4) (09-03).\nTwo consensus deltas vs the rules devnet-8 forked on: **SIP-7610 removed** and **SIP-8037 merge-time state-gas repayment** ([SIPs #12265](https://github.com/sila/SIPs/pull/12265)). Plus CL [#5594](https://github.com/sila/consensus-specs/pull/5594): bids with `block_hash == parent_block_hash` are rejected."
   ],
   "sips": [
     {
       "number": 2780,
-      "title": "Reduce intrinsic transaction gas — transfer log cost folded into `TX_VALUE_COST`; intrinsic contract-creation 23,000 → 24,000 (tracks `CREATE_ACCESS`)",
-      "status": "updated",
+      "title": "Reduce intrinsic transaction gas",
+      "status": null,
       "url": "https://sips.sila.org/EIPS/sip-2780"
     },
     {
@@ -36,7 +36,7 @@
     {
       "number": 7732,
       "title": "Enshrined Proposer-Builder Separation",
-      "status": null,
+      "status": "updated",
       "url": "https://github.com/sila/SIPs/blob/master/EIPS/sip-7732.md"
     },
     {
@@ -59,8 +59,8 @@
     },
     {
       "number": 7928,
-      "title": "Block-Level Access Lists — recipient excluded when a runtime halt precedes",
-      "status": "updated",
+      "title": "Block-Level Access Lists",
+      "status": null,
       "url": "https://sips.sila.org/EIPS/sip-7928"
     },
     {
@@ -89,8 +89,8 @@
     },
     {
       "number": 7997,
-      "title": "Deterministic Factory Predeploy — spec unchanged; clients must not check contract existence at the fork boundary (no BAL read, no witness)",
-      "status": "updated",
+      "title": "Deterministic Factory Predeploy",
+      "status": null,
       "url": "https://sips.sila.org/EIPS/sip-7997"
     },
     {
@@ -101,14 +101,14 @@
     },
     {
       "number": 8037,
-      "title": "State Creation Gas — CPSB=1530, source-based refunds; \"regular gas\" renamed to \"execution gas\" (terminology only)",
+      "title": "State Creation Gas — merge-time repayment to `gas_left` (#12265)",
       "status": "updated",
       "url": "https://sips.sila.org/EIPS/sip-8037"
     },
     {
       "number": 8038,
-      "title": "State-access gas cost update — `COLD_STORAGE_ACCESS` stays 2,100 (no longer raised); `ACCOUNT_WRITE` 9,000, `CREATE_ACCESS` 12,000, `STORAGE_CLEAR_REFUND` 11,616, `ACCESS_LIST_STORAGE_KEY_COST` 2,000, `ACCESS_LIST_ADDRESS_COST` 2,900, `CALL_VALUE` 11,300; `COLD_ACCOUNT_ACCESS` 3,000 and `STORAGE_WRITE` 10,000 unchanged",
-      "status": "updated",
+      "title": "State-access gas cost update (ACDT #90 numbers)",
+      "status": null,
       "url": "https://sips.sila.org/EIPS/sip-8038"
     },
     {
@@ -125,14 +125,14 @@
     },
     {
       "number": 8070,
-      "title": "Sparse Blobpool — Engine API half now required: `engine_getBlobsV3` *and* `V4` both served, FCU v4 `custody_columns`. sil/72 cell exchange stays optional; cell-level DAS deferred",
+      "title": "sil/72 - Sparse Blobpool",
       "status": null,
       "url": "https://sips.sila.org/EIPS/sip-8070"
     },
     {
       "number": 8136,
       "title": "Cell-Level Deltas for Data Column Broadcast",
-      "status": "new",
+      "status": null,
       "url": "https://sips.sila.org/EIPS/sip-8136"
     },
     {
@@ -144,7 +144,7 @@
     {
       "number": 8189,
       "title": "snap/2 - BAL-Based State Healing",
-      "status": "new",
+      "status": null,
       "url": "https://sips.sila.org/EIPS/sip-8189"
     },
     {
@@ -155,8 +155,8 @@
     },
     {
       "number": 8261,
-      "title": "Gas Limit Schedule (informational only)",
-      "status": "new",
+      "title": "Gas Limit Schedule (optional) — 60M → 200M at epoch 480",
+      "status": null,
       "url": "https://sips.sila.org/EIPS/sip-8261"
     },
     {
@@ -175,8 +175,11 @@
     "matrix": []
   },
   "specReferences": {
-    "consensusSpecs": null,
+    "consensusSpecs": {
+      "version": "v1.7.0-beta.0",
+      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-beta.0"
+    },
     "executionSpecs": null
   },
-  "genesisTime": 1786622400
+  "genesisTime": 1788948000
 }

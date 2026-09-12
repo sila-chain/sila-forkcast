@@ -30,9 +30,11 @@ export interface TestnetDetail {
   projectedDate?: string;
   /**
    * A specific fork slot put forward on ACD but not yet agreed. Ranks between
-   * `projectedDate` (derived from a target sila-mainnet date) and `date` (settled).
+   * `projectedDate` (derived from a target mainnet date) and `date` (settled).
    */
   proposedDate?: string;
+  /** Where the slot was put forward, linked from the `~` badge. */
+  proposedSource?: string;
 }
 
 export interface SubstepDetail {

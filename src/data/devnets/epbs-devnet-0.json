@@ -2,7 +2,7 @@
   "id": "epbs-devnet-0",
   "title": "epbs-devnet-0",
   "sourceUrl": "https://notes.sila.org/@ethpandaops/epbs-devnet-0",
-  "scrapedAt": "2026-09-11T06:43:05.885Z",
+  "scrapedAt": "2026-09-12T18:29:28.311Z",
   "announcements": [
     "epbs-devnet-0 targets to launch by 4th of March 2026",
     "On epbs-devnet-0, only self-built payloads will be tested."
@@ -39,7 +39,7 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.7.0-alpha.2",
-      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-alpha.2"
+      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-alpha.2"
     },
     "executionSpecs": null
   }

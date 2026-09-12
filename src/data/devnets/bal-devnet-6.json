@@ -2,7 +2,7 @@
   "id": "bal-devnet-6",
   "title": "bal-devnet-6",
   "sourceUrl": "https://notes.sila.org/@ethpandaops/bal-devnet-6",
-  "scrapedAt": "2026-09-11T06:43:03.870Z",
+  "scrapedAt": "2026-09-12T18:29:25.834Z",
   "announcements": [
     "bal-devnet-6 target launch: **Friday 01.05**.",
     "BAL benchmark dashboard https://nerolation.github.io/bal-dashboard/. Based on data from https://benchmarkoor.core.ethpandaops.io. Requires benchmarkoor api key.",
@@ -265,11 +265,11 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.6.1",
-      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.6.1"
+      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.6.1"
     },
     "executionSpecs": {
       "version": "snøbal-devnet-6@v1.0.0",
-      "url": "https://github.com/sila-chain/execution-spec-tests/releases/tag/snøbal-devnet-6@v1.0.0"
+      "url": "https://github.com/sila/execution-spec-tests/releases/tag/snøbal-devnet-6@v1.0.0"
     }
   }
 }
