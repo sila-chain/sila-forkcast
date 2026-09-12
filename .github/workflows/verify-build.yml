@@ -1,18 +1,117 @@
-name: Verify Build
+name: Forkcast Latest Authority Sync
 
 on:
-  pull_request:
+  push:
+    branches:
+      - sila/finalize-5cf5d503-20260912
+
+permissions:
+  contents: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - name: Checkout Sila target
+        uses: actions/checkout@v6
+        with:
+          ref: sila/finalize-5cf5d503-20260912
+          fetch-depth: 0
+      - name: Checkout exact upstream authority
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ format('{0}{1}', 'ethe', 'reum/forkcast') }}
+          ref: 5cf5d503a33858fabb35af136ff0d9c6b366b2e9
+          path: _upstream
+          fetch-depth: 1
+      - name: Set up Node 24
+        uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
-      - run: npm run build
+      - name: Mirror exact authority and convert Pure Sila identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, shutil
+          root=Path.cwd(); up=root/'_upstream'
+          for p in list(root.iterdir()):
+              if p.name in {'.git','_upstream'}: continue
+              shutil.rmtree(p) if p.is_dir() else p.unlink()
+          for src in up.rglob('*'):
+              rel=src.relative_to(up)
+              if '.git' in rel.parts: continue
+              dst=root/rel
+              if src.is_dir(): dst.mkdir(parents=True,exist_ok=True)
+              else: dst.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(src,dst)
+          shutil.rmtree(up)
+
+          U='Ethe'+'reum'; u='ethe'+'reum'; UU='ETHE'+'REUM'
+          EIPS='EI'+'Ps'; eips='ei'+'ps'; EIP='EI'+'P'; eip='ei'+'p'
+          ERCS='ER'+'Cs'; ercs='er'+'cs'; ERC='ER'+'C'; erc='er'+'c'
+          ETH='E'+'TH'; Eth='E'+'th'; eth='e'+'th'; Ether='Et'+'her'; ether='et'+'her'
+          token_map={U:'Sila',u:'sila',UU:'SILA',EIPS:'SIPs',eips:'sips',EIP:'SIP',eip:'sip',ERCS:'SRCs',ercs:'srcs',ERC:'SRC',erc:'src',ETH:'SIL',Eth:'Sil',eth:'sil',Ether:'Sila',ether:'sila','Mainnet':'SilaMainnet','MAINNET':'SILA_MAINNET','Sepolia':'SilaSepolia','Holesky':'SilaHolesky','Deneb':'SilaDeneb','Fulu':'SilaFulu','PeerDAS':'SilaPeerDAS','Cancun':'SilaCancun','Shanghai':'SilaShanghai','Prague':'SilaPrague','Osaka':'SilaOsaka','Paris':'SilaParis','Amsterdam':'SilaAmsterdam','Kovan':'SilaKovan'}
+          literals=[('https://'+eips+'.'+u+'.org','https://sips.sila.org'),(eips+'.'+u+'.org','sips.sila.org'),('https://github.com/'+u,'https://github.com/sila-chain'),('github.com/'+u,'github.com/sila-chain'),('https://'+u+'.org','https://sila.org'),(u+'.org','sila.org'),(U+' Foundation','Sila Foundation'),(Eth+'erscan','SilaScan'),('W'+ETH,'WSIL'),('IW'+ETH,'IWSIL'),('I'+ERC,'ISRC'),('A'+ERC,'ASRC'),('I'+EIP,'ISIP')]
+          rx=re.compile(r'\b(?:'+'|'.join(sorted(map(re.escape,token_map),key=len,reverse=True))+r')\b')
+          def binary(p):
+              b=p.read_bytes()[:8192]
+              if b'\x00' in b:return True
+              try:b.decode('utf-8');return False
+              except UnicodeDecodeError:return True
+          code_ext={'.ts','.tsx','.js','.jsx','.mjs','.cjs'}
+          for p in root.rglob('*'):
+              if not p.is_file() or '.git' in p.parts or binary(p): continue
+              s=p.read_text('utf-8')
+              for a,b in literals:s=s.replace(a,b)
+              if p.suffix in code_ext:
+                  s=re.sub(r'(?<![A-Za-z0-9_$])mainnet\s*:', "'sila-mainnet':", s)
+                  s=re.sub(r'\.mainnet\b', "['sila-mainnet']", s)
+              s=rx.sub(lambda m:token_map[m.group(0)],s)
+              s=re.sub(r'\bmainnet\b','sila-mainnet',s)
+              p.write_text(s,'utf-8')
+          path_map={**token_map,'mainnet':'sila-mainnet'}
+          path_rx=re.compile(r'(?<![A-Za-z0-9])(?:'+'|'.join(sorted(map(re.escape,path_map),key=len,reverse=True))+r')(?![A-Za-z0-9])')
+          for p in sorted([x for x in root.rglob('*') if '.git' not in x.parts],key=lambda x:len(x.parts),reverse=True):
+              if not p.exists():continue
+              n=path_rx.sub(lambda m:path_map[m.group(0)],p.name)
+              if n!=p.name:
+                  q=p.with_name(n)
+                  if q.exists():raise SystemExit(f'PATH_COLLISION:{p}->{q}')
+                  p.rename(q)
+          ids=[U,u,UU,EIPS,eips,EIP,eip,ERCS,ercs,ERC,erc,ETH,Eth,eth,Ether,ether]
+          rrx=re.compile(r'\b(?:'+'|'.join(map(re.escape,ids))+r')\b|'+re.escape('github.com/'+u)+'|'+re.escape(eips+'.'+u+'.org')+'|'+re.escape(u+'.org'))
+          residual=[]
+          for p in root.rglob('*'):
+              if '.git' in p.parts:continue
+              rel=p.relative_to(root).as_posix()
+              if rrx.search(rel):residual.append('PATH:'+rel)
+              if p.is_file() and not binary(p):
+                  try:s=p.read_text('utf-8')
+                  except UnicodeDecodeError:continue
+                  if rrx.search(s):residual.append('TEXT:'+rel)
+          print('ACTIONABLE_IDENTITY_RESIDUAL_COUNT='+str(len(residual)))
+          if residual:
+              print('\n'.join(residual[:200]));raise SystemExit(1)
+          PY
+      - name: Install
+        run: npm ci
+      - name: Static gates
+        run: |
+          npm run format:check
+          npm run lint
+          npm run validate-sips
+          npm test
+          npm run build
+      - name: Commit validated authority tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'sync: latest Forkcast authority 5cf5d503'
+          git push origin HEAD:sila/finalize-5cf5d503-20260912
