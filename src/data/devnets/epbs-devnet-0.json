@@ -39,7 +39,7 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.7.0-alpha.2",
-      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-alpha.2"
+      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-alpha.2"
     },
     "executionSpecs": null
   }

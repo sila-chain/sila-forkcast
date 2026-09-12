@@ -37,7 +37,7 @@
       "number": 7732,
       "title": "Enshrined Proposer-Builder Separation",
       "status": null,
-      "url": "https://github.com/sila/SIPs/blob/master/EIPS/sip-7732.md"
+      "url": "https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7732.md"
     },
     {
       "number": 7778,
@@ -163,7 +163,7 @@
       "number": 8282,
       "title": "Add builder execution requests",
       "status": null,
-      "url": "https://github.com/sila/SIPs/pull/11760"
+      "url": "https://github.com/sila-chain/SIPs/pull/11760"
     }
   ],
   "elClientSupport": {

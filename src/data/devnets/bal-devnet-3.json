@@ -224,11 +224,11 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.6.1",
-      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.6.1"
+      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.6.1"
     },
     "executionSpecs": {
       "version": "bal@v5.6.0",
-      "url": "https://github.com/sila/execution-spec-tests/releases/tag/bal@v5.6.0"
+      "url": "https://github.com/sila-chain/execution-spec-tests/releases/tag/bal@v5.6.0"
     }
   },
   "genesisTime": 1775658600

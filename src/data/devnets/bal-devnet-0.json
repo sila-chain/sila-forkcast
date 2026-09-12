@@ -18,11 +18,11 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.6.0-beta.0",
-      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.6.0-beta.0"
+      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.6.0-beta.0"
     },
     "executionSpecs": {
       "version": "v1.8.0",
-      "url": "https://github.com/sila/execution-spec-tests/releases/tag/bal%40v1.8.0"
+      "url": "https://github.com/sila-chain/execution-spec-tests/releases/tag/bal%40v1.8.0"
     }
   }
 }

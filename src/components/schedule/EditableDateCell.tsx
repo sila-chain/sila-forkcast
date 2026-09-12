@@ -257,7 +257,7 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
         </Tooltip>
       ) : isProposed && displayDate === calculatedDate ? (
         /* A specific date came out of ACD discussion. Firmer than a projection
-           off the mainnet estimate, but not agreed, so no 🔒. */
+           off the sila-mainnet estimate, but not agreed, so no 🔒. */
         <Tooltip
           text={proposedSource ? 'Proposed, not yet agreed. See the proposal.' : 'Proposed, not yet agreed.'}
           position="top"
@@ -277,9 +277,9 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
         </Tooltip>
       ) : (
         /* A question mark, not a neutral circle: these dates are projections
-           calculated backwards from a target mainnet date, and readers routinely
+           calculated backwards from a target sila-mainnet date, and readers routinely
            quote them as if they were agreed. */
-        <Tooltip text="Projected, not agreed. Calculated from the target mainnet date." position="top">
+        <Tooltip text="Projected, not agreed. Calculated from the target sila-mainnet date." position="top">
           <div className="inline-flex items-center justify-center w-4 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
             ?
           </div>
@@ -296,7 +296,7 @@ const EditableDateCell: React.FC<EditableDateCellProps> = ({
       <button
         onClick={handleToggleLock}
         className={`${iconWidth} text-xs text-center transition-opacity ${isLocked ? 'text-amber-500' : 'opacity-0 group-hover:opacity-100 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
-        title={isLocked ? 'Unlock (recalculate from mainnet date)' : 'Lock this date'}
+        title={isLocked ? 'Unlock (recalculate from sila-mainnet date)' : 'Lock this date'}
       >
         {isLocked ? '🔒' : '🔓'}
       </button>

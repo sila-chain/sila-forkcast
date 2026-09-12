@@ -18,7 +18,7 @@
         "eipNumber": 0,
         "label": "Geth",
         "support": {
-          "Branch/PR": "[ethpandaops/geth:master](https://github.com/sila/go-sila/pull/33404)",
+          "Branch/PR": "[ethpandaops/geth:master](https://github.com/sila-chain/go-sila/pull/33404)",
           "Status": "supported"
         }
       },
@@ -131,7 +131,7 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.7.0-alpha.1",
-      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-alpha.1"
+      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-alpha.1"
     },
     "executionSpecs": null
   },

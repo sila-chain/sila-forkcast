@@ -6,7 +6,7 @@
   "announcements": [
     "**Genesis Monday 2026-09-14 12:00 UTC** (`MIN_GENESIS_TIME` 1789387200). **Gloas at epoch 450 — Wednesday 2026-09-16 12:00 UTC** (48 h). Gas limit 60M → 200M at epoch 480 (15:12 UTC). Short-lived; devnet-8 (Plataberget) stays up until the sila-mainnet fork.",
     "**Scope.** Happy-path fork-transition devnet for L2s (Lido, Optimism, Arbitrum — Lido asked for ≥ 2 days pre-fork). A devnet-8 copy: same SIPs, same 6 CL × 7 EL × 2 grid, 84k validators, same premines and 8282 contracts. **No new SIPs, no adversarial testing** — attacks stay on devnet-8.",
-    "**Trunk images with a binding floor.** devnet-9 asked for \"trunk\" without saying which spec, and Prysm forked on alpha.12. For devnet-11 an image goes into the genesis set only if it is at\n**CL** [consensus-specs `v1.7.0-beta.0`](https://github.com/sila/consensus-specs/releases/tag/v1.7.0-beta.0) (`756f49cf`, 09-04) and **EL** passes [`tests-glamsterdam-devnet@v8.1.4`](https://github.com/sila/execution-specs/releases/tag/tests-glamsterdam-devnet@v8.1.4) (09-03).\nTwo consensus deltas vs the rules devnet-8 forked on: **SIP-7610 removed** and **SIP-8037 merge-time state-gas repayment** ([SIPs #12265](https://github.com/sila/SIPs/pull/12265)). Plus CL [#5594](https://github.com/sila/consensus-specs/pull/5594): bids with `block_hash == parent_block_hash` are rejected."
+    "**Trunk images with a binding floor.** devnet-9 asked for \"trunk\" without saying which spec, and Prysm forked on alpha.12. For devnet-11 an image goes into the genesis set only if it is at\n**CL** [consensus-specs `v1.7.0-beta.0`](https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-beta.0) (`756f49cf`, 09-04) and **EL** passes [`tests-glamsterdam-devnet@v8.1.4`](https://github.com/sila-chain/execution-specs/releases/tag/tests-glamsterdam-devnet@v8.1.4) (09-03).\nTwo consensus deltas vs the rules devnet-8 forked on: **SIP-7610 removed** and **SIP-8037 merge-time state-gas repayment** ([SIPs #12265](https://github.com/sila-chain/SIPs/pull/12265)). Plus CL [#5594](https://github.com/sila-chain/consensus-specs/pull/5594): bids with `block_hash == parent_block_hash` are rejected."
   ],
   "sips": [
     {
@@ -37,7 +37,7 @@
       "number": 7732,
       "title": "Enshrined Proposer-Builder Separation",
       "status": "updated",
-      "url": "https://github.com/sila/SIPs/blob/master/EIPS/sip-7732.md"
+      "url": "https://github.com/sila-chain/SIPs/blob/master/EIPS/sip-7732.md"
     },
     {
       "number": 7778,
@@ -163,7 +163,7 @@
       "number": 8282,
       "title": "Add builder execution requests",
       "status": null,
-      "url": "https://github.com/sila/SIPs/pull/11760"
+      "url": "https://github.com/sila-chain/SIPs/pull/11760"
     }
   ],
   "elClientSupport": {
@@ -177,7 +177,7 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.7.0-beta.0",
-      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.7.0-beta.0"
+      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.7.0-beta.0"
     },
     "executionSpecs": null
   },

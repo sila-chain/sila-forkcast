@@ -265,11 +265,11 @@
   "specReferences": {
     "consensusSpecs": {
       "version": "v1.6.1",
-      "url": "https://github.com/sila/consensus-specs/releases/tag/v1.6.1"
+      "url": "https://github.com/sila-chain/consensus-specs/releases/tag/v1.6.1"
     },
     "executionSpecs": {
       "version": "snøbal-devnet-4@v1.0.0",
-      "url": "https://github.com/sila/execution-spec-tests/releases/tag/snøbal-devnet-4@v1.0.0"
+      "url": "https://github.com/sila-chain/execution-spec-tests/releases/tag/snøbal-devnet-4@v1.0.0"
     }
   }
 }

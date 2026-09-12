@@ -39,7 +39,7 @@ export const GLAMSTERDAM_TIMELINE_PHASES: TimelinePhase[] = [
     id: 'sila-mainnet',
     title: 'SilaMainnet Deployment',
     dateRange: 'Q4 2026',
-    description: 'Final deployment of Glamsterdam to Sila mainnet after successful testnet validation.',
+    description: 'Final deployment of Glamsterdam to Sila sila-mainnet after successful testnet validation.',
     status: 'upcoming'
   }
 ];
@@ -70,7 +70,7 @@ export const PECTRA_TIMELINE_PHASES: TimelinePhase[] = [
     id: 'sila-mainnet',
     title: 'SilaMainnet Deployment',
     dateRange: 'May 7',
-    description: 'Final deployment of Pectra to Sila mainnet after successful testnet validation.',
+    description: 'Final deployment of Pectra to Sila sila-mainnet after successful testnet validation.',
     status: 'completed'
   }
 ];
@@ -108,7 +108,7 @@ export const FUSAKA_TIMELINE_PHASES: TimelinePhase[] = [
     id: 'sila-mainnet',
     title: 'SilaMainnet Deployment',
     dateRange: 'Dec 3',
-    description: 'Final deployment of Fusaka to Sila mainnet after successful testnet validation.',
+    description: 'Final deployment of Fusaka to Sila sila-mainnet after successful testnet validation.',
     status: 'completed'
   }
 ];
@@ -192,7 +192,7 @@ export const FUSAKA_PROGRESS: ForkProgress = {
       ]
     },
     {
-      phaseId: 'mainnet-deployment',
+      phaseId: 'sila-mainnet-deployment',
       status: 'completed',
       actualEndDate: 'Dec 3, 2025',
       progressNotes: 'SilaMainnet activation complete'
@@ -284,21 +284,21 @@ const RAW_GLAMSTERDAM_PROGRESS: ForkProgress = {
           name: 'SilaSepolia',
           status: 'upcoming',
           proposedDate: 'Oct 6, 2026',
-          proposedSource: 'https://github.com/sila/pm/pull/2205'
+          proposedSource: 'https://github.com/sila-chain/pm/pull/2205'
         },
         {
           name: 'Hoodi',
           status: 'upcoming',
           proposedDate: 'Oct 26, 2026',
-          proposedSource: 'https://github.com/sila/pm/pull/2205'
+          proposedSource: 'https://github.com/sila-chain/pm/pull/2205'
         }
       ]
     },
     {
-      phaseId: 'mainnet-deployment',
+      phaseId: 'sila-mainnet-deployment',
       status: 'upcoming',
       projectedDate: 'Q4 2026',
-      progressNotes: 'Target mainnet activation Q4 2026'
+      progressNotes: 'Target sila-mainnet activation Q4 2026'
     }
   ]
 };
@@ -372,10 +372,10 @@ const RAW_HEGOTA_PROGRESS: ForkProgress = {
       ]
     },
     {
-      phaseId: 'mainnet-deployment',
+      phaseId: 'sila-mainnet-deployment',
       status: 'upcoming',
       projectedDate: 'Q2 2027',
-      progressNotes: 'Target mainnet activation Q2 2027'
+      progressNotes: 'Target sila-mainnet activation Q2 2027'
     }
   ]
 };
@@ -414,7 +414,7 @@ export const UPGRADE_PROCESS_PHASES: ProcessPhase[] = [
   {
     id: 'fork-focus',
     title: 'Fork Focus Definition',
-    duration: '~6-9 months pre-mainnet',
+    duration: '~6-9 months pre-sila-mainnet',
     owner: ['ACD facilitators'],
     checklist: [
       'Schedule fork focus discussion on ACD calls',
@@ -497,10 +497,10 @@ export const UPGRADE_PROCESS_PHASES: ProcessPhase[] = [
     checklist: [
       'Deploy to first testnet ~30 days after last devnet',
       'Deploy to second testnet ~2 weeks after first',
-      'Run mainnet shadow forks 1-2 weeks pre-mainnet',
-      'Validate mainnet state compatibility',
+      'Run sila-mainnet shadow forks 1-2 weeks pre-sila-mainnet',
+      'Validate sila-mainnet state compatibility',
       'Confirm all clients passing all tests',
-      'Communicate timeline for mainnet'
+      'Communicate timeline for sila-mainnet'
     ],
     deliverables: [
       'Testnet upgrades (SilaSepolia, Hoodi)',
@@ -510,12 +510,12 @@ export const UPGRADE_PROCESS_PHASES: ProcessPhase[] = [
     notes: 'Typical: SilaSepolia → Hoodi. ~2 weeks between. Shadow forks last.'
   },
   {
-    id: 'mainnet-deployment',
+    id: 'sila-mainnet-deployment',
     title: 'SilaMainnet Activation',
     duration: '2-4 weeks prep',
     owner: ['Client teams', 'ACD facilitators', 'Comms'],
     checklist: [
-      'All clients publish mainnet-ready releases',
+      'All clients publish sila-mainnet-ready releases',
       'Announce activation block/timestamp (Wednesday preferred)',
       'Wait minimum 2 weeks for operator upgrades',
       'Run final checks on activation day',
@@ -526,7 +526,7 @@ export const UPGRADE_PROCESS_PHASES: ProcessPhase[] = [
       'All client releases published',
       'Activation date/block announced',
       'Supermajority client adoption achieved',
-      'Successful mainnet activation'
+      'Successful sila-mainnet activation'
     ],
     notes: 'Schedule Wed monitoring. Need ~60-70% adoption. 2-week minimum window.'
   }
