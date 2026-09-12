@@ -145,6 +145,13 @@ const SchedulePage: React.FC = () => {
                   projectedDate: staticDevnet.projectedDate
                 };
               }
+              // The projection only infers status from whether the whole fork is
+              // historical, so a devnet we know the state of keeps its own — a
+              // dateless devnet that has already run would otherwise read as
+              // upcoming against a projected date.
+              if (staticDevnet) {
+                return { ...devnet, status: staticDevnet.status };
+              }
               return devnet;
             })
           };
@@ -169,8 +176,10 @@ const SchedulePage: React.FC = () => {
         // A proposed fork slot beats the backwards-from-sila-mainnet projection, but
         // stays overridable in the sandbox.
         const withProposals = phase.testnets.map(testnet => {
-          const proposedDate = staticTestnets?.find(t => t.name === testnet.name)?.proposedDate;
-          return proposedDate ? { ...testnet, proposedDate } : testnet;
+          const proposal = staticTestnets?.find(t => t.name === testnet.name);
+          return proposal?.proposedDate
+            ? { ...testnet, proposedDate: proposal.proposedDate, proposedSource: proposal.proposedSource }
+            : testnet;
         });
         const sepoliaIdx = withProposals.findIndex(t => t.name === 'SilaSepolia');
         const insertAt = sepoliaIdx === -1 ? withProposals.length : sepoliaIdx;
@@ -867,6 +876,7 @@ const SchedulePage: React.FC = () => {
                                           gapIsNegative={glamDevnetGap.isNegative}
                                           gapType="variable"
                                           isLive={glamDevnet.status === 'in-progress'}
+                                          liveHref={`/networks/glamsterdam-devnet-${idx}`}
                                         />
                                       );
                                     })() : (
@@ -893,6 +903,7 @@ const SchedulePage: React.FC = () => {
                                           gapIsNegative={hegotaDevnetGap.isNegative}
                                           gapType="variable"
                                           isLive={hegotaDevnet.status === 'in-progress'}
+                                          liveHref={`/networks/hegota-devnet-${idx}`}
                                         />
                                       );
                                     })() : (
@@ -1010,6 +1021,7 @@ const SchedulePage: React.FC = () => {
                                       gapTooltip={showGap ? currentGapTooltip : undefined}
                                       gapType="fixed"
                                       isProposed={!glamTestnet.date && !!glamTestnet.proposedDate}
+                                      proposedSource={glamTestnet.proposedSource}
                                       isLive={glamTestnet.status === 'in-progress'}
                                     />
                                   );
