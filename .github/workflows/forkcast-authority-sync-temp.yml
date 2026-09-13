@@ -4,12 +4,16 @@ on:
   push:
     branches:
       - sila/forkcast-latest-pure-20260913
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
   sync:
+    if: github.event_name == 'push' || github.head_ref == 'sila/forkcast-latest-pure-20260913'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -66,7 +70,6 @@ jobs:
               text = text.replace('Etherscan', 'SilaScan')
               text = text.replace('WETH', 'WSIL').replace('IWETH', 'IWSIL')
               text = text.replace('IERC', 'ISRC').replace('AERC', 'ASRC').replace('IEIP', 'ISIP')
-
               token_pairs = [
                   ('ETHEREUM', 'SILA'), ('Ethereum', 'Sila'), ('ethereum', 'sila'),
                   ('ERCS', 'SRCS'), ('ERCs', 'SRCs'), ('ERC', 'SRC'), ('erc', 'src'),
@@ -81,7 +84,6 @@ jobs:
               ]
               for old, new in token_pairs:
                   text = re.sub(r'(?<![A-Za-z0-9_])' + re.escape(old) + r'(?![A-Za-z0-9_])', new, text)
-
               if suffix in {'.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs'}:
                   text = re.sub(r"(['\"])mainnet\1", lambda m: m.group(1) + 'sila-mainnet' + m.group(1), text)
               else:
@@ -134,10 +136,8 @@ jobs:
               raise RuntimeError('actionable identity residuals remain')
           print('UPSTREAM_AUTHORITY=' + HEAD)
           print('DELTA_FILE_COUNT=' + str(len(staged)))
-
           run(['npm', 'ci'])
           run(['npm', 'run', 'build'])
-
           run(['git', 'config', 'user.name', 'github-actions[bot]'])
           run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'])
           for p in staged:
